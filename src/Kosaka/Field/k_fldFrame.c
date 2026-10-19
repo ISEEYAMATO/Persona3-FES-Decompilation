@@ -1537,7 +1537,9 @@ void func_001aaac0(KwlnTask* task, u32 value)
  * conditional-expression nd9/832; single-case-switch variants nd643/856 and
  * nd627/872 (both over the 832-byte window); explicit join-goto nd1/832;
  * semantically-wrong mirrored outer condition nd2/832; symmetric nested-if
- * nd22/832. */
+ * nd22/832; ternary and default-plus-override forms nd199. The residual nd1 is
+ * the inner-if join: retail branches to axis=0's shared `b`, while this TU's
+ * mwcc threads that branch straight to the dispatch. */
 // FUN_001aaad0 NONMATCHING
 u32 K_FldFrame_IsPointInTriangle(const RwV3d* point, const RwV3d** tri, const RwV3d* normal)
 {
