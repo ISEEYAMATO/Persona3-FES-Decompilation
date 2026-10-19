@@ -1498,15 +1498,16 @@ void func_0010d6f0(s16 index, s16 fileIndex)
     }
 }
 
-/* W418 rejected slot-pointer probe: nd214,obj324 -> nd145,obj204; rate 66.05% -> 71.08% (size loophole). */
-// FUN_0010D7B0 NONMATCHING
+/* Retail returns early when state != 1, before the field assignments. */
+// FUN_0010D7B0
 void func_0010d7b0(s16 index, s16 fileIndex, void* data0, u32 data0Size,
                    void* data1, u32 data1Size, void* data2, u32 data2Size)
 {
-    HSfdDecodeSlot* slot;
-
-    slot = &sSfdDecodeSlots_abs[index];
-    if ((sSfdDecodeSlots_abs[index].state == 1) && (sSfdDecodeSlots_abs[index].status != 0))
+    if (sSfdDecodeSlots_abs[index].state != 1)
+    {
+        return;
+    }
+    if (sSfdDecodeSlots_abs[index].status != 0)
     {
         func_0010d950(index);
     }

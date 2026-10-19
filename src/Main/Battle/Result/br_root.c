@@ -1840,6 +1840,8 @@ void func_001f0ad0(KwlnTask *task, const BrRootSetupParams *params)
     }
 }
 
+// `>= 100` -> `> 99` drops the clamp temp-register mismatch (12 -> 8 words); the
+// remainder is argument-materialization scheduling (`lh $a1` vs `addiu`) at both calls.
 // FUN_001f0c40 NONMATCHING
 void func_001f0c40(KwlnTask *task)
 {
@@ -1853,7 +1855,7 @@ void func_001f0c40(KwlnTask *task)
         } else {
             s32 level = (s32)(func_00170760(1, BR_S16(work + i * 8 + 0x98, 0)) & 0xffff);
             level += BR_S32(work + i * 8, 0x9c);
-            if (level >= 100) {
+            if (level > 99) {
                 level = 99;
             }
             func_00170860(1, BR_S16(work + i * 8 + 0x98, 0), (u16)level);

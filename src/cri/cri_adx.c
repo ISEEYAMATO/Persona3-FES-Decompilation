@@ -2232,8 +2232,8 @@ void FUN_00531a90(long param_1)
 
 #pragma push
 #pragma schedule on
-// FUN_00531AB8 NONMATCHING
-u8 FUN_00531ab8(u8 *param_1)
+// FUN_00531AB8
+s8 FUN_00531ab8(u8 *param_1)
 {
   return *(s8 *)param_1;
 }

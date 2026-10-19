@@ -1,6 +1,7 @@
 # --- retail assets (copyrighted: supply your own) ---
 /image.bin
 /SLUS_216.21
+/*.iso
 /baserom*
 /data1.bin
 /data2.bin
@@ -33,6 +34,7 @@
 *.exe
 /tools/decomp-permuter
 /tools/vendor/m2c/
+/reference/
 *.m2c
 /**/*.ast.c
 

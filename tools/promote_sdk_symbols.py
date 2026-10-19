@@ -23,11 +23,22 @@ SYMBOL_LINE_RE = re.compile(
 IDENTIFIER_RE = re.compile(r"^[A-Za-z_.$][\w.$]*$")
 
 
+def resolve_p4_root():
+    candidates = (
+        REPO / "reference" / "Persona4-Decompilation",
+        REPO.parent / "Persona4-Decompilation",
+    )
+    for candidate in candidates:
+        if (candidate / "config" / "symbol_addrs.txt").is_file():
+            return candidate.resolve()
+    return candidates[0].resolve()
+
+
 def resolve_target_root(target, explicit):
     if explicit:
         root = Path(explicit).resolve()
     elif target == "p4":
-        root = (REPO.parent / "Persona4-Decompilation").resolve()
+        root = resolve_p4_root()
     else:
         root = REPO
     config = root / "config" / "symbol_addrs.txt"

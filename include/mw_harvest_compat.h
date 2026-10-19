@@ -1005,7 +1005,7 @@ void FUN_005319e0(void);
 void FUN_00531a10(void);
 long FUN_00531a28(long param_1,u32 param_2);
 void FUN_00531a90(long param_1);
-u8 FUN_00531ab8(u8 *param_1);
+s8 FUN_00531ab8(u8 *param_1);
 u32 FUN_00531ac8(int param_1);
 void FUN_00531ad0(int param_1,u32 param_2);
 void FUN_00531b00(u64 param_1,u64 param_2,long param_3,u32 param_4,  u32 param_5);
