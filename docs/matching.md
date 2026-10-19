@@ -91,6 +91,13 @@ for mapped function windows.
   function-owned table targets, and `tools/build.py` additionally requires compiler-owned data
   sections to materialize byte-identically before linking a translation unit. `br_res` 234070 exposed
   this: reordering the source cases changed only the table addends and restored retail identity.
+- **Adjacent equality/inequality chains are range-folded (frequent wall).** mwcc rewrites
+  `x == A || x == A+1` (and the De Morgan `x != A && x != A+1`) into a range check
+  (`addiu t,x,-A; sltiu at,t,2`), losing retail's two direct compares, which often reuse
+  switch-dispatch constants already materialized in argument registers. Reordering the tests, the
+  Yoda form, `if`/`else-if` splits, duplicate bodies and a two-case `switch` header all still fold.
+  Making the *second* test unsigned (`x == A || (u32)x == (u32)(A+1)`) defeats the fold and restores
+  the compare pair (k_footstep 1de630, case 2).
 
 ## Loops
 

@@ -1870,7 +1870,11 @@ footstep_default_status_zero:
     }
 }
 
-// FUN_001de630 NONMATCHING
+// mwcc folds `major == 6 || major == 7` into a range check (`addiu/sltiu`),
+// but retail keeps two direct compares (reusing the switch-dispatch
+// constants). Making the second comparison unsigned keeps the fold from
+// recognizing the pair (`== 6 || (u32)== 7U`) and reproduces retail's code.
+// FUN_001de630
 s32 func_001de630(s32 charId)
 {
     s32 result = 0;
@@ -2129,7 +2133,7 @@ footstep_case1_default_e630:
 
     case 2:
         major = gMtScene->fldMajorId;
-        if (major == 6 || major == 7)
+        if (major == 6 || (u32)major == 7U)
         {
             result = 1;
         }
