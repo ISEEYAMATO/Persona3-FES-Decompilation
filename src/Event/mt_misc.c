@@ -2849,6 +2849,17 @@ void FUN_003965d0(u32 *param_1)
 #define FUN_003965d0(...) ((void (*)(...))FUN_003965d0)(__VA_ARGS__)
 // W414 direct parameter pointer probes regressed FUN_003965f0 nd4 -> nd20/51; retained entryResult form. W419 _abs aliases stayed nd4/364 and direct/cached pointer forms were nd51/360.
 // W420 static inline pointer-offset helpers in both parameter orders stayed nd4/object364/window368; reverted.
+// DUMMYDUMB session 2026-10-20: after masking relocations the whole function is
+// one real word - +0x130, where retail computes the FUN_00100d80 argument as
+// addiu a0,a1,0x14 (base + 0x14) while this source computes it as
+// addiu a0,s0,-0x24 (entryResult - 9 ints, base + 0x38 - 0x24). Same value,
+// different address form: retail keeps the base in a1 and adds 0x14, we fold
+// the -9 through the already-materialised entryResult. Probed: spelling the
+// argument as param_1 + iVar1*0xb + 5 (multiplies twice, object 360, nd31),
+// an entryBase local shared by both uses (nd51), an entryArg local (nd31), and
+// byte-cast forms ((u8*)entryResult - 36, (u8*)param_1 + iVar1*0x2c + 0x14,
+// nd10/nd16). All worse or byte-neutral. Confirmed wall: address-form /
+// subexpression evaluation order.
 // FUN_003965F0 NONMATCHING
 
 

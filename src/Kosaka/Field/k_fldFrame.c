@@ -1540,6 +1540,18 @@ void func_001aaac0(KwlnTask* task, u32 value)
  * nd22/832; ternary and default-plus-override forms nd199. The residual nd1 is
  * the inner-if join: retail branches to axis=0's shared `b`, while this TU's
  * mwcc threads that branch straight to the dispatch. */
+/* DUMMYDUMB session 2026-10-20: re-confirmed as the only real residual (207 of
+ * 208 words identical after masking relocations). The difference is branch
+ * threading: retail emits `b +0x44` (the shared `b +0x68`) while mwcc threads
+ * it to `b +0x68` directly. Probed with 44 pragma settings (opt_peephole,
+ * opt_cse, opt_common_subs, opt_propagation, opt_dead_code, opt_lifetimes,
+ * opt_dead_assignments, opt_rebuildconditionals, opt_loop_invariants,
+ * opt_strength_reduction, schedule, global_optimizer, no_branch_likely,
+ * branch_likely, opt_unroll, opt_inline, opt_regalloc, opt_temp_alloc,
+ * opt_coloring, opt_scheduling, no_regalloc, opt_tailcall) scoped to this
+ * function with #pragma push/pop: only opt_common_subs off (nd234) and
+ * schedule on (nd189) changed anything, both far worse; the rest stayed at
+ * nd1. Confirmed wall: branch threading / jump-to-jump elimination. */
 // FUN_001aaad0 NONMATCHING
 u32 K_FldFrame_IsPointInTriangle(const RwV3d* point, const RwV3d** tri, const RwV3d* normal)
 {
