@@ -8054,7 +8054,20 @@ u32 FUN_003268c0(u32 param_1)
 
 
 
-// FUN_003269E0 NONMATCHING
+/* DUMMYDUMB session 2026-10-20: matched with three coordinated changes.
+ * 1) #pragma opt_lifetimes on for this function only (mwcc's lifetime
+ *    analysis). On its own it took the residual from 61 to 13 bytes; with
+ *    the original source none of the steps below can land.
+ * 2) the loop's index scale is hoisted into a named local (idx4 = uVar3 * 4)
+ *    instead of being spelled inline as uVar3 * 4. That changes what the
+ *    scheduler is free to reorder: 13 -> 5 bytes.
+ * 3) the address sum is written base-first (base + idx4) so mwcc emits the
+ *    same commutative-addu operand order as retail: 5 -> 0 bytes.
+ * Each step alone leaves 5 bytes or more; together they are byte-exact. The
+ * generalisable part: opt_lifetimes is the lever for the register-lifetime
+ * class, and once it is in play the usual operand-order rule applies again. */
+// FUN_003269E0
+#pragma opt_lifetimes on
 
 
 void FUN_003269e0(int param_1,int param_2)
@@ -8068,6 +8081,8 @@ void FUN_003269e0(int param_1,int param_2)
   u32 uVar2;
 
   u32 uVar3;
+
+  u32 idx4;
 
   
 
@@ -8111,7 +8126,8 @@ void FUN_003269e0(int param_1,int param_2)
 
       for (uVar3 = 0; uVar3 < uVar1; uVar3 = uVar3 + 1) {
 
-        FUN_00324740(*(u32 *)(*(int *)(param_1 + 0x34) + uVar3 * 4));
+        idx4 = uVar3 * 4;
+        FUN_00324740(*(u32 *)(*(int *)(param_1 + 0x34) + idx4));
 
       }
 
@@ -8139,7 +8155,8 @@ void FUN_003269e0(int param_1,int param_2)
 
       uVar2 = FUN_00324870(**(u32 **)(param_2 + 0x34));
 
-      *(u32 *)(*(int *)(param_1 + 0x34) + uVar3 * 4) = uVar2;
+      idx4 = uVar3 * 4;
+      *(u32 *)(*(int *)(param_1 + 0x34) + idx4) = uVar2;
 
     }
 
@@ -8159,7 +8176,8 @@ void FUN_003269e0(int param_1,int param_2)
 
       for (uVar3 = 0; uVar3 < uVar1; uVar3 = uVar3 + 1) {
 
-        FUN_003257e0(*(u32 *)(*(int *)(param_1 + 0x3c) + uVar3 * 4));
+        idx4 = uVar3 * 4;
+        FUN_003257e0(*(u32 *)(*(int *)(param_1 + 0x3c) + idx4));
 
       }
 
@@ -8187,7 +8205,8 @@ void FUN_003269e0(int param_1,int param_2)
 
       uVar2 = FUN_00325920_u32((u64 *)(**(u32 **)(param_2 + 0x3c)));
 
-      *(u32 *)(*(int *)(param_1 + 0x3c) + uVar3 * 4) = uVar2;
+      idx4 = uVar3 * 4;
+      *(u32 *)(*(int *)(param_1 + 0x3c) + idx4) = uVar2;
 
     }
 
@@ -8212,6 +8231,7 @@ void FUN_003269e0(int param_1,int param_2)
   return;
 
 }
+#pragma opt_lifetimes reset
 
 
 
