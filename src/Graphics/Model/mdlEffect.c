@@ -32588,13 +32588,16 @@ void FUN_00341ba0(int param_1)
  * five words.
  * The lever is not in the source text. Tested, all byte-identical or worse:
  * the colourAddress local's type (u32, void pointer, u32 pointer, Qword128
- * pointer, by-value Qword128), the
- * copy's source and destination spellings, the final call's argument
- * spelling, pauVar7 and uVar6 as register/volatile locals, optimization_level
- * 0-3, the 46-pragma set, an explicit lq/sq asm block (byte-identical to the
- * C union copy), and 21 further rewrites across three permuter sweeps. The
- * only variant that "improved" was a dereference of the address argument,
- * which changes the computed value, so it was rejected.
+ * pointer, by-value Qword128), the copy's source and destination spellings,
+ * the final call's argument spelling, pauVar7 and uVar6 as register/volatile
+ * locals, optimization_level 0-3, the 46-pragma set, an explicit lq/sq asm
+ * block (byte-identical to the C union copy), and 25 further rewrites across
+ * four permuter sweeps. The decisive one: duplicating the copy into a second
+ * pointer and using *that* at the final call - which should block the
+ * copy-forwarding outright - still produces a byte-identical object, so the
+ * allocator's choice is not reachable from the source at all. The only variant
+ * that "improved" was a dereference of the address argument, which changes the
+ * computed value, so it was rejected.
  * Confirmed wall: mwcc copy-forwarding / register allocation, not a source
  * defect. Same mechanism as rwcore FUN_00500f30 and FUN_00501128, where
  * retail materialises an intermediate directly in the register that will hold
