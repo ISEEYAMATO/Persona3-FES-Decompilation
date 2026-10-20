@@ -1957,6 +1957,9 @@ static inline f32 campAddDurationOffsetFirst(f32 offset, f32 duration)
 }
 
 // FUN_0011dfe0 NONMATCHING
+/* Register-allocation wall: nd5 at 912B; only textureState's phi is colored $v0
+   instead of retail's $t0 (offsets 0x34/0x54/0x60/0x64). Nineteen declaration-order
+   permutations and type/condition-spelling sweeps held nd5. */
 void h_campUpdateRootMenuSelectionEffect(CampRootDrawWork* work, f32 alpha)
 {
     void* node;
