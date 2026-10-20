@@ -32569,15 +32569,19 @@ void FUN_00341ba0(int param_1)
 // non-reloc +120 is 0x78630000 (andi.b $w0,$w0,0x63) vs 0x78420000
 // (andi.b $w0,$w0,0x42), with +124 following the same vf3/vf2 role; +136
 // is lw $a0,0x40($v0) vs lw $a0,0x40($s2) (five differing words total).
-/* DUMMYDUMB session 2026-10-20: the residual is the address form of the
- * Qword128 copy: retail materialises the source of the 16-byte copy straight
- * from DAT_0069c4a0_abs, this source goes through the colourAddress local.
- * Probed: copying directly from the global with and without keeping the
- * local assignment (both regress to nd23), and the local spelled as a
- * byte-offset deref (byte-neutral). The two sqc2 blocks are single-
- * instruction, so there is no asm to split. Confirmed wall: address form /
- * subexpression evaluation order. FUN_00345cf0 is the same shape and behaves
- * the same way. */
+/* DUMMYDUMB session 2026-10-20: the copy itself is already the right shape -
+ * mwcc already emits the VU lq/sq pair for the Qword128 union copy, matching
+ * retail's form. The residual is a register-role swap in the last few
+ * instructions: retail keeps the copy address/data in $v0 and the aggregate
+ * base in $s2, this build uses $v1 and $v0. Swept: the colourAddress local's
+ * type (u32 / void * / u32 * / Qword128 * / by-value Qword128) crossed with the
+ * assign-and-copy form, the copy's source spelled as the global directly, the
+ * copy's destination as a byte offset or pointer arithmetic, the final call's
+ * first argument as a byte offset, and pauVar7 as a register local - every
+ * combination stayed at 5 differing bytes or regressed to 19. An explicit
+ * lq/sq asm block is byte-identical to the C union copy, so it changes
+ * nothing. Confirmed wall: register allocation / role colouring.
+ * FUN_00345cf0 is the same shape and behaves the same way. */
 // FUN_00341F10 NONMATCHING
 
 
