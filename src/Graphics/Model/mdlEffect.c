@@ -18489,6 +18489,18 @@ void FUN_00332330(u16 *param_1)
 
 
 
+// DUMMYDUMB session 2026-10-20: the only real residual is a two-instruction
+// order swap at +192/+200 - ours addiu $a2,$a0,0x1c then lhu $v1,0xc($a1),
+// retail lhu $v1,0xc($a1) then addiu $a2,$a0,0x1c. The other differences are
+// gp-relative and call relocations (masked). The reload of indexBase[6] after
+// the call is required (the callee may touch memory), so the lever is
+// argument-evaluation order for FUN_00332ac0's third argument. Probed:
+// removing the duplicated index read (nd22), inlining the pointer with (u8 *)
+// and (u32) casts, index as int, iVar1 as u32, indexBase spelled inline
+// (nd34), and passing the index through a temp (nd66) - all worse or
+// byte-neutral. tools/permute.py agrees: 410 compiles, no match, verdict
+// "2x other/structural". Confirmed wall: instruction scheduling / argument
+// evaluation order.
 // FUN_00332370 NONMATCHING
 
 

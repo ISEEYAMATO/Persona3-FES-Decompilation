@@ -279,7 +279,9 @@ void FUN_0029a570(void)
  * four pragmas that do change codegen (opt_common_subs off, opt_propagation
  * off, opt_loop_invariants off, schedule on) regress to nd31/34/34/38. The
  * allocation tie-break is not source reachable from this form: confirmed
- * compiler wall, register allocation + tie-break, not semantics. */
+ * compiler wall, register allocation + tie-break, not semantics.
+ * tools/permute.py agrees: 1747 compiles, best score 5, verdict
+ * "5x register allocation / scheduling". */
 // FUN_0029a690 NONMATCHING
 void FUN_0029a690(u16 genus)
 {

@@ -6044,8 +6044,9 @@ void FUN_00320770(int *param_1)
  * (opt_lifetimes, opt_cse, opt_common_subs, opt_propagation, opt_dead_assignments,
  * opt_rebuildconditionals, opt_loop_invariants, no_branch_likely, schedule,
  * global_optimizer, tailcall) on/off. Everything stayed at 2 words; opt level 0
- * and 3 regress to nd43/nd21 and opt level 2 to nd6. Confirmed wall:
- * register allocation tie-break. */
+ * and 3 regress to nd43/nd21 and opt level 2 to nd6. tools/permute.py agrees:
+ * 1792 compiles, best score 2, verdict "2x register allocation / scheduling".
+ * Confirmed wall: register allocation tie-break. */
 // FUN_00320810 NONMATCHING
 #pragma optimization_level 1
 
