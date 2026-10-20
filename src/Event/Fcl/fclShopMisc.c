@@ -9696,7 +9696,15 @@ void FUN_003fd320(int param_1,int param_2,u32 param_3,int param_4,int param_5)
 
 // W325 pragma sweep: opt_common_subs off nd156 -> nd131 (obj 440/448).
 #pragma opt_common_subs off
+/* DUMMYDUMB session 2026-10-20: #pragma opt_lifetimes (mwcc's lifetime analysis)
+ * for this function takes the residual from 58 to 52 bytes. The remainder is
+ * broad register-role colouring - loads and moves through $s0/$s2/$t3/$v1
+ * interchangeably - not the two-load swap that the same pragma plus a named
+ * scale and an operand-order flip closed in mdlEffect FUN_003269e0. The
+ * lifetime pragma alone is not enough here; the shape rules would have to
+ * move several roles at once. */
 // FUN_003FD570 NONMATCHING
+#pragma opt_lifetimes on
 
 
 u64 FUN_003fd570(int param_1,u32 *param_2)
@@ -9842,6 +9850,7 @@ u64 FUN_003fd570(int param_1,u32 *param_2)
   return 0;
 
 }
+#pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 
 // FUN_003FD730
