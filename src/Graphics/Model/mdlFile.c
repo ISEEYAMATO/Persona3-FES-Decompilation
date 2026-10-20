@@ -6032,6 +6032,20 @@ void FUN_00320770(int *param_1)
 
 
 
+/* DUMMYDUMB session 2026-10-20: the whole body is byte-identical to retail
+ * except the loop-compare result register - ours sltiu $v1,$a0,4 / bnez $v1,
+ * retail sltiu $v0,$a0,4 / bnez $v0 (two words, +72 and +76). $v0 and $v1 are
+ * both dead at that point ($v0 held the *0x10 shift temp, $v1 the row pointer),
+ * so this is the allocator's tie-break, not a source-level defect. Swept 30
+ * variants with no movement: declaration order (uVar2 first/last), counter type
+ * u32/s32/int, for-init local vs function-scope, while-form, uVar2++ vs
+ * uVar2 = uVar2 + 1, bound 4 > uVar2, uVar2 * 16 vs * 0x10 vs << 4, value
+ * declared first, plus optimization_level 0/1/2/3 and the optimizer pragma set
+ * (opt_lifetimes, opt_cse, opt_common_subs, opt_propagation, opt_dead_assignments,
+ * opt_rebuildconditionals, opt_loop_invariants, no_branch_likely, schedule,
+ * global_optimizer, tailcall) on/off. Everything stayed at 2 words; opt level 0
+ * and 3 regress to nd43/nd21 and opt level 2 to nd6. Confirmed wall:
+ * register allocation tie-break. */
 // FUN_00320810 NONMATCHING
 #pragma optimization_level 1
 

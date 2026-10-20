@@ -9672,6 +9672,15 @@ void FUN_0037a790(int param_1,int param_2,int param_3,int param_4)
 
 
 /* W414: result/argument-local probes kept nd5; returning the call result or extraout exceeded the window. */
+/* DUMMYDUMB session 2026-10-20: the only real residual is a two-instruction
+ * order swap at +88/+92 - ours addiu $a1,$a0,0x104 then move $v0,$zero, retail
+ * move $v0,$zero then addiu $a1,$a0,0x104. The rest of the differences are
+ * gp-relative and call relocations (masked by the verifier). Retail materializes
+ * the literal 0 argument before the address, so argument evaluation order is the
+ * lever. Probed: inlining ptr into the call, (u32)/(int) casts on the address,
+ * ptr as u32, and moving the local out of the else block - all byte-neutral
+ * (9 raw differences, 2 real, unchanged). Confirmed wall: instruction
+ * scheduling / subexpression evaluation order. */
 // FUN_0037ABD0 NONMATCHING
 
 

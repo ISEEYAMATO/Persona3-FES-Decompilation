@@ -684,7 +684,14 @@ const BtlCameraStateEntry* btlBossGetCameraStateEntry(u16 cameraState)
 /* W414/W421 floor: baseline verify nd2 at 376/384 (rate 0.005319).
  * The only residuals are +136 and +276: ours addiu $v0,$zero,1 versus
  * retail daddiu $v0,$zero,1.  This is literal-width code generation, not
- * operand order; the remaining 8 bytes are tail padding. */
+ * operand order; the remaining 8 bytes are tail padding.
+ * DUMMYDUMB session 2026-10-20 re-confirmed the floor and swept the constant
+ * width: (u64)1, 1u, 1UL, unsigned long long / s64 / u32 result types, a
+ * u64 temp assignment, returning the constant directly (return 1 / (u64)1 /
+ * 1u / 1UL / 1+0) instead of assigning then jumping to the case label - all
+ * byte-neutral (still addiu, 2 real words). The daddiu form needs a genuinely
+ * 64-bit literal context, which this source does not have. Same wall family as
+ * FUN_002b17a0's literal-width floor. */
 // FUN_002f88c0 NONMATCHING
 u64 func_002f88c0()
 {
