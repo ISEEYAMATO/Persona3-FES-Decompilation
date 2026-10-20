@@ -1467,12 +1467,22 @@ void FUN_0050dc10(u32 param_1,u32 param_2)
   ErrorPC = unaff_retaddr;
   return;
 }
+// Argument-materialization wall, measured: nine source variants (plain literal,
+// explicit u32 cast, value form, temp variable, schedule off, optimization_level
+// <=2, global_optimizer off, UL suffix) all keep mwcc's temp bounce
+// (lui v0,0xb000; delay ori a0,v0,0x0010). Retail materializes hi and lo
+// directly in a0 across the j delay slot. Classified per docs/matching.md
+// "Known compiler walls": register allocation + delay-slot placement in
+// wrapper/tail-call codegen (related to the W414 8/20-byte tailcall frames).
+// The forwarded address is 0xb0000010 (retail); the old 0xb0001000 read was
+// wrong and is corrected. The temp bounce (nd 2) is the only residual
+// difference.
 #pragma optimization_level 3
 #pragma tailcall on
 // FUN_0050DC80 NONMATCHING
 void FUN_0050dc80(u32 param_1)
 {
-  FUN_0050dc10(0xb0001000,param_1);
+  FUN_0050dc10(0xb0000010,param_1);
 }
 #pragma optimization_level 3
 #pragma tailcall on
