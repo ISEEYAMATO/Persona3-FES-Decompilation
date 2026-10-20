@@ -140,6 +140,12 @@ for mapped function windows.
 - **Declaration order sets callee-saved allocation.** Natural declaration order (not reverse) tends to
   reproduce retail's `s0/s1` assignment (sfl_result 1f9800). A **param vs surviving-local** fight over
   `s0` is generally a wall (bpRootCreateTasks, several camp creates — permuter-confirmed).
+- **Internal linkage enables interprocedural register preservation.** Making a TU-local callee `static`
+  lets mwcc prove which registers its body actually writes; callers may then keep values in `$a2`/`$a3`
+  (and `$v0` when the callee never writes it) across the call instead of spilling to `$s0`. Retail does
+  this in `mt_evtMenu`'s menu callbacks: with `FUN_0036F680` global, `FUN_0037A640` spilled the status
+  and missed on `move v0,$a2`; declaring it `static` produced retail's `move v0,$a2` byte-for-byte.
+  Check that every caller is in the same TU before changing linkage.
 
 ## Read-modify-write and flags
 

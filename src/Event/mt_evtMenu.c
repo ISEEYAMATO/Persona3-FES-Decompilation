@@ -1077,16 +1077,10 @@ void FUN_003722d0(u32 param_1,u32 param_2,u32 param_3,u8 *param_4);
 void FUN_0036f490(int param_1);
 void FUN_0036f4d0(void);
 void FUN_0036f5f0(u32 param_1,u16 param_2,u16 param_3,int param_4);
-void FUN_0036f680(int param_1,int param_2,int param_3,int param_4,u64 param_5, int param_6,int param_7);
-#pragma alias FUN_0036f680_ret FUN_0036f680
-extern u32 FUN_0036f680_ret(int param_1,int param_2,int param_3,int param_4,
-                            u64 param_5,int param_6,int param_7);
+static void FUN_0036f680(int param_1,int param_2,int param_3,int param_4,u64 param_5, int param_6,int param_7);
 #pragma alias FUN_0036f680_ptr2 FUN_0036f680
 extern void FUN_0036f680_ptr2(int param_1,u32 *param_2,int param_3,int param_4,
                               u64 param_5,int param_6,int param_7);
-#pragma alias FUN_0036f680_ret_ptr2 FUN_0036f680
-extern u32 FUN_0036f680_ret_ptr2(int param_1,u32 *param_2,int param_3,int param_4,
-                                 u64 param_5,int param_6,int param_7);
 void FUN_0036f900(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6,int param_7,int param_8,code *param_9);
 #pragma alias FUN_0036f900_evt FUN_0036f900
 extern void FUN_0036f900_evt(int param_1,int param_2,int param_3,int param_4,
@@ -1386,7 +1380,7 @@ extern u8 DAT_007e0000_abs[];
 // FUN_0036F680
 
 
-void FUN_0036f680(int param_1,int param_2,int param_3,int param_4,u64 param_5,
+static void FUN_0036f680(int param_1,int param_2,int param_3,int param_4,u64 param_5,
 
                  int param_6,int param_7)
 
@@ -9441,10 +9435,7 @@ void FUN_0037a560(int param_1,int param_2,int param_3,int param_4)
 
 
 /* W414: shared-value, parameter-return, and switch/goto layout probes did not improve nd4. */
-/* W419 return-value locals and one-argument variants stayed nd4/object324; retail's move v0,a2 remains unresolved. */
-/* W419 return-value negative: nd4/object324/window336/rate1.23% for all one-local and one-argument variants; retail move v0,a2 unresolved. */
-/* W422 negatives: literal return 1 and a static-inline three-argument return helper both stayed nd2/object324/window336; retail move v0,a2 remained. */
-// FUN_0037A640 NONMATCHING
+// FUN_0037A640
 
 
 u32 FUN_0037a640(int param_1,int param_2,int param_3)
@@ -9472,7 +9463,7 @@ u32 FUN_0037a640(int param_1,int param_2,int param_3)
   FUN_0036f680(0,0,1,1,0,0x2000,0x8000);
   buttons = *(u16 *)DAT_007e094e_abs;
   if ((buttons & 0x40) != 0) {
-    return param_3;
+    return 1;
   }
   if ((buttons & 0x20) != 0) {
     return -1;
@@ -9692,9 +9683,10 @@ u32 FUN_0037abd0(int param_1,int param_2,int param_3)
     return 0;
   }
   else {
-    u32 result = FUN_0036f680_ret_ptr2(0,(u32 *)((u8 *)(uintptr_t)param_3 + 0x104),
-                                       0x11,0x11,0,0x4000,0x1000);
-    FUN_0036f680(0,0,result,result,0,0x2000,0x8000);
+    int ptr = param_3 + 0x104;
+    FUN_0036f680(0,ptr,
+                 0x11,0x11,0,0x4000,0x1000);
+    FUN_0036f680(0,0,1,1,0,0x2000,0x8000);
 
     if ((*(u16 *)DAT_007e094e_abs & 0x40) != 0) {
       return 1;
