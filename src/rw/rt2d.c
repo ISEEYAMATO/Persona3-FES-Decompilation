@@ -2932,7 +2932,7 @@ u64 FUN_004b4720(u64 param_1,u32 *param_2)
 #pragma alias FUN_004b1620_ptr FUN_004b1620
 extern u64 FUN_004b1620_ptr(u8 *param_1,u8 *param_2);
 #pragma schedule on
-// FUN_004B4790 NONMATCHING
+// FUN_004B4790
 u64 FUN_004b4790(u64 param_1,u8 *param_2)
 
 {
@@ -2940,7 +2940,7 @@ u64 FUN_004b4790(u64 param_1,u8 *param_2)
   
   lVar1 = FUN_004b1620_ptr(param_2 + 4,param_2 + 0x20);
   if (lVar1 == 0) {
-    param_1 = 0;
+    return 0;
   }
   return param_1;
 }

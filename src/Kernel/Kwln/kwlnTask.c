@@ -308,6 +308,9 @@ u8 kwlnTaskUpdate(KwlnTask* task)
 }
 #pragma pop
 
+/* WALL: 22 words differ. mwcc folds the null check to `xor/sltiu` instead of
+   retail's `sltu/xori`, and retail hoists `addiu v1,3` (STATE_DESTROY) before
+   the cursor loop. Forcing either made the diff worse (43 words). */
 // FUN_00194100 NONMATCHING
 void kwlnTaskUpdateAll()
 {
