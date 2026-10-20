@@ -220,6 +220,74 @@ source changes it; the operand registers are fixed by allocation. Drop when only
 (gc_pose 250a30 — otherwise a full byte match).
 
 
+## Register-field-only differences (mwcc copy-forwarding)
+
+**The rule.** When the candidate and retail differ **only in register fields** - same opcodes, same
+order, same delay slots, same non-relocated immediates - and the candidate materialises an
+intermediate in a scratch register (`$v0`/`$v1`) while retail materialises it directly in the
+register that will hold the result, **the source is not at fault.**
+
+This is mwcc's *copy-forwarding* / register allocation, and it cascades: one decision about which
+register is canonical for a copied value changes every later use of it. The source-text and pragma
+lever spaces are exhausted for this class - only an allocator knob would reach it, and the 46
+pragmas in the sweep are all *optimizer-pass* knobs (CSE, propagation, scheduling, peephole, class
+allocation), not allocator knobs. **Treat it as a compiler wall.**
+
+Diagnostic: classify every differing word field by field (opcode / rs / rt / rd / immediate). If all
+differing words differ only in register fields, stop rewriting source.
+
+### Measured instances
+
+| function | candidate | retail |
+|---|---|---|
+| `mdlEffect FUN_00341f10` | `lui $v1` / `lq $v1,0($v1)` / `sq $v1,32($s2)` / `lw $a0,64($v0)` | `lui $v0` / `lq $v0,0($v0)` / `sq $v0,32($s2)` / `lw $a0,64($s2)` |
+| `mdlEffect FUN_00345cf0` | twin of the above | |
+| `rwcore FUN_00500f30` | `lw $v0,0x40($a0)` / `lw $v0,0xe0($v0)` | `lw $v1,0x40($a0)` / `lw $v0,0xe0($v1)` |
+| `rwcore FUN_00500f40` | same, offset `0xe4` | |
+| `rwcore FUN_00501128` | `lw $v0,0x40($a0)` / `addiu $a0,$v0,0x68` | `lw $a0,0x40($a0)` / `addiu $a0,$a0,0x68` |
+| `rwcore FUN_00501150` | same | |
+| `itfMesManager FUN_003ada00` | `andi $s2` / `move $s1,$zero` / `andi $s1` | `andi $s1` / `move $s2,$zero` / `andi $s2` |
+
+For `FUN_00341f10` the mechanism was traced to a phase boundary: at `0x54` both builds make a copy
+of the allocation result (`move s2,v0`). Retail keeps that *copy* canonical and reads the final
+argument from it, which leaves `$v0` free to become the temp holding the global's address. This
+build coalesces the final argument load back onto the *original* `$v0`, so `$v0` is pinned as the
+aggregate base and the address temp is pushed to `$v1`. One canonicality decision, five differing
+words.
+
+For `FUN_00500f30` the same shape appears at minimum size: the candidate coalesces the
+intermediate pointer into `$v0` (the return register) and reloads through it, retail keeps the
+pointer in `$v1` and loads the result into `$v0`. For `FUN_00501128` retail materialises the
+argument expression directly in `$a0`; the candidate computes it in `$v0` and then adds.
+
+### Levers measured and rejected for this class
+
+* the local's type (`u32`, `void *`, `u32 *`, `Qword128 *`, by-value) - all byte-identical or worse
+* the copy's source and destination spellings
+* the final call's argument spelling, and inlining the whole expression as the argument
+* `register` and `volatile` on both the pointer and the original
+* `#pragma optimization_level` 0-3
+* the 46-pragma set (`no_branch_likely`, `schedule`, `opt_repositioncode`, `global_optimizer`,
+  `cse_hard_reg_*`, `opt_propagation`, `memoryrewrite`, `reg_class_allocs`, `peephole`,
+  `conditional_move`, `opt_foldconstants`, `opt_pulloutconstants`, ...)
+* an explicit `lq`/`sq` asm block - byte-identical to the C union copy, so that shape is not a lever
+* reversing the local declaration list, swapping adjacent declarations, `if/else` to ternary
+
+### CAUTION: a byte match is not a semantic match
+
+A shape permutation that changes what an expression *computes* can reach 0 differing words and look
+like a MATCH while no longer matching retail's behaviour. Measured example: `FUN_0034E4C0` has a
+"differing=1" variant that is `*(int *)((u8 *)iVar1 + 0x48)` - a **dereference** where retail passes
+the **address**. It was rejected, not committed.
+
+Any automated permuter must therefore check that the rewrite preserves semantics. The
+`P3ShapeWorker` on the build box guards this three ways:
+
+1. the function's **dereference count** (`*(` plus `->` plus `[...]`) must be unchanged;
+2. the **type axis** may only change the *width* within the same signedness family - a byte match
+   proves the width, but `u32` and `int` compile identically and compare differently;
+3. the commit message carries the **unified diff** of the source change, so a human can review it.
+
 ## Deterministically classified compiler walls
 
 Keep the best source and reducer evidence when the remaining mismatch is proven compiler behavior:
@@ -242,8 +310,25 @@ Keep the best source and reducer evidence when the remaining mismatch is proven 
 
 Mark a function `NONMATCHING` when only these differences remain:
 
-Register allocation; param-vs-local `s0/s1`; instruction scheduling / subexpression evaluation order;
+Register allocation; param-vs-local `s0/s1`; register-field-only differences (mwcc copy-forwarding - see
+above); instruction scheduling / subexpression evaluation order;
 FPU-register allocation; u16-mask propagation (retail re-masks per use, mwcc elides); switch
 case-order; the `slti $at` branch-temp idiom; commutative-`addu` and commutative-`mul.s` operand
 order; render/float-math update functions (`(*DAT_00960090)()` indirect draw calls, per-frame vector
 transforms).
+
+## Tooling notes and safety rules
+
+- **A `verify.py` run that is not clean is a HARD STOP.** Never commit or push past it, whatever
+  the change looks like. A block comment in a C file that contains a `*/` inside it will close
+  early and turn the rest of the note into code; that happened once and 614 functions came back
+  `COMPILE_ERROR` in a commit that had been pushed. **A comment is code.**
+- **The marker comment name is not the C function name.** `MARKER_RE` is
+  `^\s*//\s*(FUN_([0-9a-fA-F]{8}))`, so the comment is always address-based (`// FUN_001FC980`)
+  while the C function may be `func_001fc980`. 1,576 of 14,055 markers across 129 files differ.
+  `tools/verify.py` resolves the *definition* name for the object symbol, so any tool that locates
+  a marker by function name silently skips those functions and then fails to untag them. Locate
+  markers by **address** instead; `tools/verify.py --json` reports it in `addr`.
+- **Source-shape permuting** is documented separately in [permuting.md](permuting.md): the
+  cross-product permuter, the axes worth using, and the guards that keep a byte match from
+  becoming a semantic mismatch.
