@@ -32569,18 +32569,35 @@ void FUN_00341ba0(int param_1)
 // non-reloc +120 is 0x78630000 (andi.b $w0,$w0,0x63) vs 0x78420000
 // (andi.b $w0,$w0,0x42), with +124 following the same vf3/vf2 role; +136
 // is lw $a0,0x40($v0) vs lw $a0,0x40($s2) (five differing words total).
-/* DUMMYDUMB session 2026-10-20: the copy itself is already the right shape -
- * mwcc already emits the VU lq/sq pair for the Qword128 union copy, matching
- * retail's form. The residual is a register-role swap in the last few
- * instructions: retail keeps the copy address/data in $v0 and the aggregate
- * base in $s2, this build uses $v1 and $v0. Swept: the colourAddress local's
- * type (u32 / void * / u32 * / Qword128 * / by-value Qword128) crossed with the
- * assign-and-copy form, the copy's source spelled as the global directly, the
- * copy's destination as a byte offset or pointer arithmetic, the final call's
- * first argument as a byte offset, and pauVar7 as a register local - every
- * combination stayed at 5 differing bytes or regressed to 19. An explicit
- * lq/sq asm block is byte-identical to the C union copy, so it changes
- * nothing. Confirmed wall: register allocation / role colouring.
+/* DUMMYDUMB session 2026-10-20, deep dive. The two objects are
+ * instruction-for-instruction identical - same opcodes, same order, same delay
+ * slots, same non-relocated immediates. All five differing words differ ONLY
+ * in register fields (rt/rs/rd):
+ *   +0x70 lui      $v1            vs $v0
+ *   +0x74 addiu    $v1,$v1        vs $v0,$v0
+ *   +0x78 lq       $v1,0($v1)    vs $v0,0($v0)
+ *   +0x7c sq       $v1,32($s2)    vs $v0,32($s2)
+ *   +0x88 lw       64($v0)        vs 64($s2)
+ * (the other raw differences are gp-relative relocation immediates, masked by
+ * the verifier). The divergence is mwcc's copy-forwarding: retail keeps the
+ * *copy* of the allocation result (made at 0x54 "move s2,v0") canonical and
+ * reads the final argument from it, which leaves $v0 free to be the address
+ * temp for the lq/sq data; this build coalesces the final argument load back
+ * onto the *original* $v0, pinning $v0 as the aggregate base and pushing the
+ * address temp to $v1. One register-canonicality decision cascades into all
+ * five words.
+ * The lever is not in the source text. Tested, all byte-identical or worse:
+ * the colourAddress local's type (u32/void */u32 */Qword128 */by-value), the
+ * copy's source and destination spellings, the final call's argument
+ * spelling, pauVar7 and uVar6 as register/volatile locals, optimization_level
+ * 0-3, the 46-pragma set, an explicit lq/sq asm block (byte-identical to the
+ * C union copy), and 21 further rewrites across three permuter sweeps. The
+ * only variant that "improved" was a dereference of the address argument,
+ * which changes the computed value, so it was rejected.
+ * Confirmed wall: mwcc copy-forwarding / register allocation, not a source
+ * defect. Same mechanism as rwcore FUN_00500f30 and FUN_00501128, where
+ * retail materialises an intermediate directly in the register that will hold
+ * the result and this build uses a scratch register plus a copy.
  * FUN_00345cf0 is the same shape and behaves the same way. */
 // FUN_00341F10 NONMATCHING
 
