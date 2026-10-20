@@ -267,7 +267,19 @@ void FUN_0029a570(void)
  * +136 beq $a2,$t1 versus beq $a2,$t3; +156 addiu $t3,$t3,1 versus
  * addiu $t1,$t1,1; +164 sltu $v1,$t3,$a0 versus sltu $v1,$t1,$a0.
  * Comparison reversal measured nd6 at 192/192 (rate 0.031250); u32/cast
- * aliases measured nd68 at 192/192 (rate 0.354167). */
+ * aliases measured nd68 at 192/192 (rate 0.354167).
+ * Re-swept 2026-10-20 on DUMMYDUMB: 10 further source shapes compiled and
+ * measured (declaration order, counter/local types, genus temp types, for-loop
+ * form, hoisted limit local, explicit u16 genus copy) plus 27 optimizer pragma
+ * names x on/off (opt_lifetimes, opt_cse, opt_propagation, opt_common_subs,
+ * opt_dead_assignments, opt_loop_invariants, opt_rebuildconditionals,
+ * opt_strength_reduction, no_branch_likely, schedule, global_optimizer,
+ * opt_regalloc, opt_temp_alloc, opt_coloring and others). Every one keeps the
+ * same five $t1/$t3 role-coloring words as the only residual difference; the
+ * four pragmas that do change codegen (opt_common_subs off, opt_propagation
+ * off, opt_loop_invariants off, schedule on) regress to nd31/34/34/38. The
+ * allocation tie-break is not source reachable from this form: confirmed
+ * compiler wall, register allocation + tie-break, not semantics. */
 // FUN_0029a690 NONMATCHING
 void FUN_0029a690(u16 genus)
 {
