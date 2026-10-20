@@ -7172,6 +7172,13 @@ void FUN_00325c10(u8 (*param_1) [16],u8 (*param_2) [16])
 
 // b210 floor: the remaining rows are three VU-asm operand-address setup order/color groups
 // at +0x14..+0x1c, +0x4c..+0x50, and +0x60..+0x64; all ordinary C and calls now agree.
+// DUMMYDUMB session 2026-10-20: one of those groups is now fixed. The loop's VU block
+// was one asm statement, so mwcc materialized the &saved operand before the whole
+// block, while retail materializes it between the two lqc2s (retail: lqc2 0x50(%0);
+// addiu &saved; lqc2 0(saved)). Splitting the block into the lqc2 0x50(%0) statement
+// and the lqc2 0(saved) statement puts the address where retail has it. Remaining
+// residual is one instruction: retail materializes &transformed in $a1, this build
+// uses $v0. nd 4 -> 2 bytes, no other function in this TU affected.
 // FUN_00325D60 NONMATCHING
 #pragma alias FUN_00325d60_u32 FUN_00325d60
 void FUN_00325d60_u32(u8 (*param_1) [16],u8 (*param_2) [16])
@@ -7209,11 +7216,17 @@ void FUN_00325d60_u32(u8 (*param_1) [16],u8 (*param_2) [16])
     __asm__ volatile (
         ".set noreorder                   \n"
         "lqc2        $vf10, 0x50(%0)       \n"
-        "lqc2        $vf11, 0(%1)          \n"
         ".set reorder"
         :
-        : "r"(iVar3), "r"(saved)
-        : "vf10", "vf11", "memory");
+        : "r"(iVar3)
+        : "vf10", "memory");
+    __asm__ volatile (
+        ".set noreorder                   \n"
+        "lqc2        $vf11, 0(%0)          \n"
+        ".set reorder"
+        :
+        : "r"(saved)
+        : "vf11", "memory");
     FUN_00357dd0();
     __asm__ volatile ("sqc2 $vf10, 0(%0)" : : "r"(transformed) : "memory");
     uVar1 = *(u16 *)(*(int *)(iVar3 + 0x90) + 4);
