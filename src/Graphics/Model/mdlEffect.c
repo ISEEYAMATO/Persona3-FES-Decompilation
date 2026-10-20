@@ -7516,7 +7516,13 @@ int FUN_00326240(int param_1,int param_2)
 
 
 
-// FUN_00326280 NONMATCHING
+// DUMMYDUMB session 2026-10-20: the VU block was one asm statement, so mwcc
+// materialized the &scale operand (addiu $a3,$a0,0x40) *before* the whole
+// block, while retail materializes it between the vector math and the lqc2
+// (retail: vmulq.xyz; addiu; lqc2). Splitting the asm into two statements -
+// the vector math, then the lqc2/vmul.xyzw pair that needs &scale - makes mwcc
+// emit the address in the same place retail does. C body otherwise unchanged.
+// FUN_00326280
 
 
 void FUN_00326280(int param_1,u32 param_2,u8 (*param_3) [16])
@@ -7607,6 +7613,14 @@ void FUN_00326280(int param_1,u32 param_2,u8 (*param_3) [16])
         "vrsqrt Q, vf0w, vf2w                \n"
         "vwaitq                              \n"
         "vmulq.xyz vf10, vf10, Q             \n"
+        ".set reorder"
+        :
+        :
+        : "vf2", "vf10", "ACC", "Q"
+    );
+
+    __asm__ volatile (
+        ".set noreorder                  \n"
         "lqc2 vf11, 0(%0)                    \n"
         "vmul.xyzw vf10, vf10, vf11          \n"
         ".set reorder"
