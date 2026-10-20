@@ -32587,7 +32587,8 @@ void FUN_00341ba0(int param_1)
  * address temp to $v1. One register-canonicality decision cascades into all
  * five words.
  * The lever is not in the source text. Tested, all byte-identical or worse:
- * the colourAddress local's type (u32/void */u32 */Qword128 */by-value), the
+ * the colourAddress local's type (u32, void pointer, u32 pointer, Qword128
+ * pointer, by-value Qword128), the
  * copy's source and destination spellings, the final call's argument
  * spelling, pauVar7 and uVar6 as register/volatile locals, optimization_level
  * 0-3, the 46-pragma set, an explicit lq/sq asm block (byte-identical to the
