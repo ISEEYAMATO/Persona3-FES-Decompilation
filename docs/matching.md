@@ -288,6 +288,73 @@ Any automated permuter must therefore check that the rewrite preserves semantics
    proves the width, but `u32` and `int` compile identically and compare differently;
 3. the commit message carries the **unified diff** of the source change, so a human can review it.
 
+## Stack frame size: the fingerprint of a wrong local layout
+
+The first instruction of a mwcc-compiled function is
+
+```c
+    addiu $sp, $sp, -N
+```
+
+and `N` is the frame size, which is a function of the locals in the C source. **If our `N`
+differs from retail's `N`, every `sp`-relative offset later in the function is wrong too.**
+That is the real content of the two biggest populations in the remaining pool:
+
+* the **"50-100% diff ratio"** population - 828 of the 1299 first-party NONMATCHING
+  functions, where more than half the compiled body differs from retail; and
+* the **"first difference at byte offset 0"** population - 350 functions whose very first
+  instruction is already wrong.
+
+`tools/frame_census.py` measures this directly: it compiles each TU once and compares the
+frame immediate in our object against the frame immediate in retail.
+
+Measured over the whole repository on 2026-10-20:
+
+| | count |
+|---|---|
+| first-party NONMATCHING | 1299 |
+| already the right frame size | 920 |
+| **different frame size** | **326** |
+| ... off by exactly +/-16 bytes | 186 |
+| first difference at byte offset 0 | 350 (326 of them this case) |
+
+A +/-16 byte delta is the signature of **one local whose declared width is wrong** - a
+`u32` that should be a `u64`, an `f32` that should be an `f64`, a pointer that should be a
+pointer to a wider type. 186 functions repo-wide have that signature; 74 of them are in
+`src/rw`, `src/Main`, `src/Camp`, `src/Scene`, `src/Yajima`, `src/Kernel` and the top-level
+`src/*.c` files.
+
+**A wrong frame is a fingerprint, not a bug in its own right.** Forcing the frame to the
+right size does not fix the function, because the individual locals are in the wrong
+places, not merely the wrong total.  Measured on `btlEffect func_002c4e50` and
+`btlMain btlMainInitStateCondition`: a local width change that made the frame match retail
+exactly made the diff *worse* (73 -> 96 and 248 -> 249 respectively).  Padding locals do not
+help either - mwcc removes an unused local entirely, so no `volatile`/array padding changes
+the frame at all.
+
+Levers measured and rejected for moving the frame by itself:
+
+* adding a prototype parameter to the callee - the frame does not move (mwcc does not size
+  the frame from the callee's prototype, and the o32 argument-save area is only reserved
+  for a variadic call, which this is not);
+* casting a call to a variadic prototype - no change;
+* adding arguments to a call - no change (and it breaks the prototype check);
+* `volatile` / array / `double` / `float` padding locals - all removed by the optimiser.
+
+**How to use this.** When a function misses badly, run `tools/frame_census.py` and look up
+the function.  A frame delta tells you the local *layout* is wrong, so the work is to
+reconstruct the locals from retail's stack usage - not to keep permuting the source.  A
+frame delta of zero with a large diff means the problem is elsewhere (code shape, or the
+allocator - see above).
+
+The cleanest worked example is `h_camp FUN_00136750`, which is 3 differing bytes from a
+match: every byte of the body already agrees with retail, and the entire difference is
+`addiu $sp,$sp,-0x40` versus `-0x50` (and the matching epilogue).  Retail reserved 16 bytes
+that this build does not.  The saved-register set is identical, so the extra bytes are
+reserved-but-unused, which is the o32 argument-save area - but the calls in this function
+are not variadic, and every way of reserving those 16 bytes that was tried left the frame
+unchanged.  (See the `W421` note in `src/Camp/h_camp.c`.)
+
 ## Deterministically classified compiler walls
 
 Keep the best source and reducer evidence when the remaining mismatch is proven compiler behavior:
