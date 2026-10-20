@@ -32,6 +32,8 @@ void FUN_004ca520(u64 param_1,u64 param_2,u64 param_3,u64 param_4);
 extern u32 FUN_004c5140_u32_raw(u32,u32,u32,u32,u32);
 #pragma alias FUN_004c1450_u32_raw FUN_004c1450
 extern u32 FUN_004c1450_u32_raw(u32,u32,u32,u32,u32);
+#pragma alias FUN_004bf880_u32 FUN_004bf880
+extern u32 FUN_004bf880_u32(u32,u32,u32,u32,u32);
 extern void FUN_004c61b0_raw();
 u32 FUN_004c3c30(int param_1);
 long FUN_004c1d10(RwInt32 param_1,...);
@@ -1458,24 +1460,218 @@ void FUN_004c0880(u32 param_1)
 {
   DAT_0096017c_abs[0](*(u32 *)((int)param_1 + 0x58));
 }
-// FUN_004C08A0
-u64 FUN_004c08a0(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
+typedef struct RtFileSystem_004C08A0 {
+  /* 0x00 */ u32 pad0[7];
+  /* 0x1C */ char *(*fsGetDeviceName)(void *fs);
+} RtFileSystem_004C08A0;
+
+typedef struct RtFilePS2_004C0A80 {
+  /* 0x00 */ long length;
+  /* 0x08 */ long lengthPad;
+  /* 0x10 */ long position;
+  /* 0x18 */ long positionPad;
+  /* 0x20 */ long initialPos;
+  /* 0x28 */ long initialPosPad;
+  /* 0x30 */ int isAsync;
+  /* 0x34 */ int priority;
+  /* 0x38 */ int status;
+  /* 0x3C */ int error;
+  /* 0x40 */ int outstandingFileOp;
+  /* 0x44 */ u32 outstandingSize;
+  /* 0x48 */ void *outstandingCB;
+  /* 0x4C */ void *outstandingCBData;
+  /* 0x50 */ void *fileSystem;
+  /* 0x54 */ u32 reserved0;
+  /* 0x58 */ u32 reserved1;
+  /* 0x5C */ u32 reserved2;
+  /* 0x60 */ int fp;
+  /* 0x64 */ int bufferPos;
+  /* 0x68 */ u32 bufferPtr;
+  /* 0x6C */ int bufferSize;
+} RtFilePS2_004C0A80;
+
+#pragma push
+#pragma no_branch_likely on
+/* WALL: implemented; the remaining 85-word diff is the callee-saved rotation
+   ($s3=file/$s2=flags/$s1=openFlags/$s0=filename instead of retail's
+   filename/file/flags/openFlags) plus the cached path address. The return-5,
+   check-write, fseek-start and async-open blocks match retail's layout.
+   param-vs-local $s0 allocation wall (docs/matching.md). */
+// FUN_004C08A0 NONMATCHING
+u32 FUN_004c08a0(RtFileSystem_004C08A0 *fs, RtFilePS2_004C0A80 *file, const char *filename, u32 flags)
 {
-  // TODO window stub
-  return 0;
+  u32 openFlags;
+  char path[0x100];
+  char *deviceName;
+  char *filePath;
+  char *asyncPath;
+  int fp;
+
+  openFlags = 0;
+  deviceName = fs->fsGetDeviceName(fs);
+  filePath = (char *)FUN_004bf7e0((int)filename);
+  if (FUN_004bf880_u32((u32)path, 0x100, (u32)deviceName, (u32)filePath, '/') == 0) {
+    goto return_5;
+  }
+  if (flags & 1) {
+    goto check_write;
+  }
+L0908:
+  if (flags & 1) {
+    openFlags |= 1;
+  }
+L0914:
+  if (flags & 2) {
+    openFlags |= 2;
+  }
+L0924:
+  if (flags & 4) {
+    openFlags |= 0x200;
+  }
+  if ((flags & 2) && !(flags & 8)) {
+    openFlags |= 0x400;
+  }
+  file->isAsync = 0;
+  fp = func_00508670((int)path, (int)openFlags);
+  *(volatile int *)&file->fp = fp;
+  if (*(volatile int *)&file->fp >= 0) {
+    goto after_special;
+  }
+  return 3;
+return_5:
+  return 5;
+check_write:
+  if (!(flags & 2)) {
+    goto L0908;
+  }
+  openFlags |= 3;
+  goto L0924;
+after_special:
+  file->length = (int)func_00508a78(file->fp, 0, 2);
+  if (!(flags & 8)) {
+    goto fseek_start;
+  }
+  file->position = file->length;
+async_check:
+  if (flags & 0x10) {
+    goto async_open;
+  }
+status_block:
+  file->bufferPos = file->bufferSize;
+  if (file->isAsync == 0) {
+    file->status = 2;
+  }
+  file->error = 1;
+  return 1;
+fseek_start:
+  func_00508a78(file->fp, 0, 0);
+  file->position = 0;
+  goto async_check;
+async_open:
+  func_00508900(file->fp);
+  asyncPath = path;
+  *(volatile int *)&file->fp = func_00508670((int)asyncPath, (int)(openFlags | 0x8000));
+  if (*(volatile int *)&file->fp < 0) {
+    return 3;
+  }
+  file->isAsync = 1;
+  file->status = 3;
+  goto status_block;
 }
+#pragma pop
 // FUN_004C0A70
 u32 FUN_004c0a70(u32 param_1)
 {
   *(u32 *)(param_1 + 0x38) = 1;
   return FUN_00508900(*(u32 *)(param_1 + 0x60));
 }
-// FUN_004C0A80
-u64 FUN_004c0a80(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
+#pragma push
+#pragma no_branch_likely on
+/* WALL: implemented; 7 words differ. mwcc puts `subu $s1,$s1,$s0` in the
+   `lw $v0,0x64` load-delay slot; retail puts it after `sw $v0,0x64`.
+   The permuter found no improvement in 3608 compiles. Scheduling tie-break. */
+// FUN_004C0A80 NONMATCHING
+u32 FUN_004c0a80(RtFilePS2_004C0A80 *file, void *buffer, u32 nBytes)
 {
-  // TODO window stub
+  long position;
+  long length;
+  u32 total;
+  u32 chunk;
+  u32 end;
+
+  total = 0;
+  position = file->position;
+  length = file->length;
+  file->initialPos = position;
+  if (file->isAsync != 0) {
+    goto mark_async;
+  }
+clamp:
+  end = (u32)((int)position + (int)nBytes);
+  if (length < (long)end) {
+    nBytes = (int)(length - position);
+  }
+  if (nBytes == 0) {
+    goto return_zero;
+  }
+  if (file->isAsync != 0) {
+    goto direct_read;
+  }
+  if (file->bufferPos < file->bufferSize) {
+    chunk = file->bufferSize - file->bufferPos;
+    if (nBytes < chunk) {
+      chunk = nBytes;
+    }
+    memcpy(buffer, (void *)(file->bufferPtr + file->bufferPos), chunk);
+    file->bufferPos = file->bufferPos + chunk;
+    buffer = (u8 *)buffer + chunk;
+    total = chunk;
+    nBytes = nBytes - chunk;
+  }
+  if (nBytes == 0) {
+    goto done;
+  }
+  file->status = 3;
+  if ((int)nBytes < file->bufferSize) {
+    goto fill_buffer;
+  }
+  total = total + func_00508cb8(file->fp, buffer, nBytes);
+status_two:
+  file->status = 2;
+done:
+  file->position = file->position + (int)total;
+  return total;
+
+mark_async:
+  file->outstandingFileOp = 5;
+  goto clamp;
+
+return_zero:
   return 0;
+
+direct_read:
+  if ((int)func_00508cb8(file->fp, buffer, nBytes) < 0) {
+    goto return_zero_2;
+  }
+  file->status = 3;
+  file->position = file->position + nBytes;
+  return nBytes;
+
+return_zero_2:
+  return 0;
+
+fill_buffer:
+  {
+    int bufferPos;
+    func_00508cb8(file->fp, (void *)file->bufferPtr, file->bufferSize);
+    *(volatile int *)&file->bufferPos = nBytes;
+    bufferPos = *(volatile int *)&file->bufferPos;
+    total = total + bufferPos;
+    memcpy(buffer, (void *)file->bufferPtr, bufferPos);
+  }
+  goto status_two;
 }
+#pragma pop
 #pragma optimization_level 2
 // FUN_004C0C50 NONMATCHING
 long FUN_004c0c50(long *param_1,u64 param_2,long param_3)
