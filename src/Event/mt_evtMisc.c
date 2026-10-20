@@ -4119,6 +4119,14 @@ void FUN_0038b140(int param_1)
 
 /* W415 ORDER probes: explicit ascending switch plus f32 copy types lowered nd319 -> 12 (obj648/window656). The remaining five words are only post-call loop setup order at offsets 336/340/344 (move/addiu); no width-pair rows. Assignment reorder regressed to nd24; all six local declaration permutations were nd12,16,17,18,19,20; schedule-on was nd422/obj596. For-loop and while-loop rewrites of that setup both regressed to nd226/obj656 and nd227/obj656. */
 /* W420 negative: post-call assignment reorder nd12/object648/window656/rate1.85% -> nd24/object648/window656/rate3.70%; rejected. */
+/* DUMMYDUMB session 2026-10-20: two real words - retail sets up the copy
+ * loop as src, count, dst (addiu a3,s0,336 / li a1,8 / move a2,v0) and this
+ * source as dst, count, src (move a2,v0 / li a1,8 / addiu a3,s0,336). The
+ * loop body and the rest of the function are byte-identical, so only the
+ * order of the three initialisations differs. Probed: six permutations of the
+ * three initialisations (with the call kept first, and moved) - baseline
+ * (call, count, src) is the best of them; the others regress to nd12..nd21.
+ * Confirmed wall: instruction scheduling / evaluation order. */
 // FUN_0038B2C0 NONMATCHING
 
 

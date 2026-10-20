@@ -833,6 +833,14 @@ u32 func_001a76e0(const u32* state)
 
 // The retail entry uses the opposite null-state branch layout; MWCC keeps the equivalent beqz form.
 // The nine volatile list traversals and final state release are otherwise instruction-identical.
+/* DUMMYDUMB session 2026-10-20: one real word - retail branches on
+ * "state != NULL" to the work (bnez $s0,+0x40) and then branches to the
+ * epilogue, while this source emits "beqz $s0" past the work and branches
+ * into it. Same two targets, opposite polarity. The body and the epilogue are
+ * byte-identical, so only the conditional form differs. Probed: the early
+ * return form, an if-block wrapping the work, an explicit else { return; },
+ * and if (!state) {} else { work } - all byte-neutral (mwcc normalises the
+ * polarity either way). Confirmed wall: branch polarity. */
 // FUN_001a7710 NONMATCHING
 void func_001a7710(u32* state)
 {

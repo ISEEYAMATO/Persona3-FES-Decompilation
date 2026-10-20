@@ -32569,6 +32569,15 @@ void FUN_00341ba0(int param_1)
 // non-reloc +120 is 0x78630000 (andi.b $w0,$w0,0x63) vs 0x78420000
 // (andi.b $w0,$w0,0x42), with +124 following the same vf3/vf2 role; +136
 // is lw $a0,0x40($v0) vs lw $a0,0x40($s2) (five differing words total).
+/* DUMMYDUMB session 2026-10-20: the residual is the address form of the
+ * Qword128 copy: retail materialises the source of the 16-byte copy straight
+ * from DAT_0069c4a0_abs, this source goes through the colourAddress local.
+ * Probed: copying directly from the global with and without keeping the
+ * local assignment (both regress to nd23), and the local spelled as a
+ * byte-offset deref (byte-neutral). The two sqc2 blocks are single-
+ * instruction, so there is no asm to split. Confirmed wall: address form /
+ * subexpression evaluation order. FUN_00345cf0 is the same shape and behaves
+ * the same way. */
 // FUN_00341F10 NONMATCHING
 
 
@@ -43221,6 +43230,13 @@ void FUN_0034e490(f32 param_1, int param_2)
 
 
 
+/* DUMMYDUMB session 2026-10-20: two real words - retail sets up
+ * FUN_0034e820's arguments as a0 = uVar3 (move a0,s0) then a2 = iVar1+0x48
+ * (addiu a2,s1,0x48), this source emits the address first and the copy
+ * second. The callee and both argument values are the same. Probed: arg1 as a
+ * cast and via a local, arg3 as a byte-offset deref and as an int index, arg2
+ * cast to u16 - every combination stayed at the same two words. Confirmed
+ * wall: argument-evaluation order. */
 // FUN_0034E4C0 NONMATCHING
 
 
