@@ -3336,8 +3336,9 @@ u64 FUN_00465a00(u64 param_1)
 }
 
 #pragma schedule on
-// FUN_00465AE0 NONMATCHING
+// FUN_00465AE0
 
+#pragma no_branch_likely on
 u64 FUN_00465ae0(u64 param_1)
 
 {
@@ -3350,6 +3351,7 @@ u64 FUN_00465ae0(u64 param_1)
 #pragma schedule off
 
 #pragma schedule on
+#pragma no_branch_likely off
 // FUN_00465B20
 int FUN_00465b20(int param_1)
 {

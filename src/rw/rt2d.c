@@ -1797,9 +1797,10 @@ long FUN_004b2c80(int param_1,long param_2,u64 param_3)
   return param_2;
 }
 #pragma optimization_level 3
-// FUN_004B2E20 NONMATCHING
+// FUN_004B2E20
 #pragma push
 #pragma opt_rebuildconditionals off
+#pragma no_branch_likely on
 int FUN_004b2e20(int param_1)
 {
   u32 uVar1;
@@ -1814,6 +1815,7 @@ done:
 #pragma pop
 #pragma optimization_level 2
 #pragma schedule off
+#pragma no_branch_likely off
 // FUN_004B2E70 NONMATCHING
 u64 FUN_004b2e70(u64 param_1)
 
@@ -2091,7 +2093,8 @@ LAB_004b32a8:
   return param_1;
 }
 #pragma optimization_level 3
-// FUN_004B3440 NONMATCHING
+// FUN_004B3440
+#pragma no_branch_likely on
 int FUN_004b3440(int param_1)
 
 {
@@ -2105,6 +2108,7 @@ int FUN_004b3440(int param_1)
   return param_1;
 }
 #pragma optimization_level 2
+#pragma no_branch_likely off
 // FUN_004B3490 NONMATCHING
 int FUN_004b3490(int param_1)
 
@@ -5344,7 +5348,8 @@ u64 FUN_004b8740(u64 param_1)
   return param_1;
 }
 #pragma schedule on
-// FUN_004B87D0 NONMATCHING
+// FUN_004B87D0
+#pragma no_branch_likely on
 u64 FUN_004b87d0(u64 param_1)
 {
   DAT_007ce8ac = DAT_007ce8ac + -1;
@@ -5356,6 +5361,7 @@ u64 FUN_004b87d0(u64 param_1)
   return param_1;
 }
 #pragma schedule off
+#pragma no_branch_likely off
 // FUN_004B8830 NONMATCHING
 bool FUN_004b8830(void)
 

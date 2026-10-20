@@ -2817,7 +2817,8 @@ u32 FUN_00488fe0(void)
   return lVar1 >= 0;
 }
 #pragma schedule on
-// FUN_00489020 NONMATCHING
+// FUN_00489020
+#pragma no_branch_likely on
 u32 FUN_00489020(int param_1)
 {
   u32 *puVar1 = (u32 *)(param_1 + 0x2c);
@@ -2840,6 +2841,7 @@ u32 FUN_00489020(int param_1)
 }
 #pragma schedule off
 
+#pragma no_branch_likely off
 // FUN_00489080 NONMATCHING
 u64 FUN_00489080(u64 param_1,int *param_2)
 {

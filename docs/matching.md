@@ -91,6 +91,16 @@ for mapped function windows.
   function-owned table targets, and `tools/build.py` additionally requires compiler-owned data
   sections to materialize byte-identically before linking a translation unit. `br_res` 234070 exposed
   this: reordering the source cases changed only the table addends and restored retail identity.
+- **`#pragma no_branch_likely on` suppresses mwcc's branch-likely hints.** mwcc otherwise emits
+  `beql`/`bnel` for some conditional branches; retail frequently uses the plain `beq`/`bne` form.
+  Wrapping a function in `#pragma no_branch_likely on` ... `#pragma no_branch_likely off` and
+  leaving the C body untouched reproduces retail's plain branches. This is a *code-generation*
+  lever, not a source rewrite, so it is orthogonal to the shape tricks above and composes with
+  them. It fixed eight functions in one sweep: `rt2d` `FUN_004b2e20` / `FUN_004b3440` /
+  `FUN_004b87d0`, `rpworld` `FUN_004959e0` / `FUN_004ae900`, `rprandom` `FUN_00489020`,
+  `rwplcore` `FUN_004c70a0`, `rtanim` `FUN_00465ae0`. Try it first on any function whose only
+  residual is a `beql`/`bnel` where retail has `beq`/`bne`; `tools/fndiff.py` shows the exact
+  differing word.
 - **Adjacent equality/inequality chains are range-folded (frequent wall).** mwcc rewrites
   `x == A || x == A+1` (and the De Morgan `x != A && x != A+1`) into a range check
   (`addiu t,x,-A; sltiu at,t,2`), losing retail's two direct compares, which often reuse

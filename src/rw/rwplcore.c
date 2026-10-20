@@ -5914,8 +5914,9 @@ u64 FUN_004c7020(u64 param_1,int param_2)
   }
   return param_1;
 }
-// FUN_004C70A0 NONMATCHING
+// FUN_004C70A0
 #pragma schedule on
+#pragma no_branch_likely on
 u64 FUN_004c70a0(u64 param_1)
 
 {
@@ -5925,6 +5926,7 @@ u64 FUN_004c70a0(u64 param_1)
   DAT_007ce91c = DAT_007ce91c + -1;
   return param_1;
 }
+#pragma no_branch_likely off
 // FUN_004C7100 NONMATCHING
 int FUN_004c7100(char *param_1,char *param_2)
 {

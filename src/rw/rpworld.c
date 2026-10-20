@@ -9994,7 +9994,8 @@ int FUN_004959c0(u64 param_1)
 #pragma tailcall off
 #pragma optimization_level 2
 #pragma schedule on
-// FUN_004959E0 NONMATCHING
+// FUN_004959E0
+#pragma no_branch_likely on
 u64 FUN_004959e0(u64 param_1)
 {
   u32 callback;
@@ -10013,6 +10014,7 @@ u64 FUN_004959e0(u64 param_1)
 
 
 
+#pragma no_branch_likely off
 // FUN_00495A30 NONMATCHING
 
 
@@ -24800,8 +24802,9 @@ u32 FUN_004ae8f0(int param_1)
 
 #pragma optimization_level 3
 #pragma schedule on
-// FUN_004AE900 NONMATCHING
+// FUN_004AE900
 
+#pragma no_branch_likely on
 u32 FUN_004ae900(int param_1)
 
 {
@@ -24820,6 +24823,7 @@ u32 FUN_004ae900(int param_1)
 #pragma optimization_level 2
 #pragma schedule off
 
+#pragma no_branch_likely off
 // FUN_004AE940 NONMATCHING
 
 void FUN_004ae940(u64 param_1)
