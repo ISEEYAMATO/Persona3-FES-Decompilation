@@ -11158,7 +11158,18 @@ u64 FUN_003ff150(int param_1,int param_2)
 
 }
 
+/* DUMMYDUMB session 2026-10-20: #pragma opt_lifetimes (mwcc's lifetime
+ * analysis) for this function takes the residual from 28 to 26 bytes. What is
+ * left is a three-instruction rotation - the same shift/add/or triple appears
+ * as shift,add,or in retail and or,shift,add here - and it comes from an
+ * *inlined* helper, since this function's own source has no such expression.
+ * Bounded tests with the inlining and positioning pragmas (auto_inline,
+ * inline_bottom_up, defer_codegen, opt_repositioncode, schedule, nomacro,
+ * opt_rebuildconditionals) on top of opt_lifetimes: all 26 bytes unchanged
+ * except opt_repositioncode and schedule, which regress to 59. Confirmed wall:
+ * scheduler rotation of an inlined helper's independent instructions. */
 // FUN_003FF460 NONMATCHING
+#pragma opt_lifetimes on
 
 
 void FUN_003ff460(int param_1,u32 param_2)
@@ -11222,6 +11233,7 @@ void FUN_003ff460(int param_1,u32 param_2)
   return;
 
 }
+#pragma opt_lifetimes reset
 
 // FUN_003FF570
 
