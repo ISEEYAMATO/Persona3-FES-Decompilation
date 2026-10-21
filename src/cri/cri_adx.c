@@ -58788,9 +58788,9 @@ void FUN_005598b0(u64 param_1)
 
 
 
-  iVar2 = (int)param_1;
-
   *(u8 *)(iVar2 + 2) = 0;
+
+  iVar2 = (int)param_1;
 
   cVar1 = *(char *)(iVar2 + 1);
 
@@ -69738,9 +69738,9 @@ void FUN_00561138(void)
 
   FUN_00561740();
 
-  } while (-1 < iVar2);
-
   FUN_00559140();
+
+  } while (-1 < iVar2);
 
   FUN_00564510();
 
@@ -100447,9 +100447,9 @@ void FUN_00578e08(int param_1,u64 *param_2)
 
   uVar3 = *(u64 *)(param_1 + 600);
 
-  uVar1 = *(u32 *)(param_1 + 0x260);
-
   param_2[1] = uVar3;
+
+  uVar1 = *(u32 *)(param_1 + 0x260);
 
   *param_2 = *(u64 *)(param_1 + 0x250);
 
@@ -119214,9 +119214,9 @@ void FUN_00585c90(void)
 
   if ((int)DAT_007b2f4c == 1) {
 
-    iVar1 = ((code)FUN_0057f740)();
-
     puVar3 = (u32 *)(iVar1 + 0x5c);
+
+    iVar1 = ((code)FUN_0057f740)();
 
     lVar2 = ((code)FUN_00585578)(puVar3);
 
