@@ -3203,12 +3203,12 @@ void FUN_003cd0a0(void)
 
 void FUN_003cd0b0(int *param_1)
 {
-  int iVar1;
-  int context;
-  u64 *puVar2;
   u64 *puVar3;
   u64 *puVar4;
   u64 uStack_8;
+  int iVar1;
+  int context;
+  u64 *puVar2;
 
   context = (int)param_1;
 

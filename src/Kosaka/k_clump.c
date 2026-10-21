@@ -710,6 +710,13 @@ void func_001a71a0(u32* state, u32 kind, void* object, u32 enabled, u32 flags)
     state[0]++;
 }
 
+/* DUMMYDUMB session 2026-10-21: the residual is the global-base/state-load
+ * register-role swap ( vs ). Probed: dropping the second load of the
+ * D_00678C00_abs base (the two loops each reload it) - much worse (5 -> 120
+ * bytes, the object shrinks by 8) and dropping both is worse still (214); the
+ * plain gp-relative spelling of the base is byte-neutral; and the
+ * declaration-order lever (5 locals) gives nothing. Confirmed wall: the
+ * base is loaded twice on purpose and mwcc picks the other register. */
 // FUN_001a7370 NONMATCHING
 void* func_001a7370(void* material, u32* state)
 {

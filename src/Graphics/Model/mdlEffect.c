@@ -32638,7 +32638,13 @@ void FUN_00341ba0(int param_1)
  * gp-relative spelling, but switching that call site to the existing
  * DAT_0069c850_abs alias is byte-neutral, as are opt_lifetimes (5 bytes) and
  * schedule on (120 bytes, much worse). The register roles ($v1/$v3 vs $v0)
- * remain the blocker. Still 5 bytes, size 192 = 192. Confirmed wall. */
+ * remain the blocker. Still 5 bytes, size 192 = 192. Confirmed wall.
+ * DUMMYDUMB session 2026-10-21 (2nd pass): the madd.s operands are not
+ * source-controlled either - the inlined helper mdlEffectScaleFirst's
+ * `factor * value` swapped to `value * factor` makes FUN_00349260 worse
+ * (10 -> 12 bytes) and un-inlining the helper is much worse (18). And swapping
+ * the *division* operands in FUN_003299B0 would change the computed value
+ * (float division is not commutative) - rejected, not taken. */
 // FUN_00341F10 NONMATCHING
 
 
