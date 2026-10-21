@@ -41736,6 +41736,18 @@ void FUN_0034cb60(int param_1)
 
 }
 
+/* DUMMYDUMB session 2026-10-20: this is the closest function in the slice -
+ * ONE differing byte in an 808-byte object (retail's window is 816). The byte is
+ * a struct field offset: ours `lw $s5,0x138($s5)` where retail has
+ * `lw $s5,0x134($s5)`, i.e. the field we read is one 4-byte slot later than
+ * retail's. Separately, our object is 8 bytes SHORTER than retail's window
+ * (the frame size differs), so the stack layout differs too - the retail
+ * function has two more instructions. Probed: the declaration-order lever (18
+ * locals, 14 permutations) gives nothing, and the pragma battery (13 forms)
+ * makes it worse (opt_lifetimes 9 bytes, schedule on 536). The float-register
+ * difference visible at +280 is relocation-masked and is not part of the
+ * residual. Not just an allocation difference: the 0x134/0x138 offset is a
+ * value-level difference that needs the right struct layout. */
 // FUN_0034CC00 NONMATCHING
 
 
