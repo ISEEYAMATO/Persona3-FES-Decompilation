@@ -2620,12 +2620,6 @@ u32 FUN_003d84c0(u64 param_1,int param_2)
 
 {
 
-  u16 uVar1;
-
-  u8 bVar2;
-
-  u8 bVar3;
-
   int lVar4;
 
   int iVar5;
@@ -2637,6 +2631,12 @@ u32 FUN_003d84c0(u64 param_1,int param_2)
   u32 uVar8;
 
   u16 *puVar9;
+
+  u16 uVar1;
+
+  u8 bVar2;
+
+  u8 bVar3;
 
   
 

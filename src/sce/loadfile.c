@@ -510,6 +510,14 @@ u32 FUN_0050c1f0(u32 param_1)
   return uVar1;
 }
 #pragma schedule on
+/* DUMMYDUMB session 2026-10-21: retail saves $ra at 0x10($sp) and sets up a frame
+ * pointer (`move $fp,$sp`), ours saves $ra at 0($sp) with a plain frame, so the
+ * 6 differing bytes are the frame layout. The source passes
+ * `(char *)result - 0x10` to the callee, which suggested retail's `result` array
+ * was bigger than the 4 elements the decompiler emitted - but growing it to
+ * 5/8/12 elements does not even change the frame (the array is unused, so it is
+ * optimised away) and the diff gets worse (6 -> 8). The frame-pointer form is
+ * not reachable from this source. Confirmed wall. */
 // FUN_0050C280 NONMATCHING
 void FUN_0050c280(u32 param_1, long param_2, u64 *param_3)
 

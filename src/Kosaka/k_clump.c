@@ -716,7 +716,13 @@ void func_001a71a0(u32* state, u32 kind, void* object, u32 enabled, u32 flags)
  * bytes, the object shrinks by 8) and dropping both is worse still (214); the
  * plain gp-relative spelling of the base is byte-neutral; and the
  * declaration-order lever (5 locals) gives nothing. Confirmed wall: the
- * base is loaded twice on purpose and mwcc picks the other register. */
+ * base is loaded twice on purpose and mwcc picks the other register.
+ * DUMMYDUMB session 2026-10-21 (2nd pass): the statement-order lever (swapping
+ * adjacent statements of equal indentation) is also byte-neutral here, as is
+ * rewriting the two table searches as a pointer walk (`*values` plus
+ * `values++`) in either loop or both, and giving the base its own pointer
+ * local. The 5 differing bytes are the global-base/state-load register-role
+ * swap and nothing in the source reaches it. */
 // FUN_001a7370 NONMATCHING
 void* func_001a7370(void* material, u32* state)
 {

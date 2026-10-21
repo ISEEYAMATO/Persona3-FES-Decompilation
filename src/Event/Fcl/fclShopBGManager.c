@@ -3727,6 +3727,8 @@ void FUN_00414d70(u64 param_1,u64 param_2,int param_3,int param_4,int param_5,
 
 /* W419 negative: dereferencing PTR_FUN_006b1490/1494/1498 into the three pointer locals left FUN_00414e10 at nd266/object368 (baseline nd266/object368, window464); reverted. */
 // FUN_00414E10 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 u64 FUN_00414e10(int param_1,int param_2)
@@ -3882,6 +3884,7 @@ u64 FUN_00414e10(int param_1,int param_2)
   return 0;
 
 }
+#pragma pop
 
 /* W327 measured: opt_loop_invariants on normalized_diff 719 -> 672; object 1252/1280 -> 1252/1280 (without/with). */
 #pragma opt_loop_invariants on

@@ -1781,6 +1781,8 @@ long FUN_003f0d60(int param_1,u64 param_2)
 // Confirmed b210 floor: only five branch immediates differ at +136/+148/+160/+172/+184;
 // our inner-switch exits target the final join, while retail targets the shared exit branch.
 // FUN_003F0EC0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 u32 FUN_003f0ec0(u16 param_1)
@@ -1966,6 +1968,7 @@ u32 FUN_003f0ec0(u16 param_1)
   return uVar3;
 
 }
+#pragma pop
 
 // FUN_003F10B0
 
@@ -2645,6 +2648,8 @@ u8 FUN_003f2240(int param_1,long param_2)
 // Confirmed b210 floor: only +128/+132 differ, with the signed halfword extension
 // routed through $v0 here versus directly through $a0 in retail.
 // FUN_003F2320 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 
@@ -2700,6 +2705,7 @@ u64 FUN_003f2320(int task,int list)
   FUN_003f2d60(task);
   return 0;
 }
+#pragma pop
 
 
 // FUN_003F2510
@@ -6000,14 +6006,14 @@ void FUN_003f7730(int param_1,int param_2,u32 param_3,int param_4,int param_5)
 
 void FUN_003f7890(int param_1,int param_2,u8 param_3,int param_4,int param_5,int param_6)
 {
-  s16 value1;
-  s16 value2;
-  s32 count;
   s16 *source;
   s16 *dest;
   u8 text[16];
   s16 values[6];
   s32 data;
+  s16 value1;
+  s16 value2;
+  s32 count;
 
   source = DAT_006aeff0_abs;
   dest = values;
@@ -9193,17 +9199,17 @@ u64 FUN_003fc540(int param_1)
 
 {
 
-  s32 uVar1;
-
-  const char *pcVar2;
-
-  s16 *puVar3;
-
-  int iVar4;
+  u8 auStack_8 [8];
 
   int iVar5;
 
-  u8 auStack_8 [8];
+  int iVar4;
+
+  s16 *puVar3;
+
+  const char *pcVar2;
+
+  s32 uVar1;
 
   
 
@@ -9737,31 +9743,31 @@ u64 FUN_003fd570(int param_1,u32 *param_2)
 
 {
 
-  int iVar1;
-
-  u32 uVar2;
-
-  u32 *puVar3;
-
-  u32 *puVar4;
-
-  u32 bVar5;
-
-  u32 uVar6;
-
-  u32 uVar7;
-
-  int lVar8;
-
-  int iVar9;
-
-  int *piVar10;
-
-  int *piVar11;
+  int aiStack_30 [12];
 
   u32 uVar12;
 
-  int aiStack_30 [12];
+  int *piVar11;
+
+  int *piVar10;
+
+  int iVar9;
+
+  int lVar8;
+
+  u32 uVar7;
+
+  u32 uVar6;
+
+  u32 bVar5;
+
+  u32 *puVar4;
+
+  u32 *puVar3;
+
+  u32 uVar2;
+
+  int iVar1;
 
   
 
@@ -12577,15 +12583,15 @@ void FUN_004008f0(int param_1,int param_2,u8 param_3,int param_4)
 
 {
 
+  int lVar4;
+
+  int iVar5;
+
   short sVar1;
 
   int iVar2;
 
   int iVar3;
-
-  int lVar4;
-
-  int iVar5;
 
   
 
@@ -12635,14 +12641,14 @@ void FUN_004008f0(int param_1,int param_2,u8 param_3,int param_4)
 
 void FUN_00400a90(int x,int y,int alpha,int task,u32 *entry)
 {
-  int xOffset;
-  int selected;
-  int drawAlpha;
-  int config;
-  int spriteConfig;
-  u32 *flags;
-  int duration;
   int divisor;
+  int duration;
+  u32 *flags;
+  int spriteConfig;
+  int config;
+  int drawAlpha;
+  int selected;
+  int xOffset;
 
   drawAlpha = alpha;
   config = *(int *)(task + 0x24);
@@ -13507,23 +13513,13 @@ u32 FUN_00401a00(u16 param_1,u16 *param_2,short *param_3)
 {
 
 
-  u32 bVar2;
-  u32 j;
-  u32 key2;
-  u16 *srcB;
-  u16 *dstB;
   int cnt;
   short tmpA;
   short tmpB;
-
   u32 sVar3;
-
   u32 uVar4;
-
   u32 uVar5;
-
   u32 uVar6;
-
   short *psVar7;
 
   int iVar8;
@@ -13538,17 +13534,27 @@ u32 FUN_00401a00(u16 param_1,u16 *param_2,short *param_3)
 
   u16 auStack_20 [15];
 
-  u_long128 snapshot;
-
   short sStack_2;
+
   short *out;
+
   u32 key;
+
   u16 *tblBase;
+
   int tblCount;
 
-  
+  u_long128 snapshot;
+
   s32 key3;
   s32 hit;
+  u32 bVar2;
+  u32 j;
+  u32 key2;
+
+  
+  u16 *srcB;
+  u16 *dstB;
 
   if (param_3 != (short *)0x0) {
     out = param_3;
@@ -14384,6 +14390,8 @@ u32 FUN_00402480(u16 *param_1)
 
 // W416 measured negative: retail offset 64 has a 0x10 extension, while ours already has the same pair nearby at 52/56; layout, not width.
 // FUN_00402510 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 u32 FUN_00402510(u32 param_1,long param_2,u32 param_3,short param_4)
@@ -14457,6 +14465,7 @@ u32 FUN_00402510(u32 param_1,long param_2,u32 param_3,short param_4)
   return uVar3;
 
 }
+#pragma pop
 
 // FUN_004026B0
 
@@ -15679,6 +15688,8 @@ search_done:
 }
 
 // FUN_00403F20 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 u32 FUN_00403f20(short param_1,int param_2)
@@ -15734,6 +15745,7 @@ u32 FUN_00403f20(short param_1,int param_2)
   }
   return 0;
 }
+#pragma pop
 
 // W325 pragma sweep: opt_common_subs off nd564 -> nd463 (obj 840/848).
 #pragma opt_common_subs off
@@ -15909,6 +15921,8 @@ void FUN_004045d0(u64 param_1)
 
 {
 
+  u8 *puVar8;
+
   u8 bVar1;
 
   int iVar2;
@@ -15922,8 +15936,6 @@ void FUN_004045d0(u64 param_1)
   int iVar6;
 
   int iVar7;
-
-  u8 *puVar8;
 
   
 

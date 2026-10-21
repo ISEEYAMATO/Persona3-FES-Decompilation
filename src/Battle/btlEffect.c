@@ -7411,6 +7411,8 @@ u32 func_002c65d0(int param_1)
 #pragma opt_loop_invariants off
 
 // FUN_002c6a00 NONMATCHING
+#pragma push
+#pragma schedule on
 
 void func_002c6a00(int param_1,int param_2,u16 param_3)
 {
@@ -7461,6 +7463,7 @@ void func_002c6a00(int param_1,int param_2,u16 param_3)
     break;
   }
 }
+#pragma pop
 
 // FUN_002c6ba0 NONMATCHING
 

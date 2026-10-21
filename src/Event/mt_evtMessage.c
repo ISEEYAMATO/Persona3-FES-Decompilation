@@ -1615,11 +1615,11 @@ void FUN_003a05b0(int param_1,int param_2)
 
 void FUN_003a0960(int param_1,int param_2,u64 param_3)
 {
-  u32 object;
-  int iVar1;
-  u8 *clear;
-  u16 *message;
   RwV3d position;
+  u16 *message;
+  u8 *clear;
+  int iVar1;
+  u32 object;
 
   iVar1 = *(int *)(param_2 * 4 + param_1 + 0x74);
   if (iVar1 != 0) {

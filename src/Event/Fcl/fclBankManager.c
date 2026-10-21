@@ -2147,6 +2147,8 @@ s32 fclCombine003d0610(void)
 
 // W419 negative: DAT_006a43e0 array/absolute alias left FUN_003d06d0 nd182/object5912 (baseline nd182/object5912, window5920); reverted.
 // FUN_003D06D0 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void FUN_003d06d0(s32 param_1, s32 param_2, s32 param_3) {
     struct _m2c_stack_func_003d06d0 stack;
     s32 var_4;
@@ -3373,6 +3375,7 @@ fclCombine_case9_s:
         break;
     }
 }
+#pragma pop
 
 // FUN_003D1DF0 NONMATCHING
 

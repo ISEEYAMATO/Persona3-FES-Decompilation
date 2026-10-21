@@ -4689,8 +4689,6 @@ int FUN_003233a0(u32 param_1,u32 param_2,u16 param_3,u8 *param_4,u32 param_5)
 
 {
 
-  int iVar1;
-
   u32 uVar2;
 
   int iVar3;
@@ -4704,6 +4702,8 @@ int FUN_003233a0(u32 param_1,u32 param_2,u16 param_3,u8 *param_4,u32 param_5)
   int lVar6;
 
   u16 sVar5;
+
+  int iVar1;
 
 
   
@@ -8637,13 +8637,9 @@ void FUN_00327250(float param_1,int param_2)
 
 {
 
-  int iVar1;
+  u32 *puVar7;
 
   u8 (*pauVar5) [16];
-
-  int iVar6;
-
-  u32 *puVar7;
 
   u8 auStack_10[16];
 
@@ -8652,6 +8648,10 @@ void FUN_00327250(float param_1,int param_2)
   u8 auStack_30[16];
 
   u8 vuBasis[64];
+
+  int iVar1;
+
+  int iVar6;
 
 
   
@@ -24169,11 +24169,17 @@ float * FUN_003385d0(u32 param_1)
 
 {
 
+  u32 uVar8;
+
+  float *pfVar9;
+
+  float fVar10;
   u32 uVar1;
 
   u32 uVar2;
 
   u32 uVar3;
+
   u32 uVar4;
 
   u32 blendedColor;
@@ -24185,12 +24191,6 @@ float * FUN_003385d0(u32 param_1)
   int iVar6;
 
   u32 *puVar7;
-
-  u32 uVar8;
-
-  float *pfVar9;
-
-  float fVar10;
 
   
 
