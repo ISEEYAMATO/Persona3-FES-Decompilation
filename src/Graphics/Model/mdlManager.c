@@ -3310,7 +3310,7 @@ LAB_0031494c:
 
             }
 
-            piVar10[0x10] = (int)&LAB_003140a0;
+            piVar10[0x10] = (int)&LAB_003140a0_abs;
 
             piVar10[0x11] = (int)&LAB_003140b0;
 

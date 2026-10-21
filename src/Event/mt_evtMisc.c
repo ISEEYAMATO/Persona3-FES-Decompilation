@@ -1777,7 +1777,7 @@ void FUN_003890e0(int param_1)
   if (iVar15 != 0) {
     *(int *)(param_1 + 0x97c) = iVar15;
 
-    lVar6 = (*DAT_00960184)(1,iVar15 << 2,0x40000);
+    lVar6 = (*DAT_00960184_abs)(1,iVar15 << 2,0x40000);
 
     if (lVar6 == 0) {
 
@@ -1821,7 +1821,7 @@ void FUN_003890e0(int param_1)
 
             case 1:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x1f0,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x1f0,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -1850,7 +1850,7 @@ void FUN_003890e0(int param_1)
 
             case 3:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x220,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x220,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -1880,7 +1880,7 @@ void FUN_003890e0(int param_1)
 
             case 5:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x1b0,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x1b0,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -1909,7 +1909,7 @@ void FUN_003890e0(int param_1)
 
             case 6:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x108,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x108,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -1947,7 +1947,7 @@ void FUN_003890e0(int param_1)
 
             case 7:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x110,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x110,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -1985,7 +1985,7 @@ void FUN_003890e0(int param_1)
 
             case 8:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x100,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x100,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -2023,7 +2023,7 @@ void FUN_003890e0(int param_1)
 
             case 9:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x108,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x108,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -2061,7 +2061,7 @@ void FUN_003890e0(int param_1)
 
             case 10:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x130,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x130,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -2099,7 +2099,7 @@ void FUN_003890e0(int param_1)
 
             case 0xc:
 
-              puVar5 = (u32 *)(*DAT_00960184)(1,0x170,0x40000);
+              puVar5 = (u32 *)(*DAT_00960184_abs)(1,0x170,0x40000);
 
               if (puVar5 == (u32 *)0x0) {
 
@@ -3657,7 +3657,7 @@ int FUN_0038ab00(int param_1,u64 param_2)
 
     else {
 
-      lVar7 = (*DAT_00960184)(1,iVar3 * 0x70,0x40000);
+      lVar7 = (*DAT_00960184_abs)(1,iVar3 * 0x70,0x40000);
 
       if (lVar7 == 0) {
 
@@ -3737,7 +3737,7 @@ int FUN_0038ab00(int param_1,u64 param_2)
 
       }
 
-      lVar6 = (*DAT_00960184)(1,0x70,0x40000);
+      lVar6 = (*DAT_00960184_abs)(1,0x70,0x40000);
 
       if (lVar6 == 0) {
 

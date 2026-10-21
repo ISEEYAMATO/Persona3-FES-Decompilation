@@ -3935,17 +3935,17 @@ void FUN_003f3fc0(int param_1,int param_2,u32 param_3,int param_4)
 
     sVar2 = *(short *)(iVar4 + 0x44);
 
-    (*DAT_00960090)(8,1);
+    (*DAT_00960090_abs)(8,1);
 
-    (*DAT_00960090)(6,0);
+    (*DAT_00960090_abs)(6,0);
 
     RpSkyRenderStateSet(3,0x3200d);
     FUN_0040d610(0.0f,*(short *)(iVar4 + 0x38) + 0x89,0x1e,0x70,0x22,0,1);
 
 
-    (*DAT_00960090)(8,0);
+    (*DAT_00960090_abs)(8,0);
 
-    (*DAT_00960090)(6,1);
+    (*DAT_00960090_abs)(6,1);
 
     RpSkyRenderStateSet(3,0x7000d);
 
@@ -20024,7 +20024,7 @@ void FUN_0040dcc0(float param_1,int param_2,int param_3,int param_4,int param_5,
   render_data[42] = (float)uVar2;
   render_data[43] = (float)param_7;
 
-  (*DAT_009600a0)(3,render_data,3);
+  (*DAT_009600a0_abs)(3,render_data,3);
   (*render_state)(1,0);
   return;
 }

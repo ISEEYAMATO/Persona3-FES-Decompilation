@@ -127,7 +127,7 @@ void FUN_0041cc70(int param_1,u32 param_2)
 
     }
 
-    (*DAT_0096017c)(lVar3);
+    (*DAT_0096017c_abs)(lVar3);
 
     func_0018f170(iVar1 + -1,piVar2[1],*piVar2);
 

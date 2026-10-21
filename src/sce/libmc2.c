@@ -7874,14 +7874,14 @@ u64 FUN_0051f728(long param_1)
   int iVar8;
   int iVar9;
   
-  puVar2 = PTR_DAT_00782f30;
+  puVar2 = PTR_DAT_00782f30_abs;
   if (param_1 == 0) {
-    uVar4 = (int)(FUN_00520410((int)(u32)PTR_DAT_00782f30,(u32 (*)(int))0x51f728));
+    uVar4 = (int)(FUN_00520410((int)(u32)PTR_DAT_00782f30_abs,(u32 (*)(int))0x51f728));
     return uVar4;
   }
   piVar6 = (int *)param_1;
   if (piVar6[0x15] == 0) {
-    piVar6[0x15] = (int)PTR_DAT_00782f30;
+    piVar6[0x15] = (int)PTR_DAT_00782f30_abs;
     iVar9 = *(int *)(puVar2 + 0x38);
   }
   else {

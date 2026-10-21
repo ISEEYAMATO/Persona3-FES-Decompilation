@@ -9276,7 +9276,7 @@ u32 FUN_0037a2b0(int param_1,int param_2,int param_3)
 
       if (iVar3 == 1) {
 
-        cVar1 = s_1234567890A_0069f7c0[*(int *)(iVar5 + 0x128) + *(int *)(iVar5 + 300) * 0xc];
+        cVar1 = s_1234567890A_0069f7c0_abs[*(int *)(iVar5 + 0x128) + *(int *)(iVar5 + 300) * 0xc];
 
         if ((*(int *)(iVar5 + 300) == 3) && (3 < *(int *)(iVar5 + 0x128))) {
 

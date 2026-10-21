@@ -1366,7 +1366,7 @@ void FUN_0050da10(u64 param_1,u64 param_2)
   
   uVar1 = FUN_0050d880();
   thunk_FUN_0050ce00();
-  _LoadExecPS2(uVar1,param_2,DAT_0077f8e0 + 4);
+  _LoadExecPS2(uVar1,param_2,DAT_0077f8e0_abs + 4);
   return;
 }
 // FUN_0050DA58 NONMATCHING
