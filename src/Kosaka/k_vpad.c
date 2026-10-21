@@ -5521,6 +5521,8 @@ void func_001e9a90(void* workData)
 }
 
 // FUN_001E9AF0 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 void func_001e9af0(RuntimeWork* workData, u32* renderRef)
 {
     typedef struct RuntimePathEntryWork
@@ -6319,6 +6321,8 @@ void func_001e9af0(RuntimeWork* workData, u32* renderRef)
         (void)denominator;
     }
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 
 // FUN_001EB920. Append a position-normal sample and refresh queue state.
 void func_001eb920(void* data, const RuntimeVec3* position, const RuntimeVec3* normal)

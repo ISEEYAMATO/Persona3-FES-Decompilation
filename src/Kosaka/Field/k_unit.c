@@ -477,6 +477,7 @@ FldUnit* K_FldUnit_FindFreePc()
 #pragma opt_loop_invariants on
 #pragma opt_propagation off
 // FUN_001cd9a0 NONMATCHING
+#pragma schedule on
 void* func_001cd9a0(u32 charId)
 {
     s32 i;
@@ -679,6 +680,7 @@ void* func_001cd9a0(u32 charId)
         }
     }
 }
+#pragma schedule reset
 #pragma opt_propagation on
 #pragma opt_loop_invariants off
 

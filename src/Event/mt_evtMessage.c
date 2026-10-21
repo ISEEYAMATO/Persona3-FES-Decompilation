@@ -1869,8 +1869,6 @@ u32 FUN_003a0e90(int param_1)
 {
   /* W418 negative: duplicating FUN_00395270(0x27) in state 2/3 for the retail fifth target raised nd 2272 -> 2290 and object 3344 -> 3356 (window 3440); reverted. */
 
-  int iVar1;
-
   s8 uVar2;
 
   char cVar3;
@@ -1882,8 +1880,8 @@ u32 FUN_003a0e90(int param_1)
   u32 *puVar6;
 
   int iVar7;
-  int iVar10;
 
+  int iVar10;
   float fVar8;
 
   u32 uVar9;
@@ -1895,6 +1893,8 @@ u32 FUN_003a0e90(int param_1)
   float fStack_4;
 
   u8 auStack_4 [4];
+
+  int iVar1;
 
 
   

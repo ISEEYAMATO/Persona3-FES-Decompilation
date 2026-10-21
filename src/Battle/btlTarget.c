@@ -2495,6 +2495,7 @@ nonpositive:
 }
 
 // FUN_002d2a00 NONMATCHING
+#pragma schedule on
 int FUN_002d2a00(float param_1, float *param_2, float *param_3)
 {
     u8 *node;
@@ -2549,6 +2550,7 @@ int FUN_002d2a00(float param_1, float *param_2, float *param_3)
     }
     return 0;
 }
+#pragma schedule reset
 
 /* W419 negative: split/reordered the second-loop index declaration in FUN_002d2c10; nd15 -> 22/23 at object 712/720. */
 /* W421 classification: baseline verify nd15 at 712/720 (rate 0.021067).
@@ -4434,6 +4436,8 @@ s32 FUN_002d6460(BtlAction* action, s32* param_2, u32 param_3,
     return result;
 }
 // FUN_002d6620 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 void FUN_002d6620(BtlAction *action)
 {
     volatile /* Removing this qualifier worsens FUN_002d6620 (NONMATCHING nd2980 -> NONMATCHING nd3061, size 3880 -> 3868) - measured W170. */ u16 inherited = 0;
@@ -4763,6 +4767,8 @@ void FUN_002d6620(BtlAction *action)
         BTLT_A8(action, 0xca) = finalFlags;
     }
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 // FUN_002d7560 NONMATCHING
 void FUN_002d7560(BtlAction *action)
 {

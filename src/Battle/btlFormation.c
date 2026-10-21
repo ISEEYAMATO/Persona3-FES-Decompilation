@@ -2393,12 +2393,6 @@ void FUN_002b7bd0(u32 param_1,u32 param_2,float param_3,u16 param_4)
 u32 FUN_002b7c50(u32 *work)
 {
     u32 *work_p = work;
-    BtlAction *action;
-    BtlAction *targetAction;
-    BtlUnit *source;
-    BtlUnit *unit;
-    BtlUnit *target;
-    BtlUnit *persona;
     BtlUnit *iter;
     BtlUnit *next;
     u16 specificId;
@@ -2408,6 +2402,12 @@ u32 FUN_002b7c50(u32 *work)
     s16 tableIndex;
     s16 relation2;
     s32 result;
+    RwV3d center;
+    RwV3d targetCenter;
+    RwV3d direction;
+    RwV3d transformed;
+    RwV3d delta;
+    RwV3d candidate;
     f32 radius;
     f32 radius2;
     f32 distance;
@@ -2415,22 +2415,22 @@ u32 FUN_002b7c50(u32 *work)
     f32 limit;
     f32 scale;
     f32 factor;
-    RwV3d center;
-    RwV3d targetCenter;
-    f32 centerY;
-    RwV3d direction;
-    RwV3d transformed;
-    RwV3d delta;
-    RwV3d candidate;
     RwV3d iterCenter;
     RwV3d nearestCenter;
-    f32 candidateY;
+    f32 centerY;
     RwV3d workPos;
+    RtQuat rotation;
+    BtlAction *action;
+    BtlAction *targetAction;
+    BtlUnit *source;
+    BtlUnit *unit;
+    f32 candidateY;
+    BtlUnit *target;
     f32 query2[2];
     f32 source2[2];
     f32 projected2[2];
     f32 offset2[2];
-    RtQuat rotation;
+    BtlUnit *persona;
 
     action = *(BtlAction **)work_p;
     specificId = action->target.specificId;

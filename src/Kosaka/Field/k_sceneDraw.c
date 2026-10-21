@@ -2893,6 +2893,7 @@ void func_001a2720(KwlnTask* task)
 /* W417: moved the state-3 func_001a2720 call ahead of the flag branch to match retail call order; nd3046 -> nd3008 and object 4032/4064. */
 /* W417 negative: placing func_001a2720 after KWindow_DrawSelection yielded nd3020; the pre-branch placement above is nd3008. */
 // FUN_001A2A80 NONMATCHING
+#pragma schedule on
 void* func_001a2a80(KwlnTask* task)
 {
     KWindowManagerWork* manager;
@@ -3114,6 +3115,7 @@ void* func_001a2a80(KwlnTask* task)
 
     return KWLNTASK_CONTINUE;
 }
+#pragma schedule reset
  
 // FUN_001A3A60
 void func_001a3a60(KwlnTask* task)

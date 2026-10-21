@@ -398,6 +398,7 @@ u32 func_00311640(RtAnimInterpolator* param_2, RtAnimInterpolator* param_3,
 #pragma opt_lifetimes on
 /* W419 liveness negatives: baseline nd4240/object5328/window5440/rate0.795796; opt_lifetimes off nd4317/object5368/window5440/rate0.804210; tail declaration reorder nd4240/object5328/window5440/rate0.795796; sink fVar22 nd4300/object5304/window5440/rate0.810709; sink fVar20 nd4248/object5312/window5440/rate0.799699; both sinks nd4330/object5316/window5440/rate0.814522. */
 // FUN_00311730 NONMATCHING
+#pragma schedule on
 
 
 u32 func_00311730(u32 *param_1,u16 *param_2,u16 *param_3,int param_4)
@@ -1681,6 +1682,7 @@ special_matrix_done:
   return 1;
 
 }
+#pragma schedule reset
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 #pragma pop
