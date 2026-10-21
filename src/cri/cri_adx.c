@@ -40964,6 +40964,16 @@ u16 FUN_0054cd20(int param_1,u16 *param_2,u16 *param_3,u16 *param_4)
   param_3[0] = *(u16 *)(param_1 + 0x36);
   return *param_4 = *(u16 *)(param_1 + 0x38);
 }
+
+/* DUMMYDUMB session 2026-10-21: 2 differing bytes, the register the second
+ * loaded halfword lands in.  Ours "lhu v0,54(a0) / sh v0,0(a2)", retail
+ * "lhu v1,54(a0) / sh v1,0(a2)"; the first and third loads match.
+ * Probed: the middle value held in a local (declared at the top of the
+ * function and inside the block), all three values held in locals, the stores
+ * written through a pointer cast, and the store order changed - all keep it in
+ * v0.  Same class as the address base register wall in FUN_0055a7c0: mwcc
+ * picks a different register than retail for a value it loads.
+ */
 #pragma optimization_level 2
 
 
