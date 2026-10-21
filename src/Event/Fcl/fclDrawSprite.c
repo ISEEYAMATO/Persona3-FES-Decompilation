@@ -203,9 +203,9 @@ u32 FUN_0040ec50(float param_1,int param_2,u32 param_3,u32 param_4,
 
     iVar7 = iVar7 + 1;
 
-  } while (uVar4 < uVar2);
-
   uVar2 = uVar2 * param_8 + iVar5 * 6;
+
+  } while (uVar4 < uVar2);
 
   if ((param_7 & 1) == 0) {
 
@@ -415,8 +415,8 @@ u32 FUN_0040f030(int param_1,int param_2,int param_3)
         if (sVar13 == 1) {
           FUN_00521408(puVar3,0,0x28);
           *(u16 *)(puVar3 + 2) = 0x140;
-          *(u16 *)(puVar3 + 1) = 0x140;
           *(u16 *)((int)puVar3 + 6) = auStack_20[*(int *)(param_1 + 0x1c) * 4];
+          *(u16 *)(puVar3 + 1) = 0x140;
           *(u16 *)((int)puVar3 + 0xe) = auStack_20[*(int *)(param_1 + 0x1c) * 4 + 1];
           uVar4 = *puVar3 | 1;
           *puVar3 = uVar4;
@@ -718,9 +718,9 @@ u32 FUN_0040f5d0(int param_1,int param_2,int param_3)
 
   puVar9 = &DAT_006af9f0;
 
-  psVar7 = asStack_80;
-
   iVar5 = 0xf;
+
+  psVar7 = asStack_80;
 
   do {
 
@@ -1110,9 +1110,9 @@ u64 FUN_0040fb90(u64 param_1,int param_2,int param_3)
   
   case 4:
   
-    *puVar1 = *puVar1 | 1;
-  
     *(u16 *)(puVar1 + 6) = 2;
+  
+    *puVar1 = *puVar1 | 1;
   
     *(u16 *)((int)puVar1 + 0x1a) = 0;
   
@@ -1568,7 +1568,7 @@ u64 FUN_004101b0(u64 param_1,int param_2)
 
 {
 
-  int sVar1;
+  u32 sVar1;
 
   int sVar2;
 
@@ -1738,9 +1738,9 @@ if (param_3 == 0) {
 
     sVar4 = puVar1[7];
 
-    puVar1[7] = sVar4 + 1;
-
     puVar1[9] = sVar4 + 1;
+
+    puVar1[7] = sVar4 + 1;
 
     if (0x4af < (short)puVar1[7]) {
 
@@ -1900,6 +1900,8 @@ u64 FUN_00410a10(u64 param_1,int param_2)
 
 {
 
+  float fVar9;
+
   short *psVar1;
 
   float fVar2;
@@ -1915,8 +1917,6 @@ u64 FUN_00410a10(u64 param_1,int param_2)
   float fVar7;
 
   float fVar8;
-
-  float fVar9;
 
   
 

@@ -3364,6 +3364,10 @@ void* func_001e5850(void* parent)
 // FUN_001E58D0 NONMATCHING
 s32 func_001e58d0(RuntimeTask* task)
 {
+    RuntimeVec3 secondAxis;
+    RuntimeVec3 firstAxis;
+    RuntimeVec3 axis;
+    RuntimeTransitionWork* work;
     u16 resourceId;
     u32 matrixFlags;
     u32 input;
@@ -3371,19 +3375,15 @@ s32 func_001e58d0(RuntimeTask* task)
     FieldRuntimeTaskNode* taskNode;
     RuntimeTransitionAngles angles;
     RuntimeMatrix rotation;
-    RuntimeVec3 adjusted;
-    RuntimeVec3 center;
-    RuntimeVec3 direction;
-    RuntimeVec3 secondAxis;
     void* camera;
     void* frame;
-    RuntimeVec3 firstAxis;
-    RuntimeVec3 axis;
+    RuntimeVec3 adjusted;
+    RuntimeVec3 center;
     f32 distance;
     f32 angle;
     f32 x;
     f32 y;
-    RuntimeTransitionWork* work;
+    RuntimeVec3 direction;
 
     work = (RuntimeTransitionWork*)task->workData;
 
@@ -6511,8 +6511,8 @@ void func_001ebd80(RuntimeWork* work, s32 param2)
     f32 coefA;
     f32 coefB;
     f32 coefC;
-    s32 idxA;
     s32 idxB;
+    s32 idxA;
     s32 idxW;
     s32 section2;
     u8* config;

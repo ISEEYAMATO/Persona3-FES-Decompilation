@@ -335,9 +335,9 @@ u32 FUN_00398530(int param_1)
 
     uVar8 = FUN_003c2770();
 
-    puVar3[0x14] = uVar8;
-
     *(u16 *)(puVar3 + 2) = *(u16 *)(puVar3[0x13] + 0x14);
+
+    puVar3[0x14] = uVar8;
 
     puVar3[0x20] = 0;
 
@@ -1493,7 +1493,7 @@ u32 FUN_00399c40(int param_1)
 
   u32 *puVar10;
 
-  int iVar11;
+  u32 iVar11;
 
   u8 auStack_4 [4];
 
@@ -2239,7 +2239,7 @@ u32 FUN_0039a8a0(int param_1)
 
   char cVar6;
 
-  u16 uVar7;
+  short uVar7;
 
   u32 uVar8;
 
@@ -3513,10 +3513,6 @@ u32 FUN_0039c0f0(int param_1)
 
 {
 
-  u32 *puVar1;
-
-  int iVar2;
-
   u32 uVar3;
 
   u32 uVar4;
@@ -3538,6 +3534,10 @@ u32 FUN_0039c0f0(int param_1)
   short asStack_10 [6];
 
   u8 auStack_4 [4];
+
+  u32 *puVar1;
+
+  int iVar2;
 
   
 
@@ -3837,9 +3837,9 @@ u32 FUN_0039c440(int param_1)
 
     else {
 
-      uVar3 = FUN_00100d80(0x6a14c0,1);
-
       puVar1[3] = uVar3;
+
+      uVar3 = FUN_00100d80(0x6a14c0,1);
 
       *puVar1 = 1;
 

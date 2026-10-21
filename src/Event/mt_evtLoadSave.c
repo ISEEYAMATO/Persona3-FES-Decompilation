@@ -205,8 +205,8 @@ void FUN_0038dad0(u32 param_1,int param_2,int param_3)
 
     iVar3 = FUN_00361ee0(1,param_3);
 
-    iVar4 = FUN_00361f60(param_2,param_3);
     aSize[1] = iVar4 * 0x3c;
+    iVar4 = FUN_00361f60(param_2,param_3);
 
     iVar11 = (int)param_3;
 
@@ -971,37 +971,37 @@ u32 FUN_0038e860(u32 param_1,u32 param_2)
 
 {
 
-  int iVar1;
-
-  u32 lVar2;
-
-  u32 lVar3;
-
-  int lVar4;
-
-  int iVar5;
-
-  int *piVar6;
-
-  int iVar7;
-
-  int *piVar8;
-
-  int iVar9;
-
-  u32 *puVar10;
-
-  MtEvtSaveNodeHeader nodeHeader;
-
-  int aiStack_100 [8];
-
-  u32 uStack_e0;
-
-  u32 uStack_dc;
+  u8 auStack_80 [64];
 
   u8 auStack_c0 [64];
 
-  u8 auStack_80 [64];
+  u32 uStack_dc;
+
+  u32 uStack_e0;
+
+  int aiStack_100 [8];
+
+  MtEvtSaveNodeHeader nodeHeader;
+
+  u32 *puVar10;
+
+  int iVar9;
+
+  int *piVar8;
+
+  int iVar7;
+
+  int *piVar6;
+
+  int iVar5;
+
+  int lVar4;
+
+  u32 lVar3;
+
+  u32 lVar2;
+
+  int iVar1;
 
   u8 auStack_40 [64];
 
@@ -1952,9 +1952,9 @@ void FUN_0038fa10(int param_1,u32 param_2)
 
     if (lVar11 == 0) {
 
-      uVar6 = FUN_003b5f70(600);
-
       lVar11 = FUN_003b5d10(uVar6);
+
+      uVar6 = FUN_003b5f70(600);
 
     }
 
@@ -2328,9 +2328,9 @@ void FUN_0038ffb0(int param_1,u64 param_2)
 
       uVar2 = *(u16 *)(iVar8 + 0x12);
 
-      *(u16 *)(iVar6 + 8) = *(u16 *)(iVar8 + 0xc);
-
       *(u16 *)(iVar6 + 10) = uVar4;
+
+      *(u16 *)(iVar6 + 8) = *(u16 *)(iVar8 + 0xc);
 
       *(u16 *)(iVar6 + 0xc) = uVar1;
 
@@ -2437,7 +2437,7 @@ void FUN_003902c0(int param_1,int param_2)
 
   short sVar3;
 
-  u16 uVar4;
+  short uVar4;
 
   int iVar5;
 
@@ -2684,8 +2684,8 @@ void FUN_003905f0(int param_1,int param_2)
         iVar9 = *(int *)(param_1 + 0x9c) + iVar7;
 
         half4.f0 = *(short *)(iVar9 + 0xc);
-        half4.f1 = *(short *)(iVar9 + 0xe);
         half4.f2 = *(short *)(iVar9 + 0x10);
+        half4.f1 = *(short *)(iVar9 + 0xe);
         half4.f3 = *(short *)(iVar9 + 0x12);
         *(short *)(iVar5 + 8) = half4.f0;
         *(short *)(iVar5 + 0xa) = half4.f1;
@@ -3026,8 +3026,8 @@ void FUN_00390c90(int param_1,int param_2)
       event_type = *(u16 *)(*(int *)(param_1 + 0x98) + i * 0x10);
     }
     else {
-      stride = i * 0x10 - i;
       event_type = *(u16 *)(*(int *)(param_1 + 0x9c) + stride * 4);
+      stride = i * 0x10 - i;
     }
     if ((event_type & 0xffff) == 0x2f) {
       if (*(int *)(*(int *)(param_1 + 0x84) + 0x14) == 4) {
@@ -3355,30 +3355,8 @@ u32 FUN_003912f0(u32 param_1,u32 param_2)
 
 {
 
-  u16 uVar1;
-
-  u16 uVar2;
-
-  u16 uVar3;
-
-  u16 sVar4;
-
-  u8 uVar5;
-
-  u16 uVar6;
-
-  u32 uVar7;
-
-  u32 uVar8;
-
-  u32 *puVar9;
-
-  u8 *puVar10;
-
-  int iVar11;
-
-  u32 uVar12;
   int lVar13;
+
   int lVar23;
 
   int iVar14;
@@ -3399,22 +3377,32 @@ u32 FUN_003912f0(u32 param_1,u32 param_2)
 
   int iVar22;
 
-
-
   int iVar24;
-
   u8 auStack_2 [2];
   MtEvtHalf4 half4_a;
+
   MtEvtHalf4 half4_4;
+
   MtEvtHalf4 half4_5;
+
   MtEvtHalf4 half4_13a;
+
   MtEvtHalf4 half4_13b;
+
   MtEvtHalf4 half4_1c;
+
   MtEvtHalf4 half4_1d;
+
   MtEvtHalf4 half4_31;
+
   MtEvtHalf4 half4_22;
+
   MtEvtHalf4 half4_26;
+
+
+
   MtEvtHalf4 half4_27;
+
   MtEvtHalf4 half4_28;
   MtEvtHalf4 half4_2a;
   MtEvtHalf4 half4_2b;
@@ -3422,6 +3410,18 @@ u32 FUN_003912f0(u32 param_1,u32 param_2)
   MtEvtHalf4 half4_2d;
   MtEvtHalf4 half4_2e;
   MtEvtHalf4 half4_32;
+  u16 uVar1;
+  u16 uVar2;
+  u16 uVar3;
+  u16 sVar4;
+  u8 uVar5;
+  u16 uVar6;
+  u32 uVar7;
+  u32 uVar8;
+  u32 *puVar9;
+  u8 *puVar10;
+  int iVar11;
+  u32 uVar12;
 
   
 

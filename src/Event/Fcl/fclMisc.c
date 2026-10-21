@@ -4209,35 +4209,6 @@ u64 FUN_003cea50(u16 *param_1)
   extern void FUN_001a4580(u32, float);
 
 
-  u8 bStack_1;
-
-  u8 auStack_4 [3];
-
-  float fStack_c;
-
-  float fStack_10;
-
-  float fStack_14;
-
-  float fStack_18;
-
-  float fStack_20;
-
-  u64 uStack_28;
-
-  float fStack_30;
-
-  float fStack_34;
-
-  float fStack_38;
-
-
-  float fStack_40;
-
-  u64 uStack_48;
-
-    FclMiscVec4 savedProjection;
-
     FclMiscVec4 savedView;
 
   u32 auStack_b0 [16];
@@ -4260,6 +4231,7 @@ u64 FUN_003cea50(u16 *param_1)
 
   short sStack_15c;
 
+
   short sStack_15e;
 
   short sStack_160;
@@ -4267,6 +4239,7 @@ u64 FUN_003cea50(u16 *param_1)
   float fVar16;
 
   float fVar15;
+
   float uVar14;
 
   float fVar13;
@@ -4280,6 +4253,7 @@ u64 FUN_003cea50(u16 *param_1)
   float *pfVar9;
 
   u32 lVar8;
+
   u32 uVar7;
 
   u32 uVar6;
@@ -4293,6 +4267,32 @@ u64 FUN_003cea50(u16 *param_1)
   u32 uVar2;
 
   u32 uVar1;
+  u8 bStack_1;
+
+  u8 auStack_4 [3];
+
+  float fStack_c;
+
+  float fStack_10;
+
+  float fStack_14;
+
+  float fStack_18;
+
+  float fStack_20;
+  u64 uStack_28;
+
+  float fStack_30;
+
+  float fStack_34;
+
+  float fStack_38;
+
+  float fStack_40;
+
+  u64 uStack_48;
+
+    FclMiscVec4 savedProjection;
 
   
 

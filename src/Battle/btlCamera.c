@@ -6878,6 +6878,16 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
 #define FUN_002d5bf0 FUN_002d5bf0_b280
 #define FUN_003093a0 FUN_003093a0_b280
 #define FUN_0052e930 FUN_0052e930_b280
+  RwV3d start;
+  RwV3d center1;
+  RwV3d center2;
+  int iVar1;
+  u8 cVar2;
+  s32 lVar3;
+  int iVar4;
+  int iVar5;
+  int iVar6;
+  float fVar7;
   float fVar8;
   float fVar9;
   float fVar10;
@@ -6887,16 +6897,6 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
   float fVar14;
   float fVar15;
   float fVar16;
-  BtlCameraPoseLocal cameraPose;
-  RwV3d targetPos;
-  RtQuat blendQuat;
-  RwV3d candidate;
-  RwV3d direction;
-  RwV3d start;
-  RwV3d center1;
-  RwV3d center2;
-  int iVar1;
-  u8 cVar2;
   f32 tangent2[2];
   f32 normal2[2];
   f32 from2[2];
@@ -6907,15 +6907,15 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
     struct { f32 _0_4_; f32 _4_4_; } f;
     f32 z;
   } axis;
-  s32 lVar3;
-  int iVar4;
-  int iVar5;
+  BtlCameraPoseLocal cameraPose;
+  RwV3d targetPos;
+  RtQuat blendQuat;
   struct {
     struct { f32 _0_4_; f32 _4_4_; } f;
     f32 z;
   } base;
-  int iVar6;
-  float fVar7;
+  RwV3d candidate;
+  RwV3d direction;
   #define fStack_e0 cameraPose.pos.x
   #define fStack_dc cameraPose.pos.y
   #define fStack_d8 cameraPose.pos.z

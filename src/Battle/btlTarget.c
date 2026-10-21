@@ -3176,6 +3176,11 @@ u32 FUN_002d4040(BtlUnit* unit)
 // FUN_002d41c0 NONMATCHING
 u32 FUN_002d41c0(RwV2d* output, f32 radius)
 {
+    RwV2d currentUnit;
+    RwV2d previousUnit;
+    RwV2d currentDelta;
+    RwV2d previousDelta;
+    RwV2d points[130];
     u16 i;
     u16 count;
     u8* chosen;
@@ -3184,11 +3189,6 @@ u32 FUN_002d41c0(RwV2d* output, f32 radius)
     RwV2d p2;
     RwV2d p1;
     RwV2d p0;
-    RwV2d currentUnit;
-    RwV2d previousUnit;
-    RwV2d currentDelta;
-    RwV2d previousDelta;
-    RwV2d points[130];
     f32 previousLength;
     f32 currentLength;
     f32 halfRadius;

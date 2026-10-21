@@ -3016,11 +3016,11 @@ void btlActionInitStateAttack(BtlAction* action)
 #pragma schedule on
 void btlActionUpdateStateAttack(BtlAction* action)
 {
-    u64 sp258;
-    u32 workBuf[7];
-    s16 sp190;
-    s16 sp180;
-    s16 sp1D0;
+    s32 var_17;
+    s32 var_21;
+    s32 subHit;
+    s32 var_30_2;
+    s32 spC0;
     /* Per-caller ABI declarations: the RoundUp caller intentionally uses a float-first signature. */
     extern BtlPacket* FUN_00284200(BtlUnit*, u16, u32, u32, f32);
     extern s64 FUN_002835e0(BtlUnit*, u16, f32);
@@ -3032,24 +3032,6 @@ void btlActionUpdateStateAttack(BtlAction* action)
     extern s32 FUN_002f8eb0(BtlUnit*, u16);
     extern u16 FUN_00308c60(DatUnit*);
     extern u16 FUN_00308ed0(DatUnit*);
-    s16 sp1C0;
-    s16 sp1B0;
-    s16 sp1AE;
-    s16 sp1E0;
-    s32 sp240;
-    s32 sp230;
-    s32 sp220;
-    s32 sp210;
-    s32 sp200;
-    s32 sp1F0;
-    s32 sp160;
-    s16 sp2BE, sp2BC, sp2BA, sp2B8;
-    s32 weaponType;
-    s32 var_17;
-    s32 var_21;
-    s32 subHit;
-    s32 var_30_2;
-    s32 spC0;
     s32 spB0;
     s16* sp17C;
     u8 groupCount;
@@ -3059,12 +3041,30 @@ void btlActionUpdateStateAttack(BtlAction* action)
     u8* result;
     BtlAction* victim;
     BtlAction* basis;
-    void* sp270;
     BtlPacket* packet;
     BtlPacket* animPacket;
+    s16 sp2BE, sp2BC, sp2BA, sp2B8;
     BtlPacket* subHitPacket;
     u64 actionUID;
     u64 sp260;
+    u64 sp258;
+    u32 workBuf[7];
+    s16 sp190;
+    s16 sp180;
+    s16 sp1D0;
+    s16 sp1C0;
+    s16 sp1B0;
+    s16 sp1AE;
+    s16 sp1E0;
+    s32 sp240;
+    s32 sp230;
+    s32 sp220;
+    void* sp270;
+    s32 sp210;
+    s32 sp200;
+    s32 sp1F0;
+    s32 sp160;
+    s32 weaponType;
     f32 var_f20;
     f32 var_f22;
     f32 var_f21;

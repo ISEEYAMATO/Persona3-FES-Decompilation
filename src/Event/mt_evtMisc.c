@@ -1869,8 +1869,8 @@ void FUN_003890e0(int param_1)
               do {
 
                 *(u_long128 *)puVar13 = *(u_long128 *)puVar14;
-                *(u_long128 *)(puVar13 + 4) = *(u_long128 *)(puVar14 + 8);
                 puVar14 = puVar14 + 0x10;
+                *(u_long128 *)(puVar13 + 4) = *(u_long128 *)(puVar14 + 8);
                 iVar10 = iVar10 + -1;
                 puVar13 = puVar13 + 8;
 
@@ -2227,8 +2227,8 @@ void FUN_003897f0(int param_1)
         do {
 
           *(u_long128 *)puVar14 = *(u_long128 *)puVar16;
-          puVar16 = puVar16 + 8;
           iVar11 = iVar11 + -1;
+          puVar16 = puVar16 + 8;
           puVar14 = puVar14 + 4;
 
         } while (0 < iVar11);
@@ -3665,9 +3665,9 @@ int FUN_0038ab00(int param_1,u64 param_2)
 
       }
 
-      FUN_00386c40(0xc,iVar3 * 0x70);
-
       FUN_00521408(lVar7,0,iVar3 * 0x70);
+
+      FUN_00386c40(0xc,iVar3 * 0x70);
 
       if (param_1 == 1) {
 
@@ -4578,9 +4578,9 @@ void FUN_0038b6e0(int param_1,int param_2,int param_3)
 
     }
 
-    *(int *)(iVar5 + 0x1c) = *(int *)(iVar5 + 0x1c) + -1;
-
     FUN_00362fa0(param_1);
+
+    *(int *)(iVar5 + 0x1c) = *(int *)(iVar5 + 0x1c) + -1;
 
     FUN_00362240(param_1);
 
@@ -4601,19 +4601,19 @@ void FUN_0038b960(int param_1,int param_2,int param_3)
 
 {
 
-  char cVar1;
-
-  u16 uVar2;
-
-  int iVar3;
-
-  int lVar4;
-
-  int lVar5;
+  int *piVar7;
 
   u16 *puVar6;
 
-  int *piVar7;
+  int lVar5;
+
+  int lVar4;
+
+  int iVar3;
+
+  u16 uVar2;
+
+  char cVar1;
 
   
 
@@ -4985,9 +4985,9 @@ void FUN_0038bc70(int param_1,int param_2,int param_3)
 
         else if ((*(char *)(iVar2 + 0x10) == '\x06') && (param_2 <= *(short *)(iVar2 + 0x10))) {
 
-          sVar4 = *(short *)(iVar2 + 0x10) + sVar1;
-
           *(short *)(iVar2 + 0x10) = sVar4;
+
+          sVar4 = *(short *)(iVar2 + 0x10) + sVar1;
 
           if (sVar4 < 0) {
 

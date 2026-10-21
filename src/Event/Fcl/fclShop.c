@@ -548,9 +548,9 @@ u64 FUN_003e6e80(void)
 
   
 
-  piVar10 = (int *)FUN_003c5460(DAT_007ce688);
-
   FUN_003c7b90();
+
+  piVar10 = (int *)FUN_003c5460(DAT_007ce688);
 
 
   FUN_003e0650(piVar10[0x26]);
@@ -3077,9 +3077,9 @@ u8 * FUN_003e9af0(u32 param_1,u32 param_2)
 
     }
 
-    *(u32 *)(iVar6 + 8) = 2;
-
     FUN_003c6ec0(uVar1);
+
+    *(u32 *)(iVar6 + 8) = 2;
 
     *(u32 *)(iVar6 + 0x14) = 0;
 
@@ -4154,9 +4154,9 @@ u8 * FUN_003eaf90(u32 param_1,u32 param_2)
 
         if (lVar8 != 0) {
 
-          *(u32 *)(iVar5 + 8) = 0;
-
           func_0010a4e0(0,0,0,2);
+
+          *(u32 *)(iVar5 + 8) = 0;
 
           FUN_003c6f50(uVar6);
 
@@ -7336,6 +7336,8 @@ u64 FUN_003eee80(u64 unused, u64 handle)
 /* Measured: opt_loop_invariants on gives FUN_003ef2b0 nd989/obj1724; reset gives nd995/obj1728. */
 #pragma opt_loop_invariants on
 // FUN_003EF2B0 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 u64 FUN_003ef2b0(u64 param_1,u64 param_2)
@@ -7715,6 +7717,7 @@ u64 FUN_003ef2b0(u64 param_1,u64 param_2)
   return 0;
 
 }
+#pragma pop
 #pragma opt_loop_invariants reset
 #undef FUN_0040e3c0
 

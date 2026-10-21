@@ -1098,6 +1098,8 @@ void FUN_0039fb10(void)
 #define FUN_0039fb10(...) ((void (*)(...))FUN_0039fb10)(__VA_ARGS__)
 #undef FUN_0039fbd0
 // FUN_0039FBD0 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 void FUN_0039fbd0(int param_1)
@@ -1212,6 +1214,7 @@ void FUN_0039fbd0(int param_1)
   FUN_003877c0(9.0f,40.0f,afStack_50 + 8,afStack_50,
                      *(u32 *)(param_1 + 0x6c),color);
 }
+#pragma pop
 #define FUN_0039fbd0(...) ((void (*)(...))FUN_0039fbd0)(__VA_ARGS__)
 #undef FUN_0039ffc0
 // FUN_0039FFC0 NONMATCHING
@@ -1227,7 +1230,7 @@ void FUN_0039ffc0(int param_1,float *param_2,int param_3,u32 param_4)
 
   u64 uVar2;
 
-  u8 uVar3;
+  char uVar3;
 
   float fVar4;
 
@@ -1391,9 +1394,9 @@ u64 FUN_003a0220(int param_1)
     packedAngle.value = DAT_007cd4a0;
     packedAngle.bytes.high = *(u8 *)(iVar1 + 0xa0);
 
-    FUN_00386f70(100.0f,auStack_30,&uStack_38,&packedAngle);
-
     uStack_4 = *(u32 *)(iVar1 + 0xb0);
+
+    FUN_00386f70(100.0f,auStack_30,&uStack_38,&packedAngle);
     ((u8 *)&uStack_4)[3] = *(u8 *)(iVar1 + 0x9c);
 
     if ((float)*(int *)(iVar1 + 0xbc) == 0.0f) {
@@ -1515,35 +1518,35 @@ u64 FUN_003a0220(int param_1)
 
 void FUN_003a05b0(int param_1,int param_2)
 {
-  u32 uVar1;
-  u32 uVar2;
-  int iVar3;
-  u16 uVar4;
-  int iVar5;
-  u32 *src;
-  u32 *dst;
-  u32 a1;
-  u32 a2;
-  u32 a3;
-  u32 a4;
-  u32 a5;
-  u32 a6;
-  u32 a7;
-  u32 a8;
-  u32 a9;
-  u16 *handle;
-  RwMatrix matrix;
-  RwV3d output;
-  float outputX;
-  float outputY;
-  float outputZ;
-  RwV3d position;
-  RwV3d direction;
-  RwV3d up;
-  u8 work1[16];
-  u8 work2[16];
-  u32 colorOut;
   u32 colorIn;
+  u32 colorOut;
+  u8 work2[16];
+  u8 work1[16];
+  RwV3d up;
+  RwV3d direction;
+  RwV3d position;
+  float outputZ;
+  float outputY;
+  float outputX;
+  RwV3d output;
+  RwMatrix matrix;
+  u16 *handle;
+  u32 a9;
+  u32 a8;
+  u32 a7;
+  u32 a6;
+  u32 a5;
+  u32 a4;
+  u32 a3;
+  u32 a2;
+  u32 a1;
+  u32 *dst;
+  u32 *src;
+  int iVar5;
+  u16 uVar4;
+  int iVar3;
+  u32 uVar2;
+  u32 uVar1;
 
   iVar5 = *(int *)(param_2 * 4 + param_1 + 0x74);
   if (iVar5 != 0) {
@@ -1919,9 +1922,9 @@ u32 FUN_003a0e90(int param_1)
 
     uVar9 = FUN_00100d80(0x6a18e0,0);
 
-    *(u32 *)(iVar1 + 0x14) = uVar9;
-
     *puVar6 = 2;
+
+    *(u32 *)(iVar1 + 0x14) = uVar9;
 
     break;
 

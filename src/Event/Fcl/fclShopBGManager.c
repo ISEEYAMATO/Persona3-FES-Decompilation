@@ -3896,6 +3896,22 @@ u32 FUN_00414fe0(u64 param_1,int param_2,long param_3)
 
 {
 
+  short *psVar8;
+
+  int iVar7;
+
+  short *psVar6;
+
+  u32 uVar5;
+
+  short *psVar4;
+
+  u32 *puVar3;
+
+  u32 uVar2;
+
+  int iVar1;
+
   u32 auStack_30 [12];
 
   u32 auStack_90 [24];
@@ -3929,22 +3945,6 @@ u32 FUN_00414fe0(u64 param_1,int param_2,long param_3)
   u32 **ppuVar10;
 
   u32 *puVar9;
-
-  short *psVar8;
-
-  int iVar7;
-
-  short *psVar6;
-
-  u32 uVar5;
-
-  short *psVar4;
-
-  u32 *puVar3;
-
-  u32 uVar2;
-
-  int iVar1;
 
   
 

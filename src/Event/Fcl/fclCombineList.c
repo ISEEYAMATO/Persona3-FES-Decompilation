@@ -1266,8 +1266,8 @@ void fclCombineList003dc2d0(s32 base_x, s32 base_y, s16 alpha, FclOwner* owner,
 
     resource_node = source_link->payload->data.text_node;
     resource_data = resource_node->meta->data;
-    record = resource_data->active_record;
     glyph_styles[0] = DAT_007cd79c;
+    record = resource_data->active_record;
     glyph_styles[1] = DAT_007cd79e;
     string_styles[0] = DAT_007cd7a0;
     string_styles[1] = DAT_007cd7a2;
@@ -1468,8 +1468,8 @@ void fclCombineList003dcc90(s32 x, s32 y, s16 alpha, FclOwner* owner,
                       text_palettes[selected], &layout, 1);
     } else {
         if (data->sound_id != 0) {
-            FUN_00176680(&lookup, *data->sound_id);
             text_id = lookup.text_id;
+            FUN_00176680(&lookup, *data->sound_id);
             text_style = lookup.text_style;
             draw_variant = DAT_007ce420[text_id]->field_02.draw_variant;
             FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x39,
@@ -1603,8 +1603,8 @@ void fclCombineList003dd260(FclResultStream* callback_target, FclDrawResult* res
             if (alternate == 0) {
                 if ((record->work->flags & 0x10000) != 0) {
                     FUN_0040e3c0_i(x, y, 0.0f, (byte)alpha, 0x37, 0);
-                    FUN_0040e3c0_i(x, y, 0.0f, (byte)alpha, 0x38, selected);
                     FUN_0040e3c0_i(x, y, 0.0f, (byte)alpha, 0x3a, 0);
+                    FUN_0040e3c0_i(x, y, 0.0f, (byte)alpha, 0x38, selected);
                 } else {
                     fclCombineList003dcc90(x, y, alpha, record->owner,
                                             record->candidate, selected);
@@ -2626,31 +2626,31 @@ void FUN_003dfae0(int *param_1,int *param_2)
 
 {
 
-  s32 bVar1;
-
-  s32 sVar2;
-
-  s32 sVar3;
-
-  s32 uVar4;
-
-  int iVar5;
-
-  int iVar7;
-
-  float fVar8;
-
-  float fVar9;
+  float fVar11;
 
   float fVar10;
 
-  float fVar11;
+  float fVar9;
 
-  float fVar12;
+  float fVar8;
+
+  int iVar7;
+
+  int iVar5;
+
+  s32 uVar4;
+
+  s32 sVar3;
+
+  s32 sVar2;
+
+  s32 bVar1;
+
+  float fVar14;
 
   float fVar13;
 
-  float fVar14;
+  float fVar12;
 
   
 

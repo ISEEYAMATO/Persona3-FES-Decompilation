@@ -9007,9 +9007,9 @@ void FUN_003275d0(float param_1,int param_2)
 
   iVar10 = (int)param_2;
 
-  iVar11 = *(int *)(iVar10 + 0x4c);
-
   iStack_8 = *(int *)(iVar10 + 4);
+
+  iVar11 = *(int *)(iVar10 + 0x4c);
   __asm__ volatile (
       ".set noreorder                    \n"
       "lw $v0, 0(%0)                    \n"
@@ -9837,10 +9837,10 @@ void FUN_003282e0(int param_1)
 
   
 
-  fVar18 = *(float *)&DAT_00960088;
-
-
   iStack_8 = *(int *)(param_1 + 4);
+
+
+  fVar18 = *(float *)&DAT_00960088;
 
 
   fVar14 = *(float *)&DAT_0096008c;
@@ -31584,9 +31584,9 @@ void FUN_003407e0(int param_1)
       }
 
 
-      FUN_00493370(*(u32 *)(*(int *)(puVar7 + 8) + 0x18),10);
-
       pfVar25 = *(float **)(*(int *)(*(int *)(*(int *)(puVar7 + 8) + 0x18) + 0x5c) + 0x14);
+
+      FUN_00493370(*(u32 *)(*(int *)(puVar7 + 8) + 0x18),10);
 
       puVar24 = *(u32 **)(*(int *)(*(int *)(puVar7 + 8) + 0x18) + 0x30);
 
@@ -36560,98 +36560,98 @@ void FUN_00346530(int param_1)
 
 {
 
-  int iVar1;
+  u32 uStack_4;
 
-  u16 *puVar2;
+  int iStack_8;
 
-  int iVar3;
+  int iStack_c;
 
-  float *pfVar4;
+  u32 uStack_1c;
 
-  float *pfVar5;
+  u32 uStack_20;
 
-  u16 *puVar6;
+  float fStack_2c;
 
-  u8 uVar7;
+  float fStack_30;
 
-  u8 uVar8;
+  float fStack_3c;
 
-  u8 uVar9;
-
-
-
-
-  u32 c1s;
-  u32 c2s;
-  u32 packed;
-  int iVar12;
-
-  float fVar13;
-
-  float fVar14;
-
-  float fVar15;
-
-  float fVar16;
-
-  float fVar17;
-
-  float fVar18;
-
-  float fVar19;
+  float fStack_40;
 
 
 
-  float fStack_b0;
 
-  float fStack_ac;
+  float fStack_44;
+  float fStack_48;
+  u32 uStack_4c;
+  float fStack_50;
 
-  float fStack_a8;
+  float fStack_54;
 
-  float fStack_a4;
+  float fStack_58;
 
-  u32 uStack_a0;
+  float fStack_5c;
 
-  u32 uStack_9c;
+  float fStack_60;
 
-  u16 uStack_98;
-
-  u16 uStack_96;
-
-  u16 uStack_94;
-
-  u16 uStack_92;
-
-  u16 uStack_90;
-
-  u16 uStack_8e;
-
-  u16 uStack_8c;
-
-  u16 uStack_8a;
-  float fStack_80;
-
-  float fStack_7c;
-
-  float fStack_78;
+  u32 uStack_70;
 
   float fStack_74;
 
-  u32 uStack_70;
-  float fStack_60;
-  float fStack_5c;
-  float fStack_58;
-  float fStack_54;
-  float fStack_50;
-  u32 uStack_4c;
-  float fStack_48;
-  float fStack_44;
-  float fStack_40;
-  float fStack_3c;
-  float fStack_30;
-  float fStack_2c;
-  u32 uStack_20;
-  u32 uStack_1c;
+  float fStack_78;
+
+
+
+  float fStack_7c;
+
+  float fStack_80;
+
+  u16 uStack_8a;
+
+  u16 uStack_8c;
+
+  u16 uStack_8e;
+
+  u16 uStack_90;
+
+  u16 uStack_92;
+
+  u16 uStack_94;
+
+  u16 uStack_96;
+
+  u16 uStack_98;
+
+  u32 uStack_9c;
+
+  u32 uStack_a0;
+
+  float fStack_a4;
+
+  float fStack_a8;
+  float fStack_ac;
+
+  float fStack_b0;
+
+  float fVar19;
+
+  float fVar18;
+
+  float fVar17;
+  float fVar16;
+  float fVar15;
+  float fVar14;
+  float fVar13;
+  int iVar12;
+  u32 packed;
+  u32 c2s;
+  u32 c1s;
+  u8 uVar9;
+  u8 uVar8;
+  u8 uVar7;
+  u16 *puVar6;
+  float *pfVar5;
+  float *pfVar4;
 
 
 
@@ -36660,9 +36660,9 @@ void FUN_00346530(int param_1)
   
 
 
-  int iStack_c;
-  int iStack_8;
-  u32 uStack_4;
+  int iVar3;
+  u16 *puVar2;
+  int iVar1;
 
 
 
@@ -43868,8 +43868,8 @@ void FUN_0034eae0(int param_1,float *param_2,int param_3,u32 *param_4,
 
     if (param_7 == '\0') {
       in_f23 = (*param_6 * fVar10) / 32.0f;
-      unaff_f22 = (param_6[1] * fVar7) / 32.0f;
       uVar6 = packedColor[0];
+      unaff_f22 = (param_6[1] * fVar7) / 32.0f;
       vertices[0][8] = (float)uVar6;
       vertices[0][9] = (float)packedColor[1];
       vertices[0][10] = (float)packedColor[2];
