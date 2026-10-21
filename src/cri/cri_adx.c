@@ -7589,9 +7589,9 @@ void FUN_005355b8(u32 *param_1)
 
   *param_1 = 0;
 
-  param_1[1] = 0;
-
   FUN_00521408(param_1 + 2,0,0x44);
+
+  param_1[1] = 0;
 
   param_1[0x13] = 0;
 
@@ -8432,9 +8432,9 @@ void FUN_00535ff0(int param_1,int param_2)
 
   }
 
-  *(int *)(param_1 + 0xb8) = param_2;
-
   *(int *)(param_1 + 0xbc) = param_2 / 0x60;
+
+  *(int *)(param_1 + 0xb8) = param_2;
 
   return;
 
@@ -34390,9 +34390,9 @@ void FUN_00548520(long param_1,long param_2)
 
     FUN_00539818();
 
-    FUN_00548318(param_1,param_2);
-
     *(u8 *)((int)param_1 + 2) = 3;
+
+    FUN_00548318(param_1,param_2);
 
     FUN_0054a968(param_1,1);
 
@@ -53016,11 +53016,11 @@ int FUN_00555788(u64 param_1)
 
 {
 
-  long lVar1;
+  int iVar3;
 
   int iVar2;
 
-  int iVar3;
+  long lVar1;
 
 
 
@@ -131908,7 +131908,7 @@ void FUN_0058eb10(u64 param_1)
 
 {
 
-  long lVar1;
+  u64 lVar1;
 
   u64 uVar2;
 
