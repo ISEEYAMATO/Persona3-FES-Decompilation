@@ -23247,7 +23247,8 @@ void FUN_005410a0(long param_1)
 
   puVar2 = &uStack_30;
 
-  if (param_1 == 0) {
+  puVar1 = (u32 *)param_1;
+  if (puVar1 == 0) {
 
     puVar2 = (u32 *)0x0;
 
@@ -23255,7 +23256,6 @@ void FUN_005410a0(long param_1)
 
   else {
 
-    puVar1 = (u32 *)param_1;
 
     iStack_28 = puVar1[2];
 

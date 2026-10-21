@@ -841,12 +841,12 @@ s16* func_001b8db0(s16* table)
     u32 slot;
     u32 day;
 
-    if (table == NULL)
+    record = table;
+    if (record == NULL)
     {
         return NULL;
     }
     count = 0;
-    record = table;
     while (*record != -1)
     {
         count++;
