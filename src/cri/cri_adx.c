@@ -15503,9 +15503,9 @@ void FUN_0053b158(void)
 
     FUN_00521408(0x7853a8,0,0x20);
 
-    FUN_00521408(0x7852a8,0xff,0x100);
-
     FUN_00521408(0x784ea0,0,0x400);
+
+    FUN_00521408(0x7852a8,0xff,0x100);
 
     FUN_00521408(0x784a60,0,0x440);
 
@@ -17497,9 +17497,9 @@ FUN_0053c9f8(int param_1,u32 param_2,u32 param_3,u32 param_4,int param_5)
 
 
 
-  *(u32 *)(param_1 + 0x34) = param_3;
-
   *(u32 *)(param_1 + 0x3c) = param_4;
+
+  *(u32 *)(param_1 + 0x34) = param_3;
 
   *(u32 *)(param_1 + 0x38) = param_2;
 
@@ -60806,7 +60806,7 @@ u8 FUN_0055b120(int param_1)
 
 {
 
-  u8 bVar1;
+  char bVar1;
 
   long lVar2;
 
@@ -103923,9 +103923,9 @@ void FUN_0057b710(int param_1,u32 param_2)
 
 {
 
-  int iVar1;
-
   int iVar2;
+
+  int iVar1;
 
 
 
