@@ -7196,6 +7196,18 @@ void FUN_00325c10(u8 (*param_1) [16],u8 (*param_2) [16])
 // and the lqc2 0(saved) statement puts the address where retail has it. Remaining
 // residual is one instruction: retail materializes &transformed in $a1, this build
 // uses $v0. nd 4 -> 2 bytes, no other function in this TU affected.
+// DUMMYDUMB session 2026-10-21: the last 2 bytes are the same wrong-value class
+// as FUN_0034CC00 - an inline asm storing to a hard-coded frame address while
+// the compiler puts the local elsewhere:
+//   ours   addiu v0,sp,0x40 / sqc2 $vf10,0(v0)
+//   retail addiu a1,sp,0x40 / sqc2 $vf10,0(a1)
+// The asm is "sqc2 $vf10, 0(%0)" with "r"(saved) and saved is a local array, so
+// the address the asm uses is the compiler's choice of slot, not 0x40.
+// Probed: passing &saved[0] instead of saved (byte-neutral), declaring saved
+// first, reordering saved against transformed, and giving the asm a second
+// "=m" output the way the FUN_0034CC00 fix does (mwcc rejects the "=m" output
+// on this asm - "illegal operand" - so the slot cannot be steered here).
+// Confirmed wall: 2 bytes, the address materialization register.
 // FUN_00325D60 NONMATCHING
 #pragma alias FUN_00325d60_u32 FUN_00325d60
 void FUN_00325d60_u32(u8 (*param_1) [16],u8 (*param_2) [16])
