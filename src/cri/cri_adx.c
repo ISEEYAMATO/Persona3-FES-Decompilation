@@ -159401,6 +159401,13 @@ void FUN_005a1b68(void)
 
 
 
+/* DUMMYDUMB session 2026-10-20: function-scoped #pragma schedule on.
+ * Retail loads the 64-bit value in the delay slot of jr $ra; with scheduling
+ * off mwcc emits the load before the jump. Measured: 9 -> 2 differing bytes.
+ * Still NONMATCHING (the base register differs) - recorded as a measured
+ * improvement.
+ */
+#pragma schedule on
 // FUN_005A1B80 NONMATCHING
 
 
@@ -159413,6 +159420,7 @@ u64 FUN_005a1b80(void)
   u32 *base = (u32 *)0x007b0000;
   return *(u64 *)((u8 *)base + 0x5060);
 }
+#pragma schedule off
 
 
 

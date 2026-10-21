@@ -7760,11 +7760,20 @@ LAB_0051eb14:
   }
   return pcVar19;
 }
+/* DUMMYDUMB session 2026-10-20: function-scoped #pragma schedule on.
+ * Retail loads the pointer in the delay slot of jr $ra (lui $t7,0x78 / jr $ra /
+ * lw $v0,0x2f30($t7)); with scheduling off mwcc emits the load before the jump.
+ * Measured: 7 -> 3 differing bytes. The remaining 3 are the addressing form
+ * (we load the slot gp-relative, retail materialises 0x782f30 absolutely).
+ * Still NONMATCHING - recorded as a measured improvement.
+ */
+#pragma schedule on
 // FUN_0051F690 NONMATCHING
 u8 * FUN_0051f690(void)
 {
   return *(u8 **)PTR_DAT_00782f30_abs;
 }
+#pragma schedule off
 // FUN_0051F6A0 NONMATCHING
 u64 FUN_0051f6a0(u64 param_1)
 
