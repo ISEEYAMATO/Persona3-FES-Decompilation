@@ -109883,7 +109883,17 @@ void FUN_0057fa28(u32 param_1)
  * ours ld $ra,0($sp) then lw $v0,off($v0), retail the other way round; named
  * result temp, byte-offset deref, u32 local and schedule off all byte-neutral).
  * The other five siblings (FUN_0057FC90, FUN_00580048, FUN_00585C50,
- * FUN_00586110, FUN_00586200) have the same two-instruction swap at +16/+20. */
+ * FUN_00586110, FUN_00586200) have the same two-instruction swap at +16/+20
+ * (verified instruction by instruction: each is ours `ld $ra,0($sp)` then
+ * `lw $v0,off($v0)`, retail the other way round). */
+
+/* DUMMYDUMB session 2026-10-20: FUN_00533CA8 - ours computes the add before
+ * the store of 1 (`addu $a1,$a2,$a1` then `sw $v1,0xc8($a0)`), retail computes
+ * it after (`sw $v1,0xc8($a0)` then `addu $v0,$v0,$a1`, in the delay slot of
+ * the jr). Probed: reordering the four statements (both orders) and folding
+ * the load and the add into one expression - byte-neutral or worse. The
+ * register roles differ too ($a2/$a1 vs $v0). Confirmed wall. */
+// FUN_00533CA8 NONMATCHING
 // FUN_0057FA50 NONMATCHING
 
 
@@ -111802,6 +111812,14 @@ void FUN_00580e98(void)
 
 
 
+/* DUMMYDUMB session 2026-10-20: FUN_00580ED8 - retail builds the address
+ * argument before the prologue (`move $v0,$a1` / `lui $a0,0x7000` / `addu
+ * $a0,$a0,$a0` / then the frame) while this build sets the frame up first and
+ * forms the argument afterwards, so the argument registers differ too
+ * ($a1/$a2 vs $a0/$a2). Probed: naming the address argument (u32 and u64),
+ * naming param_2 as well, and casting the address - all byte-neutral (37
+ * bytes); the u64 form costs 8 bytes of code. Confirmed wall: argument setup
+ * versus prologue order. */
 // FUN_00580ED8 NONMATCHING
 
 
@@ -121934,6 +121952,12 @@ u64 FUN_00587d90(u64 param_1)
 
 
 
+/* DUMMYDUMB session 2026-10-20: FUN_00587DB0 - retail puts the store in the
+ * delay slot of the jr (`lui $v1,0x7b` / `move $v0,$zero` / `jr $ra` / `sw
+ * $a0,0x4770($v1)`) while this build emits the store before the jr and the
+ * return value in the delay slot. Probed: naming the return value (u32 and
+ * u64) and spelling the store with a byte offset - all byte-neutral (9
+ * bytes). Confirmed wall: delay-slot placement of the store. */
 // FUN_00587DB0 NONMATCHING
 
 
