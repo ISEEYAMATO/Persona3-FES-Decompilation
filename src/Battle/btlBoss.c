@@ -1636,8 +1636,8 @@ u32 func_002f9c10(BtlAction* action)
             if ((action->unk_1a & 1) != 0 && unit->genus == 1 && unit->charId == 0x100)
             {
                 unit->flags3 |= 0x100;
-                unit->flags3 |= 0x40;
                 unit->flags3 |= 0x400;
+                unit->flags3 |= 0x40;
             }
             return 1;
         case 0x1a1:
@@ -1878,8 +1878,8 @@ void func_002fa510(BtlAction* action, s32 mode)
         if ((action->unk_1a & 1) != 0 && unit->genus == 1 &&
             (unit->charId == 0x118 || unit->charId == 0x117 || unit->charId == 0x116) && mode == 1)
         {
-            slot = *(u16*)((u8*)gBtl + 0xb50);
             *(BtlAction**)((u8*)gBtl + 0xb44 + slot * 4) = action;
+            slot = *(u16*)((u8*)gBtl + 0xb50);
             *(u16*)((u8*)gBtl + 0xb50) = slot + 1;
             func_002e4220((u32)func_002f0ea0, (u32)func_002f14a0, action);
         }
@@ -3726,8 +3726,8 @@ void FUN_002fe0b0(float param_1, u8* param_2, u64 param_3, u64 param_4,
 
     camera = (u8*)kwlnGetMainCamera();
     viewport = FUN_004e3630();
-    setState = &DAT_00960090;
     scaleX = 640.0f / (f32)*(s32*)((u8*)viewport + 0xc);
+    setState = &DAT_00960090;
     scaleY = 448.0f / (f32)*(s32*)((u8*)viewport + 0x10);
 
     left = 0.0f;
@@ -3840,17 +3840,17 @@ void FUN_002fe0b0(float param_1, u8* param_2, u64 param_3, u64 param_4,
 void FUN_002fe780(float param_1, u8* param_2, u8* param_3,
                   u64 param_4, u64 param_5)
 {
-    float fVar7;
-    float fVar6;
-    float fVar5;
-    float fVar4;
-    u32 value;
-    u16 uVar1;
-    int iVar2;
+    float fVar8;
     u16 uVar3;
+    int iVar2;
+    u16 uVar1;
+    u32 value;
+    float fVar4;
+    float fVar5;
+    float fVar6;
     void (**setState)(...);
     u8 vertices[0x2a][0x40];
-    float fVar8;
+    float fVar7;
 
     iVar2 = FUN_00198590();
     setState = (void (**)(...))DAT_00960090_abs;
@@ -3979,9 +3979,9 @@ u32 FUN_002fed10(int param_1)
             (*DAT_00960090)(1, 0);
             (*DAT_009600a0)(2, 0x44);
             (*DAT_009600a0)(3, 0x31801);
-            FUN_003294d0();
-
             local.colors[0] = 0xff;
+
+            FUN_003294d0();
             local.colors[1] = 0xff;
             local.colors[2] = 0xff;
             value = 1.0f - progress * progress * progress * progress * progress * progress;

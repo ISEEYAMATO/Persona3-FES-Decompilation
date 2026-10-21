@@ -354,7 +354,7 @@ void FUN_0029a750(void)
     struct
     {
         BtlAction* action;
-        u8 weight;
+        char weight;
     } playerActions[BTL_MAXACTIONS];
     struct
     {

@@ -480,8 +480,8 @@ void* func_001d5f90(KwlnTask* cameraRotationTask)
             *(u64*)axisPtr = axisXY;
             axisPtr->z = *(f32*)(uintptr_t)0x00683aa0;
             FUN_004cb890(cameraFrame, initialRotation, axisPtr, 2);
-            cameraPosition = cameraFrame->modelling.pos;
             camera = kwlnGetMainCamera();
+            cameraPosition = cameraFrame->modelling.pos;
             FUN_001a1210(camera, &cameraPosition, &target, NULL);
         }
         work->state++;
@@ -573,9 +573,9 @@ KwlnTask* func_001d6270(KwlnTask* parentTask, s32 duration, s32 heading)
                                           (KwlnTaskUpdateFunc)func_001d5f90,
                                           (KwlnTaskDestroyFunc)func_001d6240,
                                           work);
-    work->duration = duration;
-
     playerMatrix = mdlGetMatrix((Model*)(uintptr_t)CAMERA_DATA_U32(0x008717f0));
+
+    work->duration = duration;
     playerHeading = FUN_001a5aa0(playerMatrix);
     if (playerHeading < 0.0f)
     {
@@ -1559,8 +1559,8 @@ void* func_001d7d40(KwlnTask* task)
         }
         K_Encount_Face(pc, ec);
         K_Encount_Face(ec, pc);
-        mdlAnimSet(pc->mdl, 0, 4, 0, 1);
         mdlAnimSetSpeed(pc->mdl, 0, 1.0f);
+        mdlAnimSet(pc->mdl, 0, 4, 0, 1);
         mdlAnimSet(ec->mdl, 0, 3, 0, 1);
         mdlAnimSetSpeed(ec->mdl, 0, 1.0f);
         func_001b00c0(pc->unk_170);

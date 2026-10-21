@@ -767,8 +767,8 @@ RuntimeWork* func_001ee2e0(const void* rawData)
          configIndex < input->configCount;
          configIndex++)
     {
-        inputConfigs[configIndex] = cursor;
         cursor += 8;
+        inputConfigs[configIndex] = cursor;
         if (*(s16*)(inputConfigs[configIndex] + 4) == 0)
         {
             cursor += 4;

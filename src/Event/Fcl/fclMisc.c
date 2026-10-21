@@ -1845,8 +1845,8 @@ u64 FUN_003ca230(void)
     }
     status = FUN_001016b0(*(u32 *)(context + 0xc8));
     if (status != 0) {
-      fclMisc9fe0Call((int *)context);
       *(u32 *)(context + 4) = 4;
+      fclMisc9fe0Call((int *)context);
       *(u32 *)(context + 8) = *(u32 *)(context + 8) | 0x20;
       FUN_005225a8(&gp0xffffaa08,0x6a3e18,0x747);
       FUN_005225a8(0x6a41d0);
@@ -2038,6 +2038,8 @@ scale_y_done_ca780:
 #undef FUN_003ca960
 // W418 negative: 24 declaration/prototype permutation probes left nd438/obj856 unchanged (window 864); neutral and rejected.
 // FUN_003CA960 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 void FUN_003ca960(int param_1)
@@ -2216,6 +2218,7 @@ void FUN_003ca960(int param_1)
   return;
 
 }
+#pragma pop
 #define FUN_003ca960(...) ((void (*)(...))FUN_003ca960)(__VA_ARGS__)
 #undef FUN_003cacc0
 #pragma push
@@ -2263,9 +2266,9 @@ void FUN_003cacc0(int param_1)
 
     psVar4 = psVar4 + 1;
 
-    iVar2 = iVar2 + -1;
-
     *psVar3 = sVar1;
+
+    iVar2 = iVar2 + -1;
 
     psVar3 = psVar3 + 1;
 
@@ -2481,9 +2484,9 @@ void FUN_003cb1f0(u64 param_1)
 
                piVar8[0x34]);
 
-  FUN_00133a80(piVar8[0x31]);
-
   puVar5 = (u64 *)0x8;
+
+  FUN_00133a80(piVar8[0x31]);
 
   puVar7 = &uStack_8;
 
@@ -3155,8 +3158,8 @@ void FUN_003ccc40(int *param_1)
   while (puVar2 != (u64 *)0x0) {
     *(u8 *)puVar4 = 0;
     puVar4 = (u64 *)((int)puVar4 + 1);
-    puVar3 = (u64 *)((int)puVar3 + -1);
     puVar2 = puVar3;
+    puVar3 = (u64 *)((int)puVar3 + -1);
   }
 
   if ((*(int *)(context + 8) & 2U) == 0) {
@@ -3239,8 +3242,8 @@ void FUN_003cd0b0(int *param_1)
   while (puVar2 != (u64 *)0x0) {
     *(u8 *)puVar4 = 0;
     puVar4 = (u64 *)((int)puVar4 + 1);
-    puVar3 = (u64 *)((int)puVar3 + -1);
     puVar2 = puVar3;
+    puVar3 = (u64 *)((int)puVar3 + -1);
   }
 
   if ((*(int *)(context + 8) & 2U) == 0) {
@@ -3339,8 +3342,8 @@ void FUN_003cd5a0(int *param_1)
   while (puVar2 != (u64 *)0x0) {
     *(u8 *)puVar4 = 0;
     puVar4 = (u64 *)((int)puVar4 + 1);
-    puVar3 = (u64 *)((int)puVar3 + -1);
     puVar2 = puVar3;
+    puVar3 = (u64 *)((int)puVar3 + -1);
   }
 
   if ((*(int *)(context + 8) & 2U) == 0) {
@@ -3948,9 +3951,9 @@ u64 FUN_003ce2a0(u64 param_1)
 
              *(u16 *)(*(int *)(iVar9 + 0x18) + 0xd8) & 0xfeff;
 
-        FUN_00319050(*(u32 *)(iVar9 + 0x18));
-
         sVar3 = FUN_0017c0e0(*(u16 *)(iVar9 + 0xc));
+
+        FUN_00319050(*(u32 *)(iVar9 + 0x18));
 
         if (sVar3 != 8) {
 
@@ -4206,90 +4209,90 @@ u64 FUN_003cea50(u16 *param_1)
   extern void FUN_001a4580(u32, float);
 
 
-  u32 uVar1;
-
-  u32 uVar2;
-
-  float *pfVar3;
-
-  int iVar4;
-
-  float *pfVar5;
-
-  u32 uVar6;
-
-  u32 uVar7;
-
-  u32 lVar8;
-
-  float *pfVar9;
-
-  u32 *puVar10;
-
-  u32 *puVar11;
-
-
-  int iVar12;
-
-  float fVar13;
-
-  float uVar14;
-
-  float fVar15;
-
-  float fVar16;
-
-  short sStack_160;
-
-  short sStack_15e;
-
-  short sStack_15c;
-
-  float fStack_158;
-
-  float fStack_154;
-
-  short sStack_150;
-
-  short sStack_144;
-
-  short sStack_142;
-
-  u32 auStack_140 [16];
-
-  FclMiscVec4 vStack_100;
-
-    RwMatrix matrix;
-
-  u32 auStack_b0 [16];
-
-    FclMiscVec4 savedView;
-    FclMiscVec4 savedProjection;
-
-  u64 uStack_48;
-
-  float fStack_40;
-
-  float fStack_38;
-
-  float fStack_34;
-
-  float fStack_30;
-
-  u64 uStack_28;
-  float fStack_20;
-
-  float fStack_18;
-
-  float fStack_14;
-
-  float fStack_10;
-
-  float fStack_c;
+  u8 bStack_1;
 
   u8 auStack_4 [3];
 
-  u8 bStack_1;
+  float fStack_c;
+
+  float fStack_10;
+
+  float fStack_14;
+
+  float fStack_18;
+
+  float fStack_20;
+
+  u64 uStack_28;
+
+  float fStack_30;
+
+  float fStack_34;
+
+  float fStack_38;
+
+
+  float fStack_40;
+
+  u64 uStack_48;
+
+    FclMiscVec4 savedProjection;
+
+    FclMiscVec4 savedView;
+
+  u32 auStack_b0 [16];
+
+    RwMatrix matrix;
+
+  FclMiscVec4 vStack_100;
+
+  u32 auStack_140 [16];
+
+  short sStack_142;
+
+  short sStack_144;
+
+  short sStack_150;
+
+  float fStack_154;
+
+  float fStack_158;
+
+  short sStack_15c;
+
+  short sStack_15e;
+
+  short sStack_160;
+
+  float fVar16;
+
+  float fVar15;
+  float uVar14;
+
+  float fVar13;
+
+  int iVar12;
+
+  u32 *puVar11;
+
+  u32 *puVar10;
+
+  float *pfVar9;
+
+  u32 lVar8;
+  u32 uVar7;
+
+  u32 uVar6;
+
+  float *pfVar5;
+
+  int iVar4;
+
+  float *pfVar3;
+
+  u32 uVar2;
+
+  u32 uVar1;
 
   
 
@@ -4976,9 +4979,9 @@ LAB_003cf7a4:
 
     *(u32 *)(iVar6 + 8) = *(u32 *)(puVar2 + 2);
 
-    *(u16 *)(iVar6 + 4) = *puVar2;
-
     *(short *)(iVar6 + 0xc) = sVar4;
+
+    *(u16 *)(iVar6 + 4) = *puVar2;
 
     uVar3 = *(u32 *)(iVar6 + 8);
 
@@ -5234,9 +5237,9 @@ void FUN_003cfb50(void)
 
         stackPair.vec.x = (float)iVar6;
 
-        fclMisc106fb0Call(puVar8[4],stackPair.bits);
-
         FUN_00106e90(puVar8[4],((short)puVar8[8] * 0xff) / 5 & 0xff);
+
+        fclMisc106fb0Call(puVar8[4],stackPair.bits);
 
         FUN_00106f60(puVar8[4],0);
 

@@ -620,7 +620,7 @@ u8 FUN_003d5e60(void *param_1,void *param_2,void *param_3)
 
   u8 bVar4;
 
-  u8 bVar5;
+  char bVar5;
 
   u8 uVar7;
 
@@ -899,9 +899,9 @@ u8 FUN_003d6200(void *param_1,int param_2,u16 *param_3,int param_4)
 
       if (bVar2) {
 
-        FUN_00176680(param_1,*puVar8);
-
         iVar7 = 0;
+
+        FUN_00176680(param_1,*puVar8);
 
         while ((iVar7 < 4 &&
 
@@ -1942,8 +1942,8 @@ LAB_003d79d4:
 
           }
 
-          piVar14 = uVar9 + iVar6;
           *piVar14 = iVar13;
+          piVar14 = uVar9 + iVar6;
 
           if (iVar13 == 0) {
 
@@ -2034,28 +2034,28 @@ u32 FUN_003d7ac0(u8 param_1,u8 param_2,u16 *param_3)
 
 {
 
-  u8 bVar1;
-
-  u16 uVar2;
-
-  u8 bVar3;
-
-
-  int lVar5;
-
-  int iVar6;
-
-  u32 uVar7;
-
-  u32 uVar8;
-
-  u32 uVar9;
-
-  u16 uVar10;
+  u8 *puVar12;
 
   int iVar11;
 
-  u8 *puVar12;
+  u16 uVar10;
+
+
+  u32 uVar9;
+
+  u32 uVar8;
+
+  u32 uVar7;
+
+  int iVar6;
+
+  int lVar5;
+
+  u8 bVar3;
+
+  u16 uVar2;
+
+  u8 bVar1;
 
   
 
@@ -2218,28 +2218,28 @@ u32 FUN_003d7da0(u8 param_1,u8 param_2,u16 *param_3)
 
 {
 
-  u8 bVar1;
-
-  u16 uVar2;
-
-  u8 bVar3;
-
-
-  int lVar5;
-
-  int iVar6;
-
-  u32 uVar7;
-
-  u32 uVar8;
-
-  u32 uVar9;
-
-  u16 uVar10;
+  u8 *puVar12;
 
   int iVar11;
 
-  u8 *puVar12;
+  u16 uVar10;
+
+
+  u32 uVar9;
+
+  u32 uVar8;
+
+  u32 uVar7;
+
+  int iVar6;
+
+  int lVar5;
+
+  u8 bVar3;
+
+  u16 uVar2;
+
+  u8 bVar1;
 
   
 

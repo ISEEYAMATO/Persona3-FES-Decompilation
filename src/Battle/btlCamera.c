@@ -3032,8 +3032,8 @@ void btlCameraFrameActionPersona(BtlCamera* camera, u32 suppressEffects,
     f32 f25;
     f32 f24;
     f32 f22;
-    f32 f26;
     f32 f23;
+    f32 f26;
     f32 f20;
     f32 f27;
     f32 f20b;
@@ -3462,8 +3462,8 @@ void btlCameraFrameActionResult(BtlCamera* camera, u32 suppressEffects,
         f32 b4;
         f32 b8;
         RtQuat quat;
-        f32 cc;
         f32 d0;
+        f32 cc;
         f32 d4;
         RtQuat quatCopy;
         f32 f0;
@@ -4146,8 +4146,8 @@ void func_002aa2b0(BtlCamera* camera, int param_2, int param_3)
     fVar13 = fVar14;
   }
   if (fVar15 < 275.0f) {
-    centerA.y = fGpffff80a0;
     fVar15 = 275.0f;
+    centerA.y = fGpffff80a0;
   }
   fVar10 = func_00280870_ae740(2,0,target,&fStack_4,0,1);
   FUN_004be1e0_b6070(&axis,&D_00697870,1,(const void*)(iVar2 + 0x1c));
@@ -4483,8 +4483,8 @@ void func_002ab330(BtlCamera* camera, int param_2, int param_3)
   iVar2 = *(int *)(iVar7 + 0xa00);
   btlUnitGetSphereWorldCenter((BtlUnit*)(uintptr_t)(iVar7), (RwV3d*)sphere0);
   btlUnitGetSphereWorldCenter((BtlUnit*)(uintptr_t)(iVar1), (RwV3d*)sphere1);
-  btlUnitGetSphereWorldCenter((BtlUnit*)(uintptr_t)(iVar2), (RwV3d*)sphere2);
   fVar13 = *(float *)(iVar2 + 0x8c) * *(float *)(iVar2 + 0x2c) * 0.5f + sphere2[1];
+  btlUnitGetSphereWorldCenter((BtlUnit*)(uintptr_t)(iVar2), (RwV3d*)sphere2);
   fVar14 = *(float *)(iVar7 + 0x90) * *(float *)(iVar7 + 0x2c);
   fVar10 = *(float *)(iVar2 + 0x90) * *(float *)(iVar2 + 0x2c);
   *(float *)(iVar6 + 0x104) = sphere1[0];
@@ -5043,9 +5043,9 @@ void func_002ac920(BtlCamera* camera, long unused)
     (void)unused;
     action = camera->action;
     source = action->unit;
-    target = action->target.targetedActions[0]->unit;
-
     btlUnitGetSphereWorldCenter(source, &work.sourceCenter);
+
+    target = action->target.targetedActions[0]->unit;
     btlUnitGetSphereWorldCenter(target, &work.targetCenter);
 
     work.direction.x = work.sourceCenter.x - work.targetCenter.x;
@@ -6247,8 +6247,8 @@ void func_002aef80(BtlCamera* camera, int param_2)
     fStack_54 = fStack_4;
   }
   fStack_4 = fStack_54;
-  fStack_20 = fStack_50;
   fStack_38 = fStack_58 - fStack_18;
+  fStack_20 = fStack_50;
   fStack_34 = fStack_14 - fStack_14;
   fStack_30 = fStack_50 - fStack_10;
   FUN_004c69f0(&fStack_38,&fStack_38);
@@ -6878,13 +6878,6 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
 #define FUN_002d5bf0 FUN_002d5bf0_b280
 #define FUN_003093a0 FUN_003093a0_b280
 #define FUN_0052e930 FUN_0052e930_b280
-  int iVar1;
-  u8 cVar2;
-  s32 lVar3;
-  int iVar4;
-  int iVar5;
-  int iVar6;
-  float fVar7;
   float fVar8;
   float fVar9;
   float fVar10;
@@ -6897,6 +6890,13 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
   BtlCameraPoseLocal cameraPose;
   RwV3d targetPos;
   RtQuat blendQuat;
+  RwV3d candidate;
+  RwV3d direction;
+  RwV3d start;
+  RwV3d center1;
+  RwV3d center2;
+  int iVar1;
+  u8 cVar2;
   f32 tangent2[2];
   f32 normal2[2];
   f32 from2[2];
@@ -6907,15 +6907,15 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
     struct { f32 _0_4_; f32 _4_4_; } f;
     f32 z;
   } axis;
-  RwV3d candidate;
-  RwV3d direction;
-  RwV3d start;
+  s32 lVar3;
+  int iVar4;
+  int iVar5;
   struct {
     struct { f32 _0_4_; f32 _4_4_; } f;
     f32 z;
   } base;
-  RwV3d center1;
-  RwV3d center2;
+  int iVar6;
+  float fVar7;
   #define fStack_e0 cameraPose.pos.x
   #define fStack_dc cameraPose.pos.y
   #define fStack_d8 cameraPose.pos.z
@@ -7329,8 +7329,8 @@ void FUN_002b1060(BtlCamera* camera, f32 param_1, f32 param_2)
         u8 pad_b0[8];
         RwV3d center;
         u8 pad_c4[4];
-        f32 sourceX;
         f32 sourceHeight;
+        f32 sourceX;
         f32 sourceZ;
         u8 pad_d4[4];
         s64 selectedXY;
@@ -7909,8 +7909,8 @@ void FUN_002b21f0(BtlCamera *camera, f32 param_1, int param_2)
     u32 mode;
 
     cam = camera;
-    action = cam->action;
     unit = action->unit;
+    action = cam->action;
     targetUnit = *(BtlUnit **)(*(u8 **)((u8 *)action + 0x38) + 0x30);
 
     FUN_00280130_b21f0v2(unit, &pointA);

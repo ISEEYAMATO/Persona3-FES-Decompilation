@@ -2691,8 +2691,8 @@ void func_001e3f10(RuntimeTask* task)
                 if (result == 0)
                 {
                     func_00195020(work->windowTask);
-                    work->windowTask = func_001a3b10(task, 0x20, 0x20, 2);
                     func_001a3dc0(work->windowTask, D_00684120, 8);
+                    work->windowTask = func_001a3b10(task, 0x20, 0x20, 2);
                     func_001a3bf0(work->windowTask, 1);
                     work->state = 2;
                 }
@@ -3017,8 +3017,8 @@ s32 func_001e4bc0(RuntimeTask* task)
             FieldRuntimeResourceNode* node;
             manager = func_001e1840();
             node = *(FieldRuntimeResourceNode**)manager;
-            work->count = 0;
             work->windowTask = func_001a3b10(task, 0x20, 0x20, 2);
+            work->count = 0;
             while (node != NULL)
             {
                 FUN_00523ac8(
@@ -3364,26 +3364,26 @@ void* func_001e5850(void* parent)
 // FUN_001E58D0 NONMATCHING
 s32 func_001e58d0(RuntimeTask* task)
 {
-    RuntimeTransitionWork* work;
-    RuntimeVec3 axis;
-    RuntimeVec3 firstAxis;
-    RuntimeVec3 secondAxis;
-    RuntimeVec3 direction;
-    RuntimeVec3 center;
-    RuntimeVec3 adjusted;
-    RuntimeMatrix rotation;
-    RuntimeTransitionAngles angles;
-    FieldRuntimeTaskNode* taskNode;
+    u16 resourceId;
+    u32 matrixFlags;
+    u32 input;
     RuntimeMatrix* positionMatrix;
+    FieldRuntimeTaskNode* taskNode;
+    RuntimeTransitionAngles angles;
+    RuntimeMatrix rotation;
+    RuntimeVec3 adjusted;
+    RuntimeVec3 center;
+    RuntimeVec3 direction;
+    RuntimeVec3 secondAxis;
     void* camera;
     void* frame;
-    u32 input;
-    u32 matrixFlags;
+    RuntimeVec3 firstAxis;
+    RuntimeVec3 axis;
     f32 distance;
     f32 angle;
     f32 x;
     f32 y;
-    u16 resourceId;
+    RuntimeTransitionWork* work;
 
     work = (RuntimeTransitionWork*)task->workData;
 
@@ -3634,8 +3634,8 @@ s32 func_001e60b0(RuntimeTask* task)
             }
             else
             {
-                func_00195020(work->windowTask);
                 work->state = 6;
+                func_00195020(work->windowTask);
             }
             break;
 
@@ -4016,12 +4016,12 @@ u32 func_001e6d50(HCdvd* request, void** outFile, u16 majorId,
 // FUN_001E6EA0 NONMATCHING
 void func_001e6ea0(u8* data)
 {
-    u16* simpleRecord;
     u32 index;
-    void* object;
     u16* record;
+    void* object;
     u32 version;
     u32 firstIndex;
+    u16* simpleRecord;
 
     if (data == NULL)
     {
@@ -5100,6 +5100,8 @@ void func_001e88f0(RuntimeWork* work, s32 section, RuntimeVec3* output)
 }
 
 // FUN_001E8E80 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void* func_001e8e80(RuntimeWork* rawWork, void* material)
 {
     typedef struct RuntimeGeometryConfig
@@ -5444,6 +5446,7 @@ void* func_001e8e80(RuntimeWork* rawWork, void* material)
     *(RuntimeVec4*)((u8*)geometry->frame + 4) = bounds;
     return geometry;
 }
+#pragma pop
 
 // FUN_001E9920. Allocate path buffers and initialize sampled path state.
 void func_001e9920(void* outputData, const void* configData)
@@ -5598,8 +5601,8 @@ void func_001e9af0(RuntimeWork* workData, u32* renderRef)
         u8* cursor2;
 
         color2 = *(u8**)((u8*)renderObject + 0x30);
-        count2 = *(u32*)((u8*)work->config + 0xc);
         func_001ed0f0(0.0f, (RuntimeWork*)work, 0, color2);
+        count2 = *(u32*)((u8*)work->config + 0xc);
         func_001ed0f0(0.0f, (RuntimeWork*)work, 1, color2 + 4);
         color2[8] = (u8)((color2[0] + color2[4]) >> 1);
         color2[9] = (u8)((color2[1] + color2[5]) >> 1);
@@ -6499,23 +6502,23 @@ void func_001ebd80(RuntimeWork* work, s32 param2)
     } RuntimeSurfaceQueue;
 
     RuntimeSurfaceQueue* queue = (RuntimeSurfaceQueue*)work;
-    u8* config;
+    RuntimeVec3 accum;
     f32 weightNear[2];
     f32 weightFar[2];
     f32 vel0;
     f32 vel1;
-    s32 sideBool;
+    RuntimeVec3 delta;
     f32 coefA;
     f32 coefB;
     f32 coefC;
-    RuntimeVec3 accum;
-    RuntimeVec3 delta;
     s32 idxA;
     s32 idxB;
     s32 idxW;
+    s32 section2;
+    u8* config;
     f32 weight0;
     f32 weight1;
-    s32 section2;
+    s32 sideBool;
 
     config = *(u8**)queue->config;
     weightNear[0] = *(f32*)(config + 0x1c);
@@ -7384,8 +7387,8 @@ void func_001edbe0(RuntimeRenderCollection* work)
             material = work->renderObjects[index * 2 + 1];
             ((u8*)material)[4] = color.red;
             ((u8*)material)[5] = color.green;
-            ((u8*)material)[6] = color.blue;
             ((u8*)material)[7] = color.alpha;
+            ((u8*)material)[6] = color.blue;
         }
 
         {

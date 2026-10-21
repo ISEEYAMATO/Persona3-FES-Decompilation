@@ -558,8 +558,8 @@ void btlMainInitStateUnitCreate(BtlStateWork* work)
             unit->flags2 |= 8;
             unit->resTypeId = FUN_003b6000(charId, model);
             FUN_001a0590(unit->resTypeId, 1);
-            FUN_00287b20(unit, 1);
             FUN_00282d40(unit->unk_9e4, unit, unit->unk_9e0, 0, unit->unk_9e8);
+            FUN_00287b20(unit, 1);
             FUN_002831c0(unit, 0);
             FUN_00282bc0(unit);
             if (*(s32*)((u8*)unit->mdl + 0x3f8) == 0)
@@ -807,7 +807,6 @@ u32 btlMainUpdateStateUnitCreate(BtlStateWork* work)
 // FUN_0029be40 NONMATCHING
 void btlMainInitStateUnitLoad(BtlStateWork* work)
 {
-    BtlUnit* unit;
     BtlPacket* modelPacket;
     BtlPacket* formationPacket;
     BtlPacket* packet;
@@ -815,6 +814,7 @@ void btlMainInitStateUnitLoad(BtlStateWork* work)
     u64 formationPacketUID;
     u64 lastPacketUID;
     u32 firstUnit;
+    BtlUnit* unit;
     firstUnit = 1;
     modelPacketUID = 0;
     formationPacketUID = 0;
@@ -1102,8 +1102,8 @@ void btlMainInitStateRevival(BtlStateWork* work)
     dependentPacket = FUN_002dd4a0(0x1b7, 0);
     dependentPacket->unk_00 = 4;
     dependentPacket->parentUID = packet->uid;
-    btlPacketRegister(dependentPacket, BTLPACKET_TYPE_1);
     dependentPacket->actionUID = action->uid;
+    btlPacketRegister(dependentPacket, BTLPACKET_TYPE_1);
 
     FUN_0029ea60(0x1b7, &paramA, &paramB);
     packet = FUN_0029f4b0(paramA, paramB, 0x10);
@@ -1401,8 +1401,8 @@ void btlMainInitStateCondition(BtlStateWork* work)
     for (unit = gBtl->unitLists[0].head; unit != ((void*)0); unit = unit->next)
     {
         unitId = unit->datUnit->id;
-        oldCondition = FUN_0016c920(unitId);
         newCondition = oldCondition;
+        oldCondition = FUN_0016c920(unitId);
         if (FUN_0030b5a0(unit->datUnit, 0) == 0)
         {
             switch (oldCondition)
@@ -2091,6 +2091,10 @@ void FUN_0029ee20(u32 param_1)
 
 {
 
+  RwV3d direction;
+
+  RwV3d cross;
+
   char cVar1;
 
   float fVar2;
@@ -2112,10 +2116,6 @@ void FUN_0029ee20(u32 param_1)
   RwV3d unitPos;
 
   RwV3d targetPos;
-
-  RwV3d direction;
-
-  RwV3d cross;
 
   
 
@@ -2533,9 +2533,9 @@ u32 FUN_0029faa0(BtlMainColorWork *param_1)
 
       fVar9 = 2.0f / (fVar12 * fVar12 + fVar13 * fVar13 + fVar15 * fVar15 + fVar14 * fVar14);
 
-      fVar10 = fVar15 * fVar9;
-
       fVar11 = fVar14 * fVar9;
+
+      fVar10 = fVar15 * fVar9;
 
       fVar9 = fVar13 * fVar9;
 
@@ -3094,7 +3094,7 @@ u32 FUN_002a0440(float *param_1)
 
             *(char *)(iVar7 + 0x3c) =
 
-                 (char)(int)((fVar8 * (float)*(u8 *)(iVar7 + 0x38) * fVar17 + fStack[0] * fVar16)
+                 (char)(int)((fVar8 * (float)*(u8 *)(iVar7 + 0x38) * fStack[0] + fVar17 * fVar16)
                              * 255.0f + 0.5f);
 
             *(char *)(iVar7 + 0x3d) =
@@ -3530,8 +3530,8 @@ u32 FUN_002a1710(int *param_1)
       }
       for (uVar4 = 0; uVar4 < *(u16 *)(iVar1 + 0x6a); uVar4 = uVar4 + 1 & 0xffff) {
         iVar2 = *(int *)(*(int *)(iVar1 + uVar4 * 4 + 0x38) + 0x30);
-        color = *(RwRGBA *)(iVar2 + 0x30);
         color.a = 0xff;
+        color = *(RwRGBA *)(iVar2 + 0x30);
         FUN_0027f730(iVar2,*(u32 *)&color);
       }
       param_1[2] = param_1[2] + 1;
@@ -4036,9 +4036,9 @@ void FUN_002a2660(u16 *param_1,u32 param_2,u32 param_3,u32 param_4,u32 param_5,u
 
       uVar3 = puVar2[1];
 
-      uVar4 = puVar2[2];
-
       *(u32 *)(param_1 + (u32)uVar1 * 0xe + 2) = *puVar2;
+
+      uVar4 = puVar2[2];
 
       *(u32 *)(param_1 + (u32)uVar1 * 0xe + 4) = uVar3;
 
@@ -4416,8 +4416,8 @@ void FUN_002a2c40(u8* param_2,f32* param_3,f32 param_1)
     param_3[2] = interpolation.values[2] * fVar4;
     *param_3 = interpolation.values[4] * param_1 + *param_3 + 0.0f;
     param_3[1] = interpolation.values[5] * param_1 + param_3[1] + 0.0f;
-    param_3[2] = interpolation.values[6] * param_1 + param_3[2] + 0.0f;
     param_3[3] = interpolation.values[3] * fVar4 + interpolation.values[7] * param_1;
+    param_3[2] = interpolation.values[6] * param_1 + param_3[2] + 0.0f;
   }
   return;
 }

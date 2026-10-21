@@ -613,8 +613,8 @@ void FUN_00289b50(BtlAction* action)
         RwMatrixRotate(&rotation, &D_00697880, angle, rwCOMBINEREPLACE);
         FUN_004c6c60(&direction, &direction, &rotation);
 
-        destination.x = target.x + direction.x * distance;
         destination.y = target.y + direction.y * distance;
+        destination.x = target.x + direction.x * distance;
         destination.z = target.z + direction.z * distance;
 
         switch (unit->charId)
@@ -1113,8 +1113,8 @@ void btlActionInitStateStart(BtlAction* action)
             pktB->actionUID = actionUID;
             btlPacketRegister(pktB, BTLPACKET_TYPE_1);
             
-            pkt = FUN_002dd4a0(0x156, 0);
             pkt->unk_00 = 4;
+            pkt = FUN_002dd4a0(0x156, 0);
             pkt->parentUID = pktB->uid;
             pkt->actionUID = actionUID;
             btlPacketRegister(pkt, BTLPACKET_TYPE_1);
@@ -1275,8 +1275,8 @@ BtlPacket* result;
         }
         else if (action->passiveSkillsFlags & 2)
         {
-            messageId = 0x224;
             voice = 0xb;
+            messageId = 0x224;
             tableIndex = 0x2f;
             work.hpDelta = stat * 100 / 0x9c4;
             action->passiveSkillsFlags &= ~2;
@@ -1611,7 +1611,7 @@ void btlActionInitStateCommand(BtlAction* action)
 void btlActionUpdateStateCommand(BtlAction* action)
 {
     s16 command;
-    u16 effect;
+    short effect;
     BtlPacket* packet;
     BtlAction* iter;
 
@@ -1784,7 +1784,7 @@ void btlActionUpdateStateTarget(BtlAction* action)
     BtlPacket* packet;
     BtlAction* iter;
     u16 effect;
-    u16 i;
+    short i;
     u8 targetType;
 
     FUN_00289b50(action);
@@ -2118,8 +2118,8 @@ void btlActionUpdateStateSupport(BtlAction* action)
             work[0] = -((FUN_002ffd70(unit->datUnit) & 0xffff) - 1);
             if (work[0] >= 0) work[0] = 0;
             work[1] = -((FUN_002ffd80(unit->datUnit) & 0xffff) - 1);
-            if (work[1] >= 0) work[1] = 0;
             packet = FUN_002d7e20(action, action, work, 1, 1);
+            if (work[1] >= 0) work[1] = 0;
             packet->actionUID = action->uid;
             btlPacketRegister(packet, BTLPACKET_TYPE_1);
             return;
@@ -2335,7 +2335,7 @@ void btlActionInitStateReady(BtlAction* action)
 void btlActionUpdateStateReady(BtlAction* action)
 {
     BtlAction* target;
-    u16 i;
+    short i;
     u16 command;
 
     if (btlPacketCountById(0x506) != 0)
@@ -2429,7 +2429,7 @@ void btlActionInitStateMoveTarget(BtlAction* action)
     f32 moveSpeed;
     u16 specificId;
     u16 someFlag;
-    u16 isSkillType;
+    short isSkillType;
     u16 isFirstSpecial;
     u16 speedIndex2;
     BtlPacket* packet;
@@ -3016,11 +3016,11 @@ void btlActionInitStateAttack(BtlAction* action)
 #pragma schedule on
 void btlActionUpdateStateAttack(BtlAction* action)
 {
-    BtlAction* victim;
-    BtlAction* basis;
-    BtlPacket* packet;
-    BtlPacket* animPacket;
-    BtlPacket* subHitPacket;
+    u64 sp258;
+    u32 workBuf[7];
+    s16 sp190;
+    s16 sp180;
+    s16 sp1D0;
     /* Per-caller ABI declarations: the RoundUp caller intentionally uses a float-first signature. */
     extern BtlPacket* FUN_00284200(BtlUnit*, u16, u32, u32, f32);
     extern s64 FUN_002835e0(BtlUnit*, u16, f32);
@@ -3032,18 +3032,10 @@ void btlActionUpdateStateAttack(BtlAction* action)
     extern s32 FUN_002f8eb0(BtlUnit*, u16);
     extern u16 FUN_00308c60(DatUnit*);
     extern u16 FUN_00308ed0(DatUnit*);
-    u64 actionUID;
-    u64 sp260;
-    u64 sp258;
-    u32 workBuf[7];
-    s16 sp190;
-    s16 sp180;
-    s16 sp1D0;
     s16 sp1C0;
     s16 sp1B0;
     s16 sp1AE;
     s16 sp1E0;
-    s16 sp2BE, sp2BC, sp2BA, sp2B8;
     s32 sp240;
     s32 sp230;
     s32 sp220;
@@ -3051,6 +3043,7 @@ void btlActionUpdateStateAttack(BtlAction* action)
     s32 sp200;
     s32 sp1F0;
     s32 sp160;
+    s16 sp2BE, sp2BC, sp2BA, sp2B8;
     s32 weaponType;
     s32 var_17;
     s32 var_21;
@@ -3059,12 +3052,19 @@ void btlActionUpdateStateAttack(BtlAction* action)
     s32 spC0;
     s32 spB0;
     s16* sp17C;
-    void* sp270;
     u8 groupCount;
     u8 hitCount;
     u8 sp120;
     u8 unk1f0;
     u8* result;
+    BtlAction* victim;
+    BtlAction* basis;
+    void* sp270;
+    BtlPacket* packet;
+    BtlPacket* animPacket;
+    BtlPacket* subHitPacket;
+    u64 actionUID;
+    u64 sp260;
     f32 var_f20;
     f32 var_f22;
     f32 var_f21;
@@ -3916,7 +3916,7 @@ void btlActionUpdateStateSkill(BtlAction *action) {
     s32 sp380;
     u16 sp370;
     u16 sp360;
-    u16 sp350;
+    short sp350;
     u16 sp340;
     u16 sp330;
     u16 sp320;
@@ -5731,7 +5731,7 @@ void btlActionUpdateStateReinforce(BtlAction* action)
     RwV3d direction;
     RwV3d destination;
     u16 state;
-    u16 charId;
+    short charId;
     BtlUnit* unit = action->unit;
     charId = unit->charId;
 
@@ -6183,8 +6183,8 @@ void btlActionUpdateStateError(BtlAction* action)
     }
 
     animPacket = btlUnitCreateAnimPacketSignedId(action->unit, animation, 6, one, BTLUNIT_ANIM_MODE_ONCE);
-    ACTION_U16(animPacket, 0x4a) = duration + 6;
     animPacket->actionUID = actionUID;
+    ACTION_U16(animPacket, 0x4a) = duration + 6;
     btlPacketRegister(animPacket, BTLPACKET_TYPE_1);
 
     packet = func_002bb2f0(ACTION_U32(gBtl, 0xc24 + table * 4), action->unit, 0, animPacket->uid, 0x100);
@@ -6497,6 +6497,11 @@ void btlActionInitStateEscape(BtlAction* action)
 // FUN_00296890 NONMATCHING
 void btlActionUpdateStateEscape(BtlAction* action)
 {
+    RwV3d destination;
+    u16 count;
+    u16 i;
+    u16 mode;
+    u16 hasDownEnemy;
     BtlAction* current;
     BtlAction* escapeActions[10];
     BtlUnit* unit;
@@ -6507,11 +6512,6 @@ void btlActionUpdateStateEscape(BtlAction* action)
     RwV3d sphereCenter;
     RwV3d direction;
     RwV3d rotation;
-    RwV3d destination;
-    u16 count;
-    u16 i;
-    u16 mode;
-    u16 hasDownEnemy;
 
     rootPacket = func_002bd780(action->unit, action->target.commandId);
     btlAction0028a780(action);
@@ -7091,9 +7091,9 @@ void btlActionInitStateRoundUpMes(BtlAction* action)
     {
         rootPkt = FUN_002b8f40(1);
         rootPkt->actionUID = action->uid;
-        btlPacketRegister(rootPkt, BTLPACKET_TYPE_0);
-
         selected = *(void**)((u8*)gBtl + 0x150);
+
+        btlPacketRegister(rootPkt, BTLPACKET_TYPE_0);
         while (selected != NULL)
         {
             if (FUN_00300580(ACTION_U32(selected->unit, 0xa2c), 0x180000) == 0 &&
@@ -7235,9 +7235,9 @@ void btlActionUpdateStateRoundUpMes(BtlAction* action)
         packet = FUN_002dd100(10, 2, 0x12);
         btlPacketRegister(packet, BTLPACKET_TYPE_1);
         callbackPacket = func_0027f410((u32)btlActionInitStateRoundUpMes, action);
-        btlPacketRegister(callbackPacket, BTLPACKET_TYPE_1);
-
         setup[0] = DAT_007cb050[0];
+
+        btlPacketRegister(callbackPacket, BTLPACKET_TYPE_1);
         setup[1] = DAT_007cb050[1];
         setup[2] = DAT_007cb050[2];
         setup[3] = 3;
@@ -7429,8 +7429,8 @@ void btlActionUpdateStateRoundUp(BtlAction* action)
     voicePacket = btlVoice002e2be0((BtlAction*)ACTION_U32(action, 0x494), 5, 0, 0, 0);
     voicePacket->unk_00 = 5;
     voicePacket->parentUID = packet->uid;
-    voicePacket->actionUID = actionUID;
     btlPacketRegister(voicePacket, BTLPACKET_TYPE_1);
+    voicePacket->actionUID = actionUID;
 
     voicePacket = FUN_002dd690(3, 0x693358);
     voicePacket->unk_00 = 5;

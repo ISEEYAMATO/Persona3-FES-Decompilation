@@ -2418,9 +2418,9 @@ u32 func_0031c1d0(int param_1)
 
       }
 
-      sVar8 = sVar3 + 1000;
-
       lVar6 = (int)mdlSearch(7,sVar8,0);
+
+      sVar8 = sVar3 + 1000;
 
       if (lVar6 == 0) {
 
@@ -2941,9 +2941,9 @@ u32 func_0031c820(u16 param_1,u16 param_2,char* param_3)
 
   case 1:
 
-    uVar2 = datGetEquipmentIdx((short)param_2,1);
-
     sVar3 = datGetEquipmentId((short)param_2,uVar2);
+
+    uVar2 = datGetEquipmentIdx((short)param_2,1);
 
     if (param_2 == 1) {
 
@@ -4348,8 +4348,8 @@ void FUN_0031e4d0(int *param_1,u32 param_2,u32 param_3)
 
   
 
-  uVar8 = param_2 & 0xffff;
   bVar1 = 0;
+  uVar8 = param_2 & 0xffff;
 
   if (uVar8 == 2) {
     uVar6 = param_3 & 0xffff;
@@ -4470,25 +4470,25 @@ void FUN_0031e8d0(int *param_1,u32 param_2,u32 param_3,int param_4,u32 param_5)
 
 {
 
-  u32 *puVar1;
+  int aiStack_10 [4];
 
-  bool bVar2;
+  int aiStack_20 [4];
 
-  u32 uVar3;
-
-  u32 uVar4;
-
-
-  u32 uVar6;
+  u8 auStack_120 [256];
 
   u32 uVar7;
 
 
-  u8 auStack_120 [256];
+  u32 uVar6;
 
-  int aiStack_20 [4];
+  u32 uVar4;
 
-  int aiStack_10 [4];
+
+  u32 uVar3;
+
+  bool bVar2;
+
+  u32 *puVar1;
 
   
 
@@ -5122,9 +5122,9 @@ void FUN_0031ef80(int *param_1,short param_2,short param_3)
 
           uVar6 = FUN_0016cd60();
 
-          uVar3 = FUN_00308c60(uVar6);
-
           unaff_s4_lo = param_2 * 0xc + (uVar3 & 0xff) * 0x138 + 0x68f0f0;
+
+          uVar3 = FUN_00308c60(uVar6);
 
         }
 
@@ -6228,9 +6228,9 @@ LAB_003209a8:
 
     }
 
-    piVar8[0x15] = 0;
-
     puVar10 = (u32 *)FUN_00321050(iVar4);
+
+    piVar8[0x15] = 0;
 
     piVar8[0x14] = (int)puVar10;
 

@@ -28879,9 +28879,9 @@ int FUN_00544a00(int param_1,u64 param_2)
 
   }
 
-  auStack_58[0] = *(u32 *)(param_1 + 0x5c);
-
   lVar4 = FUN_005438c0(auStack_58,4,1,param_2);
+
+  auStack_58[0] = *(u32 *)(param_1 + 0x5c);
 
   if (lVar4 != 1) {
 
@@ -89763,20 +89763,6 @@ int FUN_00571088(int param_1,u32 param_2)
 
 {
 
-  u8 uVar1;
-
-  u32 uVar2;
-
-  int iVar3;
-
-  int iVar4;
-
-  u32 *puVar5;
-
-  u32 *puVar6;
-
-  u8 *puVar7;
-
   u8 *puVar8;
 
   u8 *puVar9;
@@ -89792,6 +89778,20 @@ int FUN_00571088(int param_1,u32 param_2)
   u32 uVar14;
 
   int iVar15;
+
+  u8 uVar1;
+
+  u32 uVar2;
+
+  int iVar3;
+
+  int iVar4;
+
+  u32 *puVar5;
+
+  u32 *puVar6;
+
+  u8 *puVar7;
 
 
 
@@ -96505,9 +96505,9 @@ void FUN_005761d8(int param_1,int param_2,int *param_3)
 
   uVar5 = CONCAT31(CONCAT21(CONCAT11(puVar9[4],puVar9[5]),puVar9[6]),puVar9[7]);
 
-  uVar12 = CONCAT31(CONCAT21(CONCAT11(*puVar9,puVar9[1]),puVar9[2]),puVar9[3]) << (uVar4 & 0x1f);
-
   puVar8 = puVar9 + 8;
+
+  uVar12 = CONCAT31(CONCAT21(CONCAT11(*puVar9,puVar9[1]),puVar9[2]),puVar9[3]) << (uVar4 & 0x1f);
 
   if ((int)uVar4 < 0x10) {
 
@@ -97234,9 +97234,9 @@ void FUN_00576a48(int param_1,int param_2,int *param_3,int param_4)
 
   uVar2 = uVar14 - 0xe0;
 
-  *(u32 *)(param_1 + 0xb8) = uVar14;
-
   uVar3 = 1;
+
+  *(u32 *)(param_1 + 0xb8) = uVar14;
 
   if (0xf < uVar2) {
 

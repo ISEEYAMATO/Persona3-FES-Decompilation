@@ -840,8 +840,8 @@ state3_accept:
         param_1->values[param_1->used] = data->selection_detail;
         param_1->used++;
         if (param_1->used >= param_1->capacity) {
-            param_1->state = 4;
             FUN_003c6f10((s32)list);
+            param_1->state = 4;
             memcpy(&param_1->fusion, &data->fusion, 0x54);
             FUN_003d8850((s32)param_1, 4, 1);
             FUN_003d8850((s32)param_1, 6, 1);
@@ -1079,8 +1079,8 @@ void fclCombineList003db650(FclResultStream* stream, FclDb650Result* result,
     s16 alpha;
     char number_text[0x10];
     work = owner->container->work;
-    x = result->x;
     y = result->y;
+    x = result->x;
     alpha = result->alpha;
     mode = result->mode;
     (void)stream;
@@ -2462,9 +2462,9 @@ u64 FUN_003df4a0(u64 param_1,int param_2)
 
   case 2:
 
-    *(u32 *)(iVar1 + 0xc) = 4;
-
     *(u16 *)(iVar1 + 0x2e) = 0;
+
+    *(u32 *)(iVar1 + 0xc) = 4;
 
   case 4:
 
@@ -4232,7 +4232,7 @@ void FUN_003e6400_y2(u32 param_1,u8* param_2)
 
   u32 *puVar14;
 
-  int iVar15;
+  u32 iVar15;
 
   int iVar18;
 

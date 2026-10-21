@@ -411,8 +411,8 @@ void* func_001d9860(KwlnTask* task)
         }
         if (found != 0)
         {
-            child = scrCreateTaskFromHeader(10, D_007CE220, 0);
             work->scriptTask[i] = child;
+            child = scrCreateTaskFromHeader(10, D_007CE220, 0);
             func_0035c1a0(child, (int)rec);
             work->state = 3;
         }
@@ -553,8 +553,8 @@ void K_Footstep_Update(Model* mdl, u16 charId, u16 resTypeId)
     }
 
     matrix = mdlGetMatrix(mdl);
-    position = &matrix->pos;
     primary = (u32)gMtScene->fldMajorId;
+    position = &matrix->pos;
     secondary = (u32)gMtScene->fldMinorId;
     if ((primary >= 0x14) && (primary < 0x1d) && (secondary >= 0x32))
     {
@@ -993,8 +993,8 @@ void* func_001dcb60(KwlnTask* task)
     RwV3d position;
     f32 rhw;
     f32 depth;
-    f32 x;
     f32 y;
+    f32 x;
     f32 cornerX0;
     f32 cornerY0;
     f32 cornerX1;
@@ -2916,6 +2916,8 @@ footstep_target_done:
 }
 
 // FUN_001dfa70 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void* func_001dfa70(KwlnTask* task)
 {
     FldEffectResourceWork* work;
@@ -3186,6 +3188,7 @@ void* func_001dfa70(KwlnTask* task)
 footstep_continue:
     return KWLNTASK_CONTINUE;
 }
+#pragma pop
 
 // FUN_001e04e0
 void func_001e04e0(KwlnTask* task)

@@ -565,8 +565,8 @@ void* func_001cd9a0(u32 charId)
         }
         else if (PTR_DAT_007cd540[0] == 14 && PTR_DAT_007cd540[1] == 5)
         {
-            type = 9;
             id = 0x107;
+            type = 9;
         }
         else if (PTR_DAT_007cd540[0] == 14 &&
                  func_0016ef30() == 6 &&
@@ -842,8 +842,8 @@ u32 func_001ce960(void)
             (Model*)func_00317450(uGpffffb52c);
         offset.x = func_001ad8b0(gFldUnitsPc[i].resrc->collisCtlTask);
         offset.y = offset.x;
-        offset.z = offset.x;
         func_00318a90(gFldUnitsPc[i].resrc->baseMdl, &offset, 2);
+        offset.z = offset.x;
         func_004cb420(func_00318b70(gFldUnitsPc[i].mdl),
                       func_00318b70(gFldUnitsPc[i].resrc->baseMdl));
         func_00317730(gFldUnitsPc[i].resrc->baseMdl);
@@ -1107,7 +1107,7 @@ FldUnit* func_001cf940(u32 encounter, void* unitData)
     s32 i;
     u32 levelSum;
     u16 enemyId;
-    u16 tier;
+    short tier;
     FldUnit* unit;
     FldUnit* current;
     const u8* spawn;
@@ -1256,10 +1256,10 @@ FldUnit* K_FldUnit_CreateReaper(u32 unused, const RwV3d* spawnPos)
 // FUN_001CFDD0 NONMATCHING
 u32 func_001cfdd0(u32 index)
 {
-    FldUnit* unit;
-    u16 resourceId;
-    RwV3d axis;
     Model* baseModel;
+    RwV3d axis;
+    u16 resourceId;
+    FldUnit* unit;
     unit = &gFldUnitsEc[index];
     if (unit->genusBase == NULL || unit->resrc != NULL)
     {
@@ -1482,8 +1482,8 @@ void func_001d03f0(u16 charId)
     {
         unit->genusBase = (DatUnitGenusBase*)datUnitCreatePc(1);
         unit->mdl = (Model*)func_001cd9a0(1);
-        unit->charId = 1;
         unit->unk_44 = 0;
+        unit->charId = 1;
         unit->unk_184 = datPersonaGetLevelByPcId(1) & 0xff;
         unit->unk_188 = datGetLevel(1) & 0xff;
         unit->unk_174 = (KwlnTask*)func_001dd460(0, 0, 0x106f);
@@ -1650,8 +1650,8 @@ u8* func_001d0880(s32 ordinal, s32 targetCount)
     best = NULL;
     bestIndex = 0;
     func_001bff20();
-    distanceMode = func_001c0040();
     threshold = (distanceMode == 3 || distanceMode == 1) ? 1500.0f : 2000.0f;
+    distanceMode = func_001c0040();
     sceneMode = K_Scene_001a0250();
     if (sceneMode == 1)
     {
@@ -1823,8 +1823,8 @@ void func_001d0e50(s32 isDungeon)
 
     for (i = isDungeon ? 0 : 1; i < FLDUNIT_PC_MAX; i++)
     {
-        unit = &gFldUnitsPc[i];
         genusBase = &unit->genusBase;
+        unit = &gFldUnitsPc[i];
         if (*genusBase != NULL)
         {
             model = &unit->mdl;
@@ -2467,8 +2467,8 @@ u8* func_001d2300(s32 ordinal, s32 maxCount)
             {
                 if (*(u32*)DAT_0086e580 == 1)
                 {
-                    delta.x = pos->x - heroPos.x;
                     delta.y = pos->y - heroPos.y;
+                    delta.x = pos->x - heroPos.x;
                     delta.z = pos->z - heroPos.z;
                     if (RwV3dLength(&delta) < 500.0f)
                     {
@@ -2536,8 +2536,8 @@ void func_001d2610(void)
     {
         if (func_001a02c0() == 0)
         {
-            scene = func_001b9120();
             *(u16*)(scene + 0x44) = 100;
+            scene = func_001b9120();
         }
         chance = func_00488f30();
         scene = func_001b9120();
@@ -2638,8 +2638,8 @@ void func_001d2a10(void)
     void** cell;
     FldUnit* ecUnits;
 
-    ecUnits = gFldUnitsEc;
     memset(DAT_0086b180, 0, 0xc40);
+    ecUnits = gFldUnitsEc;
     if (piGpffffa850[0] == -1)
     {
         return;
@@ -2875,8 +2875,8 @@ void* func_001d32a0(KwlnTask* task)
         {
             K_FldUnit_CreateReaper(1, &spawnPosCopy);
             datSetFlag(0x1423, 1);
-            work[5]++;
             work[0] = 1;
+            work[5]++;
         }
         break;
     }

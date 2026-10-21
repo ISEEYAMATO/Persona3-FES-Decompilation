@@ -3419,9 +3419,9 @@ void FUN_003d1df0(s32 param_1,int param_2)
 
   fVar6 = *(f32 *)DAT_006a4618_abs;
 
-  sVar1 = *(short *)(param_2 + 0x14);
-
   sVar2 = *(short *)(param_2 + 0x16);
+
+  sVar1 = *(short *)(param_2 + 0x14);
 
   uVar3 = *(s16 *)(param_2 + 0x26);
 
@@ -3705,8 +3705,8 @@ int iVar5;
     switch(uVar2 + 1) {
     case 1:
     case 2:
-      puVar1[2] = 0xc;
       puVar1[3] = uVar2;
+      puVar1[2] = 0xc;
       break;
     case 3:
     case 4:

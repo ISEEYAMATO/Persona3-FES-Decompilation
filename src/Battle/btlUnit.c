@@ -518,8 +518,8 @@ void func_0027f940(BtlUnit* unit, BtlUnit* source, BtlUnit* target,
     u16 charId;
     f32 distance;
     f32 scale;
-    RwV3d firstOffset;
     RwV3d scaledOffset;
+    RwV3d firstOffset;
     RwV3d positionValue;
     RwV3d center;
     RtQuat rotation;
@@ -953,8 +953,8 @@ f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
     sumY = 0.0f;
     sumZ = 0.0f;
     maxY = 0.0f;
-    minY = 100000000.0f;
     count = 0;
+    minY = 100000000.0f;
     lastUnit = NULL;
 
     for (genus = 0; genus < UNIT_GENUS_MAX; genus++)
@@ -1105,7 +1105,7 @@ void func_00280da0(BtlUnit* unit)
     RwV2d segment;
     RwV3d forward;
     RtQuat targetRot;
-    u16 pointCount;
+    short pointCount;
     u16 pointIndex;
     f32 remaining;
     f32 segmentLength;
@@ -1302,8 +1302,8 @@ u32 btlUnitUpdateMovePacket(void* work)
 {
     BtlUnitPacketMove* packet;
     BtlUnit* unit;
-    RwV3d start;
     RwV3d direction;
+    RwV3d start;
     RwV3d target;
     RwV3d end;
 
@@ -1560,8 +1560,8 @@ u32 btlUnitUpdateMoveToUnitPacket(void* work)
             {
                 func_002d1de0((RwV3d*)&targetRot, &targetUnit->pos, &packet->move.unit->pos);
                 bounds = func_00288da0(targetUnit, 0);
-                scaledCenterB.x = bounds->centerX * targetUnit->scale;
                 scaledCenterB.y = bounds->centerY * targetUnit->scale;
+                scaledCenterB.x = bounds->centerX * targetUnit->scale;
                 scaledCenterB.z = bounds->centerZ * targetUnit->scale;
                 RtQuatTransformVectors(&rotatedCenterB, &scaledCenterB, 1, &targetRot);
                 targetPos.x = targetUnit->pos.x + rotatedCenterB.x;
@@ -2176,8 +2176,8 @@ void btlUnitAnimate(BtlUnit* unit, s32 id, u16 blendFrameCount, f32 speed, u16 m
 
     bounds = func_00288da0(unit, requestedId);
     unit->sphereCenter.x = bounds->centerX;
-    unit->sphereCenter.y = bounds->centerY;
     unit->sphereCenter.z = bounds->centerZ;
+    unit->sphereCenter.y = bounds->centerY;
     unit->unk_8c = (f32)bounds->unk_6 * 2.0f;
     unit->sphereRadius = (f32)bounds->radius * 2.0f;
 
@@ -3660,8 +3660,8 @@ BtlUnit* unit;
         }
     }
 
-    unit->flags2 &= ~BTLUNIT_FLAG2_UPDATE;
     unit->flags2 |= BTLUNIT_FLAG2_UPDATE;
+    unit->flags2 &= ~BTLUNIT_FLAG2_UPDATE;
     FUN_00287b20((int)unit, 4);
 
     if (packet->flags & 8)
@@ -3831,8 +3831,8 @@ void btlUnitInit00285d30Packet(void* work)
 u32 btlUnitUpdate00285d30Packet(void* work)
 {
     BtlUnitPacket00285d30* packet;
-    BtlUnit* unit;
     s32 rgbStart;
+    BtlUnit* unit;
     s32 rgbDuration;
     s32 alphaStart;
     s32 alphaDuration;
@@ -4464,8 +4464,8 @@ void func_00286540(void)
                     yy = unit->rot.imag.y;
                     zz = unit->rot.imag.z;
                     ww = unit->rot.real;
-                    matrix.right.x = 1.0f - 2.0f * (yy * yy + zz * zz);
                     matrix.right.y = 2.0f * (xx * yy + zz * ww);
+                    matrix.right.x = 1.0f - 2.0f * (yy * yy + zz * zz);
                     matrix.right.z = 2.0f * (xx * zz - yy * ww);
                     matrix.up.x = 2.0f * (xx * yy - zz * ww);
                     matrix.up.y = 1.0f - 2.0f * (xx * xx + zz * zz);
@@ -5566,8 +5566,8 @@ void btlUnitInitFromCharId(BtlUnit* unit, u16 id)
         unit->sphereCenter.y = (f32)*(const s16*)(table + 2);
         unit->sphereCenter.z = (f32)*(const s16*)(table + 4);
         radius = *(const u16*)(table + 6);
-        radius2 = *(const u16*)(table + 8);
         unit->unk_8c = (f32)radius * 2.0f;
+        radius2 = *(const u16*)(table + 8);
         unit->sphereRadius = (f32)radius2 * 2.0f;
         unit->scale = (f32)scale / 50.0f;
         goto update;
@@ -5784,28 +5784,6 @@ void FUN_002891e0(void)
 
 {
 
-  RwRGBA clearColor;
-
-  int aiStack_40 [15];
-
-  u32 savedSource[4];
-
-  u32 savedTarget[4];
-
-  u32 uStack_64;
-
-  u32 uStack_68;
-
-  u32 uStack_6c;
-
-  u32 uStack_70;
-
-  u32 auStack_b0 [16];
-
-  u32 auStack_f0 [16];
-
-  int iVar12;
-
   u32 *puVar11;
 
   u32 *puVar10;
@@ -5827,6 +5805,28 @@ void FUN_002891e0(void)
   u32 uVar2;
 
   u16 uVar1;
+
+  RwRGBA clearColor;
+
+  int aiStack_40 [15];
+
+  u32 savedSource[4];
+
+  u32 savedTarget[4];
+
+  u32 uStack_64;
+
+  u32 uStack_68;
+
+  u32 uStack_6c;
+
+  u32 uStack_70;
+
+  u32 auStack_b0 [16];
+
+  u32 auStack_f0 [16];
+
+  int iVar12;
 
   
 

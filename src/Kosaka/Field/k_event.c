@@ -886,8 +886,8 @@ void* func_001c6a20(const FldUnit* unit, f32 maxDist, f32 fov)
                 delta.z = mdlGetMatrix(candidate->mdl)->pos.z -
                           mdlGetMatrix(unit->mdl)->pos.z;
 
-                line[0] = mdlGetMatrix(unit->mdl)->pos;
                 line[1] = mdlGetMatrix(candidate->mdl)->pos;
+                line[0] = mdlGetMatrix(unit->mdl)->pos;
                 line[0].y += 100.0f;
                 line[1].y += 100.0f;
                 if (K_FldFrame_Raycast(line, &hitPoint) == false)
@@ -1477,12 +1477,6 @@ void func_001c80c0(void)
 // FUN_001c8120 NONMATCHING
 void func_001c8120(void* work)
 {
-    RwV3d candidates[5];
-    RwV3d pcDelta;
-    RwV3d ecDelta;
-    RwV3d specialDelta;
-    RwV3d* candidate;
-    FldUnit* targetUnit;
     FldUnit* unit;
     u8* record;
     s32 slot;
@@ -1490,6 +1484,12 @@ void func_001c8120(void* work)
     s32 target;
     s32 j;
     u32 occupied;
+    RwV3d candidates[5];
+    RwV3d pcDelta;
+    RwV3d ecDelta;
+    RwV3d specialDelta;
+    RwV3d* candidate;
+    FldUnit* targetUnit;
 
     if (K_Scene_001a0250() == false)
     {
@@ -1628,12 +1628,6 @@ void func_001c8120(void* work)
 // FUN_001c8620 NONMATCHING
 void* K_FldEvent_UpdateFldEventTask(KwlnTask* fldEventTask)
 {
-    FldEvent* fldEvent;
-    u32* eventWords;
-    RwMatrix* heroMat;
-    RwMatrix heroMatBuf;
-    RwV3d markerPos;
-    RwV3d offset;
     RwV3d case4Marker;
     RwV3d case6Marker;
     RwV3d case8Offset;
@@ -1652,6 +1646,12 @@ void* K_FldEvent_UpdateFldEventTask(KwlnTask* fldEventTask)
     u32 active;
     u32 allLoaded;
     u8 scriptPath[128];
+    FldEvent* fldEvent;
+    u32* eventWords;
+    RwMatrix* heroMat;
+    RwMatrix heroMatBuf;
+    RwV3d markerPos;
+    RwV3d offset;
     struct
     {
         u8 pad[0x90];

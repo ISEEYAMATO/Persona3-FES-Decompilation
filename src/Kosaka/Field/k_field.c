@@ -374,8 +374,8 @@ void func_001b9140(u16 majorId, u16 minorId)
     if (majorId == 0x0e && minorId == 5)
     {
         fGpffffb544 = fGpffff844c;
-        fGpffffb540 = fGpffff8450;
         uGpffffb53c = 0x40800000;
+        fGpffffb540 = fGpffff8450;
     }
     else if ((majorId == 6 && minorId == 1) ||
              (majorId == 6 && minorId == 2) ||
@@ -477,8 +477,8 @@ void* func_001b9480(KwlnTask* fldRootTask)
         case 2:
             if (K_Fldrc_IsFldPacLoaded() != 0)
             {
-                ROOT_U32(work, 0x28) = FUN_001e7200((s16)work->majorId);
                 ROOT_U32(work, 0) = 3;
+                ROOT_U32(work, 0x28) = FUN_001e7200((s16)work->majorId);
             }
             break;
 
@@ -1201,9 +1201,6 @@ u16 func_001bab50(KwlnTask* task)
 // FUN_001bab60 NONMATCHING
 void func_001bab60(DungeonPattern* pattern, u32 orientationMask)
 {
-    u32 x;
-    u32 y;
-    u32 rotation;
     u32 rotationCount;
     u8 temp22[8];
     u8 temp12[8];
@@ -1212,6 +1209,9 @@ void func_001bab60(DungeonPattern* pattern, u32 orientationMask)
     u8 value;
     u8 low;
     u8 high;
+    u32 x;
+    u32 y;
+    u32 rotation;
 
     for (y = 0; y < 3; y++)
     {

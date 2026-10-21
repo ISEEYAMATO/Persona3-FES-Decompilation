@@ -1761,8 +1761,8 @@ void* func_001aaf30(const RwV3d* point, void* unused,
             if (distance < collector->distances[index])
             {
                 collector->points[index] = projected;
-                collector->normals[index] = triangle->normal;
                 collector->distances[index] = distance;
+                collector->normals[index] = triangle->normal;
             }
         }
         else
@@ -1835,6 +1835,8 @@ void* func_001aaf30(const RwV3d* point, void* unused,
 // inlined; retail does not jal any of them) - simpler single-path variant
 // with a fixed kind=3, no pathMode dispatch.
 // FUN_001ab390 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 s32 func_001ab390(void* collision, const RwV3d* pos,
                   RwV3d* translation, f32 sphereCollisRadius)
 {
@@ -1922,6 +1924,7 @@ s32 func_001ab390(void* collision, const RwV3d* pos,
     }
     return result;
 }
+#pragma pop
 
 // The existing model/matrix-derived position guess did not match retail
 // at all - retail's bytes have NO fldFrameMoveModel/mdlGetMatrix calls
@@ -1931,18 +1934,18 @@ s32 func_001ab390(void* collision, const RwV3d* pos,
 void* func_001ab640(const RwV3d* point, const void* triangle,
                     FldFrameCollisionCollector* collector)
 {
+    s32 index;
+    s32 i;
     const FldFrameCollisionTriangle* candidate;
     RwV3d projected;
     RwV3d normal;
     RwV3d vertices[3];
     RwV3d closest;
     RwV3d delta;
-    const RwV3d* vertexPointers[3];
-    RwMatrix* matrix;
     f32 distance;
     f32 planeDistance;
-    s32 index;
-    s32 i;
+    const RwV3d* vertexPointers[3];
+    RwMatrix* matrix;
 
     candidate = (const FldFrameCollisionTriangle*)triangle;
     normal = candidate->normal;
@@ -2122,8 +2125,8 @@ s32 func_001abd20(void* collisionWorld, const RwV3d* pos,
     {
         memset_k_fldFrame_typed(&collector.points[i], 0, sizeof(RwV3d));
         memset_k_fldFrame_typed(&collector.normals[i], 0, sizeof(RwV3d));
-        collector.distances[i] = 1.0e30f;
         *(u32*)((u8*)&collector + 0xa00 + i * 4) = 0;
+        collector.distances[i] = 1.0e30f;
     }
     collector.owner = collisionWorld;
 
@@ -2605,8 +2608,8 @@ u32 K_FldFrame_Raycast(const RwV3d* line, RwV3d* hitPointDst)
         ((gMtScene->fldMajorId > 0x32) && (gMtScene->fldMajorId < 0x4f)))
     {
         fldRes = MT_Scene_GetResListHead(RESRC_TYPE_FLD);
-        xGrid = (line[0].x + 400.0f) / 800.0f;
         zGrid = (line[0].z + 400.0f) / 800.0f;
+        xGrid = (line[0].x + 400.0f) / 800.0f;
         gridResTypeId = K_Field_Get()->dungeonCells[zGrid][xGrid].resourceId;
         while (fldRes != NULL)
         {
@@ -3477,8 +3480,8 @@ void* func_001ae580(KwlnTask* task)
     s32 mode;
     s32 pointCount;
 
-    work = fldFrameMoveWork(task);
     model = fldFrameMoveModel(work);
+    work = fldFrameMoveWork(task);
     pointCount = work->pointCount;
     mode = work->mode;
     if (mode == 1)
@@ -4310,7 +4313,7 @@ f32 func_001b02c0(s32 inputIndex, s32 usePad)
 {
     RwV3d direction;
     RwV3d normalized;
-    u16 flags;
+    short flags;
     s32 offset;
     s32 i;
     f32 angle;

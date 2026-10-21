@@ -1930,8 +1930,8 @@ u8 * FUN_003d2740(s32 param_1,u32 param_2)
         else {
           sprintf(auStack_50,&gp0xffffaa60,*(char **)(puVar10 + 4));
         }
-        bVar2 = 1;
         lVar9 = H_Cdvd_CacheFindFile(auStack_50,auStack_4);
+        bVar2 = 1;
         *(int *)(iVar3 + 200) = (int)lVar9;
         if (lVar9 == 0) {
           K_Assert((const char *)(u32)0x6a4648,0x393);
@@ -2692,9 +2692,9 @@ void FUN_003d38b0(u64 param_1,int param_2,int param_3)
 
     }
 
-    fVar12 = fGpffff8224 * (float)iVar6;
-
     fVar7 = (float)cosf(fVar12);
+
+    fVar12 = fGpffff8224 * (float)iVar6;
 
     fVar8 = (float)sinf(fVar12);
 
@@ -2821,7 +2821,7 @@ u8 * FUN_003d3d20(u64 param_1,u64 param_2)
 
   char cVar1;
 
-  u16 uVar2;
+  short uVar2;
 
   u32 *puVar3;
 
@@ -3784,13 +3784,13 @@ u8 * FUN_003d4ff0(u64 param_1,u32 param_2)
 
 {
 
-  int iVar1;
-
-  u32 *work;
+  int lVar4;
 
   u32 uVar3;
 
-  int lVar4;
+  u32 *work;
+
+  int iVar1;
 
   
 

@@ -1398,7 +1398,7 @@ u32 FUN_002dbb00(BtlUnit* param_1)
     u16 candidates[16];
     u16 count = 0;
     u16 firstCount = 0;
-    u16 slot;
+    short slot;
     u8* encounter = *(u8**)(iGpffffb6fc_y2 + 0xbbc);
     u8* table;
     u32 result;
@@ -1612,8 +1612,8 @@ u32 FUN_002dc180(BtlAction* action)
             if (*(u8*)((u8*)action + 0x28) == 0 &&
                 *(u8*)((u8*)action + 0x29) == 0)
             {
-                chance = FUN_0030FC40(0xc, unit->datUnit, unit->datUnit, 0, 0x10);
                 threshold = 4;
+                chance = FUN_0030FC40(0xc, unit->datUnit, unit->datUnit, 0, 0x10);
                 reduceBySkills = 1;
             }
             break;

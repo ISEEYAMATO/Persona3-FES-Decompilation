@@ -2349,9 +2349,9 @@ s32 FUN_002d2470(const f32* a, const f32* b, const f32* point, f32 tolerance)
 // FUN_002d25c0 NONMATCHING
 s32 FUN_002d25c0(const u8* param_1, const u8* param_2)
 {
-    s32 result;
-    s32 i;
     u8* list;
+    s32 i;
+    s32 result;
 
     result = 0;
     list = *(u8**)(iGpffffb6fc + 0x2cc);
@@ -2751,8 +2751,8 @@ u32 FUN_002d2f50(float param_1, u8 *param_2)
         float length;
         delta.x = *(float *)(param_2 + 0x08) - *(float *)(iGpffffb6fc + 0x798);
         delta.y = *(float *)(param_2 + 0x0c) - *(float *)(iGpffffb6fc + 0x79c);
-        length = FUN_004c6af0((f32*)&delta);
         *(float *)(param_2 + 0xb0 + ((u32)count * 4)) = length;
+        length = FUN_004c6af0((f32*)&delta);
         *(u8 **)(param_2 + 0x30 + ((u32)count * 4)) = iGpffffb6fc + 0x790;
         count = (u16)(count + 1);
     }
@@ -2819,8 +2819,8 @@ void FUN_002d32b0(float param_1)
             if ((corners[2] <= tileX) && (tileY <= corners[3]))
             {
                 corners[2] = tileX;
-                corners[3] = tileY;
                 extent[1] = z;
+                corners[3] = tileY;
             }
             if ((corners[4] <= tileX) && (corners[5] <= tileY))
             {
@@ -3176,19 +3176,19 @@ u32 FUN_002d4040(BtlUnit* unit)
 // FUN_002d41c0 NONMATCHING
 u32 FUN_002d41c0(RwV2d* output, f32 radius)
 {
-    RwV2d points[130];
-    RwV2d previousDelta;
-    RwV2d currentDelta;
-    RwV2d previousUnit;
-    RwV2d currentUnit;
-    RwV2d p0;
-    RwV2d p1;
-    RwV2d p2;
-    RwV2d p3;
-    u8* node;
-    u8* chosen;
-    u16 count;
     u16 i;
+    u16 count;
+    u8* chosen;
+    u8* node;
+    RwV2d p3;
+    RwV2d p2;
+    RwV2d p1;
+    RwV2d p0;
+    RwV2d currentUnit;
+    RwV2d previousUnit;
+    RwV2d currentDelta;
+    RwV2d previousDelta;
+    RwV2d points[130];
     f32 previousLength;
     f32 currentLength;
     f32 halfRadius;
@@ -3451,8 +3451,8 @@ u32 FUN_002d48c0(void* work, const RwV2d* start, const RwV2d* end, f32 radius)
     }
 
     *(u32*)(iGpffffb6fc + 0x9f0) = 0;
-    *(u32*)(iGpffffb6fc + 0x9f4) = 0;
     *(u32*)(iGpffffb6fc + 0x7ac) = 0;
+    *(u32*)(iGpffffb6fc + 0x9f4) = 0;
     delta.x = *(f32*)(iGpffffb6fc + 0x798) -
               *(f32*)(iGpffffb6fc + 0x8c8);
     delta.y = *(f32*)(iGpffffb6fc + 0x79c) -
@@ -4449,7 +4449,7 @@ void FUN_002d6620(BtlAction *action)
     u32 tableOffset;
     u32 specialFlags = 0;
     u8 attackType;
-    u8 datType;
+    char datType;
     u16 successfulTargets;
 
     specificId = action->target.specificId;
@@ -4958,8 +4958,8 @@ u32 FUN_002d79a0(void *arg)
                 else
                 {
                     u32 oldFlags;
-                    FUN_002ffd90(unit->datUnit, 0);
                     FUN_00300560(unit->datUnit, 0xffffff);
+                    FUN_002ffd90(unit->datUnit, 0);
                     FUN_003004f0(unit->datUnit, 0x80000);
                     oldFlags = unit->flags3 | 1;
                     unit->flags3 = oldFlags;
@@ -5797,8 +5797,8 @@ int FUN_002d8f70(int param_1)
     *(ushort *)(param_1 + 0x1a) = uVar2 | 0x40;
     switch(*(undefined2 *)(*(int *)(param_1 + 0x30) + 0xa4)) {
     default:
-      iVar4 = -1;
       break;
+      iVar4 = -1;
     case 1:
       bVar1 = *(byte *)(param_1 + 0x28);
       if ((bVar1 < 2) || ((uVar2 & 0x40) == 0)) {
@@ -6884,6 +6884,8 @@ s32 FUN_002d9d60(BtlAction* action)
 }
 
 // FUN_002d9d70 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 short FUN_002d9d70(int param_1)
 
@@ -7167,6 +7169,7 @@ short FUN_002d9d70(int param_1)
     }
   return sVar11;
 }
+#pragma pop
 
 // FUN_002da810
 s32 FUN_002da810(BtlAction* action)
@@ -7436,8 +7439,8 @@ void FUN_002dae30(u64 param_1)
                     else
                     {
                         u8* selected = candidates[datCalcRand(candidateCount)];
-                        *(u8**)(iGpffffb6fc + 0xa10) = selected;
                         FUN_002daa20(0, 7, *(u16*)(*(u8**)(selected + 4) + 2), 0, 4);
+                        *(u8**)(iGpffffb6fc + 0xa10) = selected;
                     }
                 }
                 break;

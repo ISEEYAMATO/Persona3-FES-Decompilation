@@ -711,8 +711,8 @@ void K_Fldrc_001b0a20(s16 majorId, s16 minorId)
     u8* field;
 
     field = (u8*)K_Field_Get();
-    *(u32*)(field + 0x1168) = 0;
     field = (u8*)K_Field_Get_A();
+    *(u32*)(field + 0x1168) = 0;
     *(u32*)(field + 0x1058) = 0;
 
     index = (u16)majorId;
@@ -902,23 +902,23 @@ void K_Fldrc_001b0a20(s16 majorId, s16 minorId)
 // FUN_001b10f0 NONMATCHING
 u32 K_Fldrc_Init()
 {
-    u32 state;
-    u32 count;
-    u32 i;
-    u32 errors;
-    u32 scenePath;
-    u8* node;
+    u16 handle;
+    u32 cameraType;
+    RwV3d cameraOffset;
+    RwMatrix cameraMatrix;
+    Resrc* next;
+    Resrc* list;
     void* resource;
     void* output;
-    Resrc* list;
-    Resrc* next;
-    RwMatrix cameraMatrix;
-    RwV3d cameraOffset;
+    u8* node;
+    u32 scenePath;
+    u32 errors;
+    u32 i;
     f32 cameraFov;
     f32 xzDeadZone;
     f32 yDeadZone;
-    u32 cameraType;
-    u16 handle;
+    u32 count;
+    u32 state;
 
     state = *(u32*)((u8*)K_Field_Get() + 0x1058);
     switch (state)
@@ -1793,8 +1793,8 @@ void FUN_001b2b90(u32 resource)
                 FUN_004d0d10(entry);
                 break;
             case 0x16:
-                entry = FUN_004c8680((u32)header);
                 FUN_004d0dc0(entry, (int)(code *)func_001a13b0, payload + 0x120);
+                entry = FUN_004c8680((u32)header);
                 FUN_004d0d10(entry);
                 break;
             case 0x0c:
@@ -2126,8 +2126,8 @@ void FUN_001b3480(u32 resource)
                     FUN_00524270(path, D_00678EF8);
                     FUN_00523ac8(token, &gp0xffff9550,
                                  *(u16*)(resource + 4));
-                    FUN_00523e68(path, token);
                     FUN_00523ac8(token, D_00678F08, query[1]);
+                    FUN_00523e68(path, token);
                     FUN_00523e68(path, token);
                     *(u32*)(resource +
                             *(u32*)(resource + 0x118) * 0x18 + 0x130) =
@@ -2280,8 +2280,8 @@ second_check:
     if (*(u32*)((u8*)resource + 0xa40) != 0)
     {
         object = *(u32*)((u8*)resource + 0xa40);
-        FUN_001a14c0(*(u32*)(object + 0x120));
         (*(void (**)(void*))DAT_0096017c_abs)((void*)object);
+        FUN_001a14c0(*(u32*)(object + 0x120));
         *(u32*)((u8*)resource + 0xa40) = 0;
     }
     return 1;
@@ -2375,8 +2375,8 @@ void FUN_001b3e50(void* camera, u32* resource)
     savedLight = *(RwV4d*)(fstate + 6);
     fstate = (f32*)FUN_00198570();
     savedFog = *(RwV4d*)(fstate + 6);
-    state = (u32*)FUN_00198570();
     stateData = (u32*)(*(u32*)((u8*)state + 4) + 0x10);
+    state = (u32*)FUN_00198570();
     for (count = 0; count < 16; count++)
     {
         savedStates[count] = stateData[count];
@@ -2617,8 +2617,8 @@ void FUN_001b4720(void* camera, u32* resource)
         savedStates[i] = stateData[i];
     }
 
-    light = FUN_00198560();
     value = FUN_0019fd40();
+    light = FUN_00198560();
     FUN_004944b0(light, value);
     light = FUN_00198570();
     value = FUN_0019fd70();
@@ -3380,8 +3380,8 @@ u32 FUN_001b61f0(void* resource, u32 archiveEntry)
         {
             return 0;
         }
-        config = *(u32*)((u8*)resource + 0x110);
         fldrc_apply_field_config(config);
+        config = *(u32*)((u8*)resource + 0x110);
         FUN_00100ec0((u32)resource);
         return 1;
     }
@@ -3409,8 +3409,8 @@ u32 FUN_001b6eb0(u16 group, u32 id)
     u32 result;
     u32 event;
 
-    id &= 0xffff;
     result = id;
+    id &= 0xffff;
     FUN_0017d920();
     FUN_0017da40();
     mode = (u8)FUN_0016ef30();

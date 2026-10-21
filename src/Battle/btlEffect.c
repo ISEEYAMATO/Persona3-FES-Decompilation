@@ -1994,8 +1994,8 @@ void func_002bc9c0(float param_1,float param_2,float param_3,float param_4,float
   defaultValue = DAT_00960088_abs[0];
   channel0 = (float)(param_7 >> 0x18);
   channel1 = (float)(param_7 >> 0x10 & 0xff);
-  channel2 = (float)(param_7 >> 8 & 0xff);
   channel3 = (float)(param_7 & 0xff);
+  channel2 = (float)(param_7 >> 8 & 0xff);
   for (uVar2 = 0; uVar2 < 4; uVar2 = uVar2 + 1) {
     vertexData[uVar2 * 0x10 + 6] = invDepth;
     vertexData[uVar2 * 0x10 + 8] = channel0;
@@ -2987,8 +2987,8 @@ void func_002be720(short *param_1,short param_2,short param_3,int param_4)
   if ((int)param_1[5] <= (int)uVar5) {
     uVar5 = (int)param_1[5];
   }
-  sVar2 = *param_1;
   iVar4 = (int)param_1[1] + (int)param_3 + -8;
+  sVar2 = *param_1;
   sVar1 = param_1[2];
   for (sVar7 = 0; sVar6 = (short)iVar4, (int)sVar7 < (int)(uVar5 & 0xffff); sVar7 = sVar7 + 1) {
     iVar4 = (int)sVar7;
@@ -3066,8 +3066,8 @@ void func_002bea80(short *param_1,short param_2,short param_3)
     uVar6 = (long)param_1[5];
   }
   sVar1 = *param_1;
-  iVar4 = (int)param_1[1] + (int)param_3 + -8;
   sVar2 = param_1[2];
+  iVar4 = (int)param_1[1] + (int)param_3 + -8;
   for (sVar8 = 0; sVar7 = (short)iVar4, (long)sVar8 < (long)(uVar6 & 0xffff); sVar8 = sVar8 + 1) {
     sVar5 = sVar2 + 0xfa1 + sVar8;
     if ((long)param_1[3] == (long)((int)sVar2 + (int)sVar8)) {
@@ -3192,8 +3192,8 @@ u64 func_002bef20(u64 param_1)
       if ((*(u32 *)(DAT_007ce3ec + 0x14) & 0x2000000) == 0) {
         func_0016f1f0(0x140c,0);
         func_0016f1f0(0x1409,0);
-        work = *(int *)(menu + 2);
         result = func_001fddf0();
+        work = *(int *)(menu + 2);
         if (result != 0) {
           func_001fdf10_btlFormation_result(&update);
           *(short *)(work + 0x6c) = (short)update.state;
@@ -3846,10 +3846,10 @@ void func_002c0070(int param_1,int param_2)
 
 {
   typedef struct {
-    u32 unit;
     u16 index;
     u16 rank;
     float angle;
+    u32 unit;
   } FormationEntry;
   u16 uVar1 = 0;
   int iVar7 = 0;
@@ -6001,8 +6001,8 @@ u32 func_002c3770(u32 param_1,u32 param_2)
           iVar8 = *(int *)(iVar7 + 0x88);
           uVar6 = func_002ffdf0(*(u32 *)(*(int *)(iVar8 + 0x30) + 0xa2c));
           uVar5 = func_002ffd70(*(u32 *)(*(int *)(iVar8 + 0x30) + 0xa2c));
-          afStack_60[uVar9 * 2] = *(float *)(iVar7 + 0x88);
           afStack_60[uVar9 * 2 + 1] = (float)uVar5 / (float)uVar6;
+          afStack_60[uVar9 * 2] = *(float *)(iVar7 + 0x88);
         }
         do {
           bVar10 = false;
@@ -6801,8 +6801,8 @@ LAB_002c5168:
             lVar8 = 0;
           }
           if ((lVar8 != 0) && func_002c2ed0(param_2,uVar5,1)) {
-            auStack_10[uVar10] = *puVar12;
             uVar10 = uVar10 + 1 & 0xffff;
+            auStack_10[uVar10] = *puVar12;
           }
         }
       }
@@ -6892,8 +6892,8 @@ u32 func_002c5380(int param_1,int param_2,u16 *param_3,int param_4)
           bVar1 = false;
         }
         if (bVar1) {
-          auStack_10[uVar12] = *puVar14;
           uVar12 = uVar12 + 1 & 0xffff;
+          auStack_10[uVar12] = *puVar14;
         }
       }
     }
@@ -7136,8 +7136,8 @@ u32 func_002c59d0(int param_1,int param_2,int param_3,long param_4)
           if (((4000 < uVar3) && (uVar3 < 0x1080)) &&
              (((uVar3 == 0xfaa || (uVar3 == 0xfa9)) &&
               (sVar7 = func_001706c0(uVar1,uVar2), 0 < sVar7)))) {
-            auStack_20[uVar9] = uVar3;
             uVar9 = uVar9 + 1 & 0xffff;
+            auStack_20[uVar9] = uVar3;
           }
         }
       }
@@ -7182,8 +7182,8 @@ s32 func_002c5fc0(u32 param_1,u32 param_2,short param_3,int param_4)
     iVar2 = *(int *)((int)param_1 + 0x30);
     sVar5 = func_003082f0(*(u32 *)(iVar2 + 0xa2c),0);
     if ((sVar5 == param_3) && func_002c2ed0(param_2,sVar5,1)) {
-      auStack_10[0] = 0;
       uVar9 = 1;
+      auStack_10[0] = 0;
     }
     uVar6 = func_00308ba0(*(u32 *)(iVar2 + 0xa2c));
     iVar7 = func_00308bb0(*(u32 *)(iVar2 + 0xa2c));
@@ -7486,8 +7486,8 @@ u16 func_002c6ba0(int param_1)
     }
     iVar3 = (int)(DAT_007ce41c + ((u32)uVar1 * 0x29) * 4) + uVar8 * 0x14;
     for (uVar7 = 0; uVar7 < 3; uVar7 = uVar7 + 1 & 0xffff) {
-      uVar2 = *(u32 *)(iVar3 + 4 + uVar7 * 4);
       uVar5 = uVar2 >> 0x18;
+      uVar2 = *(u32 *)(iVar3 + 4 + uVar7 * 4);
       if (uVar5 != 0) {
         iVar4 = (**(code **)(&DAT_006971b0 + uVar5 * 0xc))(param_1,uVar2 & 0xffffff);
       }

@@ -2185,8 +2185,8 @@ LAB_002e4af0:
       unitPos.y = 0.0f;
       sourcePos.y = 0.0f;
       direction.x = unitPos.x - sourcePos.x;
-      direction.y = 0.0f;
       direction.z = unitPos.z - sourcePos.z;
+      direction.y = 0.0f;
       fVar8 = (float)FUN_004c69f0(&direction,&direction);
       fVar8 = DAT_007cad50 * fVar8;
       sourcePos.x = sourcePos.x + direction.x * fVar8;
@@ -2444,8 +2444,8 @@ void func_002e5060(BtlCamera* camera)
     FUN_002a4470((f32 *)&startFrame, (f32 *)&camera->pos);
   }
   FUN_002a4690(&endFrame.rot, &startFrame.pos, &position, D_00697880);
-  endFrame.pos = startFrame.pos;
   FUN_004be310_btlVoice_typed((f32 *)&startFrame.rot, (f32 *)&endFrame.rot, blendOutput.values);
+  endFrame.pos = startFrame.pos;
   factorA = DAT_007cad7c;
   factorB = DAT_007cadd0;
   if (blendOutput.values[9] == 0.0f) {
@@ -2673,8 +2673,8 @@ LAB_002e59dc:
     return;
   }
   if ((*(short *)(*(int *)(DAT_007ce3ec + 0xbbc) + 8) == 0x1b4) && (cVar2 == '\0')) {
-    FUN_002a4690(&specQuat1,(f32 *)DAT_00697c84_abs,(f32 *)DAT_00697c90_abs,D_00697880);
     specPos1.x = *(f32 *)DAT_00697c84_abs;
+    FUN_002a4690(&specQuat1,(f32 *)DAT_00697c84_abs,(f32 *)DAT_00697c90_abs,D_00697880);
     specPos1.y = *(f32 *)DAT_00697c88_abs;
     specPos1.z = *(f32 *)DAT_00697c8c_abs;
     FUN_002a4690(&specQuat2,(f32 *)DAT_00697c9c_abs,(f32 *)DAT_00697ca8_abs,D_00697880);
@@ -3275,7 +3275,7 @@ void func_002e7330(int param_1)
 {
   int iVar1;
   char cVar2;
-  u16 uVar3;
+  short uVar3;
   u32 uVar4;
   s32 lVar5;
   u32 uVar6;
@@ -3568,29 +3568,29 @@ void func_002e7890(u32 param_1)
 void func_002e7db0(BtlCamera* param_1)
 
 {
-  int iVar1;
-  int iVar2;
-  float fVar4;
-  float fVar5;
-  float fVar6;
-  float fVar7;
-  RwV3d nearPt;
-  RtQuat quat;
-  RwV3d farPt;
-  RtQuat quatCopy;
-  RwV2d perpendicular;
-  RwV2d cameraDelta;
-  RwV2d targetXZ;
-  RwV2d cameraXZ;
-  RwV2d outputXZ;
-  RwV2d sphereXZ;
-  RwV3d dirCopy;
-  RwV3d camOff;
-  RwV3d dir;
-  RwV3d target;
-  RwV3d sphere2Copy;
-  RwV3d sphere2;
   RwV3d sphere1;
+  RwV3d sphere2;
+  RwV3d sphere2Copy;
+  RwV3d target;
+  RwV3d dir;
+  RwV3d camOff;
+  RwV3d dirCopy;
+  RwV2d sphereXZ;
+  RwV2d outputXZ;
+  RwV2d cameraXZ;
+  RwV2d targetXZ;
+  RwV2d cameraDelta;
+  RwV2d perpendicular;
+  RtQuat quatCopy;
+  RwV3d farPt;
+  RtQuat quat;
+  RwV3d nearPt;
+  float fVar7;
+  float fVar6;
+  float fVar5;
+  float fVar4;
+  int iVar2;
+  int iVar1;
 
   iVar1 = *(int *)(*(int *)((int)param_1 + 0xe0) + 0x30);
   iVar2 = *(int *)(*(int *)(*(int *)((int)param_1 + 0xe0) + 0x38) + 0x30);
@@ -4937,8 +4937,8 @@ void func_002eabf0(void)
         *(u32 *)(iVar3 + 0x9c) = *(u32 *)(iVar3 + 0x9c) & 0xfffffff7;
         *(u16 *)((int)puVar2 + 0x1a) = *(u16 *)((int)puVar2 + 0x1a) & 0xfff7;
         FUN_0029a320((BtlAction*)puVar2);
-        FUN_002d3fe0((BtlUnit*)iVar3);
         FUN_00300560(*(u32 *)(iVar3 + 0xa2c),0xffffff);
+        FUN_002d3fe0((BtlUnit*)iVar3);
         FUN_002831c0(iVar3,6);
       }
       else if ((sVar1 == 0x106) || (sVar1 == 0x105)) {
@@ -5126,8 +5126,8 @@ void func_002eb2c0(void)
         *(u32 *)(iVar4 + 0x9c) = *(u32 *)(iVar4 + 0x9c) | 8;
         *(u16 *)((int)puVar3 + 0x1a) = *(u16 *)((int)puVar3 + 0x1a) | 8;
         FUN_0029a2c0(puVar3);
-        FUN_002d3e00((BtlUnit*)iVar4,0);
         FUN_00300560(*(u32 *)(iVar4 + 0xa2c),0xffffff);
+        FUN_002d3e00((BtlUnit*)iVar4,0);
         FUN_002831c0(iVar4,6);
       }
       else if ((sVar2 == 0x106) || (sVar2 == 0x105)) {
@@ -5352,8 +5352,8 @@ void func_002eba50(BtlAction* action)
             playback[0] = first;
             playback[1] = second;
             mode = 2;
-            packet = FUN_002dd690_packet_voice(3, voiceStream115Both);
             btlPacketRegister(packet, 1);
+            packet = FUN_002dd690_packet_voice(3, voiceStream115Both);
         }
         else if (selected->unit == first) {
             playback[0] = first;
@@ -6177,7 +6177,7 @@ u32 func_002ed360(u64 *param_1)
   u64 unaff_s2;
   u32 uVar20;
   u64 uVar21;
-  u16 sVar22;
+  short sVar22;
   u32 auStack_18 [4];
   u32 uStack_8;
   u32 uStack_4;
@@ -7435,8 +7435,8 @@ void func_002efe50(BtlAction* action)
     guardPacket = FUN_002b8d60_packet_voice(3, 0xfff);
     guardPacket->unk_00 = 4;
     guardPacket->parentUID = rootUID;
-    guardPacket->actionUID = actionUID;
     btlPacketRegister(guardPacket, 0);
+    guardPacket->actionUID = actionUID;
 
     idlePacket = FUN_0027fe90_packet_voice(action->unit, NULL, D_006978B0, NULL);
     idlePacket->unk_00 = 4;
@@ -7631,9 +7631,9 @@ void func_002f05f0(BtlAction *action)
 
     object = func_002b8f90(0);
     file = func_002f87e0(6);
-    func_002b90d0(object, file);
-
     packet->actionUID = actionUID;
+
+    func_002b90d0(object, file);
     packet = FUN_002bd590_packet_voice(action->unit, voiceId);
     btlPacketRegister(packet, 3);
     
@@ -7872,8 +7872,8 @@ void func_002f0ea0(u64 *param_1)
       }
     }
   }
-  bVar2 = uVar12 == uVar11;
   uVar6 = FUN_002b8f90_u32_voice(0);
+  bVar2 = uVar12 == uVar11;
   uVar7 = FUN_002b8f90_u32_voice(0);
   if (uVar11 == 1) {
     uVar8 = FUN_002f87e0_u32_voice(2);
@@ -8773,8 +8773,8 @@ void func_002f2b90(BtlAction* action)
     BtlPacket* cleanupPacket2;
     BtlPacket* cleanupPacket1;
 
-    actionUID = action->uid;
     delay = FUN_002835e0(1.0f, (u32)action->unit, 0x17);
+    actionUID = action->uid;
     voiceId = *(u16*)(DAT_0069a1d2 + (u32)*(u16*)(iGpffffb6fc + 0xb48) * 4);
     object0 = func_002b8f90(0);
     object1 = func_002b8f90(1);
@@ -9317,7 +9317,7 @@ void func_002f3a80(BtlAction* param_1)
         while( true ) {
           if (*(u8 *)(iVar12 + 200) <= uVar10) break;
           uVar16 = FUN_00284200(1.0f,*(u32 *)(iVar12 + 0x30),
-                                *(u8 *)(iVar12 + uVar10 * 0x1c + 0xf8),0,0);
+                                *(u8 *)(uVar10 + iVar12 * 0x1c + 0xf8),0,0);
           puVar4 = (u8 *)uVar16;
           *puVar4 = 0xb;
           *(u64 *)(puVar4 + 8) = *(u64 *)(puVar3 + 0x58);
@@ -9835,15 +9835,15 @@ void func_002f4e70(void)
 void func_002f5030(int param_1)
 
 {
-  u16 uVar1;
-  int iVar2;
-  int iVar3;
-  u32 uVar4;
-  u32 uVar5;
-  u32 uVar6;
-  short uVar7;
-  int aiStack_20 [4];
   int aiStack_10 [4];
+  int aiStack_20 [4];
+  short uVar7;
+  u32 uVar6;
+  u32 uVar5;
+  u32 uVar4;
+  int iVar3;
+  int iVar2;
+  u16 uVar1;
   
   uVar7 = 0xffff;
   uVar4 = 0;

@@ -586,6 +586,8 @@ int FUN_00394270(void)
 #undef FUN_003942f0
 #define FUN_00394270(...) ((int (*)(...))FUN_00394270)(__VA_ARGS__)
 // FUN_003942F0 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 u8 *
@@ -1153,6 +1155,7 @@ mt_evtPolygonMovie2_case_done:
   return param_2;
 
 }
+#pragma pop
 
 #undef FUN_00394c30
 #define FUN_003942f0(...) ((u64 (*)(...))FUN_003942f0)(__VA_ARGS__)
@@ -2037,49 +2040,49 @@ void FUN_00395950(int param_1)
 
 {
 
-  u8 bVar1;
+  u8 uStack_11;
 
-  int iVar2;
+  u8 uStack_12;
 
-  u32 lVar3;
+  u8 uStack_13;
 
-  int iVar4;
+  u8 uStack_14;
 
-  int iVar5;
+  u8 uStack_15;
 
-  int iVar6;
+  u8 uStack_16;
 
-  int iVar7;
+  u8 uStack_17;
 
 
 
-  float fVar9;
+  u8 uStack_18;
 
-  u32 uStack_690;
+  u8 auStack_5f0 [1464];
 
-  u32 uStack_68c;
+  u8 auStack_614 [24];
 
-  u32 uStack_688;
-
-  u32 uStack_684;
-
-  u32 uStack_680;
-
-  u32 uStack_67c;
-
-  u32 uStack_678;
-
-  u32 uStack_670;
-
-  u32 uStack_66c;
-
-  u32 uStack_668;
-
-  u32 uStack_660;
+  u32 uStack_658;
 
   u32 uStack_65c;
 
-  u32 uStack_658;
+  u32 uStack_660;
+
+  u32 uStack_668;
+
+  u32 uStack_66c;
+
+  u32 uStack_670;
+
+  u32 uStack_678;
+
+  u32 uStack_67c;
+
+  u32 uStack_680;
+
+  u32 uStack_684;
+
+  u32 uStack_688;
 
   f32 auStack_650 [4];
 
@@ -2089,29 +2092,29 @@ void FUN_00395950(int param_1)
 
   f32 auStack_620 [3];
 
-  u8 auStack_614 [24];
+  u32 uStack_68c;
 
   f32 auStack_5fc [3];
 
-  u8 auStack_5f0 [1464];
+  u32 uStack_690;
 
 
 
-  u8 uStack_18;
+  float fVar9;
 
-  u8 uStack_17;
+  int iVar7;
 
-  u8 uStack_16;
+  int iVar6;
 
-  u8 uStack_15;
+  int iVar5;
 
-  u8 uStack_14;
+  int iVar4;
 
-  u8 uStack_13;
+  u32 lVar3;
 
-  u8 uStack_12;
+  int iVar2;
 
-  u8 uStack_11;
+  u8 bVar1;
 
   f32 uStack_10;
 

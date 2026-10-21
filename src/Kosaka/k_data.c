@@ -835,7 +835,7 @@ s16* func_001b8db0(s16* table)
     s16* record;
     s16 chosenMajor;
     s16 chosenMinor;
-    u16 chosenDay;
+    short chosenDay;
     u32 count;
     u32 i;
     u32 slot;

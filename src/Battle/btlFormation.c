@@ -2054,8 +2054,8 @@ void FUN_002b71e0(void)
                 unit = *(BtlUnit**)(*(u8**)(DAT_007ce3ec + 0x148) + 0x30);
                 if (unit == iter)
                 {
-                    nextSlot = slot;
                     slot = 0;
+                    nextSlot = slot;
                 }
                 else
                 {
@@ -2415,7 +2415,7 @@ u32 FUN_002b7c50(u32 *work)
     f32 limit;
     f32 scale;
     f32 factor;
-    u16 specificId;
+    short specificId;
     u32 index;
     f32 centerY;
     s32 moved;
@@ -3398,8 +3398,8 @@ void func_002b96f0(float param_1,float param_2,float *param_3,u32 *param_4,int p
     func_004bdde0(*(float *)(&DAT_00696460 + (u32)bVar1 * 4),uStack_20,(const void *)0x697880,2);
     func_004be1e0(fStack_10,(const void *)0x697890,1,uStack_20);
     *(float *)out = *param_3 + fStack_10[0] * param_1;
-    *(float *)(out + 4) = fVar3 + fStack_10[1] * param_1;
     *(float *)(out + 8) = param_3[2] + fStack_10[2] * param_1;
+    *(float *)(out + 4) = fVar3 + fStack_10[1] * param_1;
   }
   *(u32 *)(out + 0xc) = 0;
 }
@@ -3699,8 +3699,8 @@ void func_002ba0f0(int param_1,int param_2,u8 *param_3,u8 (*param_4) [16])
       );
     }
     else {
-      uVar4 = func_0052ea18(direction.x,direction.z);
       func_00357ea0(0,uVar4,0);
+      uVar4 = func_0052ea18(direction.x,direction.z);
       __asm__ volatile (
           ".set noreorder          \n"
           "sqc2 vf10, 0(%0)         \n"
@@ -4590,7 +4590,7 @@ void func_002ba3a0(int param_1)
   u32 uVar4;
   int iVar3;
   u32 uVar2;
-  char cVar1;
+  u8 cVar1;
   
   piVar10 = (int *)param_1;
   iVar3 = piVar10[6];

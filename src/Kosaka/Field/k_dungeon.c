@@ -713,8 +713,8 @@ void func_001bb300(u16 patternId, u16 x, u16 y)
     source = *(u8**)(fieldRoot + 0x116c + sourceIndex * 4);
     dungeon = &K_Field_Get()->dungeonCells[y][x];
     direction = dungeon->direction;
-    roomCopy = (u8*)func_001b5380((u32*)source, &origin, (direction + 2) & 3);
     roomResId = func_003b6790(patternId, roomCopy);
+    roomCopy = (u8*)func_001b5380((u32*)source, &origin, (direction + 2) & 3);
     sceneResource = (u8*)MT_Scene_GetRes(roomResId);
     func_001a0150(roomResId, 1);
     func_0019ff10();
@@ -1084,15 +1084,15 @@ void func_001bb300(u16 patternId, u16 x, u16 y)
 // FUN_001bc630 NONMATCHING
 u32 func_001bc630(const DungeonPattern* pattern, s32* x, s32* y)
 {
-    s32 startX;
-    s32 startY;
-    s32 roomX;
-    s32 roomY;
-    s32 row;
-    s32 col;
-    u8* field;
-    u8* neighbor;
     u8 neighborFlags;
+    u8* neighbor;
+    u8* field;
+    s32 col;
+    s32 row;
+    s32 roomY;
+    s32 roomX;
+    s32 startY;
+    s32 startX;
 
     for (roomY = 0, startY = *y;
          roomY < pattern->raw[2];
@@ -1348,8 +1348,8 @@ void func_001bcac0(u32 patternId, u32 x, u32 y, u32 fromX, u32 fromY)
             table = D_00681560 + patternId * 0x35c + templateId * 0x56;
         }
         src = (const s16*)table;
-        dst = (s16*)pattern.raw;
         count = 0x2b;
+        dst = (s16*)pattern.raw;
         do
         {
             *dst++ = *src++;
@@ -1498,8 +1498,8 @@ void func_001bd450(u32 patternId)
 generate:
     sDungeonGenerationFailed = 0;
     sDungeonGenerationAttempts = 0;
-    sDungeonRoomCounter = 0;
     memset((u8*)K_Field_Get() + 0x48, 0, 0x1000);
+    sDungeonRoomCounter = 0;
     for (x = 0; x < 0x10; x++)
     {
         *(u8*)((u8*)K_Field_Get() + x * 0x10 + 0x48) = 2;
@@ -2937,21 +2937,21 @@ void func_001c0d30(KwlnTask* task)
 // FUN_001c0d70 NONMATCHING
 void* func_001c0d70(KwlnTask* task)
 {
-    TransWallCtlWork* work;
-    DungeonModelFld* modelFld;
-    ResrcFld* fld;
-    Model* model;
-    KwlnTask* child;
-    u8* fadeWork;
-    void* camera;
-    RwMatrix* cameraFrame;
-    RwV3d collisionPosition;
     RwV4d collisionQueryPosition;
     RwV3d cameraPosition;
     RwV3d cameraDirection;
     RwV3d ray[2];
     RwV3d special[2];
     u8 queryData[0x208];
+    void* camera;
+    TransWallCtlWork* work;
+    DungeonModelFld* modelFld;
+    ResrcFld* fld;
+    Model* model;
+    KwlnTask* child;
+    u8* fadeWork;
+    RwMatrix* cameraFrame;
+    RwV3d collisionPosition;
 
     work = (TransWallCtlWork*)task->workData;
     modelFld = (DungeonModelFld*)MT_Scene_GetResListHead_y2(RESRC_TYPE_MODELFLD);
