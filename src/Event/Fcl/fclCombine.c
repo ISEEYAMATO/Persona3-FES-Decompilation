@@ -2398,9 +2398,9 @@ u64 FUN_003d32e0(u64 param_1,u32 param_2)
 
     pcVar13 = pcVar13 + 1;
 
-    count = count + -1;
-
     *pcVar11 = cVar1;
+
+    count = count + -1;
 
     pcVar11 = pcVar11 + 1;
 

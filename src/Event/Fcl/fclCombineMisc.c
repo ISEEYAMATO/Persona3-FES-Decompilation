@@ -433,9 +433,9 @@ u32 FUN_003d5a40(u16 *param_1,u16 param_2,u16 *param_3,short param_4,void *param
 
     for (sVar7 = 0; sVar7 < 8; sVar7 = sVar7 + 1) {
 
-      iVar3 = sVar7 * 2;
-
       uVar5 = ((long)param_1[sVar7 + 4] << 0x36) >> 0x36;
+
+      iVar3 = sVar7 * 2;
 
       if (uVar5 != 0) {
 
@@ -1542,9 +1542,9 @@ u32 FUN_003d6f80(int param_1,int param_2,void *param_3)
 
     if (bVar2) {
 
-      FUN_003d6e60(param_1,param_2);
-
       FUN_00176c80(iVar4 + 4,(int)param_2 + 4);
+
+      FUN_003d6e60(param_1,param_2);
 
       uVar7 = 1;
 
@@ -1682,9 +1682,9 @@ LAB_003d7430:
 
       }
 
-      *param_1 = *param_1 | 4;
-
       iVar5 = RpRandom();
+
+      *param_1 = *param_1 | 4;
 
       if (uVar7 <= (u32)(((iVar5 % 0xffff) * 1000) / 0xffff)) {
 
@@ -2643,9 +2643,9 @@ u32 FUN_003d84c0(u64 param_1,int param_2)
   puVar9 = (u16 *)(PTR_DAT_006a5f40)[param_2 * 2];
   for (iVar7 = 0; iVar7 < iVar5; iVar7 = iVar7 + 1) {
 
-    uVar1 = *puVar9;
-
     bVar2 = 1;
+
+    uVar1 = *puVar9;
 
     for (uVar8 = 0; uVar8 < 0x43; uVar8 = uVar8 + 1) {
 
@@ -2789,8 +2789,8 @@ u32 FUN_003d8630(int param_1,int param_2)
 
       for (uVar8 = 0; uVar8 < 0x43; uVar8 = uVar8 + 1) {
 
-        iVar5 = uVar8 * 8;
         puVar10 = DAT_006a5410 + iVar5;
+        iVar5 = uVar8 * 8;
 
 
         bVar3 = bVar2;

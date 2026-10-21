@@ -1254,8 +1254,8 @@ char * func_002e3120(int param_1)
     }
   }
   pcVar6 = (char *)0x0;
-  cVar1 = *(char *)(*(int *)(param_1 + 0x30) + 0xa2);
   sVar2 = *(short *)(*(int *)(*(int *)(param_1 + 0x30) + 0xa2c) + 4);
+  cVar1 = *(char *)(*(int *)(param_1 + 0x30) + 0xa2);
   uVar7 = 0;
   while (uVar7 <= 0xb) {
     iVar3 = (int)iGpffffb6fc + uVar7 * 4;

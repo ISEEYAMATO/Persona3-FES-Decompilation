@@ -1348,9 +1348,9 @@ u64 FUN_00411ee0(u64 param_1,int param_2)
 
   }
 
-  RpSkyRenderStateSet(2,(void *)0x44);
-
   RpSkyRenderStateSet(3,(void *)0x717fb);
+
+  RpSkyRenderStateSet(2,(void *)0x44);
 
   return 0;
 
@@ -3792,9 +3792,9 @@ u64 FUN_00414e10(int param_1,int param_2)
 
   puStack_10 = (u8 *)(PTR_FUN_006b1498);
 
-  ppuVar8 = (u8 **)&PTR_FUN_006b14a0;
-
   puVar9 = auStack_40;
+
+  ppuVar8 = (u8 **)&PTR_FUN_006b14a0;
 
   iVar6 = 3;
 
@@ -4494,9 +4494,9 @@ float puStack_4;
 
 iVar1 = *(int *)((int)param_2 + 0xc);
 
-puStack_4 = *(float *)(PTR_FUN_007cda28);
-
 puStack_10 = *(float *)(PTR_FUN_007cda30);
+
+puStack_4 = *(float *)(PTR_FUN_007cda28);
 
 puStack_c = *(float *)(PTR_FUN_007cda34);
 
@@ -4844,9 +4844,9 @@ void FUN_00416240(u64 param_1,int param_2,int param_3,int param_4,int param_5,u3
 
   FUN_0040e3c0(0,param_3 + 0x43,param_4 + 0x3d,param_6 & 0xff,0,(u32)puVar1[4] << 1);
 
-  uVar2 = func_00171110(*(u16 *)puVar1,*(u8 *)(puVar1 + 8));
-
   FUN_003b2cb0(0,param_3 + 99,param_4 + 0x3f,param_6 | 0xffffffffffffff00,5,1,uVar2,0,0);
+
+  uVar2 = func_00171110(*(u16 *)puVar1,*(u8 *)(puVar1 + 8));
 
   param_3 = param_3 + -0x15;
 

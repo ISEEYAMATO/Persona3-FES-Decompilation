@@ -9841,8 +9841,8 @@ void FUN_002b6070(BtlCamera* camera, f32 param_1, f32 param_2)
     work.scaled.y = temp_f1;
     temp_f4 = 200.0f * work.direction.z;
     work.scaled.z = temp_f4;
-    work.direction.x = (work.base.x + temp_f5) - work.base.x;
     work.direction.y = (work.base.y + temp_f1 + 75.0f) - work.base.y;
+    work.direction.x = (work.base.x + temp_f5) - work.base.x;
     work.direction.z = (work.base.z + temp_f4) - work.base.z;
     FUN_004c69f0_b6070(&work.direction, &work.direction);
 

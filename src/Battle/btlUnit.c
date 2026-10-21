@@ -1674,8 +1674,8 @@ u32 func_00281f20(void* workData)
     {
         var_f0 = 2.0f * (f32)((temp_2 >> 1) | (temp_2 & 1));
     }
-    work->phase += 1.0f / (2.0f * var_f0);
     temp_f0 = work->phase;
+    work->phase += 1.0f / (2.0f * var_f0);
     temp_f1 = 2.0f * (4.0f * temp_f0 - 2.0f * temp_f0 * temp_f0 - 0.5f);
     if (temp_f1 < DAT_007caea4)
     {

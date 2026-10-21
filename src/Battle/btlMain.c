@@ -2402,9 +2402,9 @@ u32 FUN_0029f760(float *param_1)
       color.a = param_1[7] * fVar16 +
                 *(float *)(DAT_007ce3ec + 0x1b0) * fVar15;
       colorPtr = (RwRGBAReal *)FUN_0019fd70();
-      *colorPtr = color;
-
       *(u32 *)(param_1 + 9) = *(u32 *)(param_1 + 9) + 1;
+
+      *colorPtr = color;
 
       uVar5 = 0;
 
@@ -4268,8 +4268,8 @@ void FUN_002a2a20(u8* param_2,f32* param_3,f32 param_1)
   for (uVar3 = 0; uVar3 < 4; uVar3++) {
     fVar6 = *(float *)((u8 *)afStack_10 + (u32)uVar3 * 4 + 0);
     currentAddress = (u32)uVar2 * 0x1c;
-    currentAddress = (u32)btlMainAddFirst(param_2, currentAddress);
     fVar4 = *(float *)(currentAddress + 8) * fVar6;
+    currentAddress = (u32)btlMainAddFirst(param_2, currentAddress);
     fVar5 = *(float *)(currentAddress + 0xc) * fVar6;
     fVar7 = *(float *)(currentAddress + 4);
     *param_3 = *param_3 + fVar7 * fVar6 + 0.0f;

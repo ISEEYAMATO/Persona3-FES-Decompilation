@@ -2290,8 +2290,8 @@ found:
       iVar3 = (u32)uVar3 * 0x18;
       iVar1 = (uVar5 & 0xffff) * 0xe0;
       afStack_10[0] = *(float *)(iVar3 + iVar1 + 0x694f14);
-      afStack_10[2] = *(float *)(iVar3 + iVar1 + 0x694f18);
       FUN_002d2280((s16 *)(param_1 + 0x94),(s16 *)(param_1 + 0x96),afStack_10);
+      afStack_10[2] = *(float *)(iVar3 + iVar1 + 0x694f18);
       FUN_0027f650(param_1,afStack_10);
       switch (*(u8 *)(param_1 + 0xa2)) {
       case 0:

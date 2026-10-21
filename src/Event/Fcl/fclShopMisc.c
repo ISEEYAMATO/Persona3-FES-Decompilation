@@ -3228,8 +3228,8 @@ u64 FUN_003f2dc0(int param_1,int param_2)
 
   }
 
-  lookup.key = FUN_003e6dc0();
   lookup.pad = 0;
+  lookup.key = FUN_003e6dc0();
   lVar8 = FUN_0017d250(*(u32 *)&lookup,(u16)puVar2[1]);
 
   if (lVar8 == 0) {
@@ -4999,7 +4999,7 @@ void FUN_003f5f50(u32 param_1,u32 param_2,u8 param_3,u64 param_4,
 
   u32 uVar14;
 
-  int iVar15;
+  u32 iVar15;
 
   struct {
     u32 mapping[14];
@@ -6028,8 +6028,8 @@ void FUN_003f7890(int param_1,int param_2,u8 param_3,int param_4,int param_5,int
   case 0:
     FUN_0040e3c0_u32(0.0f,param_1,param_2,param_3,values[0],0);
     FUN_0040e3c0_u32(0.0f,param_1,param_2,param_3,values[1],0);
-    FUN_0040e3c0_u32(0.0f,param_1,param_2,param_3,values[2],0);
     sprintf((char *)text,&DAT_007cd954,*(u16 *)(data + 0xe));
+    FUN_0040e3c0_u32(0.0f,param_1,param_2,param_3,values[2],0);
     FUN_0040eb50(0,param_1 + 0x95,param_2 + 0x99,param_3,3,text,1);
     break;
   case 1:
@@ -9795,9 +9795,9 @@ u64 FUN_003fd570(int param_1,u32 *param_2)
 
 
   uVar6 = FUN_003fe020(param_1,1);
-  puVar3[1] = uVar6;
-
   uVar6 = FUN_003dfeb0(puVar3);
+
+  puVar3[1] = uVar6;
 
   puVar3[2] = uVar6;
 
@@ -11209,9 +11209,9 @@ void FUN_003ff460(int param_1,u32 param_2)
     puVar1 = *(u32 **)(*(int *)(iVar6 + 0x14) + 0x1c);
     lVar5 = FUN_003c4bf0(param_2,param_2 + 4,(short)puVar1[1]);
     if (lVar5 != 0) {
-      iVar2 = *(int *)(*(int *)(lVar5 + 0x14) + 0x1c);
-
       bVar3 = 0;
+
+      iVar2 = *(int *)(*(int *)(lVar5 + 0x14) + 0x1c);
       if (*(short *)((int)puVar1 + 0x16) == *(short *)(iVar2 + 0x16)) {
         bVar3 = (short)puVar1[5] == *(short *)(iVar2 + 0x14);
       }
@@ -11657,9 +11657,9 @@ u8 FUN_003ffa20(u64 param_1,u64 param_2,int param_3)
 
                                 (float)(int)*(short *)(param_3 + 0xc));
 
-    fVar3 = -fVar3 * 0.25f;
-
     iVar2 = 0x80 - ((int)*(short *)(param_3 + 10) << 7) / (int)*(short *)(param_3 + 0xc);
+
+    fVar3 = -fVar3 * 0.25f;
 
   }
 
@@ -12589,9 +12589,9 @@ void FUN_004008f0(int param_1,int param_2,u8 param_3,int param_4)
 
   
 
-  iVar2 = *(int *)(*(int *)(param_4 + 0x24) + 0x44);
-
   sVar1 = *(short *)(param_4 + 0x10);
+
+  iVar2 = *(int *)(*(int *)(param_4 + 0x24) + 0x44);
   if (sVar1 == 6) {
     FUN_0040e3c0_u32(1.0f,param_1,param_2,param_3,0x4f,0);
     FUN_0040e3c0_u32(1.0f,param_1,param_2,param_3,0x50,0);
@@ -15707,8 +15707,8 @@ u32 FUN_00403f20(short param_1,int param_2)
       iVar4 = func_0016f490(1);
       if (300 - iVar4 < (int)(u32)*(u8 *)(iVar3 + 0x27)) return 1;
     } else {
-      uVar2 = *(u16 *)(iVar3 + 0x24);
       bVar6 = (uVar2 & 1) != 0;
+      uVar2 = *(u16 *)(iVar3 + 0x24);
       if ((uVar2 & 2) != 0) bVar6 |= 2;
       if ((uVar2 & 4) != 0) bVar6 |= 4;
       lVar5 = FUN_004026b0((u32)*(u16 *)(iVar3 + 0x28) |
@@ -15965,9 +15965,9 @@ LAB_004046bc:
 
         uVar5 = FUN_003c5a40(param_1,*(u16 *)((int)param_1 + 0x10) + 1,0xc,0);
 
-        iVar6 = *(int *)(*(int *)((int)uVar5 + 0x14) + 0x1c);
-
         *(short *)(iVar6 + 4) = (short)iVar7;
+
+        iVar6 = *(int *)(*(int *)((int)uVar5 + 0x14) + 0x1c);
 
         uVar3 = FUN_003dfeb0(0);
 

@@ -2566,8 +2566,8 @@ u32 func_002bd8e0(int *param_1)
     packet.iStack_20 = iVar9;
     packet.iStack_1c = iVar8;
     packet.uStack_18 = uVar7;
-    func_001fe650(&packet);
     param_1[0xc] = 0;
+    func_001fe650(&packet);
     return 0;
   }
   lVar5 = func_001feb50(*(u32 *)(param_1[1] + 0xa8));
@@ -3372,8 +3372,8 @@ u32 func_002bf3f0(int param_1)
     *(undefined **)(puVar6 + 4) = &DAT_00696e10;
     *(undefined **)(puVar6 + 6) = &DAT_00696e10;
     iVar7 = (int)param_1;
-    *(int *)(puVar6 + 2) = iVar7;
     *puVar6 = 2;
+    *(int *)(puVar6 + 2) = iVar7;
     uVar5 = func_00300550(*(u32 *)(*(int *)(iVar7 + 0x30) + 0xa2c));
     if ((uVar5 & 0x80060) != 0) {
       func_001fece0();
@@ -6690,8 +6690,8 @@ u32 func_002c4e50(int param_1,int param_2,u16 *param_3,u32 param_4,int param_5)
   extern s32 func_0051e0e0(s32);
   
   uVar2 = func_002ffd70(*(u32 *)(*(int *)(param_2 + 0x30) + 0xa2c));
-  uVar3 = func_002ffdf0(*(u32 *)(*(int *)(param_2 + 0x30) + 0xa2c));
   uVar8 = 0xffffffff;
+  uVar3 = func_002ffdf0(*(u32 *)(*(int *)(param_2 + 0x30) + 0xa2c));
   lVar9 = 0xffffff;
   param_4 &= 0xffff;
   puVar10 = param_3;
@@ -7456,8 +7456,8 @@ void func_002c6a00(int param_1,int param_2,u16 param_3)
     *(u16 *)(param_2 + 0x34) = 0xc;
     break;
   default:
-    *(u16 *)(param_2 + 0x34) = 2;
     *(u16 *)(param_2 + 0x36) = param_3;
+    *(u16 *)(param_2 + 0x34) = 2;
     break;
   }
 }
@@ -7613,8 +7613,8 @@ u32 func_002c6f50(u32 param_1,int param_2,u32 param_3,u32 param_4)
     }
     func_003a4220(*(u32 *)(iVar2 + 0xcc),0,unaff_s3_lo);
   }
-  func_00195550(*(u32 *)(DAT_007ce3ec + 0xd18),uVar3);
   *(int *)(param_2 + 0x4c) = (int)uVar3;
+  func_00195550(*(u32 *)(DAT_007ce3ec + 0xd18),uVar3);
   return 1;
 }
 
@@ -13249,8 +13249,8 @@ u32 func_002d03e0(void)
         (*(u8 *)(*(int *)(iVar2 + 0x30) + 0xa2) == 0) &&
         ((uVar6 & 0x80000) != 0 ||
          (func_0030b5a0(*(u32 *)(*(int *)(iVar2 + 0x30) + 0xa2c), 0) == 0))) {
-      uVar8 = func_002ffd70(*(u32 *)(*(int *)(iVar2 + 0x30) + 0xa2c));
       uVar8 = uVar8 & 0xffff;
+      uVar8 = func_002ffd70(*(u32 *)(*(int *)(iVar2 + 0x30) + 0xa2c));
       if ((uVar5 <= uVar8) &&
           (uVar1 = *(u16 *)(*(int *)(*(int *)(iVar2 + 0x30) + 0xa2c) + 8),
            uVar4 = func_002ffdf0(*(u32 *)(*(int *)(iVar2 + 0x30) + 0xa2c)),

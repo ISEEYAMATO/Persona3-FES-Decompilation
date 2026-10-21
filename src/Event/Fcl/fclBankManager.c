@@ -2151,12 +2151,12 @@ s32 fclCombine003d0610(void)
 #pragma opt_lifetimes on
 void FUN_003d06d0(s32 param_1, s32 param_2, s32 param_3) {
     struct _m2c_stack_func_003d06d0 stack;
-    s32 var_4;
-    s32 temp_16;
-    s32 temp_2;
-    s32 *var_5;
-    s32 *var_6;
     s32 temp_3;
+    s32 *var_6;
+    s32 *var_5;
+    s32 temp_2;
+    s32 temp_16;
+    s32 var_4;
 
     switch (param_2) {                                 /* switch 1 */
     case 0:                                         /* switch 1 */

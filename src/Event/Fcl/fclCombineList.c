@@ -1519,8 +1519,8 @@ void fclCombineList003dcfb0(FclResultStream* callback_target, FclDrawResult* res
         FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x51, 0);
         FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x52, 0);
     } else if ((record->work->flags & 1) == 0) {
-        FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x31, 0);
         FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x2f, 0);
+        FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x31, 0);
         FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x30, 0);
     } else if ((record->flags & 2) == 0) {
         FUN_0040e3c0(0.0f, x, y, (byte)alpha, 0x31, 0);
@@ -2357,8 +2357,8 @@ void fclCombineList003df220(FclAnimationNode* node, s32 value, s32 preset,
         node->target_y = 0x1f8;
         node->current_w = 0;
         node->target_w = 0;
-        node->endpoint_w = 0xff;
         node->current_z = direction;
+        node->endpoint_w = 0xff;
         node->target_z = direction;
         node->requested_z = direction;
         node->divisor = 10;

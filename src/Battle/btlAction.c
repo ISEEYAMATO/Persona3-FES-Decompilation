@@ -1725,8 +1725,8 @@ void btlActionInitStateTarget(BtlAction* action)
 
     if (action->target.commandId == 4)
     {
-        FUN_002bfcb0(action, (BtlTarget*)action->unkData3, 2, 0, 0);
         specificId = action->target.specificId;
+        FUN_002bfcb0(action, (BtlTarget*)action->unkData3, 2, 0, 0);
         if (specificId == 0)
         {
             specificId = -1;

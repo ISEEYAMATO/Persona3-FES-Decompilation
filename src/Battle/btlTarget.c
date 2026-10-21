@@ -4821,8 +4821,8 @@ void FUN_002d7560(BtlAction *action)
                         u16 rewardId = *(u16 *)(rewards + i * 8 + 0xbe0);
                         if (rewardId != personaId)
                             continue;
-                        (*(u32 *)(rewards + i * 8 + 0xbe4))++;
                         found = 1;
+                        (*(u32 *)(rewards + i * 8 + 0xbe4))++;
                         break;
                     }
                     if (found == 0)
@@ -7548,8 +7548,8 @@ void FUN_002db2a0(u32 param_1)
     case 0:
         threshold = (u16)(datCalcRand(2) + 2);
         *(u16*)(iGpffffb6fc + (param_1 & 0xffff) * 4 + 0x9f8) = 0;
-        *(u16*)(iGpffffb6fc + (param_1 & 0xffff) * 4 + 0x9fa) = threshold;
         *(u32*)(iGpffffb6fc + 0xa10) = 0;
+        *(u16*)(iGpffffb6fc + (param_1 & 0xffff) * 4 + 0x9fa) = threshold;
         break;
     case 1:
         threshold = (u16)(datCalcRand(1) + 2);
