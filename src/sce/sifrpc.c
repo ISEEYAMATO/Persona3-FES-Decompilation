@@ -430,6 +430,15 @@ void FUN_00506b18(int param_1)
   *(u32 *)(param_1 + 0x10) = uVar1 & uVar2;
   return;
 }
+
+/* DUMMYDUMB session 2026-10-21: 3 differing bytes, the register the 0xffff0ffe
+ * mask is built in.  Ours builds it in a1 (and the AND reuses a1), retail
+ * builds it in v0 and the AND result goes to a1.
+ * Probed: the two local declarations swapped, the mask as u32 or int, the
+ * mask as a single constant, the mask inlined into the store, and the mask
+ * as a separately named local - all keep it in a1.
+ * Confirmed wall: register choice for the mask.
+ */
 typedef struct SifRpcAllocatorState
 {
     u8 padding0[0x14];

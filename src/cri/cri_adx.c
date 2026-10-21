@@ -60029,6 +60029,19 @@ u32 FUN_0055a7c0(void)
 {
   return *(u32 *)0x007a2a78;
 }
+
+/* DUMMYDUMB session 2026-10-21: 2 differing bytes, the register that holds the
+ * address.  Ours "lui v0,0x7a / lw v0,0x2a78(v0)" keeps the address in v0,
+ * retail "lui v1,0x7a / lw v0,0x2a78(v1)" keeps it in v1 while the loaded
+ * value still lands in v0.  Six functions in this file have the same shape.
+ * Probed: the address as a local (u32 segment = 0x007a0000), as a symbol
+ * (DAT_007a2a78, plain and through the _abs alias), as a u64, as a volatile
+ * load, the load through a pointer variable, and the schedule/on pragmas
+ * replaced with optimization_level 3 - none of them move the address out of
+ * v0.  The matching setter next door, FUN_0055a7b0, uses the same idiom and
+ * does put the address in v0, so this is mwcc coalescing the address with the
+ * destination.  Confirmed wall: address base register.
+ */
 #pragma schedule off
 
 // FUN_0055A7D0

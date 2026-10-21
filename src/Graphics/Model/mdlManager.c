@@ -2062,6 +2062,16 @@ LAB_003131f8:
 
 }
 
+/* DUMMYDUMB session 2026-10-21: 1 differing byte, the operand order of one
+ * add.  Ours "addu v0,v1,v0" puts the scaled index in rs, retail "addu v0,v0,v1"
+ * puts the pointer part there; both compute the same value.
+ * Probed: the two terms swapped (both with and without the u8* cast), the
+ * index as (u32)sVar5 * 0x50, the pointer part read through *(u8 **)piVar1,
+ * the sum written as an int plus a pointer, and the whole sum cast to u8*.
+ * Every rewrite changes mwcc's schedule and makes the difference worse.
+ * Confirmed wall: add operand order.
+ */
+
 // FUN_00313230
 
 

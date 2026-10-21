@@ -7781,6 +7781,16 @@ u8 * FUN_0051f690(void)
 {
   return *(u8 **)PTR_DAT_00782f30_abs;
 }
+
+/* DUMMYDUMB session 2026-10-21: 3 differing bytes, the register that holds
+ * the address.  Ours "lui v0,0x0 / lw v0,0(v0)" builds the address through
+ * the gp-relative path and reuses v0 for the address and the loaded value;
+ * retail "lui t7,0x78 / lw v0,0x2f30(t7)" keeps the address in t7.
+ * Probed: the address as a literal, as a symbol, as a volatile load, through
+ * a pointer variable, with different casts and return types - all keep v0.
+ * A micro-test shows mwcc always materialises an absolute address into v0
+ * here.  Confirmed wall: absolute address base register.
+ */
 #pragma schedule off
 // FUN_0051F6A0 NONMATCHING
 u64 FUN_0051f6a0(u64 param_1)

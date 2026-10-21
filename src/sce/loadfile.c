@@ -783,6 +783,15 @@ bool FUN_0050c9a0(void)
   uVar1 = sceSifGetReg(4);
   return (uVar1 & 0x10000) != 0;
 }
+
+/* DUMMYDUMB session 2026-10-21: 6 differing bytes, the order of two
+ * independent instructions.  Ours "ld ra,0(sp)" then "lui v1,0x1", retail
+ * "lui v1,0x1" then "ld ra,0(sp)".
+ * Probed: the call inlined into the return, an if/else form, a separate bool
+ * local, the operands of the AND swapped, the constant with a u suffix, and
+ * the local declared as int or u16 - all keep the order.
+ * Confirmed wall: instruction scheduling.
+ */
 #pragma push
 #pragma optimization_level 3
 #pragma opt_rebuildconditionals off

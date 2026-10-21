@@ -1659,6 +1659,16 @@ u32 K_FldFrame_IsPointInTriangle(const RwV3d* point, const RwV3d** tri, const Rw
     return inside;
 }
 
+/* DUMMYDUMB session 2026-10-21: 1 differing byte, the branch target of the
+ * "axis = 2" path.  Ours jumps straight to the function's merge, retail jumps
+ * to the block after "axis = 0" which then jumps to the merge - the same
+ * instruction count, a different block join.
+ * Probed: the inner assignment as a ternary, the outer else-if as a nested
+ * else, a three-way chain, the assignment hoisted before the test, and the
+ * mwcc pragmas (schedule on/off, opt_lifetimes) - all byte-neutral.
+ * Confirmed wall: block layout / branch threading.
+ */
+
 // FUN_001aae10
 RwV3d* func_001aae10(RwV3d* dst, const RwV3d* point,
                      const RwV3d* start, const RwV3d* end)
