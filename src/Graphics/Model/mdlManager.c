@@ -1949,7 +1949,14 @@ u32 func_00312f90(u32 param_1)
 }
 
 
-// W419 measured helper probes: integer static-inline operand-order variants were best unchanged at nd1/object416/window416 (rate 0.00240); base+offset variants regressed to nd25/object416/window416 (rate 0.06010) and nd224/object412/window416 (rate 0.54369). No variant landed.
+// W419 measured helper probes: integer static-inline operand-order variants were best unchanged at
+// nd1/object416/window416 (rate 0.00240); base+offset variants regressed to nd25/object416/window416
+// (rate 0.06010) and nd224/object412/window416 (rate 0.54369). No variant landed.
+// DUMMYDUMB session 2026-10-20 (2nd pass): the single residual byte is a commutative addu operand
+// order - ours `addu $v0,$v1,$v0` (scaled first) vs retail `addu $v0,$v0,$v1` (base first), with
+// everything else identical (both 416B). Retried with a named scale temp to decouple the schedule
+// from the operand order: base-first still restructures the function (nd25, the scale is recomputed
+// as (x*4)*16 and the base addiu hoisted), scaled-first reproduces the same nd1. Confirmed wall.
 
 
 // FUN_00313090 NONMATCHING

@@ -6920,6 +6920,14 @@ int FUN_0051e0e0(int param_1)
 }
 #pragma schedule on
 #pragma optimization_level 3
+/* DUMMYDUMB session 2026-10-20: the only real residual is a two-instruction order
+ * swap at +20/+24 - ours `ld $ra,0($sp)` then `dsll32 $v0,$v0,0` (the (u64) sign
+ * extension of the call result), retail the other way round. Everything else
+ * matches (40B = 40B); the other differences are masked call/address
+ * relocations. Probed: (u64)(int) double cast, unsigned long long cast, long
+ * cast, dropping the cast - all byte-neutral. Confirmed wall: epilogue
+ * ordering. Same family as cri_adx FUN_0057FA50 and the six sibling
+ * accessors. */
 // FUN_0051E0F0 NONMATCHING
 u64 FUN_0051e0f0(u64 param_1)
 {

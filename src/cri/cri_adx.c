@@ -109864,6 +109864,13 @@ void FUN_0057fa28(u32 param_1)
 
 
 
+/* DUMMYDUMB session 2026-10-20: the only real residual is a two-instruction order
+ * swap at +16/+20 - ours `ld $ra,0($sp)` then `lw $v0,0x38($v0)`, retail the
+ * other way round. Everything else matches (32B = 32B). Probed: named u32
+ * result temp, u32 instead of int local, index form, byte-offset deref - all
+ * byte-neutral. Confirmed wall: epilogue ordering (mwcc restores $ra before
+ * the last body instruction). Same family as libmc2 FUN_0051E0F0 and the six
+ * sibling cri_adx accessors below. */
 // FUN_0057FA50 NONMATCHING
 
 

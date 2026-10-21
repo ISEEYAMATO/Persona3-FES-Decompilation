@@ -632,6 +632,13 @@ extern u8 DAT_007bdff8[];
 extern u8 DAT_007bdff8_abs[];
 #pragma alias FUN_0050c528_str FUN_0050c528
 extern u32 FUN_0050c528_str(u32 param_1, int param_2, u32* param_3, u32 param_4);
+/* DUMMYDUMB session 2026-10-20: the only real residual is a two-instruction order
+ * swap at +0/+4 - ours `addiu $sp,$sp,-16` then `move $a2,$a1` (the a2 argument
+ * shuffle), retail `move $a2,$a1` first, before the frame setup. Everything else
+ * matches (40B = 40B); the DAT_007bdff8_abs address is already absolute in
+ * both (the rest are masked relocations). Probed: 1u for the a3 literal, a
+ * (u32) cast on a0 - both byte-neutral. Confirmed wall: argument-shuffle
+ * placement against the prologue. Same family as mt_evtMenu FUN_0037ABD0. */
 // FUN_0050C650 NONMATCHING
 void FUN_0050c650(u32 param_1, u32 param_2)
 {
