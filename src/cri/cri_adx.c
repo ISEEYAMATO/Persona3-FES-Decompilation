@@ -1,4 +1,18 @@
 #include "mw_harvest_compat.h"
+
+/* DUMMYDUMB session 2026-10-21: six tiny CRI accessors whose only residual is
+ * a register role, all with the same shape (2 differing bytes, our object 4
+ * bytes shorter than retail's window because retail pads the function to 16):
+ * FUN_0055A7C0, FUN_0055A7F0, FUN_0055D230 and FUN_00580DF0 all read one word
+ * through a constant address - ours `lui $v0,0x7a` / `jr $ra` / `lw $v0,off($v0)`
+ * where retail keeps the address in $v1 because $v0 is the return value
+ * (`lui $v1,0x7a` / `jr $ra` / `lw $v0,off($v1)`). FUN_0054CD20 and
+ * FUN_00536058 are the same story with $v1/$v2 and $v2/$v3. Probed on
+ * FUN_0055A7C0: a named pointer temp, a named u32 temp, the base+offset form
+ * and a volatile load - all byte-neutral, mwcc coalesces the address with the
+ * result however it is spelled. Confirmed wall: mwcc's copy-forwarding of the
+ * address into the result register. */
+
 #pragma alias FUN_0059bcd0_u32 FUN_0059bcd0
 extern u32 FUN_0059bcd0_u32(int param_1,int param_2);
 #pragma alias FUN_0055c3c8_u64 FUN_0055c3c8
