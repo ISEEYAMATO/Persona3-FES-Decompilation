@@ -4257,9 +4257,9 @@ void FUN_00532e10(u64 param_1,u64 param_2)
 
     FUN_00524828(*(u32 *)(iVar1 + 0x34),param_2,0x100);
 
-    *(u32 *)(iVar1 + 0x30) = 0;
-
     FUN_00534010(param_1,iVar1 + 0x30);
+
+    *(u32 *)(iVar1 + 0x30) = 0;
 
     return;
 
@@ -100447,9 +100447,9 @@ void FUN_00578e08(int param_1,u64 *param_2)
 
   lVar2 = ((code)FUN_0057b7f0)();
 
-  if (lVar2 != 0) {
-
     FUN_00578e88(0,0xffffffffff030204);
+
+  if (lVar2 != 0) {
 
     return;
 
@@ -103592,11 +103592,11 @@ u64 FUN_0057b440(void)
 
 {
 
-  u32 uVar1;
+  u64 uVar3;
 
   long lVar2;
 
-  u64 uVar3;
+  u32 uVar1;
 
 
 
