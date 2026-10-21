@@ -1777,8 +1777,8 @@ int FUN_0050e218(int *param_1)
     param_1[1] = 0;
   }
   else {
-    *(int *)(iVar1 + 4) = param_1[1];
     param_1[1] = 0;
+    *(int *)(iVar1 + 4) = param_1[1];
   }
   return iVar1;
 }
