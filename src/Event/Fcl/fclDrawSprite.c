@@ -666,6 +666,8 @@ u32 FUN_0040f430(int param_1,int param_2)
 }
 
 // FUN_0040F5D0 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 u32 FUN_0040f5d0(int param_1,int param_2,int param_3)
@@ -958,6 +960,8 @@ u32 FUN_0040f5d0(int param_1,int param_2,int param_3)
   return uVar4;
 
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 
 // FUN_0040FAB0
 

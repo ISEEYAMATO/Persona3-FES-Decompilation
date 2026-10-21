@@ -336,6 +336,7 @@ void FUN_0029a690(u16 genus)
 /* Removing this worsens FUN_0029a750 (nd120 -> nd774) - measured W161. */
 // The residual is limited to MWCCPS2 register coloring/scheduling; logical control flow and object size match retail.
 // FUN_0029a750 NONMATCHING
+#pragma opt_lifetimes on
 void FUN_0029a750(void)
 {
     u16 playerCount;
@@ -491,6 +492,7 @@ void FUN_0029a750(void)
         actions[i] = NULL;
     }
 }
+#pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 static inline void btlOrderFinishAction(BtlAction* action)
 {

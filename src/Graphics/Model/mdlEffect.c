@@ -23819,6 +23819,8 @@ void FUN_00337f80(int param_1)
 
 
 // FUN_00337FD0 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 
@@ -24008,6 +24010,8 @@ void FUN_00337fd0(int param_1)
   return;
 
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 
 
 
@@ -24730,6 +24734,7 @@ void FUN_00338e50(int param_1)
 
 
 // FUN_00338EA0 NONMATCHING
+#pragma opt_lifetimes on
 
 
 
@@ -24918,6 +24923,7 @@ void FUN_00338ea0(int param_1)
   return;
 
 }
+#pragma opt_lifetimes reset
 
 
 

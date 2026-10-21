@@ -1711,8 +1711,8 @@ void btlActionUpdateStateCommand(BtlAction* action)
 // FUN_0028c310 NONMATCHING
 void btlActionInitStateTarget(BtlAction* action)
 {
-    int specificId;
     u16 i;
+    int specificId;
     BtlPacket* packet;
     BtlAction* selected;
 

@@ -1567,6 +1567,7 @@ u32 FUN_002dc130(BtlAction* action)
 }
 
 // FUN_002dc180 NONMATCHING
+#pragma schedule on
 u32 FUN_002dc180(BtlAction* action)
 {
     BtlUnit* unit = action->unit;
@@ -1667,6 +1668,7 @@ u32 FUN_002dc180(BtlAction* action)
     }
     return result;
 }
+#pragma schedule reset
 
 #pragma opt_loop_invariants on
 // FUN_002dc550

@@ -603,6 +603,8 @@ s16 FUN_003d5dc0(u32 param_1)
 }
 
 // FUN_003D5E60 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 u8 FUN_003d5e60(void *param_1,void *param_2,void *param_3)
@@ -776,6 +778,8 @@ u8 FUN_003d5e60(void *param_1,void *param_2,void *param_3)
   return uVar7;
 
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 
 // FUN_003D6200 NONMATCHING
 

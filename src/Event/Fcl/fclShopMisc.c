@@ -3400,6 +3400,8 @@ ret:
 // Retail sibling begins at 0x3f3280; comparator body reconstructed from 0x3f3280-0x3f33c8.
 #pragma opt_loop_invariants on
 // FUN_003F33D0 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 u32 FUN_003f33d0(int param_1,u32 param_2)
@@ -3572,6 +3574,8 @@ u32 FUN_003f33d0(int param_1,u32 param_2)
   *(u16 *)(*(int *)(task + 0x24) + 8) = 10;
   return task;
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 
 // FUN_003F3970
 
@@ -5113,6 +5117,8 @@ void FUN_003f5f50(u32 param_1,u32 param_2,u8 param_3,u64 param_4,
 }
 
 // FUN_003F61D0 NONMATCHING
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 void FUN_003f61d0(int param_1,int param_2,u32 param_3,u64 param_4,int param_5)
@@ -5363,6 +5369,8 @@ void FUN_003f61d0(int param_1,int param_2,u32 param_3,u64 param_4,int param_5)
   return;
 
 }
+#pragma schedule reset
+#pragma opt_lifetimes reset
 
 #undef auStack_30
 #undef acStack_20
@@ -5372,6 +5380,7 @@ void FUN_003f61d0(int param_1,int param_2,u32 param_3,u64 param_4,int param_5)
 #undef sStack_a
 #undef acStack_8
 // FUN_003F67E0 NONMATCHING
+#pragma opt_lifetimes on
 
 
 void FUN_003f67e0(int param_1,int param_2,u32 param_3,int param_4,int param_5,
@@ -5623,6 +5632,7 @@ void FUN_003f67e0(int param_1,int param_2,u32 param_3,int param_4,int param_5,
   return;
 
 }
+#pragma opt_lifetimes reset
 #undef auStack_30
 #undef acStack_20
 #undef sStack_10
@@ -6959,27 +6969,27 @@ void FUN_003f9510(int param_1,int param_2,u32 param_3,int param_4,int param_5
 
 {
 
-  short sVar1;
-
-  u32 *puVar2;
-
-  int lVar3;
-
-  int iVar4;
-
-  int iVar5;
-
-  int iVar6;
-
-  int iVar10;
-
-  u32 uVar8;
-
-  int iVar9;
+  u32 auStack_10 [4];
 
   u8 uStack_20;
 
-  u32 auStack_10 [4];
+  int iVar9;
+
+  u32 uVar8;
+
+  int iVar10;
+
+  int iVar6;
+
+  int iVar5;
+
+  int iVar4;
+
+  int lVar3;
+
+  u32 *puVar2;
+
+  short sVar1;
 
   void (*pcVar7)(int,int,int,int,int,u32);
 
@@ -8550,19 +8560,19 @@ int FUN_003fb6b0(u64 param_1)
 
 {
 
-  u32 uVar1;
+  u8 auStack_20 [32];
 
 
-  int iVar3;
+  float fVar7;
 
-  int lVar4;
+  int lVar6;
 
   u32 *puVar5;
 
-  int lVar6;
-  float fVar7;
+  int lVar4;
+  int iVar3;
 
-  u8 auStack_20 [32];
+  u32 uVar1;
 
   
 
@@ -9035,6 +9045,7 @@ u64 FUN_003fbf20(short *param_1)
 }
 
 // FUN_003FC060 NONMATCHING
+#pragma schedule on
 
 
 u64 FUN_003fc060(int param_1)
@@ -9160,6 +9171,7 @@ u16 uVar1;
   return 0;
 
 }
+#pragma schedule reset
 
 /* DUMMYDUMB session 2026-10-20: #pragma opt_lifetimes (mwcc's lifetime analysis)
  * for this function takes the residual from 67 to 46 bytes. What is left is a
@@ -15291,6 +15303,7 @@ no_match:
 }
 
 // FUN_00403970 NONMATCHING
+#pragma schedule on
 
 
 u32 FUN_00403970(short param_1)
@@ -15630,6 +15643,7 @@ LAB_00403b38:
   return 0;
 
 }
+#pragma schedule reset
 
 // FUN_00403E40
 

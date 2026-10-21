@@ -2439,12 +2439,6 @@ void FUN_003cb1f0(u64 param_1)
 
 {
 
-  short sVar1;
-
-  int iVar2;
-
-  u64 *puVar3;
-
   u8 uVar4;
 
   u64 *puVar5;
@@ -2460,6 +2454,12 @@ void FUN_003cb1f0(u64 param_1)
   u8 auStack_10 [8];
 
   u64 uStack_8;
+
+  short sVar1;
+
+  int iVar2;
+
+  u64 *puVar3;
 
   
 
@@ -3119,12 +3119,12 @@ void FUN_003ccc30(void)
 
 void FUN_003ccc40(int *param_1)
 {
-  int iVar1;
-  int context;
-  u64 *puVar2;
   u64 *puVar3;
   u64 *puVar4;
   u64 uStack_8;
+  int iVar1;
+  int context;
+  u64 *puVar2;
 
   context = (int)param_1;
 
@@ -3303,12 +3303,12 @@ void FUN_003cd590(void)
 
 void FUN_003cd5a0(int *param_1)
 {
-  int iVar1;
-  int context;
-  u64 *puVar2;
   u64 *puVar3;
   u64 *puVar4;
   u64 uStack_8;
+  int iVar1;
+  int context;
+  u64 *puVar2;
 
   context = (int)param_1;
 

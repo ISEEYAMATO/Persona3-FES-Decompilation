@@ -1097,6 +1097,7 @@ f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
 #pragma push
 #pragma opt_propagation off
 // FUN_00280DA0 NONMATCHING
+#pragma schedule on
 void func_00280da0(BtlUnit* unit)
 {
     f32* path;
@@ -1233,6 +1234,7 @@ void func_00280da0(BtlUnit* unit)
     }
     unit->flags2 |= BTLUNIT_FLAG2_DIRTY;
 }
+#pragma schedule reset
 #pragma pop
 #pragma opt_propagation reset
 // FUN_00281270

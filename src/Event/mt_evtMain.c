@@ -13801,6 +13801,7 @@ u32 FUN_0036e2f0(int param_1)
 /* W367 pragma probe: opt_propagation off nd 1100 -> 1093; on nd 1100; object 1688/1696. */
 #pragma opt_propagation off
 // FUN_0036E690 NONMATCHING
+#pragma schedule on
 
 
 code * FUN_0036e690(int param_1)
@@ -14167,6 +14168,7 @@ code * FUN_0036e690(int param_1)
   return pcVar3;
 
 }
+#pragma schedule reset
 
 
 #pragma opt_propagation reset
