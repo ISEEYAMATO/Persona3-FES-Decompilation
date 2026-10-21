@@ -7850,6 +7850,8 @@ void FUN_002b2060(int param_1)
 /* W367 measured: opt_dead_assignments off nd1096 -> 946, object 1536/1552; baseline object 1540/1552. */
 #pragma opt_dead_assignments off
 // FUN_002b21f0 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 void FUN_002b21f0(BtlCamera *camera, f32 param_1, int param_2)
 {
@@ -8072,6 +8074,7 @@ void FUN_002b21f0(BtlCamera *camera, f32 param_1, int param_2)
 #undef pointB
 #undef pointA
 }
+#pragma pop
 #pragma opt_dead_assignments reset
 #pragma pop
 

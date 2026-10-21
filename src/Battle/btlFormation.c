@@ -3330,8 +3330,8 @@ void func_002b96f0(float param_1,float param_2,float *param_3,u32 *param_4,int p
     if (param_1 >= param_2) {
       param_2 = param_1;
     }
-    scale = -param_2;
     *(RwV4d*)origin = *(RwV4d*)param_3;
+    scale = -param_2;
     if (bVar1 != 9) {
       origin[1] = fVar3;
     }
@@ -4570,27 +4570,27 @@ void func_002ba0f0(int param_1,int param_2,u8 *param_3,u8 (*param_4) [16])
 void func_002ba3a0(int param_1)
 
 {
-  char cVar1;
-  u32 uVar2;
-  int iVar3;
-  u32 uVar4;
-  u32 uVar5;
-  u32 uVar6;
-  bool bVar7;
-  short *psVar8;
-  int *piVar10;
-  char *pcVar11;
-  int *piVar12;
-  u32 uVar13;
-  int iVar14;
-  int iVar15;
-  int iVar16;
-  float fVar17;
-  float fVar18;
-  u8 auStack_40[16];
-  u8 auStack_30[16];
-  u8 auStack_20[16];
   u8 auStack_10[16];
+  u8 auStack_20[16];
+  u8 auStack_30[16];
+  u8 auStack_40[16];
+  float fVar18;
+  float fVar17;
+  int iVar16;
+  int iVar15;
+  int iVar14;
+  u32 uVar13;
+  int *piVar12;
+  char *pcVar11;
+  int *piVar10;
+  short *psVar8;
+  bool bVar7;
+  u32 uVar6;
+  u32 uVar5;
+  u32 uVar4;
+  int iVar3;
+  u32 uVar2;
+  char cVar1;
   
   piVar10 = (int *)param_1;
   iVar3 = piVar10[6];

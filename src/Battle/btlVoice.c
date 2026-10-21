@@ -7429,8 +7429,8 @@ void func_002efe50(BtlAction* action)
     rootPacket = FUN_00284200_packet_voice(1.0f, action->unit, 7, 6, 2);
     rootPacket->actionUID = actionUID;
     btlPacketRegister(rootPacket, 1);
-    rootUID = rootPacket->uid;
     delay = FUN_002838d0_s16_voice(1.0f, action->unit, 7);
+    rootUID = rootPacket->uid;
 
     guardPacket = FUN_002b8d60_packet_voice(3, 0xfff);
     guardPacket->unk_00 = 4;
@@ -7633,8 +7633,8 @@ void func_002f05f0(BtlAction *action)
     file = func_002f87e0(6);
     func_002b90d0(object, file);
 
-    packet = FUN_002bd590_packet_voice(action->unit, voiceId);
     packet->actionUID = actionUID;
+    packet = FUN_002bd590_packet_voice(action->unit, voiceId);
     btlPacketRegister(packet, 3);
     
 
@@ -9841,7 +9841,7 @@ void func_002f5030(int param_1)
   u32 uVar4;
   u32 uVar5;
   u32 uVar6;
-  u16 uVar7;
+  short uVar7;
   int aiStack_20 [4];
   int aiStack_10 [4];
   

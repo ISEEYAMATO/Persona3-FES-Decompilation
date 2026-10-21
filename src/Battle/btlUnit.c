@@ -538,8 +538,8 @@ void func_0027f940(BtlUnit* unit, BtlUnit* source, BtlUnit* target,
         {
             btlUnitGetSphereWorldCenter(source, &center);
             center.y -= source->unk_8c * source->scale * 0.5f;
-            entry = DAT_007ce42c + ((charId * 11) * 8) + mode * 6;
             scaledOffset.x = (f32)*(s16*)(entry + 0x0c);
+            entry = DAT_007ce42c + ((charId * 11) * 8) + mode * 6;
             scaledOffset.y = (f32)*(s16*)(entry + 0x0e);
             scaledOffset.z = (f32)*(s16*)(entry + 0x10);
             scaledOffset.x *= unit->scale;
@@ -933,12 +933,12 @@ void func_002807a0(BtlUnit* unit, RwV3d* param_2)
 f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
                   f32* param_4, f32* param_5, u32 param_6)
 {
-    BtlUnit* unit;
-    BtlUnit* lastUnit;
-    RwV3d scaled;
-    RwV3d transformed;
-    RwV3d center;
+    u32 genus;
+    u32 count;
     RwV3d delta;
+    RwV3d center;
+    RwV3d transformed;
+    RwV3d scaled;
     f32 sumX;
     f32 sumY;
     f32 sumZ;
@@ -946,8 +946,8 @@ f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
     f32 minY;
     f32 radius;
     f32 extent;
-    u32 count;
-    u32 genus;
+    BtlUnit* lastUnit;
+    BtlUnit* unit;
 
     sumX = 0.0f;
     sumY = 0.0f;
@@ -1344,8 +1344,8 @@ u32 btlUnitUpdateMovePacket(void* work)
                 target = packet->targetPos;
                 if (packet->unk_1c != 0.0f)
                 {
-                    direction.x = unit->pos.x - packet->targetPos.x;
                     direction.y = 0.0f;
+                    direction.x = unit->pos.x - packet->targetPos.x;
                     direction.z = unit->pos.z - packet->targetPos.z;
                     RwV3dNormalize(&direction, &direction);
                     target.x += direction.x * packet->unk_1c;
@@ -5784,49 +5784,49 @@ void FUN_002891e0(void)
 
 {
 
-  u16 uVar1;
-
-  u32 uVar2;
-
-  u32 uVar3;
-
-  u32 bVar4;
-
-  int iVar5;
-
-  int iVar6;
-
-  int iVar7;
-
-  u32 uVar8;
-
-  long lVar9;
-
-  u32 *puVar10;
-
-  u32 *puVar11;
-
-  int iVar12;
-
-  u32 auStack_f0 [16];
-
-  u32 auStack_b0 [16];
-
-  u32 uStack_70;
-
-  u32 uStack_6c;
-
-  u32 uStack_68;
-
-  u32 uStack_64;
-
-  u32 savedTarget[4];
-
-  u32 savedSource[4];
+  RwRGBA clearColor;
 
   int aiStack_40 [15];
 
-  RwRGBA clearColor;
+  u32 savedSource[4];
+
+  u32 savedTarget[4];
+
+  u32 uStack_64;
+
+  u32 uStack_68;
+
+  u32 uStack_6c;
+
+  u32 uStack_70;
+
+  u32 auStack_b0 [16];
+
+  u32 auStack_f0 [16];
+
+  int iVar12;
+
+  u32 *puVar11;
+
+  u32 *puVar10;
+
+  long lVar9;
+
+  u32 uVar8;
+
+  int iVar7;
+
+  int iVar6;
+
+  int iVar5;
+
+  u32 bVar4;
+
+  u32 uVar3;
+
+  u32 uVar2;
+
+  u16 uVar1;
 
   
 

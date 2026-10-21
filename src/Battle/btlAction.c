@@ -534,6 +534,8 @@ void FUN_002899e0(BtlAction* action)
 // FUN_00289b50 NONMATCHING
 void FUN_00289b50(BtlAction* action)
 {
+    RwV3d destination;
+    RwMatrix rotation;
     BtlPacket* movePacket;
     BtlAction* current;
     BtlUnit* unit;
@@ -541,8 +543,6 @@ void FUN_00289b50(BtlAction* action)
     RwV3d home;
     RwV3d target;
     RwV3d direction;
-    RwV3d destination;
-    RwMatrix rotation;
     f32 distance;
     f32 angle;
     f32 speed;
@@ -1270,8 +1270,8 @@ BtlPacket* result;
             messageId = 0x223;
             voice = 0xb;
             tableIndex = 0x2f;
-            work.hpDelta = stat * 100 / 5000;
             action->passiveSkillsFlags &= ~1;
+            work.hpDelta = stat * 100 / 5000;
         }
         else if (action->passiveSkillsFlags & 2)
         {
@@ -6513,8 +6513,8 @@ void btlActionUpdateStateEscape(BtlAction* action)
     u16 mode;
     u16 hasDownEnemy;
 
-    btlAction0028a780(action);
     rootPacket = func_002bd780(action->unit, action->target.commandId);
+    btlAction0028a780(action);
     rootPacket->actionUID = action->uid;
     btlPacketRegister(rootPacket, BTLPACKET_TYPE_3D);
 
@@ -7031,8 +7031,8 @@ void btlActionInitStateRoundUpMes(BtlAction* action)
     u16 speedIdx;
     RwV3d homePos;
 
-    selected = NULL;
     unit = action->unit;
+    selected = NULL;
     if (unit->genus == UNIT_GENUS_PC)
     {
         candidate = action;

@@ -3826,17 +3826,17 @@ void FUN_002fe0b0(float param_1, u8* param_2, u64 param_3, u64 param_4,
 void FUN_002fe780(float param_1, u8* param_2, u8* param_3,
                   u64 param_4, u64 param_5)
 {
-    u16 uVar1;
-    int iVar2;
-    u16 uVar3;
-    float fVar8;
     float fVar7;
     float fVar6;
     float fVar5;
     float fVar4;
+    u32 value;
+    u16 uVar1;
+    int iVar2;
+    u16 uVar3;
     void (**setState)(...);
     u8 vertices[0x2a][0x40];
-    u32 value;
+    float fVar8;
 
     iVar2 = FUN_00198590();
     setState = (void (**)(...))DAT_00960090_abs;

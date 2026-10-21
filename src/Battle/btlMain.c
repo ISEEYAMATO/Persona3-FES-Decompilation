@@ -559,8 +559,8 @@ void btlMainInitStateUnitCreate(BtlStateWork* work)
             unit->resTypeId = FUN_003b6000(charId, model);
             FUN_001a0590(unit->resTypeId, 1);
             FUN_00287b20(unit, 1);
-            FUN_002831c0(unit, 0);
             FUN_00282d40(unit->unk_9e4, unit, unit->unk_9e0, 0, unit->unk_9e8);
+            FUN_002831c0(unit, 0);
             FUN_00282bc0(unit);
             if (*(s32*)((u8*)unit->mdl + 0x3f8) == 0)
             {
@@ -821,8 +821,8 @@ void btlMainInitStateUnitLoad(BtlStateWork* work)
     for (unit = gBtl->unitLists[1].head; unit != ((void*)0); unit = unit->next)
     {
         modelPacket = FUN_00285690(unit, unit->charId, 0x3e);
-        btlMainRegisterDependentPacket(modelPacket, BTLPACKET_TYPE_1, modelPacketUID);
         modelPacketUID = modelPacket->uid;
+        btlMainRegisterDependentPacket(modelPacket, BTLPACKET_TYPE_1, modelPacketUID);
         if ((gBtl->unk_10 & 1) == 0)
         {
             formationPacket = FUN_002bb2f0(DAT_007ce4f4, unit, 0, 0, 0);
@@ -2138,8 +2138,8 @@ void FUN_0029ee20(u32 param_1)
       direction.x = targetPos.x - unitPos.x;
       direction.y = targetPos.y - unitPos.y;
       direction.z = targetPos.z - unitPos.z;
-      FUN_004c69f0(&direction,&direction);
       matrix.at = direction;
+      FUN_004c69f0(&direction,&direction);
       cross.x = DAT_00697884 * direction.z - DAT_00697888 * direction.y;
       cross.y = DAT_00697888 * direction.x - DAT_00697880_abs[0] * direction.z;
       cross.z = DAT_00697880_abs[0] * direction.y - DAT_00697884 * direction.x;
@@ -2452,38 +2452,38 @@ u32 FUN_0029faa0(BtlMainColorWork *param_1)
 
   f32 lightValueA;
 
-  u32 uVar3;
+  RwMatrix matrix;
 
   f32 lightValueB;
 
-  u32 uVar4;
+  RwRGBAReal color;
 
-  int iVar5;
+  float fVar16;
 
   u_long128 *matrixDst;
   u_long128 *matrixSrc;
 
-  BtlMainColorWork *colorWork;
-
-  float fVar9;
-
-  float fVar10;
-
-  float fVar11;
-
-  float fVar12;
-
-  float fVar13;
+  float fVar15;
 
   float fVar14;
 
-  float fVar15;
+  float fVar13;
 
-  float fVar16;
+  float fVar12;
 
-  RwRGBAReal color;
+  float fVar11;
 
-  RwMatrix matrix;
+  float fVar10;
+
+  float fVar9;
+
+  BtlMainColorWork *colorWork;
+
+  int iVar5;
+
+  u32 uVar4;
+
+  u32 uVar3;
 
   
 

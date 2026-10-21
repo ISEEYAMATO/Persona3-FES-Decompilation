@@ -3253,9 +3253,9 @@ void FUN_00532440(u32 *param_1)
 
 
 {
-  param_1[2] = 0;
-
   param_1[1] = 0;
+
+  param_1[2] = 0;
 
   param_1[0] = (u32)(&PTR_FUN_007c0520);
 
@@ -3654,9 +3654,9 @@ void FUN_00532768(u32 *param_1)
 
 {
 
-  param_1[3] = 0;
-
   param_1[1] = 0;
+
+  param_1[3] = 0;
 
   *param_1 = (u32)(&PTR_FUN_007c0630);
 
@@ -57992,9 +57992,9 @@ void FUN_00558dd0(int param_1)
 
       *(u32 *)(param_1 + 0x18) = 0;
 
-      *(u8 *)(param_1 + 2) = 0;
-
       *(int *)(param_1 + 0x3c) = *(int *)(param_1 + 0x3c) + *(int *)(param_1 + 0x10);
+
+      *(u8 *)(param_1 + 2) = 0;
 
       if (*(int *)(param_1 + 0x10) != 0) {
 
@@ -69327,6 +69327,8 @@ void FUN_00560d20(int param_1,u8 param_2)
 
 
 // FUN_00560D50 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00560d50(u32 param_1)
@@ -69344,6 +69346,7 @@ void FUN_00560d50(u32 param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -76132,7 +76135,7 @@ u8 FUN_00565650(int param_1)
 
 {
 
-  u8 bVar1;
+  char bVar1;
 
 
 
