@@ -3550,9 +3550,9 @@ void FUN_00532688(u64 param_1,u64 param_2)
 
     do {
 
-      iVar1 = iVar2 + 1;
-
       ((code)FUN_00532718)(param_1,iVar2,param_2);
+
+      iVar1 = iVar2 + 1;
 
       iVar2 = iVar1;
 
@@ -21682,9 +21682,9 @@ void FUN_0053f9b0(long param_1,u64 param_2)
 
   DAT_00788684 = 1;
 
-  ChangeThreadPriority(param_1,DAT_00788650);
-
   iVar2 = 0;
+
+  ChangeThreadPriority(param_1,DAT_00788650);
 
   do {
 
@@ -148077,9 +148077,9 @@ void FUN_00599d70(u64 param_1,int param_2,int *param_3,u32 *param_4)
 
   lVar1 = FUN_00599408(param_1,0x47);
 
-  if (lVar1 == 1) {
-
     *param_3 = *(int *)(param_2 + 0x2a8) - *(int *)(param_2 + 0x2d0);
+
+  if (lVar1 == 1) {
 
     *param_4 = DAT_007b4728;
 
