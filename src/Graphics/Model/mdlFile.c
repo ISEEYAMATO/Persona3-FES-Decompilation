@@ -4603,6 +4603,21 @@ void FUN_0031e8d0(int *param_1,u32 param_2,u32 param_3,int param_4,u32 param_5)
 
 
 
+/* DUMMYDUMB session 2026-10-20: two changes, measured together.
+ * 1) #pragma opt_lifetimes for this function only (mwcc's lifetime analysis):
+ *    90 -> 88 bytes.
+ * 2) calling the global function pointer through its _abs alias
+ *    (DAT_00960178_abs - the same slot at 0x960178 - declared as an array so
+ *    mwcc materialises its address absolutely instead of gp-relative). On its own
+ *    that is much worse (147); it only helps together with the pragma:
+ *    88 -> 82 bytes.
+ * What remains is a block-ordering difference (retail stores the loaded pair
+ * before re-fetching) plus a register-class choice, so the function is still
+ * NONMATCHING. Not a match claim - recorded because both changes are strict
+ * improvements and the _abs spelling is the repo's established idiom for
+ * absolute global addressing (cf. btlEffect.c's (*DAT_00960178_u32_abs)).
+ */
+#pragma opt_lifetimes on
 // FUN_0031EBE0 NONMATCHING
 
 
@@ -4688,7 +4703,7 @@ u32 FUN_0031ebe0(int *param_1)
 
             uVar5 = *(u32 *)(iVar4 + 0x110);
 
-            uVar8 = (*DAT_00960178)(uVar6,0x40000);
+            uVar8 = (*DAT_00960178_abs)(uVar6,0x40000);
 
             *puVar3 = (int)uVar8;
 
@@ -4774,6 +4789,7 @@ u32 FUN_0031ebe0(int *param_1)
 
   return uVar6;
 
+#pragma opt_lifetimes reset
 }
 
 
