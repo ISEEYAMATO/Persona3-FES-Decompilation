@@ -1708,6 +1708,13 @@ void btlActionUpdateStateCommand(BtlAction* action)
     }
 }
 
+/* DUMMYDUMB session 2026-10-21: the frame is 16 bytes too big (ours
+ * `addiu $sp,$sp,-0x50`, retail's `-0x40`) because we save one more callee-saved
+ * register than retail (s0-s3 against s0-s2): our locals specificId, selected and
+ * packet are all live across calls, and mwcc additionally spills the `action`
+ * parameter into a saved register. The declaration-order lever (4 locals) does
+ * not change the allocation, so which value mwcc chooses to spill is not
+ * source-reachable from here. Confirmed wall. */
 // FUN_0028c310 NONMATCHING
 void btlActionInitStateTarget(BtlAction* action)
 {
