@@ -41807,9 +41807,9 @@ void FUN_0054d490(void)
 
 
 
-  iVar1 = FUN_00535170(PTR_DAT_00793f44);
-
   *(u32 *)(iVar1 + 0x4c) = 0;
+
+  iVar1 = FUN_00535170(PTR_DAT_00793f44);
 
   return;
 
