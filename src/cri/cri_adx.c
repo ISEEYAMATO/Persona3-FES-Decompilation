@@ -12318,9 +12318,9 @@ void FUN_00538b00(void)
 
 {
 
-  short *psVar1;
-
   int iVar2;
+
+  short *psVar1;
 
 
 
@@ -30280,9 +30280,9 @@ void FUN_00545b90(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
