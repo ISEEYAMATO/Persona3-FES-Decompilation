@@ -5918,6 +5918,7 @@ next:
 
 /* W367 pragma probe: opt_lifetimes on nd 404 -> 301; off nd 404; object 780/784. */
 #pragma opt_lifetimes on
+/* DUMMYDUMB session 2026-10-21: frame census says our frame is 16 bytes bigger than retail here; the address-taken locals (iStack_8, iStack_10, uStack_c and the auStack_4 buffer) are all out-parameters of FUN_003976f0, and that callee really does take four parameters (u32 FUN_003976f0(int,int,u32*,u32*) in mt_evtCutin.c), so the residency is genuine. The declaration-order lever (7 locals) gives nothing. Confirmed wall. */
 // FUN_00366660 NONMATCHING
 
 
