@@ -1781,8 +1781,6 @@ long FUN_003f0d60(int param_1,u64 param_2)
 // Confirmed b210 floor: only five branch immediates differ at +136/+148/+160/+172/+184;
 // our inner-switch exits target the final join, while retail targets the shared exit branch.
 // FUN_003F0EC0 NONMATCHING
-#pragma push
-#pragma schedule on
 
 
 u32 FUN_003f0ec0(u16 param_1)
@@ -1968,7 +1966,6 @@ u32 FUN_003f0ec0(u16 param_1)
   return uVar3;
 
 }
-#pragma pop
 
 // FUN_003F10B0
 
@@ -14390,8 +14387,6 @@ u32 FUN_00402480(u16 *param_1)
 
 // W416 measured negative: retail offset 64 has a 0x10 extension, while ours already has the same pair nearby at 52/56; layout, not width.
 // FUN_00402510 NONMATCHING
-#pragma push
-#pragma schedule on
 
 
 u32 FUN_00402510(u32 param_1,long param_2,u32 param_3,short param_4)
@@ -14465,7 +14460,6 @@ u32 FUN_00402510(u32 param_1,long param_2,u32 param_3,short param_4)
   return uVar3;
 
 }
-#pragma pop
 
 // FUN_004026B0
 
@@ -15688,8 +15682,6 @@ search_done:
 }
 
 // FUN_00403F20 NONMATCHING
-#pragma push
-#pragma schedule on
 
 
 u32 FUN_00403f20(short param_1,int param_2)
@@ -15745,7 +15737,6 @@ u32 FUN_00403f20(short param_1,int param_2)
   }
   return 0;
 }
-#pragma pop
 
 // W325 pragma sweep: opt_common_subs off nd564 -> nd463 (obj 840/848).
 #pragma opt_common_subs off
