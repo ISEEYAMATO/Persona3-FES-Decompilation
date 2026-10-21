@@ -1795,29 +1795,36 @@ static __inline u32 mdlVuScalePackedColor(u32 color, const u8 (*scale)[16], u32 
         : "memory");
     return tmp;
 }
+/* The two "=m" outputs matter: the asm hard-codes the frame addresses of both
+ * the c2 scratch (0x138) and the result (0x134), so mwcc has to be given two
+ * memory slots to place - with only one it picks the scratch slot for the
+ * result and the reload reads back the spilled c2 instead of the modulated
+ * colour.  Declaring the scratch first puts it at 0x138 and the result at
+ * 0x134, which is what the asm writes. */
 static __inline u32 mdlVuModulateStackedV0(const u32 *pc1, u32 c2, f32 inv255)
 {
+    u32 scratch;
     u32 tmp;
     __asm__ volatile (
         ".set noreorder                  \n"
-        "lw          $v0, 0(%1)          \n"
+        "lw          $v0, 0(%2)          \n"
         "pextlb      $v0, $zero, $v0     \n"
         "pextlh      $v0, $zero, $v0     \n"
         "qmtc2       $v0, $vf10          \n"
         "vitof0.xyzw $vf10, $vf10        \n"
-        "mfc1        $v0, %3             \n"
+        "mfc1        $v0, %4             \n"
         "nop                             \n"
         "qmtc2       $v0, $vf2           \n"
         "vmulx.xyzw  $vf10, $vf10, $vf2x \n"
         "vmove.xyzw  $vf11, $vf10        \n"
-        "sw          %2, 0x138($sp)       \n"
+        "sw          %3, 0x138($sp)       \n"
         "addiu       $v0, $sp, 0x138      \n"
         "lw          $v0, 0($v0)          \n"
         "pextlb      $v0, $zero, $v0     \n"
         "pextlh      $v0, $zero, $v0     \n"
         "qmtc2       $v0, $vf10          \n"
         "vitof0.xyzw $vf10, $vf10        \n"
-        "mfc1        $v0, %3             \n"
+        "mfc1        $v0, %4             \n"
         "nop                             \n"
         "qmtc2       $v0, $vf2           \n"
         "vmulx.xyzw  $vf10, $vf10, $vf2x \n"
@@ -1831,7 +1838,7 @@ static __inline u32 mdlVuModulateStackedV0(const u32 *pc1, u32 c2, f32 inv255)
         "ppacb       $v0, $zero, $v0     \n"
         "sw          $v0, 0x134($sp)      \n"
         ".set reorder"
-        : "=m"(tmp)
+        : "=m"(scratch), "=m"(tmp)
         : "r"(pc1), "r"(c2), "f"(inv255)
         : "memory");
     return tmp;
