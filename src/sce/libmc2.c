@@ -8352,7 +8352,8 @@ LAB_00520160:
   bVar3 = false;
   if ((uVar8 & 1) != 0) {
     do {
-      if (uVar12 == 0) {
+      uVar5 = uVar12;
+      if (uVar5 == 0) {
         bVar3 = false;
         do {
           unaff_s4_lo = *piVar11;
@@ -8362,7 +8363,6 @@ LAB_00520160:
       }
       if (!bVar3) {
         lVar6 = FUN_005210d8(unaff_s4_lo,10,uVar12);
-        uVar5 = uVar12;
         if (lVar6 != 0) {
           uVar5 = (int)lVar6 - unaff_s4_lo;
         }
