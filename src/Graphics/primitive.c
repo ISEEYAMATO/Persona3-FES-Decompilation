@@ -358,7 +358,9 @@ void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, cons
  * instruction instead of the retail lui+load pair. Note the static-data
  * difference itself is relocation-masked and is not what the residual is about.
  * Confirmed wall. */
-// FUN_00359b40 NONMATCHING
+// FUN_00359b40
+#pragma push
+#pragma opt_lifetimes on
 void primSphereLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, u32 saveAndRestoreRenderState)
 {
     const RwRGBA* color_p = color;
@@ -443,6 +445,7 @@ void primSphereLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, u32 
         }
     }
 }
+#pragma pop
 
 // FUN_00359e50 NONMATCHING
 void primCylinderLine3D(const RwV3d* center, f32 radius, f32 height, const RwRGBA* color, u32 saveAndRestoreRenderState)

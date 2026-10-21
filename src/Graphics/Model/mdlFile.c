@@ -5652,7 +5652,7 @@ void FUN_00320080(int param_4,float param_1,int param_5,float param_2,float para
   int *piVar2;
 
 
-  u32 uVar5;
+  int uVar5;
 
   int iVar4;
 
