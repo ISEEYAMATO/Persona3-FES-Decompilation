@@ -21440,6 +21440,7 @@ u64 FUN_0053f6d0(void)
 
 
 // FUN_0053F768 NONMATCHING
+#pragma schedule on
 
 
 u64 FUN_0053f768(void)
@@ -21467,6 +21468,7 @@ u64 FUN_0053f768(void)
   return 0;
 
 }
+#pragma schedule reset
 
 
 
@@ -48460,6 +48462,7 @@ void FUN_00552630(void)
 
 
 // FUN_00552658 NONMATCHING
+#pragma schedule on
 
 
 u64 FUN_00552658(void)
@@ -48475,6 +48478,7 @@ u64 FUN_00552658(void)
   return 0;
 
 }
+#pragma schedule reset
 
 
 
@@ -57314,10 +57318,12 @@ void FUN_00558720(char param_1)
 }
 
 // FUN_00558758 NONMATCHING
+#pragma schedule on
 void FUN_00558758(void)
 {
   DAT_007a08b2 = 9;
 }
+#pragma schedule reset
 
 
 
@@ -57510,10 +57516,12 @@ void FUN_00558988(u32 param_1)
 }
 
 // FUN_005589A8 NONMATCHING
+#pragma schedule on
 u32 FUN_005589a8(void)
 {
   return DAT_007a091c;
 }
+#pragma schedule reset
 
 
 
@@ -87052,6 +87060,7 @@ void FUN_0056ded0(u32 param_1)
 
 
 // FUN_0056DEF8 NONMATCHING
+#pragma schedule on
 
 
 u32 FUN_0056def8(void)
@@ -87069,6 +87078,7 @@ u32 FUN_0056def8(void)
   return *puVar1;
 
 }
+#pragma schedule reset
 // FUN_0056DF18
 void FUN_0056df18(void)
 {
@@ -120230,6 +120240,7 @@ u64 FUN_00586858(void)
 
 
 // FUN_00586898 NONMATCHING
+#pragma schedule on
 
 
 u64 FUN_00586898(void)
@@ -120245,6 +120256,7 @@ u64 FUN_00586898(void)
   return 0;
 
 }
+#pragma schedule reset
 
 
 
