@@ -760,6 +760,13 @@ bool FUN_0050c848(char *param_1,u32 param_2)
   }
   return lVar1 != 0;
 }
+/* DUMMYDUMB session 2026-10-20: the only real residual is a two-instruction order
+ * swap at +16/+20 - ours `ld $ra,0($sp)` then `lui $v1,1` (the 0x10000 mask),
+ * retail the other way round. Everything else matches (40B = 40B); the rest are
+ * masked call relocations. Probed: named result temp, mask as (1 << 16),
+ * 0x10000u, ternary instead of != 0 - all byte-neutral. Confirmed wall:
+ * epilogue ordering. Same family as cri_adx FUN_0057FA50 and libmc2
+ * FUN_0051E0F0. */
 // FUN_0050C9A0 NONMATCHING
 bool FUN_0050c9a0(void)
 {

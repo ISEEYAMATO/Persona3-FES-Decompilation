@@ -109870,7 +109870,11 @@ void FUN_0057fa28(u32 param_1)
  * result temp, u32 instead of int local, index form, byte-offset deref - all
  * byte-neutral. Confirmed wall: epilogue ordering (mwcc restores $ra before
  * the last body instruction). Same family as libmc2 FUN_0051E0F0 and the six
- * sibling cri_adx accessors below. */
+ * sibling cri_adx accessors below - verified on FUN_0057FA98 (identical shape:
+ * ours ld $ra,0($sp) then lw $v0,off($v0), retail the other way round; named
+ * result temp, byte-offset deref, u32 local and schedule off all byte-neutral).
+ * The other five siblings (FUN_0057FC90, FUN_00580048, FUN_00585C50,
+ * FUN_00586110, FUN_00586200) have the same two-instruction swap at +16/+20. */
 // FUN_0057FA50 NONMATCHING
 
 

@@ -32622,7 +32622,13 @@ void FUN_00341ba0(int param_1)
  * defect. Same mechanism as rwcore FUN_00500f30 and FUN_00501128, where
  * retail materialises an intermediate directly in the register that will hold
  * the result and this build uses a scratch register plus a copy.
- * FUN_00345cf0 is the same shape and behaves the same way. */
+ * FUN_00345cf0 is the same shape and behaves the same way.
+ * DUMMYDUMB session 2026-10-20 (2nd pass): the residual also shows retail
+ * materialising the DAT_0069c850 table absolutely (lui+addiu) where we use the
+ * gp-relative spelling, but switching that call site to the existing
+ * DAT_0069c850_abs alias is byte-neutral, as are opt_lifetimes (5 bytes) and
+ * schedule on (120 bytes, much worse). The register roles ($v1/$v3 vs $v0)
+ * remain the blocker. Still 5 bytes, size 192 = 192. Confirmed wall. */
 // FUN_00341F10 NONMATCHING
 
 
