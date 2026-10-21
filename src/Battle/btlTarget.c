@@ -4436,7 +4436,6 @@ s32 FUN_002d6460(BtlAction* action, s32* param_2, u32 param_3,
     return result;
 }
 // FUN_002d6620 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 void FUN_002d6620(BtlAction *action)
 {

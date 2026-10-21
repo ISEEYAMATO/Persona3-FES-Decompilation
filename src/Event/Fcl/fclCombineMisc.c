@@ -603,7 +603,6 @@ s16 FUN_003d5dc0(u32 param_1)
 }
 
 // FUN_003D5E60 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 
 

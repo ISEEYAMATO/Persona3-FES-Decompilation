@@ -702,7 +702,6 @@ void K_Fldrc_DestroyFldFpc()
  */
 #pragma push
 // FUN_001b0a20 NONMATCHING
-#pragma schedule on
 void K_Fldrc_001b0a20(s16 majorId, s16 minorId)
 {
     char path[64];
@@ -1734,7 +1733,6 @@ u32 FUN_001b2b30(u32 resource)
 /* W389: baseline obj 856/880, nd 528; opt_common_subs off -> obj 856/880, nd 521. */
 #pragma opt_common_subs off
 // FUN_001b2b90 NONMATCHING
-#pragma schedule on
 void FUN_001b2b90(u32 resource)
 {
     u32 payload;

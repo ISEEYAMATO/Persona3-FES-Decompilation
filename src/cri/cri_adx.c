@@ -57426,7 +57426,6 @@ void FUN_00558720(char param_1)
 }
 
 // FUN_00558758 NONMATCHING
-#pragma schedule on
 void FUN_00558758(void)
 {
   DAT_007a08b2 = 9;

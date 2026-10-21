@@ -3451,7 +3451,6 @@ u32 func_001ae480(KwlnTask* task)
 #pragma opt_loop_invariants reset
 
 // FUN_001ae580 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 void* func_001ae580(KwlnTask* task)
 {

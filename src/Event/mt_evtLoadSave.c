@@ -2997,7 +2997,6 @@ void FUN_00390920(int param_1,int param_2)
 #define FUN_00390920(...) ((void (*)(...))FUN_00390920)(__VA_ARGS__)
 #undef FUN_00390c90
 // FUN_00390C90 NONMATCHING
-#pragma schedule on
 
 
 void FUN_00390c90(int param_1,int param_2)

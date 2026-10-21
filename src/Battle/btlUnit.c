@@ -1097,7 +1097,6 @@ f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
 #pragma push
 #pragma opt_propagation off
 // FUN_00280DA0 NONMATCHING
-#pragma schedule on
 void func_00280da0(BtlUnit* unit)
 {
     f32* path;

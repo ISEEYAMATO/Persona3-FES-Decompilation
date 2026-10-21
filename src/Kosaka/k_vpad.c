@@ -5521,7 +5521,6 @@ void func_001e9a90(void* workData)
 }
 
 // FUN_001E9AF0 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 void func_001e9af0(RuntimeWork* workData, u32* renderRef)
 {

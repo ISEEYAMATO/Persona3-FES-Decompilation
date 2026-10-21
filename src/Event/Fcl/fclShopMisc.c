@@ -3403,7 +3403,6 @@ ret:
 // Retail sibling begins at 0x3f3280; comparator body reconstructed from 0x3f3280-0x3f33c8.
 #pragma opt_loop_invariants on
 // FUN_003F33D0 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 
 
@@ -5120,7 +5119,6 @@ void FUN_003f5f50(u32 param_1,u32 param_2,u8 param_3,u64 param_4,
 }
 
 // FUN_003F61D0 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 
 
@@ -9048,7 +9046,6 @@ u64 FUN_003fbf20(short *param_1)
 }
 
 // FUN_003FC060 NONMATCHING
-#pragma schedule on
 
 
 u64 FUN_003fc060(int param_1)
@@ -15306,7 +15303,6 @@ no_match:
 }
 
 // FUN_00403970 NONMATCHING
-#pragma schedule on
 
 
 u32 FUN_00403970(short param_1)

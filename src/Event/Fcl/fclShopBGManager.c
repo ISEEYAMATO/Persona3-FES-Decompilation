@@ -1269,7 +1269,6 @@ u32 FUN_00411790(u64 param_1,int param_2,int param_3)
 
 // W419 negative: DAT_006b0050 array/absolute alias changed FUN_00411ee0 nd298/object424 to nd303/object428 (window448); regressed and reverted.
 // FUN_00411EE0 NONMATCHING
-#pragma schedule on
 #pragma opt_lifetimes on
 
 
