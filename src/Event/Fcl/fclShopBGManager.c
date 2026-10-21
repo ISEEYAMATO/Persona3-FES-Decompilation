@@ -1279,12 +1279,6 @@ u64 FUN_00411ee0(u64 param_1,int param_2)
 
 {
 
-  int iVar1;
-
-  u32 uVar2;
-
-  int iVar3;
-
   u32 *puVar4;
 
   u32 *puVar5;
@@ -1292,6 +1286,12 @@ u64 FUN_00411ee0(u64 param_1,int param_2)
   int iVar6;
 
   u32 auStack_20 [8];
+
+  int iVar1;
+
+  u32 uVar2;
+
+  int iVar3;
 
   
 
@@ -4976,6 +4976,8 @@ void FUN_004166d0(u64 param_1,int param_2,int param_3,int param_4,int param_5,
 }
 
 // FUN_004167D0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_004167d0(u64 param_1,int param_2,int param_3,int param_4,int param_5,
@@ -5077,6 +5079,7 @@ void FUN_004167d0(u64 param_1,int param_2,int param_3,int param_4,int param_5,
   return;
 
 }
+#pragma pop
 
 // W415 probes (all reverted): direct arithmetic for CONCAT12 gave nd 199 -> 209, obj 388 -> 384; masked composition gave nd 199 -> 216, obj 396; typed f32 alias plus masked composition gave nd 199 -> 207, obj 384.
 // W419 negative: DAT_007caef0 array/absolute alias changed FUN_00416b90 nd199/object388 to nd242/object392 (window400); reverted.

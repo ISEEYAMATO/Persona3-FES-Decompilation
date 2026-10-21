@@ -2683,6 +2683,8 @@ void FUN_003cb960(int param_1)
 // Remaining differences are instruction scheduling and register-coloring around helper calls.
 // Keep the marker NONMATCHING until verifier reports an exact match.
 // FUN_003CBA50 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_003cba50(int *param_1)
@@ -3101,6 +3103,7 @@ void FUN_003cba50(int *param_1)
   return;
 
 }
+#pragma pop
 #undef auStack_28
 #define FUN_003cba50(...) ((void (*)(...))FUN_003cba50)(__VA_ARGS__)
 // FUN_003CCC30

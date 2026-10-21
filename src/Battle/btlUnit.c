@@ -1102,8 +1102,8 @@ void func_00280da0(BtlUnit* unit)
 {
     f32* path;
     RwV2d start;
-    RwV2d segment;
     RwV2d toLast;
+    RwV2d segment;
     RwV3d forward;
     RtQuat targetRot;
     u16 pointCount;

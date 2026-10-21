@@ -6118,6 +6118,9 @@ void func_002ed350(void)
 
 /* W415 negative: suffixing the divisor and adding an absolute global alias removed soft calls but measured nd3177/4856 and nd3175/4852 versus nd3006/4824. */
 // FUN_002ed360 NONMATCHING
+#pragma push
+#pragma schedule on
+#pragma opt_lifetimes on
 u32 func_002ed360(u64 *param_1)
 
 {
@@ -6631,6 +6634,7 @@ u32 func_002ed360(u64 *param_1)
   }
   return 1;
 }
+#pragma pop
 
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes on
@@ -8739,15 +8743,6 @@ u32 func_002f2b40(BtlAction* action)
 // FUN_002f2b90 NONMATCHING
 void func_002f2b90(BtlAction* action)
 {
-    u8 voiceData[136];
-    s16 delay;
-    u16 voiceId;
-    u32 value1;
-    u32 value0;
-    u64 actionUID;
-    BtlPacket* cleanupPacket3;
-    BtlPacket* cleanupPacket2;
-    BtlPacket* cleanupPacket1;
     BtlPacket* cleanupPacket0;
     BtlPacket* effectStopPacket1;
     BtlPacket* effectStopPacket0;
@@ -8760,14 +8755,23 @@ void func_002f2b90(BtlAction* action)
     BtlPacket* transformPacket;
     BtlPacket* parameterSource;
     BtlPacket* parameterPacket;
-    void* object0;
-    void* object1;
     BtlPacket* unitPacket;
     BtlPacket* guardPacket;
     BtlPacket* motionPacket;
     BtlPacket* skillPacket;
     BtlPacket* rootPacket;
     BtlPacket* streamPacket;
+    u8 voiceData[136];
+    s16 delay;
+    u16 voiceId;
+    void* object0;
+    void* object1;
+    u32 value1;
+    u32 value0;
+    u64 actionUID;
+    BtlPacket* cleanupPacket3;
+    BtlPacket* cleanupPacket2;
+    BtlPacket* cleanupPacket1;
 
     actionUID = action->uid;
     delay = FUN_002835e0(1.0f, (u32)action->unit, 0x17);
@@ -9152,6 +9156,9 @@ void func_002f39b0(BtlAction* action)
     }
 }
 // FUN_002f3a80 NONMATCHING
+#pragma push
+#pragma schedule on
+#pragma opt_lifetimes on
 void func_002f3a80(BtlAction* param_1)
 
 {
@@ -9405,6 +9412,7 @@ LAB_002f3d0c:
     uVar11 = uVar11 + 1 & 0xffff;
   } while( true );
 }
+#pragma pop
 
 // FUN_002f43a0
 u32 func_002f43a0(BtlAction* action)

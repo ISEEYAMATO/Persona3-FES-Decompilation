@@ -407,123 +407,123 @@ u32 func_00311730(u32 *param_1,u16 *param_2,u16 *param_3,int param_4)
 
 {
 
-  u16 uVar1;
+  RwV3d vector10;
 
-  u32 uVar2;
+  RwV3d vector20;
 
-  code *pcVar3;
+  RwV3d vector30;
 
-  u64 uVar4;
+  RwV3d vector40;
 
-  float *pfVar5;
-
-  u32 uVar6;
-
-  long lVar7;
-
-  u32 uVar8;
-
-  int iVar9;
-
-  int iVar10;
-
-  int iVar11;
-
-  float *pfVar12;
-
-  float *pfVar13;
-
-  bool bVar14;
-
-  int iVar15;
-
-  float *pfVar16;
-
-  u32 *puVar17;
-
-  u32 uVar18;
-
-  int iVar19;
-
-  float fVar20;
-
-  float fVar21;
-
-  float fVar22;
-
-  float fVar23;
-  float fVar24;
-
-  float fVar25;
-
-  float fVar26;
-
-
-  float qxx;
-  float qyy;
-  float qzz;
-  float qyz;
-  float qzx;
-  float qxy;
-  float qwx;
-  float qwy;
-  float qwz;
-
-  int iStack_3a0;
-
-  float quat380[4];
-  float quat370[4];
-  float quat360[4];
-  float slerpWork[10];
-  float quat320[4];
-
-  RwMatrix rotation;
-
-  u8 auStack_2d0 [64];
-
-  u8 auStack_290 [64];
-
-  u8 auStack_250 [16];
-
-  u8 auStack_240 [48];
-
-  RwMatrix matrix210;
-
-  float afStack_1d0 [16];
-
-  float afStack_190 [17];
-
-  u32 auStack_14c [31];
-
-  u32 auStack_d0 [16];
-
-  u32 uStack_c4;
-
-  u32 uStack_c0;
-
-  u32 uStack_bc;
-
-  u32 uStack_b8;
-
-  u32 uStack_b0;
-
-  u32 uStack_ac;
-
-  u32 uStack_a8;
-
-  u32 uStack_a0;
-
-  u32 uStack_9c;
-
-  u32 uStack_98;
+  RwV3d vector50;
 
   float afStack_90 [16];
 
-  RwV3d vector50;
-  RwV3d vector40;
-  RwV3d vector30;
-  RwV3d vector20;
-  RwV3d vector10;
+  u32 uStack_98;
+
+  u32 uStack_9c;
+
+  u32 uStack_a0;
+
+  u32 uStack_a8;
+
+  u32 uStack_ac;
+
+  u32 uStack_b0;
+
+  u32 uStack_b8;
+
+  u32 uStack_bc;
+
+  u32 uStack_c0;
+
+  u32 uStack_c4;
+
+  u32 auStack_d0 [16];
+
+  u32 auStack_14c [31];
+
+  float afStack_190 [17];
+
+  float afStack_1d0 [16];
+
+  RwMatrix matrix210;
+
+  u8 auStack_240 [48];
+
+  u8 auStack_250 [16];
+  u8 auStack_290 [64];
+
+  u8 auStack_2d0 [64];
+
+  RwMatrix rotation;
+
+
+  float quat320[4];
+  float slerpWork[10];
+  float quat360[4];
+  float quat370[4];
+  float quat380[4];
+  int iStack_3a0;
+  float qwz;
+  float qwy;
+  float qwx;
+
+  float qxy;
+
+  float qzx;
+  float qyz;
+  float qzz;
+  float qyy;
+  float qxx;
+
+  float fVar26;
+
+  float fVar25;
+
+  float fVar24;
+
+  float fVar23;
+
+  float fVar22;
+
+  float fVar21;
+
+  float fVar20;
+
+  int iVar19;
+
+  u32 uVar18;
+
+  u32 *puVar17;
+
+  float *pfVar16;
+
+  int iVar15;
+
+  bool bVar14;
+
+  float *pfVar13;
+
+  float *pfVar12;
+
+  int iVar11;
+
+  int iVar10;
+
+  int iVar9;
+
+  u32 uVar8;
+
+  long lVar7;
+
+  u32 uVar6;
+
+  float *pfVar5;
+  u64 uVar4;
+  code *pcVar3;
+  u32 uVar2;
+  u16 uVar1;
 
   
 

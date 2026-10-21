@@ -3005,6 +3005,8 @@ void btlActionInitStateAttack(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 6050/8252; singles LI=5905/8252 CS=6344/8452(over) LT=6050/8252 PR=6137/8280 SR=6050/8252 DA=6052/8252; retain LI on. */
 #pragma opt_loop_invariants on
 // FUN_0028eb50 NONMATCHING
+#pragma push
+#pragma schedule on
 void btlActionUpdateStateAttack(BtlAction* action)
 {
     BtlAction* victim;
@@ -3858,6 +3860,7 @@ void btlActionUpdateStateAttack(BtlAction* action)
         }
     }
 }
+#pragma pop
 #pragma opt_loop_invariants reset
 // FUN_00290bd0
 void btlActionInitStateSkill(BtlAction* action)

@@ -676,7 +676,21 @@ u32 FUN_0040f5d0(int param_1,int param_2,int param_3)
 
 {
 
+  float afStack_fc [14];
+  short asStack_c4 [4];
+
+  float afStack_bc [15];
+
+  short asStack_80 [2];
+
+  float afStack_7c [14];
+
+  short asStack_44 [4];
+
+  float afStack_3c [15];
+
   short sVar1;
+
   int iVar2;
 
   u32 uVar3;
@@ -698,20 +712,6 @@ u32 FUN_0040f5d0(int param_1,int param_2,int param_3)
   int iVar11;
 
   short asStack_100 [2];
-
-  float afStack_fc [14];
-
-  short asStack_c4 [4];
-
-  float afStack_bc [15];
-
-  short asStack_80 [2];
-
-  float afStack_7c [14];
-
-  short asStack_44 [4];
-
-  float afStack_3c [15];
 
   
 

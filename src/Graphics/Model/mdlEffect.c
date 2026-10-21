@@ -16364,6 +16364,9 @@ void FUN_00330100(int param_1, float scale)
 
 // W417 negative: replacing both FUN_00330190 normalization VU blocks with mdlVuNormalize3 worsened nd2860/object3480 to nd2997/object3580 over the 2592-byte retail window; retained fake VU code.
 // FUN_00330190 NONMATCHING
+#pragma push
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 void FUN_00330190(u64 param_1)
@@ -17043,6 +17046,7 @@ void FUN_00330190(u64 param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -19983,6 +19987,8 @@ bool FUN_00333940(int param_1,u32 param_2)
 // Genuine VU0 macro-mode asm: complete fake-intrinsic conversion measured
 // 1304/2128 nd995 -> 1668/2128 nd1215; removing it restores the nonfunctional stubs.
 // FUN_00333970 NONMATCHING
+#pragma push
+#pragma schedule on
 void FUN_00333970(float param_1,u8 (*param_2) [16],u32 param_3,u32 *param_4)
 
 
@@ -20393,6 +20399,7 @@ void FUN_00333970(float param_1,u8 (*param_2) [16],u32 param_3,u32 *param_4)
   return;
 
 }
+#pragma pop
 
 
 
@@ -20706,6 +20713,9 @@ void FUN_00334820(int param_1)
 // W414 12-byte copy probes: first-site scalar/struct copies regressed to nd1603/nd1601; replacing both sites regressed to nd1666/nd1664. Only the second-site field copy is retained.
 // W417 negative: direct conversion of the initial FUN_003348b0 matrix VU block regressed nd1503/object2192 to nd1647/object2232 (window2256); retained fake VU macros.
 // FUN_003348B0 NONMATCHING
+#pragma push
+#pragma schedule on
+#pragma opt_lifetimes on
 
 
 
@@ -21220,6 +21230,7 @@ LAB_003350f0:
   return;
 
 }
+#pragma pop
 
 
 
@@ -21660,6 +21671,8 @@ void FUN_003359e0(int param_1)
 
 // W417 negative: direct VU transform of the first FUN_00335a70 packet vector only changed nd2926/object3668 to nd2920/object3660 (rate 0.798 -> 0.797), so the size loophole rejects it.
 // FUN_00335A70 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 
@@ -22405,6 +22418,7 @@ LAB_003365a0:
   return;
 
 }
+#pragma pop
 
 
 
@@ -29569,6 +29583,8 @@ void FUN_0033e890(int param_1)
 
 
 // FUN_0033E8E0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 
@@ -30108,6 +30124,7 @@ void FUN_0033e8e0(int param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -35273,6 +35290,8 @@ void FUN_00345080(int param_1)
 
 
 // FUN_003450D0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 
@@ -35836,6 +35855,7 @@ LAB_003458ac:
   return;
 
 }
+#pragma pop
 
 
 
@@ -45030,6 +45050,8 @@ void FUN_003505b0(int *param_1)
 
 
 // FUN_003505D0 NONMATCHING
+#pragma push
+#pragma schedule on
 void FUN_003505d0(int *param_1)
 
 
@@ -45401,6 +45423,7 @@ void FUN_003505d0(int *param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -47748,6 +47771,9 @@ void FUN_00354290(void)
 
 
 // FUN_003542A0 NONMATCHING
+#pragma push
+#pragma schedule on
+#pragma opt_lifetimes on
 void FUN_003542a0(int param_1)
 
 
@@ -48015,6 +48041,7 @@ void FUN_003542a0(int param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -48086,6 +48113,8 @@ void FUN_00354b50(void)
 
 
 // FUN_00354B80 NONMATCHING
+#pragma push
+#pragma schedule on
 void FUN_00354b80(int param_1)
 
 
@@ -48473,6 +48502,7 @@ void FUN_00354b80(int param_1)
   return;
 
 }
+#pragma pop
 
 
 

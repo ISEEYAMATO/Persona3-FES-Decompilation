@@ -1393,6 +1393,17 @@ bool FUN_00508378(void)
   }
   return bVar2;
 }
+/* DUMMYDUMB session 2026-10-21: retail materialises both addresses absolutely
+ * (lui $v0,0x78 / lui $a0,0x97, with the loads and the addiu folding the low
+ * halves in) while this build reaches them gp-relative through the _abs
+ * aliases. The _abs spelling only forces absolute addressing for a *call*; for
+ * data it stays gp-relative, and the repo's other idiom for an absolute address
+ * (&gp0.ffffXXXX - 0xNNNN) would need three instructions. Probed: writing the
+ * store through a literal address (0x0077f53c), writing the pointer through a
+ * literal (0x00969c18, which is what retail's lui+addiu resolves to - note our
+ * symbol is named DAT_009684c8, so the repo's data-symbol names are not the
+ * retail addresses), and both together - 6 -> 7 and 6 -> 18 bytes, all worse.
+ * Confirmed wall: absolute versus gp-relative addressing of data. */
 #pragma schedule on
 // FUN_00508408 NONMATCHING
 u64 FUN_00508408(void)

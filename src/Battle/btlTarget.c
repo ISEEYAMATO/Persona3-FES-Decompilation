@@ -4441,17 +4441,17 @@ s32 FUN_002d6460(BtlAction* action, s32* param_2, u32 param_3,
 void FUN_002d6620(BtlAction *action)
 {
     volatile /* Removing this qualifier worsens FUN_002d6620 (NONMATCHING nd2980 -> NONMATCHING nd3061, size 3880 -> 3868) - measured W170. */ u16 inherited = 0;
+    u8 finalFlags;
+    u16 targetIndex;
     DatUnit *selfDat;
     u16 specificId;
     s32 mappedId;
     u32 id;
     u32 tableOffset;
+    u32 specialFlags = 0;
     u8 attackType;
     u8 datType;
-    u32 specialFlags = 0;
     u16 successfulTargets;
-    u8 finalFlags;
-    u16 targetIndex;
 
     specificId = action->target.specificId;
     action->target.originalSpecificId = action->target.specificId;
