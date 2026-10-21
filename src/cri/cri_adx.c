@@ -1804,9 +1804,9 @@ long FUN_005316d0(u64 param_1,u64 param_2)
 
 
 
-  uStack_20 = param_1;
-
   uStack_18 = param_2;
+
+  uStack_20 = param_1;
 
   ((code)FUN_00530eb8)(&uStack_20,auStack_60);
 
@@ -6383,9 +6383,9 @@ u8 FUN_00534960(int param_1)
 
 
 
-  puVar4 = (u32 *)(param_1 + 0x20);
-
   iVar5 = 0;
+
+  puVar4 = (u32 *)(param_1 + 0x20);
 
   do {
 
@@ -19057,9 +19057,9 @@ u32 FUN_0053dad8(long param_1,u32 *param_2)
 
     FUN_0053ae08(0x7c20a8);
 
-    *param_2 = 0;
-
     uVar1 = 0xfffffffd;
+
+    *param_2 = 0;
 
   }
 
@@ -22686,9 +22686,9 @@ void FUN_00540768(void)
 
     FUN_00540c70();
 
-    ChangeThreadPriority(DAT_007886e8,DAT_0078ff78);
-
     FUN_00565230(0,0);
+
+    ChangeThreadPriority(DAT_007886e8,DAT_0078ff78);
 
     FUN_00565248(0,0);
 
@@ -23980,9 +23980,9 @@ void FUN_00541a10(u64 param_1)
 
   FUN_00560d20(param_1,0);
 
-  FUN_00560c88(param_1,0);
-
   ((code)FUN_00560af8)(param_1);
+
+  FUN_00560c88(param_1,0);
 
   return;
 
@@ -30778,9 +30778,9 @@ void FUN_00546088(long param_1)
 
     FUN_005462e0(param_1);
 
-    *(u8 *)param_1 = 0;
-
     FUN_00521408(param_1,0,0x60);
+
+    *(u8 *)param_1 = 0;
 
     return;
 
@@ -35909,9 +35909,9 @@ void FUN_005494c0(long param_1,u16 param_2)
 
   else {
 
-    iVar2 = 0;
-
     sVar1 = *(short *)(iVar3 + 0x40);
+
+    iVar2 = 0;
 
   }
 
@@ -47776,9 +47776,9 @@ void FUN_00551f80(long param_1)
 
     iVar2 = piVar3[0xf];
 
-    if (iVar1 != 0) {
-
       piVar3[3] = 0;
+
+    if (iVar1 != 0) {
 
       FUN_0054d7e8(iVar1);
 
@@ -50777,9 +50777,9 @@ void FUN_00553fa8(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -64225,9 +64225,9 @@ void FUN_0055d730(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -108924,9 +108924,9 @@ void FUN_0057edd8(u64 param_1,u64 param_2)
 
   lVar1 = ((code)FUN_00581798)();
 
-  if (lVar1 != 1) {
-
     ((code)FUN_00585590)(0x7c8328);
+
+  if (lVar1 != 1) {
 
     return;
 
@@ -157231,7 +157231,7 @@ void FUN_0059fe60(int param_1,u32 param_2,u32 param_3)
 
   u32 uStack_3c;
 
-  u32 uStack_30;
+  int uStack_30;
 
   u32 uStack_2c;
 
