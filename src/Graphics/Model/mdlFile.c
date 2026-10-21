@@ -4789,8 +4789,8 @@ u32 FUN_0031ebe0(int *param_1)
 
   return uVar6;
 
-#pragma opt_lifetimes reset
 }
+#pragma opt_lifetimes reset
 
 
 
