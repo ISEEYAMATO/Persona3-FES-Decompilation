@@ -2122,6 +2122,8 @@ u32 FUN_005318f8(u64 param_1)
 
 
 // FUN_005319C8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005319c8(void)
@@ -2133,12 +2135,15 @@ void FUN_005319c8(void)
   FUN_005649c0();
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_005319E0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005319e0(void)
@@ -2152,6 +2157,7 @@ void FUN_005319e0(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -7329,6 +7335,8 @@ s8 FUN_00535350(int param_1)
 
 
 // FUN_00535358 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00535358(int param_1)
@@ -7342,6 +7350,7 @@ void FUN_00535358(int param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -13560,6 +13569,8 @@ void FUN_005397e8(void)
 
 
 // FUN_00539818 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00539818(void)
@@ -13573,12 +13584,15 @@ void FUN_00539818(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_00539830 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00539830(void)
@@ -13592,6 +13606,7 @@ void FUN_00539830(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -15546,6 +15561,8 @@ void cvFs_add_default_device_inner(void)
 
 
 // FUN_0053B278 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053b278(void)
@@ -15563,6 +15580,7 @@ void FUN_0053b278(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -16793,6 +16811,8 @@ void FUN_0053c198(void)
 
 
 // FUN_0053C1D8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053c1d8(void)
@@ -16810,6 +16830,7 @@ void FUN_0053c1d8(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -17873,6 +17894,8 @@ void FUN_0053ce00(long param_1)
 
 
 // FUN_0053CEB8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053ceb8(void)
@@ -17890,6 +17913,7 @@ void FUN_0053ceb8(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -18583,6 +18607,8 @@ void FUN_0053d640(u64 param_1)
 
 
 // FUN_0053D708 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053d708(void)
@@ -18600,6 +18626,7 @@ void FUN_0053d708(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -19451,6 +19478,8 @@ u64 FUN_0053def0(u64 param_1)
 
 
 // FUN_0053DF28 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 int FUN_0053df28(int param_1)
@@ -19462,6 +19491,7 @@ int FUN_0053df28(int param_1)
   return *(int *)((u8 *)(u32)&DAT_00784ea0 + param_1 * 4) + 0x10;
 
 }
+#pragma pop
 
 
 
@@ -19622,6 +19652,8 @@ void FUN_0053e070(void)
 
 
 // FUN_0053E088 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053e088(void)
@@ -19635,12 +19667,15 @@ void FUN_0053e088(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_0053E0A0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053e0a0(void)
@@ -19654,12 +19689,15 @@ void FUN_0053e0a0(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_0053E0B8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053e0b8(void)
@@ -19677,6 +19715,7 @@ void FUN_0053e0b8(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -19744,6 +19783,8 @@ void FUN_0053e0e0(void)
 
 
 // FUN_0053E190 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053e190(void)
@@ -19761,12 +19802,15 @@ void FUN_0053e190(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_0053E1B8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053e1b8(void)
@@ -19780,6 +19824,7 @@ void FUN_0053e1b8(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -20623,6 +20668,8 @@ void FUN_0053ea90(void)
 
 
 // FUN_0053EC00 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053ec00(void)
@@ -20638,6 +20685,7 @@ void FUN_0053ec00(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -21290,6 +21338,8 @@ void FUN_0053f5b0(long param_1)
 
 
 // FUN_0053F5F0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053f5f0(void)
@@ -21307,12 +21357,15 @@ void FUN_0053f5f0(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_0053F618 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053f618(void)
@@ -21326,6 +21379,7 @@ void FUN_0053f618(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -21475,6 +21529,8 @@ u64 FUN_0053f768(void)
 
 
 // FUN_0053F7C0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0053f7c0(void)
@@ -21488,6 +21544,7 @@ void FUN_0053f7c0(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -22013,6 +22070,8 @@ void FUN_00540048(long param_1)
 
 
 // FUN_00540098 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00540098(void)
@@ -22026,6 +22085,7 @@ void FUN_00540098(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -22873,6 +22933,8 @@ void FUN_00540c70(void)
 
 
 // FUN_00540D40 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00540d40(void)
@@ -22886,12 +22948,15 @@ void FUN_00540d40(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_00540D58 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00540d58(void)
@@ -22905,6 +22970,7 @@ void FUN_00540d58(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -23003,6 +23069,8 @@ void FUN_00540ea8(void)
 
 
 // FUN_00540EC0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00540ec0(void)
@@ -23016,6 +23084,7 @@ void FUN_00540ec0(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -23096,6 +23165,8 @@ void FUN_00540f60(void)
 
 
 // FUN_00540FE0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00540fe0(void)
@@ -23111,12 +23182,15 @@ void FUN_00540fe0(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_00541008 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00541008(void)
@@ -23138,6 +23212,7 @@ void FUN_00541008(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -23818,6 +23893,8 @@ void FUN_00541978(void)
 
 
 // FUN_005419C0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005419c0(void)
@@ -23831,6 +23908,7 @@ void FUN_005419c0(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -23915,6 +23993,8 @@ void FUN_00541a10(u64 param_1)
 
 
 // FUN_00541A48 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00541a48(void)
@@ -23928,6 +24008,7 @@ void FUN_00541a48(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -24029,6 +24110,8 @@ void FUN_00541ad8(void)
 
 
 // FUN_00541B28 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00541b28(void)
@@ -24042,6 +24125,7 @@ void FUN_00541b28(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -26600,6 +26684,8 @@ void FUN_005433a8(int param_1)
 
 
 // FUN_005433C0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005433c0(int param_1)
@@ -26613,6 +26699,7 @@ void FUN_005433c0(int param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -32083,6 +32170,8 @@ void FUN_00546e38(void)
 
 
 // FUN_00546E60 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00546e60(void)
@@ -32096,6 +32185,7 @@ void FUN_00546e60(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -33295,6 +33385,8 @@ void FUN_00547a28(u64 param_1)
 
 
 // FUN_00547A58 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00547a58(void)
@@ -33308,6 +33400,7 @@ void FUN_00547a58(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -37678,6 +37771,8 @@ void FUN_0054a598(u64 param_1)
 
 
 // FUN_0054A5C8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0054a5c8(void)
@@ -37691,6 +37786,7 @@ void FUN_0054a5c8(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -37819,6 +37915,8 @@ void FUN_0054a680(u64 param_1)
 
 
 // FUN_0054A6B0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0054a6b0(int param_1)
@@ -37832,6 +37930,7 @@ void FUN_0054a6b0(int param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -38767,6 +38866,8 @@ void FUN_0054afa8(u64 param_1)
 
 
 // FUN_0054AFD8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0054afd8(void)
@@ -38780,6 +38881,7 @@ void FUN_0054afd8(void)
   return;
 
 }
+#pragma pop
 
 // FUN_0054B028
 #pragma schedule on
@@ -42042,6 +42144,8 @@ LAB_0054d724:
 
 
 // FUN_0054D7E8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0054d7e8(long param_1)
@@ -42061,6 +42165,7 @@ void FUN_0054d7e8(long param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -48310,6 +48415,8 @@ void FUN_00552520(u32 *param_1)
 
 
 // FUN_00552538 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00552538(u32 *param_1)
@@ -48323,6 +48430,7 @@ void FUN_00552538(u32 *param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -85056,6 +85164,8 @@ void FUN_0056c970(void)
 
 
 // FUN_0056CA08 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0056ca08(void)
@@ -85069,6 +85179,7 @@ void FUN_0056ca08(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -87642,6 +87753,8 @@ void FUN_0056f828(void)
 
 
 // FUN_0056F850 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_0056f850(void)
@@ -87663,6 +87776,7 @@ void FUN_0056f850(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -95207,6 +95321,8 @@ u32 FUN_005753e8(long param_1)
 
 
 // FUN_00575410 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00575410(void)
@@ -95220,6 +95336,7 @@ void FUN_00575410(void)
   return;
 
 }
+#pragma pop
 
 
 
@@ -115771,6 +115888,8 @@ void FUN_005838a8(int param_1)
 
 
 // FUN_005838C0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005838c0(int param_1)
@@ -115784,6 +115903,7 @@ void FUN_005838c0(int param_1)
   return;
 
 }
+#pragma pop
 
 
 
@@ -118215,6 +118335,8 @@ void FUN_00585440(void)
 
 
 // FUN_00585468 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00585468(void)
@@ -118228,12 +118350,15 @@ void FUN_00585468(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_005854B8 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005854b8(void)
@@ -118247,12 +118372,15 @@ void FUN_005854b8(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_005854F0 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_005854f0(void)
@@ -118266,12 +118394,15 @@ void FUN_005854f0(void)
   return;
 
 }
+#pragma pop
 
 
 
 
 
 // FUN_00585528 NONMATCHING
+#pragma push
+#pragma schedule on
 
 
 void FUN_00585528(void)
@@ -118285,6 +118416,7 @@ void FUN_00585528(void)
   return;
 
 }
+#pragma pop
 
 
 
