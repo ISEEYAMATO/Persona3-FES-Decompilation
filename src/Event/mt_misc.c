@@ -3219,9 +3219,9 @@ FUN_00396c70(int param_1,int param_2,int param_3,u16 param_4,u16 param_5,
 
   lVar6 = FUN_00195340(0x6a1030);
 
-  pfVar2 = (u8 *)0x8;
-
   pfVar8 = (u8 *)&position;
+
+  pfVar2 = (u8 *)0x8;
 
   pfVar1 = pfVar8;
 

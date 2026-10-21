@@ -4297,9 +4297,9 @@ u16 * FUN_003646d0(u32 param_1,int param_2)
 
        ((uVar5 = (u32)*puVar3, (int)uVar5 <= (int)param_1 && ((int)uVar10 < (int)uVar5)))) {
 
-      uVar10 = uVar5;
-
       puVar11 = puVar3;
+
+      uVar10 = uVar5;
 
     }
 
@@ -9013,8 +9013,8 @@ u64 FUN_00368f20(u64 param_1,int param_2,u8 *param_3)
           case 3:
           case 4:
           case 5:
-            *(short *)(iVar6 + 0x14) = selectedId;
             *(int *)(iVar5 + 0x198) = (s16)selectedId;
+            *(short *)(iVar6 + 0x14) = selectedId;
             break;
           case 2:
             *(short *)(iVar6 + 0x1c) = selectedId;

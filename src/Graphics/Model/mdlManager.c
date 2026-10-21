@@ -2146,8 +2146,8 @@ void func_003132c0(u8* param_1)
     anim->oldInterp = NULL;
   }
   if (anim->nextInterp != NULL) {
-    func_004b6eb0(anim->nextInterp);
     anim->nextInterp = NULL;
+    func_004b6eb0(anim->nextInterp);
   }
 
   table = anim->table;
@@ -2848,8 +2848,8 @@ void* func_00314170(void* param_1, void* param_2)
              ((*puVar3 & 1) == 0)) &&
             ((0 <= (short)puVar3[2]))) {
 
-          func_004b74c0_typed(*(f32 *)(*piVar4 + 0xc),param_1);
           *(u8 *)(puVar3 + 1) = 1;
+          func_004b74c0_typed(*(f32 *)(*piVar4 + 0xc),param_1);
         }
       }
       return param_1;
@@ -3533,7 +3533,7 @@ u32 func_00315090(RwMatrix* param_1,u16 *param_2,u16 param_3,int param_4)
 
   u32 uVar5;
   u32 index_for_address;
-  u16 count;
+  short count;
   int iVar6;
 
   int iVar7;
@@ -4206,8 +4206,8 @@ void func_00315c20(int param_1)
     RpSkyRenderStateSet(2, (void*)*(u32 *)(param_1 + 0xe4));
     RpSkyRenderStateSet(3, (void*)*(u32 *)(param_1 + 0xe8));
     (*stateFn)(6,1);
-    (*stateFn)(8,0);
     func_001a88e0(*(u32 *)(param_1 + 0xdc));
+    (*stateFn)(8,0);
   }
   else {
     (*stateFn)(6,1);
@@ -4827,8 +4827,8 @@ Model* func_00316c70(u16 modelType,u16 id,void* archive,u32 readMode)
     mdlStreamInit(mdl);
     rmd.memory = data;
     rmd.size = size;
-    mdlStreamSetRmdFileMemory(mdl,&rmd);
     mdlStreamRead(mdl);
+    mdlStreamSetRmdFileMemory(mdl,&rmd);
     data = H_Cdvd_ArchiveGetFile((HCdvd*)archive,1,&size);
     func_0031e8d0((int)mdl + 0x3f8,modelType,id,data,size);
   }
@@ -4879,8 +4879,8 @@ Model* mdlCreateAndResolvePath(u16 type, u16 id, u32 readMode)
             mdl->flags |= MDL_FLAG_STREAMSYNC;
         }
 
-        mdl->flags |= MDL_FLAG_STREAMUNK1;
         mdlStreamRead(mdl);
+        mdl->flags |= MDL_FLAG_STREAMUNK1;
     }
 
     return mdl;
@@ -5210,6 +5210,8 @@ void func_003176c0(Model* mdl)
 
 
 // FUN_00317730 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void mdl00317730(Model* mdl)
 {
     RwMatrix matrix;
@@ -5276,6 +5278,7 @@ void mdl00317730(Model* mdl)
         }
     }
 }
+#pragma pop
 
 
 
@@ -5989,8 +5992,8 @@ u32 func_00318d10(u8* param_1,u32 param_2,u32* param_3)
       if (iVar8 != iVar3) {
         callbackData.result = 0;
         callbackData.expected = iVar8;
-        func_004cb6e0(iVar10,(void *)func_00315010,&callbackData);
         iVar10 = callbackData.result;
+        func_004cb6e0(iVar10,(void *)func_00315010,&callbackData);
       }
       if (iVar10 == 0) {
         uVar4 = 0;

@@ -787,9 +787,9 @@ void FUN_0039f410(int *param_1)
 
       if (bVar0 && (param_1[3] != 0)) {
 
-        FUN_003a25f0(iVar2,0);
-
         FUN_003a2a30(iVar2);
+
+        FUN_003a25f0(iVar2,0);
 
         FUN_003a3420(iVar2,0);
 
@@ -1636,8 +1636,8 @@ void FUN_003a0960(int param_1,int param_2,u64 param_3)
       message = (u16 *)object;
       switch ((int)(*message & 0xffc00) >> 10) {
       case 1:
-        FUN_00318b60(*(u32 *)(message + 0x94));
         object = FUN_00318ed0(*(u32 *)(message + 0x94),2,&position);
+        FUN_00318b60(*(u32 *)(message + 0x94));
         if (object == 0) {
           iVar1 = FUN_00318b60(*(u32 *)(message + 0x94));
           position = *(RwV3d *)(iVar1 + 0x30);

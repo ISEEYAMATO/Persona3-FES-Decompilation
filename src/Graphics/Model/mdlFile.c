@@ -4756,9 +4756,9 @@ u32 FUN_0031ebe0(int *param_1)
 
             *(u16 *)(*param_1 + 0xe) = *(u16 *)(*param_1 + 0xe) | 1;
 
-            *(u16 *)(*param_1 + 0xe) = *(u16 *)(*param_1 + 0xe) & 0xfffd;
-
             *(u16 *)(*param_1 + 0xe) = *(u16 *)(*param_1 + 0xe) | 4;
+
+            *(u16 *)(*param_1 + 0xe) = *(u16 *)(*param_1 + 0xe) & 0xfffd;
 
             *(u16 *)(*param_1 + 0xe) = *(u16 *)(*param_1 + 0xe) & 0xfff7;
 
@@ -5941,7 +5941,7 @@ void FUN_00320640(f32 param_1,f32 param_2,int *param_3)
 
   int iVar4;
 
-  u32 uVar5;
+  int uVar5;
 
   u32 uVar3;
 

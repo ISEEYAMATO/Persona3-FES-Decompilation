@@ -2503,9 +2503,9 @@ void FUN_00389b50(int *param_1)
       FUN_00386c40(1,iVar6 * 0x54);
 
 
-      *(u32 *)DAT_009589d0_abs = *param_1;
-
       iVar9 = 0;
+
+      *(u32 *)DAT_009589d0_abs = *param_1;
 
       *(u32 *)DAT_009589c8_abs = iVar6;
 
@@ -5655,8 +5655,8 @@ void FUN_0038c830(int param_1,long param_2)
         case 5:
           sStack_2 = 0;
           if (FUN_00397580(param_1,*((s8 *)&puVar6[10] + 1) + -1,&sStack_2) == 1) {
-            if (sStack_2 != (u16)0xffff) goto switchD_0038c8e0_caseD_0;
             bVar2 = false;
+            if (sStack_2 != (u16)0xffff) goto switchD_0038c8e0_caseD_0;
           }
           else {
             bVar2 = false;
