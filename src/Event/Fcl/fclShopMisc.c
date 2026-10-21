@@ -9161,7 +9161,18 @@ u16 uVar1;
 
 }
 
+/* DUMMYDUMB session 2026-10-20: #pragma opt_lifetimes (mwcc's lifetime analysis)
+ * for this function takes the residual from 67 to 46 bytes. What is left is a
+ * uniform register-role swap, not a scheduling order: seven identical
+ * "andi $v1,$v1,0xff" masks of the u8 4th argument (ours $v1, retail $v0),
+ * plus $s3/$s1 role swaps. Bounded shape tests: naming the masked argument in
+ * a u8 local (nd246), masking uVar1 in place (nd227), and using that local at
+ * the "| 0xffffff00" sites as well (nd247) - all far worse, because the value
+ * is passed at 18 call sites and so stays live across the whole function: a
+ * named copy costs more than it saves. Confirmed wall: register-role
+ * colouring, not reachable from the source in this form. */
 // FUN_003FC540 NONMATCHING
+#pragma opt_lifetimes on
 
 
 u64 FUN_003fc540(int param_1)
@@ -9284,6 +9295,7 @@ u64 FUN_003fc540(int param_1)
   return 0;
 
 }
+#pragma opt_lifetimes reset
 
 // FUN_003FC980
 
