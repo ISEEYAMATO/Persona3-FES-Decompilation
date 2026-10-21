@@ -1480,22 +1480,29 @@ void FUN_0050dc10(u32 param_1,u32 param_2)
 #pragma optimization_level 3
 #pragma tailcall on
 // FUN_0050DC80 NONMATCHING
+/* DUMMYDUMB session 2026-10-20: the first argument was wrong. Retail loads
+ * 0xb0001000 here (lui $a0,0xb000 / ori $a0,$a0,0x1000); we were passing
+ * 0xb0000010, which is a different value, not just a different spelling.
+ * Fixing the constant: 4 -> 2 differing bytes. The two 0xffffffffb0001xxx
+ * literals below are the same u32 values written with a 64-bit prefix; cleaned
+ * up to plain u32 literals (measured: no codegen change).
+ */
 void FUN_0050dc80(u32 param_1)
 {
-  FUN_0050dc10(0xb0000010,param_1);
+  FUN_0050dc10(0xb0001000,param_1);
 }
 #pragma optimization_level 3
 #pragma tailcall on
 // FUN_0050DC90 NONMATCHING
 void FUN_0050dc90(u32 param_1)
 {
-  FUN_0050dc10(0xffffffffb0001010,param_1);
+  FUN_0050dc10(0xb0001010,param_1);
   return;
 }
 // FUN_0050DCA0 NONMATCHING
 void FUN_0050dca0(u32 param_1)
 {
-  FUN_0050dc10(0xffffffffb0001020,param_1);
+  FUN_0050dc10(0xb0001020,param_1);
   return;
 }
 #pragma tailcall off

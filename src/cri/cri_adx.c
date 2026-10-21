@@ -117857,6 +117857,15 @@ asm u32 *FUN_005851a0(void)
 
 
 
+/* DUMMYDUMB session 2026-10-20: function-scoped #pragma schedule on.
+ * Retail loads the value in the delay slot of jr $ra (lui $v1,0x7b / jr $ra /
+ * lw $v0,0x4538($v1)); with scheduling off mwcc emits the load before the jump
+ * instead, which is 9 differing bytes instead of 2. Measured: 9 -> 2 bytes.
+ * The remaining 2 bytes are the base register ($v0 vs retail's $v1) - mwcc
+ * coalesces the base with the result, and no source spelling I tried avoids it.
+ * Still NONMATCHING: recorded as a measured improvement.
+ */
+#pragma schedule on
 // FUN_005851B0 NONMATCHING
 
 
@@ -117865,6 +117874,7 @@ u32 FUN_005851b0(void)
   u32 *base = (u32 *)0x007b0000;
   return base[0x114e];
 }
+#pragma schedule off
 
 // FUN_005851C0
 #pragma schedule on
