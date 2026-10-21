@@ -2145,8 +2145,15 @@ s32 fclCombine003d0610(void)
     return 0;
 }
 
-// W419 negative: DAT_006a43e0 array/absolute alias left FUN_003d06d0 nd182/object5912 (baseline nd182/object5912, window5920); reverted.
-// FUN_003D06D0 NONMATCHING
+// DUMMYDUMB session 2026-10-21: this was 2 bytes away (one branch word at
+// object offset 4428).  Case 7 had no break, so its "param_3 != 1" path fell
+// through into case 8; retail's goes straight to the epilogue.  Retail's case
+// 8 entry (rel 0x1270) has no branch predecessor at all - only the switch's
+// jump table reaches it - which is the evidence that retail does not fall
+// through.  Adding the break matches it.  Negative probe: the DAT_006a43e0
+// array/absolute alias does not change the addressing (nd182/object5912,
+// window5920) and was reverted.
+// FUN_003D06D0
 #pragma push
 #pragma opt_lifetimes on
 void FUN_003d06d0(s32 param_1, s32 param_2, s32 param_3) {
@@ -3126,6 +3133,7 @@ fclCombine_case7_o:
             fclCombineList003df100(FUN_003dffc0(temp_16, 7, temp_2), &stack.sp2C70);
             return;
         }
+        break;
     case 8:                                         /* switch 1 */
         if (param_3 != 0) {
             goto fclCombine_case8_q;
