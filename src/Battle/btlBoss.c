@@ -760,6 +760,20 @@ case_1a4_done:
     }
 }
 
+/* DUMMYDUMB session 2026-10-21: 2 bytes away.  Both differences are the same
+ * word form: ours "li v0,1" (the 32-bit addiu) where retail has
+ * "daddiu v0,zero,1" (the 64-bit add-immediate).  The "result = 0" paths
+ * match on both sides (a plain "move v0,zero"), so only the value 1 is
+ * materialised as a 64-bit value in retail.
+ * Probed: u64 / unsigned long long / long long / s64 / u32 / int declarations
+ * of result; a u32 or int return type; result = 1 written as (u64)1, 1LL,
+ * 1ULL or 1UL; result = 1 replaced by return 1; result initialised to 0 and
+ * then incremented; result = 0; result += 1 - none of them produce daddiu.
+ * A micro-test shows mwcc only emits daddiu for a 64-bit ADD (g64 += 1 gives
+ * "daddiu v1,v1,1") and uses li for a 64-bit constant store, so retail must
+ * reach the 1 by 64-bit arithmetic in a way this decompilation does not
+ * express.  Confirmed wall: addiu vs daddiu. */
+
 // FUN_002f8a40
 u32 func_002f8a40(BtlUnit* unit)
 {

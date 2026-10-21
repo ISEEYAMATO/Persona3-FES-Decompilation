@@ -854,7 +854,7 @@ u32 func_001a76e0(const u32* state)
  * return form, an if-block wrapping the work, an explicit else { return; },
  * and if (!state) {} else { work } - all byte-neutral (mwcc normalises the
  * polarity either way). Confirmed wall: branch polarity. */
-// FUN_001a7710 NONMATCHING
+// FUN_001a7710
 void func_001a7710(u32* state)
 {
     typedef struct
@@ -874,9 +874,9 @@ void func_001a7710(u32* state)
     KClumpMaterialNode* node;
     KClumpMaterialNode* next;
 
-    if (state == NULL)
-        return;
     work = (KClumpFreeState*)(void*)state;
+    if (work == NULL)
+        return;
 
 
     while (work->list8 != 0)
