@@ -357,7 +357,12 @@ void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, cons
  * (488 bytes, +8 bytes of code) because mwcc then materialises a third
  * instruction instead of the retail lui+load pair. Note the static-data
  * difference itself is relocation-masked and is not what the residual is about.
- * Confirmed wall. */
+ * DUMMYDUMB session 2026-10-21: MATCHED. The residual was a register-LIFETIME
+ * problem, not a register-role one, and the lever is a function-scoped
+ * `#pragma opt_lifetimes on` (push/pop, so the file's pragma state is
+ * restored): 40 -> 0 differing bytes, object size unchanged at 784. The
+ * declaration order was the wrong lever for this function - the saved
+ * registers were already right, the lifetimes were not. */
 // FUN_00359b40
 #pragma push
 #pragma opt_lifetimes on
