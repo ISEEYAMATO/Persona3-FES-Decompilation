@@ -157,6 +157,27 @@ for mapped function windows.
   and missed on `move v0,$a2`; declaring it `static` produced retail's `move v0,$a2` byte-for-byte.
   Check that every caller is in the same TU before changing linkage.
 
+- **Compose `opt_lifetimes` with source-shape changes.** A function-scoped
+  `#pragma opt_lifetimes on` can change mwcc's lifetime analysis enough to make
+  source-shape changes effective that were inert without it. The measured recipe
+  for `mdlEffect FUN_003269e0` was three coordinated steps:
+  1. Scope `#pragma opt_lifetimes on` to the function (restore with
+     `#pragma opt_lifetimes reset` after it): residual 61 -> 13 bytes.
+  2. Hoist the repeated index scale into a named local, `idx4 = uVar3 * 4`,
+     instead of spelling `uVar3 * 4` inline: 13 -> 5 bytes.
+  3. Write the indexed address base-first (`base + idx4`) to get retail's
+     commutative-`addu` operand order: 5 -> 0 bytes.
+
+  Each step alone leaves a mismatch; only the combination reaches byte-exact
+  output. `tools/verify.py` reports `MATCH` for `FUN_003269e0` (commit
+  `ce01263d`). This is a useful search order for a residual involving a load,
+  scaled index, and address calculation: first try the lifetime pragma, then
+  re-test the named-temporary and operand-order shapes with the pragma still
+  enabled. Keep any new C89 locals at the top of the function's declaration
+  block. A pragma gain is not automatically a match: for example,
+  `FUN_003fc540` improved 67 -> 46 bytes with `opt_lifetimes`, but remained
+  `NONMATCHING` due to a register-role residual (commit `9239f251`).
+
 ## Read-modify-write and flags
 
 - **Chained flag OR → separate statements.** `*p |= a; *p |= b;` (two RMW statements on the pointer)
