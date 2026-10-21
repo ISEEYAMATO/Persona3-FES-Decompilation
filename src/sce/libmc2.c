@@ -4804,8 +4804,8 @@ u32 FUN_0051a140(void)
   puVar2 = puVar3 + 0x2008;
   do {
     *puVar1 = 0xffffffff;
-    puVar1[3] = 0;
     puVar1 = puVar1 + 0x1004;
+    puVar1[3] = 0;
   } while ((int)puVar1 < (int)puVar2);
   return 1;
 }
@@ -5398,8 +5398,8 @@ u32 FUN_0051af98(int param_1,u64 *param_2)
   u64 uVar1;
   
   uVar1 = param_2[1];
-  *(u64 *)(&DAT_00985510 + param_1 * 9) = *param_2;
   *(u64 *)(&DAT_00985518 + param_1 * 9) = uVar1;
+  *(u64 *)(&DAT_00985510 + param_1 * 9) = *param_2;
   return 1;
 }
 // FUN_0051AFD8 NONMATCHING
@@ -5929,8 +5929,8 @@ int FUN_0051c0f8(void)
   int iVar1;
   int *piVar2;
   
-  iVar1 = 0;
   piVar2 = (int *)(&DAT_00985508);
+  iVar1 = 0;
   do {
     if (*piVar2 == 0) {
       return iVar1;

@@ -468,8 +468,8 @@ SifRpcPacket_t* FUN_00506b38(SifRpcAllocatorState_t* state)
 
     packet_index = state->packet_index;
     packet_count = state->packet_count;
-    index = packet_index % packet_count;
     state->packet_index = index + 1;
+    index = packet_index % packet_count;
     return (SifRpcPacket_t*)(state->packets + index * SIF_RPC_PACKET_SIZE);
 }
 // FUN_00506B68 NONMATCHING
