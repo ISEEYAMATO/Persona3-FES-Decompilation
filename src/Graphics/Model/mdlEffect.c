@@ -4823,6 +4823,16 @@ u32 FUN_003234f0(u16 param_1,u32 param_2)
 
 
 
+/* DUMMYDUMB session 2026-10-20: the residual here is a saved-register colouring
+ * difference (ours keeps param_1 in $s4 and the second pointer in $s0, retail
+ * the other way round, with the $a4/$a5/$a6 temporaries matching). The lever is
+ * the ORDER OF THE LOCAL DECLARATIONS: mwcc allocates the saved registers from
+ * the declaration order, not from the code. Reordering the seven locals to
+ * iVar2, iVar3, lVar7, uVar1, uVar4, puVar6, puVar5 takes the function from 31
+ * differing bytes to 14 (size stays 384 = 384); several nearby orders reach 14,
+ * others give 23/26/27/28/30/31/33. This is a reusable lever - it is the first
+ * time the declaration order alone moved a function this far. The remaining 14
+ * bytes are still the $s0/$s4 swap. Confirmed partial: 31 -> 14 bytes. */
 // FUN_00323640 NONMATCHING
 
 
@@ -4832,19 +4842,19 @@ u32 FUN_00323640(u16 *param_1)
 
 {
 
-  u32 uVar1;
-
   int iVar2;
 
   int iVar3;
 
-  u32 uVar4;
+  int lVar7;
 
-  u16 *puVar5;
+  u32 uVar1;
+
+  u32 uVar4;
 
   u16 *puVar6;
 
-  int lVar7;
+  u16 *puVar5;
 
   
 

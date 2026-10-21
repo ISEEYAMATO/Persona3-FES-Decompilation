@@ -1493,6 +1493,15 @@ void FUN_0050dc10(u32 param_1,u32 param_2)
 // difference.
 #pragma optimization_level 3
 #pragma tailcall on
+/* DUMMYDUMB session 2026-10-20 (2nd pass): FUN_0050DC80/90/A0 are all down to
+ * 2 differing bytes and the residual is the same in each: ours builds the
+ * constant in a scratch register (`lui $v0,0xb000` then `ori $a0,$v0,0x1000`),
+ * retail builds it in the argument register (`lui $a0,0xb000` then `ori
+ * $a0,$a0,0x1000`). Probed: the constant via a local, (u32) casts, 0xb0000000 |
+ * 0x1000, 0xb0000000 + 0x1000, dropping the tailcall pragma, and dropping or
+ * downgrading the optimization_level 3 pragma (9 bytes, worse - the tail call
+ * needs level 3). Argument values and order are identical to retail. Confirmed
+ * wall: register choice for building the constant. */
 // FUN_0050DC80 NONMATCHING
 /* DUMMYDUMB session 2026-10-20: the first argument was wrong. Retail loads
  * 0xb0001000 here (lui $a0,0xb000 / ori $a0,$a0,0x1000); we were passing
