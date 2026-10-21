@@ -8123,9 +8123,9 @@ void FUN_00535d40(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -39597,9 +39597,9 @@ void FUN_0054b988(u64 param_1)
 
 
 
-  iVar2 = (int)param_1;
-
   lVar1 = ((code)FUN_00543118)(*(u32 *)(iVar2 + 4));
+
+  iVar2 = (int)param_1;
 
   if (lVar1 == 1) {
 
@@ -51186,13 +51186,13 @@ void FUN_005543c8(int param_1,u64 param_2)
 
 {
 
-  int iVar1;
-
-  char cVar2;
+  int iVar4;
 
   int *piVar3;
 
-  int iVar4;
+  char cVar2;
+
+  int iVar1;
 
 
 
@@ -115790,17 +115790,17 @@ void FUN_005837a0(int param_1)
 
 {
 
-  u32 uVar1;
-
-  long lVar2;
-
-  int iStack_30;
-
-  u32 uStack_2c;
+  u32 uStack_1c;
 
   u32 uStack_20;
 
-  u32 uStack_1c;
+  u32 uStack_2c;
+
+  int iStack_30;
+
+  long lVar2;
+
+  u32 uVar1;
 
 
 
