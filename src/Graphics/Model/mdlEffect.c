@@ -6057,7 +6057,7 @@ u32 FUN_00324bd0(u32 param_1)
 
   
 
-  uVar4 = (*DAT_00960178)(0x90,0x40000);
+  uVar4 = (*DAT_00960178_abs)(0x90,0x40000);
 
   FUN_00521408(uVar4,0,0x90);
 
@@ -6089,7 +6089,7 @@ u32 FUN_00324bd0(u32 param_1)
 
     for (iVar17 = 0; iVar17 < iVar16; iVar17 = iVar17 + 1) {
 
-      uVar5 = (*DAT_00960178)(0xc0,0x40000);
+      uVar5 = (*DAT_00960178_abs)(0xc0,0x40000);
 
       FUN_00521408(uVar5,0,0xc0);
 
@@ -6115,7 +6115,7 @@ u32 FUN_00324bd0(u32 param_1)
 
           uVar1 = *(u16 *)(iVar13 + 4);
 
-          uVar6 = (*DAT_00960178)(0x2c,0x40000);
+          uVar6 = (*DAT_00960178_abs)(0x2c,0x40000);
 
           FUN_00521408(uVar6,0,0x2c);
 
@@ -6175,7 +6175,7 @@ u32 FUN_00324bd0(u32 param_1)
 
           uVar1 = *(u16 *)(iVar13 + 4);
 
-          uVar6 = (*DAT_00960178)(0x2c,0x40000);
+          uVar6 = (*DAT_00960178_abs)(0x2c,0x40000);
 
           FUN_00521408(uVar6,0,0x2c);
 
@@ -6215,7 +6215,7 @@ u32 FUN_00324bd0(u32 param_1)
 
         uVar1 = *(u16 *)(iVar13 + 4);
 
-        uVar6 = (*DAT_00960178)(0x2c,0x40000);
+        uVar6 = (*DAT_00960178_abs)(0x2c,0x40000);
 
         FUN_00521408(uVar6,0,0x2c);
 
@@ -6277,7 +6277,7 @@ u32 FUN_00324bd0(u32 param_1)
 
     for (; iVar16 != 0; iVar16 = *(int *)(iVar16 + 0xac)) {
 
-      uVar5 = (*DAT_00960178)(0xc0,0x40000);
+      uVar5 = (*DAT_00960178_abs)(0xc0,0x40000);
 
       FUN_00521408(uVar5,0,0xc0);
 
@@ -6301,7 +6301,7 @@ u32 FUN_00324bd0(u32 param_1)
 
         uVar1 = *(u16 *)(iVar3 + 4);
 
-        uVar6 = (*DAT_00960178)(0x2c,0x40000);
+        uVar6 = (*DAT_00960178_abs)(0x2c,0x40000);
 
         FUN_00521408(uVar6,0,0x2c);
 
@@ -6339,7 +6339,7 @@ u32 FUN_00324bd0(u32 param_1)
 
         uVar1 = *(u16 *)(iVar3 + 4);
 
-        uVar6 = (*DAT_00960178)(0x2c,0x40000);
+        uVar6 = (*DAT_00960178_abs)(0x2c,0x40000);
 
         FUN_00521408(uVar6,0,0x2c);
 
@@ -23936,7 +23936,7 @@ void FUN_00337fd0(int param_1)
         "sqc2 vf11, 0(%6)                   \n"
         ".set reorder"
         :
-        : "r" (&_DAT_0069c4a0), "f" (fVar10), "f" (fVar9), "f" (fVar14),
+        : "r" (&DAT_0069c4a0_abs), "f" (fVar10), "f" (fVar9), "f" (fVar14),
           "r" (scaled0), "r" (scaled1), "r" (scaled2)
         : "v0", "vf2", "vf10", "vf11", "memory"
     );
@@ -25531,7 +25531,7 @@ void FUN_003399a0(int param_1)
                 "sqc2        $vf10, 0(%4)          \n"
                 ".set reorder"
                 :
-                : "r" (&_DAT_0069c4a0), "r" (piVar16), "r" (baseVec),
+                : "r" (&DAT_0069c4a0_abs), "r" (piVar16), "r" (baseVec),
                   "r" (radialVecA), "r" (radialVecB)
                 : "v0", "vf2", "vf10", "vf12", "memory"
             );
@@ -25664,7 +25664,7 @@ void FUN_003399a0(int param_1)
                 "sw          $v0, 12(%4)           \n"
                 ".set reorder"
                 :
-                : "r" (&_DAT_0069c4a0), "r" (colorVecB), "r" (colorVecA),
+                : "r" (&DAT_0069c4a0_abs), "r" (colorVecB), "r" (colorVecA),
                   "f" (fVar21), "r" (puVar14)
                 : "v0", "vf2", "vf10", "vf11", "memory"
             );
@@ -26852,7 +26852,7 @@ void FUN_0033b2a0(int param_1)
                 "sqc2        $vf10, 0(%2)          \n"
                 ".set reorder"
                 :
-                : "r" (&_DAT_0069c4a0), "r" (piVar14), "r" (scaledVec)
+                : "r" (&DAT_0069c4a0_abs), "r" (piVar14), "r" (scaledVec)
                 : "v0", "vf2", "vf10", "memory"
             );
 
@@ -27027,7 +27027,7 @@ void FUN_0033b2a0(int param_1)
                 "sw          $v0, 0(%4)            \n"
                 ".set reorder"
                 :
-                : "r" (&_DAT_0069c4a0), "r" (colorVecB), "r" (colorVecA),
+                : "r" (&DAT_0069c4a0_abs), "r" (colorVecB), "r" (colorVecA),
                   "f" (fVar19), "r" (puVar12)
                 : "v0", "vf2", "vf10", "vf11", "memory"
             );
@@ -27690,7 +27690,7 @@ void FUN_0033c1a0(int param_1)
                 "sqc2        $vf10, 0(%3)          \n"
                 ".set reorder"
                 :
-                : "r" (&_DAT_0069c4a0), "r" (piVar16),
+                : "r" (&DAT_0069c4a0_abs), "r" (piVar16),
                   "r" (positionVecA), "r" (positionVecB)
                 : "v0", "vf2", "vf10", "vf11", "memory"
             );
@@ -27820,7 +27820,7 @@ void FUN_0033c1a0(int param_1)
                 "sw          $v0, 12(%4)           \n"
                 ".set reorder"
                 :
-                : "r" (&_DAT_0069c4a0), "r" (colorVecB), "r" (colorVecA),
+                : "r" (&DAT_0069c4a0_abs), "r" (colorVecB), "r" (colorVecA),
                   "f" (fVar21), "r" (puVar14)
                 : "v0", "vf2", "vf10", "vf11", "memory"
             );
