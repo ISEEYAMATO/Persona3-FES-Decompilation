@@ -38448,31 +38448,31 @@ void FUN_00348950(u8 *param_1,float *param_2)
 
 {
 
-  u8 bVar1;
-
-  u8 bVar2;
-
-  u8 bVar3;
-
-  u8 bVar4;
-
-  float fVar5;
-
-  int iVar6;
-
-  u32 uVar7;
-  float *pfVar13;
-
-  float fVar8;
-  float alphaF;
-
-  float fVar9;
-
-  float fVar10;
+  float fVar12;
 
   float fVar11;
 
-  float fVar12;
+  float fVar10;
+
+  float fVar9;
+
+  float alphaF;
+
+  float fVar8;
+
+  float *pfVar13;
+  u32 uVar7;
+
+  int iVar6;
+  float fVar5;
+
+  u8 bVar4;
+
+  u8 bVar3;
+
+  u8 bVar2;
+
+  u8 bVar1;
 
   
 
