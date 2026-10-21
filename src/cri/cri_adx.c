@@ -6188,9 +6188,9 @@ void FUN_00534728(int param_1)
 
   }
 
-  iVar1 = *(int *)(param_1 + 0x10) + -1;
-
   *(int *)(param_1 + 0x14) = iVar1;
+
+  iVar1 = *(int *)(param_1 + 0x10) + -1;
 
   if (iVar1 < 0) {
 
@@ -11720,9 +11720,9 @@ void FUN_00538460(int param_1,int param_2)
 
 
 
-  uVar1 = *(u32 *)(param_1 + 8);
-
   iVar2 = *(int *)(param_1 + 0x5c) + *(int *)(param_1 + 0x68) * 2;
+
+  uVar1 = *(u32 *)(param_1 + 8);
 
   FUN_0054cdb8(uVar1,*(u32 *)(param_1 + 0x48),param_2 << 1,iVar2,
 
@@ -15442,9 +15442,9 @@ void FUN_0053b080(void)
 
   if ((int)DAT_00784a58 == 0) {
 
-    FUN_00521408(0x784a60,0,0x440);
-
     FUN_00521408(0x784ea0,0,0x400);
+
+    FUN_00521408(0x784a60,0,0x440);
 
     FUN_00521408(0x7852a8,0xff,0x100);
 
@@ -17928,9 +17928,9 @@ void FUN_0053cee0(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -20359,9 +20359,9 @@ u32 FUN_0053e7d0(u8 *param_1,long param_2,long param_3,u64 param_4)
 
     FUN_0053e220(param_1 + 2,0x20);
 
-    ((code)FUN_0053e6d8)(param_1 + 4,param_4);
-
     *(u32 *)param_3 = 0x24;
+
+    ((code)FUN_0053e6d8)(param_1 + 4,param_4);
 
     uVar1 = 0;
 
@@ -25526,9 +25526,9 @@ void FUN_00542a88(int param_1)
 
   iVar3 = FUN_005383e8(uVar1);
 
-  iVar4 = FUN_005383f0(uVar1);
-
   iVar2 = iVar2 - *(int *)(param_1 + 0x34);
+
+  iVar4 = FUN_005383f0(uVar1);
 
   if (iVar4 < iVar2) {
 
@@ -25898,9 +25898,9 @@ void FUN_00542f00(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -34148,9 +34148,9 @@ void FUN_00548278(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -37031,9 +37031,9 @@ void FUN_00549ec8(void)
 
     DAT_00793b18 = 1;
 
-    iVar2 = 0xf;
-
     FUN_00539830();
+
+    iVar2 = 0xf;
 
     FUN_00539818();
 
@@ -40589,9 +40589,9 @@ void FUN_0054c8c0(int param_1)
 
     }
 
-    *(u16 *)(param_1 + 0x60) = 0xffff;
-
     *(u8 *)(param_1 + 1) = 6;
+
+    *(u16 *)(param_1 + 0x60) = 0xffff;
 
   }
 
@@ -41279,9 +41279,9 @@ void FUN_0054cf88(void)
 
 {
 
-  int *piVar1;
-
   int iVar2;
+
+  int *piVar1;
 
 
 
@@ -65474,9 +65474,9 @@ void FUN_0055e320(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -95066,11 +95066,11 @@ int * FUN_00575178(void)
 
 {
 
-  int *piVar1;
+  int iVar3;
 
   int iVar2;
 
-  int iVar3;
+  int *piVar1;
 
 
 
@@ -103633,11 +103633,11 @@ int FUN_0057b498(void)
 
 {
 
-  int iVar1;
+  int iVar3;
 
   int iVar2;
 
-  int iVar3;
+  int iVar1;
 
 
 
@@ -148919,15 +148919,15 @@ long FUN_0059a6f0(long param_1)
 
 {
 
-  int iVar1;
-
-  long lVar2;
-
-  int iVar3;
+  long lVar5;
 
   int *piVar4;
 
-  long lVar5;
+  int iVar3;
+
+  long lVar2;
+
+  int iVar1;
 
 
 
