@@ -5414,6 +5414,12 @@ s8 FUN_00533ca0(int param_1)
 
 #pragma push
 #pragma schedule on
+/* DUMMYDUMB session 2026-10-20: FUN_00533CA8 - ours computes the add before
+ * the store of 1 (`addu $a1,$a2,$a1` then `sw $v1,0xc8($a0)`), retail computes
+ * it after (`sw $v1,0xc8($a0)` then `addu $v0,$v0,$a1`, in the delay slot of
+ * the jr). Probed: reordering the four statements (both orders) and folding
+ * the load and the add into one expression - byte-neutral or worse. The
+ * register roles differ too ($a2/$a1 vs $v0). Confirmed wall. */
 // FUN_00533CA8 NONMATCHING
 void FUN_00533ca8(int param_1,int param_2)
 {
@@ -109887,13 +109893,6 @@ void FUN_0057fa28(u32 param_1)
  * (verified instruction by instruction: each is ours `ld $ra,0($sp)` then
  * `lw $v0,off($v0)`, retail the other way round). */
 
-/* DUMMYDUMB session 2026-10-20: FUN_00533CA8 - ours computes the add before
- * the store of 1 (`addu $a1,$a2,$a1` then `sw $v1,0xc8($a0)`), retail computes
- * it after (`sw $v1,0xc8($a0)` then `addu $v0,$v0,$a1`, in the delay slot of
- * the jr). Probed: reordering the four statements (both orders) and folding
- * the load and the add into one expression - byte-neutral or worse. The
- * register roles differ too ($a2/$a1 vs $v0). Confirmed wall. */
-// FUN_00533CA8 NONMATCHING
 // FUN_0057FA50 NONMATCHING
 
 
