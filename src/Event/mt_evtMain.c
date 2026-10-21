@@ -14328,6 +14328,25 @@ void FUN_0036efb0(void)
 void FUN_0036f000(int param_1)
 
 
+/* DUMMYDUMB session 2026-10-21: 42 differing bytes.  Six of them are the
+ * gp-relative vs absolute addressing of two globals (relocation-masked, so not
+ * part of the residual).  The rest is the nested loop's block layout.
+ * Ours:  +1a0 lw s1,132(s0) | +1a4 b 1f4 | +1ac move a0,s1
+ *        +1b0 jal 0x361890 | +1b8 lw a1,108(s1) | +1c4 bnez a1,1ac
+ *        +1f0 lw s1,132(s0) | +1f4 bnez s1,1b8
+ * Retail: +1a0 b 1f0 | +1a8 b 1bc | +1b0 move a0,s1
+ *        +1b4 jal 0x361890 | +1bc lw a1,108(s1) | +1c8 bnez a1,1b0
+ *        +1f0 lw s1,132(s0) | +1f4 bnez s1,1a8
+ * Both are the same while loop; retail's outer back-edge targets the inner
+ * TEST and ours targets the inner BODY.  Probed: the inner while as a for over
+ * the next-pointer (does not compile - no C99 declarations), the inner test
+ * read into a local before the loop, the inner test reversed, an explicit
+ * break at the end of the body, and the outer step through a local - all
+ * byte-neutral.  Turning the inner while into a do/while gives 42 -> 37 but is
+ * NOT semantically equivalent (retail's entry branches to the test, so the
+ * body runs zero times on a null next-pointer), so it is rejected.
+ * Confirmed wall: block layout / branch threading. */
+
 
 {
 
