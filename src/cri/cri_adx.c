@@ -29894,11 +29894,20 @@ u32 FUN_00545918(int param_1)
 }
 #pragma schedule off
 
+/* DUMMYDUMB session 2026-10-20: retail computes the index (sll $v0,$a1,2)
+ * before the range test and forms the address in the branch's delay slot
+ * (addu $a0,$a0,$v0 / sw $a2,4($a0)), while this source emitted the whole
+ * address after the test. Folding the index into param_1 first - the parameter
+ * is dead after the store, so the rewrite is behaviour-preserving - reproduces
+ * retail's shape: 23 -> 20 differing bytes (size unchanged, 32 = 32). The
+ * remaining bytes are the sll's destination register and the test's.
+ * Still NONMATCHING: measured improvement, not a match claim. */
 // FUN_00545920 NONMATCHING
 void FUN_00545920(int param_1,u32 param_2,u32 param_3)
 {
+  param_1 = param_1 + param_2 * 4;
   if (param_2 < 2) {
-    *(u32 *)(param_1 + param_2 * 4 + 4) = param_3;
+    *(u32 *)(param_1 + 4) = param_3;
   }
 }
 
