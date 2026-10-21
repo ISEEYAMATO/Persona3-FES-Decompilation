@@ -62068,7 +62068,8 @@ u32 FUN_0055c0b0(long param_1,int param_2,long param_3)
 
       }
 
-      if (param_2 == 0) {
+      iVar4 = param_2;
+      if (iVar4 == 0) {
 
         *(u8 *)(iVar7 + 2) = 1;
 
@@ -62090,7 +62091,6 @@ u32 FUN_0055c0b0(long param_1,int param_2,long param_3)
 
       *(int *)(iVar7 + 0x20) = (int)param_3;
 
-      iVar4 = param_2;
 
       if (iVar2 <= param_2) {
 
