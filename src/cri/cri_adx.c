@@ -59765,7 +59765,8 @@ int FUN_0055a490(long param_1,int param_2,long param_3)
 
       }
 
-      if (param_2 == 0) {
+      iVar5 = param_2;
+      if (iVar5 == 0) {
 
         *(u8 *)(iVar6 + 2) = 1;
 
@@ -59787,7 +59788,6 @@ int FUN_0055a490(long param_1,int param_2,long param_3)
 
       *(u8 *)(iVar6 + 0x44) = DAT_007a2a70;
 
-      iVar5 = param_2;
 
       if (iVar3 <= param_2) {
 

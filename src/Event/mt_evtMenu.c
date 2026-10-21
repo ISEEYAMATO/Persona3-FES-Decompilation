@@ -9708,6 +9708,16 @@ u32 FUN_0037abd0(int param_1,int param_2,int param_3)
   }
 }
 
+/* DUMMYDUMB session 2026-10-21: 8 differing bytes, all of them the order of
+ * independent instructions.  The pair that matters is "move a0,zero" and
+ * "addiu a1,s0,0x104": mwcc sets the second call's a0 up before the first
+ * call's a1 here, retail does it the other way round.
+ * Probed: the pointer inlined into the call, the pointer local declared as u32,
+ * s32 or void*, the call written on one line, and the pointer local declared at
+ * the top of the function - all keep the same order.
+ * Confirmed wall: instruction scheduling.
+ */
+
 
 // FUN_0037ACC0
 
