@@ -7532,6 +7532,12 @@ static inline u8* btlEffectAddFirst(u8* base, u32 offset)
 {
   return base + offset;
 }
+/* DUMMYDUMB session 2026-10-20: 32 differing bytes in a 288-byte function (the
+ * size matches). The residual is a saved-register role difference (ours keeps
+ * the incoming pointers in $s2/$s1/$s0 where retail uses $s4/$s3/$s2). Probed
+ * with the declaration-order lever - 9 locals, 20 permutations (original,
+ * reverse, rotations, adjacent swaps, and the orders sorted by pointer-ness and
+ * by type): every order stayed at 32 or went to 39. Confirmed wall. */
 // FUN_002c6e30 NONMATCHING
 
 undefined* func_002c6e30(int unit, u32 group)

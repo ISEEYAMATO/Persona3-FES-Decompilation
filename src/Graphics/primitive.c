@@ -348,6 +348,16 @@ void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, cons
     }
 }
 
+/* DUMMYDUMB session 2026-10-20: 40 differing bytes in a 784-byte function (the
+ * size matches). The residual is a saved-register role difference (ours
+ * $s0/$s1/$s2 where retail uses $s2/$s3/$s4) plus the FPU/branch roles.
+ * Probed: the declaration-order lever (9 locals, 60 permutations) - every order
+ * stayed at 40; the static data addressed by its retail address (0x0069cec8 for
+ * sSphereRotAxis, 0x0069ce60 for sRenderStates) - that makes it much worse
+ * (488 bytes, +8 bytes of code) because mwcc then materialises a third
+ * instruction instead of the retail lui+load pair. Note the static-data
+ * difference itself is relocation-masked and is not what the residual is about.
+ * Confirmed wall. */
 // FUN_00359b40 NONMATCHING
 void primSphereLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, u32 saveAndRestoreRenderState)
 {

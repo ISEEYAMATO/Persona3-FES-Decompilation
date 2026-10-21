@@ -1940,6 +1940,13 @@ HCdvd* func_001e2da0(u16 majorId, u16 minorId, s16 variant)
  * every field record. */
 
 /* W422 role-cycle: baseline 277/2800/2800 -> 234/2800/2800 by splitting async/cached modelIndex declarations at the declaration tail; a second tail model-pointer split stayed 234/2800. The composed tail record-pointer split regressed to 299/2800 and was reverted. Earlier tableIndex and recordIndex splits (1603/2784 and 2033/2808) were rejected. */
+/* DUMMYDUMB session 2026-10-20: the declaration-order lever again - reordering
+ * the 17 locals to metadata, fileMemory, tableFlag, modelCount, source,
+ * fileSize, recordIndex, sourceIndex, tableHeader, table, models, path,
+ * asyncModelPtr, cachedModelPtr, asyncModelIndex, cachedModelIndex, record takes
+ * the function from 234 to 229 differing bytes (size 2800 = 2800). The previous
+ * best was the W422 declaration split at 234. Confirmed partial: 234 -> 229
+ * bytes. */
 // FUN_001E2E50 NONMATCHING
 u32 func_001e2e50(FieldArchiveRequest* request, void** outFileMemory,
                   u16 majorId, u16 minorId, s16 variant)
@@ -1954,26 +1961,26 @@ u32 func_001e2e50(FieldArchiveRequest* request, void** outFileMemory,
         u8 reserved14[0x0c];
     } RuntimeSupplementalEntry;
 
-    u8* record;
     FieldModelMetadata* metadata;
     u8* fileMemory;
     s32 tableFlag;
     u32 modelCount;
     u8* source;
     u32 fileSize;
-    void* (**allocator)(u32, u32, u32);
     u32 recordIndex;
+    void* (**allocator)(u32, u32, u32);
     u32 sourceIndex;
     u8* tableHeader;
     RuntimeSupplementalEntry* table;
     Model** models;
+    char path[64];
     f32 asyncAngles[3];
     f32 cachedAngles[3];
-    char path[64];
     Model* asyncModelPtr;
     Model* cachedModelPtr;
     u32 asyncModelIndex;
     u32 cachedModelIndex;
+    u8* record;
 
     D_007CE2C0 = 0;
     if (request == NULL)
