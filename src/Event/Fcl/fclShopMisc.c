@@ -1453,12 +1453,12 @@ u32 FUN_003f04f0(u32 param_1,int param_2)
   u32 uVar3;
   short *psVar5;
 
-  if (param_1 == 0) {
+  psVar5 = (short *)param_1;
+  if (psVar5 == 0) {
     K_Assert((const char *)DAT_006aede8,0x16c);
   }
 
   uVar2 = clndGetCurrentWeekDay();
-  psVar5 = (short *)param_1;
   bVar1 = 1;
   if (((u32)*psVar5 & (1u << (uVar2 & 0x1f))) != 0) {
     if ((psVar5[1] != 0) && (datGetFlag(psVar5[1]) == 0)) {

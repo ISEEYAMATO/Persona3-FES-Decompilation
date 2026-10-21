@@ -81641,7 +81641,8 @@ u64 FUN_00569d90(long param_1,long param_2,long param_3)
 
   }
 
-  if (param_3 == 0) {
+  piVar2 = (int *)param_3;
+  if (piVar2 == 0) {
 
     uVar1 = FUN_00569730(0x7c72a8,0x9aa,0x7c75b0,0,0xffffffffffffff9c);
 
@@ -81649,7 +81650,6 @@ u64 FUN_00569d90(long param_1,long param_2,long param_3)
 
   }
 
-  piVar2 = (int *)param_3;
 
   if (*piVar2 == 0) {
 
