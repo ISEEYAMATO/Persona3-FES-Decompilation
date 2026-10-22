@@ -277,6 +277,16 @@ KwlnTask* FUN_001d5a90(KwlnTask* parentTask)
     return parentTask;
 }
 
+/* DUMMYDUMB session 2026-10-22: 14 differing bytes, and the whole residual is a
+ * swapped saved register - ours keeps parentTask in $s0 and work in $s3, retail
+ * keeps parentTask in $s1 and work in $s0.  This is the canonical case in
+ * docs/permuting.md (itfMesManager FUN_003ada00), where the tie-break is not
+ * reachable from the C source.  Probed: every permutation of the three local
+ * declarations, `register` on slot1/work, `volatile` on each local, and
+ * optimization_level 1..4 - all byte-neutral.  Confirmed wall: register
+ * allocation.
+ */
+
 // FUN_001d5c00
 u32 K_FldCamera_GetType(KwlnTask* fldCameraTask)
 {
