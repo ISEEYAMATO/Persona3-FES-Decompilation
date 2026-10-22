@@ -43123,6 +43123,7 @@ asm void FUN_0054e7d8(void)
   .word 0x27bd0010
   .set reorder
 }
+#pragma optimization_level 3
 // FUN_0054E7F0
 
 
@@ -115058,6 +115059,7 @@ asm void FUN_00582810(void)
   .word 0x27bd0010
   .set reorder
 }
+#pragma optimization_level 3
 // FUN_00582828
 
 u32 FUN_00582828(int param_1)
@@ -127242,6 +127244,7 @@ asm void FUN_0058b128(void)
   .word 0x27bd0010
   .set reorder
 }
+#pragma optimization_level 3
 // FUN_0058B140
 
 
@@ -128437,6 +128440,7 @@ asm void FUN_0058be10(void)
   .word 0x27bd0010
   .set reorder
 }
+#pragma optimization_level 3
 // FUN_0058BE28
 
 
