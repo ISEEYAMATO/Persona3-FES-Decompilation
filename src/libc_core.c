@@ -3561,12 +3561,17 @@ int FUN_00527b48(u32 param_1,u64 param_2,char *param_3,u32 *param_4);
 #pragma optimization_level 3
 #pragma tailcall on
 #pragma schedule on
-// FUN_00527B30 NONMATCHING
-int FUN_00527b30(u32 param_1,u64 param_2,char *param_3,u32 *param_4)
+// FUN_00527B30
+asm int FUN_00527b30(u32 param_1,u64 param_2,char *param_3,u32 *param_4)
 {
-  return FUN_00527b48(param_1,param_2,param_3,param_4);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08149ed2
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall on
 #pragma optimization_level 2
 // FUN_00527B48 NONMATCHING
 int FUN_00527b48(u32 param_1,u64 param_2,char *param_3,u32 *param_4)
