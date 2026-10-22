@@ -1,6 +1,6 @@
 # Persona 3 FES
-[![Matching progress](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FRaikaru%2FPersona3-FES-Decompilation%2Fp3fes-matching%2Fprogress%2Fmatching.json)](progress/matching.json)
-[![Linked progress](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FRaikaru%2FPersona3-FES-Decompilation%2Fp3fes-matching%2Fprogress%2Flinked.json)](progress/linked.json)
+[![Matching progress](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FISEEYAMATO%2FPersona3-FES-Decompilation%2Fp3fes-matching%2Fprogress%2Fmatching.json)](progress/matching.json)
+[![Linked progress](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FISEEYAMATO%2FPersona3-FES-Decompilation%2Fp3fes-matching%2Fprogress%2Flinked.json)](progress/linked.json)
 
 This is a fork of [snaku/Persona3-FES-Decompilation](https://github.com/snaku/Persona3-FES-Decompilation), the upstream Persona 3 FES decompilation. It carries additional matching work and is not a replacement for that project or the canonical home of it. Upstream is where the project lives; this fork exists to develop and offer changes back.
 
@@ -27,7 +27,7 @@ Install the CodeWarrior PS2 toolchain `mwcps2-3.0.1b210-060308`, including `mwcc
 Clone the repository and enter its directory:
 
 ```sh
-git clone -b p3fes-matching https://github.com/Raikaru/Persona3-FES-Decompilation.git
+git clone -b p3fes-matching https://github.com/ISEEYAMATO/Persona3-FES-Decompilation.git
 cd Persona3-FES-Decompilation
 ```
 
