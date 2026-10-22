@@ -2700,8 +2700,8 @@ int FUN_002d2ee0(const float *param_1, const float *param_2, const float *param_
 u32 FUN_002d2f50(float param_1, u8 *param_2)
 {
     u16 count = 0;
-    u16 i;
     u8 *node;
+    u16 i;
 
     for (node = *(u8 **)(iGpffffb6fc + 0x2cc); node != NULL; node = *(u8 **)(node + 0x4cc))
     {
@@ -7396,8 +7396,8 @@ updateFlag:
 // FUN_002dae30 NONMATCHING
 void FUN_002dae30(u64 param_1)
 {
-    u32 stop;
     u32 slotIndex;
+    u32 stop;
 
     stop = 0;
     slotIndex = 0;

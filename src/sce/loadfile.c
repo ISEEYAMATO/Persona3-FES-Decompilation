@@ -2433,9 +2433,9 @@ u32 FUN_0050f090(u64 param_1,long param_2,u32 param_3)
 u32 FUN_0050f1c0(u64 param_1,long param_2,u32 param_3)
 
 {
+  u32 uVar3;
   u32 *puVar1;
   u32 *puVar2;
-  u32 uVar3;
   
   puVar1 = (u32 *)(DAT_0096d7c0);
   if (param_2 == 0) {

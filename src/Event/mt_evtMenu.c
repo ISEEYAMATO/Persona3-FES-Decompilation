@@ -9994,8 +9994,8 @@ void FUN_0037b350(int param_1,int param_2,int param_3,int param_4)
   u32 uStack_4;
   u8 *apuStack_10 [3];
   f32 uVar3;
-  u32 uVar2;
   u32 sVar1;
+  u32 uVar2;
 
   uVar2 = 0;
   apuStack_10[0] = PTR_DAT_0069f9d8;

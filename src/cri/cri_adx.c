@@ -17575,11 +17575,11 @@ long FUN_0053cae0(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
 
 {
 
+  long lVar3;
+
   long lVar1;
 
   long lVar2;
-
-  long lVar3;
 
 
 
@@ -58276,9 +58276,9 @@ char * FUN_00559280(u32 param_1,u32 param_2)
 
   char cVar1;
 
-  char *pcVar2;
-
   int iVar3;
+
+  char *pcVar2;
 
   char *pcVar4;
 
@@ -66467,9 +66467,9 @@ u32 * FUN_0055ec38(u32 *param_1,long param_2)
 
   u64 uVar1;
 
-  u32 *puVar2;
-
   u32 *puVar3;
+
+  u32 *puVar2;
 
 
 
@@ -107277,11 +107277,11 @@ void FUN_0057dc90(int param_1,u32 param_2,long param_3,u64 param_4)
 
 {
 
+  int iVar3;
+
   int iVar1;
 
   u64 uVar2;
-
-  int iVar3;
 
 
 

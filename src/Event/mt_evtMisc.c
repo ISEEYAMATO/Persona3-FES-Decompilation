@@ -4770,11 +4770,11 @@ void FUN_0038bc70(int param_1,int param_2,int param_3)
 
   int sVar1;
 
-  int iVar2;
+  int sVar4;
 
   u32 *puVar3;
 
-  int sVar4;
+  int iVar2;
 
   
 

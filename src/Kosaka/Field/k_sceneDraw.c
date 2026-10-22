@@ -1331,8 +1331,8 @@ void func_0019ff10()
 // FUN_001a0040 NONMATCHING
 void func_001a0040(u32 visible, u32 updateField)
 {
-    Resrc* fld;
     Resrc* modelFld;
+    Resrc* fld;
     Field* field;
 
     fld = MT_Scene_GetResListHead(RESRC_TYPE_FLD);

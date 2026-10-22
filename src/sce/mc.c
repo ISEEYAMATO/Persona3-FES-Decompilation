@@ -5741,9 +5741,9 @@ void FUN_00423c10(int param_1,char param_2)
 
   u8 *puVar1;
 
-  bool bVar2;
-
   long lVar3;
+
+  bool bVar2;
 
   
 
