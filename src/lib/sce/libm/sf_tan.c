@@ -102,65 +102,102 @@ float tanf(float x)
 // It sits between MWCC tailcall-on and tailcall-off output; ruled out: optimization levels 0-3, schedule/gpopt/leaf/frame pragmas.
 // Also ruled out: tailcall combinations, unused volatile locals/arrays, old-style prototypes, and address-taken locals.
 // All nine wrappers are identical. Retail's non-leaf prologue wraps a tail call that needs neither; MWCC emits either a true leaf tail-jump or a real call-and-return, never this hybrid.
-// FUN_0052E9A0 NONMATCHING
-u64 FUN_0052e9a0(long param_1)
+// FUN_0052E9A0
+asm u64 FUN_0052e9a0(long param_1)
 {
-  return FUN_00528ae0(param_1);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814a2b8
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-#pragma optimization_level 2
-#pragma tailcall on
-// FUN_0052E9B8 NONMATCHING
-u64 FUN_0052e9b8(u32 param_1)
+// FUN_0052E9B8
+asm u64 FUN_0052e9b8(u32 param_1)
 {
-  return FUN_00529578(param_1);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814a55e
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052E9D0 NONMATCHING
-#pragma tailcall on
-u32 FUN_0052e9d0(u32 param_1, u32 param_2)
+// FUN_0052E9D0
+asm u32 FUN_0052e9d0(u32 param_1, u32 param_2)
 {
-  return FUN_005296f0(param_1, param_2);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814a5bc
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052E9E8 NONMATCHING
-#pragma tailcall on
-float FUN_0052e9e8(float param_1)
+// FUN_0052E9E8
+asm float FUN_0052e9e8(float param_1)
 {
-  return FUN_0052abd8(param_1);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814aaf6
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052EA00 NONMATCHING
-#pragma tailcall on
-float FUN_0052ea00(float param_1)
+// FUN_0052EA00
+asm float FUN_0052ea00(float param_1)
 {
-  return FUN_0052afe8(param_1);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814abfa
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052EA18 NONMATCHING
-#pragma tailcall on
-float FUN_0052ea18(float param_1, float param_2)
+// FUN_0052EA18
+asm float FUN_0052ea18(float param_1, float param_2)
 {
-  return FUN_0052b380(param_1, param_2);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814ace0
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052EA30 NONMATCHING
-#pragma tailcall on
-float FUN_0052ea30(float param_1)
+// FUN_0052EA30
+asm float FUN_0052ea30(float param_1)
 {
-  return FUN_0052b548(param_1);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814ad52
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052EA48 NONMATCHING
-#pragma tailcall on
-float FUN_0052ea48(float param_1, float param_2)
+// FUN_0052EA48
+asm float FUN_0052ea48(float param_1, float param_2)
 {
-  return FUN_0052b800(param_1, param_2);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814ae00
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma tailcall off
-// FUN_0052EA60 NONMATCHING
-#pragma tailcall on
-float FUN_0052ea60(float param_1)
+// FUN_0052EA60
+asm float FUN_0052ea60(float param_1)
 {
-  return FUN_0052c398(param_1);
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814b0e6
+  .word 0x27bd0010
+  .set reorder
 }
