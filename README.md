@@ -53,6 +53,7 @@ For a per-file report, run `python tools/verify.py <file.c>`. The file must cont
 ## How progress is measured
 
 `tools/verify.py` compares each function's compiled bytes against the retail executable and reports `MATCH`, `NONMATCHING`, `STUB`, or `SIZE_MISMATCH`.
+Only an exact `MATCH` reported by `tools/verify.py` counts as complete; partial byte-diff reductions and documented compiler walls do not.
 
 The progress badges and generated objdiff report are authoritative. Run `python tools/progress.py` for the current report. Percentages are not copied into prose because they go stale.
 
