@@ -591,7 +591,7 @@ void FUN_00289b50(BtlAction* action)
             continue;
         }
 
-        if (current == action || unit->charId == 4)
+        if (action == current || unit->charId == 4)
         {
             continue;
         }

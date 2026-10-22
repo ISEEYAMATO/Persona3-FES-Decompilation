@@ -7126,7 +7126,7 @@ void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
     iVar5 = iVar1;
   }
   fVar16 = (float)FUN_002d1f30((RtQuat*)&uStack_d4,(RtQuat*)&uStack_b8);
-  if ((param_1 <= 0.0f) || (param_1 = DAT_007cadf4 * param_1, param_1 < fVar16)) {
+  if ((param_1 <= 0.0f) || (param_1 = DAT_007cadf4 * param_1, fVar16 < param_1)) {
     if (fVar12 >= 0.0f) {
       fVar16 = *(float *)(iVar5 + 0x90) * *(float *)(iVar5 + 0x2c);
       fStack_50 = fStack_10 - fStack_20;

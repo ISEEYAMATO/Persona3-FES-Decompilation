@@ -1085,7 +1085,7 @@ void* func_001dcb60(KwlnTask* task)
     case 1:
         counter = *(u32*)(work + 0x220) + 1;
         *(u32*)(work + 0x220) = counter;
-        if (counter >= 9)
+        if (9 >= counter)
         {
             *(u32*)(work + 0x220) = 0;
         }

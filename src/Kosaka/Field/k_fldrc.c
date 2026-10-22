@@ -3431,7 +3431,7 @@ u32 FUN_001b6eb0(u16 group, u32 id)
             return 0xc9;
         }
         event = FUN_001a01c0();
-        if ((event != 1) && (group < 200))
+        if ((event != 1) && (200 < group))
         {
             /*
              * Retail mode jump table 0x7b6b00.  The case declaration order

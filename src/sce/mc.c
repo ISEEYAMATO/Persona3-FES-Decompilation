@@ -3227,7 +3227,7 @@ void FUN_00420a20(int param_1,int param_2,u32 param_3,u32 *param_4)
   iVar2 = (int)(iGpffffadd8);
   iVar7 = *(int *)(uVar8 * 0xc + iVar7 + 4);
 
-  if (uGpffffaddc <= uVar8) {
+  if (uVar8 <= uGpffffaddc) {
 
     K_Assert((const char *)&gp0xffffae00,0x131);
 

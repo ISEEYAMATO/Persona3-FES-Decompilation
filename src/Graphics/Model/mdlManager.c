@@ -3250,7 +3250,7 @@ LAB_0031494c:
 
             iVar4 = func_004b6dd0(lVar7);
 
-            if ((iVar11 != iVar4) || (puVar5[9] != *(int *)(*piVar10 + 4))) {
+            if ((iVar4 != iVar11) || (puVar5[9] != *(int *)(*piVar10 + 4))) {
 
               func_004b6eb0(lVar8);
 

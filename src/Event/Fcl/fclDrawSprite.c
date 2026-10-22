@@ -169,7 +169,7 @@ u32 FUN_0040ec50(float param_1,int param_2,u32 param_3,u32 param_4,
 
     else {
 
-      if (((((param_7 & 8) != 0) && (3 < uVar2)) && (uVar4 != 0)) && ((int)(uVar2 - uVar4) % 3 == 0)
+      if (((((param_7 & 8) != 0) && (uVar2 < 3)) && (uVar4 != 0)) && ((int)(uVar2 - uVar4) % 3 == 0)
 
          ) {
 

@@ -48208,7 +48208,7 @@ void FUN_00354b80(int param_1)
 
         uVar1 = *(u16 *)((int)puVar2 + 6);
 
-        if (uVar4 - uVar1 <= uVar3) {
+        if (uVar4 - uVar3 <= uVar1) {
 
           if (uVar1 == 0) {
 

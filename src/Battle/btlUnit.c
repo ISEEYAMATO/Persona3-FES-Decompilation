@@ -1134,7 +1134,7 @@ void func_00280da0(BtlUnit* unit)
             segment.x = path[pointIndex * 2] - start.x;
             segment.y = path[pointIndex * 2 + 1] - start.y;
             segmentLength = RwV2dNormalize(&segment, &segment);
-            if (remaining <= segmentLength)
+            if (segmentLength <= remaining)
             {
                 break;
             }

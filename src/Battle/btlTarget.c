@@ -1911,7 +1911,7 @@ void FUN_002d1660(void* source, BtlTarget* target, u64 mask)
     default:
         break;
     }
-    if (selected == DAT_00697730 || selected == DAT_006977D0) {
+    if (DAT_00697730 == selected || selected == DAT_006977D0) {
         selected += (state & 0xFFFFu) * 0x28;
         for (i = 0, total = 0; i < 5; i++) {
             total = (u16)(total + selected[i * 8]);

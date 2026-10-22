@@ -14043,7 +14043,7 @@ copy2:
         puVar14[1] = tmpB;
         puVar14 = puVar14 + 2;
       } while (0 < cnt);
-      if (j >= 8) {
+      if (8 >= j) {
         uVar11 = 0;
       } else {
         uVar11 = (u32)auStack_20[j];

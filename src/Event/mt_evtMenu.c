@@ -12596,7 +12596,7 @@ int FUN_0037ead0(int param_1,int param_2,int param_3)
 
         *(int *)(iVar2 + 0x1a4) = iVar1;
 
-        if (iVar1 >= 0x100) {
+        if (0x100 >= iVar1) {
 
           *(u32 *)(iVar2 + 0x1a4) = 0xff;
 

@@ -7191,7 +7191,7 @@ s32 func_002c5fc0(u32 param_1,u32 param_2,short param_3,int param_4)
       puVar11 = (u16 *)(iVar7 + uVar10 * 2);
       if ((*puVar11 != 0) && (*puVar11 < 0x1d0)) {
         sVar5 = func_003082f0(*(u32 *)(iVar2 + 0xa2c), *puVar11);
-        if (sVar5 == param_3) {
+        if (param_3 == sVar5) {
           uVar1 = *puVar11;
           if (0x26f < uVar1) {
             func_0019d3f0(0x696f88,0x468);

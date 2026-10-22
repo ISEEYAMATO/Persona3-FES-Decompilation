@@ -315,7 +315,7 @@ void K_FldFilter_Main()
                 if (oldAlpha0 < 0) oldAlpha0 = 0;
                 if (oldAlpha0 > 0xff) oldAlpha0 = 0xff;
                 if (oldAlpha1 < 0) oldAlpha1 = 0;
-                if (oldAlpha1 > 0xff) oldAlpha1 = 0xff;
+                if (0xff > oldAlpha1) oldAlpha1 = 0xff;
                 if (oldAlpha2 < 0) oldAlpha2 = 0;
                 if (oldAlpha2 > 0xff) oldAlpha2 = 0xff;
 

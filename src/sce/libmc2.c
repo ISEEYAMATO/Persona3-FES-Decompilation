@@ -7432,7 +7432,7 @@ LAB_0051ee60:
       if (0 < iStack_74) {
         iStack_60 = FUN_00521d10(param_1,iStack_60,iStack_74);
       }
-      if ((iStack_7c != 0) && (lVar4 = FUN_00521e70(uVar5,iStack_60), lVar4 < 0)) {
+      if ((iStack_7c != 0) && (lVar4 = FUN_00521e70(uVar5,iStack_60), 0 < lVar4)) {
         uVar5 = FUN_00521650(param_1,uVar5,10,0);
         uStack_84 = uStack_84 - 1;
         if (iStack_78 != 0) {
