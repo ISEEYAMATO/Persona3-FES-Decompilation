@@ -2121,26 +2121,17 @@ u32 FUN_005318f8(u64 param_1)
 
 
 
-// FUN_005319C8 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_005319c8(void)
-
-
-
+// FUN_005319C8
+asm void FUN_005319c8(void)
 {
-
-  FUN_005649c0();
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159270
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_005319E0 NONMATCHING
 #pragma push
 #pragma schedule on
@@ -2163,25 +2154,17 @@ void FUN_005319e0(void)
 
 
 
-// FUN_00531A10 NONMATCHING
-
-
-void FUN_00531a10(void)
-
-
-
+// FUN_00531A10
+asm void FUN_00531a10(void)
 {
-
-  ((code)FUN_0053ae08)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814eb82
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00531A28 NONMATCHING
 
 
@@ -13568,50 +13551,28 @@ void FUN_005397e8(void)
 
 
 
-// FUN_00539818 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_00539818(void)
-
-
-
+// FUN_00539818
+asm void FUN_00539818(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
-// FUN_00539830 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_00539830(void)
-
-
-
+// FUN_00539830
+asm void FUN_00539830(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_00539848
 
 
@@ -19632,69 +19593,39 @@ u64 FUN_0053e038(u64 param_1)
 
 
 
-// FUN_0053E070 NONMATCHING
-
-
-void FUN_0053e070(void)
-
-
-
+// FUN_0053E070
+asm void FUN_0053e070(void)
 {
-
-  ((code)FUN_005470e8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08151c3a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0053E088 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_0053e088(void)
-
-
-
+// FUN_0053E088
+asm void FUN_0053e088(void)
 {
-
-  FUN_00539848();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814e612
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
-// FUN_0053E0A0 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_0053e0a0(void)
-
-
-
+// FUN_0053E0A0
+asm void FUN_0053e0a0(void)
 {
-
-  FUN_00539850();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814e614
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_0053E0B8 NONMATCHING
 #pragma push
 #pragma schedule on
@@ -21363,28 +21294,17 @@ void FUN_0053f5f0(void)
 
 
 
-// FUN_0053F618 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_0053f618(void)
-
-
-
+// FUN_0053F618
+asm void FUN_0053f618(void)
 {
-
-  FUN_0055d730();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081575cc
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_0053F630
 
 asm void FUN_0053f630(u32 param_1)
@@ -22069,28 +21989,17 @@ void FUN_00540048(long param_1)
 
 
 
-// FUN_00540098 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_00540098(void)
-
-
-
+// FUN_00540098
+asm void FUN_00540098(void)
 {
-
-  SleepThread();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08140c20
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_005400B0 NONMATCHING
 
 
@@ -22516,25 +22425,17 @@ asm u8 FUN_00540560(void)
 
 
 
-// FUN_00540570 NONMATCHING
-
-
-void FUN_00540570(void)
-
-
-
+// FUN_00540570
+asm void FUN_00540570(void)
 {
-
-  ((code)FUN_005651f0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815947c
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00540588 NONMATCHING
 
 
@@ -22932,28 +22833,17 @@ void FUN_00540c70(void)
 
 
 
-// FUN_00540D40 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_00540d40(void)
-
-
-
+// FUN_00540D40
+asm void FUN_00540d40(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_00540D58 NONMATCHING
 #pragma push
 #pragma schedule on
@@ -23049,47 +22939,28 @@ u64 FUN_00540d80(u64 param_1)
 
 
 
-// FUN_00540EA8 NONMATCHING
-
-
-void FUN_00540ea8(void)
-
-
-
+// FUN_00540EA8
+asm void FUN_00540ea8(void)
 {
-
-  ((code)FUN_00540d80)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08150360
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00540EC0 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_00540ec0(void)
-
-
-
+// FUN_00540EC0
+asm void FUN_00540ec0(void)
 {
-
-  FUN_0053f640();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814fd90
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
 // FUN_00540ED8 NONMATCHING
 
 
@@ -23892,47 +23763,28 @@ void FUN_00541978(void)
 
 
 
-// FUN_005419C0 NONMATCHING
-#pragma push
-#pragma schedule on
-
-
-void FUN_005419c0(void)
-
-
-
+// FUN_005419C0
+asm void FUN_005419c0(void)
 {
-
-  FUN_0055ff70();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08157fdc
+  .word 0x27bd0010
+  .set reorder
 }
-#pragma pop
-
-
-
-
-
-// FUN_005419D8 NONMATCHING
-
-
-void FUN_005419d8(void)
-
-
-
+// FUN_005419D8
+asm void FUN_005419d8(void)
 {
-
-  FUN_00560698();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081581a6
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005419F0
 
 
@@ -23950,25 +23802,17 @@ void FUN_005419f0(void)
 
 
 
-// FUN_005419F8 NONMATCHING
-
-
-void FUN_005419f8(void)
-
-
-
+// FUN_005419F8
+asm void FUN_005419f8(void)
 {
-
-  ((code)FUN_00560758)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081581d6
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00541A10 NONMATCHING
 
 
@@ -24014,82 +23858,50 @@ void FUN_00541a48(void)
 
 
 
-// FUN_00541A78 NONMATCHING
-
-
-void FUN_00541a78(void)
-
-
-
+// FUN_00541A78
+asm void FUN_00541a78(void)
 {
-
-  ((code)FUN_00560c88)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08158322
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541A90 NONMATCHING
-
-
-void FUN_00541a90(void)
-
-
-
+// FUN_00541A90
+asm void FUN_00541a90(void)
 {
-
-  ((code)FUN_00560d20)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08158348
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541AA8 NONMATCHING
-
-
-void FUN_00541aa8(void)
-
-
-
+// FUN_00541AA8
+asm void FUN_00541aa8(void)
 {
-
-  ((code)FUN_00560e78)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815839e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541AC0 NONMATCHING
-
-
-void FUN_00541ac0(void)
-
-
-
+// FUN_00541AC0
+asm void FUN_00541ac0(void)
 {
-
-  ((code)FUN_00560eb0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081583ac
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00541AD8 NONMATCHING
 
 
@@ -24131,101 +23943,61 @@ void FUN_00541b28(void)
 
 
 
-// FUN_00541B58 NONMATCHING
-
-
-void FUN_00541b58(void)
-
-
-
+// FUN_00541B58
+asm void FUN_00541b58(void)
 {
-
-  ((code)FUN_00561228)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815848a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541B70 NONMATCHING
-
-
-void FUN_00541b70(void)
-
-
-
+// FUN_00541B70
+asm void FUN_00541b70(void)
 {
-
-  ((code)FUN_00561258)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08158496
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541B88 NONMATCHING
-
-
-void FUN_00541b88(void)
-
-
-
+// FUN_00541B88
+asm void FUN_00541b88(void)
 {
-
-  ((code)FUN_005612d0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081584b4
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541BA0 NONMATCHING
-
-
-void FUN_00541ba0(void)
-
-
-
+// FUN_00541BA0
+asm void FUN_00541ba0(void)
 {
-
-  ((code)FUN_00561310)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081584c4
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541BB8 NONMATCHING
-
-
-void FUN_00541bb8(void)
-
-
-
+// FUN_00541BB8
+asm void FUN_00541bb8(void)
 {
-
-  ((code)FUN_00561360)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081584d8
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00541BD0 NONMATCHING
 
 
@@ -24269,44 +24041,28 @@ void FUN_00541c80(void)
 
 
 
-// FUN_00541C88 NONMATCHING
-
-
-void FUN_00541c88(void)
-
-
-
+// FUN_00541C88
+asm void FUN_00541c88(void)
 {
-
-  ((code)FUN_00560d50)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08158354
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541CA0 NONMATCHING
-
-
-void FUN_00541ca0(void)
-
-
-
+// FUN_00541CA0
+asm void FUN_00541ca0(void)
 {
-
-  FUN_00560d80();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08158360
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00541CB8
 
 
@@ -24397,44 +24153,28 @@ u32 FUN_00541d00(void)
 
 
 
-// FUN_00541D18 NONMATCHING
-
-
-void FUN_00541d18(void)
-
-
-
+// FUN_00541D18
+asm void FUN_00541d18(void)
 {
-
-  ((code)FUN_00537770)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814dddc
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00541D30 NONMATCHING
-
-
-void FUN_00541d30(void)
-
-
-
+// FUN_00541D30
+asm void FUN_00541d30(void)
 {
-
-  FUN_00537780();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814dde0
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00541D48 NONMATCHING
 
 
@@ -30318,63 +30058,39 @@ void FUN_00545b90(void)
 
 
 
-// FUN_00545BF0 NONMATCHING
-
-
-void FUN_00545bf0(void)
-
-
-
+// FUN_00545BF0
+asm void FUN_00545bf0(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00545C08 NONMATCHING
-
-
-void FUN_00545c08(void)
-
-
-
+// FUN_00545C08
+asm void FUN_00545c08(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00545C20 NONMATCHING
-
-
-void FUN_00545c20(void)
-
-
-
+// FUN_00545C20
+asm void FUN_00545c20(void)
 {
-
-  ((code)FUN_005655e8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815957a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00545C38
 
 
@@ -32525,25 +32241,17 @@ u64 FUN_005470e8(u64 param_1)
 
 
 
-// FUN_00547120 NONMATCHING
-
-
-void FUN_00547120(void)
-
-
-
+// FUN_00547120
+asm void FUN_00547120(void)
 {
-
-  ((code)FUN_005566d0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081559b4
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00547138 NONMATCHING
 
 
@@ -34209,25 +33917,17 @@ void FUN_005482d8(void)
 
 
 
-// FUN_00548300 NONMATCHING
-
-
-void FUN_00548300(void)
-
-
-
+// FUN_00548300
+asm void FUN_00548300(void)
 {
-
-  FUN_00548278();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815209e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00548318 NONMATCHING
 
 
@@ -37798,25 +37498,17 @@ void FUN_0054a5c8(void)
 
 
 
-// FUN_0054A618 NONMATCHING
-
-
-void FUN_0054a618(void)
-
-
-
+// FUN_0054A618
+asm void FUN_0054a618(void)
 {
-
-  FUN_00541ca0();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08150728
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0054A630
 
 
@@ -37970,25 +37662,17 @@ void FUN_0054a6f0(void)
 {
 }
 
-// FUN_0054A6F8 NONMATCHING
-
-
-void FUN_0054a6f8(void)
-
-
-
+// FUN_0054A6F8
+asm void FUN_0054a6f8(void)
 {
-
-  ((code)FUN_0053ade0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814eb78
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0054A710 NONMATCHING
 
 
@@ -41412,139 +41096,83 @@ void FUN_0054d080(u64 param_1)
 
 
 
-// FUN_0054D0A0 NONMATCHING
-
-
-void FUN_0054d0a0(void)
-
-
-
+// FUN_0054D0A0
+asm void FUN_0054d0a0(void)
 {
-
-  ((code)FUN_00532e10)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cb84
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0054D0B8 NONMATCHING
-
-
-void FUN_0054d0b8(void)
-
-
-
+// FUN_0054D0B8
+asm void FUN_0054d0b8(void)
 {
-
-  ((code)FUN_00532e70)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cb9c
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0054D0D0 NONMATCHING
-
-
-void FUN_0054d0d0(void)
-
-
-
+// FUN_0054D0D0
+asm void FUN_0054d0d0(void)
 {
-
-  ((code)FUN_00532ec0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cbb0
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0054D0E8 NONMATCHING
-
-
-void FUN_0054d0e8(void)
-
-
-
+// FUN_0054D0E8
+asm void FUN_0054d0e8(void)
 {
-
-  ((code)FUN_00532f10)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cbc4
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0054D100 NONMATCHING
-
-
-void FUN_0054d100(void)
-
-
-
+// FUN_0054D100
+asm void FUN_0054d100(void)
 {
-
-  ((code)FUN_00532f60)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cbd8
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0054D118 NONMATCHING
-
-
-void FUN_0054d118(void)
-
-
-
+// FUN_0054D118
+asm void FUN_0054d118(void)
 {
-
-  ((code)FUN_005330a8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cc2a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0054D130 NONMATCHING
-
-
-void FUN_0054d130(void)
-
-
-
+// FUN_0054D130
+asm void FUN_0054d130(void)
 {
-
-  ((code)FUN_00533160)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cc58
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0054D148 NONMATCHING
 
 
@@ -41583,25 +41211,17 @@ void FUN_0054d1a8(void)
 
 
 
-// FUN_0054D208 NONMATCHING
-
-
-void FUN_0054d208(void)
-
-
-
+// FUN_0054D208
+asm void FUN_0054d208(void)
 {
-
-  ((code)FUN_005334a8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814cd2a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0054D220
 
 
@@ -41747,25 +41367,17 @@ void FUN_0054d328(void)
 
 
 
-// FUN_0054D390 NONMATCHING
-
-
-void FUN_0054d390(void)
-
-
-
+// FUN_0054D390
+asm void FUN_0054d390(void)
 {
-
-  ((code)FUN_00533808)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0814ce02
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0054D3A8 NONMATCHING
 
 
@@ -43500,26 +43112,17 @@ u32 FUN_0054e7d0(void)
 
 
 
-// FUN_0054E7D8 NONMATCHING
-
-
-void FUN_0054e7d8(void)
-
-
-
+// FUN_0054E7D8
+asm void FUN_0054e7d8(void)
 {
-
-  FUN_0054e808();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08153a02
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-#pragma optimization_level 3
 // FUN_0054E7F0
 
 
@@ -51533,44 +51136,28 @@ void FUN_00554678(int param_1,u64 param_2)
 
 
 
-// FUN_005546F0 NONMATCHING
-
-
-void FUN_005546f0(void)
-
-
-
+// FUN_005546F0
+asm void FUN_005546f0(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00554708 NONMATCHING
-
-
-void FUN_00554708(void)
-
-
-
+// FUN_00554708
+asm void FUN_00554708(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00554720 NONMATCHING
 
 
@@ -62339,25 +61926,17 @@ int FUN_0055c378(long param_1)
 
 
 
-// FUN_0055C3C8 NONMATCHING
-
-
-void FUN_0055c3c8(void)
-
-
-
+// FUN_0055C3C8
+asm void FUN_0055c3c8(void)
 {
-
-  ((code)FUN_0055bb30)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08156ecc
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0055C3E0
 
 
@@ -64744,25 +64323,17 @@ void FUN_0055db88(void)
 
 
 
-// FUN_0055DBA8 NONMATCHING
-
-
-void FUN_0055dba8(void)
-
-
-
+// FUN_0055DBA8
+asm void FUN_0055dba8(void)
 {
-
-  FUN_005617d8();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081585f6
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0055DBC0 NONMATCHING
 
 
@@ -65311,25 +64882,17 @@ void FUN_0055e0c0(u64 param_1)
 
 
 
-// FUN_0055E190 NONMATCHING
-
-
-void FUN_0055e190(void)
-
-
-
+// FUN_0055E190
+asm void FUN_0055e190(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0055E1A8 NONMATCHING
 
 
@@ -65372,25 +64935,17 @@ void FUN_0055e1d8(u64 param_1,u64 param_2)
 
 
 
-// FUN_0055E208 NONMATCHING
-
-
-void FUN_0055e208(void)
-
-
-
+// FUN_0055E208
+asm void FUN_0055e208(void)
 {
-
-  FUN_00525e98();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081497a6
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0055E220 NONMATCHING
 
 
@@ -66243,44 +65798,28 @@ u64 FUN_0055ea00(long param_1,long param_2)
 
 
 
-// FUN_0055EA80 NONMATCHING
-
-
-void FUN_0055ea80(void)
-
-
-
+// FUN_0055EA80
+asm void FUN_0055ea80(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0055EA98 NONMATCHING
-
-
-void FUN_0055ea98(void)
-
-
-
+// FUN_0055EA98
+asm void FUN_0055ea98(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0055EAB0 NONMATCHING
 
 
@@ -70233,44 +69772,28 @@ void FUN_00561790(void)
 
 
 
-// FUN_005617C0 NONMATCHING
-
-
-void FUN_005617c0(void)
-
-
-
+// FUN_005617C0
+asm void FUN_005617c0(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_005617D8 NONMATCHING
-
-
-void FUN_005617d8(void)
-
-
-
+// FUN_005617D8
+asm void FUN_005617d8(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005617F0 NONMATCHING
 
 
@@ -74517,25 +74040,17 @@ void FUN_00564360(u64 param_1,int *param_2)
 
 
 
-// FUN_00564510 NONMATCHING
-
-
-void FUN_00564510(void)
-
-
-
+// FUN_00564510
+asm void FUN_00564510(void)
 {
-
-  FUN_00559d18();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08156746
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00564528 NONMATCHING
 
 
@@ -81246,25 +80761,17 @@ asm u32 FUN_00569820(void)
 
 
 
-// FUN_00569830 NONMATCHING
-
-
-void FUN_00569830(void)
-
-
-
+// FUN_00569830
+asm void FUN_00569830(void)
 {
-
-  FUN_00569820();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815a608
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00569848 NONMATCHING
 
 
@@ -82572,25 +82079,17 @@ int FUN_0056aac0(u64 param_1,u64 param_2,u64 param_3,long param_4)
 
 
 
-// FUN_0056AB78 NONMATCHING
-
-
-void FUN_0056ab78(void)
-
-
-
+// FUN_0056AB78
+asm void FUN_0056ab78(void)
 {
-
-  FUN_0056ddf8();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815b77e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0056AB90 NONMATCHING
 
 
@@ -82624,63 +82123,39 @@ u64 FUN_0056ab90(void)
 
 
 
-// FUN_0056ABE0 NONMATCHING
-
-
-void FUN_0056abe0(void)
-
-
-
+// FUN_0056ABE0
+asm void FUN_0056abe0(void)
 {
-
-  FUN_0056ddc8();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815b772
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0056ABF8 NONMATCHING
-
-
-void FUN_0056abf8(void)
-
-
-
+// FUN_0056ABF8
+asm void FUN_0056abf8(void)
 {
-
-  FUN_0056dd50();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815b754
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0056AC10 NONMATCHING
-
-
-void FUN_0056ac10(void)
-
-
-
+// FUN_0056AC10
+asm void FUN_0056ac10(void)
 {
-
-  FUN_0056dd68();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815b75a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0056AC28 NONMATCHING
 
 
@@ -85225,25 +84700,17 @@ void FUN_0056ca08(void)
 
 
 
-// FUN_0056CA60 NONMATCHING
-
-
-void FUN_0056ca60(void)
-
-
-
+// FUN_0056CA60
+asm void FUN_0056ca60(void)
 {
-
-  ((code)FUN_00566cb8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159b2e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0056CA78
 #pragma schedule on
 u64 FUN_0056ca78(void)
@@ -86340,25 +85807,17 @@ u32 FUN_0056d508(int param_1,int param_2,int param_3,int param_4,long param_5,in
 
 
 
-// FUN_0056D6C0 NONMATCHING
-
-
-void FUN_0056d6c0(void)
-
-
-
+// FUN_0056D6C0
+asm void FUN_0056d6c0(void)
 {
-
-  ((code)FUN_0056d508)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815b542
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0056D6D8
 
 asm char *FUN_0056d6d8(void)
@@ -86919,44 +86378,28 @@ asm u32 FUN_0056d968(char *param_1,int param_2)
 
 
 
-// FUN_0056DD50 NONMATCHING
-
-
-void FUN_0056dd50(void)
-
-
-
+// FUN_0056DD50
+asm void FUN_0056dd50(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0056DD68 NONMATCHING
-
-
-void FUN_0056dd68(void)
-
-
-
+// FUN_0056DD68
+asm void FUN_0056dd68(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0056DD80 NONMATCHING
 
 
@@ -86988,44 +86431,28 @@ u8 FUN_0056dd80(void)
 
 
 
-// FUN_0056DDC8 NONMATCHING
-
-
-void FUN_0056ddc8(void)
-
-
-
+// FUN_0056DDC8
+asm void FUN_0056ddc8(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0056DDE0 NONMATCHING
-
-
-void FUN_0056dde0(void)
-
-
-
+// FUN_0056DDE0
+asm void FUN_0056dde0(void)
 {
-
-  FUN_00558500();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08156140
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0056DDF8
 
 
@@ -98698,25 +98125,17 @@ void FUN_00577b40(void)
 
 
 
-// FUN_00577BB8 NONMATCHING
-
-
-void FUN_00577bb8(void)
-
-
-
+// FUN_00577BB8
+asm void FUN_00577bb8(void)
 {
-
-  ((code)FUN_00577bd0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815def4
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00577BD0
 
 
@@ -104054,25 +103473,17 @@ u32 FUN_0057b7f0(long param_1)
 
 
 
-// FUN_0057B818 NONMATCHING
-
-
-void FUN_0057b818(void)
-
-
-
+// FUN_0057B818
+asm void FUN_0057b818(void)
 {
-
-  FUN_0056f500();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815bd40
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0057B830 NONMATCHING
 
 
@@ -104094,44 +103505,28 @@ void FUN_0057b830(void)
 
 
 
-// FUN_0057B860 NONMATCHING
-
-
-void FUN_0057b860(void)
-
-
-
+// FUN_0057B860
+asm void FUN_0057b860(void)
 {
-
-  FUN_0056f598();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815bd66
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0057B878 NONMATCHING
-
-
-void FUN_0057b878(void)
-
-
-
+// FUN_0057B878
+asm void FUN_0057b878(void)
 {
-
-  FUN_0056f5c0();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815bd70
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0057B890 NONMATCHING
 
 
@@ -104402,25 +103797,17 @@ void FUN_0057b998(int param_1)
 
 
 
-// FUN_0057BAD8 NONMATCHING
-
-
-void FUN_0057bad8(void)
-
-
-
+// FUN_0057BAD8
+asm void FUN_0057bad8(void)
 {
-
-  ((code)FUN_0057baf0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815eebc
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0057BAF0 NONMATCHING
 
 
@@ -109179,25 +108566,17 @@ u32 FUN_0057f058(int param_1)
 
 
 
-// FUN_0057F0A8 NONMATCHING
-
-
-void FUN_0057f0a8(void)
-
-
-
+// FUN_0057F0A8
+asm void FUN_0057f0a8(void)
 {
-
-  ((code)FUN_0057f5a0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815fd68
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0057F0C0 NONMATCHING
 
 
@@ -111756,44 +111135,28 @@ void FUN_00580c68(int param_1)
 
 
 
-// FUN_00580C80 NONMATCHING
-
-
-void FUN_00580c80(void)
-
-
-
+// FUN_00580C80
+asm void FUN_00580c80(void)
 {
-
-  FUN_00580e50();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08160394
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00580C98 NONMATCHING
-
-
-void FUN_00580c98(void)
-
-
-
+// FUN_00580C98
+asm void FUN_00580c98(void)
 {
-
-  FUN_00580e50();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08160394
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00580CB0 NONMATCHING
 
 
@@ -112202,63 +111565,39 @@ void FUN_005810b8(u64 param_1,u32 *param_2)
 
 
 
-// FUN_005810F0 NONMATCHING
-
-
-void FUN_005810f0(void)
-
-
-
+// FUN_005810F0
+asm void FUN_005810f0(void)
 {
-
-  FUN_00541008();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08150402
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00581108 NONMATCHING
-
-
-void FUN_00581108(void)
-
-
-
+// FUN_00581108
+asm void FUN_00581108(void)
 {
-
-  FUN_00580cb0();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816032c
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00581120 NONMATCHING
-
-
-void FUN_00581120(void)
-
-
-
+// FUN_00581120
+asm void FUN_00581120(void)
 {
-
-  FUN_00580d40();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08160350
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00581138
 
 
@@ -114295,25 +113634,17 @@ void FUN_005827c0(u64 param_1,u64 param_2)
 
 
 
-// FUN_005827D8 NONMATCHING
-
-
-void FUN_005827d8(void)
-
-
-
+// FUN_005827D8
+asm void FUN_005827d8(void)
 {
-
-  FUN_0059fa38();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08167e8e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005827F0
 
 
@@ -114328,45 +113659,28 @@ u32 FUN_005827f0(void)
 
 
 
-// FUN_005827F8 NONMATCHING
-
-
-void FUN_005827f8(void)
-
-
-
+// FUN_005827F8
+asm void FUN_005827f8(void)
 {
-
-  ((code)FUN_0059faa8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08167eaa
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00582810 NONMATCHING
-
-
-void FUN_00582810(void)
-
-
-
+// FUN_00582810
+asm void FUN_00582810(void)
 {
-
-  ((code)FUN_0059fcc0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08167f30
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-#pragma optimization_level 3
 // FUN_00582828
 
 u32 FUN_00582828(int param_1)
@@ -114388,25 +113702,17 @@ void FUN_00582830(int param_1,u32 param_2)
 
 
 
-// FUN_00582838 NONMATCHING
-
-
-void FUN_00582838(void)
-
-
-
+// FUN_00582838
+asm void FUN_00582838(void)
 {
-
-  ((code)FUN_00582850)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08160a14
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00582850 NONMATCHING
 
 
@@ -115332,25 +114638,17 @@ void FUN_005830e8(u64 param_1,u64 param_2,u64 param_3)
 
 
 
-// FUN_00583180 NONMATCHING
-
-
-void FUN_00583180(void)
-
-
-
+// FUN_00583180
+asm void FUN_00583180(void)
 {
-
-  ((code)FUN_005830e8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08160c3a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00583198 NONMATCHING
 
 
@@ -118477,44 +117775,28 @@ void FUN_00585528(void)
 
 
 
-// FUN_00585560 NONMATCHING
-
-
-void FUN_00585560(void)
-
-
-
+// FUN_00585560
+asm void FUN_00585560(void)
 {
-
-  FUN_00564a68();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815929a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_00585578 NONMATCHING
-
-
-void FUN_00585578(void)
-
-
-
+// FUN_00585578
+asm void FUN_00585578(void)
 {
-
-  ((code)FUN_005655e8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815957a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00585590 NONMATCHING
 
 
@@ -118589,25 +117871,17 @@ void FUN_00585628(void)
 
 
 
-// FUN_00585640 NONMATCHING
-
-
-void FUN_00585640(void)
-
-
-
+// FUN_00585640
+asm void FUN_00585640(void)
 {
-
-  FUN_00540570();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815015c
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00585658 NONMATCHING
 
 
@@ -120156,25 +119430,17 @@ void FUN_00586450(void)
 
 
 
-// FUN_00586490 NONMATCHING
-
-
-void FUN_00586490(void)
-
-
-
+// FUN_00586490
+asm void FUN_00586490(void)
 {
-
-  ((code)FUN_00547558)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08151d56
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005864A8 NONMATCHING
 
 
@@ -120238,25 +119504,17 @@ void FUN_00586530(u64 param_1,u64 param_2,u64 param_3,u64 param_4,
 
 
 
-// FUN_005865A8 NONMATCHING
-
-
-void FUN_005865a8(void)
-
-
-
+// FUN_005865A8
+asm void FUN_005865a8(void)
 {
-
-  ((code)FUN_00546498)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08151926
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005865C0 NONMATCHING
 
 
@@ -120299,25 +119557,17 @@ void FUN_005865e8(u64 param_1)
 
 
 
-// FUN_00586610 NONMATCHING
-
-
-void FUN_00586610(void)
-
-
-
+// FUN_00586610
+asm void FUN_00586610(void)
 {
-
-  ((code)FUN_00546368)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081518da
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00586628 NONMATCHING
 
 
@@ -123024,25 +122274,17 @@ u64 FUN_00588718(void)
 }
 #pragma schedule off
 
-// FUN_00588720 NONMATCHING
-
-
-void FUN_00588720(void)
-
-
-
+// FUN_00588720
+asm void FUN_00588720(void)
 {
-
-  FUN_00589e38();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816278e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_00588738
 
 
@@ -126612,26 +125854,17 @@ void FUN_0058b108(void)
 
 
 
-// FUN_0058B128 NONMATCHING
-
-
-void FUN_0058b128(void)
-
-
-
+// FUN_0058B128
+asm void FUN_0058b128(void)
 {
-
-  FUN_0059d050();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08167414
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-#pragma optimization_level 3
 // FUN_0058B140
 
 
@@ -127816,26 +127049,17 @@ long FUN_0058bd68(void)
 
 
 
-// FUN_0058BE10 NONMATCHING
-
-
-void FUN_0058be10(void)
-
-
-
+// FUN_0058BE10
+asm void FUN_0058be10(void)
 {
-
-  ((code)FUN_0058be28)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08162f8a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-#pragma optimization_level 3
 // FUN_0058BE28
 
 
@@ -128100,44 +127324,28 @@ u32 FUN_0058c060(long param_1)
 
 
 
-// FUN_0058C088 NONMATCHING
-
-
-void FUN_0058c088(void)
-
-
-
+// FUN_0058C088
+asm void FUN_0058c088(void)
 {
-
-  FUN_00562288();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081588a2
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0058C0A0 NONMATCHING
-
-
-void FUN_0058c0a0(void)
-
-
-
+// FUN_0058C0A0
+asm void FUN_0058c0a0(void)
 {
-
-  FUN_00562308();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081588c2
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0058C0B8 NONMATCHING
 
 
@@ -128159,25 +127367,17 @@ void FUN_0058c0b8(void)
 
 
 
-// FUN_0058C0D8 NONMATCHING
-
-
-void FUN_0058c0d8(void)
-
-
-
+// FUN_0058C0D8
+asm void FUN_0058c0d8(void)
 {
-
-  FUN_0058b128();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08162c4a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0058C0F0
 
 
@@ -128212,40 +127412,28 @@ void FUN_0058c0f8(void)
 
 
 
-// FUN_0058C100 NONMATCHING
-
-
-void FUN_0058c100(void)
-
-
-
+// FUN_0058C100
+asm void FUN_0058c100(void)
 {
-
-  FUN_00564978();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815925e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_0058C118 NONMATCHING
-
-
-void FUN_0058c118(void)
-
-
-
+// FUN_0058C118
+asm void FUN_0058c118(void)
 {
-
-  FUN_00564990();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08159264
+  .word 0x27bd0010
+  .set reorder
 }
-
 // FUN_0058C130
 #pragma schedule on
 u64 FUN_0058c130(void)
@@ -131008,25 +130196,17 @@ void FUN_0058df90(void)
 
 
 
-// FUN_0058DFF8 NONMATCHING
-
-
-void FUN_0058dff8(void)
-
-
-
+// FUN_0058DFF8
+asm void FUN_0058dff8(void)
 {
-
-  ((code)FUN_00577f78)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815dfde
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0058E010
 #pragma schedule on
 u64 FUN_0058e010(void)
@@ -137918,25 +137098,17 @@ u64 FUN_00592f38(u64 param_1)
 
 
 
-// FUN_005930C8 NONMATCHING
-
-
-void FUN_005930c8(void)
-
-
-
+// FUN_005930C8
+asm void FUN_005930c8(void)
 {
-
-  ((code)FUN_0057b5c8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815ed72
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005930E0
 #pragma schedule on
 u64 FUN_005930e0(void)
@@ -146864,25 +146036,17 @@ void FUN_00599020(int param_1)
 
 
 
-// FUN_005990A8 NONMATCHING
-
-
-void FUN_005990a8(void)
-
-
-
+// FUN_005990A8
+asm void FUN_005990a8(void)
 {
-
-  FUN_00596b68();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08165ada
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005990C0 NONMATCHING
 
 
@@ -148447,25 +147611,17 @@ void FUN_0059a0d8(u64 param_1,u64 param_2,u64 param_3)
 
 
 
-// FUN_0059A150 NONMATCHING
-
-
-void FUN_0059a150(void)
-
-
-
+// FUN_0059A150
+asm void FUN_0059a150(void)
 {
-
-  ((code)FUN_0059a168)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816685a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0059A168
 
 
@@ -148824,25 +147980,17 @@ void FUN_0059a508(int param_1,u32 param_2)
 
 
 
-// FUN_0059A560 NONMATCHING
-
-
-void FUN_0059a560(void)
-
-
-
+// FUN_0059A560
+asm void FUN_0059a560(void)
 {
-
-  ((code)FUN_0056f4b8)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815bd2e
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_0059A578 NONMATCHING
 
 
@@ -157664,44 +156812,28 @@ void FUN_005a01b0(u64 param_1,u32 param_2)
 
 
 
-// FUN_005A0238 NONMATCHING
-
-
-void FUN_005a0238(void)
-
-
-
+// FUN_005A0238
+asm void FUN_005a0238(void)
 {
-
-  FUN_005a1108();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08168442
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
-// FUN_005A0250 NONMATCHING
-
-
-void FUN_005a0250(void)
-
-
-
+// FUN_005A0250
+asm void FUN_005a0250(void)
 {
-
-  FUN_005a1168();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816845a
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005A0268 NONMATCHING
 
 
@@ -159365,25 +158497,17 @@ u32 FUN_005a1718(long param_1,long param_2,int param_3)
 
 
 
-// FUN_005A1778 NONMATCHING
-
-
-void FUN_005a1778(void)
-
-
-
+// FUN_005A1778
+asm void FUN_005a1778(void)
 {
-
-  FUN_00525e98();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081497a6
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 // FUN_005A1790 NONMATCHING
 
 
@@ -159662,25 +158786,17 @@ asm u8 FUN_005a1b58(void)
 
 
 
-// FUN_005A1B68 NONMATCHING
-
-
-void FUN_005a1b68(void)
-
-
-
+// FUN_005A1B68
+asm void FUN_005a1b68(void)
 {
-
-  ((code)FUN_005a1ce0)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08168738
+  .word 0x27bd0010
+  .set reorder
 }
-
-
-
-
-
 /* DUMMYDUMB session 2026-10-20: function-scoped #pragma schedule on.
  * Retail loads the 64-bit value in the delay slot of jr $ra; with scheduling
  * off mwcc emits the load before the jump. Measured: 9 -> 2 differing bytes.
