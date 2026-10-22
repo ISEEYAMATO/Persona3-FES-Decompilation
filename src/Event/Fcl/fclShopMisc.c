@@ -1474,7 +1474,7 @@ u32 FUN_003f04f0(u32 param_1,int param_2)
             ((long)*(s8 *)((int)psVar5 + 4) << 0x3a) >> 0x3a,0x16d);
       }
       else {
-        if (((long)*(char *)((int)psVar5 + 5) << 0x38) >> 0x3c != 1) {
+        if (((long)*(char *)((int)psVar5 + 5) << 0x38) >> 1 != 0x3c) {
           K_Assert((const char *)DAT_006aede8,0x17f);
         }
         lVar4 = ((long)*(char *)((int)psVar5 + 7) << 0x38) >> 0x3c;

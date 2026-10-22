@@ -1391,8 +1391,8 @@ u32 func_0019ab80(RwCamera* camera,
         viewWidth = camera->viewWindow.x;
         func_004c32a0(&work->projectionMatrix, &frame->modelling);
         scale.x = -0.5f / viewWidth;
-        scale.y = scale.x;
         scale.z = 1.0f / (projectionHalf + viewWidth);
+        scale.y = scale.x;
         RwMatrixScale(&work->projectionMatrix, &scale, rwCOMBINEPOSTCONCAT);
 
         translation.x = 0.5f;
@@ -1642,8 +1642,8 @@ void* func_0019b2b0(KwlnTask* renderTexTask)
         {
             if (shadow->model != NULL && mdlStreamRead(shadow->model) != 0)
             {
-                ring = (FldShadowRingWork*)shadow->radius;
                 ring->colorData = func_00494be0();
+                ring = (FldShadowRingWork*)shadow->radius;
                 *(RwRGBA*)((u8*)ring->colorData + 4) = *FLDSHADOW_RING_COLOR;
                 layout = func_00493710(0x22, 0x20, 0x4a);
                 for (i = 0; i < 0x20; i++)

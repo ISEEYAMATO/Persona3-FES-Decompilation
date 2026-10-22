@@ -244,6 +244,8 @@ void primAxisLine3D(const RwMatrix* mat, f32 length, u32 saveAndRestoreRenderSta
 }
 
 // FUN_00359560 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, const RwMatrix* mat, u32 saveAndRestoreRenderState)
 {
     f32 angle;
@@ -347,6 +349,7 @@ void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, cons
         }
     }
 }
+#pragma pop
 
 /* DUMMYDUMB session 2026-10-20: 40 differing bytes in a 784-byte function (the
  * size matches). The residual is a saved-register role difference (ours

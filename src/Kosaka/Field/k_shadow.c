@@ -577,8 +577,8 @@ KwlnTask* K_FldShadow_CreateRenderTexTask(KwlnTask* parent, u16 resTypeId, s32 p
         return NULL;
     }
 
-    task = kwlnTaskCreate(parent, "renderTex for shadow", 4171, func_0019b2b0, func_0019bcf0, shadow);
     shadow->resTypeId = resTypeId;
+    task = kwlnTaskCreate(parent, "renderTex for shadow", 4171, func_0019b2b0, func_0019bcf0, shadow);
     shadow->mode = (u16)param_3;
 
     source = MT_Scene_GetResListHead(RESRC_TYPE_19);
@@ -1238,8 +1238,8 @@ void* K_FldShadow_UpdateShadowMapTask(KwlnTask* fldShadowMapTask)
 
             while (npc != NULL)
             {
-                K_FldShadow_UpdateModelNpc(npc);
                 npc = (ResrcModelNpc*)npc->base.next;
+                K_FldShadow_UpdateModelNpc(npc);
             }
 
             kwlnGetDirectionalLight()->object.object.flags = directionalLightFlags;

@@ -5977,7 +5977,7 @@ void func_002ecc60(s16 *param_1, s16 *param_2)
                             stack.center.y * stack.listenerEdge.y;
           f32 firstDot = stack.center.x * stack.firstEdge.x +
                          stack.center.y * stack.firstEdge.y;
-          if (firstDot <= secondDot && listenerDot <= secondDot) {
+          if (firstDot <= secondDot && secondDot <= listenerDot) {
             firstResult = table[index * 4 + 2];
             secondResult = table[index * 4 + 3];
             break;

@@ -242,8 +242,8 @@ void K_FldFilter_Main()
     inverseBlend = 1.0f - blend;
     stateFunc = D_00960090_abs;
     (*stateFunc)(6, 0);
-    (*stateFunc)(8, 0);
     (*stateFunc)(7, 2);
+    (*stateFunc)(8, 0);
     (*stateFunc)(1, 0);
     (*stateFunc)(0x0c, 1);
     func_004d7f60(3, 0x71801);

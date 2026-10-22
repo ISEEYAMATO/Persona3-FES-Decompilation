@@ -1210,6 +1210,8 @@ void func_001a7fc0(void* state, u32 mode)
 }
 
 // FUN_001a8140 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void func_001a8140(void* state, u32 mode)
 {
     KClumpMaterialNode* item;
@@ -1410,6 +1412,7 @@ void func_001a8140(void* state, u32 mode)
         item = item->next;
     }
 }
+#pragma pop
 
 // FUN_001a8820
 void* func_001a8820(void* item)

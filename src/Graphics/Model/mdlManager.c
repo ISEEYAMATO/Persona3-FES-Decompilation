@@ -596,9 +596,9 @@ u32 func_00311730(u32 *param_1,u16 *param_2,u16 *param_3,int param_4)
 
   bVar14 = false;
 
-  uVar6 = 0;
-
   uVar2 = *param_1;
+
+  uVar6 = 0;
 
   if (((uVar2 & 1) == 0) || (param_1[7] == 0xffffffff)) {
 
@@ -2489,9 +2489,9 @@ void func_003138e0(MdlAnim* param_1,s16 param_2,u16 param_3,u16 param_4)
 
   }
 
-  puVar6[0xc] = 0;
-
   *(f32 *)(puVar6 + 0xe) = 1.0f;
+
+  puVar6[0xc] = 0;
 
 
 LAB_00313b48:
@@ -3200,9 +3200,9 @@ LAB_0031494c:
 
         func_004b92d0(*(u32 *)lVar6);
 
-        func_004b6eb0(lVar6);
-
         func_004b97d0(*puVar3,0,1);
+
+        func_004b6eb0(lVar6);
 
       }
 
@@ -3391,9 +3391,9 @@ void func_00314d30(void* param_1)
 
     else {
 
-      fVar7 = 0.0f;
-
       *(short *)(iVar5 + 0x14) = *(short *)(iVar5 + 0x14) + -1;
+
+      fVar7 = 0.0f;
 
     }
 
@@ -3574,7 +3574,7 @@ u32 func_00315090(RwMatrix* param_1,u16 *param_2,u16 param_3,int param_4)
   iVar6 = *(int *)(param_4 + 4);
   iVar2 = func_00466720(iVar6);
 
-  if (iVar1 != iVar2) {
+  if (iVar2 != iVar1) {
     callbackData.result = 0;
     callbackData.expected = iVar1;
     func_004cb6e0(iVar6,(void *)func_00315010,&callbackData);
@@ -3601,91 +3601,91 @@ void func_003151d0(Model* param_1)
 
 {
 
-  u8 bVar1;
-
-  u8 bVar2;
-
-  u32 uVar3;
-
-  int iVar4;
-
-  int *piVar5;
-
-  int iVar6;
-
-  bool bVar7;
-
-  u32 uVar8;
-
-  int iVar9;
-
-  long lVar10;
-
-  int iVar11;
-
-  bool bVar12;
-
-  u32 uVar13;
-
-  bool bVar14;
-
-  float fVar15;
-
-  float fVar16;
-
-  float fVar17;
-
-  float fStack_130;
-
-  float fStack_12c;
-
-  float fStack_128;
-
-  float fStack_124;
-
-  float fStack_120;
-
-  float fStack_11c;
-
-  float fStack_118;
-
-  float fStack_114;
-
-  float fStack_110;
-
-  float fStack_10c;
-
-  float fStack_108;
-
-  float fStack_104;
-
-  float fStack_100;
-
-  float fStack_fc;
-
-  float fStack_f8;
-
-  float fStack_f4;
-
-  float fStack_f0;
-
-  int iStack_ec;
-
-  RwMatrix lightMatrix;
-
-  u8 auStack_a0 [64];
-
-  u8 auStack_60 [72];
-
-  float fStack_18;
-
-  float fStack_14;
-
-  float fStack_10;
+  u8 color[4];
 
   u32 uStack_8;
 
-  u8 color[4];
+  float fStack_10;
+
+  float fStack_14;
+
+  float fStack_18;
+
+  u8 auStack_60 [72];
+
+  u8 auStack_a0 [64];
+
+  RwMatrix lightMatrix;
+
+  int iStack_ec;
+
+  float fStack_f0;
+
+  float fStack_f4;
+
+  float fStack_f8;
+
+  float fStack_fc;
+
+  float fStack_100;
+
+  float fStack_104;
+
+  float fStack_108;
+
+  float fStack_10c;
+
+  float fStack_110;
+
+  float fStack_114;
+
+  float fStack_118;
+
+  float fStack_11c;
+
+  float fStack_120;
+
+  float fStack_124;
+
+  float fStack_128;
+
+  float fStack_12c;
+
+  float fStack_130;
+
+  float fVar17;
+
+  float fVar16;
+
+  float fVar15;
+
+  bool bVar14;
+
+  u32 uVar13;
+
+  bool bVar12;
+
+  int iVar11;
+
+  long lVar10;
+
+  int iVar9;
+
+  u32 uVar8;
+
+  bool bVar7;
+
+  int iVar6;
+
+  int *piVar5;
+
+  int iVar4;
+
+  u32 uVar3;
+
+  u8 bVar2;
+
+  u8 bVar1;
 
   
 
@@ -4319,9 +4319,9 @@ u32 func_00315f50(void* param_1,u32 *param_2)
     color = *(RwRGBA *)&uVar5;
 
     fVar9 = DAT_007caf08 * (float)color.g;
-    fVar7 = DAT_007caf08 * (float)color.b;
-
     fVar8 = fVar11;
+
+    fVar7 = DAT_007caf08 * (float)color.b;
 
     if ((*(u16 *)(param_2 + 1) & 1) == 0) {
 
@@ -5009,8 +5009,8 @@ void mdlCopy(const Model* src, Model* dst)
         if (mdlAnim003185b0((Model*)src, i))
         {
             srcAnim = &src->animSlots[i].anim;
-            dstAnim = &dst->animSlots[i].anim;
             srcAnim->table->unk_06++;
+            dstAnim = &dst->animSlots[i].anim;
             dstAnim->table = srcAnim->table;
 
             if ((srcAnim->flags & 2) == 0)
@@ -5299,7 +5299,7 @@ void mdl00317730(Model* mdl)
 void FUN_00317a20(Model* param_1)
 
 {
-  u16 uVar4;
+  short uVar4;
   bool bVar5;
   bool bVar6;
   long lVar7;
@@ -6859,9 +6859,9 @@ u32 func_00319970(Model* param_1)
 
                               * 4 + 0x11c) == 0) {
 
-          iVar7 = (u32)uStack_2 * 8 + 0x34;
-
           uVar9 = (*DAT_00960178)(iVar7,0x40000);
+
+          iVar7 = (u32)uStack_2 * 8 + 0x34;
 
           memset(uVar9,0,iVar7);
 
@@ -7487,7 +7487,7 @@ int func_0031aad0(Model* param_1)
 
   u32 *puVar17;
 
-  u32 uVar18;
+  int uVar18;
 
   int iVar19;
 
@@ -8398,9 +8398,9 @@ void func_0031b820(u32 param_1,u32 param_2)
 
     if (lVar6 == 0) {
 
-      sprintf(auStack_100, (const char*)0x69b110, &gp0xffff9d20,sVar4);
-
       func_003192a0(param_1,3,7,sVar4,auStack_100,0);
+
+      sprintf(auStack_100, (const char*)0x69b110, &gp0xffff9d20,sVar4);
 
     }
 

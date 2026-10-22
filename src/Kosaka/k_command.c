@@ -1156,9 +1156,9 @@ u32 FUN_001C4120()
     {
         hit = hit->next;
     }
-    K_ASSERT(hit != NULL, 1292);
-
     type = RESRC_GET_TYPE(resourceTypeId);
+
+    K_ASSERT(hit != NULL, 1292);
 
     switch (type)
     {
@@ -1978,6 +1978,8 @@ u32 func_001c5900()
 
 /* W417 negative: swapping the requestedId/state declarations left func_001c5980 at nd503; rejected. */
 // FUN_001c5980 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 u32 func_001c5980()
 {
     s32 requestedId;
@@ -2119,6 +2121,7 @@ u32 func_001c5980()
     }
     return true;
 }
+#pragma pop
 
 // FUN_001c5d30
 u32 func_001c5d30()

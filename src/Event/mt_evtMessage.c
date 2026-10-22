@@ -1391,9 +1391,9 @@ u64 FUN_003a0220(int param_1)
 
     uStack_38 = DAT_007cd498;
 
-    packedAngle.value = DAT_007cd4a0;
-    packedAngle.bytes.high = *(u8 *)(iVar1 + 0xa0);
 
+    packedAngle.bytes.high = *(u8 *)(iVar1 + 0xa0);
+    packedAngle.value = DAT_007cd4a0;
     uStack_4 = *(u32 *)(iVar1 + 0xb0);
 
     FUN_00386f70(100.0f,auStack_30,&uStack_38,&packedAngle);

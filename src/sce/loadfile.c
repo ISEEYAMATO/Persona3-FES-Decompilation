@@ -2258,7 +2258,7 @@ u32 FUN_0050eca8(u32 param_1,u64 param_2,long param_3,u32 param_4)
     uVar1 = *(u32 *)(iVar5 + 0xc);
     if ((uVar1 & 2) != 0) {
       iVar3 = (int)FUN_0050e218((int *)iVar5);
-      if (DAT_00780b68 == iVar5) {
+      if (iVar5 == DAT_00780b68) {
         DAT_00780b68 = iVar3;
       }
       uVar1 = *(u32 *)(iVar5 + 0xc);

@@ -693,8 +693,8 @@ void* K_SceneDraw_UpdateDrwChrMdlTask(KwlnTask* drwChrMdlTask)
     charLight = (ResrcLightChar*)MT_Scene_GetResListHead(RESRC_TYPE_LIGHTCHAR);
 
     ambientColor = kwlnGetAmbientLight()->color;
-    directionalColor = kwlnGetDirectionalLight()->color;
     directionalMatrix = ((RwFrame*)kwlnGetDirectionalLight()->object.object.parent)->modelling;
+    directionalColor = kwlnGetDirectionalLight()->color;
     secondaryDirectionalColor = func_00198580()->color;
     secondaryDirectionalMatrix = ((RwFrame*)func_00198580()->object.object.parent)->modelling;
 
@@ -2132,8 +2132,8 @@ void* func_001a1550(KwlnTask* task)
             ((RwRGBA*)((u8*)work->colorDataA + 4))->r = work->colorA.r;
             ((RwRGBA*)((u8*)work->colorDataA + 4))->g = work->colorA.g;
             ((RwRGBA*)((u8*)work->colorDataA + 4))->b = work->colorA.b;
-            ((RwRGBA*)((u8*)work->colorDataA + 4))->a = work->colorA.a;
             work->colorDataB = func_00494be0();
+            ((RwRGBA*)((u8*)work->colorDataA + 4))->a = work->colorA.a;
 
             work->alphaStep = (f32)(s32)work->colorB.a;
             work->colorB.a = 0;
@@ -2524,8 +2524,8 @@ void func_001a23e0(KwlnTask* task, const RwRect* rect)
         right = localRect.x + localRect.w;
         quad[1].vertex[0].x = (f32)(right - 2);
         quad[1].vertex[0].y = (f32)localRect.y;
-        quad[1].vertex[1].x = (f32)right;
         quad[1].vertex[1].y = (f32)localRect.y;
+        quad[1].vertex[1].x = (f32)right;
         quad[1].vertex[2].x = (f32)(right - 2);
         quad[1].vertex[2].y = (f32)(localRect.y + 2);
         quad[1].vertex[3].x = (f32)right;
@@ -2921,8 +2921,8 @@ void* func_001a2a80(KwlnTask* task)
 
                 rect.x = manager->x;
                 rect.y = manager->y;
-                rect.w = manager->width;
                 rect.h = manager->height;
+                rect.w = manager->width;
                 colorA = *(f32*)&gp0xffff9468;
                 colorB = *(f32*)&gp0xffff946c;
                 manager->windowTask =
