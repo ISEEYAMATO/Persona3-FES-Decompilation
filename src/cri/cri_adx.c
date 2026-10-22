@@ -4797,15 +4797,15 @@ void FUN_005335b0(u64 param_1)
 
 {
 
-  u64 uVar1;
-
-  int iVar2;
-
-  int iVar3;
+  int iVar5;
 
   int iVar4;
 
-  int iVar5;
+  int iVar3;
+
+  int iVar2;
+
+  u64 uVar1;
 
 
 
@@ -27007,9 +27007,9 @@ void FUN_00543700(long param_1,int param_2,int param_3,int *param_4,int *param_5
 
   }
 
-  iVar2 = FUN_0053a3b8(1,0,4,4);
-
   iVar5 = (iVar1 >> 5) * (int)param_1 * 0x12 + iVar2;
+
+  iVar2 = FUN_0053a3b8(1,0,4,4);
 
   iVar1 = iVar5 + 4;
 
@@ -28681,6 +28681,8 @@ int FUN_00544850(u64 param_1)
 
 
 // FUN_00544900 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 int FUN_00544900(int param_1)
@@ -28768,6 +28770,7 @@ int FUN_00544900(int param_1)
   return iVar3;
 
 }
+#pragma pop
 
 
 
@@ -51490,9 +51493,9 @@ void FUN_00554678(int param_1,u64 param_2)
 
 {
 
-  u32 uVar1;
-
   u32 *puVar2;
+
+  u32 uVar1;
 
   long lVar3;
 
@@ -55121,15 +55124,15 @@ u64 FUN_00556da0(u64 param_1,u64 param_2,u64 param_3)
 
 {
 
-  code *pcVar1;
-
-  long lVar2;
-
-  u64 uVar3;
+  u8 auStack_160 [304];
 
   char acStack_290 [304];
 
-  u8 auStack_160 [304];
+  u64 uVar3;
+
+  long lVar2;
+
+  code *pcVar1;
 
 
 
@@ -64928,9 +64931,9 @@ void FUN_0055dd08(void)
 
 {
 
-  char *pcVar1;
-
   int iVar2;
+
+  char *pcVar1;
 
 
 
@@ -65149,23 +65152,23 @@ void FUN_0055dfb8(u64 param_1)
 
 {
 
-  int iVar1;
-
-  int iVar2;
-
-  int iVar3;
-
-  char cVar4;
-
-  int iVar5;
-
-  u32 uVar6;
-
-  u32 uVar7;
+  u32 uVar9;
 
   u32 uVar8;
 
-  u32 uVar9;
+  u32 uVar7;
+
+  u32 uVar6;
+
+  int iVar5;
+
+  char cVar4;
+
+  int iVar3;
+
+  int iVar2;
+
+  int iVar1;
 
 
 
@@ -72302,17 +72305,17 @@ u8 FUN_00562ce8(long param_1,int param_2,int param_3,int *param_4)
 
 {
 
-  int iVar1;
-
-  char *pcVar2;
-
-  int iVar3;
-
-  char *pcVar4;
+  int iVar6;
 
   int iVar5;
 
-  int iVar6;
+  char *pcVar4;
+
+  int iVar3;
+
+  char *pcVar2;
+
+  int iVar1;
 
 
 
@@ -74651,6 +74654,8 @@ void FUN_005646c0(void)
 
 
 // FUN_00564738 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 
 
 char * FUN_00564738(u32 param_1,u32 param_2,u32 param_3)
@@ -74746,6 +74751,7 @@ char * FUN_00564738(u32 param_1,u32 param_2,u32 param_3)
   return pcVar5;
 
 }
+#pragma pop
 
 
 
@@ -102696,13 +102702,13 @@ u64 FUN_0057aab8(int param_1,int param_2,int param_3)
 
 {
 
-  u32 uVar1;
-
-  long lVar2;
+  int iVar4;
 
   int iVar3;
 
-  int iVar4;
+  long lVar2;
+
+  u32 uVar1;
 
 
 
@@ -103311,9 +103317,9 @@ void FUN_0057b1a8(void)
 
 {
 
-  int iVar1;
-
   u8 *puVar2;
+
+  int iVar1;
 
 
 
@@ -118007,9 +118013,9 @@ void FUN_00585100(u32 *param_1)
 
 {
 
-  int iVar1;
-
   int *piVar2;
+
+  int iVar1;
 
   long lVar3;
 
@@ -139256,15 +139262,15 @@ void FUN_00593ea0(int param_1,u32 *param_2,u32 *param_3)
 
 {
 
-  int iVar1;
-
-  long lVar2;
-
-  int *piVar3;
+  int iVar5;
 
   int iVar4;
 
-  int iVar5;
+  int *piVar3;
+
+  long lVar2;
+
+  int iVar1;
 
 
 
@@ -142414,11 +142420,11 @@ void FUN_00596168(u64 param_1)
 
 {
 
-  long lVar1;
+  long lVar3;
 
   u8 bVar2;
 
-  long lVar3;
+  long lVar1;
 
 
 
@@ -151572,9 +151578,9 @@ void FUN_0059c3b8(u64 param_1,int param_2)
 
   u32 uVar1;
 
-  int *piVar2;
-
   int iVar3;
+
+  int *piVar2;
 
   int iVar4;
 
@@ -155731,17 +155737,17 @@ void FUN_0059ee38(int param_1)
 
 {
 
-  int iVar1;
-
-  u8 *puVar2;
-
-  int iVar3;
-
-  int iVar4;
+  u8 uVar6;
 
   float fVar5;
 
-  u8 uVar6;
+  int iVar4;
+
+  int iVar3;
+
+  u8 *puVar2;
+
+  int iVar1;
 
 
 
@@ -159745,8 +159751,8 @@ void FUN_005a1cf0(u8 *param_1)
 // FUN_005a1d10 NONMATCHING
 void FUN_005a1d10(u8 *param_1,s64 param_2)
 {
-  u64 high;
   u64 low;
+  u64 high;
   u64 sum;
   u32 count;
 

@@ -933,8 +933,8 @@ void FUN_0050cc78(void)
 {
   u32 uVar1;
   u64 uVar2;
-  u32 *puVar3;
   u32 uVar4;
+  u32 *puVar3;
   
   uVar4 = 3;
   puVar3 = &DAT_0077f900;
@@ -2345,9 +2345,9 @@ float FUN_0050ef50(u32 param_1)
 u64 FUN_0050efe0(void)
 
 {
-  u32 *puVar1;
-  u32 *puVar2;
   int iVar3;
+  u32 *puVar2;
+  u32 *puVar1;
   
   iVar3 = 0x3f;
   DAT_0096d7c0 = (u32 *)((u32)(&DAT_0096d3c0));

@@ -757,8 +757,8 @@ int sceSifCallRpc(SifRpcClientData_t* client, int function, int mode, void* send
     call->send_size = send_size;
     call->receive_buffer = receive_buffer;
     call->receive_size = receive_size;
-    call->receive_mode = 1;
     call->header.packet = call;
+    call->receive_mode = 1;
     call->client = client;
     call->server = client->server;
     if ((mode & SIF_RPC_MODE_NO_CACHE) == 0)
@@ -1114,6 +1114,8 @@ u8 * FUN_00507bc8(void)
   return puVar1;
 }
 // FUN_00507C38 NONMATCHING
+#pragma push
+#pragma opt_lifetimes on
 void FUN_00507c38(int param_1)
 
 {
@@ -1259,6 +1261,7 @@ LAB_00507f6c:
   }
   return;
 }
+#pragma pop
 // FUN_00507FF0 NONMATCHING
 void FUN_00507ff0(void)
 
@@ -1534,8 +1537,8 @@ int FUN_00508670(char *param_1,u32 param_2,u32 param_3)
   if (lVar4 == 0) {
     lVar4 = (long)(FUN_00507a50());
     if (lVar4 == 0) {
-      FUN_00508078();
       iVar6 = -0x13;
+      FUN_00508078();
     }
     else {
       DAT_00968514 = *param_1;
@@ -1660,17 +1663,17 @@ int FUN_00508900(void)
 u32 FUN_00508a78(u64 param_1,u32 param_2,u32 param_3)
 
 {
-  long lVar1;
-  u64 uVar2;
-  int *piVar3;
-  int iVar4;
-  u32 *puVar5;
-  u32 uVar6;
-  u8 auStack_b0 [4];
-  u32 uStack_ac;
-  u32 uStack_a8;
-  char *pcStack_9c;
   u32 auStack_90 [4];
+  char *pcStack_9c;
+  u32 uStack_a8;
+  u32 uStack_ac;
+  u8 auStack_b0 [4];
+  u32 uVar6;
+  u32 *puVar5;
+  int iVar4;
+  int *piVar3;
+  u64 uVar2;
+  long lVar1;
   
   lVar1 = (long)FUN_00507bc8();
   FUN_00508048(4);
@@ -1898,8 +1901,8 @@ LAB_00509084:
       DAT_00968518 = iVar10;
       if (0 < iVar10) {
         do {
-          puVar2 = (u8 *)((uVar11 | 0x20000000) + iVar7);
           puVar5 = (u8 *)((int)&DAT_0096851c + iVar7);
+          puVar2 = (u8 *)((uVar11 | 0x20000000) + iVar7);
           iVar7 = iVar7 + 1;
           *puVar5 = *puVar2;
         } while (iVar7 < iVar10);
@@ -1992,8 +1995,8 @@ LAB_00509388:
           do {
             uVar3 = param_3[1];
             uVar7 = param_3[2];
-            uVar8 = param_3[3];
             *puVar6 = *param_3;
+            uVar8 = param_3[3];
             puVar6[1] = uVar3;
             puVar6[2] = uVar7;
             puVar6[3] = uVar8;
@@ -2096,8 +2099,8 @@ FUN_00509570(u64 param_1,u32 param_2,long param_3,u32 param_4,u32 param_5,
       DAT_00968500 = (u32)uVar3;
       DAT_00968914 = param_5;
       FUN_005067f8(0x968500,0x420);
-      lVar2 = FUN_00507ad8(0x969c00,0x1a,0,0x968500,0x420,0x969140,4,0);
       iVar1 = DAT_20969140;
+      lVar2 = FUN_00507ad8(0x969c00,0x1a,0,0x968500,0x420,0x969140,4,0);
       if (lVar2 < 0) {
         DeleteSema(uVar3);
         FUN_00508078();
@@ -2315,8 +2318,8 @@ u32 FUN_00509b00(char *param_1,long param_2,int param_3,int param_4)
       do {
         puVar2 = (u8 *)(param_3 + iVar6);
         puVar5 = (u8 *)((int)&DAT_00968d0c + iVar6);
-        iVar6 = iVar6 + 1;
         *puVar5 = *puVar2;
+        iVar6 = iVar6 + 1;
       } while (iVar6 < param_4);
     }
     uStack_bc = 1;
@@ -2612,7 +2615,7 @@ u32 FUN_0050a258(char *param_1,u32 param_2)
 u32 FUN_0050a410(char *param_1,u64 *param_2,u32 param_3)
 
 {
-  char cVar1;
+  u8 cVar1;
   int iVar2;
   u64 uVar3;
   long lVar4;
@@ -2736,8 +2739,8 @@ u32 FUN_0050a660(char *param_1,char *param_2)
   lVar3 = FUN_00507ad8(0x969c00,0x11,0,0x968500,0x80c,0x969140,4,0);
   iVar4 = DAT_20969140;
   if (lVar3 < 0) {
-    DeleteSema(uVar2);
     FUN_00508078();
+    DeleteSema(uVar2);
     auStack_90[0] = 0xfffffff5;
   }
   else {
@@ -2873,8 +2876,8 @@ u32 FUN_0050aa38(char *param_1,char *param_2,u32 param_3,int param_4,int param_5
     if (0 < param_5) {
       do {
         puVar2 = (u8 *)(param_4 + iVar6);
-        puVar5 = (u8 *)((int)&DAT_00968d0c + iVar6);
         iVar6 = iVar6 + 1;
+        puVar5 = (u8 *)((int)&DAT_00968d0c + iVar6);
         *puVar5 = *puVar2;
       } while (iVar6 < param_5);
     }
@@ -2967,8 +2970,8 @@ u64 FUN_0050acd8(u64 param_1,u64 param_2,u32 param_3)
         else {
           iVar4 = 1;
           do {
-            if (0x1f < iVar4) goto LAB_0050ae30;
             piVar3 = (int *)(&DAT_0077f4b8 + iVar4);
+            if (0x1f < iVar4) goto LAB_0050ae30;
             iVar4 = iVar4 + 1;
           } while (*piVar3 != -1);
           *piVar3 = DAT_00968500;
@@ -3054,8 +3057,8 @@ FUN_0050af18(char *param_1,long param_2,int param_3,u32 param_4,u32 param_5,u32 
       do {
         puVar2 = (u8 *)(param_3 + uVar7);
         puVar5 = (u8 *)(&DAT_0096890c + uVar7);
-        uVar7 = uVar7 + 1;
         *puVar5 = *puVar2;
+        uVar7 = uVar7 + 1;
       } while (uVar7 < param_4);
     }
     pcStack_bc = s_SceStdioDevctlSema_007bdfa8;
@@ -3157,8 +3160,8 @@ u32 FUN_0050b1c0(char *param_1,char *param_2)
   lVar3 = FUN_00507ad8(0x969c00,0x18,0,0x968500,0x80c,0x969140,4,0);
   iVar4 = DAT_20969140;
   if (lVar3 < 0) {
-    DeleteSema(uVar2);
     FUN_00508078();
+    DeleteSema(uVar2);
     auStack_90[0] = 0xfffffff5;
   }
   else {
@@ -3219,8 +3222,8 @@ u32 FUN_0050b3b8(char *param_1,u64 param_2,u32 param_3)
   DAT_00968500 = (u32)uVar2;
   DAT_00968508 = 4;
   DAT_00968504 = (u32)(auStack_b0);
-  lVar3 = FUN_00507ad8(0x969c00,0x19,0,0x968500,0x80c,0x969140,4,0);
   iVar4 = DAT_20969140;
+  lVar3 = FUN_00507ad8(0x969c00,0x19,0,0x968500,0x80c,0x969140,4,0);
   if (lVar3 < 0) {
     DeleteSema(uVar2);
     FUN_00508078();
