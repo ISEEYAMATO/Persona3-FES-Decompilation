@@ -12990,9 +12990,9 @@ void FUN_00400e90(u32 param_1)
 
 }
 
-// Confirmed cyclic register-coloring floor: +60 through +100 use $a2/$a1 here
-// where retail uses $a1/$a2; all five loads and their dataflow are otherwise identical.
-// FUN_00401170 NONMATCHING
+/* Retrieved lost argument: retail's call passes item as the 2nd arg (a1), which
+ * also fixes the handler/item register coloring to retail's a1/a2 assignment. */
+// FUN_00401170
 
 
 void FUN_00401170(int root)
@@ -13014,7 +13014,7 @@ void FUN_00401170(int root)
         if ((handler[5] == 3) && ((*item & 1) != 0)) {
           callback = *(code *)(handler + 1);
           if (callback != (code)0) {
-            (*callback)(root);
+            (*callback)(root, item);
           }
         }
       }
