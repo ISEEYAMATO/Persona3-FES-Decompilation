@@ -287,8 +287,8 @@ u32 FUN_0050bcb0(u32 _param_1, long _param_2, u64 *_param_3, u32 *_param_4)
   u64 uVar6;
   u64 uVar7;
   
-  lVar3 = FUN_0050bae8();
   uVar1 = 0xffff0000;
+  lVar3 = FUN_0050bae8();
   if (-1 < lVar3) {
     lVar3 = FUN_0050bbe8();
     if (lVar3 == 0) {
@@ -400,8 +400,8 @@ u32 FUN_0050beb8(u32 param_1,long param_2,u64 *param_3,u32 *param_4)
           do {
             uVar5 = param_3[1];
             uVar6 = param_3[2];
-            uVar7 = param_3[3];
             *puVar4 = *param_3;
+            uVar7 = param_3[3];
             puVar4[1] = uVar5;
             puVar4[2] = uVar6;
             puVar4[3] = uVar7;
@@ -1051,8 +1051,8 @@ int FUN_0050ce40(void)
   if (0 < DAT_0077fba0) {
     iVar3 = Wired + DAT_0077fba0;
     if (0x30 < iVar3) {
-      FUN_00505ec8(0x7be098);
       FUN_0050da58(1);
+      FUN_00505ec8(0x7be098);
     }
     if (iVar4 < iVar3) {
       puVar6 = (u32 *)PTR_DAT_0077fbb0;
@@ -1830,8 +1830,8 @@ u64 FUN_0050e250(u64 param_1,u64 param_2,u64 param_3)
       }
       else if (uVar7 == 0xffffffffffffffff) {
         puVar6[2] = 0;
-        puVar6[3] = 0;
         *puVar6 = (u32)(DAT_00780b5c);
+        puVar6[3] = 0;
         DAT_00780b58 = DAT_00780b58 + -1;
         DAT_00780b5c = (u32 *)((u32)(puVar6));
       }
@@ -2796,8 +2796,8 @@ u32 FUN_0050fc38(u64 *param_1,char *param_2,u32 param_3)
       DAT_0096dba4 = (u32)(&DAT_0096da80);
       DAT_0096dba8 = param_3;
       FUN_005067f8(0x96da80,300);
-      iVar7 = FUN_00507230(0x96dc00,0,0,0x96da80,300,0x96dbc0,4,0);
       uVar4 = DAT_2096da98;
+      iVar7 = FUN_00507230(0x96dc00,0,0,0x96da80,300,0x96dbc0,4,0);
       uVar3 = DAT_2096da90;
       uVar2 = DAT_2096da88;
       if (-1 < iVar7) {
