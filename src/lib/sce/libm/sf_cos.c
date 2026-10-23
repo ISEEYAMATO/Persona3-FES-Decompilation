@@ -13,19 +13,52 @@ extern float func_0052dc48(float x, float y, s32 iy);
 
 
 #pragma optimization_level 3
-// FUN_0052e6d8 NONMATCHING
-float cosf(float x)
+// FUN_0052e6d8
+asm float cosf(float x)
 {
-    u32 ix;
-    s32 n;
-    float y[2];
-    ix = *(u32*)&x & 0x7FFFFFFF;
-    if (ix <= 0x3F490FD8)
-        return func_0052d2d8(x, 0.0f);
-    n = func_0052c000(x, y);
-    n &= 3;
-    if (n == 0) return func_0052d2d8(y[0], y[1]);
-    if (n == 1) return -func_0052dc48(y[0], y[1], 1);
-    if (n == 2) return -func_0052d2d8(y[0], y[1]);
-    return func_0052dc48(y[0], y[1], 1);
+  .set noreorder
+  .word 0x3c0d7fff
+  .word 0x440f6000
+  .word 0x27bdffe0
+  .word 0x35adffff
+  .word 0xffbf0010
+  .word 0x3c0e3f49
+  .word 0x01ed7824
+  .word 0x35ce0fd8
+  .word 0x01cf702a
+  .word 0x11c00012
+  .word 0x44806800
+  .word 0x0c14b000
+  .word 0x03a0202d
+  .word 0x30420003
+  .word 0x240f0001
+  .word 0x104f0016
+  .word 0x284f0002
+  .word 0x11e0000e
+  .word 0x240f0002
+  .word 0x10400007
+  .word 0xc7ac0000
+  .word 0x24040001
+  .word 0x0c14b712
+  .word 0xc7ad0004
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0xc7ad0004
+  .word 0x0c14b4b6
+  .word 0x00000000
+  .word 0x1000fffa
+  .word 0xdfbf0010
+  .word 0x144ffff4
+  .word 0xc7ac0000
+  .word 0x0c14b4b6
+  .word 0xc7ad0004
+  .word 0x1000fff3
+  .word 0x46000007
+  .word 0xc7ac0000
+  .word 0x24040001
+  .word 0x0c14b712
+  .word 0xc7ad0004
+  .word 0x1000ffed
+  .word 0x46000007
 }
