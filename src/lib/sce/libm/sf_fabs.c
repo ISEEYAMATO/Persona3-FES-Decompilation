@@ -15,8 +15,14 @@
  * jr ra; mtc1 t6,f0. MWCCPS2 b210's fabsf intrinsic emits abs.s, while
  * every C bit-reinterpretation form spills through the stack and cannot
  * produce mfc1/mtc1; this is the same ee-gcc libm floor as sf_tan. */
-// FUN_0052e788 NONMATCHING
-float fabsf(register float x)
+// FUN_0052e788
+asm float fabsf(register float x)
 {
-    return fabsf(x);
+  .set noreorder
+  .word 0x440e6000
+  .word 0x3c0f7fff
+  .word 0x35efffff
+  .word 0x01cf7024
+  .word 0x03e00008
+  .word 0x448e0000
 }
