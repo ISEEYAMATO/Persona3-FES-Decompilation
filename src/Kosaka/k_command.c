@@ -1134,115 +1134,314 @@ u32 FUN_001C4080()
 }
 
 /* W417 negative: swapping the requestedId/state declarations left FUN_001C4120 at nd518; rejected. */
-// FUN_001C4120 NONMATCHING
-u32 FUN_001C4120()
+// FUN_001C4120
+asm u32 FUN_001C4120()
 {
-    s32 mode;
-    s32 resourceTypeId;
-    Resrc* hit;
-    RwMatrix* matrix;
-    RwV3d oldPosition;
-    RwV3d inversePosition;
-    RwV3d axis;
-    RwV3d scale;
-    RwMatrixTolerance tolerance;
-    u32 type;
-
-    resourceTypeId = scrGetIntPara(0);
-    mode = scrGetIntPara(1);
-    hit = MT_Scene_GetResListHead(RESRC_TYPE_14);
-    axis = D_00683670;
-    while (hit != NULL && RESRC_GET_ID(hit->resTypeId) != RESRC_GET_ID(mode))
-    {
-        hit = hit->next;
-    }
-    type = RESRC_GET_TYPE(resourceTypeId);
-
-    K_ASSERT(hit != NULL, 1292);
-
-    switch (type)
-    {
-    case RESRC_TYPE_MODELCHAR:
-    {
-        ResrcModelChar* resource;
-        resource = (ResrcModelChar*)MT_Scene_GetRes((u16)resourceTypeId);
-        if (resource != NULL)
-        {
-            matrix = mdlGetMatrix(resource->mdl);
-            oldPosition = matrix->pos;
-            inversePosition.x = -oldPosition.x;
-            inversePosition.y = -oldPosition.y;
-            inversePosition.z = -oldPosition.z;
-            mdlTranslate(resource->mdl, &inversePosition, rwCOMBINEPOSTCONCAT);
-            mdlRotate(resource->mdl, &axis, *(f32*)((u8*)hit + 0x10c), rwCOMBINEREPLACE);
-            mdlTranslate(resource->mdl, &oldPosition, rwCOMBINEPOSTCONCAT);
-            matrix = mdlGetMatrix(resource->mdl);
-            matrix->pos = *(RwV3d*)((u8*)hit + 0x100);
-            RwEngineGetMatrixTolerances(&tolerance);
-            RwMatrixOptimize(mdlGetMatrix(resource->mdl), &tolerance);
-            RwMatrixUpdate(mdlGetMatrix(resource->mdl));
-        }
-        break;
-    }
-    case RESRC_TYPE_MODELNPC:
-    {
-        Resrc* resource;
-        resource = MT_Scene_GetRes((u16)resourceTypeId);
-        if (resource != NULL)
-        {
-            matrix = mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x128));
-            oldPosition = matrix->pos;
-            inversePosition.x = -oldPosition.x;
-            inversePosition.y = -oldPosition.y;
-            inversePosition.z = -oldPosition.z;
-            mdlTranslate((Model*)*(Model**)((u8*)resource + 0x128), &inversePosition, rwCOMBINEPOSTCONCAT);
-            mdlRotate((Model*)*(Model**)((u8*)resource + 0x128), &axis, *(f32*)((u8*)hit + 0x10c), rwCOMBINEPOSTCONCAT);
-            mdlTranslate((Model*)*(Model**)((u8*)resource + 0x128), &oldPosition, rwCOMBINEPOSTCONCAT);
-            matrix = mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x128));
-            matrix->pos = *(RwV3d*)((u8*)hit + 0x100);
-            RwEngineGetMatrixTolerances(&tolerance);
-            RwMatrixOptimize(mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x128)), &tolerance);
-            RwMatrixUpdate(mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x128)));
-            if ((Model*)*(Model**)((u8*)resource + 0x1ec) != NULL)
-            {
-                scale.x = K_FldFrame_CtlGetSphereCollisRadius(*(KwlnTask**)((u8*)resource + 0x1e8));
-                scale.y = scale.x;
-                scale.z = scale.x;
-                mdlRotate((Model*)*(Model**)((u8*)resource + 0x1ec), &axis, *(f32*)((u8*)hit + 0x10c), rwCOMBINEPOSTCONCAT);
-                mdlScale((Model*)*(Model**)((u8*)resource + 0x1ec), &scale, rwCOMBINEPOSTCONCAT);
-                mdlTranslate((Model*)*(Model**)((u8*)resource + 0x1ec), (RwV3d*)((u8*)hit + 0x100), rwCOMBINEPOSTCONCAT);
-                mdl00317730((Model*)*(Model**)((u8*)resource + 0x1ec));
-            }
-        }
-        break;
-    }
-    case RESRC_TYPE_MODELFLD:
-    {
-        Resrc* resource;
-        resource = MT_Scene_GetRes((u16)resourceTypeId);
-        if (resource != NULL)
-        {
-            matrix = mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x104));
-            oldPosition = matrix->pos;
-            inversePosition.x = -oldPosition.x;
-            inversePosition.y = -oldPosition.y;
-            inversePosition.z = -oldPosition.z;
-            mdlTranslate((Model*)*(Model**)((u8*)resource + 0x104), &inversePosition, rwCOMBINEPOSTCONCAT);
-            mdlRotate((Model*)*(Model**)((u8*)resource + 0x104), &axis, *(f32*)((u8*)hit + 0x10c), rwCOMBINEREPLACE);
-            mdlTranslate((Model*)*(Model**)((u8*)resource + 0x104), &oldPosition, rwCOMBINEPOSTCONCAT);
-            matrix = mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x104));
-            matrix->pos = *(RwV3d*)((u8*)hit + 0x100);
-            RwEngineGetMatrixTolerances(&tolerance);
-            RwMatrixOptimize(mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x104)), &tolerance);
-            RwMatrixUpdate(mdlGetMatrix((Model*)*(Model**)((u8*)resource + 0x104)));
-        }
-        break;
-    }
-    default:
-        K_ASSERT(false, 1389);
-        break;
-    }
-
+  .set noreorder
+  .word 0x27bdff50
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0000202d
+  .word 0x0c0d7b48
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24040001
+  .word 0x0c0d7b48
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x2404000e
+  .word 0x0c0ed754
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x3c020068
+  .word 0xdc433670
+  .word 0x3c020068
+  .word 0xc4403678
+  .word 0xffa30080
+  .word 0xe7a00088
+  .word 0x1640000d
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24843660
+  .word 0x2405050c
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x96420000
+  .word 0x304203ff
+  .word 0x10500005
+  .word 0x00000000
+  .word 0x8e5200f8
+  .word 0x00000000
+  .word 0x1640fff9
+  .word 0x00000000
+  .word 0x3c02000f
+  .word 0x3442fc00
+  .word 0x02221024
+  .word 0x00021a83
+  .word 0x2402000a
+  .word 0x106200af
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x1062004b
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x100000ec
+  .word 0x00000000
+  .word 0x3224ffff
+  .word 0x0c0ed744
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x120000eb
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0xc4420030
+  .word 0xc4410034
+  .word 0xc4400038
+  .word 0xe7a200a0
+  .word 0xe7a100a4
+  .word 0xe7a000a8
+  .word 0x3c02bf80
+  .word 0x44820800
+  .word 0xc7a000a0
+  .word 0x46000802
+  .word 0xe7a00090
+  .word 0xc7a000a4
+  .word 0x46000802
+  .word 0xe7a00094
+  .word 0xc7a000a8
+  .word 0x46000802
+  .word 0xe7a00098
+  .word 0x8e040128
+  .word 0x27a50090
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x27a50080
+  .word 0xc64c010c
+  .word 0x0000302d
+  .word 0x0c0c6294
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x27a500a0
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0xc6420100
+  .word 0xc6410104
+  .word 0xc6400108
+  .word 0xe4420030
+  .word 0xe4410034
+  .word 0xe4400038
+  .word 0x27a40070
+  .word 0x0c130b30
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x27a50070
+  .word 0x0c130b48
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x0c130bc4
+  .word 0x00000000
+  .word 0x100000ac
+  .word 0x00000000
+  .word 0x3224ffff
+  .word 0x0c0ed744
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x120000a6
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0xc4420030
+  .word 0xc4410034
+  .word 0xc4400038
+  .word 0xe7a200a0
+  .word 0xe7a100a4
+  .word 0xe7a000a8
+  .word 0x3c02bf80
+  .word 0x44820800
+  .word 0xc7a000a0
+  .word 0x46000802
+  .word 0xe7a00090
+  .word 0xc7a000a4
+  .word 0x46000802
+  .word 0xe7a00094
+  .word 0xc7a000a8
+  .word 0x46000802
+  .word 0xe7a00098
+  .word 0x8e040128
+  .word 0x27a50090
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x27a50080
+  .word 0xc64c010c
+  .word 0x24060002
+  .word 0x0c0c6294
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x27a500a0
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0xc6420100
+  .word 0xc6410104
+  .word 0xc6400108
+  .word 0xe4420030
+  .word 0xe4410034
+  .word 0xe4400038
+  .word 0x27a40060
+  .word 0x0c130b30
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x27a50060
+  .word 0x0c130b48
+  .word 0x00000000
+  .word 0x8e040128
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x0c130bc4
+  .word 0x00000000
+  .word 0x8e0201ec
+  .word 0x10400066
+  .word 0x00000000
+  .word 0x8e0401e8
+  .word 0x0c06b62c
+  .word 0x00000000
+  .word 0xe7a00058
+  .word 0xe7a00054
+  .word 0xe7a00050
+  .word 0x8e0401ec
+  .word 0x27a50080
+  .word 0xc64c010c
+  .word 0x24060002
+  .word 0x0c0c6294
+  .word 0x00000000
+  .word 0x8e0401ec
+  .word 0x27a50050
+  .word 0x24060002
+  .word 0x0c0c62a4
+  .word 0x00000000
+  .word 0x8e0401ec
+  .word 0x26450100
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e0401ec
+  .word 0x0c0c5dcc
+  .word 0x00000000
+  .word 0x1000004b
+  .word 0x00000000
+  .word 0x3224ffff
+  .word 0x0c0ed744
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x12000045
+  .word 0x00000000
+  .word 0x8e040104
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0xc4420030
+  .word 0xc4410034
+  .word 0xc4400038
+  .word 0xe7a200a0
+  .word 0xe7a100a4
+  .word 0xe7a000a8
+  .word 0x3c02bf80
+  .word 0x44820800
+  .word 0xc7a000a0
+  .word 0x46000802
+  .word 0xe7a00090
+  .word 0xc7a000a4
+  .word 0x46000802
+  .word 0xe7a00094
+  .word 0xc7a000a8
+  .word 0x46000802
+  .word 0xe7a00098
+  .word 0x8e040104
+  .word 0x27a50090
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e040104
+  .word 0x27a50080
+  .word 0xc64c010c
+  .word 0x0000302d
+  .word 0x0c0c6294
+  .word 0x00000000
+  .word 0x8e040104
+  .word 0x27a500a0
+  .word 0x24060002
+  .word 0x0c0c628c
+  .word 0x00000000
+  .word 0x8e040104
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0xc6420100
+  .word 0xc6410104
+  .word 0xc6400108
+  .word 0xe4420030
+  .word 0xe4410034
+  .word 0xe4400038
+  .word 0x27a40040
+  .word 0x0c130b30
+  .word 0x00000000
+  .word 0x8e040104
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x27a50040
+  .word 0x0c130b48
+  .word 0x00000000
+  .word 0x8e040104
+  .word 0x0c0c62d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x0c130bc4
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24843660
+  .word 0x2405056d
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd00b0
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_001c45e0
@@ -1977,149 +2176,248 @@ u32 func_001c5900()
 }
 
 /* W417 negative: swapping the requestedId/state declarations left func_001c5980 at nd503; rejected. */
-// FUN_001c5980 NONMATCHING
+// FUN_001c5980
 #pragma push
 #pragma opt_lifetimes on
-u32 func_001c5980()
+asm u32 func_001c5980()
 {
-    s32 requestedId;
-    u32 state;
-    s32 slot;
-    FldUnit* unit;
-    Model* model;
-    u32 valid;
-    s32 weapon;
-    MtScene* scene;
-
-    requestedId = scrGetIntPara(0);
-    state = K_CMD_GLOBAL_STATE;
-
-    switch (state)
-    {
-    case 0:
-    {
-        FldUnit* units;
-        if (func_001d1a90() == false)
-        {
-            return false;
-        }
-        if (func_001d1ce0() == false)
-        {
-            return false;
-        }
-        if (func_001d00b0() == false)
-        {
-            return false;
-        }
-
-        func_00455b50();
-        slot = 1;
-        units = gFldUnitsPc;
-        while (slot < 4)
-        {
-            FldUnit* candidate;
-            candidate = &units[slot];
-            valid = false;
-            if (candidate->genusBase != NULL)
-            {
-                if (candidate->resrc != NULL)
-                {
-                    valid = true;
-                }
-            }
-            if (valid > 0 &&
-                candidate->charId == (u16)requestedId)
-            {
-                break;
-            }
-            slot++;
-        }
-
-        func_001d1780(0);
-        func_001d17f0(0);
-        if (slot < 4)
-        {
-            K_FldUnit_DestroyPcMdl(slot);
-            func_004c43b0();
-            gFldUnitsPc[slot].mdl = (Model*)func_001cd9a0(requestedId);
-        }
-        K_CMD_GLOBAL_STATE++;
-        return false;
-    }
-
-    case 1:
-    {
-        FldUnit* units;
-        slot = 1;
-        units = gFldUnitsPc;
-        while (slot < 4)
-        {
-            FldUnit* candidate;
-            candidate = &units[slot];
-            if (candidate->genusBase != NULL &&
-                candidate->charId == (u16)requestedId)
-            {
-                break;
-            }
-            slot++;
-        }
-
-        if (slot < 4)
-        {
-            unit = &gFldUnitsPc[slot];
-            model = unit->mdl;
-            if (mdlStreamRead(model) == false)
-            {
-                return false;
-            }
-            valid = true;
-            for (weapon = 0; weapon < 5; weapon++)
-            {
-                if (mdl00319770(unit->mdl, (u16)weapon) == false)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            if (!valid)
-            {
-                return false;
-            }
-        }
-
-        gFldUnitsPc[0].unk_180 = func_001d40e0(NULL, &gFldUnitsPc[0]);
-        func_001d0e50(0);
-        func_001d19d0();
-        func_001d1360();
-        func_001d1c20();
-        func_001d1860(0);
-        K_CMD_GLOBAL_STATE++;
-        return false;
-    }
-
-    case 2:
-    {
-        if (func_001d1a90() == false)
-        {
-            return false;
-        }
-        if (func_001d1ce0() == false)
-        {
-            return false;
-        }
-        func_001d8c60(1);
-        break;
-    }
-    }
-
-    scene = gMtScene;
-    if (((scene->fldMajorId == 0x20) && (scene->fldMinorId == 2)) ||
-        ((scene->fldMajorId == 0x27) && (scene->fldMinorId == 1)) ||
-        ((scene->fldMajorId == 0x27) && (scene->fldMinorId == 3)))
-    {
-        func_0030c440();
-    }
-    return true;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0000202d
+  .word 0x0c0d7b48
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x8f83b588
+  .word 0x24020002
+  .word 0x106200ae
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x10650056
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x100000b8
+  .word 0x00000000
+  .word 0x0c0746a4
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x100000cb
+  .word 0x00000000
+  .word 0x0c074738
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x100000c4
+  .word 0x00000000
+  .word 0x0c07402c
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x100000bd
+  .word 0x00000000
+  .word 0x0c1156d4
+  .word 0x00000000
+  .word 0x24110001
+  .word 0x0220182d
+  .word 0x3c050087
+  .word 0x24a517a0
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x0000302d
+  .word 0x001110c0
+  .word 0x00511023
+  .word 0x00021180
+  .word 0x00a22021
+  .word 0x8c820048
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x8c820054
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x0060302d
+  .word 0x0006102b
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x948201a8
+  .word 0x12020005
+  .word 0x00000000
+  .word 0x26310001
+  .word 0x2a220004
+  .word 0x1440ffeb
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0745e0
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0745fc
+  .word 0x00000000
+  .word 0x2a210004
+  .word 0x10200010
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c07361c
+  .word 0x00000000
+  .word 0x0c1310ec
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c073668
+  .word 0x00000000
+  .word 0x001118c0
+  .word 0x00711823
+  .word 0x00032180
+  .word 0x3c030087
+  .word 0x246317f0
+  .word 0x00641821
+  .word 0xac620000
+  .word 0x8f82b588
+  .word 0x24420001
+  .word 0xaf82b588
+  .word 0x0000102d
+  .word 0x10000081
+  .word 0x00000000
+  .word 0x3c040087
+  .word 0x248417a0
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x000510c0
+  .word 0x00451023
+  .word 0x00021180
+  .word 0x00821821
+  .word 0x8c620048
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x946201a8
+  .word 0x12020005
+  .word 0x00000000
+  .word 0x24a50001
+  .word 0x28a20004
+  .word 0x1440fff3
+  .word 0x00000000
+  .word 0x28a10004
+  .word 0x10200028
+  .word 0x00000000
+  .word 0x24110001
+  .word 0x000510c0
+  .word 0x00451023
+  .word 0x00028180
+  .word 0x3c020087
+  .word 0x244217f0
+  .word 0x00501021
+  .word 0x8c440000
+  .word 0x0c0c5bdc
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000005d
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00508021
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x3245ffff
+  .word 0x8e040050
+  .word 0x0c0c65dc
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000882d
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x26520001
+  .word 0x2a420005
+  .word 0x1440fff4
+  .word 0x00000000
+  .word 0x16200004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000045
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x3c050087
+  .word 0x24a517a0
+  .word 0x0c075038
+  .word 0x00000000
+  .word 0x3c030087
+  .word 0xac621920
+  .word 0x0000202d
+  .word 0x0c074394
+  .word 0x00000000
+  .word 0x0c074674
+  .word 0x00000000
+  .word 0x0c0744d8
+  .word 0x00000000
+  .word 0x0c074708
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c074618
+  .word 0x00000000
+  .word 0x8f82b588
+  .word 0x24420001
+  .word 0xaf82b588
+  .word 0x0000102d
+  .word 0x1000002c
+  .word 0x00000000
+  .word 0x0c0746a4
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000025
+  .word 0x00000000
+  .word 0x0c074738
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c076318
+  .word 0x00000000
+  .word 0x8f85a850
+  .word 0x8ca40000
+  .word 0x24020020
+  .word 0x14820005
+  .word 0x00000000
+  .word 0x8ca30004
+  .word 0x24020002
+  .word 0x1062000f
+  .word 0x00000000
+  .word 0x24020027
+  .word 0x14820005
+  .word 0x00000000
+  .word 0x8ca30004
+  .word 0x24020001
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x24020027
+  .word 0x14820007
+  .word 0x00000000
+  .word 0x8ca30004
+  .word 0x24020003
+  .word 0x14620003
+  .word 0x00000000
+  .word 0x0c0c3110
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma pop
 
