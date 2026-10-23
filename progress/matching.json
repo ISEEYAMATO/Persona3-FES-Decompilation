@@ -1,7 +1,7 @@
 {
   "cacheSeconds": 3600,
-  "color": "green",
+  "color": "brightgreen",
   "label": "matching",
-  "message": "8232/8235 (99.964%)",
+  "message": "8235/8235 (100.000%)",
   "schemaVersion": 1
 }
