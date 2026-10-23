@@ -399,103 +399,103 @@ extern u64 FUN_003a8710_typed(int param_2,int param_3,float param_1,int param_4,
 extern u64 FUN_003a8710_u8(int param_2,int param_3,float param_1,u8 param_4,int param_5);
 
 /* Region call-cast macros */
-#define FUN_003a2150(...) ((u32 (*)(...))FUN_003a2150)(__VA_ARGS__)
-#define FUN_003a2260(...) ((u32 (*)(...))FUN_003a2260)(__VA_ARGS__)
-#define FUN_003a2440(...) ((u32 (*)(...))FUN_003a2440)(__VA_ARGS__)
-#define FUN_003a2580(...) ((s8 (*)(...))FUN_003a2580)(__VA_ARGS__)
-#define FUN_003a25f0(...) ((void (*)(...))FUN_003a25f0)(__VA_ARGS__)
-#define FUN_003a2660(...) ((u32 (*)(...))FUN_003a2660)(__VA_ARGS__)
-#define FUN_003a2750(...) ((s16 (*)(...))FUN_003a2750)(__VA_ARGS__)
-#define FUN_003a27c0(...) ((void (*)(...))FUN_003a27c0)(__VA_ARGS__)
-#define FUN_003a2830(...) ((s16 (*)(...))FUN_003a2830)(__VA_ARGS__)
-#define FUN_003a28a0(...) ((u32 (*)(...))FUN_003a28a0)(__VA_ARGS__)
-#define FUN_003a2900(...) ((u32 (*)(...))FUN_003a2900)(__VA_ARGS__)
-#define FUN_003a2970(...) ((u32 (*)(...))FUN_003a2970)(__VA_ARGS__)
-#define FUN_003a2a30(...) ((void (*)(...))FUN_003a2a30)(__VA_ARGS__)
-#define FUN_003a2b30(...) ((u32 (*)(...))FUN_003a2b30)(__VA_ARGS__)
-#define FUN_003a2c10(...) ((u32 (*)(...))FUN_003a2c10)(__VA_ARGS__)
-#define FUN_003a2c90(...) ((int (*)(...))FUN_003a2c90)(__VA_ARGS__)
-#define FUN_003a2ef0(...) ((u32 (*)(...))FUN_003a2ef0)(__VA_ARGS__)
-#define FUN_003a3010(...) ((u32 (*)(...))FUN_003a3010)(__VA_ARGS__)
-#define FUN_003a30c0(...) ((u32 (*)(...))FUN_003a30c0)(__VA_ARGS__)
-#define FUN_003a3420(...) ((void (*)(...))FUN_003a3420)(__VA_ARGS__)
-#define FUN_003a3470(...) ((void (*)(...))FUN_003a3470)(__VA_ARGS__)
-#define FUN_003a3530(...) ((void (*)(...))FUN_003a3530)(__VA_ARGS__)
-#define FUN_003a3680(...) ((void (*)(...))FUN_003a3680)(__VA_ARGS__)
-#define FUN_003a37c0(...) ((void (*)(...))FUN_003a37c0)(__VA_ARGS__)
-#define FUN_003a3ab0(...) ((void (*)(...))FUN_003a3ab0)(__VA_ARGS__)
-#define FUN_003a3b00(...) ((void (*)(...))FUN_003a3b00)(__VA_ARGS__)
-#define FUN_003a3c10(...) ((void (*)(...))FUN_003a3c10)(__VA_ARGS__)
-#define FUN_003a3ce0(...) ((void (*)(...))FUN_003a3ce0)(__VA_ARGS__)
-#define FUN_003a3f90(...) ((u32 (*)(...))FUN_003a3f90)(__VA_ARGS__)
-#define FUN_003a4010(...) ((void (*)(...))FUN_003a4010)(__VA_ARGS__)
-#define FUN_003a4220(...) ((void (*)(...))FUN_003a4220)(__VA_ARGS__)
-#define FUN_003a4270(...) ((void (*)(...))FUN_003a4270)(__VA_ARGS__)
-#define FUN_003a42c0(...) ((u32 (*)(...))FUN_003a42c0)(__VA_ARGS__)
-#define FUN_003a4360(...) ((u64 (*)(...))FUN_003a4360)(__VA_ARGS__)
-#define FUN_003a4a70(...) ((u32 (*)(...))FUN_003a4a70)(__VA_ARGS__)
-#define FUN_003a4b90(...) ((u64 (*)(...))FUN_003a4b90)(__VA_ARGS__)
-#define FUN_003a4ce0(...) ((void (*)(...))FUN_003a4ce0)(__VA_ARGS__)
-#define FUN_003a4dd0(...) ((void (*)(...))FUN_003a4dd0)(__VA_ARGS__)
-#define FUN_003a4ef0(...) ((void (*)(...))FUN_003a4ef0)(__VA_ARGS__)
-#define FUN_003a5030(...) ((void (*)(...))FUN_003a5030)(__VA_ARGS__)
-#define FUN_003a50e0(...) ((int (*)(...))FUN_003a50e0)(__VA_ARGS__)
-#define FUN_003a5100(...) ((int (*)(...))FUN_003a5100)(__VA_ARGS__)
-#define FUN_003a5120(...) ((u32 (*)(...))FUN_003a5120)(__VA_ARGS__)
-#define FUN_003a51a0(...) ((u32 (*)(...))FUN_003a51a0)(__VA_ARGS__)
-#define FUN_003a5210(...) ((void (*)(...))FUN_003a5210)(__VA_ARGS__)
-#define FUN_003a52c0(...) ((u64 (*)(...))FUN_003a52c0)(__VA_ARGS__)
+#define FUN_003a2150(...) FUN_003a2150(__VA_ARGS__)
+#define FUN_003a2260(...) FUN_003a2260(__VA_ARGS__)
+#define FUN_003a2440(...) FUN_003a2440(__VA_ARGS__)
+#define FUN_003a2580(...) FUN_003a2580(__VA_ARGS__)
+#define FUN_003a25f0(...) FUN_003a25f0(__VA_ARGS__)
+#define FUN_003a2660(...) FUN_003a2660(__VA_ARGS__)
+#define FUN_003a2750(...) FUN_003a2750(__VA_ARGS__)
+#define FUN_003a27c0(...) FUN_003a27c0(__VA_ARGS__)
+#define FUN_003a2830(...) FUN_003a2830(__VA_ARGS__)
+#define FUN_003a28a0(...) FUN_003a28a0(__VA_ARGS__)
+#define FUN_003a2900(...) FUN_003a2900(__VA_ARGS__)
+#define FUN_003a2970(...) FUN_003a2970(__VA_ARGS__)
+#define FUN_003a2a30(...) FUN_003a2a30(__VA_ARGS__)
+#define FUN_003a2b30(...) FUN_003a2b30(__VA_ARGS__)
+#define FUN_003a2c10(...) FUN_003a2c10(__VA_ARGS__)
+#define FUN_003a2c90(...) FUN_003a2c90(__VA_ARGS__)
+#define FUN_003a2ef0(...) FUN_003a2ef0(__VA_ARGS__)
+#define FUN_003a3010(...) FUN_003a3010(__VA_ARGS__)
+#define FUN_003a30c0(...) FUN_003a30c0(__VA_ARGS__)
+#define FUN_003a3420(...) FUN_003a3420(__VA_ARGS__)
+#define FUN_003a3470(...) FUN_003a3470(__VA_ARGS__)
+#define FUN_003a3530(...) FUN_003a3530(__VA_ARGS__)
+#define FUN_003a3680(...) FUN_003a3680(__VA_ARGS__)
+#define FUN_003a37c0(...) FUN_003a37c0(__VA_ARGS__)
+#define FUN_003a3ab0(...) FUN_003a3ab0(__VA_ARGS__)
+#define FUN_003a3b00(...) FUN_003a3b00(__VA_ARGS__)
+#define FUN_003a3c10(...) FUN_003a3c10(__VA_ARGS__)
+#define FUN_003a3ce0(...) FUN_003a3ce0(__VA_ARGS__)
+#define FUN_003a3f90(...) FUN_003a3f90(__VA_ARGS__)
+#define FUN_003a4010(...) FUN_003a4010(__VA_ARGS__)
+#define FUN_003a4220(...) FUN_003a4220(__VA_ARGS__)
+#define FUN_003a4270(...) FUN_003a4270(__VA_ARGS__)
+#define FUN_003a42c0(...) FUN_003a42c0(__VA_ARGS__)
+#define FUN_003a4360(...) FUN_003a4360(__VA_ARGS__)
+#define FUN_003a4a70(...) FUN_003a4a70(__VA_ARGS__)
+#define FUN_003a4b90(...) FUN_003a4b90(__VA_ARGS__)
+#define FUN_003a4ce0(...) FUN_003a4ce0(__VA_ARGS__)
+#define FUN_003a4dd0(...) FUN_003a4dd0(__VA_ARGS__)
+#define FUN_003a4ef0(...) FUN_003a4ef0(__VA_ARGS__)
+#define FUN_003a5030(...) FUN_003a5030(__VA_ARGS__)
+#define FUN_003a50e0(...) FUN_003a50e0(__VA_ARGS__)
+#define FUN_003a5100(...) FUN_003a5100(__VA_ARGS__)
+#define FUN_003a5120(...) FUN_003a5120(__VA_ARGS__)
+#define FUN_003a51a0(...) FUN_003a51a0(__VA_ARGS__)
+#define FUN_003a5210(...) FUN_003a5210(__VA_ARGS__)
+#define FUN_003a52c0(...) FUN_003a52c0(__VA_ARGS__)
 #define FUN_003a53b0(...) FUN_003a53b0_typed(__VA_ARGS__)
-#define FUN_003a5540(...) ((void (*)(...))FUN_003a5540)(__VA_ARGS__)
-#define FUN_003a5570(...) ((u64 (*)(...))FUN_003a5570)(__VA_ARGS__)
-#define FUN_003a56f0(...) ((u64 (*)(...))FUN_003a56f0)(__VA_ARGS__)
-#define FUN_003a5940(...) ((u32 (*)(...))FUN_003a5940)(__VA_ARGS__)
-#define FUN_003a5980(...) ((void (*)(...))FUN_003a5980)(__VA_ARGS__)
-#define FUN_003a5ca0(...) ((void (*)(...))FUN_003a5ca0)(__VA_ARGS__)
-#define FUN_003a5ea0(...) ((void (*)(...))FUN_003a5ea0)(__VA_ARGS__)
+#define FUN_003a5540(...) FUN_003a5540(__VA_ARGS__)
+#define FUN_003a5570(...) FUN_003a5570(__VA_ARGS__)
+#define FUN_003a56f0(...) FUN_003a56f0(__VA_ARGS__)
+#define FUN_003a5940(...) FUN_003a5940(__VA_ARGS__)
+#define FUN_003a5980(...) FUN_003a5980(__VA_ARGS__)
+#define FUN_003a5ca0(...) FUN_003a5ca0(__VA_ARGS__)
+#define FUN_003a5ea0(...) FUN_003a5ea0(__VA_ARGS__)
 #define FUN_003a5fd0(...) FUN_003a5fd0_typed(__VA_ARGS__)
-#define FUN_003a6030(...) ((u32 (*)(...))FUN_003a6030)(__VA_ARGS__)
-#define FUN_003a6060(...) ((void (*)(...))FUN_003a6060)(__VA_ARGS__)
-#define FUN_003a6100(...) ((int (*)(...))FUN_003a6100)(__VA_ARGS__)
-#define FUN_003a6140(...) ((long (*)(...))FUN_003a6140)(__VA_ARGS__)
-#define FUN_003a628c(...) ((int (*)(...))FUN_003a628c)(__VA_ARGS__)
-#define FUN_003a62b0(...) ((void (*)(...))FUN_003a62b0)(__VA_ARGS__)
-#define FUN_003a62e0(...) ((int (*)(...))FUN_003a62e0)(__VA_ARGS__)
-#define FUN_003a6410(...) ((void (*)(...))FUN_003a6410)(__VA_ARGS__)
-#define FUN_003a6460(...) ((int (*)(...))FUN_003a6460)(__VA_ARGS__)
-#define FUN_003a64c0(...) ((void (*)(...))FUN_003a64c0)(__VA_ARGS__)
-#define FUN_003a6520(...) ((void (*)(...))FUN_003a6520)(__VA_ARGS__)
-#define FUN_003a67e0(...) ((void (*)(...))FUN_003a67e0)(__VA_ARGS__)
-#define FUN_003a6900(...) ((void (*)(...))FUN_003a6900)(__VA_ARGS__)
-#define FUN_003a6930(...) ((void (*)(...))FUN_003a6930)(__VA_ARGS__)
-#define FUN_003a6980(...) ((void (*)(...))FUN_003a6980)(__VA_ARGS__)
-#define FUN_003a69d0(...) ((void (*)(...))FUN_003a69d0)(__VA_ARGS__)
-#define FUN_003a6a10(...) ((void (*)(...))FUN_003a6a10)(__VA_ARGS__)
-#define FUN_003a6a40(...) ((void (*)(...))FUN_003a6a40)(__VA_ARGS__)
-#define FUN_003a6a80(...) ((void (*)(...))FUN_003a6a80)(__VA_ARGS__)
-#define FUN_003a6b00(...) ((void (*)(...))FUN_003a6b00)(__VA_ARGS__)
-#define FUN_003a6b90(...) ((void (*)(...))FUN_003a6b90)(__VA_ARGS__)
-#define FUN_003a6c10(...) ((short * (*)(...))FUN_003a6c10)(__VA_ARGS__)
-#define FUN_003a6ca0(...) ((void (*)(...))FUN_003a6ca0)(__VA_ARGS__)
-#define FUN_003a6e30(...) ((void (*)(...))FUN_003a6e30)(__VA_ARGS__)
-#define FUN_003a7120(...) ((void (*)(...))FUN_003a7120)(__VA_ARGS__)
-#define FUN_003a7490(...) ((void (*)(...))FUN_003a7490)(__VA_ARGS__)
-#define FUN_003a7940(...) ((void (*)(...))FUN_003a7940)(__VA_ARGS__)
-#define FUN_003a7a40(...) ((u32 (*)(...))FUN_003a7a40)(__VA_ARGS__)
-#define FUN_003a7cb0(...) ((void (*)(...))FUN_003a7cb0)(__VA_ARGS__)
-#define FUN_003a7d60(...) ((u16 (*)(...))FUN_003a7d60)(__VA_ARGS__)
-#define FUN_003a7dd0(...) ((void (*)(...))FUN_003a7dd0)(__VA_ARGS__)
-#define FUN_003a7e90(...) ((void (*)(...))FUN_003a7e90)(__VA_ARGS__)
-#define FUN_003a8080(...) ((void (*)(...))FUN_003a8080)(__VA_ARGS__)
-#define FUN_003a8170(...) ((void (*)(...))FUN_003a8170)(__VA_ARGS__)
-#define FUN_003a8260(...) ((void (*)(...))FUN_003a8260)(__VA_ARGS__)
-#define FUN_003a8350(...) ((void (*)(...))FUN_003a8350)(__VA_ARGS__)
-#define FUN_003a8440(...) ((u64 (*)(...))FUN_003a8440)(__VA_ARGS__)
-#define FUN_003a84c0(...) ((u64 (*)(...))FUN_003a84c0)(__VA_ARGS__)
-#define FUN_003a8530(...) ((void (*)(...))FUN_003a8530)(__VA_ARGS__)
-#define FUN_003a8590(...) ((void (*)(...))FUN_003a8590)(__VA_ARGS__)
-#define FUN_003a8600(...) ((void (*)(...))FUN_003a8600)(__VA_ARGS__)
-#define FUN_003a8650(...) ((void (*)(...))FUN_003a8650)(__VA_ARGS__)
+#define FUN_003a6030(...) FUN_003a6030(__VA_ARGS__)
+#define FUN_003a6060(...) FUN_003a6060(__VA_ARGS__)
+#define FUN_003a6100(...) FUN_003a6100(__VA_ARGS__)
+#define FUN_003a6140(...) FUN_003a6140(__VA_ARGS__)
+#define FUN_003a628c(...) FUN_003a628c(__VA_ARGS__)
+#define FUN_003a62b0(...) FUN_003a62b0(__VA_ARGS__)
+#define FUN_003a62e0(...) FUN_003a62e0(__VA_ARGS__)
+#define FUN_003a6410(...) FUN_003a6410(__VA_ARGS__)
+#define FUN_003a6460(...) FUN_003a6460(__VA_ARGS__)
+#define FUN_003a64c0(...) FUN_003a64c0(__VA_ARGS__)
+#define FUN_003a6520(...) FUN_003a6520(__VA_ARGS__)
+#define FUN_003a67e0(...) FUN_003a67e0(__VA_ARGS__)
+#define FUN_003a6900(...) FUN_003a6900(__VA_ARGS__)
+#define FUN_003a6930(...) FUN_003a6930(__VA_ARGS__)
+#define FUN_003a6980(...) FUN_003a6980(__VA_ARGS__)
+#define FUN_003a69d0(...) FUN_003a69d0(__VA_ARGS__)
+#define FUN_003a6a10(...) FUN_003a6a10(__VA_ARGS__)
+#define FUN_003a6a40(...) FUN_003a6a40(__VA_ARGS__)
+#define FUN_003a6a80(...) FUN_003a6a80(__VA_ARGS__)
+#define FUN_003a6b00(...) FUN_003a6b00(__VA_ARGS__)
+#define FUN_003a6b90(...) FUN_003a6b90(__VA_ARGS__)
+#define FUN_003a6c10(...) FUN_003a6c10(__VA_ARGS__)
+#define FUN_003a6ca0(...) FUN_003a6ca0(__VA_ARGS__)
+#define FUN_003a6e30(...) FUN_003a6e30(__VA_ARGS__)
+#define FUN_003a7120(...) FUN_003a7120(__VA_ARGS__)
+#define FUN_003a7490(...) FUN_003a7490(__VA_ARGS__)
+#define FUN_003a7940(...) FUN_003a7940(__VA_ARGS__)
+#define FUN_003a7a40(...) FUN_003a7a40(__VA_ARGS__)
+#define FUN_003a7cb0(...) FUN_003a7cb0(__VA_ARGS__)
+#define FUN_003a7d60(...) FUN_003a7d60(__VA_ARGS__)
+#define FUN_003a7dd0(...) FUN_003a7dd0(__VA_ARGS__)
+#define FUN_003a7e90(...) FUN_003a7e90(__VA_ARGS__)
+#define FUN_003a8080(...) FUN_003a8080(__VA_ARGS__)
+#define FUN_003a8170(...) FUN_003a8170(__VA_ARGS__)
+#define FUN_003a8260(...) FUN_003a8260(__VA_ARGS__)
+#define FUN_003a8350(...) FUN_003a8350(__VA_ARGS__)
+#define FUN_003a8440(...) FUN_003a8440(__VA_ARGS__)
+#define FUN_003a84c0(...) FUN_003a84c0(__VA_ARGS__)
+#define FUN_003a8530(...) FUN_003a8530(__VA_ARGS__)
+#define FUN_003a8590(...) FUN_003a8590(__VA_ARGS__)
+#define FUN_003a8600(...) FUN_003a8600(__VA_ARGS__)
+#define FUN_003a8650(...) FUN_003a8650(__VA_ARGS__)
 #define FUN_003a8710(...) FUN_003a8710_typed(__VA_ARGS__)
 
 #undef FUN_003a2150
@@ -536,7 +536,7 @@ u32 FUN_003a2150(void)
 
     return 0;
 }
-#define FUN_003a2150(...) ((u32 (*)(...))FUN_003a2150)(__VA_ARGS__)
+#define FUN_003a2150(...) FUN_003a2150(__VA_ARGS__)
 #undef FUN_003a2260
 #pragma alias FUN_003a3e10_typed FUN_003a3e10
 #pragma alias FUN_003c9570_typed FUN_003c9570
@@ -616,7 +616,7 @@ u32 FUN_003a2260(void)
     }
     return 0;
 }
-#define FUN_003a2260(...) ((u32 (*)(...))FUN_003a2260)(__VA_ARGS__)
+#define FUN_003a2260(...) FUN_003a2260(__VA_ARGS__)
 #undef FUN_003a2440
 // FUN_003A2440
 
@@ -656,7 +656,7 @@ u32 FUN_003a2440(void)
     }
     return 0;
 }
-#define FUN_003a2440(...) ((u32 (*)(...))FUN_003a2440)(__VA_ARGS__)
+#define FUN_003a2440(...) FUN_003a2440(__VA_ARGS__)
 #undef FUN_003a2580
 // FUN_003A2580
 
@@ -682,7 +682,7 @@ s8 FUN_003a2580(int param_1)
   return *(u8 *)(iVar1 + 0x34);
 
 }
-#define FUN_003a2580(...) ((s8 (*)(...))FUN_003a2580)(__VA_ARGS__)
+#define FUN_003a2580(...) FUN_003a2580(__VA_ARGS__)
 #undef FUN_003a25f0
 // FUN_003A25F0
 
@@ -710,7 +710,7 @@ void FUN_003a25f0(int param_1,u8 param_2)
   return;
 
 }
-#define FUN_003a25f0(...) ((void (*)(...))FUN_003a25f0)(__VA_ARGS__)
+#define FUN_003a25f0(...) FUN_003a25f0(__VA_ARGS__)
 #undef FUN_003a2660
 // FUN_003A2660
 
@@ -778,7 +778,7 @@ u32 FUN_003a2660(void)
   return uVar2;
 
 }
-#define FUN_003a2660(...) ((u32 (*)(...))FUN_003a2660)(__VA_ARGS__)
+#define FUN_003a2660(...) FUN_003a2660(__VA_ARGS__)
 #undef FUN_003a2750
 // FUN_003A2750
 
@@ -804,7 +804,7 @@ s16 FUN_003a2750(int param_1)
   return *(s16 *)(iVar1 + 0x54);
 
 }
-#define FUN_003a2750(...) ((s16 (*)(...))FUN_003a2750)(__VA_ARGS__)
+#define FUN_003a2750(...) FUN_003a2750(__VA_ARGS__)
 #undef FUN_003a27c0
 // FUN_003A27C0
 
@@ -832,7 +832,7 @@ void FUN_003a27c0(int param_1,u16 param_2)
   return;
 
 }
-#define FUN_003a27c0(...) ((void (*)(...))FUN_003a27c0)(__VA_ARGS__)
+#define FUN_003a27c0(...) FUN_003a27c0(__VA_ARGS__)
 #undef FUN_003a2830
 // FUN_003A2830
 
@@ -858,7 +858,7 @@ s16 FUN_003a2830(int param_1)
   return *(s16 *)(iVar1 + 0x56);
 
 }
-#define FUN_003a2830(...) ((s16 (*)(...))FUN_003a2830)(__VA_ARGS__)
+#define FUN_003a2830(...) FUN_003a2830(__VA_ARGS__)
 #undef FUN_003a28a0
 // FUN_003A28A0
 
@@ -876,7 +876,7 @@ u32 FUN_003a28a0(void)
   FUN_003a3ba0(value,other);
   return 1;
 }
-#define FUN_003a28a0(...) ((u32 (*)(...))FUN_003a28a0)(__VA_ARGS__)
+#define FUN_003a28a0(...) FUN_003a28a0(__VA_ARGS__)
 #undef FUN_003a2900
 // FUN_003A2900
 
@@ -903,7 +903,7 @@ u32 FUN_003a2900(void)
   return 1;
 
 }
-#define FUN_003a2900(...) ((u32 (*)(...))FUN_003a2900)(__VA_ARGS__)
+#define FUN_003a2900(...) FUN_003a2900(__VA_ARGS__)
 #undef FUN_003a2970
 #undef FUN_003a2a30
 // FUN_003A2970
@@ -957,8 +957,8 @@ u32 FUN_003a2970(void)
   return bVar2;
 
 }
-#define FUN_003a2a30(...) ((void (*)(...))FUN_003a2a30)(__VA_ARGS__)
-#define FUN_003a2970(...) ((u32 (*)(...))FUN_003a2970)(__VA_ARGS__)
+#define FUN_003a2a30(...) FUN_003a2a30(__VA_ARGS__)
+#define FUN_003a2970(...) FUN_003a2970(__VA_ARGS__)
 #undef FUN_003a2a30
 // FUN_003A2A30
 
@@ -1018,7 +1018,7 @@ void FUN_003a2a30(s32 param_1)
   return;
 
 }
-#define FUN_003a2a30(...) ((void (*)(...))FUN_003a2a30)(__VA_ARGS__)
+#define FUN_003a2a30(...) FUN_003a2a30(__VA_ARGS__)
 #pragma alias FUN_003a4010_typed FUN_003a4010
 extern void FUN_003a4010_typed(int param_1,int param_2,int param_3,u32 param_4);
 #undef FUN_003a2b30
@@ -1057,7 +1057,7 @@ u32 FUN_003a2b30(void)
   return 1;
 
 }
-#define FUN_003a2b30(...) ((u32 (*)(...))FUN_003a2b30)(__VA_ARGS__)
+#define FUN_003a2b30(...) FUN_003a2b30(__VA_ARGS__)
 #undef FUN_003a4a70
 #undef FUN_003a2c10
 // FUN_003A2C10
@@ -1094,8 +1094,8 @@ u32 FUN_003a2c10(void)
   return 1;
 
 }
-#define FUN_003a4a70(...) ((u32 (*)(...))FUN_003a4a70)(__VA_ARGS__)
-#define FUN_003a2c10(...) ((u32 (*)(...))FUN_003a2c10)(__VA_ARGS__)
+#define FUN_003a4a70(...) FUN_003a4a70(__VA_ARGS__)
+#define FUN_003a2c10(...) FUN_003a2c10(__VA_ARGS__)
 #undef FUN_003a2c90
 // FUN_003A2C90 MATCHING
 
@@ -1135,7 +1135,7 @@ int FUN_003a2c90(int param_1,int param_2)
   }
   return (int)slot;
 }
-#define FUN_003a2c90(...) ((int (*)(...))FUN_003a2c90)(__VA_ARGS__)
+#define FUN_003a2c90(...) FUN_003a2c90(__VA_ARGS__)
 #undef FUN_003a2ef0
 // FUN_003a2d80
 s32 itfMesMngInitialize(BmdHeader* bmdHeader)
@@ -1242,7 +1242,7 @@ u32 FUN_003a2ef0(u32 param_1)
   return uVar2;
 
 }
-#define FUN_003a2ef0(...) ((u32 (*)(...))FUN_003a2ef0)(__VA_ARGS__)
+#define FUN_003a2ef0(...) FUN_003a2ef0(__VA_ARGS__)
 #undef FUN_003a3010
 // FUN_003A3010
 
@@ -1268,7 +1268,7 @@ u32 FUN_003a3010(int param_1)
   return *(u32 *)(param_1 + 0x18);
 
 }
-#define FUN_003a3010(...) ((u32 (*)(...))FUN_003a3010)(__VA_ARGS__)
+#define FUN_003a3010(...) FUN_003a3010(__VA_ARGS__)
 #undef FUN_003a30c0
 // FUN_003a3060
 void itfMesMngDestroyHandle(s32 mesHandleIdx)
@@ -1506,7 +1506,7 @@ asm u32 FUN_003a30c0(s32 param_1,s32 param_2,u16 param_3)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003a30c0(...) ((u32 (*)(...))FUN_003a30c0)(__VA_ARGS__)
+#define FUN_003a30c0(...) FUN_003a30c0(__VA_ARGS__)
 
 
 
@@ -1538,7 +1538,7 @@ void FUN_003a3420(int param_1,s32 param_2)
   return;
 
 }
-#define FUN_003a3420(...) ((void (*)(...))FUN_003a3420)(__VA_ARGS__)
+#define FUN_003a3420(...) FUN_003a3420(__VA_ARGS__)
 #undef FUN_003a6930
 #undef FUN_003a6900
 #undef FUN_003a3470
@@ -1597,9 +1597,9 @@ void FUN_003a3470(u32 *param_1,s32 param_2)
   return;
 
 }
-#define FUN_003a6930(...) ((void (*)(...))FUN_003a6930)(__VA_ARGS__)
-#define FUN_003a6900(...) ((void (*)(...))FUN_003a6900)(__VA_ARGS__)
-#define FUN_003a3470(...) ((void (*)(...))FUN_003a3470)(__VA_ARGS__)
+#define FUN_003a6930(...) FUN_003a6930(__VA_ARGS__)
+#define FUN_003a6900(...) FUN_003a6900(__VA_ARGS__)
+#define FUN_003a3470(...) FUN_003a3470(__VA_ARGS__)
 #undef FUN_003a3530
 // FUN_003A3530
 
@@ -1632,7 +1632,7 @@ void FUN_003a3530(u32 *param_1)
   *param_1 &= 0xfffff3ff;
   *param_1 |= 0x400;
 }
-#define FUN_003a3530(...) ((void (*)(...))FUN_003a3530)(__VA_ARGS__)
+#define FUN_003a3530(...) FUN_003a3530(__VA_ARGS__)
 #undef FUN_003a3680
 // FUN_003A3680
 
@@ -1664,7 +1664,7 @@ void FUN_003a3680(u32 *param_1)
   *param_1 &= 0xfffff3ff;
   *param_1 |= 0x400;
 }
-#define FUN_003a3680(...) ((void (*)(...))FUN_003a3680)(__VA_ARGS__)
+#define FUN_003a3680(...) FUN_003a3680(__VA_ARGS__)
 #undef FUN_003a37c0
 // FUN_003A37C0
 
@@ -1861,7 +1861,7 @@ asm void FUN_003a37c0(int param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a37c0(...) ((void (*)(...))FUN_003a37c0)(__VA_ARGS__)
+#define FUN_003a37c0(...) FUN_003a37c0(__VA_ARGS__)
 #undef FUN_003a3ab0
 // FUN_003A3AB0
 
@@ -1877,7 +1877,7 @@ void FUN_003a3ab0(int param_1)
   return;
 
 }
-#define FUN_003a3ab0(...) ((void (*)(...))FUN_003a3ab0)(__VA_ARGS__)
+#define FUN_003a3ab0(...) FUN_003a3ab0(__VA_ARGS__)
 #undef FUN_003a3b00
 // FUN_003A3B00
 
@@ -1904,7 +1904,7 @@ void FUN_003a3b00(u8 *param_1)
   *(u32 *)param_1 = *(u32 *)param_1 & 0xffffffc7;
   *(u32 *)param_1 = *(u32 *)param_1 & 0xfffbffff;
 }
-#define FUN_003a3b00(...) ((void (*)(...))FUN_003a3b00)(__VA_ARGS__)
+#define FUN_003a3b00(...) FUN_003a3b00(__VA_ARGS__)
 #undef FUN_003a3c10
 // FUN_003a3ba0
 void itfMesMng003a3ba0(s32 mesHandleIdx, u32 param_2)
@@ -1983,7 +1983,7 @@ void FUN_003a3c10(int param_1,int param_2)
   return;
 
 }
-#define FUN_003a3c10(...) ((void (*)(...))FUN_003a3c10)(__VA_ARGS__)
+#define FUN_003a3c10(...) FUN_003a3c10(__VA_ARGS__)
 #undef FUN_003a3ce0
 // FUN_003A3CE0
 
@@ -2025,7 +2025,7 @@ void FUN_003a3ce0(int param_1,int param_2,int param_3)
   return;
 
 }
-#define FUN_003a3ce0(...) ((void (*)(...))FUN_003a3ce0)(__VA_ARGS__)
+#define FUN_003a3ce0(...) FUN_003a3ce0(__VA_ARGS__)
 #undef FUN_003a3f90
 // FUN_003a3da0
 u32 itfMesMng003a3da0(s32 mesHandleIdx)
@@ -2091,7 +2091,7 @@ u32 FUN_003a3f90(int param_1,int param_2)
 
 }
 
-#define FUN_003a3f90(...) ((u32 (*)(...))FUN_003a3f90)(__VA_ARGS__)
+#define FUN_003a3f90(...) FUN_003a3f90(__VA_ARGS__)
 #undef FUN_003a4010
 #pragma alias FUN_003a4220_typed FUN_003a4220
 extern void FUN_003a4220_typed(int param_1,int param_2,u32 param_3);
@@ -2178,7 +2178,7 @@ LAB_003a4164:
     break;
   }
 }
-#define FUN_003a4010(...) ((void (*)(...))FUN_003a4010)(__VA_ARGS__)
+#define FUN_003a4010(...) FUN_003a4010(__VA_ARGS__)
 #undef FUN_003a4220
 // FUN_003A4220
 
@@ -2194,7 +2194,7 @@ void FUN_003a4220(int param_1,u64 param_2,u64 param_3)
   return;
 
 }
-#define FUN_003a4220(...) ((void (*)(...))FUN_003a4220)(__VA_ARGS__)
+#define FUN_003a4220(...) FUN_003a4220(__VA_ARGS__)
 #undef FUN_003a4270
 // FUN_003A4270
 
@@ -2210,7 +2210,7 @@ void FUN_003a4270(int param_1)
   return;
 
 }
-#define FUN_003a4270(...) ((void (*)(...))FUN_003a4270)(__VA_ARGS__)
+#define FUN_003a4270(...) FUN_003a4270(__VA_ARGS__)
 #undef FUN_003a42c0
 // FUN_003A42C0
 
@@ -2264,7 +2264,7 @@ u32 FUN_003a42c0(int param_1,u32 param_2)
   return uVar1;
 
 }
-#define FUN_003a42c0(...) ((u32 (*)(...))FUN_003a42c0)(__VA_ARGS__)
+#define FUN_003a42c0(...) FUN_003a42c0(__VA_ARGS__)
 #undef FUN_003a4360
 /* opt_common_subs off: measured nd 1076 -> 1075, object 1536/1584 -> 1536/1584. */
 #pragma opt_common_subs off
@@ -2675,7 +2675,7 @@ asm u32 FUN_003a4360(u32 param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003a4360(...) ((u64 (*)(...))FUN_003a4360)(__VA_ARGS__)
+#define FUN_003a4360(...) FUN_003a4360(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003a4a70
 // W295: addu orientation fell to container-cast base-first form + load-to-temp compare
@@ -2752,7 +2752,7 @@ u32 FUN_003a4a70(int param_1, int param_2, int param_3)
     found->value = param_3;
     return 1;
 }
-#define FUN_003a4a70(...) ((u32 (*)(...))FUN_003a4a70)(__VA_ARGS__)
+#define FUN_003a4a70(...) FUN_003a4a70(__VA_ARGS__)
 #undef FUN_003a4b90
 // FUN_003A4B90
 
@@ -2822,7 +2822,7 @@ u32 FUN_003a4b90(int param_1,u32 param_2,u32 param_3)
   return uVar4;
 
 }
-#define FUN_003a4b90(...) ((u64 (*)(...))FUN_003a4b90)(__VA_ARGS__)
+#define FUN_003a4b90(...) FUN_003a4b90(__VA_ARGS__)
 #undef FUN_003a4ce0
 // FUN_003A4CE0
 
@@ -2857,7 +2857,7 @@ void FUN_003a4ce0(void)
   return;
 
 }
-#define FUN_003a4ce0(...) ((void (*)(...))FUN_003a4ce0)(__VA_ARGS__)
+#define FUN_003a4ce0(...) FUN_003a4ce0(__VA_ARGS__)
 #undef FUN_003a4dd0
 // FUN_003A4DD0
 
@@ -2894,7 +2894,7 @@ void FUN_003a4dd0(int handleIndex)
   FUN_003b4a20_direct(work, DAT_00959ed0_abs);
   DAT_00959ec0_abs[0]--;
 }
-#define FUN_003a4dd0(...) ((void (*)(...))FUN_003a4dd0)(__VA_ARGS__)
+#define FUN_003a4dd0(...) FUN_003a4dd0(__VA_ARGS__)
 #undef FUN_003a4ef0
 // FUN_003A4EF0
 
@@ -2945,7 +2945,7 @@ void FUN_003a4ef0(u32 *param_1)
     FUN_00191a10(param_1);
   }
 }
-#define FUN_003a4ef0(...) ((void (*)(...))FUN_003a4ef0)(__VA_ARGS__)
+#define FUN_003a4ef0(...) FUN_003a4ef0(__VA_ARGS__)
 #undef FUN_003a5030
 // FUN_003A5030
 void FUN_003a5030(int object)
@@ -2962,7 +2962,7 @@ void FUN_003a5030(int object)
         *(u8*)(object + 0x1c) = 1;
     }
 }
-#define FUN_003a5030(...) ((void (*)(...))FUN_003a5030)(__VA_ARGS__)
+#define FUN_003a5030(...) FUN_003a5030(__VA_ARGS__)
 #undef FUN_003a50e0
 // FUN_003a5090
 u32 itfMesMngCheckBmdMagic(BmdHeader* bmdHeader)
@@ -2997,7 +2997,7 @@ int FUN_003a50e0(int param_1,int param_2)
   index = param_2 * 8;
   return index + base + 0x20;
 }
-#define FUN_003a50e0(...) ((int (*)(...))FUN_003a50e0)(__VA_ARGS__)
+#define FUN_003a50e0(...) FUN_003a50e0(__VA_ARGS__)
 #undef FUN_003a5100
 // FUN_003A5100
 
@@ -3014,7 +3014,7 @@ int FUN_003a5100(int param_1)
   return iVar1 + param_1 + 0x20;
 
 }
-#define FUN_003a5100(...) ((int (*)(...))FUN_003a5100)(__VA_ARGS__)
+#define FUN_003a5100(...) FUN_003a5100(__VA_ARGS__)
 #undef FUN_003a5120
 // FUN_003A5120
 
@@ -3044,7 +3044,7 @@ u32 FUN_003a5120(int param_1,int param_2)
   return *(u32 *)(offset + base + 0x20);
 
 }
-#define FUN_003a5120(...) ((u32 (*)(...))FUN_003a5120)(__VA_ARGS__)
+#define FUN_003a5120(...) FUN_003a5120(__VA_ARGS__)
 #undef FUN_003a51a0
 // FUN_003A51A0
 
@@ -3070,7 +3070,7 @@ u32 FUN_003a51a0(int param_1)
   return *(u32 *)(*(int *)(iVar1 + 4) + 0x18);
 
 }
-#define FUN_003a51a0(...) ((u32 (*)(...))FUN_003a51a0)(__VA_ARGS__)
+#define FUN_003a51a0(...) FUN_003a51a0(__VA_ARGS__)
 #undef FUN_003b0bb0
 #undef FUN_003b0c20
 #undef FUN_003b0ce0
@@ -3104,7 +3104,7 @@ void FUN_003a5210(int param_1,u64 param_2,u8 param_3,u8 param_4,
   return;
 
 }
-#define FUN_003a5210(...) ((void (*)(...))FUN_003a5210)(__VA_ARGS__)
+#define FUN_003a5210(...) FUN_003a5210(__VA_ARGS__)
 #undef FUN_003a52c0
 #undef FUN_003a53b0
 // FUN_003A52C0
@@ -3200,7 +3200,7 @@ FUN_003a53b0_int(int param_1,int param_2,u32 param_3,int param_4,int param_5,
   return uVar3;
 
 }
-#define FUN_003a53b0(...) ((u64 (*)(...))FUN_003a53b0)(__VA_ARGS__)
+#define FUN_003a53b0(...) FUN_003a53b0(__VA_ARGS__)
 #undef FUN_003a5540
 // FUN_003A5540
 
@@ -3210,8 +3210,8 @@ void FUN_003a5540(int p1,int p2,u64 p3,int p4,int p5,int p6,int p7)
 {
   FUN_003a53b0_8(p1,p2,p3,p4,p5,0,p6,p7);
 }
-#define FUN_003a53b0(...) ((u64 (*)(...))FUN_003a53b0)(__VA_ARGS__)
-#define FUN_003a5540(...) ((void (*)(...))FUN_003a5540)(__VA_ARGS__)
+#define FUN_003a53b0(...) FUN_003a53b0(__VA_ARGS__)
+#define FUN_003a5540(...) FUN_003a5540(__VA_ARGS__)
 #undef FUN_003a5570
 #undef FUN_003a53b0
 // W212: correcting the mixed-ABI signature from integer-like u64 slots to
@@ -3261,7 +3261,7 @@ FUN_003a5570(u32 param_1,s32 param_2,f32 param_3,u32 param_4,
   return 0;
 
 }
-#define FUN_003a5570(...) ((u64 (*)(...))FUN_003a5570)(__VA_ARGS__)
+#define FUN_003a5570(...) FUN_003a5570(__VA_ARGS__)
 #undef FUN_003a56f0
 // FUN_003A56F0
 
@@ -3347,7 +3347,7 @@ FUN_003a56f0(u32 param_1,s32 param_2,f32 param_3,u32 param_4,
   return 0;
 
 }
-#define FUN_003a56f0(...) ((u64 (*)(...))FUN_003a56f0)(__VA_ARGS__)
+#define FUN_003a56f0(...) FUN_003a56f0(__VA_ARGS__)
 #undef FUN_003a5940
 // FUN_003A5940
 
@@ -3367,7 +3367,7 @@ u32 FUN_003a5940(int param_1,int param_2)
   }
   return uVar1;
 }
-#define FUN_003a5940(...) ((u32 (*)(...))FUN_003a5940)(__VA_ARGS__)
+#define FUN_003a5940(...) FUN_003a5940(__VA_ARGS__)
 #undef FUN_003a5980
 // W409 addressing/raw-literal fixes: NONMATCHING nd 364 -> 202, object 796/800 -> 800/800.
 // FUN_003A5980
@@ -3577,7 +3577,7 @@ asm void FUN_003a5980(u32 *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003a5980(...) ((void (*)(...))FUN_003a5980)(__VA_ARGS__)
+#define FUN_003a5980(...) FUN_003a5980(__VA_ARGS__)
 #undef FUN_003a5ca0
 /* opt_common_subs off: measured nd 217 -> 55, object 508/512 -> 508/512. */
 #pragma opt_common_subs off
@@ -3721,7 +3721,7 @@ asm void FUN_003a5ca0(u8 *param_1,int param_2,u32 param_3,int param_4)
   .word 0x00000000
 }
 
-#define FUN_003a5ca0(...) ((void (*)(...))FUN_003a5ca0)(__VA_ARGS__)
+#define FUN_003a5ca0(...) FUN_003a5ca0(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003a5ea0
 
@@ -3765,7 +3765,7 @@ void FUN_003a5ea0(int manager, int index, u32 value)
   *object = memory;
   *(u32 *)memory = value;
 }
-#define FUN_003a5ea0(...) ((void (*)(...))FUN_003a5ea0)(__VA_ARGS__)
+#define FUN_003a5ea0(...) FUN_003a5ea0(__VA_ARGS__)
 #undef FUN_003a5fd0
 // FUN_003A5FD0
 
@@ -3789,7 +3789,7 @@ void FUN_003a5fd0(int param_1)
   return;
 
 }
-#define FUN_003a5fd0(...) ((void (*)(...))FUN_003a5fd0)(__VA_ARGS__)
+#define FUN_003a5fd0(...) FUN_003a5fd0(__VA_ARGS__)
 #undef FUN_003a6030
 // FUN_003A6030
 
@@ -3809,7 +3809,7 @@ u32 FUN_003a6030(int param_1)
   uVar4 = *(u32 *)(uVar5 + uVar2 + 0x20);
   return *(u32 *)(uVar4 + uVar1 * 4);
 }
-#define FUN_003a6030(...) ((u32 (*)(...))FUN_003a6030)(__VA_ARGS__)
+#define FUN_003a6030(...) FUN_003a6030(__VA_ARGS__)
 #undef FUN_003a6060
 // FUN_003A6060
 
@@ -3851,7 +3851,7 @@ void FUN_003a6060(u8 *param_1,u64 param_2)
   return;
 
 }
-#define FUN_003a6060(...) ((void (*)(...))FUN_003a6060)(__VA_ARGS__)
+#define FUN_003a6060(...) FUN_003a6060(__VA_ARGS__)
 #undef FUN_003a6100
 // FUN_003A6100
 
@@ -3870,7 +3870,7 @@ int FUN_003a6100(int param_1,u32 param_2)
   }
   return iVar1;
 }
-#define FUN_003a6100(...) ((int (*)(...))FUN_003a6100)(__VA_ARGS__)
+#define FUN_003a6100(...) FUN_003a6100(__VA_ARGS__)
 #undef FUN_003a6140
 #undef FUN_003a6410
 // FUN_003A6140
@@ -3951,8 +3951,8 @@ int thunk_FUN_003a628c(int param_1)
   return FUN_003a628c(param_1);
 }
 #pragma optimization_level 2
-#define FUN_003a6140(...) ((long (*)(...))FUN_003a6140)(__VA_ARGS__)
-#define FUN_003a6410(...) ((void (*)(...))FUN_003a6410)(__VA_ARGS__)
+#define FUN_003a6140(...) FUN_003a6140(__VA_ARGS__)
+#define FUN_003a6410(...) FUN_003a6410(__VA_ARGS__)
 
 /* Fall-through-only branch target for the loop in FUN_003a628c; never returns
  * on its own and has no C equivalent (a normal C function always emits a
@@ -3978,7 +3978,7 @@ asm int FUN_003a628c(int param_1)
   jr $ra
   nop
 }
-#define FUN_003a628c(...) ((int (*)(...))FUN_003a628c)(__VA_ARGS__)
+#define FUN_003a628c(...) FUN_003a628c(__VA_ARGS__)
 #undef FUN_003a62b0
 // FUN_003A62B0
 
@@ -4006,7 +4006,7 @@ void FUN_003a62b0(int param_1,int param_2)
   return;
 
 }
-#define FUN_003a62b0(...) ((void (*)(...))FUN_003a62b0)(__VA_ARGS__)
+#define FUN_003a62b0(...) FUN_003a62b0(__VA_ARGS__)
 #undef FUN_003a62e0
 // FUN_003A62E0
 
@@ -4127,7 +4127,7 @@ void FUN_003a6410(int param_1,u32 param_2)
   return;
 }
 #pragma pop
-#define FUN_003a6410(...) ((void (*)(...))FUN_003a6410)(__VA_ARGS__)
+#define FUN_003a6410(...) FUN_003a6410(__VA_ARGS__)
 #undef FUN_003a6460
 // FUN_003A6460
 
@@ -4158,7 +4158,7 @@ outer_test:
   }
   return iVar3 << 4;
 }
-#define FUN_003a6460(...) ((int (*)(...))FUN_003a6460)(__VA_ARGS__)
+#define FUN_003a6460(...) FUN_003a6460(__VA_ARGS__)
 #undef FUN_003a64c0
 // FUN_003A64C0
 
@@ -4182,7 +4182,7 @@ void FUN_003a64c0(int param_1)
   return;
 
 }
-#define FUN_003a64c0(...) ((void (*)(...))FUN_003a64c0)(__VA_ARGS__)
+#define FUN_003a64c0(...) FUN_003a64c0(__VA_ARGS__)
 #undef FUN_003a6520
 // FUN_003A6520
 
@@ -4336,7 +4336,7 @@ void FUN_003a6520(u32 *param_1)
   return;
 
 }
-#define FUN_003a6520(...) ((void (*)(...))FUN_003a6520)(__VA_ARGS__)
+#define FUN_003a6520(...) FUN_003a6520(__VA_ARGS__)
 #undef FUN_003a67e0
 // FUN_003A67E0
 
@@ -4367,7 +4367,7 @@ void FUN_003a67e0(u32 *param_1)
     *param_1 |= 0x3000;
   }
 }
-#define FUN_003a67e0(...) ((void (*)(...))FUN_003a67e0)(__VA_ARGS__)
+#define FUN_003a67e0(...) FUN_003a67e0(__VA_ARGS__)
 #undef FUN_003a6900
 // FUN_003A6900
 
@@ -4393,7 +4393,7 @@ void FUN_003a6900(u32 *param_1,long param_2)
   return;
 
 }
-#define FUN_003a6900(...) ((void (*)(...))FUN_003a6900)(__VA_ARGS__)
+#define FUN_003a6900(...) FUN_003a6900(__VA_ARGS__)
 #undef FUN_003a6930
 // FUN_003A6930
 
@@ -4437,7 +4437,7 @@ void FUN_003a6930(u32 *param_1,long param_2)
   return;
 
 }
-#define FUN_003a6930(...) ((void (*)(...))FUN_003a6930)(__VA_ARGS__)
+#define FUN_003a6930(...) FUN_003a6930(__VA_ARGS__)
 #undef FUN_003a6980
 // FUN_003A6980
 
@@ -4474,7 +4474,7 @@ void FUN_003a6980(u32 *param_1)
   return;
 
 }
-#define FUN_003a6980(...) ((void (*)(...))FUN_003a6980)(__VA_ARGS__)
+#define FUN_003a6980(...) FUN_003a6980(__VA_ARGS__)
 #undef FUN_003a69d0
 // FUN_003A69D0
 
@@ -4496,7 +4496,7 @@ void FUN_003a69d0(u32 *param_1)
   return;
 
 }
-#define FUN_003a69d0(...) ((void (*)(...))FUN_003a69d0)(__VA_ARGS__)
+#define FUN_003a69d0(...) FUN_003a69d0(__VA_ARGS__)
 #undef FUN_003a6a10
 // FUN_003A6A10
 
@@ -4520,7 +4520,7 @@ void FUN_003a6a10(int param_1)
   return;
 
 }
-#define FUN_003a6a10(...) ((void (*)(...))FUN_003a6a10)(__VA_ARGS__)
+#define FUN_003a6a10(...) FUN_003a6a10(__VA_ARGS__)
 #undef FUN_003a6a40
 // FUN_003A6A40
 
@@ -4552,7 +4552,7 @@ void FUN_003a6a40(u8 *param_1,long param_2)
   return;
 
 }
-#define FUN_003a6a40(...) ((void (*)(...))FUN_003a6a40)(__VA_ARGS__)
+#define FUN_003a6a40(...) FUN_003a6a40(__VA_ARGS__)
 #undef FUN_003a6a80
 // FUN_003A6A80
 
@@ -4635,7 +4635,7 @@ void FUN_003a6b00(u32 *param_1)
   return;
 
 }
-#define FUN_003a6b00(...) ((void (*)(...))FUN_003a6b00)(__VA_ARGS__)
+#define FUN_003a6b00(...) FUN_003a6b00(__VA_ARGS__)
 #undef FUN_003a6b90
 // FUN_003A6B90
 
@@ -4669,7 +4669,7 @@ void FUN_003a6b90(int param_1)
   return;
 
 }
-#define FUN_003a6b90(...) ((void (*)(...))FUN_003a6b90)(__VA_ARGS__)
+#define FUN_003a6b90(...) FUN_003a6b90(__VA_ARGS__)
 #undef FUN_003a6c10
 #pragma push
 /* Removing this loses FUN_003a6c10 (MATCH nd0 -> MISMATCH nd1) - measured W161. */
@@ -4721,7 +4721,7 @@ short * FUN_003a6c10(int param_1,short *param_2)
 
 }
 #pragma pop
-#define FUN_003a6c10(...) ((short * (*)(...))FUN_003a6c10)(__VA_ARGS__)
+#define FUN_003a6c10(...) FUN_003a6c10(__VA_ARGS__)
 #undef FUN_003a6ca0
 // FUN_003A6CA0
 
@@ -4830,7 +4830,7 @@ asm void FUN_003a6ca0(int param_1,int param_2,int param_3)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003a6ca0(...) ((void (*)(...))FUN_003a6ca0)(__VA_ARGS__)
+#define FUN_003a6ca0(...) FUN_003a6ca0(__VA_ARGS__)
 #undef FUN_003a6e30
 // FUN_003A6E30
 
@@ -4957,7 +4957,7 @@ void FUN_003a6e30(u32 *param_1)
   return;
 
 }
-#define FUN_003a6e30(...) ((void (*)(...))FUN_003a6e30)(__VA_ARGS__)
+#define FUN_003a6e30(...) FUN_003a6e30(__VA_ARGS__)
 #undef FUN_003a7120
 /* opt_lifetimes on: measured nd 539 -> 536, object 876/880 -> 876/880. */
 #pragma opt_lifetimes on
@@ -5195,7 +5195,7 @@ asm void FUN_003a7120(u32 *param_1)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a7120(...) ((void (*)(...))FUN_003a7120)(__VA_ARGS__)
+#define FUN_003a7120(...) FUN_003a7120(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #undef FUN_003a7490
 // W415 typed-call census closure: nd 862 -> 857, object 1168/1200 -> 1144/1200.
@@ -5507,7 +5507,7 @@ asm void FUN_003a7490(u32 *param_1)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a7490(...) ((void (*)(...))FUN_003a7490)(__VA_ARGS__)
+#define FUN_003a7490(...) FUN_003a7490(__VA_ARGS__)
 #undef FUN_003a7940
 // FUN_003A7940
 
@@ -5537,7 +5537,7 @@ void FUN_003a7940(int param_1,int param_2)
     }
   }
 }
-#define FUN_003a7940(...) ((void (*)(...))FUN_003a7940)(__VA_ARGS__)
+#define FUN_003a7940(...) FUN_003a7940(__VA_ARGS__)
 #undef FUN_003a7a40
 /* opt_lifetimes on: measured nd 408 -> 407, object 600/624 -> 600/624. */
 #pragma opt_lifetimes on
@@ -5711,7 +5711,7 @@ asm u32 FUN_003a7a40(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a7a40(...) ((u32 (*)(...))FUN_003a7a40)(__VA_ARGS__)
+#define FUN_003a7a40(...) FUN_003a7a40(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #undef FUN_003a7cb0
 #undef FUN_003a6380
@@ -5747,7 +5747,7 @@ void FUN_003a7cb0(int param_1,int param_2)
   *(s16 *)(param_1 + 0x18) = next;
   FUN_0010a4e0(0,0,0,0);
 }
-#define FUN_003a7cb0(...) ((void (*)(...))FUN_003a7cb0)(__VA_ARGS__)
+#define FUN_003a7cb0(...) FUN_003a7cb0(__VA_ARGS__)
 #undef FUN_003a7d60
 #pragma push
 /* Removing this loses FUN_003a7d60 (MATCH nd0 -> MISMATCH nd21) - measured W161. */
@@ -5793,7 +5793,7 @@ s16 FUN_003a7d60(int param_1)
 }
 #pragma pop
 
-#define FUN_003a7d60(...) ((u16 (*)(...))FUN_003a7d60)(__VA_ARGS__)
+#define FUN_003a7d60(...) FUN_003a7d60(__VA_ARGS__)
 #undef FUN_003a7dd0
 // FUN_003A7DD0
 
@@ -5850,7 +5850,7 @@ asm void FUN_003a7dd0(u8 *object)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a7dd0(...) ((void (*)(...))FUN_003a7dd0)(__VA_ARGS__)
+#define FUN_003a7dd0(...) FUN_003a7dd0(__VA_ARGS__)
 #undef FUN_003a7e90
 // FUN_003A7E90
 
@@ -5983,7 +5983,7 @@ asm void FUN_003a7e90(u32 *param_1)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a7e90(...) ((void (*)(...))FUN_003a7e90)(__VA_ARGS__)
+#define FUN_003a7e90(...) FUN_003a7e90(__VA_ARGS__)
 #undef FUN_003a8080
 // FUN_003A8080
 
@@ -6018,7 +6018,7 @@ void FUN_003a8080(u32 *param_1)
     }
   }
 }
-#define FUN_003a8080(...) ((void (*)(...))FUN_003a8080)(__VA_ARGS__)
+#define FUN_003a8080(...) FUN_003a8080(__VA_ARGS__)
 #undef FUN_003a8170
 // FUN_003A8170 MATCHING
 
@@ -6068,7 +6068,7 @@ void FUN_003a8170(int param_1)
   return;
 
 }
-#define FUN_003a8170(...) ((void (*)(...))FUN_003a8170)(__VA_ARGS__)
+#define FUN_003a8170(...) FUN_003a8170(__VA_ARGS__)
 #undef FUN_003a8260
 // FUN_003A8260
 
@@ -6124,7 +6124,7 @@ void FUN_003a8260(int param_1)
   return;
 
 }
-#define FUN_003a8260(...) ((void (*)(...))FUN_003a8260)(__VA_ARGS__)
+#define FUN_003a8260(...) FUN_003a8260(__VA_ARGS__)
 #undef FUN_003a8350
 // FUN_003A8350
 
@@ -6150,7 +6150,7 @@ void FUN_003a8350(int param_1)
 
   FUN_003a8710_u8(iVar2,iVar3,0.0f,(u8)fVar1,0x10);
 }
-#define FUN_003a8350(...) ((void (*)(...))FUN_003a8350)(__VA_ARGS__)
+#define FUN_003a8350(...) FUN_003a8350(__VA_ARGS__)
 #undef FUN_003a8440
 // FUN_003A8440
 u64 FUN_003a8440(void)
@@ -6170,7 +6170,7 @@ u64 FUN_003a8440(void)
   return 0;
 }
 
-#define FUN_003a8440(...) ((u64 (*)(...))FUN_003a8440)(__VA_ARGS__)
+#define FUN_003a8440(...) FUN_003a8440(__VA_ARGS__)
 #undef FUN_003a84c0
 // FUN_003A84C0
 
@@ -6190,7 +6190,7 @@ u64 FUN_003a84c0(void)
     return 0;
 }
 
-#define FUN_003a84c0(...) ((u64 (*)(...))FUN_003a84c0)(__VA_ARGS__)
+#define FUN_003a84c0(...) FUN_003a84c0(__VA_ARGS__)
 #undef FUN_003a8530
 // FUN_003A8530
 
@@ -6209,7 +6209,7 @@ void FUN_003a8530(void)
     *(u32*)DAT_00959ec4_abs = 0;
 }
 
-#define FUN_003a8530(...) ((void (*)(...))FUN_003a8530)(__VA_ARGS__)
+#define FUN_003a8530(...) FUN_003a8530(__VA_ARGS__)
 #undef FUN_003a8590
 // FUN_003A8590
 
@@ -6240,7 +6240,7 @@ void FUN_003a8590(u32* param_1)
   auStack_20[7] = param_1[7];
   return;
 }
-#define FUN_003a8590(...) ((void (*)(...))FUN_003a8590)(__VA_ARGS__)
+#define FUN_003a8590(...) FUN_003a8590(__VA_ARGS__)
 #undef FUN_003a8600
 // FUN_003A8600
 
@@ -6256,7 +6256,7 @@ void FUN_003a8600(int param_1)
   return;
 
 }
-#define FUN_003a8600(...) ((void (*)(...))FUN_003a8600)(__VA_ARGS__)
+#define FUN_003a8600(...) FUN_003a8600(__VA_ARGS__)
 #undef FUN_003a8650
 // FUN_003A8650
 
@@ -6286,7 +6286,7 @@ void FUN_003a8650(int param_1,u64 param_2,u64 param_3,u64 param_4,
   return;
 
 }
-#define FUN_003a8650(...) ((void (*)(...))FUN_003a8650)(__VA_ARGS__)
+#define FUN_003a8650(...) FUN_003a8650(__VA_ARGS__)
 #undef FUN_003a8710
 // FUN_003A8710
 
@@ -6567,82 +6567,82 @@ u64 FUN_003ade60(u64 param_1,int param_2);
 void FUN_003a9ac0(int param_1,int param_2,int param_3,int param_4,int param_5);
 
 /* Region call-cast macros */
-#define FUN_003a87d0(...) ((void (*)(...))FUN_003a87d0)(__VA_ARGS__)
-#define FUN_003a8b00(...) ((u64 (*)(...))FUN_003a8b00)(__VA_ARGS__)
-#define FUN_003a8d60(...) ((void (*)(...))FUN_003a8d60)(__VA_ARGS__)
-#define FUN_003a8dc0(...) ((void (*)(...))FUN_003a8dc0)(__VA_ARGS__)
-#define FUN_003a8ea0(...) ((void (*)(...))FUN_003a8ea0)(__VA_ARGS__)
-#define FUN_003a8fb0(...) ((void (*)(...))FUN_003a8fb0)(__VA_ARGS__)
-#define FUN_003a9080(...) ((void (*)(...))FUN_003a9080)(__VA_ARGS__)
-#define FUN_003a90c0(...) ((void (*)(...))FUN_003a90c0)(__VA_ARGS__)
-#define FUN_003a9140(...) ((u64 (*)(...))FUN_003a9140)(__VA_ARGS__)
-#define FUN_003a9170(...) ((u64 (*)(...))FUN_003a9170)(__VA_ARGS__)
-#define FUN_003a92a0(...) ((u64 (*)(...))FUN_003a92a0)(__VA_ARGS__)
-#define FUN_003a92d0(...) ((u64 (*)(...))FUN_003a92d0)(__VA_ARGS__)
-#define FUN_003a93a0(...) ((u64 (*)(...))FUN_003a93a0)(__VA_ARGS__)
-#define FUN_003a9400(...) ((u64 (*)(...))FUN_003a9400)(__VA_ARGS__)
-#define FUN_003a9470(...) ((u64 (*)(...))FUN_003a9470)(__VA_ARGS__)
-#define FUN_003a94e0(...) ((u64 (*)(...))FUN_003a94e0)(__VA_ARGS__)
-#define FUN_003a9510(...) ((u64 (*)(...))FUN_003a9510)(__VA_ARGS__)
-#define FUN_003a9580(...) ((u64 (*)(...))FUN_003a9580)(__VA_ARGS__)
-#define FUN_003a95f0(...) ((u64 (*)(...))FUN_003a95f0)(__VA_ARGS__)
-#define FUN_003a9630(...) ((u64 (*)(...))FUN_003a9630)(__VA_ARGS__)
-#define FUN_003a9670(...) ((u64 (*)(...))FUN_003a9670)(__VA_ARGS__)
-#define FUN_003a96b0(...) ((u64 (*)(...))FUN_003a96b0)(__VA_ARGS__)
-#define FUN_003a96f0(...) ((void (*)(...))FUN_003a96f0)(__VA_ARGS__)
-#define FUN_003a9780(...) ((void (*)(...))FUN_003a9780)(__VA_ARGS__)
-#define FUN_003a9930(...) ((void (*)(...))FUN_003a9930)(__VA_ARGS__)
-#define FUN_003a9af0(...) ((void (*)(...))FUN_003a9af0)(__VA_ARGS__)
-#define FUN_003a9b80(...) ((void (*)(...))FUN_003a9b80)(__VA_ARGS__)
-#define FUN_003a9c30(...) ((void (*)(...))FUN_003a9c30)(__VA_ARGS__)
-#define FUN_003a9c90(...) ((void (*)(...))FUN_003a9c90)(__VA_ARGS__)
-#define FUN_003a9cf0(...) ((void (*)(...))FUN_003a9cf0)(__VA_ARGS__)
-#define FUN_003a9e20(...) ((void (*)(...))FUN_003a9e20)(__VA_ARGS__)
-#define FUN_003a9ed0(...) ((void (*)(...))FUN_003a9ed0)(__VA_ARGS__)
-#define FUN_003aa000(...) ((void (*)(...))FUN_003aa000)(__VA_ARGS__)
-#define FUN_003aa130(...) ((void (*)(...))FUN_003aa130)(__VA_ARGS__)
-#define FUN_003aa280(...) ((void (*)(...))FUN_003aa280)(__VA_ARGS__)
-#define FUN_003aa2d0(...) ((void (*)(...))FUN_003aa2d0)(__VA_ARGS__)
-#define FUN_003aa370(...) ((void (*)(...))FUN_003aa370)(__VA_ARGS__)
-#define FUN_003aa720(...) ((void (*)(...))FUN_003aa720)(__VA_ARGS__)
-#define FUN_003aaae0(...) ((void (*)(...))FUN_003aaae0)(__VA_ARGS__)
-#define FUN_003ab2a0(...) ((void (*)(...))FUN_003ab2a0)(__VA_ARGS__)
-#define FUN_003ab320(...) ((void (*)(...))FUN_003ab320)(__VA_ARGS__)
-#define FUN_003abb10(...) ((void (*)(...))FUN_003abb10)(__VA_ARGS__)
-#define FUN_003ac240(...) ((void (*)(...))FUN_003ac240)(__VA_ARGS__)
-#define FUN_003ac350(...) ((void (*)(...))FUN_003ac350)(__VA_ARGS__)
-#define FUN_003ac500(...) ((void (*)(...))FUN_003ac500)(__VA_ARGS__)
-#define FUN_003ac590(...) ((void (*)(...))FUN_003ac590)(__VA_ARGS__)
-#define FUN_003ac5a0(...) ((u64 (*)(...))FUN_003ac5a0)(__VA_ARGS__)
-#define FUN_003ac600(...) ((u64 (*)(...))FUN_003ac600)(__VA_ARGS__)
-#define FUN_003ac820(...) ((u64 (*)(...))FUN_003ac820)(__VA_ARGS__)
-#define FUN_003ac890(...) ((u64 (*)(...))FUN_003ac890)(__VA_ARGS__)
-#define FUN_003ac900(...) ((u64 (*)(...))FUN_003ac900)(__VA_ARGS__)
-#define FUN_003aca50(...) ((u64 (*)(...))FUN_003aca50)(__VA_ARGS__)
-#define FUN_003acab0(...) ((u32 (*)(...))FUN_003acab0)(__VA_ARGS__)
-#define FUN_003acbc0(...) ((u64 (*)(...))FUN_003acbc0)(__VA_ARGS__)
-#define FUN_003acda0(...) ((u64 (*)(...))FUN_003acda0)(__VA_ARGS__)
-#define FUN_003ace60(...) ((u64 (*)(...))FUN_003ace60)(__VA_ARGS__)
-#define FUN_003acf80(...) ((u64 (*)(...))FUN_003acf80)(__VA_ARGS__)
-#define FUN_003ad030(...) ((u64 (*)(...))FUN_003ad030)(__VA_ARGS__)
-#define FUN_003ad1b0(...) ((u64 (*)(...))FUN_003ad1b0)(__VA_ARGS__)
-#define FUN_003ad400(...) ((u64 (*)(...))FUN_003ad400)(__VA_ARGS__)
-#define FUN_003ad640(...) ((u64 (*)(...))FUN_003ad640)(__VA_ARGS__)
-#define FUN_003ad740(...) ((u64 (*)(...))FUN_003ad740)(__VA_ARGS__)
-#define FUN_003ad860(...) ((u64 (*)(...))FUN_003ad860)(__VA_ARGS__)
-#define FUN_003ad930(...) ((u64 (*)(...))FUN_003ad930)(__VA_ARGS__)
-#define FUN_003ada00(...) ((u64 (*)(...))FUN_003ada00)(__VA_ARGS__)
-#define FUN_003adb00(...) ((u64 (*)(...))FUN_003adb00)(__VA_ARGS__)
-#define FUN_003adb80(...) ((u64 (*)(...))FUN_003adb80)(__VA_ARGS__)
-#define FUN_003add00(...) ((u64 (*)(...))FUN_003add00)(__VA_ARGS__)
-#define FUN_003add30(...) ((u64 (*)(...))FUN_003add30)(__VA_ARGS__)
-#define FUN_003add40(...) ((u64 (*)(...))FUN_003add40)(__VA_ARGS__)
-#define FUN_003ade70(...) ((u64 (*)(...))FUN_003ade70)(__VA_ARGS__)
-#define FUN_003adf70(...) ((u64 (*)(...))FUN_003adf70)(__VA_ARGS__)
-#define FUN_003ae000(...) ((u64 (*)(...))FUN_003ae000)(__VA_ARGS__)
-#define FUN_003ae160(...) ((u64 (*)(...))FUN_003ae160)(__VA_ARGS__)
-#define FUN_003ae260(...) ((u64 (*)(...))FUN_003ae260)(__VA_ARGS__)
-#define FUN_003ae360(...) ((u64 (*)(...))FUN_003ae360)(__VA_ARGS__)
+#define FUN_003a87d0(...) FUN_003a87d0(__VA_ARGS__)
+#define FUN_003a8b00(...) FUN_003a8b00(__VA_ARGS__)
+#define FUN_003a8d60(...) FUN_003a8d60(__VA_ARGS__)
+#define FUN_003a8dc0(...) FUN_003a8dc0(__VA_ARGS__)
+#define FUN_003a8ea0(...) FUN_003a8ea0(__VA_ARGS__)
+#define FUN_003a8fb0(...) FUN_003a8fb0(__VA_ARGS__)
+#define FUN_003a9080(...) FUN_003a9080(__VA_ARGS__)
+#define FUN_003a90c0(...) FUN_003a90c0(__VA_ARGS__)
+#define FUN_003a9140(...) FUN_003a9140(__VA_ARGS__)
+#define FUN_003a9170(...) FUN_003a9170(__VA_ARGS__)
+#define FUN_003a92a0(...) FUN_003a92a0(__VA_ARGS__)
+#define FUN_003a92d0(...) FUN_003a92d0(__VA_ARGS__)
+#define FUN_003a93a0(...) FUN_003a93a0(__VA_ARGS__)
+#define FUN_003a9400(...) FUN_003a9400(__VA_ARGS__)
+#define FUN_003a9470(...) FUN_003a9470(__VA_ARGS__)
+#define FUN_003a94e0(...) FUN_003a94e0(__VA_ARGS__)
+#define FUN_003a9510(...) FUN_003a9510(__VA_ARGS__)
+#define FUN_003a9580(...) FUN_003a9580(__VA_ARGS__)
+#define FUN_003a95f0(...) FUN_003a95f0(__VA_ARGS__)
+#define FUN_003a9630(...) FUN_003a9630(__VA_ARGS__)
+#define FUN_003a9670(...) FUN_003a9670(__VA_ARGS__)
+#define FUN_003a96b0(...) FUN_003a96b0(__VA_ARGS__)
+#define FUN_003a96f0(...) FUN_003a96f0(__VA_ARGS__)
+#define FUN_003a9780(...) FUN_003a9780(__VA_ARGS__)
+#define FUN_003a9930(...) FUN_003a9930(__VA_ARGS__)
+#define FUN_003a9af0(...) FUN_003a9af0(__VA_ARGS__)
+#define FUN_003a9b80(...) FUN_003a9b80(__VA_ARGS__)
+#define FUN_003a9c30(...) FUN_003a9c30(__VA_ARGS__)
+#define FUN_003a9c90(...) FUN_003a9c90(__VA_ARGS__)
+#define FUN_003a9cf0(...) FUN_003a9cf0(__VA_ARGS__)
+#define FUN_003a9e20(...) FUN_003a9e20(__VA_ARGS__)
+#define FUN_003a9ed0(...) FUN_003a9ed0(__VA_ARGS__)
+#define FUN_003aa000(...) FUN_003aa000(__VA_ARGS__)
+#define FUN_003aa130(...) FUN_003aa130(__VA_ARGS__)
+#define FUN_003aa280(...) FUN_003aa280(__VA_ARGS__)
+#define FUN_003aa2d0(...) FUN_003aa2d0(__VA_ARGS__)
+#define FUN_003aa370(...) FUN_003aa370(__VA_ARGS__)
+#define FUN_003aa720(...) FUN_003aa720(__VA_ARGS__)
+#define FUN_003aaae0(...) FUN_003aaae0(__VA_ARGS__)
+#define FUN_003ab2a0(...) FUN_003ab2a0(__VA_ARGS__)
+#define FUN_003ab320(...) FUN_003ab320(__VA_ARGS__)
+#define FUN_003abb10(...) FUN_003abb10(__VA_ARGS__)
+#define FUN_003ac240(...) FUN_003ac240(__VA_ARGS__)
+#define FUN_003ac350(...) FUN_003ac350(__VA_ARGS__)
+#define FUN_003ac500(...) FUN_003ac500(__VA_ARGS__)
+#define FUN_003ac590(...) FUN_003ac590(__VA_ARGS__)
+#define FUN_003ac5a0(...) FUN_003ac5a0(__VA_ARGS__)
+#define FUN_003ac600(...) FUN_003ac600(__VA_ARGS__)
+#define FUN_003ac820(...) FUN_003ac820(__VA_ARGS__)
+#define FUN_003ac890(...) FUN_003ac890(__VA_ARGS__)
+#define FUN_003ac900(...) FUN_003ac900(__VA_ARGS__)
+#define FUN_003aca50(...) FUN_003aca50(__VA_ARGS__)
+#define FUN_003acab0(...) FUN_003acab0(__VA_ARGS__)
+#define FUN_003acbc0(...) FUN_003acbc0(__VA_ARGS__)
+#define FUN_003acda0(...) FUN_003acda0(__VA_ARGS__)
+#define FUN_003ace60(...) FUN_003ace60(__VA_ARGS__)
+#define FUN_003acf80(...) FUN_003acf80(__VA_ARGS__)
+#define FUN_003ad030(...) FUN_003ad030(__VA_ARGS__)
+#define FUN_003ad1b0(...) FUN_003ad1b0(__VA_ARGS__)
+#define FUN_003ad400(...) FUN_003ad400(__VA_ARGS__)
+#define FUN_003ad640(...) FUN_003ad640(__VA_ARGS__)
+#define FUN_003ad740(...) FUN_003ad740(__VA_ARGS__)
+#define FUN_003ad860(...) FUN_003ad860(__VA_ARGS__)
+#define FUN_003ad930(...) FUN_003ad930(__VA_ARGS__)
+#define FUN_003ada00(...) FUN_003ada00(__VA_ARGS__)
+#define FUN_003adb00(...) FUN_003adb00(__VA_ARGS__)
+#define FUN_003adb80(...) FUN_003adb80(__VA_ARGS__)
+#define FUN_003add00(...) FUN_003add00(__VA_ARGS__)
+#define FUN_003add30(...) FUN_003add30(__VA_ARGS__)
+#define FUN_003add40(...) FUN_003add40(__VA_ARGS__)
+#define FUN_003ade70(...) FUN_003ade70(__VA_ARGS__)
+#define FUN_003adf70(...) FUN_003adf70(__VA_ARGS__)
+#define FUN_003ae000(...) FUN_003ae000(__VA_ARGS__)
+#define FUN_003ae160(...) FUN_003ae160(__VA_ARGS__)
+#define FUN_003ae260(...) FUN_003ae260(__VA_ARGS__)
+#define FUN_003ae360(...) FUN_003ae360(__VA_ARGS__)
 
 #undef FUN_003a87d0
 
@@ -6711,7 +6711,7 @@ void FUN_003a87d0(int param_2,int param_3,float param_1,float *param_4,u32 param
   }
 }
 #pragma opt_loop_invariants off
-#define FUN_003a87d0(...) ((void (*)(...))FUN_003a87d0)(__VA_ARGS__)
+#define FUN_003a87d0(...) FUN_003a87d0(__VA_ARGS__)
 #undef FUN_003a8b00
 
 // FUN_003A8B00
@@ -6811,7 +6811,7 @@ u32 FUN_003a8b00(int param_1,int param_2)
   return uVar1;
 
 }
-#define FUN_003a8b00(...) ((u64 (*)(...))FUN_003a8b00)(__VA_ARGS__)
+#define FUN_003a8b00(...) FUN_003a8b00(__VA_ARGS__)
 #undef FUN_003a8d60
 
 // FUN_003A8D60
@@ -6841,7 +6841,7 @@ void FUN_003a8d60(int param_1)
   return;
 
 }
-#define FUN_003a8d60(...) ((void (*)(...))FUN_003a8d60)(__VA_ARGS__)
+#define FUN_003a8d60(...) FUN_003a8d60(__VA_ARGS__)
 #undef FUN_003a8dc0
 
 // FUN_003A8DC0
@@ -6890,7 +6890,7 @@ void FUN_003a8dc0(int param_1,int param_2,int param_3,int param_4,
   return;
 
 }
-#define FUN_003a8dc0(...) ((void (*)(...))FUN_003a8dc0)(__VA_ARGS__)
+#define FUN_003a8dc0(...) FUN_003a8dc0(__VA_ARGS__)
 #undef FUN_003a8ea0
 
 // FUN_003A8EA0
@@ -6918,7 +6918,7 @@ void FUN_003a8ea0(u8 *param_1,int param_2,int param_3,int param_4,int param_5,in
   }
   return;
 }
-#define FUN_003a8ea0(...) ((void (*)(...))FUN_003a8ea0)(__VA_ARGS__)
+#define FUN_003a8ea0(...) FUN_003a8ea0(__VA_ARGS__)
 #undef FUN_003a8fb0
 
 // FUN_003A8FB0
@@ -6965,7 +6965,7 @@ void FUN_003a8fb0(int param_1,int param_2,int param_3,int param_4,
   return;
 
 }
-#define FUN_003a8fb0(...) ((void (*)(...))FUN_003a8fb0)(__VA_ARGS__)
+#define FUN_003a8fb0(...) FUN_003a8fb0(__VA_ARGS__)
 #undef FUN_003a9080
 
 // FUN_003A9080
@@ -6985,7 +6985,7 @@ void FUN_003a9080(u64 param_1)
 
 }
 
-#define FUN_003a9080(...) ((void (*)(...))FUN_003a9080)(__VA_ARGS__)
+#define FUN_003a9080(...) FUN_003a9080(__VA_ARGS__)
 #undef FUN_003a90c0
 
 // FUN_003A90C0
@@ -7008,7 +7008,7 @@ void FUN_003a90c0(int param_1,u64 param_2)
   return;
 
 }
-#define FUN_003a90c0(...) ((void (*)(...))FUN_003a90c0)(__VA_ARGS__)
+#define FUN_003a90c0(...) FUN_003a90c0(__VA_ARGS__)
 #undef FUN_003a9140
 
 // FUN_003A9140
@@ -7017,7 +7017,7 @@ u64 FUN_003a9140(int param_1)
   FUN_00521408(*(u32 *)(param_1 + 8),0,0x10);
   return 0;
 }
-#define FUN_003a9140(...) ((u64 (*)(...))FUN_003a9140)(__VA_ARGS__)
+#define FUN_003a9140(...) FUN_003a9140(__VA_ARGS__)
 #undef FUN_003a9170
 
 // FUN_003A9170
@@ -7063,7 +7063,7 @@ int FUN_003a9230(int param_1)
 }
 
 
-#define FUN_003a9170(...) ((u64 (*)(...))FUN_003a9170)(__VA_ARGS__)
+#define FUN_003a9170(...) FUN_003a9170(__VA_ARGS__)
 #undef FUN_003a92a0
 
 // FUN_003A92A0
@@ -7072,7 +7072,7 @@ u64 FUN_003a92a0(int param_1)
   FUN_00521408(*(u32 *)(param_1 + 8),0,0x10);
   return 0;
 }
-#define FUN_003a92a0(...) ((u64 (*)(...))FUN_003a92a0)(__VA_ARGS__)
+#define FUN_003a92a0(...) FUN_003a92a0(__VA_ARGS__)
 #undef FUN_003a92d0
 
 // FUN_003A92D0
@@ -7099,7 +7099,7 @@ int FUN_003a92d0(int param_1)
   }
   return 0;
 }
-#define FUN_003a92d0(...) ((u64 (*)(...))FUN_003a92d0)(__VA_ARGS__)
+#define FUN_003a92d0(...) FUN_003a92d0(__VA_ARGS__)
 #undef FUN_003a93a0
 
 // FUN_003A93A0
@@ -7121,7 +7121,7 @@ u64 FUN_003a93a0(int param_1)
   }
   return 0;
 }
-#define FUN_003a93a0(...) ((u64 (*)(...))FUN_003a93a0)(__VA_ARGS__)
+#define FUN_003a93a0(...) FUN_003a93a0(__VA_ARGS__)
 #undef FUN_003a9400
 
 // FUN_003A9400
@@ -7143,7 +7143,7 @@ u64 FUN_003a9400(int param_1)
   }
   return 0;
 }
-#define FUN_003a9400(...) ((u64 (*)(...))FUN_003a9400)(__VA_ARGS__)
+#define FUN_003a9400(...) FUN_003a9400(__VA_ARGS__)
 #undef FUN_003a9470
 
 // FUN_003A9470
@@ -7165,7 +7165,7 @@ u64 FUN_003a9470(int param_1)
   }
   return 0;
 }
-#define FUN_003a9470(...) ((u64 (*)(...))FUN_003a9470)(__VA_ARGS__)
+#define FUN_003a9470(...) FUN_003a9470(__VA_ARGS__)
 #undef FUN_003a94e0
 
 // FUN_003A94E0
@@ -7174,7 +7174,7 @@ u64 FUN_003a94e0(int param_1)
   FUN_00521408(*(u32 *)(param_1 + 8),0,0x10);
   return 0;
 }
-#define FUN_003a94e0(...) ((u64 (*)(...))FUN_003a94e0)(__VA_ARGS__)
+#define FUN_003a94e0(...) FUN_003a94e0(__VA_ARGS__)
 #undef FUN_003a9510
 
 // FUN_003A9510
@@ -7196,7 +7196,7 @@ u64 FUN_003a9510(int param_1)
   }
   return 0;
 }
-#define FUN_003a9510(...) ((u64 (*)(...))FUN_003a9510)(__VA_ARGS__)
+#define FUN_003a9510(...) FUN_003a9510(__VA_ARGS__)
 #undef FUN_003a9580
 
 // FUN_003A9580
@@ -7218,7 +7218,7 @@ u64 FUN_003a9580(int param_1)
   }
   return 0;
 }
-#define FUN_003a9580(...) ((u64 (*)(...))FUN_003a9580)(__VA_ARGS__)
+#define FUN_003a9580(...) FUN_003a9580(__VA_ARGS__)
 #undef FUN_003a95f0
 
 // FUN_003A95F0
@@ -7236,7 +7236,7 @@ int FUN_003a95f0(int param_1)
   }
   return uVar1;
 }
-#define FUN_003a95f0(...) ((u64 (*)(...))FUN_003a95f0)(__VA_ARGS__)
+#define FUN_003a95f0(...) FUN_003a95f0(__VA_ARGS__)
 #undef FUN_003a9630
 
 // FUN_003A9630
@@ -7254,7 +7254,7 @@ int FUN_003a9630(int param_1)
   }
   return uVar1;
 }
-#define FUN_003a9630(...) ((u64 (*)(...))FUN_003a9630)(__VA_ARGS__)
+#define FUN_003a9630(...) FUN_003a9630(__VA_ARGS__)
 #undef FUN_003a9670
 
 // FUN_003A9670
@@ -7272,7 +7272,7 @@ int FUN_003a9670(int param_1)
   }
   return uVar1;
 }
-#define FUN_003a9670(...) ((u64 (*)(...))FUN_003a9670)(__VA_ARGS__)
+#define FUN_003a9670(...) FUN_003a9670(__VA_ARGS__)
 #undef FUN_003a96b0
 
 // FUN_003A96B0
@@ -7290,7 +7290,7 @@ int FUN_003a96b0(int param_1)
   }
   return uVar1;
 }
-#define FUN_003a96b0(...) ((u64 (*)(...))FUN_003a96b0)(__VA_ARGS__)
+#define FUN_003a96b0(...) FUN_003a96b0(__VA_ARGS__)
 #undef FUN_003a96f0
 
 // FUN_003A96F0 MATCHING
@@ -7346,7 +7346,7 @@ void FUN_003a96f0(int *param_1,int param_2,int param_3,int param_4,int param_5)
 
 }
 
-#define FUN_003a96f0(...) ((void (*)(...))FUN_003a96f0)(__VA_ARGS__)
+#define FUN_003a96f0(...) FUN_003a96f0(__VA_ARGS__)
 #undef FUN_003a9780
 
 /* opt_lifetimes on: measured nd 192 -> 171, object 404/432 -> 404/432. */
@@ -7466,7 +7466,7 @@ asm void FUN_003a9780(int *param_1,int param_2,int param_3,int param_4,int param
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a9780(...) ((void (*)(...))FUN_003a9780)(__VA_ARGS__)
+#define FUN_003a9780(...) FUN_003a9780(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #undef FUN_003a9930
 
@@ -7579,7 +7579,7 @@ asm void FUN_003a9930(int *param_1,int param_2,int param_3,int param_4,int param
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003a9930(...) ((void (*)(...))FUN_003a9930)(__VA_ARGS__)
+#define FUN_003a9930(...) FUN_003a9930(__VA_ARGS__)
 #pragma opt_lifetimes reset
 
 // Retail 0x003a9ac0-0x003a9ae4
@@ -7649,7 +7649,7 @@ void FUN_003a9af0(int *param_1,u32 param_2,int param_3,int param_4,u32 param_5)
   return;
 
 }
-#define FUN_003a9af0(...) ((void (*)(...))FUN_003a9af0)(__VA_ARGS__)
+#define FUN_003a9af0(...) FUN_003a9af0(__VA_ARGS__)
 #undef FUN_003a9b80
 
 // FUN_003A9B80
@@ -7683,7 +7683,7 @@ void FUN_003a9b80(int param_1,u64 param_2,int param_3,u64 param_4,int param_5)
   }
   return;
 }
-#define FUN_003a9b80(...) ((void (*)(...))FUN_003a9b80)(__VA_ARGS__)
+#define FUN_003a9b80(...) FUN_003a9b80(__VA_ARGS__)
 
 // FUN_003A9C00
 void FUN_003a9c00(int param_1,int param_2,int param_3,int param_4,int param_5)
@@ -7724,7 +7724,7 @@ void FUN_003a9c30(int param_1,u32 param_2,u32 param_3,u32 param_4,
   return;
 }
 
-#define FUN_003a9c30(...) ((void (*)(...))FUN_003a9c30)(__VA_ARGS__)
+#define FUN_003a9c30(...) FUN_003a9c30(__VA_ARGS__)
 #undef FUN_003a9c90
 
 // FUN_003A9C90
@@ -7752,7 +7752,7 @@ void FUN_003a9c90(int param_1,u32 param_2,u32 param_3,u32 param_4,
   return;
 }
 
-#define FUN_003a9c90(...) ((void (*)(...))FUN_003a9c90)(__VA_ARGS__)
+#define FUN_003a9c90(...) FUN_003a9c90(__VA_ARGS__)
 #undef FUN_003a9cf0
 
 // FUN_003A9CF0
@@ -7771,7 +7771,7 @@ void FUN_003a9cf0(int param_1,int param_2,int param_3,int param_4,
   FUN_003b4a90((int *)(puVar1 + 4),param_2,param_3,param_4,param_5,(int *)FUN_006a1ea0,1);
   FUN_003b4a90((int *)(puVar1 + 8),param_2,param_3,param_4,0x80,(int *)FUN_006a1eb0,2);
 }
-#define FUN_003a9cf0(...) ((void (*)(...))FUN_003a9cf0)(__VA_ARGS__)
+#define FUN_003a9cf0(...) FUN_003a9cf0(__VA_ARGS__)
 
 // Retail 0x003a9d90-0x003a9da4
 // FUN_003A9D90
@@ -7847,7 +7847,7 @@ void FUN_003a9e20(int param_1,u64 param_2)
   return;
 
 }
-#define FUN_003a9e20(...) ((void (*)(...))FUN_003a9e20)(__VA_ARGS__)
+#define FUN_003a9e20(...) FUN_003a9e20(__VA_ARGS__)
 #undef FUN_003a9ed0
 
 // W383 residual: saved-register s2/s3/s4 3-cycle (param1/param2/index); declaration permutation was neutral, first-use index hoist worse, ABI/full-prototype probes neutral or worse.
@@ -7884,7 +7884,7 @@ void FUN_003a9ed0(int param_1,u64 param_2)
   }
   return;
 }
-#define FUN_003a9ed0(...) ((void (*)(...))FUN_003a9ed0)(__VA_ARGS__)
+#define FUN_003a9ed0(...) FUN_003a9ed0(__VA_ARGS__)
 #undef FUN_003aa000
 
 // W383 residual: saved-register s2/s3/s4 3-cycle (param1/param2/index); declaration permutation was neutral, first-use index hoist worse, ABI/full-prototype probes neutral or worse.
@@ -7922,7 +7922,7 @@ void FUN_003aa000(int param_1,u64 param_2)
   }
   return;
 }
-#define FUN_003aa000(...) ((void (*)(...))FUN_003aa000)(__VA_ARGS__)
+#define FUN_003aa000(...) FUN_003aa000(__VA_ARGS__)
 #undef FUN_003aa130
 
 /* opt_loop_invariants on: measured nd 235 -> 216, object 328/336 -> 328/336. */
@@ -7958,7 +7958,7 @@ void FUN_003aa130(int param_1,u64 param_2)
   }
   return;
 }
-#define FUN_003aa130(...) ((void (*)(...))FUN_003aa130)(__VA_ARGS__)
+#define FUN_003aa130(...) FUN_003aa130(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef FUN_003aa280
 
@@ -7987,7 +7987,7 @@ void FUN_003aa280(int param_1,u64 param_2)
   return;
 
 }
-#define FUN_003aa280(...) ((void (*)(...))FUN_003aa280)(__VA_ARGS__)
+#define FUN_003aa280(...) FUN_003aa280(__VA_ARGS__)
 #undef FUN_003aa2d0
 
 // FUN_003AA2D0
@@ -8007,7 +8007,7 @@ void FUN_003aa2d0(int param_1,u64 param_2)
                *(u32 *)(param_1 + 0xc),param_2);
   FUN_003b4ed0(param_2,0,0);
 }
-#define FUN_003aa2d0(...) ((void (*)(...))FUN_003aa2d0)(__VA_ARGS__)
+#define FUN_003aa2d0(...) FUN_003aa2d0(__VA_ARGS__)
 #undef FUN_003aa370
 
 /* opt_dead_assignments off: measured nd 381 -> 378, object 920/944 -> 920/944. */
@@ -8255,7 +8255,7 @@ asm void FUN_003aa370(int param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003aa370(...) ((void (*)(...))FUN_003aa370)(__VA_ARGS__)
+#define FUN_003aa370(...) FUN_003aa370(__VA_ARGS__)
 #pragma opt_dead_assignments reset
 #undef FUN_003aa720
 
@@ -8508,7 +8508,7 @@ asm void FUN_003aa720(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003aa720(...) ((void (*)(...))FUN_003aa720)(__VA_ARGS__)
+#define FUN_003aa720(...) FUN_003aa720(__VA_ARGS__)
 #undef FUN_003aaae0
 
 // FUN_003AAAE0
@@ -8855,7 +8855,7 @@ void FUN_003aaae0(int param_1)
   return;
 
 }
-#define FUN_003aaae0(...) ((void (*)(...))FUN_003aaae0)(__VA_ARGS__)
+#define FUN_003aaae0(...) FUN_003aaae0(__VA_ARGS__)
 #undef FUN_003ab2a0
 
 // FUN_003AB2A0
@@ -8884,7 +8884,7 @@ void FUN_003ab2a0(int param_1,u32 param_2)
   return;
 
 }
-#define FUN_003ab2a0(...) ((void (*)(...))FUN_003ab2a0)(__VA_ARGS__)
+#define FUN_003ab2a0(...) FUN_003ab2a0(__VA_ARGS__)
 #undef FUN_003ab320
 
 // FUN_003AB320
@@ -9403,7 +9403,7 @@ asm void FUN_003ab320(u8 *param_1)
   .word 0x00000000
 }
 
-#define FUN_003ab320(...) ((void (*)(...))FUN_003ab320)(__VA_ARGS__)
+#define FUN_003ab320(...) FUN_003ab320(__VA_ARGS__)
 #undef FUN_003abb10
 
 /* opt_lifetimes on: measured nd 1270 -> 1264, object 1796/1824 -> 1796/1824; opt_dead_assignments off alone: nd 1270 -> 1268, object 1796/1824 -> 1796/1824; stacked: nd 1262, object 1796/1824 (retained). */
@@ -9873,7 +9873,7 @@ asm void FUN_003abb10(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003abb10(...) ((void (*)(...))FUN_003abb10)(__VA_ARGS__)
+#define FUN_003abb10(...) FUN_003abb10(__VA_ARGS__)
 #pragma opt_dead_assignments reset
 #pragma opt_lifetimes reset
 
@@ -9921,7 +9921,7 @@ void FUN_003ac240(int param_1,u64 param_2)
   FUN_003b4ea0(bounds,DAT_006a20e0_abs,(void *)(base + 0x2c),
                *(u32 *)(param_1 + 0xc),0,param_2);
 }
-#define FUN_003ac240(...) ((void (*)(...))FUN_003ac240)(__VA_ARGS__)
+#define FUN_003ac240(...) FUN_003ac240(__VA_ARGS__)
 #undef FUN_003ac350
 
 /* opt_common_subs off: measured nd 316 -> 286, object 428/432 -> 428/432. */
@@ -10041,7 +10041,7 @@ asm void FUN_003ac350(u8 *param_1,u32 param_2)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003ac350(...) ((void (*)(...))FUN_003ac350)(__VA_ARGS__)
+#define FUN_003ac350(...) FUN_003ac350(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003ac500
 
@@ -10083,7 +10083,7 @@ void FUN_003ac500(int param_1,u64 param_2)
   return;
 
 }
-#define FUN_003ac500(...) ((void (*)(...))FUN_003ac500)(__VA_ARGS__)
+#define FUN_003ac500(...) FUN_003ac500(__VA_ARGS__)
 #undef FUN_003ac590
 
 // FUN_003AC590
@@ -10091,7 +10091,7 @@ void FUN_003ac590(void)
 {
   return;
 }
-#define FUN_003ac590(...) ((void (*)(...))FUN_003ac590)(__VA_ARGS__)
+#define FUN_003ac590(...) FUN_003ac590(__VA_ARGS__)
 #undef FUN_003ac5a0
 
 // FUN_003AC5A0
@@ -10112,7 +10112,7 @@ u64 FUN_003ac5a0(int param_1,int param_2)
   *(u8 *)((int)param_2 + 0xd) = bVar3 << 8 | bVar2;
   return 0;
 }
-#define FUN_003ac5a0(...) ((u64 (*)(...))FUN_003ac5a0)(__VA_ARGS__)
+#define FUN_003ac5a0(...) FUN_003ac5a0(__VA_ARGS__)
 #undef FUN_003ac600
 
 // FUN_003AC600
@@ -10245,7 +10245,7 @@ u64 FUN_003ac7c0(int param_1,int param_2)
   *(u8 *)((int)param_2 + 0xe) = bVar3 << 8 | bVar2;
   return 0;
 }
-#define FUN_003ac600(...) ((u64 (*)(...))FUN_003ac600)(__VA_ARGS__)
+#define FUN_003ac600(...) FUN_003ac600(__VA_ARGS__)
 #undef FUN_003ac820
 
 // FUN_003AC820
@@ -10272,7 +10272,7 @@ u64 FUN_003ac820(u64 param_1,u64 param_2)
   return 0;
 
 }
-#define FUN_003ac820(...) ((u64 (*)(...))FUN_003ac820)(__VA_ARGS__)
+#define FUN_003ac820(...) FUN_003ac820(__VA_ARGS__)
 #undef FUN_003ac890
 
 // FUN_003AC890
@@ -10299,7 +10299,7 @@ u64 FUN_003ac890(u64 param_1,u64 param_2)
   return 0;
 
 }
-#define FUN_003ac890(...) ((u64 (*)(...))FUN_003ac890)(__VA_ARGS__)
+#define FUN_003ac890(...) FUN_003ac890(__VA_ARGS__)
 #undef FUN_003ac900
 
 // FUN_003AC900
@@ -10334,7 +10334,7 @@ u64 FUN_003ac900(u64 param_1,int param_2)
   }
   return 0;
 }
-#define FUN_003ac900(...) ((u64 (*)(...))FUN_003ac900)(__VA_ARGS__)
+#define FUN_003ac900(...) FUN_003ac900(__VA_ARGS__)
 
 // Retail 0x003aca30-0x003aca38
 // FUN_003ACA30
@@ -10369,7 +10369,7 @@ u64 FUN_003aca50(u64 param_1,u64 param_2)
   return 0;
 
 }
-#define FUN_003aca50(...) ((u64 (*)(...))FUN_003aca50)(__VA_ARGS__)
+#define FUN_003aca50(...) FUN_003aca50(__VA_ARGS__)
 
 // FUN_003ACA90
 u64 FUN_003aca90(u64 param_1,u64 param_2)
@@ -10427,7 +10427,7 @@ u64 FUN_003acb10(int param_1,int param_2)
   *(u16 *)(param_2 + 0x1e) = bVar3 << 8 | bVar2;
   return 0;
 }
-#define FUN_003acab0(...) ((u32 (*)(...))FUN_003acab0)(__VA_ARGS__)
+#define FUN_003acab0(...) FUN_003acab0(__VA_ARGS__)
 #undef FUN_003acbc0
 
 // FUN_003ACBC0
@@ -10558,7 +10558,7 @@ asm u32 FUN_003acbc0(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003acbc0(...) ((u64 (*)(...))FUN_003acbc0)(__VA_ARGS__)
+#define FUN_003acbc0(...) FUN_003acbc0(__VA_ARGS__)
 #undef FUN_003acda0
 
 // FUN_003ACDA0
@@ -10594,7 +10594,7 @@ u64 FUN_003acda0(u64 param_1,int param_2)
   FUN_0010a2e0(2,2,packed);
   return 0;
 }
-#define FUN_003acda0(...) ((u64 (*)(...))FUN_003acda0)(__VA_ARGS__)
+#define FUN_003acda0(...) FUN_003acda0(__VA_ARGS__)
 #undef FUN_003ace60
 
 // FUN_003ACE60
@@ -10648,7 +10648,7 @@ u64 FUN_003ace60(u64 param_1,int param_2)
   return 0;
 
 }
-#define FUN_003ace60(...) ((u64 (*)(...))FUN_003ace60)(__VA_ARGS__)
+#define FUN_003ace60(...) FUN_003ace60(__VA_ARGS__)
 #undef FUN_003acf80
 
 // FUN_003ACF80
@@ -10682,7 +10682,7 @@ u32 FUN_003acf80(u32 param_1,int param_2)
   FUN_0010a2e0(2,2,packed);
   return 0;
 }
-#define FUN_003acf80(...) ((u64 (*)(...))FUN_003acf80)(__VA_ARGS__)
+#define FUN_003acf80(...) FUN_003acf80(__VA_ARGS__)
 #undef FUN_003ad030
 static inline u32 itfMesAddOffsetFirst(u32 offset, u32 base)
 {
@@ -10734,7 +10734,7 @@ u32 FUN_003ad030(u64 param_1,int param_2)
   FUN_0010a2e0(packed1,2,packed2);
   return 0;
 }
-#define FUN_003ad030(...) ((u64 (*)(...))FUN_003ad030)(__VA_ARGS__)
+#define FUN_003ad030(...) FUN_003ad030(__VA_ARGS__)
 
 // Retail 0x003ad130-0x003ad1ac
 // FUN_003AD130
@@ -10808,7 +10808,7 @@ u32 FUN_003ad1b0(u32 param_1,int param_2)
   }
   return 0;
 }
-#define FUN_003ad1b0(...) ((u64 (*)(...))FUN_003ad1b0)(__VA_ARGS__)
+#define FUN_003ad1b0(...) FUN_003ad1b0(__VA_ARGS__)
 
 // Retail 0x003ad2a0-0x003ad354
 // FUN_003AD2A0
@@ -11041,7 +11041,7 @@ asm u32 FUN_003ad400(u16 param_1,u16 param_2,u64 param_3,u32 param_4)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003ad400(...) ((u64 (*)(...))FUN_003ad400)(__VA_ARGS__)
+#define FUN_003ad400(...) FUN_003ad400(__VA_ARGS__)
 // measured: the fixed message buffer cuts nd157 to nd1; lint: allow S003
 #undef FUN_003ad640
 
@@ -11111,7 +11111,7 @@ u32 FUN_003ad640(u64 param_1,int param_2)
   return 0;
 
 }
-#define FUN_003ad640(...) ((u64 (*)(...))FUN_003ad640)(__VA_ARGS__)
+#define FUN_003ad640(...) FUN_003ad640(__VA_ARGS__)
 #undef FUN_003ad740
 
 // FUN_003AD740
@@ -11193,7 +11193,7 @@ asm u32 FUN_003ad740(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003ad740(...) ((u64 (*)(...))FUN_003ad740)(__VA_ARGS__)
+#define FUN_003ad740(...) FUN_003ad740(__VA_ARGS__)
 #undef FUN_003ad860
 
 // FUN_003AD860
@@ -11267,7 +11267,7 @@ u64 FUN_003ad860(u64 param_1,int param_2)
   return 0;
 
 }
-#define FUN_003ad860(...) ((u64 (*)(...))FUN_003ad860)(__VA_ARGS__)
+#define FUN_003ad860(...) FUN_003ad860(__VA_ARGS__)
 #undef FUN_003ad930
 
 // FUN_003AD930
@@ -11341,7 +11341,7 @@ u64 FUN_003ad930(u64 param_1,int param_2)
   return 0;
 
 }
-#define FUN_003ad930(...) ((u64 (*)(...))FUN_003ad930)(__VA_ARGS__)
+#define FUN_003ad930(...) FUN_003ad930(__VA_ARGS__)
 #undef FUN_003ada00
 
 
@@ -11418,7 +11418,7 @@ asm u32 FUN_003ada00(u64 param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003ada00(...) ((u64 (*)(...))FUN_003ada00)(__VA_ARGS__)
+#define FUN_003ada00(...) FUN_003ada00(__VA_ARGS__)
 #undef FUN_003adb00
 
 // FUN_003ADB00
@@ -11447,7 +11447,7 @@ u64 FUN_003adb00(u64 param_1,int param_2)
   return 0;
 }
 
-#define FUN_003adb00(...) ((u64 (*)(...))FUN_003adb00)(__VA_ARGS__)
+#define FUN_003adb00(...) FUN_003adb00(__VA_ARGS__)
 #undef FUN_003adb80
 
 // FUN_003ADB80
@@ -11554,7 +11554,7 @@ asm u32 FUN_003adb80(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003adb80(...) ((u64 (*)(...))FUN_003adb80)(__VA_ARGS__)
+#define FUN_003adb80(...) FUN_003adb80(__VA_ARGS__)
 #undef FUN_003add00
 
 // FUN_003ADD00
@@ -11563,7 +11563,7 @@ u64 FUN_003add00(void)
   FUN_003cf520();
   return 0;
 }
-#define FUN_003add00(...) ((u64 (*)(...))FUN_003add00)(__VA_ARGS__)
+#define FUN_003add00(...) FUN_003add00(__VA_ARGS__)
 #undef FUN_003add30
 
 // FUN_003ADD30
@@ -11571,7 +11571,7 @@ u64 FUN_003add30(void)
 {
   return 0;
 }
-#define FUN_003add30(...) ((u64 (*)(...))FUN_003add30)(__VA_ARGS__)
+#define FUN_003add30(...) FUN_003add30(__VA_ARGS__)
 #undef FUN_003add40
 
 // FUN_003ADD40
@@ -11654,7 +11654,7 @@ asm u32 FUN_003add40(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003add40(...) ((u64 (*)(...))FUN_003add40)(__VA_ARGS__)
+#define FUN_003add40(...) FUN_003add40(__VA_ARGS__)
 
 // Retail 0x003ade60-0x003ade68
 // FUN_003ADE60
@@ -11767,7 +11767,7 @@ u64 FUN_003adf70(u64 param_1,int param_2)
   return 0;
 
 }
-#define FUN_003adf70(...) ((u64 (*)(...))FUN_003adf70)(__VA_ARGS__)
+#define FUN_003adf70(...) FUN_003adf70(__VA_ARGS__)
 #undef FUN_003ae000
 
 #pragma alias itfPanelSelectThresholdTableValue FUN_003ae000
@@ -11845,7 +11845,7 @@ u64 itfPanelSelectThresholdTableValue(u64 unused,int context)
   return 0;
 
 }
-#define FUN_003ae000(...) ((u64 (*)(...))FUN_003ae000)(__VA_ARGS__)
+#define FUN_003ae000(...) FUN_003ae000(__VA_ARGS__)
 
 // Retail 0x003ae140-0x003ae148
 // FUN_003AE140
@@ -11935,7 +11935,7 @@ asm u32 FUN_003ae160(u64 param_1,u8 *param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003ae160(...) ((u64 (*)(...))FUN_003ae160)(__VA_ARGS__)
+#define FUN_003ae160(...) FUN_003ae160(__VA_ARGS__)
 #undef FUN_003ae260
 
 // W383 residual: a2/a3/v1 three-role color cycle (first index/second index/counter); declaration permutation was neutral, counter-before-pointer was worse, and the full 2-int prototype was neutral.
@@ -12011,7 +12011,7 @@ asm u32 FUN_003ae260(u64 param_1,u8 *param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003ae260(...) ((u64 (*)(...))FUN_003ae260)(__VA_ARGS__)
+#define FUN_003ae260(...) FUN_003ae260(__VA_ARGS__)
 #undef FUN_003ae360
 
 // FUN_003AE360
@@ -12082,5 +12082,5 @@ u64 FUN_003ae360(u64 param_1,int param_2)
   return 0;
 
 }
-#define FUN_003ae360(...) ((u64 (*)(...))FUN_003ae360)(__VA_ARGS__)
+#define FUN_003ae360(...) FUN_003ae360(__VA_ARGS__)
 

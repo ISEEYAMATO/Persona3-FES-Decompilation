@@ -107,21 +107,21 @@ u32 FUN_003912f0(u32 param_1,u32 param_2);
 
 
 /* Region call-cast macros */
-#define FUN_0038dad0(...) ((void (*)(...))FUN_0038dad0)(__VA_ARGS__)
-#define FUN_0038e660(...) ((void (*)(...))FUN_0038e660)(__VA_ARGS__)
-#define FUN_0038e860(...) ((u32 (*)(...))FUN_0038e860)(__VA_ARGS__)
-#define FUN_0038f0f0(...) ((void (*)(...))FUN_0038f0f0)(__VA_ARGS__)
-#define FUN_0038f440(...) ((void (*)(...))FUN_0038f440)(__VA_ARGS__)
-#define FUN_0038f8c0(...) ((void (*)(...))FUN_0038f8c0)(__VA_ARGS__)
-#define FUN_0038fa10(...) ((void (*)(...))FUN_0038fa10)(__VA_ARGS__)
-#define FUN_0038ffb0(...) ((void (*)(...))FUN_0038ffb0)(__VA_ARGS__)
-#define FUN_003902c0(...) ((void (*)(...))FUN_003902c0)(__VA_ARGS__)
-#define FUN_003905f0(...) ((void (*)(...))FUN_003905f0)(__VA_ARGS__)
-#define FUN_00390920(...) ((void (*)(...))FUN_00390920)(__VA_ARGS__)
-#define FUN_00390c90(...) ((void (*)(...))FUN_00390c90)(__VA_ARGS__)
-#define FUN_00390ef0(...) ((void (*)(...))FUN_00390ef0)(__VA_ARGS__)
-#define FUN_00391080(...) ((void (*)(...))FUN_00391080)(__VA_ARGS__)
-#define FUN_003912f0(...) ((u32 (*)(...))FUN_003912f0)(__VA_ARGS__)
+#define FUN_0038dad0(...) FUN_0038dad0(__VA_ARGS__)
+#define FUN_0038e660(...) FUN_0038e660(__VA_ARGS__)
+#define FUN_0038e860(...) FUN_0038e860(__VA_ARGS__)
+#define FUN_0038f0f0(...) FUN_0038f0f0(__VA_ARGS__)
+#define FUN_0038f440(...) FUN_0038f440(__VA_ARGS__)
+#define FUN_0038f8c0(...) FUN_0038f8c0(__VA_ARGS__)
+#define FUN_0038fa10(...) FUN_0038fa10(__VA_ARGS__)
+#define FUN_0038ffb0(...) FUN_0038ffb0(__VA_ARGS__)
+#define FUN_003902c0(...) FUN_003902c0(__VA_ARGS__)
+#define FUN_003905f0(...) FUN_003905f0(__VA_ARGS__)
+#define FUN_00390920(...) FUN_00390920(__VA_ARGS__)
+#define FUN_00390c90(...) FUN_00390c90(__VA_ARGS__)
+#define FUN_00390ef0(...) FUN_00390ef0(__VA_ARGS__)
+#define FUN_00391080(...) FUN_00391080(__VA_ARGS__)
+#define FUN_003912f0(...) FUN_003912f0(__VA_ARGS__)
 
 #undef FUN_0038dad0
 /* Measured W389: opt_lifetimes on, with/without nd 2054/1934, object 2948/2948 (window 2960). */
@@ -878,7 +878,7 @@ asm void FUN_0038dad0(u32 param_1,int param_2,int param_3)
 #pragma opt_lifetimes reset
 
 
-#define FUN_0038dad0(...) ((void (*)(...))FUN_0038dad0)(__VA_ARGS__)
+#define FUN_0038dad0(...) FUN_0038dad0(__VA_ARGS__)
 #undef FUN_0038e660
 // A direct typed f32 source/destination indexing attempt regressed nd13 -> nd179
 // and size 504 -> 500, so it was reverted. The seven-word residual is confined
@@ -1023,7 +1023,7 @@ asm void FUN_0038e660(int param_1,int param_2,int param_3)
 }
 
 
-#define FUN_0038e660(...) ((void (*)(...))FUN_0038e660)(__VA_ARGS__)
+#define FUN_0038e660(...) FUN_0038e660(__VA_ARGS__)
 #undef FUN_0038e860
 /* Measured W389: opt_loop_invariants on + opt_lifetimes on, with/without nd 1424/1414, object 2132/2132 (window 2192). */
 /* W417: moving 0x6a0bb0/0x6a0ba0 before their loops lowered nd1414 -> 1391; object 2132B unchanged (window 2192B). */
@@ -1590,7 +1590,7 @@ asm u32 FUN_0038e860(u32 param_1,u32 param_2)
 #pragma opt_loop_invariants reset
 
 
-#define FUN_0038e860(...) ((u32 (*)(...))FUN_0038e860)(__VA_ARGS__)
+#define FUN_0038e860(...) FUN_0038e860(__VA_ARGS__)
 #undef FUN_0038f0f0
 /* Measured W389: opt_lifetimes on, with/without nd 499/98, object 848/840 (window 848). */
 /* W417: typed DAT aliases, ordered byte loads, and puVar13/puVar14 declaration order lowered nd98 -> 42; object 840B unchanged (window 848B). */
@@ -1820,7 +1820,7 @@ asm void FUN_0038f0f0(u32 param_1)
 #pragma opt_lifetimes reset
 
 
-#define FUN_0038f0f0(...) ((void (*)(...))FUN_0038f0f0)(__VA_ARGS__)
+#define FUN_0038f0f0(...) FUN_0038f0f0(__VA_ARGS__)
 #undef FUN_0038f440
 // FUN_0038F440
 /* W417 declaration/type/use-order probes stayed nd107; u32* param_1 worsened nd107 -> 176 and nested switch exceeded the window; reverted. */
@@ -2120,7 +2120,7 @@ asm void FUN_0038f440(u8 *param_1,void *param_2,int param_3)
 }
 
 
-#define FUN_0038f440(...) ((void (*)(...))FUN_0038f440)(__VA_ARGS__)
+#define FUN_0038f440(...) FUN_0038f440(__VA_ARGS__)
 
 #undef FUN_0038f8c0
 // FUN_0038F8C0
@@ -2176,7 +2176,7 @@ start:
 }
 
 
-#define FUN_0038f8c0(...) ((void (*)(...))FUN_0038f8c0)(__VA_ARGS__)
+#define FUN_0038f8c0(...) FUN_0038f8c0(__VA_ARGS__)
 #undef FUN_0038fa10
 /* Measured W327: opt_loop_invariants on, with/without nd 721/726, object 1436/1440. */
 #pragma opt_loop_invariants on
@@ -2549,7 +2549,7 @@ asm void FUN_0038fa10(int param_1,u32 param_2)
 }
 
 
-#define FUN_0038fa10(...) ((void (*)(...))FUN_0038fa10)(__VA_ARGS__)
+#define FUN_0038fa10(...) FUN_0038fa10(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef FUN_0038ffb0
 /* Measured W327: opt_common_subs off, with/without nd 399/420, object 740/784. */
@@ -2763,7 +2763,7 @@ asm void FUN_0038ffb0(int param_1,u64 param_2)
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 
-#define FUN_0038ffb0(...) ((void (*)(...))FUN_0038ffb0)(__VA_ARGS__)
+#define FUN_0038ffb0(...) FUN_0038ffb0(__VA_ARGS__)
 #undef FUN_003902c0
  
 /* Measured W389: opt_loop_invariants on + opt_propagation off, with/without nd 586/518, object 776/784 (window 816). */
@@ -2984,7 +2984,7 @@ asm void FUN_003902c0(int param_1,int param_2)
 #pragma pop
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
-#define FUN_003902c0(...) ((void (*)(...))FUN_003902c0)(__VA_ARGS__)
+#define FUN_003902c0(...) FUN_003902c0(__VA_ARGS__)
 #undef FUN_003905f0
 // FUN_003905F0
 
@@ -3197,7 +3197,7 @@ asm void FUN_003905f0(int param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003905f0(...) ((void (*)(...))FUN_003905f0)(__VA_ARGS__)
+#define FUN_003905f0(...) FUN_003905f0(__VA_ARGS__)
 #undef FUN_00390920
 #pragma push
 /* Removing this worsens FUN_00390920 (nd373 -> nd467) - measured W161. */
@@ -3432,7 +3432,7 @@ asm void FUN_00390920(int param_1,int param_2)
 }
 #pragma opt_common_subs on
 #pragma pop
-#define FUN_00390920(...) ((void (*)(...))FUN_00390920)(__VA_ARGS__)
+#define FUN_00390920(...) FUN_00390920(__VA_ARGS__)
 #undef FUN_00390c90
 // FUN_00390C90
 
@@ -3594,7 +3594,7 @@ asm void FUN_00390c90(int param_1,int param_2)
   .word 0x00000000
 }
 #pragma schedule reset
-#define FUN_00390c90(...) ((void (*)(...))FUN_00390c90)(__VA_ARGS__)
+#define FUN_00390c90(...) FUN_00390c90(__VA_ARGS__)
 #undef FUN_00390ef0
 // FUN_00390EF0
 
@@ -3657,7 +3657,7 @@ void FUN_00390ef0(int param_1,int param_2)
   }
   return;
 }
-#define FUN_00390ef0(...) ((void (*)(...))FUN_00390ef0)(__VA_ARGS__)
+#define FUN_00390ef0(...) FUN_00390ef0(__VA_ARGS__)
 #undef FUN_00391080
 #undef FUN_00390ef0
 /* Measured W389: opt_lifetimes on, with/without nd 59/33, object 616/616 (window 624). */
@@ -3827,7 +3827,7 @@ LAB_00391290:
 }
 #pragma pop
 #pragma opt_lifetimes reset
-#define FUN_00391080(...) ((void (*)(...))FUN_00391080)(__VA_ARGS__)
+#define FUN_00391080(...) FUN_00391080(__VA_ARGS__)
 #undef FUN_003912f0
 #undef FUN_0038dad0
 #undef FUN_0038e660
@@ -6629,7 +6629,7 @@ asm u32 FUN_003912f0(u32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003912f0(...) ((u32 (*)(...))FUN_003912f0)(__VA_ARGS__)
+#define FUN_003912f0(...) FUN_003912f0(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 
 
@@ -6696,18 +6696,18 @@ void FUN_00395000(int param_1,int param_2,u8 *param_3,u8 *param_4,u8 *param_5,u8
 
 
 /* Region call-cast macros */
-#define FUN_00393e30(...) ((void (*)(...))FUN_00393e30)(__VA_ARGS__)
-#define FUN_00393f30(...) ((void (*)(...))FUN_00393f30)(__VA_ARGS__)
-#define FUN_00394040(...) ((float (*)(...))FUN_00394040)(__VA_ARGS__)
-#define FUN_00394070(...) ((void (*)(...))FUN_00394070)(__VA_ARGS__)
-#define FUN_00394270(...) ((int (*)(...))FUN_00394270)(__VA_ARGS__)
-#define FUN_003942f0(...) ((u64 (*)(...))FUN_003942f0)(__VA_ARGS__)
-#define FUN_00394c30(...) ((void (*)(...))FUN_00394c30)(__VA_ARGS__)
-#define FUN_00394ce0(...) ((u32 (*)(...))FUN_00394ce0)(__VA_ARGS__)
-#define FUN_00394d60(...) ((u32 (*)(...))FUN_00394d60)(__VA_ARGS__)
-#define FUN_00394df0(...) ((u32 (*)(...))FUN_00394df0)(__VA_ARGS__)
-#define FUN_00394e70(...) ((void (*)(...))FUN_00394e70)(__VA_ARGS__)
-#define FUN_00395000(...) ((void (*)(...))FUN_00395000)(__VA_ARGS__)
+#define FUN_00393e30(...) FUN_00393e30(__VA_ARGS__)
+#define FUN_00393f30(...) FUN_00393f30(__VA_ARGS__)
+#define FUN_00394040(...) FUN_00394040(__VA_ARGS__)
+#define FUN_00394070(...) FUN_00394070(__VA_ARGS__)
+#define FUN_00394270(...) FUN_00394270(__VA_ARGS__)
+#define FUN_003942f0(...) FUN_003942f0(__VA_ARGS__)
+#define FUN_00394c30(...) FUN_00394c30(__VA_ARGS__)
+#define FUN_00394ce0(...) FUN_00394ce0(__VA_ARGS__)
+#define FUN_00394d60(...) FUN_00394d60(__VA_ARGS__)
+#define FUN_00394df0(...) FUN_00394df0(__VA_ARGS__)
+#define FUN_00394e70(...) FUN_00394e70(__VA_ARGS__)
+#define FUN_00395000(...) FUN_00395000(__VA_ARGS__)
 
 #undef FUN_00393e30
 // FUN_00393E30
@@ -6743,7 +6743,7 @@ void FUN_00393e30(u8 *param_1,u8 *param_2,u8 *param_3,u8 *param_4,u32 param_5,u3
 
 
 }
-#define FUN_00393e30(...) ((void (*)(...))FUN_00393e30)(__VA_ARGS__)
+#define FUN_00393e30(...) FUN_00393e30(__VA_ARGS__)
 #undef FUN_00393f30
 #pragma push
 /* Removing this loses FUN_00393f30 (MATCH nd0 -> MISMATCH nd25) - measured W161. */
@@ -6785,7 +6785,7 @@ void FUN_00393f30(u8 *param_1,u32 param_2)
 }
 #pragma opt_loop_invariants off
 #pragma pop
-#define FUN_00393f30(...) ((void (*)(...))FUN_00393f30)(__VA_ARGS__)
+#define FUN_00393f30(...) FUN_00393f30(__VA_ARGS__)
 #undef FUN_00394040
 // FUN_00394040 MATCHING
 
@@ -6802,28 +6802,28 @@ float FUN_00394040(float param_1,float param_2,float param_3,long param_4)
   return param_2;
 
 }
-#define FUN_00394040(...) ((float (*)(...))FUN_00394040)(__VA_ARGS__)
+#define FUN_00394040(...) FUN_00394040(__VA_ARGS__)
 #pragma push
 /* Removing this worsens FUN_00394070 (nd25 -> nd245) - measured W161. */
 #pragma opt_loop_invariants on
 #undef FUN_00394070
-#define FUN_00394070(...) ((void (*)(...))FUN_00394070)(__VA_ARGS__)
+#define FUN_00394070(...) FUN_00394070(__VA_ARGS__)
 #undef FUN_00394270
-#define FUN_00394270(...) ((int (*)(...))FUN_00394270)(__VA_ARGS__)
+#define FUN_00394270(...) FUN_00394270(__VA_ARGS__)
 #undef FUN_003942f0
 // Dispatch handlers are reconstructed; the final animation-state path still needs byte-level tuning.
-#define FUN_003942f0(...) ((u64 (*)(...))FUN_003942f0)(__VA_ARGS__)
+#define FUN_003942f0(...) FUN_003942f0(__VA_ARGS__)
 #undef FUN_00394c30
-#define FUN_00394c30(...) ((void (*)(...))FUN_00394c30)(__VA_ARGS__)
+#define FUN_00394c30(...) FUN_00394c30(__VA_ARGS__)
 #undef FUN_00394ce0
-#define FUN_00394ce0(...) ((u32 (*)(...))FUN_00394ce0)(__VA_ARGS__)
+#define FUN_00394ce0(...) FUN_00394ce0(__VA_ARGS__)
 #undef FUN_00394d60
-#define FUN_00394d60(...) ((u32 (*)(...))FUN_00394d60)(__VA_ARGS__)
+#define FUN_00394d60(...) FUN_00394d60(__VA_ARGS__)
 #undef FUN_00394df0
-#define FUN_00394df0(...) ((u32 (*)(...))FUN_00394df0)(__VA_ARGS__)
+#define FUN_00394df0(...) FUN_00394df0(__VA_ARGS__)
 #undef FUN_00394e70
-#define FUN_00394e70(...) ((void (*)(...))FUN_00394e70)(__VA_ARGS__)
+#define FUN_00394e70(...) FUN_00394e70(__VA_ARGS__)
 #undef FUN_00395000
-#define FUN_00395000(...) ((void (*)(...))FUN_00395000)(__VA_ARGS__)
+#define FUN_00395000(...) FUN_00395000(__VA_ARGS__)
 
 #pragma pop

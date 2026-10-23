@@ -119,29 +119,29 @@ void FUN_003af770(u64 param_1,u64 param_2);
 void FUN_003af7a0(int param_1,u64 param_2);
 
 /* Region call-cast macros */
-#define FUN_003ae420(...) ((u64 (*)(...))FUN_003ae420)(__VA_ARGS__)
-#define FUN_003ae560(...) ((u64 (*)(...))FUN_003ae560)(__VA_ARGS__)
-#define FUN_003ae650(...) ((u64 (*)(...))FUN_003ae650)(__VA_ARGS__)
-#define FUN_003ae750(...) ((u64 (*)(...))FUN_003ae750)(__VA_ARGS__)
-#define FUN_003ae870(...) ((u64 (*)(...))FUN_003ae870)(__VA_ARGS__)
-#define FUN_003ae8d0(...) ((u64 (*)(...))FUN_003ae8d0)(__VA_ARGS__)
-#define FUN_003ae930(...) ((u64 (*)(...))FUN_003ae930)(__VA_ARGS__)
-#define FUN_003ae970(...) ((u64 (*)(...))FUN_003ae970)(__VA_ARGS__)
-#define FUN_003ae9b0(...) ((u64 (*)(...))FUN_003ae9b0)(__VA_ARGS__)
-#define FUN_003aea50(...) ((u64 (*)(...))FUN_003aea50)(__VA_ARGS__)
-#define FUN_003aec20(...) ((u64 (*)(...))FUN_003aec20)(__VA_ARGS__)
-#define FUN_003aed10(...) ((u64 (*)(...))FUN_003aed10)(__VA_ARGS__)
-#define FUN_003aee20(...) ((u64 (*)(...))FUN_003aee20)(__VA_ARGS__)
-#define FUN_003af110(...) ((u64 (*)(...))FUN_003af110)(__VA_ARGS__)
-#define FUN_003af360(...) ((u32 (*)(...))FUN_003af360)(__VA_ARGS__)
-#define FUN_003af370(...) ((u32 (*)(...))FUN_003af370)(__VA_ARGS__)
-#define FUN_003af380(...) ((u32 (*)(...))FUN_003af380)(__VA_ARGS__)
-#define FUN_003af390(...) ((u32 (*)(...))FUN_003af390)(__VA_ARGS__)
-#define FUN_003af520(...) ((u64 (*)(...))FUN_003af520)(__VA_ARGS__)
-#define FUN_003af560(...) ((u64 (*)(...))FUN_003af560)(__VA_ARGS__)
-#define FUN_003af660(...) ((u64 (*)(...))FUN_003af660)(__VA_ARGS__)
-#define FUN_003af770(...) ((void (*)(...))FUN_003af770)(__VA_ARGS__)
-#define FUN_003af7a0(...) ((void (*)(...))FUN_003af7a0)(__VA_ARGS__)
+#define FUN_003ae420(...) FUN_003ae420(__VA_ARGS__)
+#define FUN_003ae560(...) FUN_003ae560(__VA_ARGS__)
+#define FUN_003ae650(...) FUN_003ae650(__VA_ARGS__)
+#define FUN_003ae750(...) FUN_003ae750(__VA_ARGS__)
+#define FUN_003ae870(...) FUN_003ae870(__VA_ARGS__)
+#define FUN_003ae8d0(...) FUN_003ae8d0(__VA_ARGS__)
+#define FUN_003ae930(...) FUN_003ae930(__VA_ARGS__)
+#define FUN_003ae970(...) FUN_003ae970(__VA_ARGS__)
+#define FUN_003ae9b0(...) FUN_003ae9b0(__VA_ARGS__)
+#define FUN_003aea50(...) FUN_003aea50(__VA_ARGS__)
+#define FUN_003aec20(...) FUN_003aec20(__VA_ARGS__)
+#define FUN_003aed10(...) FUN_003aed10(__VA_ARGS__)
+#define FUN_003aee20(...) FUN_003aee20(__VA_ARGS__)
+#define FUN_003af110(...) FUN_003af110(__VA_ARGS__)
+#define FUN_003af360(...) FUN_003af360(__VA_ARGS__)
+#define FUN_003af370(...) FUN_003af370(__VA_ARGS__)
+#define FUN_003af380(...) FUN_003af380(__VA_ARGS__)
+#define FUN_003af390(...) FUN_003af390(__VA_ARGS__)
+#define FUN_003af520(...) FUN_003af520(__VA_ARGS__)
+#define FUN_003af560(...) FUN_003af560(__VA_ARGS__)
+#define FUN_003af660(...) FUN_003af660(__VA_ARGS__)
+#define FUN_003af770(...) FUN_003af770(__VA_ARGS__)
+#define FUN_003af7a0(...) FUN_003af7a0(__VA_ARGS__)
 
  
 #undef FUN_003ae420
@@ -195,7 +195,7 @@ second_done:
   FUN_0017c7f0(first, (s16)second);
   return 0;
 }
-#define FUN_003ae420(...) ((u64 (*)(...))FUN_003ae420)(__VA_ARGS__)
+#define FUN_003ae420(...) FUN_003ae420(__VA_ARGS__)
 #undef FUN_003ae560
 // FUN_003AE560
 
@@ -232,7 +232,7 @@ u64 FUN_003ae560(u64 param_1,int param_2)
   FUN_003b2020(*table,param_2);
   return 0;
 }
-#define FUN_003ae560(...) ((u64 (*)(...))FUN_003ae560)(__VA_ARGS__)
+#define FUN_003ae560(...) FUN_003ae560(__VA_ARGS__)
 #undef FUN_003ae650
 /* W389 pragma pair: opt_loop_invariants on + opt_lifetimes on; without nd=76/object=256, with nd=0/object=256; window=256. */
 #pragma push
@@ -275,7 +275,7 @@ u32 FUN_003ae650(u64 param_1,int param_2)
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
-#define FUN_003ae650(...) ((u64 (*)(...))FUN_003ae650)(__VA_ARGS__)
+#define FUN_003ae650(...) FUN_003ae650(__VA_ARGS__)
 #undef FUN_003ae750
 // FUN_003AE750
 #pragma push
@@ -345,7 +345,7 @@ u64 FUN_003ae860(u64 param_1,u64 param_2)
   return 0;
 }
 
-#define FUN_003ae750(...) ((u64 (*)(...))FUN_003ae750)(__VA_ARGS__)
+#define FUN_003ae750(...) FUN_003ae750(__VA_ARGS__)
 #undef FUN_003ae870
 // FUN_003AE870
 
@@ -374,7 +374,7 @@ u64 FUN_003ae870(u64 param_1,u64 param_2)
 
 }
 
-#define FUN_003ae870(...) ((u64 (*)(...))FUN_003ae870)(__VA_ARGS__)
+#define FUN_003ae870(...) FUN_003ae870(__VA_ARGS__)
 #undef FUN_003ae8d0
 // FUN_003AE8D0
 
@@ -403,7 +403,7 @@ u64 FUN_003ae8d0(u64 param_1,u64 param_2)
 
 }
 
-#define FUN_003ae8d0(...) ((u64 (*)(...))FUN_003ae8d0)(__VA_ARGS__)
+#define FUN_003ae8d0(...) FUN_003ae8d0(__VA_ARGS__)
 #undef FUN_003ae930
 // FUN_003AE930
 
@@ -426,7 +426,7 @@ u64 FUN_003ae930(void)
 
 }
 
-#define FUN_003ae930(...) ((u64 (*)(...))FUN_003ae930)(__VA_ARGS__)
+#define FUN_003ae930(...) FUN_003ae930(__VA_ARGS__)
 #undef FUN_003ae970
 // FUN_003AE970
 
@@ -449,7 +449,7 @@ u64 FUN_003ae970(void)
 
 }
 
-#define FUN_003ae970(...) ((u64 (*)(...))FUN_003ae970)(__VA_ARGS__)
+#define FUN_003ae970(...) FUN_003ae970(__VA_ARGS__)
 #undef FUN_003ae9b0
 // FUN_003AE9B0
 
@@ -504,7 +504,7 @@ u64 FUN_003ae9b0(u64 param_1,u64 param_2)
   return 0;
 
 }
-#define FUN_003ae9b0(...) ((u64 (*)(...))FUN_003ae9b0)(__VA_ARGS__)
+#define FUN_003ae9b0(...) FUN_003ae9b0(__VA_ARGS__)
 #undef FUN_003aea50
 /* W416 triage: retail offsets 0x178-0x18C have 0x10 pairs already emitted nearby in ours; value locals are already s16/u16, so no width edit retained. */
 /* W389 pragma pair: opt_lifetimes on + opt_dead_assignments off; without nd=288/object=432, with nd=274/object=432; window=464. */
@@ -638,7 +638,7 @@ asm u32 FUN_003aea50(u64 param_1, int param_2)
 #pragma opt_dead_assignments reset
 #pragma opt_lifetimes reset
 
-#define FUN_003aea50(...) ((u64 (*)(...))FUN_003aea50)(__VA_ARGS__)
+#define FUN_003aea50(...) FUN_003aea50(__VA_ARGS__)
 #undef FUN_003aec20
 /* W389 residual: register-coloring cycle and one commutative addu (retail keeps glyph in $a2/count in $v1; candidate swaps them). Baseline nd=8/object=240 at the window; common-subs off exceeded the window (nd=141/object=244), other singles and all pairs were neutral. Declaration reorder stayed nd=8; moving count's first use gave nd=182/object=248; s16 glyph gave nd=70/object=248; all were reverted. */
 /* W421 row classification: baseline nd=8/object=240/window=240 (rate
@@ -716,7 +716,7 @@ asm u32 FUN_003aec20(u64 unused, int context)
   .word 0x03e00008
   .word 0x00000000
 }
-#define FUN_003aec20(...) ((u64 (*)(...))FUN_003aec20)(__VA_ARGS__)
+#define FUN_003aec20(...) FUN_003aec20(__VA_ARGS__)
 #undef FUN_003aed10
 // FUN_003AED10
 
@@ -764,7 +764,7 @@ u64 FUN_003aee00(u64 param_1, int param_2)
   return 0;
 }
 
-#define FUN_003aed10(...) ((u64 (*)(...))FUN_003aed10)(__VA_ARGS__)
+#define FUN_003aed10(...) FUN_003aed10(__VA_ARGS__)
 #undef FUN_003aee20
 // FUN_003AEE20
 u64 FUN_003aee20(u64 param_1, int param_2)
@@ -879,7 +879,7 @@ u64 FUN_003aee20(u64 param_1, int param_2)
   if (bVar4) DAT_007cd4e8 |= 0x20;
   return 0;
 }
-#define FUN_003aee20(...) ((u64 (*)(...))FUN_003aee20)(__VA_ARGS__)
+#define FUN_003aee20(...) FUN_003aee20(__VA_ARGS__)
 #undef FUN_003af110
 /* W389 pragma: opt_common_subs off; without nd=370/object=528, with nd=358/object=580; window=592. */
 #pragma push
@@ -1042,7 +1042,7 @@ asm u32 FUN_003af110(u64 param_1,int param_2)
 }
 #pragma pop
 #pragma opt_common_subs reset
-#define FUN_003af110(...) ((u64 (*)(...))FUN_003af110)(__VA_ARGS__)
+#define FUN_003af110(...) FUN_003af110(__VA_ARGS__)
 #undef FUN_003af360
 #pragma alias frTagTableGetArgument0 FUN_003af360
 // FUN_003AF360
@@ -1056,7 +1056,7 @@ u32 frTagTableGetArgument0(void)
 
   return *(u32 *)0x0095abe0;
 }
-#define FUN_003af360(...) ((u32 (*)(...))FUN_003af360)(__VA_ARGS__)
+#define FUN_003af360(...) FUN_003af360(__VA_ARGS__)
 #undef FUN_003af370
 #pragma alias frTagTableGetArgument1 FUN_003af370
 // FUN_003AF370
@@ -1070,7 +1070,7 @@ u32 frTagTableGetArgument1(void)
 
   return *(u32 *)0x0095abe4;
 }
-#define FUN_003af370(...) ((u32 (*)(...))FUN_003af370)(__VA_ARGS__)
+#define FUN_003af370(...) FUN_003af370(__VA_ARGS__)
 #undef FUN_003af380
 #pragma alias frTagTableGetArgument2 FUN_003af380
 // FUN_003AF380
@@ -1084,7 +1084,7 @@ u32 frTagTableGetArgument2(void)
 
   return *(u32 *)0x0095abe8;
 }
-#define FUN_003af380(...) ((u32 (*)(...))FUN_003af380)(__VA_ARGS__)
+#define FUN_003af380(...) FUN_003af380(__VA_ARGS__)
 #undef FUN_003af390
 #pragma alias frTagTableGetArgument3 FUN_003af390
 // FUN_003AF390
@@ -1098,7 +1098,7 @@ u32 frTagTableGetArgument3(void)
 
   return *(u32 *)0x0095abec;
 }
-#define FUN_003af390(...) ((u32 (*)(...))FUN_003af390)(__VA_ARGS__)
+#define FUN_003af390(...) FUN_003af390(__VA_ARGS__)
 #pragma alias frTagTableReadArguments01 FUN_003af3a0
 // FUN_003AF3A0
 u64 frTagTableReadArguments01(u64 unused, int context)
@@ -1201,7 +1201,7 @@ u64 FUN_003af520(void)
 
 }
 
-#define FUN_003af520(...) ((u64 (*)(...))FUN_003af520)(__VA_ARGS__)
+#define FUN_003af520(...) FUN_003af520(__VA_ARGS__)
 #undef FUN_003af560
 // FUN_003AF560
 
@@ -1257,7 +1257,7 @@ u64 FUN_003af5a0(u32 param_1,int param_2)
   uGpffffa7f8 = uGpffffa7f8 | 0x80;
   return 0;
 }
-#define FUN_003af560(...) ((u64 (*)(...))FUN_003af560)(__VA_ARGS__)
+#define FUN_003af560(...) FUN_003af560(__VA_ARGS__)
 #undef FUN_003af660
 // W295: addu orientation fell to pointer-arith in-place form:
 // offset = (u32)((u8 *)base + offset); - not a floor.
@@ -1303,7 +1303,7 @@ u32 FUN_003af660(u32 param_1, int param_2)
   DAT_007cd4e8 |= 0x40;
   return 0;
 }
-#define FUN_003af660(...) ((u64 (*)(...))FUN_003af660)(__VA_ARGS__)
+#define FUN_003af660(...) FUN_003af660(__VA_ARGS__)
 #undef FUN_003af770
 // FUN_003AF770
 
@@ -1319,7 +1319,7 @@ void FUN_003af770(u64 param_1,u64 param_2)
   return;
 
 }
-#define FUN_003af770(...) ((void (*)(...))FUN_003af770)(__VA_ARGS__)
+#define FUN_003af770(...) FUN_003af770(__VA_ARGS__)
 #undef FUN_003af7a0
 /* W389 pragma pair: opt_common_subs off + opt_lifetimes on; without nd=334/object=636, with nd=324/object=652; window=672. */
 #pragma opt_loop_invariants on
@@ -1509,7 +1509,7 @@ asm void FUN_003af7a0(int param_1, u64 param_2)
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 #pragma opt_loop_invariants off
-#define FUN_003af7a0(...) ((void (*)(...))FUN_003af7a0)(__VA_ARGS__)
+#define FUN_003af7a0(...) FUN_003af7a0(__VA_ARGS__)
 
 
 typedef int (*code)(...);
@@ -1720,62 +1720,62 @@ u64 FUN_003b2a30(void *param_1,u32 param_2);
 s8 FUN_003b2bf0(u32 param_1,u32 param_2,u32 param_3);
 
 /* Region call-cast macros */
-#define FUN_003afa40(...) ((void (*)(...))FUN_003afa40)(__VA_ARGS__)
-#define FUN_003afad0(...) ((void (*)(...))FUN_003afad0)(__VA_ARGS__)
-#define FUN_003afc30(...) ((void (*)(...))FUN_003afc30)(__VA_ARGS__)
-#define FUN_003afc70(...) ((void (*)(...))FUN_003afc70)(__VA_ARGS__)
-#define FUN_003afe30(...) ((void (*)(...))FUN_003afe30)(__VA_ARGS__)
-#define FUN_003aff50(...) ((void (*)(...))FUN_003aff50)(__VA_ARGS__)
-#define FUN_003affd0(...) ((u64 (*)(...))FUN_003affd0)(__VA_ARGS__)
-#define FUN_003b0030(...) ((u32 (*)(...))FUN_003b0030)(__VA_ARGS__)
-#define FUN_003b0170(...) ((u64 (*)(...))FUN_003b0170)(__VA_ARGS__)
-#define FUN_003b01d0(...) ((void (*)(...))FUN_003b01d0)(__VA_ARGS__)
-#define FUN_003b03a0(...) ((int (*)(...))FUN_003b03a0)(__VA_ARGS__)
-#define FUN_003b0430(...) ((void (*)(...))FUN_003b0430)(__VA_ARGS__)
-#define FUN_003b05c0(...) ((void (*)(...))FUN_003b05c0)(__VA_ARGS__)
-#define FUN_003b0620(...) ((long (*)(...))FUN_003b0620)(__VA_ARGS__)
-#define FUN_003b0840(...) ((int (*)(...))FUN_003b0840)(__VA_ARGS__)
-#define FUN_003b0970(...) ((long (*)(...))FUN_003b0970)(__VA_ARGS__)
-#define FUN_003b0bb0(...) ((void (*)(...))FUN_003b0bb0)(__VA_ARGS__)
-#define FUN_003b0c20(...) ((void (*)(...))FUN_003b0c20)(__VA_ARGS__)
-#define FUN_003b0c70(...) ((void (*)(...))FUN_003b0c70)(__VA_ARGS__)
-#define FUN_003b0ce0(...) ((void (*)(...))FUN_003b0ce0)(__VA_ARGS__)
-#define FUN_003b0d70(...) ((void (*)(...))FUN_003b0d70)(__VA_ARGS__)
-#define FUN_003b0e04(...) ((void (*)(...))FUN_003b0e04)(__VA_ARGS__)
-#define FUN_003b0e54(...) ((void (*)(...))FUN_003b0e54)(__VA_ARGS__)
-#define FUN_003b0e70(...) ((u16 (*)(...))FUN_003b0e70)(__VA_ARGS__)
-#define FUN_003b0e90(...) ((u16 (*)(...))FUN_003b0e90)(__VA_ARGS__)
-#define FUN_003b0ec0(...) ((u32 (*)(...))FUN_003b0ec0)(__VA_ARGS__)
-#define FUN_003b0f50(...) ((int (*)(...))FUN_003b0f50)(__VA_ARGS__)
-#define FUN_003b1300(...) ((void (*)(...))FUN_003b1300)(__VA_ARGS__)
-#define FUN_003b1330(...) ((void (*)(...))FUN_003b1330)(__VA_ARGS__)
-#define FUN_003b1360(...) ((int (*)(...))FUN_003b1360)(__VA_ARGS__)
-#define FUN_003b1710(...) ((int (*)(...))FUN_003b1710)(__VA_ARGS__)
-#define FUN_003b18c0(...) ((u64 (*)(...))FUN_003b18c0)(__VA_ARGS__)
-#define FUN_003b1920(...) ((long (*)(...))FUN_003b1920)(__VA_ARGS__)
-#define FUN_003b19a0(...) ((void (*)(...))FUN_003b19a0)(__VA_ARGS__)
-#define FUN_003b19d0(...) ((int (*)(...))FUN_003b19d0)(__VA_ARGS__)
-#define FUN_003b1a10(...) ((u16 (*)(...))FUN_003b1a10)(__VA_ARGS__)
-#define FUN_003b1a40(...) ((u16 (*)(...))FUN_003b1a40)(__VA_ARGS__)
-#define FUN_003b1a70(...) ((void (*)(...))FUN_003b1a70)(__VA_ARGS__)
-#define FUN_003b1a80(...) ((void (*)(...))FUN_003b1a80)(__VA_ARGS__)
-#define FUN_003b1a90(...) ((int (*)(...))FUN_003b1a90)(__VA_ARGS__)
-#define FUN_003b1b00(...) ((int (*)(...))FUN_003b1b00)(__VA_ARGS__)
-#define FUN_003b1bc0(...) ((void (*)(...))FUN_003b1bc0)(__VA_ARGS__)
-#define FUN_003b1c40(...) ((void (*)(...))FUN_003b1c40)(__VA_ARGS__)
-#define FUN_003b1c90(...) ((void (*)(...))FUN_003b1c90)(__VA_ARGS__)
-#define FUN_003b1d90(...) ((void (*)(...))FUN_003b1d90)(__VA_ARGS__)
+#define FUN_003afa40(...) FUN_003afa40(__VA_ARGS__)
+#define FUN_003afad0(...) FUN_003afad0(__VA_ARGS__)
+#define FUN_003afc30(...) FUN_003afc30(__VA_ARGS__)
+#define FUN_003afc70(...) FUN_003afc70(__VA_ARGS__)
+#define FUN_003afe30(...) FUN_003afe30(__VA_ARGS__)
+#define FUN_003aff50(...) FUN_003aff50(__VA_ARGS__)
+#define FUN_003affd0(...) FUN_003affd0(__VA_ARGS__)
+#define FUN_003b0030(...) FUN_003b0030(__VA_ARGS__)
+#define FUN_003b0170(...) FUN_003b0170(__VA_ARGS__)
+#define FUN_003b01d0(...) FUN_003b01d0(__VA_ARGS__)
+#define FUN_003b03a0(...) FUN_003b03a0(__VA_ARGS__)
+#define FUN_003b0430(...) FUN_003b0430(__VA_ARGS__)
+#define FUN_003b05c0(...) FUN_003b05c0(__VA_ARGS__)
+#define FUN_003b0620(...) FUN_003b0620(__VA_ARGS__)
+#define FUN_003b0840(...) FUN_003b0840(__VA_ARGS__)
+#define FUN_003b0970(...) FUN_003b0970(__VA_ARGS__)
+#define FUN_003b0bb0(...) FUN_003b0bb0(__VA_ARGS__)
+#define FUN_003b0c20(...) FUN_003b0c20(__VA_ARGS__)
+#define FUN_003b0c70(...) FUN_003b0c70(__VA_ARGS__)
+#define FUN_003b0ce0(...) FUN_003b0ce0(__VA_ARGS__)
+#define FUN_003b0d70(...) FUN_003b0d70(__VA_ARGS__)
+#define FUN_003b0e04(...) FUN_003b0e04(__VA_ARGS__)
+#define FUN_003b0e54(...) FUN_003b0e54(__VA_ARGS__)
+#define FUN_003b0e70(...) FUN_003b0e70(__VA_ARGS__)
+#define FUN_003b0e90(...) FUN_003b0e90(__VA_ARGS__)
+#define FUN_003b0ec0(...) FUN_003b0ec0(__VA_ARGS__)
+#define FUN_003b0f50(...) FUN_003b0f50(__VA_ARGS__)
+#define FUN_003b1300(...) FUN_003b1300(__VA_ARGS__)
+#define FUN_003b1330(...) FUN_003b1330(__VA_ARGS__)
+#define FUN_003b1360(...) FUN_003b1360(__VA_ARGS__)
+#define FUN_003b1710(...) FUN_003b1710(__VA_ARGS__)
+#define FUN_003b18c0(...) FUN_003b18c0(__VA_ARGS__)
+#define FUN_003b1920(...) FUN_003b1920(__VA_ARGS__)
+#define FUN_003b19a0(...) FUN_003b19a0(__VA_ARGS__)
+#define FUN_003b19d0(...) FUN_003b19d0(__VA_ARGS__)
+#define FUN_003b1a10(...) FUN_003b1a10(__VA_ARGS__)
+#define FUN_003b1a40(...) FUN_003b1a40(__VA_ARGS__)
+#define FUN_003b1a70(...) FUN_003b1a70(__VA_ARGS__)
+#define FUN_003b1a80(...) FUN_003b1a80(__VA_ARGS__)
+#define FUN_003b1a90(...) FUN_003b1a90(__VA_ARGS__)
+#define FUN_003b1b00(...) FUN_003b1b00(__VA_ARGS__)
+#define FUN_003b1bc0(...) FUN_003b1bc0(__VA_ARGS__)
+#define FUN_003b1c40(...) FUN_003b1c40(__VA_ARGS__)
+#define FUN_003b1c90(...) FUN_003b1c90(__VA_ARGS__)
+#define FUN_003b1d90(...) FUN_003b1d90(__VA_ARGS__)
 #define FUN_003b2020_y2(...) ((void (*)(...))FUN_003b2020_y2)(__VA_ARGS__)
 #define FUN_003b22a0_y2(...) ((void (*)(...))FUN_003b22a0_y2)(__VA_ARGS__)
-#define FUN_003b2400(...) ((void (*)(...))FUN_003b2400)(__VA_ARGS__)
-#define FUN_003b2430(...) ((u32 (*)(...))FUN_003b2430)(__VA_ARGS__)
-#define FUN_003b2900(...) ((void (*)(...))FUN_003b2900)(__VA_ARGS__)
-#define FUN_003b2940(...) ((void (*)(...))FUN_003b2940)(__VA_ARGS__)
-#define FUN_003b2990(...) ((void (*)(...))FUN_003b2990)(__VA_ARGS__)
-#define FUN_003b2a00(...) ((u32 (*)(...))FUN_003b2a00)(__VA_ARGS__)
-#define FUN_003b2a10(...) ((void (*)(...))FUN_003b2a10)(__VA_ARGS__)
-#define FUN_003b2a30(...) ((u64 (*)(...))FUN_003b2a30)(__VA_ARGS__)
-#define FUN_003b2bf0(...) ((u8 (*)(...))FUN_003b2bf0)(__VA_ARGS__)
+#define FUN_003b2400(...) FUN_003b2400(__VA_ARGS__)
+#define FUN_003b2430(...) FUN_003b2430(__VA_ARGS__)
+#define FUN_003b2900(...) FUN_003b2900(__VA_ARGS__)
+#define FUN_003b2940(...) FUN_003b2940(__VA_ARGS__)
+#define FUN_003b2990(...) FUN_003b2990(__VA_ARGS__)
+#define FUN_003b2a00(...) FUN_003b2a00(__VA_ARGS__)
+#define FUN_003b2a10(...) FUN_003b2a10(__VA_ARGS__)
+#define FUN_003b2a30(...) FUN_003b2a30(__VA_ARGS__)
+#define FUN_003b2bf0(...) FUN_003b2bf0(__VA_ARGS__)
 
 #undef FUN_003afa40
 // FUN_003AFA40 MATCHING
@@ -1794,59 +1794,59 @@ void FUN_003afa40(void)
   FUN_003b3740();
 }
 
-#define FUN_003afa40(...) ((void (*)(...))FUN_003afa40)(__VA_ARGS__)
+#define FUN_003afa40(...) FUN_003afa40(__VA_ARGS__)
 #undef FUN_003afad0
 /* W389 residual: register-coloring/address-expression floor after recovering the real block-pointer form (candidate id uses $a0 vs retail $a1; final slot/data temporaries also differ). Baseline nd=10/object=348/window=352; six-knob singles stayed nd=10 except common-subs off, which exceeded the window at nd=73/object=356; declaration swap was neutral; pair sweep had no win. */
-#define FUN_003afad0(...) ((void (*)(...))FUN_003afad0)(__VA_ARGS__)
+#define FUN_003afad0(...) FUN_003afad0(__VA_ARGS__)
 #undef FUN_003afc30
-#define FUN_003afc30(...) ((void (*)(...))FUN_003afc30)(__VA_ARGS__)
+#define FUN_003afc30(...) FUN_003afc30(__VA_ARGS__)
 #undef FUN_003afc70
 /* W340 loop probe: opt_propagation off; without nd=279/object=392, with nd=247/object=400; window=448. */
-#define FUN_003afc70(...) ((void (*)(...))FUN_003afc70)(__VA_ARGS__)
+#define FUN_003afc70(...) FUN_003afc70(__VA_ARGS__)
 #pragma opt_propagation reset
 #undef FUN_003afe30
 /* W340 loop probe: opt_loop_invariants on; without nd=61/object=284, with nd=2/object=288; window=288. */
-#define FUN_003afe30(...) ((void (*)(...))FUN_003afe30)(__VA_ARGS__)
+#define FUN_003afe30(...) FUN_003afe30(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef FUN_003aff50
 
-#define FUN_003aff50(...) ((void (*)(...))FUN_003aff50)(__VA_ARGS__)
+#define FUN_003aff50(...) FUN_003aff50(__VA_ARGS__)
 #undef FUN_003affd0
-#define FUN_003affd0(...) ((u64 (*)(...))FUN_003affd0)(__VA_ARGS__)
+#define FUN_003affd0(...) FUN_003affd0(__VA_ARGS__)
 #undef FUN_003b0030
-#define FUN_003b0030(...) ((u32 (*)(...))FUN_003b0030)(__VA_ARGS__)
+#define FUN_003b0030(...) FUN_003b0030(__VA_ARGS__)
 #undef FUN_003b0170
-#define FUN_003b0170(...) ((u64 (*)(...))FUN_003b0170)(__VA_ARGS__)
+#define FUN_003b0170(...) FUN_003b0170(__VA_ARGS__)
 #undef FUN_003b01d0
 /* W340 loop probe: opt_lifetimes on; without nd=205/object=448, with nd=200/object=448; window=464. */
-#define FUN_003b01d0(...) ((void (*)(...))FUN_003b01d0)(__VA_ARGS__)
+#define FUN_003b01d0(...) FUN_003b01d0(__VA_ARGS__)
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 #undef FUN_003b03a0
-#define FUN_003b03a0(...) ((int (*)(...))FUN_003b03a0)(__VA_ARGS__)
+#define FUN_003b03a0(...) FUN_003b03a0(__VA_ARGS__)
 #undef FUN_003b0430
-#define FUN_003b0430(...) ((void (*)(...))FUN_003b0430)(__VA_ARGS__)
+#define FUN_003b0430(...) FUN_003b0430(__VA_ARGS__)
 #undef FUN_003b05c0
-#define FUN_003b05c0(...) ((void (*)(...))FUN_003b05c0)(__VA_ARGS__)
+#define FUN_003b05c0(...) FUN_003b05c0(__VA_ARGS__)
 #undef FUN_003b0620
 /* W340 loop probe: opt_common_subs off; without nd=276/object=496, with nd=264/object=524; window=544. */
-#define FUN_003b0620(...) ((long (*)(...))FUN_003b0620)(__VA_ARGS__)
+#define FUN_003b0620(...) FUN_003b0620(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003b0840
-#define FUN_003b0840(...) ((int (*)(...))FUN_003b0840)(__VA_ARGS__)
+#define FUN_003b0840(...) FUN_003b0840(__VA_ARGS__)
 #undef FUN_003b0970
 /* W340 loop probe: opt_common_subs off; without nd=337/object=564, with nd=287/object=572; window=576. */
-#define FUN_003b0970(...) ((long (*)(...))FUN_003b0970)(__VA_ARGS__)
+#define FUN_003b0970(...) FUN_003b0970(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 #undef FUN_003b0bb0
-#define FUN_003b0bb0(...) ((void (*)(...))FUN_003b0bb0)(__VA_ARGS__)
+#define FUN_003b0bb0(...) FUN_003b0bb0(__VA_ARGS__)
 #undef FUN_003b0c20
-#define FUN_003b0c20(...) ((void (*)(...))FUN_003b0c20)(__VA_ARGS__)
+#define FUN_003b0c20(...) FUN_003b0c20(__VA_ARGS__)
 #undef FUN_003b0c70
-#define FUN_003b0c70(...) ((void (*)(...))FUN_003b0c70)(__VA_ARGS__)
+#define FUN_003b0c70(...) FUN_003b0c70(__VA_ARGS__)
 #undef FUN_003b0ce0
-#define FUN_003b0ce0(...) ((void (*)(...))FUN_003b0ce0)(__VA_ARGS__)
+#define FUN_003b0ce0(...) FUN_003b0ce0(__VA_ARGS__)
 #undef FUN_003b0d70
 
 
@@ -1855,7 +1855,7 @@ void FUN_003afa40(void)
 
 #undef FUN_003b0e04
 
-#define FUN_003b0d70(...) ((void (*)(...))FUN_003b0d70)(__VA_ARGS__)
+#define FUN_003b0d70(...) FUN_003b0d70(__VA_ARGS__)
 #undef FUN_003b0e04
 /* Continuation of FUN_003b0dd8 (see comment there); branches back to its
  * start when param_1 != 0, otherwise returns. */
@@ -1866,67 +1866,67 @@ void FUN_003afa40(void)
 
 #undef FUN_003b0e54
 
-#define FUN_003b0e04(...) ((void (*)(...))FUN_003b0e04)(__VA_ARGS__)
+#define FUN_003b0e04(...) FUN_003b0e04(__VA_ARGS__)
 #undef FUN_003b0e54
 /* Continuation of FUN_003b0e28 (see comment there); branches back to its
  * start when param_1 != 0, otherwise returns. */
-#define FUN_003b0e54(...) ((void (*)(...))FUN_003b0e54)(__VA_ARGS__)
+#define FUN_003b0e54(...) FUN_003b0e54(__VA_ARGS__)
 #undef FUN_003b0e70
-#define FUN_003b0e70(...) ((u16 (*)(...))FUN_003b0e70)(__VA_ARGS__)
+#define FUN_003b0e70(...) FUN_003b0e70(__VA_ARGS__)
 #undef FUN_003b0e90
-#define FUN_003b0e90(...) ((u16 (*)(...))FUN_003b0e90)(__VA_ARGS__)
+#define FUN_003b0e90(...) FUN_003b0e90(__VA_ARGS__)
 #undef FUN_003b0ec0
 // Retail hoists the loop-invariant mask/type constants here; without
 // opt_loop_invariants this function measures nd102 at 136B instead of nd1 at 140B.
 #pragma opt_loop_invariants off
-#define FUN_003b0ec0(...) ((u32 (*)(...))FUN_003b0ec0)(__VA_ARGS__)
+#define FUN_003b0ec0(...) FUN_003b0ec0(__VA_ARGS__)
 #undef FUN_003b0f50
-#define FUN_003b0f50(...) ((int (*)(...))FUN_003b0f50)(__VA_ARGS__)
+#define FUN_003b0f50(...) FUN_003b0f50(__VA_ARGS__)
 #undef FUN_003b1300
 #undef FUN_003b1330
 #undef FUN_003b1360
-#define FUN_003b1300(...) ((void (*)(...))FUN_003b1300)(__VA_ARGS__)
-#define FUN_003b1330(...) ((void (*)(...))FUN_003b1330)(__VA_ARGS__)
+#define FUN_003b1300(...) FUN_003b1300(__VA_ARGS__)
+#define FUN_003b1330(...) FUN_003b1330(__VA_ARGS__)
 #undef FUN_003b1360
 /* W340 loop probe: opt_common_subs off; without nd=378/object=936, with nd=375/object=944; window=944. */
-#define FUN_003b1360(...) ((int (*)(...))FUN_003b1360)(__VA_ARGS__)
+#define FUN_003b1360(...) FUN_003b1360(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003b1710
-#define FUN_003b1710(...) ((int (*)(...))FUN_003b1710)(__VA_ARGS__)
+#define FUN_003b1710(...) FUN_003b1710(__VA_ARGS__)
 #undef FUN_003b18c0
 
-#define FUN_003b18c0(...) ((u64 (*)(...))FUN_003b18c0)(__VA_ARGS__)
+#define FUN_003b18c0(...) FUN_003b18c0(__VA_ARGS__)
 #undef FUN_003b1920
-#define FUN_003b1920(...) ((long (*)(...))FUN_003b1920)(__VA_ARGS__)
+#define FUN_003b1920(...) FUN_003b1920(__VA_ARGS__)
 #undef FUN_003b19a0
-#define FUN_003b19a0(...) ((void (*)(...))FUN_003b19a0)(__VA_ARGS__)
+#define FUN_003b19a0(...) FUN_003b19a0(__VA_ARGS__)
 #undef FUN_003b19d0
-#define FUN_003b19d0(...) ((int (*)(...))FUN_003b19d0)(__VA_ARGS__)
+#define FUN_003b19d0(...) FUN_003b19d0(__VA_ARGS__)
 #undef FUN_003b1a10
-#define FUN_003b1a10(...) ((u16 (*)(...))FUN_003b1a10)(__VA_ARGS__)
+#define FUN_003b1a10(...) FUN_003b1a10(__VA_ARGS__)
 #undef FUN_003b1a40
-#define FUN_003b1a40(...) ((u16 (*)(...))FUN_003b1a40)(__VA_ARGS__)
+#define FUN_003b1a40(...) FUN_003b1a40(__VA_ARGS__)
 #undef FUN_003b1a70
-#define FUN_003b1a70(...) ((void (*)(...))FUN_003b1a70)(__VA_ARGS__)
+#define FUN_003b1a70(...) FUN_003b1a70(__VA_ARGS__)
 #undef FUN_003b1a80
-#define FUN_003b1a80(...) ((void (*)(...))FUN_003b1a80)(__VA_ARGS__)
+#define FUN_003b1a80(...) FUN_003b1a80(__VA_ARGS__)
 #undef FUN_003b1a90
 /* Removing this loses FUN_003b1a90 (MATCH nd0 -> MISMATCH nd45) - measured W161. */
-#define FUN_003b1a90(...) ((int (*)(...))FUN_003b1a90)(__VA_ARGS__)
+#define FUN_003b1a90(...) FUN_003b1a90(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef FUN_003b1b00
-#define FUN_003b1b00(...) ((int (*)(...))FUN_003b1b00)(__VA_ARGS__)
+#define FUN_003b1b00(...) FUN_003b1b00(__VA_ARGS__)
 #undef FUN_003b1bc0
 /* Removing this loses FUN_003b1bc0 (MATCH nd0 -> MISMATCH nd57) - measured W161. */
-#define FUN_003b1bc0(...) ((void (*)(...))FUN_003b1bc0)(__VA_ARGS__)
+#define FUN_003b1bc0(...) FUN_003b1bc0(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef FUN_003b1c40
-#define FUN_003b1c40(...) ((void (*)(...))FUN_003b1c40)(__VA_ARGS__)
+#define FUN_003b1c40(...) FUN_003b1c40(__VA_ARGS__)
 #undef FUN_003b1c90
-#define FUN_003b1c90(...) ((void (*)(...))FUN_003b1c90)(__VA_ARGS__)
+#define FUN_003b1c90(...) FUN_003b1c90(__VA_ARGS__)
 #undef FUN_003b1d90
 /* W340 loop probe: opt_common_subs off; without nd=377/object=656, with nd=376/object=656; window=656. */
-#define FUN_003b1d90(...) ((void (*)(...))FUN_003b1d90)(__VA_ARGS__)
+#define FUN_003b1d90(...) FUN_003b1d90(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 #undef FUN_003b2020_y2
@@ -1938,30 +1938,30 @@ void FUN_003afa40(void)
 #define FUN_003b22a0_y2(...) ((void (*)(...))FUN_003b22a0_y2)(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003b2400
-#define FUN_003b2400(...) ((void (*)(...))FUN_003b2400)(__VA_ARGS__)
+#define FUN_003b2400(...) FUN_003b2400(__VA_ARGS__)
 #undef FUN_003b2430
 /* W340 loop probe: opt_common_subs off; without nd=853/object=1168, with nd=841/object=1192; window=1232. */
-#define FUN_003b2430(...) ((u32 (*)(...))FUN_003b2430)(__VA_ARGS__)
+#define FUN_003b2430(...) FUN_003b2430(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003b2900
 
-#define FUN_003b2900(...) ((void (*)(...))FUN_003b2900)(__VA_ARGS__)
+#define FUN_003b2900(...) FUN_003b2900(__VA_ARGS__)
 #undef FUN_003b2940
 
-#define FUN_003b2940(...) ((void (*)(...))FUN_003b2940)(__VA_ARGS__)
+#define FUN_003b2940(...) FUN_003b2940(__VA_ARGS__)
 #undef FUN_003b2990
 #undef FUN_003b2430
 #pragma alias FUN_003b2430_typed FUN_003b2430
 void FUN_003b2430_typed(void *param_1);
-#define FUN_003b2430(...) ((u32 (*)(...))FUN_003b2430)(__VA_ARGS__)
-#define FUN_003b2990(...) ((void (*)(...))FUN_003b2990)(__VA_ARGS__)
+#define FUN_003b2430(...) FUN_003b2430(__VA_ARGS__)
+#define FUN_003b2990(...) FUN_003b2990(__VA_ARGS__)
 #undef FUN_003b2a00
-#define FUN_003b2a00(...) ((u32 (*)(...))FUN_003b2a00)(__VA_ARGS__)
+#define FUN_003b2a00(...) FUN_003b2a00(__VA_ARGS__)
 #undef FUN_003b2a10
-#define FUN_003b2a10(...) ((void (*)(...))FUN_003b2a10)(__VA_ARGS__)
+#define FUN_003b2a10(...) FUN_003b2a10(__VA_ARGS__)
 #undef FUN_003b2a30
-#define FUN_003b2a30(...) ((u64 (*)(...))FUN_003b2a30)(__VA_ARGS__)
+#define FUN_003b2a30(...) FUN_003b2a30(__VA_ARGS__)
 #undef FUN_003b2bf0
 #pragma alias FUN_003b2a30_typed FUN_003b2a30
 u64 FUN_003b2a30_typed(void *param_1, u32 param_2);
-#define FUN_003b2bf0(...) ((u8 (*)(...))FUN_003b2bf0)(__VA_ARGS__)
+#define FUN_003b2bf0(...) FUN_003b2bf0(__VA_ARGS__)

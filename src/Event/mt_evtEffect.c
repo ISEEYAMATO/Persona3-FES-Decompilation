@@ -298,142 +298,142 @@ u32  FUN_00396c70(int param_1,int param_2,int param_3,u16 param_4,u16 param_5,  
 
 
 /* Region call-cast macros */
-#define FUN_00395170(...) ((void (*)(...))FUN_00395170)(__VA_ARGS__)
-#define FUN_003951a0(...) ((void (*)(...))FUN_003951a0)(__VA_ARGS__)
-#define FUN_003951d0(...) ((u8 (*)(...))FUN_003951d0)(__VA_ARGS__)
-#define FUN_00395200(...) ((void (*)(...))FUN_00395200)(__VA_ARGS__)
-#define FUN_00395230(...) ((u8 (*)(...))FUN_00395230)(__VA_ARGS__)
-#define FUN_00395270(...) ((u64 (*)(...))FUN_00395270)(__VA_ARGS__)
-#define FUN_003952a0(...) ((void (*)(...))FUN_003952a0)(__VA_ARGS__)
-#define FUN_003952b0(...) ((u64 (*)(...))FUN_003952b0)(__VA_ARGS__)
-#define FUN_003952c0(...) ((u64 (*)(...))FUN_003952c0)(__VA_ARGS__)
-#define FUN_003952d0(...) ((u64 (*)(...))FUN_003952d0)(__VA_ARGS__)
-#define FUN_00395350(...) ((u64 (*)(...))FUN_00395350)(__VA_ARGS__)
-#define FUN_003953b0(...) ((u64 (*)(...))FUN_003953b0)(__VA_ARGS__)
-#define FUN_003953e0(...) ((void (*)(...))FUN_003953e0)(__VA_ARGS__)
-#define FUN_00395420(...) ((void (*)(...))FUN_00395420)(__VA_ARGS__)
-#define FUN_00395430(...) ((void (*)(...))FUN_00395430)(__VA_ARGS__)
-#define FUN_003954e0(...) ((void (*)(...))FUN_003954e0)(__VA_ARGS__)
-#define FUN_00395550(...) ((void (*)(...))FUN_00395550)(__VA_ARGS__)
-#define FUN_00395570(...) ((void (*)(...))FUN_00395570)(__VA_ARGS__)
-#define FUN_003957d0(...) ((void (*)(f32, int, u32*))FUN_003957d0)(__VA_ARGS__)
-#define FUN_00395810(...) ((void (*)(...))FUN_00395810)(__VA_ARGS__)
-#define FUN_00395910(...) ((void (*)(...))FUN_00395910)(__VA_ARGS__)
-#define FUN_00395930(...) ((void (*)(...))FUN_00395930)(__VA_ARGS__)
-#define FUN_00395950(...) ((void (*)(...))FUN_00395950)(__VA_ARGS__)
-#define FUN_00395e20(...) ((void (*)(...))FUN_00395e20)(__VA_ARGS__)
-#define FUN_00396250(...) ((void (*)(...))FUN_00396250)(__VA_ARGS__)
-#define FUN_00396270(...) ((void (*)(...))FUN_00396270)(__VA_ARGS__)
-#define FUN_003962c0(...) ((u64 (*)(...))FUN_003962c0)(__VA_ARGS__)
-#define FUN_003963c0(...) ((u64 (*)(...))FUN_003963c0)(__VA_ARGS__)
-#define FUN_00396410(...) ((void (*)(...))FUN_00396410)(__VA_ARGS__)
-#define FUN_00396480(...) ((void (*)(...))FUN_00396480)(__VA_ARGS__)
-#define FUN_003964c0(...) ((u32 (*)(...))FUN_003964c0)(__VA_ARGS__)
-#define FUN_00396530(...) ((void (*)(...))FUN_00396530)(__VA_ARGS__)
-#define FUN_003965d0(...) ((void (*)(...))FUN_003965d0)(__VA_ARGS__)
-#define FUN_003965f0(...) ((u32 (*)(...))FUN_003965f0)(__VA_ARGS__)
-#define FUN_00396760(...) ((void (*)(...))FUN_00396760)(__VA_ARGS__)
-#define FUN_003968a0(...) ((u16 (*)(...))FUN_003968a0)(__VA_ARGS__)
-#define FUN_00396910(...) ((void (*)(...))FUN_00396910)(__VA_ARGS__)
-#define FUN_003969b0(...) ((void (*)(...))FUN_003969b0)(__VA_ARGS__)
-#define FUN_00396a70(...) ((u64 (*)(...))FUN_00396a70)(__VA_ARGS__)
-#define FUN_00396ba0(...) ((void (*)(...))FUN_00396ba0)(__VA_ARGS__)
-#define FUN_00396bf0(...) ((void (*)(...))FUN_00396bf0)(__VA_ARGS__)
-#define FUN_00396c70(...) ((u32 (*)(...))FUN_00396c70)(__VA_ARGS__)
+#define FUN_00395170(...) FUN_00395170(__VA_ARGS__)
+#define FUN_003951a0(...) FUN_003951a0(__VA_ARGS__)
+#define FUN_003951d0(...) FUN_003951d0(__VA_ARGS__)
+#define FUN_00395200(...) FUN_00395200(__VA_ARGS__)
+#define FUN_00395230(...) FUN_00395230(__VA_ARGS__)
+#define FUN_00395270(...) FUN_00395270(__VA_ARGS__)
+#define FUN_003952a0(...) FUN_003952a0(__VA_ARGS__)
+#define FUN_003952b0(...) FUN_003952b0(__VA_ARGS__)
+#define FUN_003952c0(...) FUN_003952c0(__VA_ARGS__)
+#define FUN_003952d0(...) FUN_003952d0(__VA_ARGS__)
+#define FUN_00395350(...) FUN_00395350(__VA_ARGS__)
+#define FUN_003953b0(...) FUN_003953b0(__VA_ARGS__)
+#define FUN_003953e0(...) FUN_003953e0(__VA_ARGS__)
+#define FUN_00395420(...) FUN_00395420(__VA_ARGS__)
+#define FUN_00395430(...) FUN_00395430(__VA_ARGS__)
+#define FUN_003954e0(...) FUN_003954e0(__VA_ARGS__)
+#define FUN_00395550(...) FUN_00395550(__VA_ARGS__)
+#define FUN_00395570(...) FUN_00395570(__VA_ARGS__)
+#define FUN_003957d0(...) FUN_003957d0(__VA_ARGS__)
+#define FUN_00395810(...) FUN_00395810(__VA_ARGS__)
+#define FUN_00395910(...) FUN_00395910(__VA_ARGS__)
+#define FUN_00395930(...) FUN_00395930(__VA_ARGS__)
+#define FUN_00395950(...) FUN_00395950(__VA_ARGS__)
+#define FUN_00395e20(...) FUN_00395e20(__VA_ARGS__)
+#define FUN_00396250(...) FUN_00396250(__VA_ARGS__)
+#define FUN_00396270(...) FUN_00396270(__VA_ARGS__)
+#define FUN_003962c0(...) FUN_003962c0(__VA_ARGS__)
+#define FUN_003963c0(...) FUN_003963c0(__VA_ARGS__)
+#define FUN_00396410(...) FUN_00396410(__VA_ARGS__)
+#define FUN_00396480(...) FUN_00396480(__VA_ARGS__)
+#define FUN_003964c0(...) FUN_003964c0(__VA_ARGS__)
+#define FUN_00396530(...) FUN_00396530(__VA_ARGS__)
+#define FUN_003965d0(...) FUN_003965d0(__VA_ARGS__)
+#define FUN_003965f0(...) FUN_003965f0(__VA_ARGS__)
+#define FUN_00396760(...) FUN_00396760(__VA_ARGS__)
+#define FUN_003968a0(...) FUN_003968a0(__VA_ARGS__)
+#define FUN_00396910(...) FUN_00396910(__VA_ARGS__)
+#define FUN_003969b0(...) FUN_003969b0(__VA_ARGS__)
+#define FUN_00396a70(...) FUN_00396a70(__VA_ARGS__)
+#define FUN_00396ba0(...) FUN_00396ba0(__VA_ARGS__)
+#define FUN_00396bf0(...) FUN_00396bf0(__VA_ARGS__)
+#define FUN_00396c70(...) FUN_00396c70(__VA_ARGS__)
 
 #undef FUN_00395170
-#define FUN_00395170(...) ((void (*)(...))FUN_00395170)(__VA_ARGS__)
+#define FUN_00395170(...) FUN_00395170(__VA_ARGS__)
 #undef FUN_003951a0
-#define FUN_003951a0(...) ((void (*)(...))FUN_003951a0)(__VA_ARGS__)
+#define FUN_003951a0(...) FUN_003951a0(__VA_ARGS__)
 #undef FUN_003951d0
-#define FUN_003951d0(...) ((u8 (*)(...))FUN_003951d0)(__VA_ARGS__)
+#define FUN_003951d0(...) FUN_003951d0(__VA_ARGS__)
 #undef FUN_00395200
-#define FUN_00395200(...) ((void (*)(...))FUN_00395200)(__VA_ARGS__)
+#define FUN_00395200(...) FUN_00395200(__VA_ARGS__)
 #undef FUN_00395230
-#define FUN_00395230(...) ((u8 (*)(...))FUN_00395230)(__VA_ARGS__)
+#define FUN_00395230(...) FUN_00395230(__VA_ARGS__)
 #undef FUN_00395270
-#define FUN_00395270(...) ((u64 (*)(...))FUN_00395270)(__VA_ARGS__)
+#define FUN_00395270(...) FUN_00395270(__VA_ARGS__)
 #undef FUN_003952a0
-#define FUN_003952a0(...) ((void (*)(...))FUN_003952a0)(__VA_ARGS__)
+#define FUN_003952a0(...) FUN_003952a0(__VA_ARGS__)
 #undef FUN_003952b0
-#define FUN_003952b0(...) ((u64 (*)(...))FUN_003952b0)(__VA_ARGS__)
+#define FUN_003952b0(...) FUN_003952b0(__VA_ARGS__)
 #undef FUN_003952c0
-#define FUN_003952c0(...) ((u64 (*)(...))FUN_003952c0)(__VA_ARGS__)
+#define FUN_003952c0(...) FUN_003952c0(__VA_ARGS__)
 #undef FUN_003952d0
-#define FUN_003952d0(...) ((u64 (*)(...))FUN_003952d0)(__VA_ARGS__)
+#define FUN_003952d0(...) FUN_003952d0(__VA_ARGS__)
 #undef FUN_00395350
-#define FUN_00395350(...) ((u64 (*)(...))FUN_00395350)(__VA_ARGS__)
+#define FUN_00395350(...) FUN_00395350(__VA_ARGS__)
 #undef FUN_003953b0
-#define FUN_003953b0(...) ((u64 (*)(...))FUN_003953b0)(__VA_ARGS__)
+#define FUN_003953b0(...) FUN_003953b0(__VA_ARGS__)
 #undef FUN_003953e0
-#define FUN_003953e0(...) ((void (*)(...))FUN_003953e0)(__VA_ARGS__)
+#define FUN_003953e0(...) FUN_003953e0(__VA_ARGS__)
 #undef FUN_00395420
-#define FUN_00395420(...) ((void (*)(...))FUN_00395420)(__VA_ARGS__)
+#define FUN_00395420(...) FUN_00395420(__VA_ARGS__)
 #undef FUN_00395430
-#define FUN_00395430(...) ((void (*)(...))FUN_00395430)(__VA_ARGS__)
+#define FUN_00395430(...) FUN_00395430(__VA_ARGS__)
 #undef FUN_003954e0
-#define FUN_003954e0(...) ((void (*)(...))FUN_003954e0)(__VA_ARGS__)
+#define FUN_003954e0(...) FUN_003954e0(__VA_ARGS__)
 #undef FUN_00395550
-#define FUN_00395550(...) ((void (*)(...))FUN_00395550)(__VA_ARGS__)
+#define FUN_00395550(...) FUN_00395550(__VA_ARGS__)
 #undef FUN_00395570
-#define FUN_00395570(...) ((void (*)(...))FUN_00395570)(__VA_ARGS__)
+#define FUN_00395570(...) FUN_00395570(__VA_ARGS__)
 #undef FUN_003957d0
-#define FUN_003957d0(...) ((void (*)(f32, int, u32*))FUN_003957d0)(__VA_ARGS__)
+#define FUN_003957d0(...) FUN_003957d0(__VA_ARGS__)
 #undef FUN_00395810
-#define FUN_00395810(...) ((void (*)(...))FUN_00395810)(__VA_ARGS__)
+#define FUN_00395810(...) FUN_00395810(__VA_ARGS__)
 #undef FUN_00395910
-#define FUN_00395910(...) ((void (*)(...))FUN_00395910)(__VA_ARGS__)
+#define FUN_00395910(...) FUN_00395910(__VA_ARGS__)
 #undef FUN_00395930
-#define FUN_00395930(...) ((void (*)(...))FUN_00395930)(__VA_ARGS__)
+#define FUN_00395930(...) FUN_00395930(__VA_ARGS__)
 #undef FUN_00395950
 #undef FUN_00359b40
 #undef FUN_00359380
 #undef FUN_004c35d0
 #undef FUN_003bbc90
-#define FUN_00395950(...) ((void (*)(...))FUN_00395950)(__VA_ARGS__)
+#define FUN_00395950(...) FUN_00395950(__VA_ARGS__)
 #undef FUN_00395e20
 extern void FUN_00386f70(f32 depth, RwV2d *position, RwV2d *size, RwRGBA *color);
 extern void FUN_00388a40(f32 depth, RwV2d *start, RwV2d *end, RwRGBA *color);
 extern void FUN_0038a260(f32 depth, int width, int height, int unused, void *data, ...);
 
 #undef FUN_00396250
-#define FUN_00396250(...) ((void (*)(...))FUN_00396250)(__VA_ARGS__)
+#define FUN_00396250(...) FUN_00396250(__VA_ARGS__)
 #undef FUN_00396270
-#define FUN_00396270(...) ((void (*)(...))FUN_00396270)(__VA_ARGS__)
+#define FUN_00396270(...) FUN_00396270(__VA_ARGS__)
 #undef FUN_003962c0
-#define FUN_003962c0(...) ((u64 (*)(...))FUN_003962c0)(__VA_ARGS__)
+#define FUN_003962c0(...) FUN_003962c0(__VA_ARGS__)
 #undef FUN_003963c0
-#define FUN_003963c0(...) ((u64 (*)(...))FUN_003963c0)(__VA_ARGS__)
+#define FUN_003963c0(...) FUN_003963c0(__VA_ARGS__)
 #undef FUN_00396410
-#define FUN_00396410(...) ((void (*)(...))FUN_00396410)(__VA_ARGS__)
+#define FUN_00396410(...) FUN_00396410(__VA_ARGS__)
 #undef FUN_00396480
-#define FUN_00396480(...) ((void (*)(...))FUN_00396480)(__VA_ARGS__)
+#define FUN_00396480(...) FUN_00396480(__VA_ARGS__)
 #undef FUN_003964c0
-#define FUN_003964c0(...) ((u32 (*)(...))FUN_003964c0)(__VA_ARGS__)
+#define FUN_003964c0(...) FUN_003964c0(__VA_ARGS__)
 #undef FUN_00396530
-#define FUN_00396530(...) ((void (*)(...))FUN_00396530)(__VA_ARGS__)
+#define FUN_00396530(...) FUN_00396530(__VA_ARGS__)
 #undef FUN_003965d0
-#define FUN_003965d0(...) ((void (*)(...))FUN_003965d0)(__VA_ARGS__)
+#define FUN_003965d0(...) FUN_003965d0(__VA_ARGS__)
 #undef FUN_003965f0
-#define FUN_003965f0(...) ((u32 (*)(...))FUN_003965f0)(__VA_ARGS__)
+#define FUN_003965f0(...) FUN_003965f0(__VA_ARGS__)
 #undef FUN_00396760
-#define FUN_00396760(...) ((void (*)(...))FUN_00396760)(__VA_ARGS__)
+#define FUN_00396760(...) FUN_00396760(__VA_ARGS__)
 #undef FUN_003968a0
-#define FUN_003968a0(...) ((u16 (*)(...))FUN_003968a0)(__VA_ARGS__)
+#define FUN_003968a0(...) FUN_003968a0(__VA_ARGS__)
 #undef FUN_00396910
-#define FUN_00396910(...) ((void (*)(...))FUN_00396910)(__VA_ARGS__)
+#define FUN_00396910(...) FUN_00396910(__VA_ARGS__)
 #undef FUN_003969b0
-#define FUN_003969b0(...) ((void (*)(...))FUN_003969b0)(__VA_ARGS__)
+#define FUN_003969b0(...) FUN_003969b0(__VA_ARGS__)
 typedef struct {
   u32 state;
   u32 active;
   u32 handle;
 } EvtEffectSlot;
 #undef FUN_00396a70
-#define FUN_00396a70(...) ((u64 (*)(...))FUN_00396a70)(__VA_ARGS__)
+#define FUN_00396a70(...) FUN_00396a70(__VA_ARGS__)
 #undef FUN_00396ba0
-#define FUN_00396ba0(...) ((void (*)(...))FUN_00396ba0)(__VA_ARGS__)
+#define FUN_00396ba0(...) FUN_00396ba0(__VA_ARGS__)
 #undef FUN_00396bf0
-#define FUN_00396bf0(...) ((void (*)(...))FUN_00396bf0)(__VA_ARGS__)
+#define FUN_00396bf0(...) FUN_00396bf0(__VA_ARGS__)
 #undef FUN_00396c70
-#define FUN_00396c70(...) ((u32 (*)(...))FUN_00396c70)(__VA_ARGS__)
+#define FUN_00396c70(...) FUN_00396c70(__VA_ARGS__)

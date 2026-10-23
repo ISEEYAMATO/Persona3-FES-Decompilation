@@ -30,9 +30,9 @@ int frFontGetHeightRaw();
 
 /* Region call-cast macros */
 #define frFontSetTextScale(...) ((void (*)(...))frFontSetTextScale)(__VA_ARGS__)
-#define FUN_003b2cb0(...) ((int (*)(...))FUN_003b2cb0)(__VA_ARGS__)
-#define FUN_003b2f90(...) ((int (*)(...))FUN_003b2f90)(__VA_ARGS__)
-#define FUN_003b32d0(...) ((int (*)(...))FUN_003b32d0)(__VA_ARGS__)
+#define FUN_003b2cb0(...) FUN_003b2cb0(__VA_ARGS__)
+#define FUN_003b2f90(...) FUN_003b2f90(__VA_ARGS__)
+#define FUN_003b32d0(...) FUN_003b32d0(__VA_ARGS__)
 
 #undef frFontSetTextScale
 // FUN_003B2C60
@@ -176,7 +176,7 @@ int FUN_003b2cb0(int param_2,int param_3,float param_1,u32 param_4,u32 param_5,u
   return iVar5;
 
 }
-#define FUN_003b2cb0(...) ((int (*)(...))FUN_003b2cb0)(__VA_ARGS__)
+#define FUN_003b2cb0(...) FUN_003b2cb0(__VA_ARGS__)
 #undef FUN_003b2f90
 // FUN_003B2F90 MATCHING
 
@@ -326,7 +326,7 @@ int FUN_003b2f90(int param_2,int param_3,float param_1,u32 param_4,u32 param_5,u
   return iVar5;
 
 }
-#define FUN_003b2f90(...) ((int (*)(...))FUN_003b2f90)(__VA_ARGS__)
+#define FUN_003b2f90(...) FUN_003b2f90(__VA_ARGS__)
 #undef FUN_003b32d0
 // FUN_003B32D0 MATCHING
 
@@ -459,7 +459,7 @@ int FUN_003b32d0(int param_2,int param_3,float param_1,u32 param_4,u32 param_5,u
   return iVar5;
 
 }
-#define FUN_003b32d0(...) ((int (*)(...))FUN_003b32d0)(__VA_ARGS__)
+#define FUN_003b32d0(...) FUN_003b32d0(__VA_ARGS__)
 #undef frFontGetHeight
 // FUN_003B35C0
 

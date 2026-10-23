@@ -31,11 +31,11 @@ u8 * FUN_003c3f80(int param_1);
 u8 * FUN_003c3fe0(int param_1);
 
 /* Region call-cast macros */
-#define FUN_003c33c0(...) ((u8 (*)(...))FUN_003c33c0)(__VA_ARGS__)
-#define FUN_003c3e80(...) ((u32 (*)(...))FUN_003c3e80)(__VA_ARGS__)
-#define FUN_003c3f40(...) ((u8 * (*)(...))FUN_003c3f40)(__VA_ARGS__)
-#define FUN_003c3f80(...) ((u8 * (*)(...))FUN_003c3f80)(__VA_ARGS__)
-#define FUN_003c3fe0(...) ((u8 * (*)(...))FUN_003c3fe0)(__VA_ARGS__)
+#define FUN_003c33c0(...) FUN_003c33c0(__VA_ARGS__)
+#define FUN_003c3e80(...) FUN_003c3e80(__VA_ARGS__)
+#define FUN_003c3f40(...) FUN_003c3f40(__VA_ARGS__)
+#define FUN_003c3f80(...) FUN_003c3f80(__VA_ARGS__)
+#define FUN_003c3fe0(...) FUN_003c3fe0(__VA_ARGS__)
 
 #undef FUN_003c33c0
 #pragma push
@@ -767,7 +767,7 @@ return_one:
   return 1;
 }
 
-#define FUN_003c3e80(...) ((u32 (*)(...))FUN_003c3e80)(__VA_ARGS__)
+#define FUN_003c3e80(...) FUN_003c3e80(__VA_ARGS__)
 #undef FUN_003c3f40
 // FUN_003C3F40
 
@@ -784,7 +784,7 @@ u8 *FUN_003c3f40(u32 param_1)
   return PTR_DAT_006a3590_abs[index];
 }
 
-#define FUN_003c3f40(...) ((u8 * (*)(...))FUN_003c3f40)(__VA_ARGS__)
+#define FUN_003c3f40(...) FUN_003c3f40(__VA_ARGS__)
 #undef FUN_003c3f80
 // FUN_003C3F80
 
@@ -805,7 +805,7 @@ u8* FUN_003c3f80(s32 socialLink)
   return result;
 }
 
-#define FUN_003c3f80(...) ((u8 * (*)(...))FUN_003c3f80)(__VA_ARGS__)
+#define FUN_003c3f80(...) FUN_003c3f80(__VA_ARGS__)
 #undef FUN_003c3fe0
 // FUN_003C3FE0
 
@@ -826,4 +826,4 @@ u8* FUN_003c3fe0(s32 socialLink)
   return result;
 }
 
-#define FUN_003c3fe0(...) ((u8 * (*)(...))FUN_003c3fe0)(__VA_ARGS__)
+#define FUN_003c3fe0(...) FUN_003c3fe0(__VA_ARGS__)

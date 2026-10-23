@@ -53,15 +53,15 @@ u32 FUN_003b3e00(u32 param_1,int param_2);
 u32 FUN_003b3e60(u32 param_1,u32 param_2,u32 param_3);
 void FUN_003b3f90(int param_1,u8 *param_2,int param_3);
 /* Region call-cast macros */
-#define FUN_003b35e0(...) ((void (*)(...))FUN_003b35e0)(__VA_ARGS__)
-#define FUN_003b3740(...) ((void (*)(...))FUN_003b3740)(__VA_ARGS__)
-#define FUN_003b3770(...) ((void (*)(...))FUN_003b3770)(__VA_ARGS__)
-#define FUN_003b38f0(...) ((u64 (*)(...))FUN_003b38f0)(__VA_ARGS__)
-#define FUN_003b3d60(...) ((long (*)(...))FUN_003b3d60)(__VA_ARGS__)
-#define FUN_003b3dd0(...) ((long (*)(...))FUN_003b3dd0)(__VA_ARGS__)
-#define FUN_003b3e00(...) ((u32 (*)(...))FUN_003b3e00)(__VA_ARGS__)
-#define FUN_003b3e60(...) ((u32 (*)(...))FUN_003b3e60)(__VA_ARGS__)
-#define FUN_003b3f90(...) ((void (*)(...))FUN_003b3f90)(__VA_ARGS__)
+#define FUN_003b35e0(...) FUN_003b35e0(__VA_ARGS__)
+#define FUN_003b3740(...) FUN_003b3740(__VA_ARGS__)
+#define FUN_003b3770(...) FUN_003b3770(__VA_ARGS__)
+#define FUN_003b38f0(...) FUN_003b38f0(__VA_ARGS__)
+#define FUN_003b3d60(...) FUN_003b3d60(__VA_ARGS__)
+#define FUN_003b3dd0(...) FUN_003b3dd0(__VA_ARGS__)
+#define FUN_003b3e00(...) FUN_003b3e00(__VA_ARGS__)
+#define FUN_003b3e60(...) FUN_003b3e60(__VA_ARGS__)
+#define FUN_003b3f90(...) FUN_003b3f90(__VA_ARGS__)
 
 #undef FUN_003b35e0
 /* W389 residual: register-coloring cycle in the loop (retail keeps limit in $a0 and node in $a1; candidate swaps them) plus commutative addu. Six-knob singles left nd=7/object=344 unchanged for lifetimes, propagation, strength-reduction, and dead-assignments; loop-invariants/common-subs worsened nd to 81/151; pair sweep had no win; declaration swaps were neutral. */
@@ -163,7 +163,7 @@ asm void FUN_003b35e0(int count)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003b35e0(...) ((void (*)(...))FUN_003b35e0)(__VA_ARGS__)
+#define FUN_003b35e0(...) FUN_003b35e0(__VA_ARGS__)
 #undef FUN_003b3740
 // FUN_003B3740
 
@@ -181,7 +181,7 @@ void FUN_003b3740(void)
   return;
 
 }
-#define FUN_003b3740(...) ((void (*)(...))FUN_003b3740)(__VA_ARGS__)
+#define FUN_003b3740(...) FUN_003b3740(__VA_ARGS__)
 #undef FUN_003b3770
 // FUN_003B3770
 
@@ -286,7 +286,7 @@ asm void FUN_003b3770(void)
   .word 0x00000000
   .word 0x00000000
 }
-#define FUN_003b3770(...) ((void (*)(...))FUN_003b3770)(__VA_ARGS__)
+#define FUN_003b3770(...) FUN_003b3770(__VA_ARGS__)
 #undef FUN_003b38f0
 /* W389 pragma pair: opt_loop_invariants on + opt_lifetimes on; without nd=740/object=1084, with nd=709/object=1072; window=1136. */
 #pragma push
@@ -585,7 +585,7 @@ asm u64 FUN_003b38f0(float param_1,int param_2,int param_3,u32 *param_4,int para
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
-#define FUN_003b38f0(...) ((u64 (*)(...))FUN_003b38f0)(__VA_ARGS__)
+#define FUN_003b38f0(...) FUN_003b38f0(__VA_ARGS__)
 #undef FUN_003b3d60
 // FUN_003B3D60
 
@@ -605,7 +605,7 @@ u32 FUN_003b3d60(u32 param_1,u32 param_2,u32 param_3)
   return result;
 }
 
-#define FUN_003b3d60(...) ((long (*)(...))FUN_003b3d60)(__VA_ARGS__)
+#define FUN_003b3d60(...) FUN_003b3d60(__VA_ARGS__)
 #undef FUN_003b3dd0
 // FUN_003B3DD0
 
@@ -622,7 +622,7 @@ u32 FUN_003b3dd0(u32 param_1,int param_2)
   return result;
 }
 
-#define FUN_003b3dd0(...) ((long (*)(...))FUN_003b3dd0)(__VA_ARGS__)
+#define FUN_003b3dd0(...) FUN_003b3dd0(__VA_ARGS__)
 #undef FUN_003b3e00
 // FUN_003B3E00
 
@@ -654,7 +654,7 @@ done:
   return (u32)entry;
 }
 
-#define FUN_003b3e00(...) ((u32 (*)(...))FUN_003b3e00)(__VA_ARGS__)
+#define FUN_003b3e00(...) FUN_003b3e00(__VA_ARGS__)
 #undef FUN_003b3e60
 #undef FUN_003b3f90
 // FUN_003B3E60
@@ -695,7 +695,7 @@ u32 FUN_003b3e60(u32 param_1,u32 param_2,u32 param_3)
   puVar1[4] = 0;
   return (u32)puVar1;
 }
-#define FUN_003b3e60(...) ((u32 (*)(...))FUN_003b3e60)(__VA_ARGS__)
+#define FUN_003b3e60(...) FUN_003b3e60(__VA_ARGS__)
 #undef FUN_003b3f90
 // FUN_003B3F90
 
@@ -830,4 +830,4 @@ void FUN_003b3f90(int param_1,u8 *param_2,int param_3)
   return;
 
 }
-#define FUN_003b3f90(...) ((void (*)(...))FUN_003b3f90)(__VA_ARGS__)
+#define FUN_003b3f90(...) FUN_003b3f90(__VA_ARGS__)

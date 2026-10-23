@@ -87,21 +87,21 @@ u32 FUN_003c3190(int *param_1);
 u32 * FUN_003c3390(void);
 
 /* Region call-cast macros */
-#define FUN_003c2570(...) ((u32 (*)(...))FUN_003c2570)(__VA_ARGS__)
-#define FUN_003c2630(...) ((u32 (*)(...))FUN_003c2630)(__VA_ARGS__)
-#define FUN_003c2770(...) ((u32 * (*)(...))FUN_003c2770)(__VA_ARGS__)
-#define FUN_003c2780(...) ((u8 * (*)(...))FUN_003c2780)(__VA_ARGS__)
-#define FUN_003c28a0(...) ((u32 (*)(...))FUN_003c28a0)(__VA_ARGS__)
-#define FUN_003c2ab0(...) ((u32 (*)(...))FUN_003c2ab0)(__VA_ARGS__)
-#define FUN_003c2b40(...) ((u32 (*)(...))FUN_003c2b40)(__VA_ARGS__)
-#define FUN_003c2c50(...) ((u32 (*)(...))FUN_003c2c50)(__VA_ARGS__)
-#define FUN_003c2df0(...) ((u32 (*)(...))FUN_003c2df0)(__VA_ARGS__)
-#define FUN_003c2ee0(...) ((u32 * (*)(...))FUN_003c2ee0)(__VA_ARGS__)
-#define FUN_003c3050(...) ((u32 * (*)(...))FUN_003c3050)(__VA_ARGS__)
-#define FUN_003c30b0(...) ((u8 (*)(...))FUN_003c30b0)(__VA_ARGS__)
-#define FUN_003c3120(...) ((u8 (*)(...))FUN_003c3120)(__VA_ARGS__)
-#define FUN_003c3190(...) ((u32 (*)(...))FUN_003c3190)(__VA_ARGS__)
-#define FUN_003c3390(...) ((u32 * (*)(...))FUN_003c3390)(__VA_ARGS__)
+#define FUN_003c2570(...) FUN_003c2570(__VA_ARGS__)
+#define FUN_003c2630(...) FUN_003c2630(__VA_ARGS__)
+#define FUN_003c2770(...) FUN_003c2770(__VA_ARGS__)
+#define FUN_003c2780(...) FUN_003c2780(__VA_ARGS__)
+#define FUN_003c28a0(...) FUN_003c28a0(__VA_ARGS__)
+#define FUN_003c2ab0(...) FUN_003c2ab0(__VA_ARGS__)
+#define FUN_003c2b40(...) FUN_003c2b40(__VA_ARGS__)
+#define FUN_003c2c50(...) FUN_003c2c50(__VA_ARGS__)
+#define FUN_003c2df0(...) FUN_003c2df0(__VA_ARGS__)
+#define FUN_003c2ee0(...) FUN_003c2ee0(__VA_ARGS__)
+#define FUN_003c3050(...) FUN_003c3050(__VA_ARGS__)
+#define FUN_003c30b0(...) FUN_003c30b0(__VA_ARGS__)
+#define FUN_003c3120(...) FUN_003c3120(__VA_ARGS__)
+#define FUN_003c3190(...) FUN_003c3190(__VA_ARGS__)
+#define FUN_003c3390(...) FUN_003c3390(__VA_ARGS__)
 
 #undef FUN_003c2570
 // FUN_003C2570
@@ -160,7 +160,7 @@ u32 FUN_003c2570(u64 param_1)
   return uVar1;
 
 }
-#define FUN_003c2570(...) ((u32 (*)(...))FUN_003c2570)(__VA_ARGS__)
+#define FUN_003c2570(...) FUN_003c2570(__VA_ARGS__)
 #undef FUN_003c2630
 // FUN_003C2630
 u32 FUN_003c2630(u32 param_1,u32 param_2,u32 param_3)
@@ -226,7 +226,7 @@ u32 FUN_003c2630(u32 param_1,u32 param_2,u32 param_3)
   return uVar1;
 
 }
-#define FUN_003c2630(...) ((u32 (*)(...))FUN_003c2630)(__VA_ARGS__)
+#define FUN_003c2630(...) FUN_003c2630(__VA_ARGS__)
 #undef FUN_003c2770
 // FUN_003C2770
 
@@ -234,7 +234,7 @@ u32 *FUN_003c2770(void)
 {
   return DAT_0095b7e0;
 }
-#define FUN_003c2770(...) ((u32 * (*)(...))FUN_003c2770)(__VA_ARGS__)
+#define FUN_003c2770(...) FUN_003c2770(__VA_ARGS__)
 #undef FUN_003c2780
 // FUN_003C2780
 
@@ -307,7 +307,7 @@ u8 * FUN_003c2780(u32 param_1)
   return (u8 *)0x0;
 
 }
-#define FUN_003c2780(...) ((u8 * (*)(...))FUN_003c2780)(__VA_ARGS__)
+#define FUN_003c2780(...) FUN_003c2780(__VA_ARGS__)
 #undef FUN_003c28a0
 // FUN_003C28A0
 
@@ -393,7 +393,7 @@ LAB_003c29b0:
   return uVar3;
 
 }
-#define FUN_003c28a0(...) ((u32 (*)(...))FUN_003c28a0)(__VA_ARGS__)
+#define FUN_003c28a0(...) FUN_003c28a0(__VA_ARGS__)
 #undef FUN_003c2ab0
 // FUN_003C2AB0
 
@@ -505,7 +505,7 @@ LAB_003c2c00:
   return uVar5;
 
 }
-#define FUN_003c2b40(...) ((u32 (*)(...))FUN_003c2b40)(__VA_ARGS__)
+#define FUN_003c2b40(...) FUN_003c2b40(__VA_ARGS__)
 #undef FUN_003c2c50
 // FUN_003C2C50
 
@@ -719,7 +719,7 @@ u32 * FUN_003c2ee0(s32 param_1)
   return puVar2;
 
 }
-#define FUN_003c2ee0(...) ((u32 * (*)(...))FUN_003c2ee0)(__VA_ARGS__)
+#define FUN_003c2ee0(...) FUN_003c2ee0(__VA_ARGS__)
 #undef FUN_003c3050
 // FUN_003C3050
 
@@ -734,7 +734,7 @@ u32 *FUN_003c3050(u32 param_1)
   return (u32*)DAT_0095b790_abs;
 }
 
-#define FUN_003c3050(...) ((u32 * (*)(...))FUN_003c3050)(__VA_ARGS__)
+#define FUN_003c3050(...) FUN_003c3050(__VA_ARGS__)
 #undef FUN_003c30b0
 #pragma alias DAT_0095b790_wrap_abs DAT_0095b790
 extern u8 DAT_0095b790_wrap_abs[];
@@ -765,7 +765,7 @@ work:
   *(u32*)DAT_0095b790_wrap_abs = 0;
   return 1;
 }
-#define FUN_003c30b0(...) ((u8 (*)(...))FUN_003c30b0)(__VA_ARGS__)
+#define FUN_003c30b0(...) FUN_003c30b0(__VA_ARGS__)
 #undef FUN_003c3120
 // FUN_003C3120
 
@@ -788,7 +788,7 @@ work:
   *(u32*)DAT_0095b790_wrap_abs = 0;
   return 1;
 }
-#define FUN_003c3120(...) ((u8 (*)(...))FUN_003c3120)(__VA_ARGS__)
+#define FUN_003c3120(...) FUN_003c3120(__VA_ARGS__)
 #undef FUN_003c3190
 /* Removing this worsens FUN_003c3190 (nd306 -> nd307) - measured W161. */
 // FUN_003C3190
@@ -928,7 +928,7 @@ asm u32 FUN_003c3190(int *param_1)
   .word 0x00000000
 }
 #pragma opt_loop_invariants off
-#define FUN_003c3190(...) ((u32 (*)(...))FUN_003c3190)(__VA_ARGS__)
+#define FUN_003c3190(...) FUN_003c3190(__VA_ARGS__)
 #undef FUN_003c3390
 // FUN_003C3390
 
@@ -959,4 +959,4 @@ u32 * FUN_003c3390(void)
 
 }
 
-#define FUN_003c3390(...) ((u32 * (*)(...))FUN_003c3390)(__VA_ARGS__)
+#define FUN_003c3390(...) FUN_003c3390(__VA_ARGS__)
