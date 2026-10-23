@@ -211,650 +211,1210 @@ void func_0018f2b0(void)
     sMemcardSeqMode = 4;
 }
 
-// FUN_0018f2c0 NONMATCHING. Advance the save/load card-dialog state machine.
-s32 func_0018f2c0(void)
+// FUN_0018f2c0. Advance the save/load card-dialog state machine.
+asm s32 func_0018f2c0(void)
 {
-    s32 cardMode;
-    s32 cardCode;
-    s32 cardError;
-    s32 size;
-    s32 value;
-
-    FUN_005225a8(D_005E4810, sMemcardSeqMode);
-
-    switch (sMemcardSeqMode)
-    {
-        case 0:
-            cardMode = 0;
-            cardCode = 0;
-            if (func_0018f190(&cardMode, (u32*)&cardCode, &cardError) == -1)
-            {
-                FUN_005136f8(sSocketNo, (u32)D_00846EA0);
-                sMemcardSeqMode = 1;
-            }
-            break;
-
-        case 1:
-            if (func_0018f190(&cardMode, (u32*)&cardCode, &cardError) == 1)
-            {
-                if (cardError == 0)
-                {
-                    switch (cardCode)
-                    {
-                        case 0x9003:
-                            return -3;
-                        case 0x6f:
-                            return -5;
-                        case 0x13:
-                            return -5;
-                        case 0x9001:
-                            return -7;
-                        case 0x2f:
-                            sMemcardSeqMode = 3;
-                            return 2;
-                        default:
-                            FUN_005225a8(D_005E4830);
-                            break;
-                    }
-                }
-                if (*D_00846EA0 != 2)
-                {
-                    return -1;
-                }
-                if (*D_00846EA4 == 0)
-                {
-                    sMemcardSeqMode = 3;
-                    return 2;
-                }
-                if (sMemcardAsync != 0)
-                {
-                    FUN_00523ac8(D_00846DA0, D_005E4840, sMemcardFile, sMemcardFile);
-                }
-                else
-                {
-                    if (FUN_0017d800() != 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4870, sMemcardFile, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E48A0, sMemcardFile, sMemcardFile);
-                    }
-                }
-                if ((value = FUN_005137b8(sSocketNo, D_00846DA0, D_00846C80)) != 0)
-                {
-                    FUN_005225a8(D_005E4830, value);
-                }
-                sMemcardSeqMode = 2;
-            }
-            break;
-
-
-        case 3:
-        {
-            s32 status;
-            status = func_0018f190(&cardMode, (u32*)&cardCode, &cardError);
-            if (status == -1)
-            {
-                goto state3_error;
-            }
-            switch (status)
-            {
-                case 1:
-                    if (cardError == 0)
-                    {
-                        switch (cardCode)
-                        {
-                            case 0x9003:
-                                return -3;
-                            case 0x6f:
-                                return -3;
-                            case 0x13:
-                                return -3;
-                            case 0x9001:
-                                return -3;
-                            case 0x2f:
-                            default:
-                                break;
-                        }
-                    }
-                    break;
-                default:
-                    goto state3_done;
-            }
-            goto state3_done;
-
-state3_error:
-            FUN_005136f8(sSocketNo, (u32)D_00846EA0);
-state3_done:
-            return 2;
-        }
-        case 4:
-        {
-            s32 status;
-            status = func_0018f190(&cardMode, (u32*)&cardCode, &cardError);
-            switch (status)
-            {
-                case 1:
-                    if (cardCode != 0)
-                    {
-                        goto state4_done;
-                    }
-                    if (cardCode == 0x2f)
-                    {
-                        goto state4_done;
-                    }
-                    switch (cardCode)
-                    {
-                        case 0x9003:
-                        case 0x6f:
-                        case 0x13:
-                        case 0x9001:
-                            goto state4_return3;
-                        default:
-                            break;
-                    }
-                    goto state4_done;
-                case -1:
-                    goto state4_error;
-                default:
-                    goto state4_done;
-            }
-state4_return3:
-            return -3;
-state4_error:
-            FUN_00513598(sSocketNo);
-            sMemcardSeqMode = 5;
-state4_done:
-            break;
-        }
-        case 5:
-        {
-            s32 status;
-            status = func_0018f190(&cardMode, (u32*)&cardCode, &cardError);
-            switch (status)
-            {
-                case 1:
-                    switch (cardError)
-                    {
-                        case 0:
-                            goto state5_return3;
-                        default:
-                            sMemcardSeqMode = 6;
-                            return 4;
-                    }
-                case -1:
-                    goto state5_error;
-                default:
-                    goto state5_done;
-            }
-state5_return3:
-            return -3;
-state5_error:
-            sMemcardSeqMode = 6;
-state5_done:
-            break;
-        }
-        case 2:
-            if (func_0018f190(&cardMode, (u32*)&cardCode, &cardError) == 1)
-            {
-                if (cardError == 0)
-                {
-                    switch (cardCode)
-                    {
-                        case 0x9003:
-                            return -5;
-                        case 0x6f:
-                            return -5;
-                        case 0x16:
-                            return -5;
-                        case 0x13:
-                            return -5;
-                        case 2:
-                            sMemcardSeqMode = 6;
-                            break;
-                        default:
-                            FUN_005225a8(D_005E48C8);
-                            sMemcardSeqMode = 6;
-                            return -7;
-                    }
-                }
-                else
-                {
-                    sMemcardSeqMode = 8;
-                    return 1;
-                }
-            }
-            break;
-
-        case 8:
-        {
-            s32 status;
-            status = func_0018f190(&cardMode, (u32*)&cardCode, &cardError);
-            switch (status)
-            {
-                case 1:
-                    if (cardError == 0)
-                    {
-                        switch (cardCode)
-                        {
-                            case 0x9003:
-                                return -3;
-                            case 0x6f:
-                                return -3;
-                            case 0x13:
-                                return -3;
-                            case 0x9001:
-                                return -3;
-                            case 0x2f:
-                                return -3;
-                            default:
-                                break;
-                        }
-                    }
-                    break;
-                case -1:
-                    FUN_005136f8(sSocketNo, (u32)D_00846EA0);
-                    break;
-                default:
-                    break;
-            }
-            return 1;
-
-        }
-        case 9:
-        {
-            s32 status;
-            status = func_0018f190(&cardMode, (u32*)&cardCode, &cardError);
-            switch (status)
-            {
-                case 1:
-                    if (cardError != 0)
-                    {
-                        sMemcardSeqMode = 6;
-                        break;
-                    }
-                    switch (cardCode)
-                    {
-                        case 0x9003:
-                            return -3;
-                        case 0x6f:
-                            return -3;
-                        case 0x13:
-                            return -3;
-                        case 0x9001:
-                            return -3;
-                        case 0x2f:
-                            return -3;
-                        default:
-                            break;
-                    }
-                    break;
-                case -1:
-                    sMemcardSeqMode = 6;
-                    break;
-                default:
-                    break;
-            }
-            break;
-
-        }
-        case 6:
-            if (sMemcardAsync != 0)
-            {
-                FUN_00523ac8(D_00846DA0, D_005E48E0, sMemcardFile);
-            }
-            else
-            {
-                if (FUN_0017d800() != 0)
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4900, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4920, sMemcardFile);
-                    }
-                }
-                else
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4940, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4960, sMemcardFile);
-                    }
-                }
-            }
-            FUN_005225a8(D_005E4980, FUN_005140f8(sSocketNo, D_00846DA0));
-            sMemcardSeqMode = 7;
-            return 5;
-
-        case 7:
-            if (func_0018f190(&cardMode, (u32*)&cardCode, &cardError) == 1)
-            {
-                if (cardError != 0)
-                {
-                    sMemcardSeqMode = 10;
-                }
-                else
-                {
-                    switch (cardCode)
-                    {
-                        case 0x11:
-                            sMemcardSeqMode = 10;
-                            break;
-                        case 0x1c:
-                            return -6;
-                        default:
-                            return -3;
-                    }
-                }
-            }
-            break;
-
-
-        case 10:
-            switch (sMemcardMode)
-            {
-            case 0:
-                if (sMemcardAsync != 0)
-                {
-                    FUN_00523ac8(D_00846DA0, D_005E4840, sMemcardFile, sMemcardFile);
-                }
-                else
-                {
-                    if (FUN_0017d800() != 0)
-                    {
-                        if (FUN_0016f190(0x1422) == 0)
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4870, sMemcardFile, sMemcardFile);
-                        }
-                        else
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E49A0, sMemcardFile, sMemcardFile);
-                        }
-                    }
-                    else
-                    {
-                        if (FUN_0016f190(0x1422) == 0)
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E48A0, sMemcardFile, sMemcardFile);
-                        }
-                        else
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E49D0, sMemcardFile, sMemcardFile);
-                        }
-                    }
-                }
-                break;
-            case 1:
-            {
-                if (sMemcardAsync != 0)
-                {
-                    FUN_00523ac8(D_00846DA0, D_005E4A00, sMemcardFile);
-                }
-                else
-                {
-                    if (FUN_0017d800() != 0)
-                    {
-                        if (FUN_0016f190(0x1422) == 0)
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4A20, sMemcardFile);
-                        }
-                        else
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4A40, sMemcardFile);
-                        }
-                    }
-                    else
-                    {
-                        if (FUN_0016f190(0x1422) == 0)
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4A60, sMemcardFile);
-                        }
-                        else
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4A80, sMemcardFile);
-                        }
-                    }
-            }
-            }
-                break;
-            case 2:
-            {
-                if (sMemcardAsync != 0)
-                {
-                    FUN_00523ac8(D_00846DA0, D_005E4AA0, sMemcardFile);
-                }
-                else
-                {
-                    if (FUN_0017d800() != 0)
-                    {
-                        if (FUN_0016f190(0x1422) == 0)
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4B00, sMemcardFile);
-                        }
-                        else
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4B20, sMemcardFile);
-                        }
-                    }
-                    else
-                    {
-                        if (FUN_0016f190(0x1422) == 0)
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4AC0, sMemcardFile);
-                        }
-                        else
-                        {
-                            FUN_00523ac8(D_00846DA0, D_005E4AE0, sMemcardFile);
-                        }
-                    }
-                }
-            }
-            break;
-            default:
-                break;
-            }
-            FUN_00513de8(sSocketNo, D_00846DA0);
-            sMemcardSeqMode = 0xb;
-            break;
-        case 0xb:
-            if (func_0018f190(&cardMode, (u32*)&cardCode, &cardError) == 1)
-            {
-                if (cardError != 0)
-                {
-                    sMemcardSeqMode = 0xc;
-                }
-                else
-                {
-                    switch (cardCode)
-                    {
-                        case 0x11:
-                            sMemcardSeqMode = 0xc;
-                            break;
-                        case 0x1c:
-                            return -6;
-                        default:
-                            return -3;
-                    }
-                }
-            }
-            break;
-
-        case 0xc:
-            switch (sMemcardMode)
-            {
-                case 0:
-                    goto state12_mode0;
-                case 1:
-                    goto state12_mode1;
-                case 2:
-                    goto state12_mode2;
-                default:
-                    goto state12_done;
-            }
-
-state12_mode0:
-            if (sMemcardAsync != 0)
-            {
-                FUN_00523ac8(D_00846DA0, D_005E4840, sMemcardFile, sMemcardFile);
-            }
-            else
-            {
-                if (FUN_0017d800() != 0)
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4870, sMemcardFile, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E49A0, sMemcardFile, sMemcardFile);
-                    }
-                }
-                else
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E48A0, sMemcardFile, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E49D0, sMemcardFile, sMemcardFile);
-                    }
-                }
-            }
-            FUN_00513cc8_m0(sSocketNo, D_00846EA0, sMemcardBufferSize, 0, sMemcardBuffer);
-            goto state12_done;
-
-state12_mode1:
-            if (sMemcardAsync != 0)
-            {
-                FUN_00523ac8(D_00846DA0, D_005E4A00, sMemcardFile);
-            }
-            else
-            {
-                if (FUN_0017d800() != 0)
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4A20, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4A40, sMemcardFile);
-                    }
-                }
-                else
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4A60, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4A80, sMemcardFile);
-                    }
-                }
-            }
-            size = 0;
-            FUN_00513cc8(sSocketNo, D_00846EA0, FUN_001021c0(D_005E4B40, &size), 0, size);
-            goto state12_done;
-
-state12_mode2:
-            if (sMemcardAsync != 0)
-            {
-                FUN_00523ac8(D_00846DA0, D_005E4AA0, sMemcardFile);
-            }
-            else
-            {
-                if (FUN_0017d800() != 0)
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4AC0, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4AE0, sMemcardFile);
-                    }
-                }
-                else
-                {
-                    if (FUN_0016f190(0x1422) == 0)
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4B00, sMemcardFile);
-                    }
-                    else
-                    {
-                        FUN_00523ac8(D_00846DA0, D_005E4B20, sMemcardFile);
-                    }
-                }
-            }
-            FUN_00521408(D_00846780, 0, 0x3c4);
-            FUN_00524270(D_00846780, D_007CC0C8);
-            if (FUN_0017d800() == 0)
-            {
-                if ((sMemcardFile >= 0) && (sMemcardFile < 0x10))
-                {
-                    FUN_00524270(D_00846840, D_005E4B50);
-                    FUN_00523e68(D_00846840, sMemcardFile * 8 + D_005E4790);
-                }
-            }
-            else if ((sMemcardFile >= 0) && (sMemcardFile < 0x10))
-            {
-                FUN_00524270(D_00846840, D_005E4B80);
-                FUN_00523e68(D_00846840, sMemcardFile * 8 + D_005E4790);
-            }
-            D_00846786 = 0x12;
-            D_0084678C = 0x60;
-            FUN_00521250(D_00846790, D_005E46C0, 0x40);
-            FUN_00521250(D_00846780 + 0x50, D_005E4700, 0x30);
-            FUN_00521250(D_00846800, D_005E4730, 0x30);
-            FUN_00521250(D_00846830, D_005E4760, 0x10);
-            FUN_00524270(D_00846884, D_005E4780);
-            FUN_00524270(D_008468C4, D_005E4784);
-            FUN_00524270(D_00846904, D_005E4788);
-            FUN_00513cc8(sSocketNo, D_00846EA0, D_00846780, 0, 0x3c4);
-
-state12_done:
-            sMemcardSeqMode = 0xd;
-            break;
-
-        case 0xd:
-            if (func_0018f190(&cardMode, (u32*)&cardCode, &cardError) == 1)
-            {
-                if (cardError != 0)
-                {
-                    if (sMemcardMode == 2)
-                    {
-                        return 100;
-                    }
-                    sMemcardMode++;
-                    sMemcardSeqMode = 10;
-                    break;
-                }
-                switch (cardCode)
-                {
-                    case 0x11:
-                        sMemcardSeqMode = 0xc;
-                        break;
-                    case 0x1c:
-                        return -6;
-                    default:
-                        return -3;
-                }
-            }
-            break;
-    }
-
-done:
-    return 0;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0000
+  .word 0x3c04005e
+  .word 0x24844810
+  .word 0x8f85b34c
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x8f82b34c
+  .word 0x2c41000e
+  .word 0x102004a0
+  .word 0x00000000
+  .word 0x3c03007b
+  .word 0x246369b0
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0x00400008
+  .word 0x00000000
+  .word 0xafa0001c
+  .word 0xafa00018
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x1443048f
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56ea0
+  .word 0x0c144dbe
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xaf82b34c
+  .word 0x10000486
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x1443047e
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x14400028
+  .word 0x00000000
+  .word 0x8fa50018
+  .word 0x2402002f
+  .word 0x10a2001b
+  .word 0x00000000
+  .word 0x34029001
+  .word 0x10a20015
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x10a2000f
+  .word 0x00000000
+  .word 0x2402006f
+  .word 0x10a20009
+  .word 0x00000000
+  .word 0x34029003
+  .word 0x10a20003
+  .word 0x00000000
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000467
+  .word 0x00000000
+  .word 0x2402fffb
+  .word 0x10000464
+  .word 0x00000000
+  .word 0x2402fffb
+  .word 0x10000461
+  .word 0x00000000
+  .word 0x2402fff9
+  .word 0x1000045e
+  .word 0x00000000
+  .word 0x24020003
+  .word 0xaf82b34c
+  .word 0x24020002
+  .word 0x10000459
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844830
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x3c020084
+  .word 0x8c436ea0
+  .word 0x24020002
+  .word 0x10620004
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x1000044d
+  .word 0x00000000
+  .word 0x3c030084
+  .word 0x8c636ea4
+  .word 0x14600005
+  .word 0x00000000
+  .word 0x24030003
+  .word 0xaf83b34c
+  .word 0x10000445
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54840
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54870
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a548a0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56da0
+  .word 0x3c060084
+  .word 0x24c66c80
+  .word 0x0c144dee
+  .word 0x00000000
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844830
+  .word 0x0040282d
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x24020002
+  .word 0xaf82b34c
+  .word 0x1000040f
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x10430027
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x10000027
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x14400024
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x2402002f
+  .word 0x10620020
+  .word 0x00000000
+  .word 0x34029001
+  .word 0x10620015
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x1062000f
+  .word 0x00000000
+  .word 0x2402006f
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x34029003
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100003eb
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100003e8
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100003e5
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100003e2
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56ea0
+  .word 0x0c144dbe
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x100003da
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x1043001d
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x100003cc
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x146003c9
+  .word 0x00000000
+  .word 0x2402002f
+  .word 0x106203c6
+  .word 0x00000000
+  .word 0x34029001
+  .word 0x1062000c
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x2402006f
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x34029003
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x100003b8
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100003b6
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x0c144d66
+  .word 0x00000000
+  .word 0x24020005
+  .word 0xaf82b34c
+  .word 0x100003ae
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x10430011
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x100003a1
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x24020006
+  .word 0xaf82b34c
+  .word 0x24020004
+  .word 0x1000039a
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000397
+  .word 0x00000000
+  .word 0x24020006
+  .word 0xaf82b34c
+  .word 0x10000392
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x1443038a
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x1440002c
+  .word 0x00000000
+  .word 0x8fa50018
+  .word 0x24020002
+  .word 0x10a2001b
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x10a20015
+  .word 0x00000000
+  .word 0x24020016
+  .word 0x10a2000f
+  .word 0x00000000
+  .word 0x2402006f
+  .word 0x10a20009
+  .word 0x00000000
+  .word 0x34029003
+  .word 0x10a20003
+  .word 0x00000000
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x2402fffb
+  .word 0x10000373
+  .word 0x00000000
+  .word 0x2402fffb
+  .word 0x10000370
+  .word 0x00000000
+  .word 0x2402fffb
+  .word 0x1000036d
+  .word 0x00000000
+  .word 0x2402fffb
+  .word 0x1000036a
+  .word 0x00000000
+  .word 0x24020006
+  .word 0xaf82b34c
+  .word 0x10000365
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x248448c8
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x24020006
+  .word 0xaf82b34c
+  .word 0x2402fff9
+  .word 0x1000035d
+  .word 0x00000000
+  .word 0x24020008
+  .word 0xaf82b34c
+  .word 0x0060102d
+  .word 0x10000358
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x1043002a
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x1000002a
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x14400027
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x2402002f
+  .word 0x1062001b
+  .word 0x00000000
+  .word 0x34029001
+  .word 0x10620015
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x1062000f
+  .word 0x00000000
+  .word 0x2402006f
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x34029003
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000015
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000333
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000330
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x1000032d
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x1000032a
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000327
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56ea0
+  .word 0x0c144dbe
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x1000031f
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x1043002e
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x10000311
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x24020006
+  .word 0xaf82b34c
+  .word 0x1000030a
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x2402002f
+  .word 0x1062001b
+  .word 0x00000000
+  .word 0x34029001
+  .word 0x10620015
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x1062000f
+  .word 0x00000000
+  .word 0x2402006f
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x34029003
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x100002f8
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100002f6
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100002f3
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100002f0
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100002ed
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x100002ea
+  .word 0x00000000
+  .word 0x24020006
+  .word 0xaf82b34c
+  .word 0x100002e5
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a548e0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54900
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54920
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54940
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54960
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56da0
+  .word 0x0c14503e
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844980
+  .word 0x0040282d
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x24020007
+  .word 0xaf82b34c
+  .word 0x24020005
+  .word 0x1000029b
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430292
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x2402000a
+  .word 0xaf82b34c
+  .word 0x1000028b
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x2402001c
+  .word 0x1062000a
+  .word 0x00000000
+  .word 0x24020011
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x2402000a
+  .word 0xaf82b34c
+  .word 0x1000027e
+  .word 0x00000000
+  .word 0x2402fffa
+  .word 0x1000027c
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000279
+  .word 0x00000000
+  .word 0x8f83b348
+  .word 0x24020002
+  .word 0x10620089
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620048
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x100000be
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54840
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x100000b1
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x1040001a
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54870
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000009e
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a549a0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000094
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a548a0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000085
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a549d0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000007b
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a00
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000006f
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a20
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000005d
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a40
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000054
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a60
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000046
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a80
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000003d
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54aa0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54ac0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54ae0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54b00
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54b20
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56da0
+  .word 0x0c144f7a
+  .word 0x00000000
+  .word 0x2402000b
+  .word 0xaf82b34c
+  .word 0x100001a7
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x1443019f
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x2402000c
+  .word 0xaf82b34c
+  .word 0x10000198
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x2402001c
+  .word 0x1062000a
+  .word 0x00000000
+  .word 0x24020011
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x2402000c
+  .word 0xaf82b34c
+  .word 0x1000018b
+  .word 0x00000000
+  .word 0x2402fffa
+  .word 0x10000189
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000186
+  .word 0x00000000
+  .word 0x8f83b348
+  .word 0x24020002
+  .word 0x1062009e
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620050
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x1000014b
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54840
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000035
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x1040001a
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54870
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000022
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a549a0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a548a0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x8f86b344
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a549d0
+  .word 0x00c0382d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x8f88b340
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56da0
+  .word 0x8f86b338
+  .word 0x0000382d
+  .word 0x0c144f32
+  .word 0x00000000
+  .word 0x10000100
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a00
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a20
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a40
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a60
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54a80
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844b40
+  .word 0x27a50010
+  .word 0x0c040870
+  .word 0x00000000
+  .word 0x8fa80010
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56da0
+  .word 0x0040302d
+  .word 0x0000382d
+  .word 0x0c144f32
+  .word 0x00000000
+  .word 0x100000b5
+  .word 0x00000000
+  .word 0x8f82b31c
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54aa0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54ac0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54ae0
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x24041422
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54b00
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846da0
+  .word 0x3c05005e
+  .word 0x24a54b20
+  .word 0x8f86b344
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846780
+  .word 0x0000282d
+  .word 0x240603c4
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846780
+  .word 0x278593d8
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x0c05f600
+  .word 0x00000000
+  .word 0x14400018
+  .word 0x00000000
+  .word 0x8f82b344
+  .word 0x0440002a
+  .word 0x00000000
+  .word 0x28410010
+  .word 0x10200027
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846840
+  .word 0x3c05005e
+  .word 0x24a54b50
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x8f82b344
+  .word 0x000218c0
+  .word 0x3c02005e
+  .word 0x24424790
+  .word 0x00432821
+  .word 0x3c040084
+  .word 0x24846840
+  .word 0x0c148f9a
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x8f82b344
+  .word 0x04400013
+  .word 0x00000000
+  .word 0x28410010
+  .word 0x10200010
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846840
+  .word 0x3c05005e
+  .word 0x24a54b80
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x8f82b344
+  .word 0x000218c0
+  .word 0x3c02005e
+  .word 0x24424790
+  .word 0x00432821
+  .word 0x3c040084
+  .word 0x24846840
+  .word 0x0c148f9a
+  .word 0x00000000
+  .word 0x24030012
+  .word 0x3c020084
+  .word 0xa4436786
+  .word 0x24030060
+  .word 0x3c020084
+  .word 0xac43678c
+  .word 0x3c040084
+  .word 0x24846790
+  .word 0x3c05005e
+  .word 0x24a546c0
+  .word 0x24060040
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x248467d0
+  .word 0x3c05005e
+  .word 0x24a54700
+  .word 0x24060030
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846800
+  .word 0x3c05005e
+  .word 0x24a54730
+  .word 0x24060030
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846830
+  .word 0x3c05005e
+  .word 0x24a54760
+  .word 0x24060010
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846884
+  .word 0x3c02005e
+  .word 0x8c454780
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x248468c4
+  .word 0x3c02005e
+  .word 0x8c454784
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x3c040084
+  .word 0x24846904
+  .word 0x3c02005e
+  .word 0x8c454788
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x8f84b334
+  .word 0x3c050084
+  .word 0x24a56da0
+  .word 0x3c060084
+  .word 0x24c66780
+  .word 0x0000382d
+  .word 0x240803c4
+  .word 0x0c144f32
+  .word 0x00000000
+  .word 0x2402000d
+  .word 0xaf82b34c
+  .word 0x1000002c
+  .word 0x00000000
+  .word 0x27a4001c
+  .word 0x27a50018
+  .word 0x27a60014
+  .word 0x0c063c64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430024
+  .word 0x00000000
+  .word 0x8fa20014
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x8f83b348
+  .word 0x24020002
+  .word 0x14620004
+  .word 0x00000000
+  .word 0x24020064
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x24620001
+  .word 0xaf82b348
+  .word 0x2402000a
+  .word 0xaf82b34c
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x8fa30018
+  .word 0x2402001c
+  .word 0x1062000a
+  .word 0x00000000
+  .word 0x24020011
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x2402000c
+  .word 0xaf82b34c
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x2402fffa
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x2402fffd
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x27bd0020
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00190580
