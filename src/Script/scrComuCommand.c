@@ -1751,70 +1751,106 @@ u32 scrComu00360d40(void)
 /* Removing this worsens scrComu00360ed0 (nd67 -> nd113) - measured W161. */
 #pragma opt_common_subs off
 /* W415 census recheck: all six relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
-// FUN_00360ed0 NONMATCHING. Checks a comu event's availability condition ('objtype' 0..2)
-u32 scrComu00360ed0(int param_1)
+// FUN_00360ed0. Checks a comu event's availability condition ('objtype' 0..2)
+asm u32 scrComu00360ed0(int param_1)
 {
-    char cVar1;
-    u8 bVar2;
-    u32 value;
-    int lVar5;
-    int flag;
-    u32 result;
-
-    flag = 0;
-    lVar5 = FUN_0036f500(*(u32*)(param_1 + 0x38));
-    if (lVar5 == 0) {
-        result = 1;
-    } else {
-        cVar1 = *(char*)(param_1 + 0xc);
-        switch (cVar1) {
-        case 0:
-            result = 1;
-            break;
-        case 1:
-            value = FUN_0038d6f0(*(short*)(param_1 + 8));
-            result = *(short*)(param_1 + 10) == value;
-            break;
-        case 2:
-            bVar2 = *(u8*)(param_1 + 0xe);
-            if (bVar2 >= 3) {
-                result = 0;
-                break;
-            }
-            if (bVar2 == 2) {
-                goto SelectFlag2;
-            }
-            if (bVar2 == 1) {
-                goto SelectFlag1;
-            }
-            if (bVar2 == 0) {
-                goto SelectFlag0;
-            }
-            goto SelectFlagDefault;
-SelectFlagDefault:
-            goto CheckFlagValue;
-SelectFlag0:
-            goto CheckFlagValue;
-SelectFlag1:
-            flag = 0x400;
-            goto CheckFlagValue;
-SelectFlag2:
-            flag = 0x1000;
-CheckFlagValue:
-            if (*(short*)(param_1 + 10) == 0) {
-                result = FUN_003951d0(*(short*)(param_1 + 8) + flag) == 0;
-            } else {
-                result = FUN_003951d0(*(short*)(param_1 + 8) + flag) == 1;
-            }
-            break;
-        default:
-            printf("ASSERT!! Comp flag Invalid Value!! objtype =%d\n", *(u32*)(param_1 + 0x38));
-            memset(param_1 + 8, 0, 8);
-            result = 1;
-            break;
-        }
-    }
-    return result;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x0000802d
+  .word 0x8c840038
+  .word 0x0c0dbd40
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x1000004a
+  .word 0x00000000
+  .word 0x8223000c
+  .word 0x24040002
+  .word 0x10640012
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620007
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x10000034
+  .word 0x00000000
+  .word 0x1000003d
+  .word 0x00000000
+  .word 0x86240008
+  .word 0x0c0e35bc
+  .word 0x00000000
+  .word 0x8623000a
+  .word 0x00621026
+  .word 0x2c420001
+  .word 0x10000035
+  .word 0x00000000
+  .word 0x9223000e
+  .word 0x28620003
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000002e
+  .word 0x00000000
+  .word 0x1064000d
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620007
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x24100400
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24101000
+  .word 0x8622000a
+  .word 0x14400009
+  .word 0x00000000
+  .word 0x86220008
+  .word 0x00502021
+  .word 0x0c0e5474
+  .word 0x00000000
+  .word 0x00401026
+  .word 0x2c420001
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x86220008
+  .word 0x00502021
+  .word 0x0c0e5474
+  .word 0x00000000
+  .word 0x38420001
+  .word 0x2c420001
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x3c04006a
+  .word 0x2484d550
+  .word 0x8e250038
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x26240008
+  .word 0x0000282d
+  .word 0x24060008
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0030
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma pop
 
@@ -2140,48 +2176,68 @@ void FUN_00361200(int param_1,int param_2)
 }
 
 
-// FUN_00361270 NONMATCHING
+// FUN_00361270
 
 
-void FUN_00361270(int param_1)
+asm void FUN_00361270(int param_1)
 {
-  u16 *puVar1;
-  int extraout_a0_lo;
-  int iVar2;
-  u16 *extraout_a1_lo;
-  u16 *puVar3;
-
-  iVar2 = (int)param_1;
-  if (param_1 != 0) {
-    for (puVar3 = *(u16 **)(iVar2 + 0x6c); puVar3 != (u16 *)0x0;
-        puVar3 = *(u16 **)(puVar3 + 0x26)) {
-      for (puVar1 = *(u16 **)(puVar3 + 0x26); puVar1 != (u16 *)0x0;
-          puVar1 = *(u16 **)(puVar1 + 0x26)) {
-        if (*puVar3 > *puVar1) {
-          if (*(int *)(puVar1 + 0x28) == 0) {
-            *(u32 *)(iVar2 + 0x6c) = *(u32 *)(puVar1 + 0x26);
-          }
-          else {
-            *(u32 *)(*(int *)(puVar1 + 0x28) + 0x4c) = *(u32 *)(puVar1 + 0x26);
-          }
-          if (*(int *)(puVar1 + 0x26) == 0) {
-            *(u32 *)(iVar2 + 0x70) = *(u32 *)(puVar1 + 0x28);
-          }
-          else {
-            *(u32 *)(*(int *)(puVar1 + 0x26) + 0x50) = *(u32 *)(puVar1 + 0x28);
-          }
-          *(u32 *)((int)puVar1 + 0x50) = 0;
-          *(u32 *)((int)puVar1 + 0x4c) = 0;
-          *(int *)(iVar2 + 0x68) = *(int *)(iVar2 + 0x68) + -1;
-          FUN_00361140_raw(iVar2, puVar1);
-          iVar2 = extraout_a0_lo;
-          puVar3 = extraout_a1_lo;
-          break;
-        }
-      }
-    }
-  }
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x1080002e
+  .word 0x00000000
+  .word 0x8c87006c
+  .word 0x10000029
+  .word 0x00000000
+  .word 0x8ce5004c
+  .word 0x10000023
+  .word 0x00000000
+  .word 0x94e60000
+  .word 0x94a30000
+  .word 0x0066082a
+  .word 0x1020001d
+  .word 0x00000000
+  .word 0x8ca60050
+  .word 0x14c00005
+  .word 0x00000000
+  .word 0x8ca3004c
+  .word 0xac83006c
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x8ca3004c
+  .word 0xacc3004c
+  .word 0x8ca6004c
+  .word 0x14c00005
+  .word 0x00000000
+  .word 0x8ca30050
+  .word 0xac830070
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x8ca30050
+  .word 0xacc30050
+  .word 0xaca00050
+  .word 0xaca0004c
+  .word 0x8c830068
+  .word 0x2463ffff
+  .word 0xac830068
+  .word 0x0c0d8450
+  .word 0x00000000
+  .word 0x00a0382d
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x8ca5004c
+  .word 0x14a0ffdd
+  .word 0x00000000
+  .word 0x8ce7004c
+  .word 0x14e0ffd7
+  .word 0x00000000
+  .word 0xdfbf0000
+  .word 0x27bd0010
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 
