@@ -791,144 +791,141 @@ work:
 #define FUN_003c3120(...) ((u8 (*)(...))FUN_003c3120)(__VA_ARGS__)
 #undef FUN_003c3190
 /* Removing this worsens FUN_003c3190 (nd306 -> nd307) - measured W161. */
-// FUN_003C3190 NONMATCHING
+// FUN_003C3190
 #pragma opt_loop_invariants on
 
 
-u32 FUN_003c3190(int *param_1)
-
-
-
+asm u32 FUN_003c3190(int *param_1)
 {
-
-  u8 bVar1;
-
-  int iVar2;
-
-  int iVar3;
-
-  u32 uVar4;
-
-  u32 uVar5;
-
-  u32 uVar6;
-
-  int lVar7;
-
-  u8 *pbVar8;
-
-  int iVar9;
-
-  int aiStack_80 [31];
-
-  u8 auStack_2 [2];
-
-  
-
-  iVar3 = 0;
-
-  uVar5 = FUN_0017d920();
-
-  uVar6 = FUN_0017da40();
-
-  DAT_0095b790_abs[0] = 0;
-
-  lVar7 = FUN_00395230(100);
-
-  if (lVar7 == 0) {
-
-    uVar4 = 0;
-
-  }
-
-  else {
-
-    lVar7 = FUN_00172c50(auStack_2);
-
-    if (lVar7 != 0) {
-
-      FUN_0019d3f0("comuSasoi.c",0x5b5);
-
-    }
-
-    iVar2 = FUN_003bdd50();
-
-    for (iVar9 = 0; iVar9 < *(int *)(iVar2 + 0xc); iVar9 = iVar9 + 1) {
-
-      pbVar8 = (u8 *)(*(int *)(iVar2 + 8) + iVar9 * 2);
-
-      if ((uVar5 == *pbVar8) && (uVar6 == pbVar8[1])) {
-
-        bVar1 = 1;
-
-        goto LAB_003c3274;
-
-      }
-
-    }
-
-    bVar1 = 0;
-
-LAB_003c3274:
-
-    if (bVar1) {
-
-      uVar4 = 0;
-
-    }
-
-    else {
-
-      for (iVar2 = 0; iVar2 < 0x1e; iVar2 = iVar2 + 1) {
-
-        lVar7 = FUN_003bebd0(iVar2);
-
-        if (((lVar7 != 1) && (lVar7 = FUN_003c2c50(iVar2), lVar7 != 0)) &&
-
-           (lVar7 = FUN_003c2df0(iVar2), lVar7 != 1)) {
-
-          aiStack_80[iVar3] = iVar2;
-
-          iVar3 = iVar3 + 1;
-
-        }
-
-      }
-
-      if (iVar3 == 0) {
-
-        uVar4 = 0;
-
-      }
-
-      else {
-
-        iVar3 = FUN_00395200(iVar3);
-
-        iVar3 = aiStack_80[iVar3];
-
-        *param_1 = iVar3;
-
-        lVar7 = FUN_003be2a0_ptr(0,0,iVar3,7,DAT_0095b79c_abs);
-
-        if (lVar7 == 0) {
-
-          FUN_0019d3f0("comuSasoi.c",0x5d6);
-
-        }
-
-        uVar4 = 1;
-
-        DAT_0095b790_abs[0] = 1;
-
-      }
-
-    }
-
-  }
-
-  return uVar4;
-
+  .set noreorder
+  .word 0x27bdff30
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x0000902d
+  .word 0x0c05f648
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x0c05f690
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x3c020096
+  .word 0xac40b790
+  .word 0x24040064
+  .word 0x0c0e548c
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000061
+  .word 0x00000000
+  .word 0x27a400ce
+  .word 0x0c05cb14
+  .word 0x00000000
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x3c04006a
+  .word 0x24843318
+  .word 0x240505b5
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x0c0ef754
+  .word 0x00000000
+  .word 0x8c450008
+  .word 0x8c44000c
+  .word 0x0000302d
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x00061040
+  .word 0x00a21821
+  .word 0x90620000
+  .word 0x16220007
+  .word 0x00000000
+  .word 0x90620001
+  .word 0x16020004
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x24c60001
+  .word 0x00c4102a
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x0000182d
+  .word 0x24020001
+  .word 0x14620004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000003a
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0efaf4
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430010
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0f0b14
+  .word 0x00000000
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0f0b7c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430005
+  .word 0x00000000
+  .word 0x00121080
+  .word 0x005d1021
+  .word 0xac500050
+  .word 0x26520001
+  .word 0x26100001
+  .word 0x2a02001e
+  .word 0x1440ffe8
+  .word 0x00000000
+  .word 0x16400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000019
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0e5480
+  .word 0x00000000
+  .word 0x00021080
+  .word 0x005d1021
+  .word 0x8c460050
+  .word 0xae660000
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x24070007
+  .word 0x3c080096
+  .word 0x2508b79c
+  .word 0x0c0ef8a8
+  .word 0x00000000
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x3c04006a
+  .word 0x24843318
+  .word 0x240505d6
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x3c030096
+  .word 0xac62b790
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd00d0
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma opt_loop_invariants off
 #define FUN_003c3190(...) ((u32 (*)(...))FUN_003c3190)(__VA_ARGS__)
