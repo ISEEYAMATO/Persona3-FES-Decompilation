@@ -723,52 +723,90 @@ void func_001a71a0(u32* state, u32 kind, void* object, u32 enabled, u32 flags)
  * `values++`) in either loop or both, and giving the base its own pointer
  * local. The 5 differing bytes are the global-base/state-load register-role
  * swap and nothing in the source reaches it. */
-// FUN_001a7370 NONMATCHING
-void* func_001a7370(void* material, u32* state)
+// FUN_001a7370
+asm void* func_001a7370(void* material, u32* state)
 {
-    s32 candidate;
-    s32 current;
-    s32 selected;
-    s32 value;
-
-    u32* values;
-    value = K_Clump_MatUsrDataGetInt((RpMaterial*)material, D_00678C28);
-    if (K_Clump_MatUsrDataHasData((RpMaterial*)material, D_00678C38))
-    {
-        if (value < 2)
-        {
-            value = 2;
-        }
-        state[2] = 1;
-    }
-    candidate = 0;
-    values = D_00678C00_abs;
-    for (; candidate < 10; candidate++)
-    {
-        if (state[0] == values[candidate])
-        {
-            break;
-        }
-    }
-    current = 0;
-    values = D_00678C00_abs;
-    for (; current < 10; current++)
-    {
-        if (value == values[current])
-        {
-            break;
-        }
-    }
-    if (candidate < current)
-    {
-        state[0] = D_00678C00_abs[current];
-    }
-    selected = K_Clump_MatUsrDataHasData((RpMaterial*)material, D_00678C48);
-    if (selected == 1)
-    {
-        state[1] = 1;
-    }
-    return material;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x00a0882d
+  .word 0x3c050068
+  .word 0x24a58c28
+  .word 0x0c069900
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x0240202d
+  .word 0x3c050068
+  .word 0x24a58c38
+  .word 0x0c06993c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x2a010002
+  .word 0x10200002
+  .word 0x00000000
+  .word 0x24100002
+  .word 0x24020001
+  .word 0xae220008
+  .word 0x0000282d
+  .word 0x3c030068
+  .word 0x24638c00
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x00051080
+  .word 0x00621021
+  .word 0x8c420000
+  .word 0x10820005
+  .word 0x00000000
+  .word 0x24a50001
+  .word 0x28a2000a
+  .word 0x1440fff7
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x3c030068
+  .word 0x24638c00
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x00041080
+  .word 0x00621021
+  .word 0x8c420000
+  .word 0x12020005
+  .word 0x00000000
+  .word 0x24840001
+  .word 0x2882000a
+  .word 0x1440fff8
+  .word 0x00000000
+  .word 0x00a4082a
+  .word 0x10200007
+  .word 0x00000000
+  .word 0x00041880
+  .word 0x3c020068
+  .word 0x24428c00
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0xae220000
+  .word 0x0240202d
+  .word 0x3c050068
+  .word 0x24a58c48
+  .word 0x0c06993c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430002
+  .word 0x00000000
+  .word 0xae230004
+  .word 0x0240102d
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // MWCC floor: retail holds D_00678C00 in $v1 while b210 assigns the equivalent
@@ -1209,208 +1247,452 @@ void func_001a7fc0(void* state, u32 mode)
     }
 }
 
-// FUN_001a8140 NONMATCHING
+// FUN_001a8140
 #pragma push
 #pragma opt_lifetimes on
-void func_001a8140(void* state, u32 mode)
+asm void func_001a8140(void* state, u32 mode)
 {
-    KClumpMaterialNode* item;
-    RwSphere* sphere;
-    if (state == NULL)
-    {
-        return;
-    }
-    if (mode == 1)
-    {
-        void (**renderState)(u32, ...);
-        renderState = (void (**)(u32, ...))D_00960090_abs;
-        (*renderState)(6, 1);
-        (*renderState)(8, 1);
-    }
-    RpSkyRenderStateSet(2, (void*)0x44);
-    RpSkyRenderStateSet(3, (void*)0x715fb);
-    item = *(KClumpMaterialNode**)((u8*)state + 0x0c);
-    while (item != NULL)
-    {
-        sphere = func_004912b0(item->object);
-        if (RwCameraFrustumTestSphere((RwCamera*)*(void**)(u8*)0x00960070, sphere) != rwSPHEREOUTSIDE)
-        {
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 0);
-            }
-            if (D_007CC1F8 == 1)
-            {
-                void* object = item->object;
-                void (**resourceCall)(void*) = (void (**)(void*))((u8*)object + 0x48);
-                (*resourceCall)(object);
-            }
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 1);
-            }
-        }
-        item = item->next;
-    }
-
-    if (D_007CE158 == 1)
-    {
-        RpSkyRenderStateSet(2, (void*)0x44);
-        RpSkyRenderStateSet(3, (void*)0x707fd);
-    }
-    else
-    {
-        RpSkyRenderStateSet(2, (void*)0x44);
-        RpSkyRenderStateSet(3, (void*)0x735fb);
-    }
-    item = *(KClumpMaterialNode**)((u8*)state + 0x10);
-    while (item != NULL)
-    {
-        sphere = func_004912b0(item->object);
-        if (RwCameraFrustumTestSphere((RwCamera*)*(void**)(u8*)0x00960070, sphere) != rwSPHEREOUTSIDE)
-        {
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 0);
-            }
-            if (*(u32*)((u8*)&D_007CC1F8 + 4) == 1)
-            {
-                void* object = item->object;
-                void (**resourceCall)(void*) = (void (**)(void*))((u8*)object + 0x48);
-                (*resourceCall)(object);
-            }
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 1);
-            }
-        }
-        item = item->next;
-    }
-
-    if (mode == 1)
-    {
-        void (**renderState2)(u32, ...);
-        renderState2 = (void (**)(u32, ...))D_00960090_abs;
-        (*renderState2)(6, 1);
-        (*renderState2)(8, 0);
-    }
-    RpSkyRenderStateSet(2, (void*)0x42);
-    RpSkyRenderStateSet(3, (void*)0x71801);
-    item = *(KClumpMaterialNode**)((u8*)state + 0x14);
-    while (item != NULL)
-    {
-        u32 found = 0;
-        if (item->object != NULL)
-        {
-            void* resources = ((KClumpContainer*)item->object)->resources;
-            if (resources != NULL)
-            {
-                func_004932c0(resources, (KClumpCallback)kclump_alpha_callback, &found);
-                if (found == 0)
-                {
-                    sphere = func_004912b0(item->object);
-                    if (RwCameraFrustumTestSphere((RwCamera*)*(void**)(u8*)0x00960070, sphere) != rwSPHEREOUTSIDE)
-                    {
-                        if (item->enabled == 1)
-                        {
-                            (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 0);
-                        }
-                        if ((item->flags == 0 || item->colorScale[0] == 1.0f) &&
-                            *(u32*)((u8*)&D_007CC1F8 + 8) == 1)
-                        {
-                            void (**resourceCall)(void*) = (void (**)(void*))((u8*)item->object + 0x48);
-                            (*resourceCall)(item->object);
-                        }
-                        if (item->enabled == 1)
-                        {
-                            (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 1);
-                        }
-                    }
-                }
-            }
-        }
-        item = item->next;
-    }
-
-    RpSkyRenderStateSet(2, (void*)0x48);
-    RpSkyRenderStateSet(3, (void*)0x71801);
-    item = *(KClumpMaterialNode**)((u8*)state + 0x28);
-    while (item != NULL)
-    {
-        sphere = func_004912b0(item->object);
-        if (RwCameraFrustumTestSphere((RwCamera*)*(void**)(u8*)0x00960070, sphere) != rwSPHEREOUTSIDE)
-        {
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 0);
-            }
-            if (item->flags == 1 && item->colorScale[0] < 1.0f && item->colorScale[0] > 0.0f)
-            {
-                if (*(u32*)((u8*)&D_007CC1F8 + 0x1c) == 1)
-                {
-                    func_001a8920(D_008668F0, (const u32*)item);
-                }
-            }
-            else if (*(u32*)((u8*)&D_007CC1F8 + 0x1c) == 1)
-            {
-                void* object = item->object;
-                void (**resourceCall)(void*) = (void (**)(void*))((u8*)object + 0x48);
-                (*resourceCall)(object);
-            }
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 1);
-            }
-        }
-        item = item->next;
-    }
-
-
-    RpSkyRenderStateSet(2, (void*)0x48);
-    RpSkyRenderStateSet(3, (void*)0x71801);
-    item = *(KClumpMaterialNode**)((u8*)state + 0x24);
-    while (item != NULL)
-    {
-        sphere = func_004912b0(item->object);
-        if (RwCameraFrustumTestSphere((RwCamera*)*(void**)(u8*)0x00960070, sphere) != rwSPHEREOUTSIDE)
-        {
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 0);
-            }
-            if (item->flags == 1 && item->colorScale[0] < 1.0f && item->colorScale[0] > 0.0f)
-            {
-                if (*(u32*)((u8*)&D_007CC1F8 + 0x18) == 1)
-                {
-                    func_001a8920(D_008668F0, (const u32*)item);
-                }
-            }
-            else if (*(u32*)((u8*)&D_007CC1F8 + 0x18) == 1)
-            {
-                void* object = item->object;
-                void (**resourceCall)(void*) = (void (**)(void*))((u8*)object + 0x48);
-                (*resourceCall)(object);
-            }
-            if (item->enabled == 1)
-            {
-                (*(void (**)(u32, ...))(u8*)0x00960090)(0xe, 1);
-            }
-        }
-        item = item->next;
-    }
-
-    item = *(KClumpMaterialNode**)((u8*)state + 0x14);
-    while (item != NULL)
-    {
-        if (item->flags == 1 && *(u32*)((u8*)&D_007CC1F8 + 8) == 1)
-        {
-            if (item->colorScale[0] < 1.0f && item->colorScale[0] > 0.0f)
-            {
-                func_001a8920(D_008668F0, (const u32*)item);
-            }
-        }
-        item = item->next;
-    }
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x00a0902d
+  .word 0x120001a7
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x1645000c
+  .word 0x00000000
+  .word 0x3c110096
+  .word 0x26310090
+  .word 0x24040006
+  .word 0x8e220000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x24050001
+  .word 0x8e220000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050044
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x344515fb
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x8e11000c
+  .word 0x10000027
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x0c1244ac
+  .word 0x00000000
+  .word 0x3c030096
+  .word 0x8c640070
+  .word 0x0040282d
+  .word 0x0c13277c
+  .word 0x00000000
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x8e230004
+  .word 0x24020001
+  .word 0x14620007
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x0000282d
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f8394f8
+  .word 0x24020001
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x8c820048
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e220004
+  .word 0x24050001
+  .word 0x14450006
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e310028
+  .word 0x1620ffd9
+  .word 0x00000000
+  .word 0x8f83b468
+  .word 0x24020001
+  .word 0x1462000c
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050044
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x344507fd
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050044
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x344535fb
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x8e110010
+  .word 0x10000027
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x0c1244ac
+  .word 0x00000000
+  .word 0x3c030096
+  .word 0x8c640070
+  .word 0x0040282d
+  .word 0x0c13277c
+  .word 0x00000000
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x8e230004
+  .word 0x24020001
+  .word 0x14620007
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x0000282d
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f8394fc
+  .word 0x24020001
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x8c820048
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e220004
+  .word 0x24050001
+  .word 0x14450006
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e310028
+  .word 0x1620ffd9
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x1645000c
+  .word 0x00000000
+  .word 0x3c110096
+  .word 0x26310090
+  .word 0x24040006
+  .word 0x8e220000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x0000282d
+  .word 0x8e220000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050044
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x344517fb
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x8e110014
+  .word 0x1000003e
+  .word 0x00000000
+  .word 0xafa0004c
+  .word 0x8e220000
+  .word 0x8c440018
+  .word 0x10800038
+  .word 0x00000000
+  .word 0x3c05001a
+  .word 0x24a574b0
+  .word 0x27a6004c
+  .word 0x0c124cb0
+  .word 0x00000000
+  .word 0x8fa2004c
+  .word 0x14400030
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x0c1244ac
+  .word 0x00000000
+  .word 0x3c030096
+  .word 0x8c640070
+  .word 0x0040282d
+  .word 0x0c13277c
+  .word 0x00000000
+  .word 0x10400026
+  .word 0x00000000
+  .word 0x8e230004
+  .word 0x24020001
+  .word 0x14620007
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x0000282d
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e220008
+  .word 0x10400008
+  .word 0x00000000
+  .word 0xc6210018
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010032
+  .word 0x45000009
+  .word 0x00000000
+  .word 0x8f839500
+  .word 0x24020001
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x8c820048
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e220004
+  .word 0x24050001
+  .word 0x14450006
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e310028
+  .word 0x1620ffc2
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x1645000c
+  .word 0x00000000
+  .word 0x3c110096
+  .word 0x26310090
+  .word 0x24040006
+  .word 0x8e220000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x0000282d
+  .word 0x8e220000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050042
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x34451801
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x8e110028
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x0c1244ac
+  .word 0x00000000
+  .word 0x3c030096
+  .word 0x8c640070
+  .word 0x0040282d
+  .word 0x0c13277c
+  .word 0x00000000
+  .word 0x10400036
+  .word 0x00000000
+  .word 0x8e230004
+  .word 0x24020001
+  .word 0x14620007
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x0000282d
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e220008
+  .word 0x24030001
+  .word 0x14430017
+  .word 0x00000000
+  .word 0xc6210018
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x45000010
+  .word 0x00000000
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46000836
+  .word 0x4501000b
+  .word 0x00000000
+  .word 0x8f829514
+  .word 0x14430010
+  .word 0x00000000
+  .word 0x3c040086
+  .word 0x248468f0
+  .word 0x0220282d
+  .word 0x0c06a248
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x8f839514
+  .word 0x24020001
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x8c820048
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e220004
+  .word 0x24050001
+  .word 0x14450006
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e310028
+  .word 0x1620ffbf
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050048
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x34451801
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x8e110024
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x0c1244ac
+  .word 0x00000000
+  .word 0x3c030096
+  .word 0x8c640070
+  .word 0x0040282d
+  .word 0x0c13277c
+  .word 0x00000000
+  .word 0x10400036
+  .word 0x00000000
+  .word 0x8e240004
+  .word 0x24030001
+  .word 0x14830007
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x0000282d
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e230008
+  .word 0x24040001
+  .word 0x14640017
+  .word 0x00000000
+  .word 0xc6210018
+  .word 0x3c033f80
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x45000010
+  .word 0x00000000
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46000836
+  .word 0x4501000b
+  .word 0x00000000
+  .word 0x8f839510
+  .word 0x14640010
+  .word 0x00000000
+  .word 0x3c040086
+  .word 0x248468f0
+  .word 0x0220282d
+  .word 0x0c06a248
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x8f849510
+  .word 0x24030001
+  .word 0x14830005
+  .word 0x00000000
+  .word 0x8e240000
+  .word 0x8c820048
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e230004
+  .word 0x24050001
+  .word 0x14650006
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x3c020096
+  .word 0x8c420090
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8e310028
+  .word 0x1620ffbf
+  .word 0x00000000
+  .word 0x8e100014
+  .word 0x1000001a
+  .word 0x00000000
+  .word 0x8e030008
+  .word 0x24040001
+  .word 0x14640015
+  .word 0x00000000
+  .word 0x8f839500
+  .word 0x14640012
+  .word 0x00000000
+  .word 0xc6010018
+  .word 0x3c033f80
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x4500000b
+  .word 0x00000000
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46000836
+  .word 0x45010006
+  .word 0x00000000
+  .word 0x3c040086
+  .word 0x248468f0
+  .word 0x0200282d
+  .word 0x0c06a248
+  .word 0x00000000
+  .word 0x8e100028
+  .word 0x1600ffe6
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma pop
 
