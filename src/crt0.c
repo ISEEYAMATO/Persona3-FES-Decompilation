@@ -16,6 +16,7 @@ extern int main(int argc, char* argv[]);
 extern void FUN_00100220_ExitThread(void);
 
 // FUN_00100008
+#ifndef PC_BUILD
 asm void func_00100008(void)
 {
   .set noreorder
@@ -152,8 +153,10 @@ asm void func_00100008(void)
   .word 0x08147da8
   .word 0x00402025
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00100220 ExitThread
+#ifndef PC_BUILD
 asm void FUN_00100220_ExitThread(void)
 {
     .set noreorder
@@ -162,6 +165,7 @@ asm void FUN_00100220_ExitThread(void)
     nop
     nop
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00100218
 #pragma optimization_level 3

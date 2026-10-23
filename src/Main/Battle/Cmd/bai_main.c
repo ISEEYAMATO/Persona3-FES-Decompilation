@@ -39,6 +39,7 @@ static BaiMainWork* sBaiMain; // DAT_007ce338
 
 /* W419 negative probe: placing static sBpEffect in .sdata left FUN_0024C110 at nd1500/2888B, window2960B, rate51.94%; reverted. */
 // FUN_0024C110
+#ifndef PC_BUILD
 asm void FUN_0024c110(void)
 {
   .set noreorder
@@ -783,6 +784,7 @@ asm void FUN_0024c110(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

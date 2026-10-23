@@ -178,6 +178,7 @@ void opMenu0026dbd0(void);
 /* Removing this worsens opRoot00265030 (nd1289 -> nd1679) - measured W161. */
 #pragma opt_common_subs off
 // FUN_00265030
+#ifndef PC_BUILD
 asm void opRoot00265030(void)
 {
   .set noreorder
@@ -886,6 +887,7 @@ asm void opRoot00265030(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_00265b30

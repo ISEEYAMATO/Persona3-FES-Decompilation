@@ -712,6 +712,7 @@ void FUN_001ff890(void)
 
 // W419 negative probe: FUN_001FFC60 declaration permutations (work/record/i) all stayed nd295/676B; reverted.
 // FUN_001FFC60
+#ifndef PC_BUILD
 asm void FUN_001FFC60(void)
 {
   .set noreorder
@@ -900,6 +901,7 @@ asm void FUN_001FFC60(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 static inline u16 panelRootInputFlags(void)
@@ -913,6 +915,7 @@ static inline u16 panelRootTargetFlags(void)
 }
 
 // FUN_001FFF40
+#ifndef PC_BUILD
 asm void FUN_001FFF40(void)
 {
   .set noreorder
@@ -2417,6 +2420,7 @@ asm void FUN_001FFF40(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002016B0
 void FUN_002016B0(void)
@@ -3231,6 +3235,7 @@ void FUN_00202C90(void)
 
 // W419 negative probe: FUN_00202D70 s32 loop index nd407/672B, window704B, rate60.57%; reverted.
 // FUN_00202D70
+#ifndef PC_BUILD
 asm void FUN_00202D70(void)
 {
   .set noreorder
@@ -3411,6 +3416,7 @@ asm void FUN_00202D70(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00203030
 void FUN_00203030(void)
@@ -3837,6 +3843,7 @@ void FUN_00203DE0(void)
 // W418 negative probes: FUN_00204000 i s16 nd646/1140B -> 667/1180B (over 1152B); FUN_00204760 i s16 nd390/876B -> 532/900B (reverted).
 // W419 negative probe: FUN_00204000 direct data.ids[i] nd680/1140B, window1152B, rate59.65%; reverted.
 // FUN_00204000
+#ifndef PC_BUILD
 asm void FUN_00204000(void)
 {
   .set noreorder
@@ -4129,6 +4136,7 @@ asm void FUN_00204000(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants on
 // FUN_00204480
@@ -4255,6 +4263,7 @@ void FUN_00204480(void)
 
 // W418 negative probe: FUN_00204760 i s16 nd390/876B -> 532/900B (reverted).
 // FUN_00204760
+#ifndef PC_BUILD
 asm void FUN_00204760(void)
 {
   .set noreorder
@@ -4487,6 +4496,7 @@ asm void FUN_00204760(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00204AF0
 void FUN_00204AF0(void)
@@ -4539,6 +4549,7 @@ void FUN_00204BE0(void)
     *(u32*)work &= ~0x10u;
 }
 // FUN_00204CC0
+#ifndef PC_BUILD
 asm void FUN_00204CC0(void)
 {
   .set noreorder
@@ -4751,11 +4762,13 @@ asm void FUN_00204CC0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 /* Removing this loses FUN_00204480 (MATCH nd0 -> MISMATCH nd341) - measured W308. */
 // W418 negative probe: FUN_00205000 i s16 nd548/956B -> 663/1004B (over 960B); reverted.
 // FUN_00205000
+#ifndef PC_BUILD
 asm void FUN_00205000(void)
 {
   .set noreorder
@@ -5000,6 +5013,7 @@ asm void FUN_00205000(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_002053C0
 u32 FUN_002053C0(void)
 {
@@ -5128,6 +5142,7 @@ void FUN_00205760(void)
 // W415 negative probe: simple type==1/type==2 inversion preserved call order but raised nd 863->869; not retained.
 // W418 negative probe: narrowing i to s16 regressed nd852/1404B -> nd1032/1476B (over the 1440B window); reverted.
 // FUN_002057C0
+#ifndef PC_BUILD
 asm void FUN_002057C0(void)
 {
   .set noreorder
@@ -5492,9 +5507,11 @@ asm void FUN_002057C0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // W418 negative probe: narrowing i to s16 regressed nd545/812B -> nd604/868B (over the 848B window); reverted.
 // FUN_00205D60
+#ifndef PC_BUILD
 asm void FUN_00205D60(void)
 {
   .set noreorder
@@ -5711,6 +5728,7 @@ asm void FUN_00205D60(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002060B0
 void FUN_002060B0(void)
@@ -5923,6 +5941,7 @@ void FUN_002065A0(void)
 // W418 negative probe: FUN_00206740 i s16 nd1200/1668B -> 1267/1748B (reverted).
 // W419 negative probes: FUN_00206740 reversed chain nd1208/1660B, window1792B, rate72.77%; u32 mode chain nd1117/1656B, window1792B, rate67.45%; declaration/scoped row-pointer variants unchanged at nd1067/1652B, window1792B, rate64.59%; reverted.
 // FUN_00206740
+#ifndef PC_BUILD
 asm void FUN_00206740(void)
 {
   .set noreorder
@@ -6375,6 +6394,7 @@ asm void FUN_00206740(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00206E40
 void FUN_00206E40(void)
@@ -6512,6 +6532,7 @@ void FUN_00207010(void)
     func_003b0e70(2);
 }
 // FUN_00207340
+#ifndef PC_BUILD
 asm void FUN_00207340(void)
 {
   .set noreorder
@@ -6860,6 +6881,7 @@ asm void FUN_00207340(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002078A0
 void FUN_002078A0(void)

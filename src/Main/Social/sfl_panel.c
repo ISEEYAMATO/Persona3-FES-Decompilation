@@ -124,6 +124,7 @@ void func_0023d8f0(void)
 }
 
 // FUN_0023dac0
+#ifndef PC_BUILD
 asm void func_0023dac0(void)
 {
   .set noreorder
@@ -1068,8 +1069,10 @@ asm void func_0023dac0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
  
 // FUN_0023e970
+#ifndef PC_BUILD
 asm void func_0023e970(void)
 {
   .set noreorder
@@ -1386,6 +1389,7 @@ asm void func_0023e970(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0023ee50
 void func_0023ee50(void)

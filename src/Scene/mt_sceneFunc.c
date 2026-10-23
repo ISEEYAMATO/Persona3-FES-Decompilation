@@ -1688,6 +1688,7 @@ u32 FUN_003b95a0(void)
 
 
 
+#ifndef PC_BUILD
 asm void FUN_003b9610(Resrc* param_1)
 {
   .set noreorder
@@ -2996,6 +2997,7 @@ asm void FUN_003b9610(Resrc* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003b9610(...) FUN_003b9610(__VA_ARGS__)
 #undef FUN_003baa70
 /* W390 measured: the `SceneVecBits` whole-aggregate copy of the 12-byte
@@ -3031,6 +3033,7 @@ asm void FUN_003b9610(Resrc* param_1)
 // FUN_003BAA70
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003baa70(char *param_1)
 {
   .set noreorder
@@ -3151,12 +3154,14 @@ asm u32 FUN_003baa70(char *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003baa70(...) FUN_003baa70(__VA_ARGS__)
 #undef FUN_003bac40
 /* W420 negative: rewriting the outer if-chain as a switch raised nd 594/object 912 (window 976, rate 0.651316) to nd 624/object 928 (rate 0.672414); reverted. */
 // FUN_003BAC40
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003bac40(Resrc *param_1,u32 param_2)
 {
   .set noreorder
@@ -3405,6 +3410,7 @@ asm u32 FUN_003bac40(Resrc *param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bac40(...) FUN_003bac40(__VA_ARGS__)
 #undef FUN_003bac40
 #undef FUN_003bb010
@@ -3769,6 +3775,7 @@ void FUN_003bb400(u32 param_1)
 // FUN_003BB450
 
 
+#ifndef PC_BUILD
 asm void FUN_003bb450(float *input, float scale, float angle_y, float angle_x,
                  float angle_z, float *result)
 {
@@ -3890,6 +3897,7 @@ asm void FUN_003bb450(float *input, float scale, float angle_y, float angle_x,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bb450(...) FUN_003bb450(__VA_ARGS__)
 #undef FUN_003bb450
 #undef FUN_003bb620
@@ -3907,6 +3915,7 @@ asm void FUN_003bb450(float *input, float scale, float angle_y, float angle_x,
 // FUN_003BB620
 
 
+#ifndef PC_BUILD
 asm void FUN_003bb620(u32 *param_2,int param_3,float param_1)
 {
   .set noreorder
@@ -4007,6 +4016,7 @@ asm void FUN_003bb620(u32 *param_2,int param_3,float param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bb450(...) FUN_003bb450(__VA_ARGS__)
 #define FUN_003bb620(...) FUN_003bb620(__VA_ARGS__)
 #undef FUN_003bb7a0
@@ -4551,6 +4561,7 @@ float FUN_003bc0e0(char *param_1)
 // FUN_003BC220
 
 
+#ifndef PC_BUILD
 asm float FUN_003bc220(char *param_1,float param_2,float param_3,float *param_4,u32 *param_5)
 {
   .set noreorder
@@ -4879,6 +4890,7 @@ asm float FUN_003bc220(char *param_1,float param_2,float param_3,float *param_4,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bc220(...) FUN_003bc220(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #undef FUN_003bc730
@@ -4987,6 +4999,7 @@ u8 FUN_003bc900(float *param_1)
 
 
 
+#ifndef PC_BUILD
 asm void FUN_003bc940(void)
 {
   .set noreorder
@@ -5163,6 +5176,7 @@ asm void FUN_003bc940(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bc940(...) FUN_003bc940(__VA_ARGS__)
 #undef FUN_003bcbf0
 // FUN_003BCBF0
@@ -5618,6 +5632,7 @@ u32 FUN_003bd230(void)
 // FUN_003BD280
 
 
+#ifndef PC_BUILD
 asm void FUN_003bd280(void)
 {
   .set noreorder
@@ -6002,6 +6017,7 @@ asm void FUN_003bd280(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bd280(...) FUN_003bd280(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef DAT_0095b074
@@ -6332,6 +6348,7 @@ u16 FUN_003bdbb0(void)
 // FUN_003BDBD0
 
 
+#ifndef PC_BUILD
 asm void FUN_003bdbd0(int param_1)
 {
   .set noreorder
@@ -6428,6 +6445,7 @@ asm void FUN_003bdbd0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bdbd0(...) FUN_003bdbd0(__VA_ARGS__)
 #undef FUN_003bdd40
 
@@ -6638,6 +6656,7 @@ u8 FUN_003bdfc0(int param_1)
 /* W420 negative: all 720 permutations of the six scalar declarations stayed nd 199/object 384 (window 384, rate 0.518229); DAT_0095b6cc aliases exceeded the 384-byte window (nd 221/224, object 388, rates 0.569588/0.577320). */
 // FUN_003BE020
 
+#ifndef PC_BUILD
 asm u32 FUN_003be020(int param_1,int param_2,u32 param_3)
 {
   .set noreorder
@@ -6738,6 +6757,7 @@ asm u32 FUN_003be020(int param_1,int param_2,u32 param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003be020(...) FUN_003be020(__VA_ARGS__)
 #undef FUN_003be1a0
 
@@ -6800,6 +6820,7 @@ u32 FUN_003be1c0(u32 param_1,s32 param_2)
 #pragma opt_lifetimes on
 /* W415 probes: two-argument aliases regressed nd874 -> 999 (object 1576/1600); retail passes the guarded byte as a third argument, retained below (nd888, object 1584/1600). */
 // FUN_003BE2A0
+#ifndef PC_BUILD
 asm u32 FUN_003be2a0(int param_1,int *param_2,u32 param_3,u32 param_4,u8 *param_5)
 {
   .set noreorder
@@ -7204,6 +7225,7 @@ asm u32 FUN_003be2a0(int param_1,int *param_2,u32 param_3,u32 param_4,u8 *param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003be2a0(...) FUN_003be2a0(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
@@ -7442,6 +7464,7 @@ void FUN_003bec50(void)
 // FUN_003BECA0
 
 
+#ifndef PC_BUILD
 asm int FUN_003beca0(int param_1)
 {
   .set noreorder
@@ -7566,6 +7589,7 @@ asm int FUN_003beca0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003beca0(...) FUN_003beca0(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003bee80

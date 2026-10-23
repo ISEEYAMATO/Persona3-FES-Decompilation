@@ -1850,6 +1850,7 @@ u16 FUN_002d1600(BtlTarget* target)
 }
 #pragma opt_loop_invariants off
 // FUN_002d1660
+#ifndef PC_BUILD
 asm void FUN_002d1660(void* source, BtlTarget* target, u64 mask)
 {
   .set noreorder
@@ -2066,6 +2067,7 @@ asm void FUN_002d1660(void* source, BtlTarget* target, u64 mask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -2476,6 +2478,7 @@ s32 FUN_002d2470(const f32* a, const f32* b, const f32* point, f32 tolerance)
 }
 
 // FUN_002d25c0
+#ifndef PC_BUILD
 asm s32 FUN_002d25c0(const u8* param_1, const u8* param_2)
 {
   .set noreorder
@@ -2724,6 +2727,7 @@ asm s32 FUN_002d25c0(const u8* param_1, const u8* param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002d2990
 int FUN_002d2990(const float *param_1, const float *param_2, const float *param_3)
@@ -2743,6 +2747,7 @@ nonpositive:
 
 // FUN_002d2a00
 #pragma schedule on
+#ifndef PC_BUILD
 asm int FUN_002d2a00(float param_1, float *param_2, float *param_3)
 {
   .set noreorder
@@ -2879,6 +2884,7 @@ asm int FUN_002d2a00(float param_1, float *param_2, float *param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 
 /* W419 negative: split/reordered the second-loop index declaration in FUN_002d2c10; nd15 -> 22/23 at object 712/720. */
@@ -3026,6 +3032,7 @@ int FUN_002d2ee0(const float *param_1, const float *param_2, const float *param_
 }
 
 // FUN_002d2f50
+#ifndef PC_BUILD
 asm u32 FUN_002d2f50(float param_1, u8 *param_2)
 {
   .set noreorder
@@ -3246,8 +3253,10 @@ asm u32 FUN_002d2f50(float param_1, u8 *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002d32b0
+#ifndef PC_BUILD
 asm void FUN_002d32b0(float param_1)
 {
   .set noreorder
@@ -3940,6 +3949,7 @@ asm void FUN_002d32b0(float param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002d3d70
 void FUN_002d3d70(void)
@@ -4056,6 +4066,7 @@ u32 FUN_002d4040(BtlUnit* unit)
 
 // Retail VA range: 0x002d9be0-0x002d9c9f (192 bytes)
 // FUN_002d41c0
+#ifndef PC_BUILD
 asm u32 FUN_002d41c0(RwV2d* output, f32 radius)
 {
   .set noreorder
@@ -4460,6 +4471,7 @@ asm u32 FUN_002d41c0(RwV2d* output, f32 radius)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Retail VA range: 0x002d9ca0-0x002d9d5f (192 bytes)
 // FUN_002d4800
@@ -4519,6 +4531,7 @@ void* FUN_002d4810(void)
 
 
 // FUN_002d48c0
+#ifndef PC_BUILD
 asm u32 FUN_002d48c0(void* work, const RwV2d* start, const RwV2d* end, f32 radius)
 {
   .set noreorder
@@ -4779,6 +4792,7 @@ asm u32 FUN_002d48c0(void* work, const RwV2d* start, const RwV2d* end, f32 radiu
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002d4cc0
 u32 FUN_002d4cc0(u16 index)
@@ -4965,6 +4979,7 @@ u32 FUN_002d4ed0(s32 param_1)
 }
 
 // FUN_002d50c0
+#ifndef PC_BUILD
 asm u16 FUN_002d50c0(void)
 {
   .set noreorder
@@ -5261,6 +5276,7 @@ asm u16 FUN_002d50c0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002d5550
 u16 FUN_002d5550(void)
@@ -5872,6 +5888,7 @@ s32 FUN_002d6460(BtlAction* action, s32* param_2, u32 param_3,
 }
 // FUN_002d6620
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void FUN_002d6620(BtlAction *action)
 {
   .set noreorder
@@ -6852,9 +6869,11 @@ asm void FUN_002d6620(BtlAction *action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_lifetimes reset
 // FUN_002d7560
+#ifndef PC_BUILD
 asm void FUN_002d7560(BtlAction *action)
 {
   .set noreorder
@@ -7063,6 +7082,7 @@ asm void FUN_002d7560(BtlAction *action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_002d7890
 void FUN_002d7890(BtlAction* action, u64 mode)
 {
@@ -7099,6 +7119,7 @@ void FUN_002D7970(void* arg)
 
 /* W415: swapped mutually exclusive low-HP branch layout; final call census matches retail (nd 374 -> 373, object 1100/1104). */
 // FUN_002d79a0
+#ifndef PC_BUILD
 asm u32 FUN_002d79a0(void *arg)
 {
   .set noreorder
@@ -7379,6 +7400,7 @@ asm u32 FUN_002d79a0(void *arg)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002d7df0
 void FUN_002D7DF0(void* arg)
@@ -8164,6 +8186,7 @@ s32 FUN_002d8f40(BtlAction* action)
 
 // FUN_002d8f70
 
+#ifndef PC_BUILD
 asm int FUN_002d8f70(int param_1)
 {
   .set noreorder
@@ -8884,6 +8907,7 @@ asm int FUN_002d8f70(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // FUN_002d9aa0
@@ -9562,6 +9586,7 @@ s32 FUN_002d9d60(BtlAction* action)
 #pragma push
 #pragma opt_lifetimes on
 
+#ifndef PC_BUILD
 asm short FUN_002d9d70(int param_1)
 {
   .set noreorder
@@ -10246,6 +10271,7 @@ asm short FUN_002d9d70(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_002da810
@@ -10327,6 +10353,7 @@ u64 FUN_002da930(u64 param_1, u64 command, u64 param_3, u64 param_4)
 }
 
 // FUN_002daa20
+#ifndef PC_BUILD
 asm s32 FUN_002daa20(BtlAction* param_1, u16 param_2, s32 param_3, s32 param_4, s32 param_5)
 {
   .set noreorder
@@ -10515,6 +10542,7 @@ asm s32 FUN_002daa20(BtlAction* param_1, u16 param_2, s32 param_3, s32 param_4, 
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002dad00
 void FUN_002dad00(void)
@@ -10566,6 +10594,7 @@ updateFlag:
 }
 
 // FUN_002dae30
+#ifndef PC_BUILD
 asm void FUN_002dae30(u64 param_1)
 {
   .set noreorder
@@ -10854,8 +10883,10 @@ asm void FUN_002dae30(u64 param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002db2a0
+#ifndef PC_BUILD
 asm void FUN_002db2a0(u32 param_1)
 {
   .set noreorder
@@ -10956,6 +10987,7 @@ asm void FUN_002db2a0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002db420
 void FUN_002db420(u32 param_1)
@@ -10984,6 +11016,7 @@ u32 FUN_002db450(u32 param_1)
  * unit-first variant measured nd118 at 432/464 (rate 0.273148). */
 /* W422 split probes: second/first-loop while and party-index alias forms held nd7 at 456/464; first-call pointer alias nd282 at 448/464, shortened missingCount lifetime nd28 at 456/464, early party init nd305 at 456/464, dual-counter typed split nd80 at 448/464. All reverted. */
 // FUN_002db480
+#ifndef PC_BUILD
 asm u32 FUN_002db480(void)
 {
   .set noreorder
@@ -11104,6 +11137,7 @@ asm u32 FUN_002db480(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002db650
 void FUN_002db650(u32 param_1)

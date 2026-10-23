@@ -1494,6 +1494,7 @@ void func_001ce880(void)
 #pragma opt_loop_invariants on
 // Retail offsets 0x000-0x2f0 re-fetch gFldUnitsPc fields; 0x478-0x4b0 and 0x8d8-0x930 copy matrices inline; 0x52c-0x79c and 0x9d8-0xe44 expand formation/dungeon dispatches.
 // FUN_001CE960
+#ifndef PC_BUILD
 asm u32 func_001ce960(void)
 {
   .set noreorder
@@ -2514,6 +2515,7 @@ asm u32 func_001ce960(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 // Measured opt_propagation off: nd535 -> 529, object 744/784; opt_dead_assignments off: nd535 -> 529, object 744/784; stacked opt_propagation off + opt_dead_assignments off: nd535 -> 529, object 744/784; retained (under window).
 #pragma opt_propagation off
@@ -2770,6 +2772,7 @@ FldUnit* K_FldUnit_CreateReaper(u32 unused, const RwV3d* spawnPos)
 }
 
 // FUN_001CFDD0
+#ifndef PC_BUILD
 asm u32 func_001cfdd0(u32 index)
 {
   .set noreorder
@@ -2958,6 +2961,7 @@ asm u32 func_001cfdd0(u32 index)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001D00B0
 u32 func_001d00b0(void)
@@ -3093,6 +3097,7 @@ void K_FldUnit_DestroyAllEc()
 /* Removing this worsens FUN_001d03f0 (nd506 -> nd517) - measured W161. */
 #pragma opt_loop_invariants on
 // FUN_001d03f0
+#ifndef PC_BUILD
 asm void func_001d03f0(u16 charId)
 {
   .set noreorder
@@ -3301,6 +3306,7 @@ asm void func_001d03f0(u16 charId)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 #pragma opt_common_subs reset
 
@@ -3308,6 +3314,7 @@ asm void func_001d03f0(u16 charId)
 
 
 // FUN_001d0720
+#ifndef PC_BUILD
 asm s32 func_001d0720(s32 targetCount)
 {
   .set noreorder
@@ -3400,6 +3407,7 @@ asm s32 func_001d0720(s32 targetCount)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Removing this worsens FUN_001d0880 (nd485 -> nd512) - measured W161. */
 #pragma opt_loop_invariants on
@@ -3691,6 +3699,7 @@ u32 func_001d0e40(void)
 // Measured opt_loop_invariants on: nd491 -> 418, object 804/864; retained (under window).
 #pragma opt_loop_invariants on
 // FUN_001d0e50
+#ifndef PC_BUILD
 asm void func_001d0e50(s32 isDungeon)
 {
   .set noreorder
@@ -3911,6 +3920,7 @@ asm void func_001d0e50(s32 isDungeon)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 
 // FUN_001d11b0
@@ -4297,6 +4307,7 @@ u32 func_001d1ce0(void)
 }
 
 // FUN_001d1db0
+#ifndef PC_BUILD
 asm void func_001d1db0(void* work, const void* source, u16 resourceId)
 {
   .set noreorder
@@ -4425,6 +4436,7 @@ asm void func_001d1db0(void* work, const void* source, u16 resourceId)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d1fa0
 void func_001d1fa0(void)
@@ -4748,6 +4760,7 @@ asm u8* func_001d2300(s32 ordinal, s32 maxCount)
 #pragma opt_loop_invariants off
 
 // FUN_001d2610
+#ifndef PC_BUILD
 asm void func_001d2610(void)
 {
   .set noreorder
@@ -5008,11 +5021,13 @@ asm void func_001d2610(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // Measured opt_dead_assignments off: nd1517 -> 1499, object 2116/2192; cached gFldUnitsEc base: nd1499 -> 1497, object 2060/2192; retained (under window).
 #pragma opt_dead_assignments off
 // FUN_001d2a10
+#ifndef PC_BUILD
 asm void func_001d2a10(void)
 {
   .set noreorder
@@ -5565,6 +5580,7 @@ asm void func_001d2a10(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 // Measured opt_lifetimes on: nd425 -> 424, object 1024/1056; stacked opt_loop_invariants on + opt_lifetimes on: nd425 -> 424, object 1024/1056; retained (under window).
@@ -6192,6 +6208,7 @@ KwlnTask* func_001d40e0(KwlnTask* parent, FldUnit* unit)
  * nd7/object260/window272 (0.026923); a cached KwlnTask local worsened
  * nd64/object240/window272 (0.266667), both reverted. */
 // FUN_001d4180
+#ifndef PC_BUILD
 asm void func_001d4180(void)
 {
   .set noreorder
@@ -6264,6 +6281,7 @@ asm void func_001d4180(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d4290
 void func_001d4290(void)

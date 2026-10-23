@@ -12,6 +12,7 @@
 
 #pragma optimization_level 3
 // FUN_0052e7a0
+#ifndef PC_BUILD
 asm float floorf(register float x)
 {
   .set noreorder
@@ -70,3 +71,4 @@ asm float floorf(register float x)
   .word 0x018f6024
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

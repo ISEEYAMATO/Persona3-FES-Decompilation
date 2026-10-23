@@ -5,6 +5,7 @@
 typedef void (*RtQuatMatrixHelper)(RtQuat* quat, const RwMatrix* matrix);
 
 // FUN_004bdcb0
+#ifndef PC_BUILD
 asm RwBool RtQuatConvertFromMatrix(RtQuat* quat, const RwMatrix* matrix)
 {
   .set noreorder
@@ -85,7 +86,9 @@ asm RwBool RtQuatConvertFromMatrix(RtQuat* quat, const RwMatrix* matrix)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BDDE0
+#ifndef PC_BUILD
 asm long FUN_004bdde0(float param_1,long param_2,long param_3,long param_4)
 {
   .set noreorder
@@ -346,6 +349,7 @@ asm long FUN_004bdde0(float param_1,long param_2,long param_3,long param_4)
   .word 0x03e00008
   .word 0x27bd00a0
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004be1e0
 asm RwV3d* RtQuatTransformVectors(RwV3d* vectorsOut, const RwV3d* vectorsIn, const RwInt32 numPoints, const RtQuat* quat)
 {

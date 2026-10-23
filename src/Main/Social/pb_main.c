@@ -247,6 +247,7 @@ int func_001fc870(u8* event, void* target)
 // FUN_001FC980
 
 
+#ifndef PC_BUILD
 asm void func_001fc980(u8* event, u16* result, s32* count)
 {
   .set noreorder
@@ -359,7 +360,9 @@ asm void func_001fc980(u8* event, u16* result, s32* count)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_001FCB30
+#ifndef PC_BUILD
 asm void func_001fcb30(u8* event, u32* result, s32* count)
 {
   .set noreorder
@@ -464,6 +467,7 @@ asm void func_001fcb30(u8* event, u32* result, s32* count)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // FUN_001FCCC0
@@ -500,6 +504,7 @@ void func_001fccc0(u8* src, u8* dst, u32 skillId)
 // FUN_001FCE20
 
 
+#ifndef PC_BUILD
 asm void func_001fce20(u8* param_1,u16 *param_2,int param_3)
 {
   .set noreorder
@@ -836,9 +841,11 @@ asm void func_001fce20(u8* param_1,u16 *param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_001FD350
 
 
+#ifndef PC_BUILD
 asm void func_001fd350(u8* param_1,u32 *param_2,int param_3)
 {
   .set noreorder
@@ -1027,3 +1034,4 @@ asm void func_001fd350(u8* param_1,u32 *param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

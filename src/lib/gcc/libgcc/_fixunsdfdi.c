@@ -28,6 +28,7 @@ extern u32 FUN_005318f8_u32(u64);
  * baseline remains nd176 at 248/264.
  */
 // FUN_0052EC28
+#ifndef PC_BUILD
 asm long FUN_0052ec28(u64 param_1)
 {
   .set noreorder
@@ -98,3 +99,4 @@ asm long FUN_0052ec28(u64 param_1)
   .word 0x1000ffdb
   .word 0x0240202d
 }
+#endif /* PC_BUILD: asm function omitted */

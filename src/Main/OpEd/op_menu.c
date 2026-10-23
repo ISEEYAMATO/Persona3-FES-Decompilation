@@ -169,6 +169,7 @@ void opMenu0026a280(void)
     sOpMenu = NULL;
 }
 // FUN_0026A2C0
+#ifndef PC_BUILD
 asm void opMenu0026a2c0(void)
 {
   .set noreorder
@@ -2497,6 +2498,7 @@ asm void opMenu0026a2c0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0026C710
 void opMenu0026c710(void)
@@ -2699,6 +2701,7 @@ void opMenu0026cc90(void)
 }
 
 // FUN_0026D430
+#ifndef PC_BUILD
 asm void opMenu0026d430(void)
 {
   .set noreorder
@@ -3079,6 +3082,7 @@ asm void opMenu0026d430(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0026da10
 void opMenu0026da10(void)

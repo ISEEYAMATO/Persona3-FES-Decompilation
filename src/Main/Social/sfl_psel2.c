@@ -245,6 +245,7 @@ void sflPsel00260d20(void)
 }
 
 // FUN_00260e00
+#ifndef PC_BUILD
 asm void sflPsel00260e00(void)
 {
   .set noreorder
@@ -665,8 +666,10 @@ asm void sflPsel00260e00(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00261480
+#ifndef PC_BUILD
 asm void sflPsel00261480(void)
 {
   .set noreorder
@@ -1847,6 +1850,7 @@ asm void sflPsel00261480(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 /* opt_lifetimes on: func_00215b00 nd765 -> nd748, object 1216 -> 1212/1216; measured W328. */

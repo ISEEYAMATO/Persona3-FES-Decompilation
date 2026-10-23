@@ -490,6 +490,7 @@ void func_002496e0(void* work)
 
 /* W418 width negative: func_00249C10 i s16 nd68/1384B -> 653/1408B (over 1392B). */
 // FUN_00249C10
+#ifndef PC_BUILD
 asm void func_00249c10(void* work)
 {
   .set noreorder
@@ -842,6 +843,7 @@ asm void func_00249c10(void* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 

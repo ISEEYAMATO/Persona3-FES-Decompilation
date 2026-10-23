@@ -244,6 +244,7 @@ int FUN_003c5480(int param_1)
 // FUN_003C5490
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003c5490(u32 param_1)
 {
   .set noreorder
@@ -428,6 +429,7 @@ asm u32 FUN_003c5490(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003c5490(...) FUN_003c5490(__VA_ARGS__)
 #undef FUN_003c5760
 // FUN_003C5760
@@ -685,6 +687,7 @@ u32 FUN_003c5a40(u32 param_1,u32 param_2,u32 param_3,u32 param_4)
 // FUN_003C5AF0
 
 
+#ifndef PC_BUILD
 asm void FUN_003c5af0(u32 param_1)
 {
   .set noreorder
@@ -737,6 +740,7 @@ asm void FUN_003c5af0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003c5af0(...) FUN_003c5af0(__VA_ARGS__)
 #undef FUN_003c5bb0
 // FUN_003C5BB0
@@ -833,6 +837,7 @@ u32 FUN_003c5c50(u32 param_1)
 // FUN_003C5D40
 
 
+#ifndef PC_BUILD
 asm void FUN_003c5d40(u32 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -893,4 +898,5 @@ asm void FUN_003c5d40(u32 param_1,int param_2,int param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003c5d40(...) FUN_003c5d40(__VA_ARGS__)

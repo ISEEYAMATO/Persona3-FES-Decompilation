@@ -170,6 +170,7 @@ void FUN_002520f0(void)
 
 /* W419 negative probes: bpoMul on FUN_00252340 rotation products left nd1201/2820B, window2848B, rate42.59%; float SDA aliases also left nd1201/2820B, window2848B, rate42.59%; reverted. */
 // FUN_00252340
+#ifndef PC_BUILD
 asm void FUN_00252340(void)
 {
   .set noreorder
@@ -886,6 +887,7 @@ asm void FUN_00252340(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

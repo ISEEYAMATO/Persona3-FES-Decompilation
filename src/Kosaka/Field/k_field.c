@@ -336,6 +336,7 @@ u32 func_001b9130(void)
     return DAT_007ce24c;
 }
 // FUN_001b9140
+#ifndef PC_BUILD
 asm void func_001b9140(u16 majorId, u16 minorId)
 {
   .set noreorder
@@ -548,6 +549,7 @@ asm void func_001b9140(u16 majorId, u16 minorId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // Retail reconstruction note: states 3, 5, and 11 each perform field-load
 // scheduling directly rather than calling the compact source helper.
 // The task/archive predicates and camera-frame offsets follow retail.
@@ -1831,6 +1833,7 @@ u16 func_001bab50(KwlnTask* task)
 }
 
 // FUN_001bab60
+#ifndef PC_BUILD
 asm void func_001bab60(DungeonPattern* pattern, u32 orientationMask)
 {
   .set noreorder
@@ -2167,6 +2170,7 @@ asm void func_001bab60(DungeonPattern* pattern, u32 orientationMask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 /* W377: opt_propagation off improves func_001bb300 (nd3604 -> nd3024; object 4780/4912). */

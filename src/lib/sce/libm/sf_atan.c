@@ -35,6 +35,7 @@ static const float sAtanTerms[] = {
 
 #pragma optimization_level 3
 // FUN_0052e408
+#ifndef PC_BUILD
 asm float atanf(float x)
 {
   .set noreorder
@@ -219,3 +220,4 @@ asm float atanf(float x)
   .word 0x1000ff7b
   .word 0x240e0003
 }
+#endif /* PC_BUILD: asm function omitted */

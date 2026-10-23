@@ -580,6 +580,7 @@ static void dungeonShowResources(s32 x, s32 y, const s16* offsets, u32 count)
 /* W419 rejected probes: direct direction was nd375/object620/window624 (60.48%), row/col plus direct direction nd376/620/624 (60.65%), u16 directionLocal nd302/624/624 (48.40%), u8 volatile directionLocal nd337/620/624 (54.35%), a direction stack store nd398/632/624 (62.97%), and a direction array nd297/624/624 (47.60%). */
 /* W419 rejected start-width probes: startX u16 was nd316/object644/window624 (49.07%), startY u16 with row/col swap nd403/640/624 (62.97%), and both starts u16 nd414/660/624 (62.73%); direction pointer/deref/volatile-pointer and inert placed-local/declaration probes stayed at nd296/624/624 (47.44%) or nd301/624/624 (48.24%). A volatile direction parameter made all 46 scanned functions COMPILE_ERROR. */
 // FUN_001bb090
+#ifndef PC_BUILD
 asm void func_001bb090(const DungeonPattern* pattern, u16 x, u16 y, u16 direction)
 {
   .set noreorder
@@ -740,6 +741,7 @@ asm void func_001bb090(const DungeonPattern* pattern, u16 x, u16 y, u16 directio
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation off
 // W415 census negative: adding the missing K_Field_Get before func_001b5380 (direction-expression and no-op probes) changed nd3024->3559/3561 and object4780->4788 against the 4912-byte window; the exact target call was present but the +535 nd rise for +8 bytes was non-proportional, so the probe was reverted.
@@ -748,6 +750,7 @@ asm void func_001bb090(const DungeonPattern* pattern, u16 x, u16 y, u16 directio
 // direction-expression probe 3559/4788 = 74.31%, no-op probe 3561/4788 =
 // 74.35%. Both add 8 bytes without real code recovery, so retain baseline.
 // FUN_001bb300
+#ifndef PC_BUILD
 asm void func_001bb300(u16 patternId, u16 x, u16 y)
 {
   .set noreorder
@@ -1980,11 +1983,13 @@ asm void func_001bb300(u16 patternId, u16 x, u16 y)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 #pragma opt_loop_invariants on
 #pragma opt_propagation off
 // FUN_001bc630
+#ifndef PC_BUILD
 asm u32 func_001bc630(const DungeonPattern* pattern, s32* x, s32* y)
 {
   .set noreorder
@@ -2281,12 +2286,14 @@ asm u32 func_001bc630(const DungeonPattern* pattern, s32* x, s32* y)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
 
 #pragma opt_common_subs off
 #pragma opt_lifetimes on
 // FUN_001bcac0
+#ifndef PC_BUILD
 asm void func_001bcac0(u32 patternId, u32 x, u32 y, u32 fromX, u32 fromY)
 {
   .set noreorder
@@ -2903,11 +2910,13 @@ asm void func_001bcac0(u32 patternId, u32 x, u32 y, u32 fromX, u32 fromY)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 
 #pragma opt_loop_invariants on
 // FUN_001bd450
+#ifndef PC_BUILD
 asm void func_001bd450(u32 patternId)
 {
   .set noreorder
@@ -3196,6 +3205,7 @@ asm void func_001bd450(u32 patternId)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 // FUN_001bd8c0
@@ -3222,6 +3232,7 @@ void func_001bd8c0(void)
 #pragma opt_dead_assignments off
 // FUN_001bd950
 #pragma push
+#ifndef PC_BUILD
 asm void func_001bd950(void)
 {
   .set noreorder
@@ -4814,6 +4825,7 @@ asm void func_001bd950(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 #pragma opt_loop_invariants reset

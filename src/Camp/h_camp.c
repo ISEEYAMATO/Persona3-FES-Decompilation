@@ -854,6 +854,7 @@ void h_campDestroySpriteSetupTask(KwlnTask* task)
 /* opt_common_subs off: default nd659/1220B -> off nd488/1240B; retained. */
 #pragma opt_common_subs off
 // FUN_0011abd0
+#ifndef PC_BUILD
 asm u32 h_campUpdatePagedCursor(u32 pageSize, u32 entryCount, s32* firstEntry, s32* selectedEntry)
 {
   .set noreorder
@@ -1170,6 +1171,7 @@ asm u32 h_campUpdatePagedCursor(u32 pageSize, u32 entryCount, s32* firstEntry, s
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_0011b0b0
@@ -1723,6 +1725,7 @@ void h_campNoopRootDrawCallback(void)
 /* opt_common_subs off: default nd1699/2360B -> off nd1626/2424B; retained. */
 #pragma opt_common_subs off
 // FUN_0011bbb0
+#ifndef PC_BUILD
 asm void h_campDrawRootUi(CampRootDrawWork* work, f32 alpha)
 {
   .set noreorder
@@ -2343,6 +2346,7 @@ asm void h_campDrawRootUi(CampRootDrawWork* work, f32 alpha)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 static void h_campDrawMenuEntryPass(CampRootDrawWork* work, f32 alpha, s32 mode)
@@ -2436,6 +2440,7 @@ void h_campDrawRootMenuEntries(CampRootDrawWork* work, f32 alpha)
 /* opt_propagation off: default nd645/1020B -> off nd634/1020B; retained. */
 #pragma opt_propagation off
 // FUN_0011c880
+#ifndef PC_BUILD
 asm void h_campUpdateRootMenuEntryEffect(CampRootDrawWork* work, f32 alpha)
 {
   .set noreorder
@@ -2696,6 +2701,7 @@ asm void h_campUpdateRootMenuEntryEffect(CampRootDrawWork* work, f32 alpha)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_0011cc80
@@ -2778,6 +2784,7 @@ void h_campDrawRootMenuEntriesAlternate(CampRootDrawWork* work, f32 alpha)
 /* opt_common_subs off: default nd528/1008B -> off nd451/1008B; retained. */
 #pragma opt_common_subs off
 // FUN_0011cfb0
+#ifndef PC_BUILD
 asm void h_campUpdateRootMenuEntryTransition(CampRootDrawWork* work, f32 alpha)
 {
   .set noreorder
@@ -3034,6 +3041,7 @@ asm void h_campUpdateRootMenuEntryTransition(CampRootDrawWork* work, f32 alpha)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_0011d3a0
@@ -3115,6 +3123,7 @@ void h_campDrawRootMenuEntriesClosing(CampRootDrawWork* work, f32 alpha)
 /* opt_dead_assignments off: default nd535/852B -> off nd534/852B; retained. */
 #pragma opt_dead_assignments off
 // FUN_0011d6d0
+#ifndef PC_BUILD
 asm void h_campUpdateRootMenuEntryFadeOut(CampRootDrawWork* work, f32 alpha)
 {
   .set noreorder
@@ -3355,6 +3364,7 @@ asm void h_campUpdateRootMenuEntryFadeOut(CampRootDrawWork* work, f32 alpha)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 // FUN_0011da80
@@ -3440,6 +3450,7 @@ static inline f32 campAddBaseFirst(f32 base, f32 offset)
 }
 
 // FUN_0011ddb0
+#ifndef PC_BUILD
 asm void h_campUpdateRootMenuEntryFinish(CampRootDrawWork* work, f32 alpha)
 {
   .set noreorder
@@ -3584,6 +3595,7 @@ asm void h_campUpdateRootMenuEntryFinish(CampRootDrawWork* work, f32 alpha)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 static inline f32 campAddDurationOffsetFirst(f32 offset, f32 duration)
 {
@@ -3594,6 +3606,7 @@ static inline f32 campAddDurationOffsetFirst(f32 offset, f32 duration)
 /* Register-allocation wall: nd5 at 912B; only textureState's phi is colored $v0
    instead of retail's $t0 (offsets 0x34/0x54/0x60/0x64). Nineteen declaration-order
    permutations and type/condition-spelling sweeps held nd5. */
+#ifndef PC_BUILD
 asm void h_campUpdateRootMenuSelectionEffect(CampRootDrawWork* work, f32 alpha)
 {
   .set noreorder
@@ -3826,6 +3839,7 @@ asm void h_campUpdateRootMenuSelectionEffect(CampRootDrawWork* work, f32 alpha)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0011e370
 u32 h_campGetRootMenuTransitionComplete(KwlnTask* task)
@@ -8799,6 +8813,7 @@ done:;
  * digits; all four draw phases are reconstructed, with only register coloring
  * and the remaining frame gap still differing. */
 // FUN_001236A0
+#ifndef PC_BUILD
 asm void h_campStatusDrawHp(CampVec2 position, f32 alpha, s16 pcId,
                         s32 barOffset, s32 fade)
 {
@@ -9112,11 +9127,13 @@ asm void h_campStatusDrawHp(CampVec2 position, f32 alpha, s16 pcId,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_common_subs reset
 
 #pragma opt_common_subs off
 // FUN_00123B70
+#ifndef PC_BUILD
 asm void h_campStatusDrawSp(CampVec2 position, f32 alpha, s16 pcId,
                         s32 barOffset, s32 fade)
 {
@@ -9382,6 +9399,7 @@ asm void h_campStatusDrawSp(CampVec2 position, f32 alpha, s16 pcId,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_00123F80
@@ -9411,6 +9429,7 @@ void h_campStatusDrawPhysicalCondition(CampVec2 position, f32 alpha,
 /* opt_dead_assignments off: default nd517/736B -> off nd504/732B; retained. */
 #pragma opt_dead_assignments off
 // FUN_00124090
+#ifndef PC_BUILD
 asm void h_campStatusDrawBadStatus(CampVec2 position, f32 alpha, s16 pcId,
                                s32 fade)
 {
@@ -9600,6 +9619,7 @@ asm void h_campStatusDrawBadStatus(CampVec2 position, f32 alpha, s16 pcId,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 /* opt_dead_assignments off: default nd1292/1728B -> off nd1246/1748B; retained. */
@@ -9608,6 +9628,7 @@ asm void h_campStatusDrawBadStatus(CampVec2 position, f32 alpha, s16 pcId,
  * and steady calculations before physical/bad-status draws; that branch-local
  * call structure is reconstructed, with ABI/coloring differences remaining. */
 // FUN_00124370
+#ifndef PC_BUILD
 asm void h_campStatusDrawStatusTransition(CampVec2 position, f32 alpha,
                                        s16 pcId, s32 phase)
 {
@@ -10109,11 +10130,13 @@ asm void h_campStatusDrawStatusTransition(CampVec2 position, f32 alpha,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 /* opt_lifetimes on: default nd439/716B -> on nd437/716B; retained. */
 #pragma opt_lifetimes on
 // FUN_00124B30
+#ifndef PC_BUILD
 asm void h_campStatusDrawStatus(CampVec2 position, CampVec2 unused,
                             f32 alpha, s16 pcId, s32 fade)
 {
@@ -10299,6 +10322,7 @@ asm void h_campStatusDrawStatus(CampVec2 position, CampVec2 unused,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 #define FUN_00125b40 FUN_00125b40_persona
@@ -10350,6 +10374,7 @@ void FUN_00124e60(CampVec2 position, f32 alpha, void* persona, s32 fade)
     }
 }
 // FUN_00124FD0
+#ifndef PC_BUILD
 asm void FUN_00124fd0(CampVec2 position, f32 alpha, void* persona, s32 fade)
 {
   .set noreorder
@@ -10830,7 +10855,9 @@ asm void FUN_00124fd0(CampVec2 position, f32 alpha, void* persona, s32 fade)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00125740
+#ifndef PC_BUILD
 asm void FUN_00125740(CampVec2 position, f32 alpha, void* persona,
                   s32 frame)
 {
@@ -11092,8 +11119,10 @@ asm void FUN_00125740(CampVec2 position, f32 alpha, void* persona,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00125B40
+#ifndef PC_BUILD
 asm void FUN_00125b40_persona(CampVec2 position, CampVec2 unused, f32 alpha,
                   void* persona, s32 fade)
 {
@@ -11239,6 +11268,7 @@ asm void FUN_00125b40_persona(CampVec2 position, CampVec2 unused, f32 alpha,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00125D70
 asm void* FUN_00125d70(KwlnTask* task)
 {
@@ -11868,6 +11898,7 @@ void h_campStatusDestroyPcStatusPartsTask(KwlnTask* task)
 /* opt_loop_invariants on: nd281/620B off -> nd147/624B on; retained. */
 /* W420 rejected setState/submitVertices declaration swap: nd147/object624/window656 rate .236 unchanged from baseline; rejected. */
 #pragma opt_loop_invariants on
+#ifndef PC_BUILD
 asm void h_campStatusDrawViewport(void* texture, CampVec2 position, f32 x,
                               s32 alpha)
 {
@@ -12037,6 +12068,7 @@ asm void h_campStatusDrawViewport(void* texture, CampVec2 position, f32 x,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 #pragma opt_common_subs off
@@ -12702,6 +12734,7 @@ asm void* h_campStatusUpdatePartsTask(KwlnTask* task)
  * resources, equipment, and one footer text pass; those draw/resource passes
  * are reconstructed, with the remaining gap confined to code shape. */
 // FUN_001273B0
+#ifndef PC_BUILD
 asm void h_campStatusDrawPanelFrame(u32 parent, CampVec2 position, s32 alpha)
 {
   .set noreorder
@@ -13126,6 +13159,7 @@ asm void h_campStatusDrawPanelFrame(u32 parent, CampVec2 position, s32 alpha)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 
@@ -13664,6 +13698,7 @@ void h_campStatusDrawStatLabels(CampVec2 position, f32 scale, void* persona,
 /* W422 role-cycle split probes: status argument aliases/persona/bonus/alpha/allafter, aggregate copies, helper parameter orders, alpha widths, and lifetime/propagation pragmas all stayed nd199/object1308/window1312 rate .152 for both twins; rejected. */
 #pragma opt_dead_assignments off
 // FUN_00128720
+#ifndef PC_BUILD
 asm void h_campStatusDrawStatValues(CampVec2 position, f32 scale, s32 alpha,
                                 void* persona, void* bonus)
 {
@@ -13997,11 +14032,13 @@ asm void h_campStatusDrawStatValues(CampVec2 position, f32 scale, s32 alpha,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_dead_assignments reset
 /* opt_dead_assignments off: default nd783/1312B -> off nd199/1308B; retained. */
 #pragma opt_dead_assignments off
 // FUN_00128C40
+#ifndef PC_BUILD
 asm void h_campStatusDrawSkillValues(CampVec2 position, f32 scale, s32 alpha,
                                  void* persona, void* bonus)
 {
@@ -14335,11 +14372,13 @@ asm void h_campStatusDrawSkillValues(CampVec2 position, f32 scale, s32 alpha,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_dead_assignments reset
 /* opt_propagation off: default nd386/532B -> off nd317/536B; retained. */
 #pragma opt_propagation off
 // FUN_00129160
+#ifndef PC_BUILD
 asm void h_campStatusDrawRankValue(CampVec2 position, f32 scale, s32 row,
                                s32 value, s32 extra, s32 alpha)
 {
@@ -14493,10 +14532,12 @@ asm void h_campStatusDrawRankValue(CampVec2 position, f32 scale, s32 row,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_001293B0
 #pragma push
+#ifndef PC_BUILD
 asm void h_campStatusDrawEquipment(CampVec2 position, f32 scale,
                                void* bonus, void* persona, s32 alpha)
 {
@@ -14982,12 +15023,14 @@ asm void h_campStatusDrawEquipment(CampVec2 position, f32 scale,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma pop
 /* Retail performs an equipment pass before the rank loop and a second
  * equipment pass after it, followed by one footer pair/text pass; all are
  * reconstructed, with the remaining frame/register gap still differing. */
 // FUN_00129B30
+#ifndef PC_BUILD
 asm void h_campStatusDrawTransition(CampVec2 position, f32 scale,
                                 void* persona, s32 frame)
 {
@@ -15645,6 +15688,7 @@ asm void h_campStatusDrawTransition(CampVec2 position, f32 scale,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* opt_propagation off: default nd1164/1536B -> off nd1090/1528B; retained. */
 #pragma opt_propagation off
@@ -15652,6 +15696,7 @@ asm void h_campStatusDrawTransition(CampVec2 position, f32 scale,
  * and five rank rows, then performs one equipment/footer pass; that algorithm
  * is reconstructed, with register coloring still differing. */
 // FUN_0012A560
+#ifndef PC_BUILD
 asm void h_campStatusDrawEntering(CampVec2 position, f32 scale,
                               void* persona, s32 frame)
 {
@@ -16105,10 +16150,12 @@ asm void h_campStatusDrawEntering(CampVec2 position, f32 scale,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation reset
 #pragma opt_loop_invariants on
 // FUN_0012AC60
+#ifndef PC_BUILD
 asm void h_campStatusDrawSteady(CampVec2 position, f32 scale,
                             void* persona, s32 alpha)
 {
@@ -16538,12 +16585,14 @@ asm void h_campStatusDrawSteady(CampVec2 position, f32 scale,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 #pragma opt_loop_invariants on
 /* opt_lifetimes on: default nd755/1232B -> on nd748/1232B; retained. */
 #pragma opt_lifetimes on
 // FUN_0012B300
+#ifndef PC_BUILD
 asm void FUN_0012b300(CampVec2 position, f32 scale, void* persona, u8 alpha)
 {
   .set noreorder
@@ -16892,10 +16941,12 @@ asm void FUN_0012b300(CampVec2 position, f32 scale, void* persona, u8 alpha)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 
 // FUN_0012B860
+#ifndef PC_BUILD
 asm void FUN_0012b860_s32(CampVec2 position, f32 scale, void* currentStats,
                       void* persona, s32 alpha)
 {
@@ -17189,11 +17240,13 @@ asm void FUN_0012b860_s32(CampVec2 position, f32 scale, void* currentStats,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants on
 /* opt_dead_assignments off: default nd391/612B -> off nd374/608B; retained. */
 #pragma opt_dead_assignments off
 // FUN_0012BCE0
+#ifndef PC_BUILD
 asm void FUN_0012bce0(CampVec2 position, f32 scale, void* unused,
                   void* persona, u8 alpha)
 {
@@ -17379,10 +17432,12 @@ asm void FUN_0012bce0(CampVec2 position, f32 scale, void* unused,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_loop_invariants reset
 
 // FUN_0012BFB0
+#ifndef PC_BUILD
 asm void FUN_0012bfb0_s32(CampVec2 position, f32 scale, void* currentStats,
                       void* persona, s32 alpha)
 {
@@ -17676,6 +17731,7 @@ asm void FUN_0012bfb0_s32(CampVec2 position, f32 scale, void* currentStats,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* opt_propagation off: default nd5937/7952B -> off nd5895/7772B; retained. */
 #pragma opt_propagation off
@@ -19889,6 +19945,7 @@ static void campEquipDrawCategory(void* work, u8* record, s16 category,
 }
 
 // FUN_0012E3B0
+#ifndef PC_BUILD
 asm void FUN_0012e3b0(CampEquipWork* work, s32 index, u8* record)
 {
   .set noreorder
@@ -21117,6 +21174,7 @@ asm void FUN_0012e3b0(CampEquipWork* work, s32 index, u8* record)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 static void campEquipDrawEquipmentEffect(void* work, u8* record,
                                          s32 tile, f32 xOffset, f32 yOffset)
@@ -21188,6 +21246,7 @@ static inline void campEquipDrawItemList(void* work, u8* record, s32 xOffset,
 #define posX (*(f32*)(record + 0x38))
 #define alpha ((u8)*(u32*)(record + 0x40))
 // FUN_0012F6D0
+#ifndef PC_BUILD
 asm void FUN_0012f6d0(void* work, s32 index, u8* record)
 {
   .set noreorder
@@ -22692,6 +22751,7 @@ asm void FUN_0012f6d0(void* work, s32 index, u8* record)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef scale
 #undef posX
 #undef alpha
@@ -25474,6 +25534,7 @@ static void campMainDrawPersonaRow(const CampMainDrawItem* item,
  * and level digits from the retail instruction sequence.
  * Remaining differences are MWCC register coloring and outlined helpers. */
 // FUN_00133E10
+#ifndef PC_BUILD
 asm void FUN_00133E10(CampMainDrawItem* item,
                   const void* resources, s32 mode,
                   const s16* personaIds, s16 selected)
@@ -25904,6 +25965,7 @@ asm void FUN_00133E10(CampMainDrawItem* item,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // FUN_001344B0
@@ -25954,6 +26016,7 @@ extern void FUN_001345B0_s16(CampMainDrawItem* item, const void* resources,
 /* W373 pragma sweep: default nd571/object788/848; common_subs off nd570/object788/848; propagation off nd512/object768/848. Retained propagation off. */
 #pragma opt_propagation off
 // FUN_001345B0
+#ifndef PC_BUILD
 asm void FUN_001345B0(CampMainDrawItem* item, const void* resources, s32 mode,
                   const s16* personaIds, s16 personaIndex,
                   s16 alternatePersonaIndex)
@@ -26172,6 +26235,7 @@ asm void FUN_001345B0(CampMainDrawItem* item, const void* resources, s32 mode,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_00134900
@@ -26439,6 +26503,7 @@ void* FUN_00134a10(KwlnTask* task)
 #pragma opt_common_subs off
 #pragma opt_lifetimes on
 // FUN_00134d80
+#ifndef PC_BUILD
 asm void FUN_00134d80(KwlnTask* task)
 {
   .set noreorder
@@ -26675,6 +26740,7 @@ asm void FUN_00134d80(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 
@@ -26682,6 +26748,7 @@ asm void FUN_00134d80(KwlnTask* task)
 #pragma opt_propagation off
 #pragma opt_dead_assignments off
 // FUN_00135120
+#ifndef PC_BUILD
 asm void FUN_00135120(KwlnTask* task)
 {
   .set noreorder
@@ -26894,6 +26961,7 @@ asm void FUN_00135120(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_propagation reset
 
@@ -28196,6 +28264,7 @@ static void campDrawCardText(f32 scale, f32 x, f32 y, u32 color,
 #pragma opt_propagation off
 #pragma opt_dead_assignments off
 // FUN_001365B0
+#ifndef PC_BUILD
 asm void FUN_001365b0(KwlnTask* task)
 {
   .set noreorder
@@ -28304,6 +28373,7 @@ asm void FUN_001365b0(KwlnTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_propagation reset
 #pragma alias hCampDAT_00960184_abs DAT_00960184
@@ -28398,6 +28468,7 @@ static inline f32 campAddOffsetFirst(f32 offset, f32 base)
 }
 
 // FUN_001368A0
+#ifndef PC_BUILD
 asm void FUN_001368a0(u64 position, u8 drawAlpha, f32 alpha)
 {
   .set noreorder
@@ -28494,6 +28565,7 @@ asm void FUN_001368a0(u64 position, u8 drawAlpha, f32 alpha)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma alias campMainSocialFrameResourceAbs D_00833B44
 extern u8 campMainSocialFrameResourceAbs[];
@@ -28505,6 +28577,7 @@ extern u8 campMainSocialIconResourceAbs[];
 /* W373 pragma sweep: default nd1626/object2256/2288; lifetimes on nd1625/object2256/2288. Retained lifetimes on. */
 #pragma opt_lifetimes on
 // FUN_00136A10
+#ifndef PC_BUILD
 asm void FUN_00136a10(f32 alpha, u64 position, s32 id, s32 selected, s32 textAlpha)
 {
   .set noreorder
@@ -29081,6 +29154,7 @@ asm void FUN_00136a10(f32 alpha, u64 position, s32 id, s32 selected, s32 textAlp
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #undef D_00833B44
 #undef D_00833B48
@@ -29131,6 +29205,7 @@ static void campDrawCarousel(f32 alpha, u64 position, const s32* entries,
 }
 
 // FUN_00137300
+#ifndef PC_BUILD
 asm void FUN_00137300(f32 alpha, u64 position, s32 id, s32 selected,
                   s32 textAlpha, s32 frame)
 {
@@ -29296,6 +29371,7 @@ asm void FUN_00137300(f32 alpha, u64 position, s32 id, s32 selected,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W373 pragma sweep: default nd1925/object2620/2912; propagation off nd1922/object2564/2912. Retained propagation off. */
 /* W419 global-mode probe (not retained): DAT_00833B48 absolute nd1951/object2620/2912 (rate .744656) vs GP nd1922/object2564/2912 (rate .749610). */
@@ -29303,6 +29379,7 @@ asm void FUN_00137300(f32 alpha, u64 position, s32 id, s32 selected,
 /* W456: decoded retail packed-position temporaries are kept distinct for the
  * header, transition, fade, and selected/unselected row phases. */
 // FUN_00137580
+#ifndef PC_BUILD
 asm void FUN_00137580(f32 alpha, u64 position, const s32* entries, s32 count,
                   s32 offset, s32 selected, s32 frame)
 {
@@ -30036,11 +30113,13 @@ asm void FUN_00137580(f32 alpha, u64 position, const s32* entries, s32 count,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 /* W373 pragma sweep: default nd1195/object1656/1744; loop_invariants on nd1179/object1660/1744; propagation off nd1156/object1612/1744; dead_assignments off nd1186/object1660/1744; loop+propagation nd1207/object1612/1744; loop+dead_assignments nd1202/object1668/1744; propagation+dead_assignments nd1156/object1612/1744. Retained propagation off + dead_assignments off. */
 #pragma opt_propagation off
 #pragma opt_dead_assignments off
 // FUN_001380E0
+#ifndef PC_BUILD
 asm void FUN_001380e0(f32 alpha, u64 position, const s32* entries, s32 count,
                   s32 offset, s32 selected, s32 frame)
 {
@@ -30482,12 +30561,14 @@ asm void FUN_001380e0(f32 alpha, u64 position, const s32* entries, s32 count,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_propagation reset
 
 /* W373 pragma sweep: default nd1135/object1664/1744; lifetimes on nd1133/object1664/1744. Retained lifetimes on. */
 #pragma opt_lifetimes on
 // FUN_001387B0
+#ifndef PC_BUILD
 asm void FUN_001387b0(f32 alpha, u64 position, const s32* entries, s32 count,
                   s32 offset, s32 selected, s32 frame)
 {
@@ -30929,6 +31010,7 @@ asm void FUN_001387b0(f32 alpha, u64 position, const s32* entries, s32 count,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 #pragma alias FUN_00139FC0_call FUN_00139FC0
@@ -30958,6 +31040,7 @@ void FUN_00138E80(f32 alpha, u64 position, const s32* entries,
 }
 
 // FUN_00138EE0
+#ifndef PC_BUILD
 asm void FUN_00138EE0(f32 alpha, u64 position, s32 id, s32 drawAlpha)
 {
   .set noreorder
@@ -31214,8 +31297,10 @@ asm void FUN_00138EE0(f32 alpha, u64 position, s32 id, s32 drawAlpha)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001392D0
+#ifndef PC_BUILD
 asm void FUN_001392D0(f32 alpha, u64 position, s32 textAlpha, s32 resource)
 {
   .set noreorder
@@ -31448,6 +31533,7 @@ asm void FUN_001392D0(f32 alpha, u64 position, s32 textAlpha, s32 resource)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma alias campMainDrawCardSprite FUN_001159F0
 extern void campMainDrawCardSprite(void* owner, void* resource, s32 frame,
@@ -31456,6 +31542,7 @@ extern void campMainDrawCardSprite(void* owner, void* resource, s32 frame,
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes on
 // FUN_00139660
+#ifndef PC_BUILD
 asm void FUN_00139660(f32 alpha, u64 position, s32 id, s32 selected,
                   s32 textAlpha)
 {
@@ -31933,6 +32020,7 @@ asm void FUN_00139660(f32 alpha, u64 position, s32 id, s32 selected,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 
@@ -32175,6 +32263,7 @@ void FUN_00139DC0(f32 param_1)
 /* W419 global-mode probe: D_00833B44/B58/B60/B64/B68/BA4 GP loads nd2789/object3628/4112 (rate .768743); absolute aliases nd2793/object3704/4112 (rate .754050); retained. */
 /* W455 ABI reconstruction: the packed coordinate is a CampPackedPosition in a0 and the fourth argument is s32; 3756/4112 bytes (91.4%) are implemented, with only register coloring and the animation tail remaining. */
 // FUN_00139FC0
+#ifndef PC_BUILD
 asm void FUN_00139FC0(f32 param_1, CampPackedPosition param_2, const s32* param_3, s32 param_4,
                   s32 param_5, s32 param_6, s32 param_7, s32 param_8, s32 param_9)
 {
@@ -33208,6 +33297,7 @@ asm void FUN_00139FC0(f32 param_1, CampPackedPosition param_2, const s32* param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_propagation reset
 
@@ -33220,6 +33310,7 @@ asm void FUN_00139FC0(f32 param_1, CampPackedPosition param_2, const s32* param_
 /* W373 pragma sweep: default nd2277/object3248/3296; propagation off nd2111/object2880/3296. Retained propagation off. */
 #pragma opt_propagation off
 // FUN_0013AFD0
+#ifndef PC_BUILD
 asm void FUN_0013AFD0(f32 param_1, u64 param_2, const s32* param_3, u64 param_4,
                   s32 param_5, s32 param_6, s32 param_7, s32 param_8)
 {
@@ -34049,6 +34140,7 @@ asm void FUN_0013AFD0(f32 param_1, u64 param_2, const s32* param_3, u64 param_4,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #undef D_00833B44
 #undef D_00833B58
@@ -34105,6 +34197,7 @@ void FUN_0013BCE0(u8 param_1)
 /* W373 pragma sweep: default nd695/object1004/1008; common_subs off nd616/object992/1008. Retained common_subs off. */
 #pragma opt_common_subs off
 // FUN_0013BE50
+#ifndef PC_BUILD
 asm s32 FUN_0013BE50(u8* param_1, s32 param_2)
 {
   .set noreorder
@@ -34361,6 +34454,7 @@ asm s32 FUN_0013BE50(u8* param_1, s32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 
@@ -34791,6 +34885,7 @@ static void campEquipmentClearCategoryCounts(CampEquipmentWork* work)
 
 /* W389 six-knob sweep: singles + all 15 pairs; baseline nd376/object1100/1120, no lowering under the window. Residual is large control/data divergence. */
 // FUN_0013c240
+#ifndef PC_BUILD
 asm void FUN_0013c240(CampEquipmentWork* work, s16 pcId, s16 equipmentType)
 {
   .set noreorder
@@ -35075,6 +35170,7 @@ asm void FUN_0013c240(CampEquipmentWork* work, s16 pcId, s16 equipmentType)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 /* opt_loop_invariants on: baseline nd15/object212/224 -> nd0/object212/224; retained W389. */
@@ -35134,6 +35230,7 @@ found:
 #pragma opt_lifetimes on
 #pragma opt_propagation off
 // FUN_0013c780
+#ifndef PC_BUILD
 asm void FUN_0013c780(CampEquipmentWork* work)
 {
   .set noreorder
@@ -35462,6 +35559,7 @@ asm void FUN_0013c780(CampEquipmentWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 #pragma pop
@@ -35471,6 +35569,7 @@ asm void FUN_0013c780(CampEquipmentWork* work)
 #pragma opt_lifetimes on
 #pragma opt_propagation off
 // FUN_0013cc90
+#ifndef PC_BUILD
 asm void FUN_0013cc90(CampEquipmentWork* work)
 {
   .set noreorder
@@ -35663,6 +35762,7 @@ asm void FUN_0013cc90(CampEquipmentWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 #pragma pop
@@ -35740,6 +35840,7 @@ void FUN_0013cf80(u64 pcId, CampEquipmentWork* work)
 /* W455 retail-row reconstruction: category-2 selected/unselected atlas frames are 0x33/0x32 with decoded alpha and row coordinates; 5116/5488 bytes (93.2%) are implemented, with the trailing digit loop and epilogue remaining. */
 // FUN_0013d1a0
 
+#ifndef PC_BUILD
 asm void FUN_0013d1a0(f32 texture, CampBits position, CampEquipmentWork* work, s32 alpha)
 {
   .set noreorder
@@ -37116,6 +37217,7 @@ asm void FUN_0013d1a0(f32 texture, CampBits position, CampEquipmentWork* work, s
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
 #pragma pop
@@ -37148,6 +37250,7 @@ asm void FUN_0013d1a0(f32 texture, CampBits position, CampEquipmentWork* work, s
 #pragma opt_propagation off
 // FUN_0013e710
 
+#ifndef PC_BUILD
 asm void FUN_0013e710(CampPair position,f32 texture,CampEquipmentWork* work,s32 alpha)
 {
   .set noreorder
@@ -38532,6 +38635,7 @@ asm void FUN_0013e710(CampPair position,f32 texture,CampEquipmentWork* work,s32 
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
 #pragma pop
@@ -38548,6 +38652,7 @@ asm void FUN_0013e710(CampPair position,f32 texture,CampEquipmentWork* work,s32 
 #pragma opt_propagation off
 // FUN_0013fca0
 
+#ifndef PC_BUILD
 asm void FUN_0013fca0(f32 texture,u64 position,CampEquipmentWork* work,s32 alpha)
 {
   .set noreorder
@@ -39204,6 +39309,7 @@ asm void FUN_0013fca0(f32 texture,u64 position,CampEquipmentWork* work,s32 alpha
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 #pragma pop
@@ -39678,6 +39784,7 @@ void FUN_00141660(CampEquipmentPanelWork* work)
 /* W389 six-knob sweep: singles + all 15 pairs; baseline nd1800/object2420/2432, no lowering under the window. Residual is large draw-sequence divergence. */
 // FUN_00141fb0
 
+#ifndef PC_BUILD
 asm void FUN_00141fb0(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -40290,12 +40397,14 @@ asm void FUN_00141fb0(CampEquipmentPanelWork* work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
 /* W389 six-knob sweep: singles + all 15 pairs; baseline nd1829/object2472/2496, no lowering under the window. Residual is large draw-sequence divergence. */
 // FUN_00142930
 
+#ifndef PC_BUILD
 asm void FUN_00142930(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -40924,6 +41033,7 @@ asm void FUN_00142930(CampEquipmentPanelWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -40933,6 +41043,7 @@ asm void FUN_00142930(CampEquipmentPanelWork* work)
 #pragma opt_strength_reduction off
 // FUN_001432f0
 
+#ifndef PC_BUILD
 asm void FUN_001432f0(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -41389,6 +41500,7 @@ asm void FUN_001432f0(CampEquipmentPanelWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_strength_reduction reset
 #pragma opt_propagation reset
 #pragma pop
@@ -41402,6 +41514,7 @@ asm void FUN_001432f0(CampEquipmentPanelWork* work)
 #pragma opt_dead_assignments off
 // FUN_00143a00
 
+#ifndef PC_BUILD
 asm void FUN_00143a00(CampEquipmentPanelWork* work,s32 targetSlot)
 {
   .set noreorder
@@ -41718,6 +41831,7 @@ asm void FUN_00143a00(CampEquipmentPanelWork* work,s32 targetSlot)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_loop_invariants reset
 #pragma pop
@@ -41730,6 +41844,7 @@ asm void FUN_00143a00(CampEquipmentPanelWork* work,s32 targetSlot)
 #pragma opt_strength_reduction off
 // FUN_00143ee0
 
+#ifndef PC_BUILD
 asm void FUN_00143ee0(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -42386,6 +42501,7 @@ asm void FUN_00143ee0(CampEquipmentPanelWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_strength_reduction reset
 #pragma opt_propagation reset
 #pragma pop
@@ -42395,6 +42511,7 @@ asm void FUN_00143ee0(CampEquipmentPanelWork* work)
 /* W389 six-knob sweep: singles + all 15 pairs; baseline nd2032/object2620/2624, no lowering under the window. Residual is large draw-sequence divergence. */
 // FUN_00144910
 
+#ifndef PC_BUILD
 asm void FUN_00144910(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -43055,6 +43172,7 @@ asm void FUN_00144910(CampEquipmentPanelWork* work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -43113,6 +43231,7 @@ void FUN_00145350(CampEquipmentPanelWork* work, s32 hoverSlot)
 #pragma opt_propagation off
 // FUN_00145520_y3
 
+#ifndef PC_BUILD
 asm void FUN_00145520_y3(CampEquipmentDrawItem* item, s32 menuCode, u8* workData)
 {
   .set noreorder
@@ -44265,6 +44384,7 @@ asm void FUN_00145520_y3(CampEquipmentDrawItem* item, s32 menuCode, u8* workData
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
 #pragma pop
@@ -44277,6 +44397,7 @@ asm void FUN_00145520_y3(CampEquipmentDrawItem* item, s32 menuCode, u8* workData
 #pragma opt_lifetimes on
 // FUN_00146710
 
+#ifndef PC_BUILD
 asm void FUN_00146710(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -45169,6 +45290,7 @@ asm void FUN_00146710(CampEquipmentPanelWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma pop
 
@@ -45218,6 +45340,7 @@ asm void FUN_00146710(CampEquipmentPanelWork* work)
  
  
 // FUN_001474f0
+#ifndef PC_BUILD
 asm void FUN_001474f0(CampEquipmentPanelWork* work)
 {
   .set noreorder
@@ -46118,6 +46241,7 @@ asm void FUN_001474f0(CampEquipmentPanelWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #undef func_0018bc10
 #pragma opt_propagation reset
@@ -46396,6 +46520,7 @@ extern u32 FUN_0017d830();
 #pragma alias DAT_00833a50_abs DAT_00833a50_y3
 extern u8 DAT_00833a50_abs[];
 // FUN_001482F0
+#ifndef PC_BUILD
 asm void h_campDrawStatusOverview(int param_1)
 {
   .set noreorder
@@ -46756,9 +46881,11 @@ asm void h_campDrawStatusOverview(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 /* W414 HCamp residual: retail converts the +389.0f y offset before loading the y field; the candidate's sole residual is this b210 FP scheduling order. */
 // FUN_00148880
+#ifndef PC_BUILD
 asm void h_campDrawListEntry(int param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -46991,6 +47118,7 @@ asm void h_campDrawListEntry(int param_1,int param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Retail offsets 0x148c10-0x1496dc: two comparison panels retain one packed
  * start coordinate per call, shift it by -100.0f in place, and clear inactive
@@ -46998,6 +47126,7 @@ asm void h_campDrawListEntry(int param_1,int param_2,int param_3)
  * the remaining 268 bytes are compiler/lifetime scheduling differences. */
 #pragma opt_propagation off
 // FUN_00148C10
+#ifndef PC_BUILD
 asm void h_campDrawStatusComparison(int param_1)
 {
   .set noreorder
@@ -47698,6 +47827,7 @@ asm void h_campDrawStatusComparison(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #undef spe8
 #undef spe0
@@ -47729,6 +47859,7 @@ asm void h_campDrawStatusComparison(int param_1)
 /* W373 pragma sweep: default nd2626/object3276/3488; propagation off nd2567/object3104/3488; dead_assignments off nd2513/object3260/3488; propagation+dead_assignments nd2567/object3104/3488. Retained dead_assignments off. */
 #pragma opt_dead_assignments off
 // FUN_001496F0
+#ifndef PC_BUILD
 asm void h_campDrawPersonaOverview(int param_1)
 {
   .set noreorder
@@ -48605,6 +48736,7 @@ asm void h_campDrawPersonaOverview(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 /* Reconstructed the retail transition aggregates and full equipment-entry
@@ -48614,6 +48746,7 @@ asm void h_campDrawPersonaOverview(int param_1)
  * source coverage and object size toward the retail window, although the
  * instruction schedule remains NONMATCHING. */
 // FUN_0014A490
+#ifndef PC_BUILD
 asm void h_campDrawPersonaEquipment(int param_1)
 {
   .set noreorder
@@ -49482,11 +49615,13 @@ asm void h_campDrawPersonaEquipment(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W373 pragma sweep: default nd2051/object2752/2768; propagation off nd2032/object2540/2768. Retained propagation off. */
 #pragma opt_propagation off
 
 // FUN_0014B210
+#ifndef PC_BUILD
 asm void h_campDrawPersonaList(int param_1)
 {
   .set noreorder
@@ -50183,6 +50318,7 @@ asm void h_campDrawPersonaList(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 #define campDrawTransition(depth, transition, drawMode, positionMode, alphaMode, start, end, param0, tile, startFrame, endFrame) \
@@ -50332,6 +50468,7 @@ void h_campDrawSocialEntry(int param_1,int param_2,int param_3)
 /* W373 pragma sweep: default nd6343/object9700/10080; dead_assignments off nd6331/object9700/10080. Retained dead_assignments off alongside the existing loop_invariants on. */
 #pragma opt_dead_assignments off
 // FUN_0014C5C0
+#ifndef PC_BUILD
 asm u32 h_campUpdateNewItemTask(int param_1)
 {
   .set noreorder
@@ -52856,6 +52993,7 @@ asm u32 h_campUpdateNewItemTask(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 #pragma opt_loop_invariants reset
@@ -52927,6 +53065,7 @@ KwlnTask* h_campCreateNewItemTask(KwlnTask* parent, u32 priority)
 /* W373 pragma sweep: default nd588/object924/960; common_subs off nd370/object944/960. Retained common_subs off. */
 #pragma opt_common_subs off
 // FUN_0014EF60
+#ifndef PC_BUILD
 asm void h_campDrawItemFrame(int param_1)
 {
   .set noreorder
@@ -53171,9 +53310,11 @@ asm void h_campDrawItemFrame(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_0014F320
+#ifndef PC_BUILD
 asm void h_campDrawItemFrameSelected(int param_1)
 {
   .set noreorder
@@ -53394,6 +53535,7 @@ asm void h_campDrawItemFrameSelected(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0014F680
 u32 h_campIsSocialLinkAvailable(s32 param_1, s32 param_2)
@@ -53441,6 +53583,7 @@ u32 h_campIsSocialLinkAvailable(s32 param_1, s32 param_2)
 #pragma opt_propagation off
 /* Retail's menu task draws each transition from decoded per-state coordinate/frame tables; cases 15 and 18 now use the aggregate sequence, while other state layout remains mismatched. */
 // FUN_0014F7D0
+#ifndef PC_BUILD
 asm u32 h_campUpdateSystemMenuTask_148(int param_1)
 {
   .set noreorder
@@ -58541,6 +58684,7 @@ asm u32 h_campUpdateSystemMenuTask_148(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #undef campDrawSprite
 #undef campDrawSpriteX
@@ -58772,6 +58916,7 @@ static inline void campDrawRows(const CampMenuDrawItem* item, s32 count, f32 spa
  * cases explicit makes the mode contract visible while preserving the same
  * draw helpers used by the screen callbacks below. */
 // FUN_00154970
+#ifndef PC_BUILD
 asm void FUN_00154970(CampMenuDrawItem* item,
                   const char** labels, s32 mode, s32 first,
                   s32 count)
@@ -59162,6 +59307,7 @@ asm void FUN_00154970(CampMenuDrawItem* item,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00154F70
 u32 FUN_00154F70(CampMenuDrawItem* items, const char** labels, s32 count,
@@ -59186,6 +59332,7 @@ u32 FUN_00154F70(CampMenuDrawItem* items, const char** labels, s32 count,
 }
 
 // FUN_00155070
+#ifndef PC_BUILD
 asm void FUN_00155070(CampMenuDrawItem* item, const char** labels, s32 mode, s32 first,
                   s32 count, s32 page, s32 selected)
 {
@@ -59615,6 +59762,7 @@ asm void FUN_00155070(CampMenuDrawItem* item, const char** labels, s32 mode, s32
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00155710
 u32 FUN_00155710(CampMenuDrawItem* items, const char** labels, s32 count, s32 first,
@@ -59639,6 +59787,7 @@ u32 FUN_00155710(CampMenuDrawItem* items, const char** labels, s32 count, s32 fi
 }
 
 // FUN_00155830
+#ifndef PC_BUILD
 asm void FUN_00155830_menu(CampMenuDrawItem* item, const char** labels, s32 mode, s32 selected,
                   const s32* enabled)
 {
@@ -60224,6 +60373,7 @@ asm void FUN_00155830_menu(CampMenuDrawItem* item, const char** labels, s32 mode
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00156140
 u32 FUN_00156140(CampMenuDrawItem* items, const char** labels, s32 count,
@@ -60264,6 +60414,7 @@ static inline void campDrawPersonaName(CampMenuDrawItem* item, s32 personaId, s3
 }
 
 // FUN_00156240
+#ifndef PC_BUILD
 asm void FUN_00156240(CampMenuDrawItem* item, const char** labels, s32 mode, s32 personaBase,
                   s32 selected)
 {
@@ -61053,6 +61204,7 @@ asm void FUN_00156240(CampMenuDrawItem* item, const char** labels, s32 mode, s32
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00156E80
 u32 FUN_00156E80(CampMenuDrawItem* items, const char** labels, s32 count,
@@ -61175,6 +61327,7 @@ static void campDrawItemStatus(CampMenuDrawItem* item, s32 itemId)
 }
 
 // FUN_00156F80
+#ifndef PC_BUILD
 asm void FUN_00156F80(CampMenuDrawItem* item, const char** labels, s32 mode, s32 selected)
 {
   .set noreorder
@@ -63835,6 +63988,7 @@ asm void FUN_00156F80(CampMenuDrawItem* item, const char** labels, s32 mode, s32
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00159900
 u32 FUN_00159900(CampMenuDrawItem* items, const char** labels, s32 count)
 {
@@ -63874,6 +64028,7 @@ static void campDrawSkillDescription(CampMenuDrawItem* item, s32 skillId, s32 se
  * s16 loop-index probes (j and i; 6512/4370 and 6616/4536); no closure
  * fit the window. */
 // FUN_001599F0
+#ifndef PC_BUILD
 asm void FUN_001599F0(CampMenuDrawItem* item, const char** labels, s32 mode, s32 category,
                   s32 selected)
 {
@@ -65495,6 +65650,7 @@ asm void FUN_001599F0(CampMenuDrawItem* item, const char** labels, s32 mode, s32
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #undef campDrawSprite
 #undef campDrawSpriteX
@@ -67046,6 +67202,7 @@ KwlnTask *FUN_0015C460(KwlnTask *param_1)
 }
 
 // FUN_0015C520
+#ifndef PC_BUILD
 asm void FUN_0015C520(void *param_1, s32 param_2)
 {
   .set noreorder
@@ -67250,8 +67407,10 @@ asm void FUN_0015C520(void *param_1, s32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015C840
+#ifndef PC_BUILD
 asm void FUN_0015C840(void *param_1)
 {
   .set noreorder
@@ -67644,8 +67803,10 @@ asm void FUN_0015C840(void *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015CE50
+#ifndef PC_BUILD
 asm void FUN_0015CE50(u64 packedPosition, void *listPointer, s32 alpha,
                   f32 drawContext)
 {
@@ -68327,6 +68488,7 @@ asm void FUN_0015CE50(u64 packedPosition, void *listPointer, s32 alpha,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015D8E0
 void FUN_0015D8E0(CampSystemPosition position, f32 drawContext, u8 alpha)
@@ -68364,6 +68526,7 @@ void FUN_0015D8E0(CampSystemPosition position, f32 drawContext, u8 alpha)
     }
 }
 // FUN_0015DA70
+#ifndef PC_BUILD
 asm void FUN_0015DA70(void *param_1)
 {
   .set noreorder
@@ -68808,8 +68971,10 @@ asm void FUN_0015DA70(void *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015E150
+#ifndef PC_BUILD
 asm void FUN_0015E150(CampSystemDrawWork *work)
 {
   .set noreorder
@@ -69170,8 +69335,10 @@ asm void FUN_0015E150(CampSystemDrawWork *work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015E6E0
+#ifndef PC_BUILD
 asm void FUN_0015E6E0(CampSystemDrawWork *work)
 {
   .set noreorder
@@ -69648,8 +69815,10 @@ asm void FUN_0015E6E0(CampSystemDrawWork *work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015EE40
+#ifndef PC_BUILD
 asm void FUN_0015EE40(CampSystemDrawWork *work, s32 changedIndex)
 {
   .set noreorder
@@ -69966,8 +70135,10 @@ asm void FUN_0015EE40(CampSystemDrawWork *work, s32 changedIndex)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015F320
+#ifndef PC_BUILD
 asm void FUN_0015F320(CampSystemDrawWork *work)
 {
   .set noreorder
@@ -70448,8 +70619,10 @@ asm void FUN_0015F320(CampSystemDrawWork *work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015FA90
+#ifndef PC_BUILD
 asm void FUN_0015FA90(CampDrawRecord *record, s32 recordIndex, CampSystemDrawWork *work)
 {
   .set noreorder
@@ -71314,6 +71487,7 @@ asm void FUN_0015FA90(CampDrawRecord *record, s32 recordIndex, CampSystemDrawWor
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00160800
 asm void *FUN_00160800(KwlnTask *task)
@@ -73500,6 +73674,7 @@ void FUN_00161d60(KwlnTask* task)
 }
 #pragma opt_lifetimes on
 // FUN_00161D90
+#ifndef PC_BUILD
 asm void FUN_00161d90(void* recordData, s32 index, CampSkillInnerWork* work)
 {
   .set noreorder
@@ -74888,6 +75063,7 @@ asm void FUN_00161d90(void* recordData, s32 index, CampSkillInnerWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 static u8* campSkillDetailEntry(const CampSkillInnerWork* work, s32 index)
@@ -74903,6 +75079,7 @@ static u8* campSkillDetailEntry(const CampSkillInnerWork* work, s32 index)
 #pragma opt_propagation off
 // FUN_00163330
 #pragma schedule on
+#ifndef PC_BUILD
 asm void FUN_00163330(void* recordData, s32 index, CampSkillInnerWork* work)
 {
   .set noreorder
@@ -76311,6 +76488,7 @@ asm void FUN_00163330(void* recordData, s32 index, CampSkillInnerWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
 #pragma pop
@@ -80491,6 +80669,7 @@ KwlnTask* FUN_00168770(KwlnTask* parent, u32 priority)
 /* opt_loop_invariants on: baseline nd1045/2096B -> on nd1038/2096B; retained. */
 #pragma opt_loop_invariants on
 // FUN_00168810
+#ifndef PC_BUILD
 asm u32 FUN_00168810(u32 param_1)
 {
   .set noreorder
@@ -81019,6 +81198,7 @@ asm u32 FUN_00168810(u32 param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 // FUN_00169040
@@ -81137,6 +81317,7 @@ bool FUN_00169420(void)
 #pragma opt_loop_invariants on
 #pragma opt_propagation off
 // FUN_00169470
+#ifndef PC_BUILD
 asm undefined4 FUN_00169470(KwlnTask* param_1)
 {
   .set noreorder
@@ -81553,6 +81734,7 @@ asm undefined4 FUN_00169470(KwlnTask* param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
@@ -81596,6 +81778,7 @@ void FUN_00169AE0(int param_1)
  * values/data flow remain unidentified; retail leaves the owner register
  * uninitialized, so do not fabricate a value or keep permuting prototypes. */
 // FUN_00169B90
+#ifndef PC_BUILD
 asm void FUN_00169B90(void* param_1, undefined8 param_2,
                   void* param_3, s32 param_4, undefined8 param_5)
 {
@@ -81897,6 +82080,7 @@ asm void FUN_00169B90(void* param_1, undefined8 param_2,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* The reconstruction intentionally leaves the retail owner register
  * uninitialized; no fabricated owner value is introduced. */
  
@@ -81908,6 +82092,7 @@ asm void FUN_00169B90(void* param_1, undefined8 param_2,
 /* opt_lifetimes on: baseline nd1098/1576B -> on nd1087/1576B; propagation off nd1093/1576B; stacked nd1099/1576B; lifetimes retained. */
 #pragma opt_lifetimes on
 // FUN_0016A030
+#ifndef PC_BUILD
 asm undefined4 FUN_0016A030(void)
 {
   .set noreorder
@@ -82324,6 +82509,7 @@ asm undefined4 FUN_0016A030(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 // FUN_0016A6A0
@@ -82348,6 +82534,7 @@ undefined4 FUN_0016A6A0(void)
 /* The six-argument form preserves the texture/sprite selectors carried
  * in the otherwise untyped retail calls. */
 // FUN_0016A700
+#ifndef PC_BUILD
 asm void FUN_0016a700(f32 param_1, void* param_2, undefined8 param_3,
                   void* param_4, s32 param_5)
 {
@@ -82901,6 +83088,7 @@ asm void FUN_0016a700(f32 param_1, void* param_2, undefined8 param_3,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 /* opt_propagation off: baseline nd1935/2576B -> off nd1912/2464B; retained. */
@@ -82918,6 +83106,7 @@ asm void FUN_0016a700(f32 param_1, void* param_2, undefined8 param_3,
 #undef RpSkyRenderStateSet
 #pragma opt_propagation off
 // FUN_0016AF90
+#ifndef PC_BUILD
 asm void FUN_0016af90(f32 param_1, void* param_2, undefined8 param_3,
                   void* param_4, s32 param_5)
 {
@@ -83591,4 +83780,5 @@ asm void FUN_0016af90(f32 param_1, void* param_2, undefined8 param_3,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset

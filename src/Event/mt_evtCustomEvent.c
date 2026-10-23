@@ -249,6 +249,7 @@ int FUN_003983e0(int param_1,int param_2)
 // FUN_00398530
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00398530(int param_1)
 {
   .set noreorder
@@ -1469,6 +1470,7 @@ asm u32 FUN_00398530(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #define FUN_00398530(...) FUN_00398530(__VA_ARGS__)
 #undef FUN_00399830
@@ -1750,6 +1752,7 @@ void FUN_00399be0(int param_1)
 // FUN_00399C40
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00399c40(int param_1)
 {
   .set noreorder
@@ -2338,6 +2341,7 @@ asm u32 FUN_00399c40(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #define FUN_00399c40(...) FUN_00399c40(__VA_ARGS__)
 #undef FUN_0039a560
@@ -2571,6 +2575,7 @@ void FUN_0039a840(int param_1)
 // FUN_0039A8A0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_0039a8a0(int param_1)
 {
   .set noreorder
@@ -3571,6 +3576,7 @@ asm u32 FUN_0039a8a0(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #define FUN_0039a8a0(...) FUN_0039a8a0(__VA_ARGS__)
 #undef FUN_0039b830
@@ -3645,6 +3651,7 @@ void FUN_0039b8b0(u64 param_1,u16 param_2)
 // FUN_0039B950
 
 
+#ifndef PC_BUILD
 asm u32 FUN_0039b950(int param_1)
 {
   .set noreorder
@@ -4113,6 +4120,7 @@ asm u32 FUN_0039b950(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039b950(...) FUN_0039b950(__VA_ARGS__)
 #undef FUN_0039c090
 // FUN_0039C090
@@ -4153,6 +4161,7 @@ void FUN_0039c090(int param_1)
 // FUN_0039C0F0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_0039c0f0(int param_1)
 {
   .set noreorder
@@ -4345,6 +4354,7 @@ asm u32 FUN_0039c0f0(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #define FUN_0039c0f0(...) FUN_0039c0f0(__VA_ARGS__)
 #undef FUN_0039c3e0
@@ -4385,6 +4395,7 @@ void FUN_0039c3e0(int param_1)
 // FUN_0039C440
 
 
+#ifndef PC_BUILD
 asm u32 FUN_0039c440(int param_1)
 {
   .set noreorder
@@ -4973,6 +4984,7 @@ asm u32 FUN_0039c440(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039c440(...) FUN_0039c440(__VA_ARGS__)
 #undef FUN_0039cd60
 // FUN_0039CD60
@@ -5174,6 +5186,7 @@ void FUN_0039d190(int param_1)
 // FUN_0039D1C0
 
 
+#ifndef PC_BUILD
 asm void FUN_0039d1c0(int param_1)
 {
   .set noreorder
@@ -5406,6 +5419,7 @@ asm void FUN_0039d1c0(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039d1c0(...) FUN_0039d1c0(__VA_ARGS__)
 #undef FUN_0039d550
 // FUN_0039D550
@@ -5842,6 +5856,7 @@ void FUN_0039dd30(int param_1)
 // FUN_0039DD90
 
 
+#ifndef PC_BUILD
 asm u32 FUN_0039dd90(int param_1)
 {
   .set noreorder
@@ -6078,6 +6093,7 @@ asm u32 FUN_0039dd90(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #define FUN_0039dd90(...) FUN_0039dd90(__VA_ARGS__)
 #undef FUN_0039e130
@@ -6124,6 +6140,7 @@ void FUN_0039e130(int param_1)
 // FUN_0039E1B0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_0039e1b0(int param_1,int param_2)
 {
   .set noreorder
@@ -6464,6 +6481,7 @@ asm u32 FUN_0039e1b0(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039e1b0(...) FUN_0039e1b0(__VA_ARGS__)
 #undef FUN_0039e6f0
 // FUN_0039e6f0
@@ -6484,6 +6502,7 @@ u32 FUN_0039e6f0(void)
 // FUN_0039E700
 
 
+#ifndef PC_BUILD
 asm void FUN_0039e700(u8 *param_1)
 {
   .set noreorder
@@ -6536,6 +6555,7 @@ asm void FUN_0039e700(u8 *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039e700(...) FUN_0039e700(__VA_ARGS__)
 #undef FUN_0039e7c0
 #undef FUN_0039e820
@@ -6725,6 +6745,7 @@ static inline int mtEvtAddBaseFirst(int base, int offset) { return base + offset
 // FUN_0039EAA0
 
 
+#ifndef PC_BUILD
 asm void FUN_0039eaa0(int param_1)
 {
   .set noreorder
@@ -6789,6 +6810,7 @@ asm void FUN_0039eaa0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039eaa0(...) FUN_0039eaa0(__VA_ARGS__)
 #undef FUN_0039eb90
 // FUN_0039EB90

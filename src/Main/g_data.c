@@ -1929,6 +1929,7 @@ s16 func_0016e190(s32 socialLink)
 }
 
 // FUN_0016e2b0
+#ifndef PC_BUILD
 asm void func_0016e2b0(s16 socialLink, s32 amount)
 {
   .set noreorder
@@ -2021,6 +2022,7 @@ asm void func_0016e2b0(s16 socialLink, s32 amount)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation off
 // FUN_0016e410
@@ -3230,6 +3232,7 @@ invalid:
 }
 
 // FUN_00170860
+#ifndef PC_BUILD
 asm void func_00170860(s16 pcId, s16 index, u16 value)
 {
   .set noreorder
@@ -3354,6 +3357,7 @@ asm void func_00170860(s16 pcId, s16 index, u16 value)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00170a40
 u16 func_00170a40(s16 pcId, s16 index)

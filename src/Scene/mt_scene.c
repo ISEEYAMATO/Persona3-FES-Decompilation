@@ -1461,6 +1461,7 @@ void FUN_003b7090(u64 param_1)
 /* W420 negative: caching the DAT_006a2d20/30/40/50_abs base through a local pointer left nd 643, object 1104/1104 (window 1104), rate 0.582428 unchanged. */
 /* W420 negative: changing the stack vector z field to f32 emitted an oversized 1160-byte object and nd701 against the 1104-byte window; reverted. */
 // FUN_003B7460
+#ifndef PC_BUILD
 asm void FUN_003b7460(u8 *param_1, RwV3d *param_2, RwV3d *param_3, RwV3d *param_4)
 {
   .set noreorder
@@ -1741,6 +1742,7 @@ asm void FUN_003b7460(u8 *param_1, RwV3d *param_2, RwV3d *param_3, RwV3d *param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 #undef FUN_003b7460
@@ -1874,6 +1876,7 @@ void FUN_003b79a0(u32 *param_1, u64 param_2, u32 *param_3)
 // FUN_003B7AC0
 
 
+#ifndef PC_BUILD
 asm void FUN_003b7ac0(u32 *param_1,float *param_2,u32 *param_3)
 {
   .set noreorder
@@ -2346,6 +2349,7 @@ asm void FUN_003b7ac0(u32 *param_1,float *param_2,u32 *param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 #define FUN_003b7ac0(...) FUN_003b7ac0(__VA_ARGS__)
@@ -2570,6 +2574,7 @@ u32 FUN_003b8470(u16 param_1,u16 param_2)
 // FUN_003B8540
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003b8540(float *param_1,float *param_2,float *param_3,float *param_4)
 {
   .set noreorder
@@ -2658,6 +2663,7 @@ asm u32 FUN_003b8540(float *param_1,float *param_2,float *param_3,float *param_4
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset

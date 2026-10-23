@@ -1250,6 +1250,7 @@ void func_001a7fc0(void* state, u32 mode)
 // FUN_001a8140
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void func_001a8140(void* state, u32 mode)
 {
   .set noreorder
@@ -1694,6 +1695,7 @@ asm void func_001a8140(void* state, u32 mode)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_001a8820

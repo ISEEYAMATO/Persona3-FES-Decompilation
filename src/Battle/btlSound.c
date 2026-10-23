@@ -1393,6 +1393,7 @@ done:
 }
 
 // FUN_002dbb00
+#ifndef PC_BUILD
 asm u32 FUN_002dbb00(BtlUnit* param_1)
 {
   .set noreorder
@@ -1633,6 +1634,7 @@ asm u32 FUN_002dbb00(BtlUnit* param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002dbeb0
 u32 FUN_002dbeb0(void* param_1)
@@ -1723,6 +1725,7 @@ u32 FUN_002dc130(BtlAction* action)
 }
 
 // FUN_002dc180
+#ifndef PC_BUILD
 asm u32 FUN_002dc180(BtlAction* action)
 {
   .set noreorder
@@ -1971,6 +1974,7 @@ asm u32 FUN_002dc180(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 
 #pragma opt_loop_invariants on

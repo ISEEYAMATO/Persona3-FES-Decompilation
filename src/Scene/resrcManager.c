@@ -517,6 +517,7 @@ void FUN_003b55d0(u32 param_1,u32 *param_2)
 // FUN_003B5620
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003b5620(int param_1,int param_2)
 {
   .set noreorder
@@ -601,6 +602,7 @@ asm u32 FUN_003b5620(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003b5620(...) FUN_003b5620(__VA_ARGS__)
 #undef FUN_003b58c0
 #define FUN_003b58c0(...) FUN_003b58c0(__VA_ARGS__)

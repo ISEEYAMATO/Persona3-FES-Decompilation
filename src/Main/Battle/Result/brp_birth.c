@@ -284,6 +284,7 @@ void func_0024ac90(void)
 /* W420 wave/opacity declaration-order variants: nd1798/2640B, window 2736B,
  * rate 0.681061 unchanged for both tested orders; reverted. */
 // FUN_0024ADF0
+#ifndef PC_BUILD
 asm void func_0024adf0(void)
 {
   .set noreorder
@@ -972,6 +973,7 @@ asm void func_0024adf0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 static void brpBirthSetColor(void* resource, u8 r, u8 g, u8 b, u8 a)
 {

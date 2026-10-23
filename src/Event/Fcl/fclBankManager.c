@@ -3388,6 +3388,7 @@ fclCombine_case9_s:
 // FUN_003D1DF0
 
 
+#ifndef PC_BUILD
 asm void FUN_003d1df0(s32 param_1,int param_2)
 {
   .set noreorder
@@ -3640,6 +3641,7 @@ asm void FUN_003d1df0(s32 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003d21d0
 s32 fclCombine003d21d0(void)
@@ -3653,6 +3655,7 @@ s32 fclCombine003d21d0(void)
 // FUN_003D2200
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003d2200(s32 param_1)
 {
   .set noreorder
@@ -3897,6 +3900,7 @@ asm u32 FUN_003d2200(s32 param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

@@ -449,6 +449,7 @@ void func_002770f0(void)
  * four panel13 channels from alpha. Implemented those decoded blocks; 104 bytes
  * remain in later layout and scheduling differences. */
 // FUN_002771f0
+#ifndef PC_BUILD
 asm void func_002771f0(void)
 {
   .set noreorder
@@ -1693,10 +1694,12 @@ asm void func_002771f0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #define D_00960090 (*state)
 #define D_0096009C (*quad)
 // FUN_00278550
+#ifndef PC_BUILD
 asm void func_00278550(void)
 {
   .set noreorder
@@ -2457,6 +2460,7 @@ asm void func_00278550(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef D_00960090
 #undef D_0096009C
 

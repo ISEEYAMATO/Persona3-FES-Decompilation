@@ -372,6 +372,7 @@ u8 func_00109170(void)
 /* Retail 0x1091A4-0x109994: reconstructed BGM and backend dispatch logic from retail instructions. W415 swapped the non-CDVD branch bodies to emit 0x001025c0 before 0x00102530 (nd 1202 -> 1202, object 1852/2080). W419 permuted all 24 declarations of name/handle/channelOffset/channel; every result stayed nd 796, object 1764. W419 ascending switch-case group order regressed to nd 828, object 1764; a scoped case-local index stayed nd 795, object 1764, while volatile indexing regressed to nd 939, object 1852. */
 // Retail common setup overrides channel 2 to flags=3/voices=1; dispatch bodies are present, with only the final tail still differing (1820/2080 bytes, 87.5%).
 // FUN_00109180
+#ifndef PC_BUILD
 asm void H_Snd_00109180(s32 channelIndex)
 {
   .set noreorder
@@ -896,6 +897,7 @@ asm void H_Snd_00109180(s32 channelIndex)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001099A0
 s16 func_001099a0(void)

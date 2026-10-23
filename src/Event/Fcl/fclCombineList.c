@@ -753,6 +753,7 @@ da470_compare:
 }
 
 // FUN_003da570
+#ifndef PC_BUILD
 asm void fclCombineList003da570(FclList* param_1, s32 param_2)
 {
   .set noreorder
@@ -857,10 +858,12 @@ asm void fclCombineList003da570(FclList* param_1, s32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* Removing this worsens FUN_003da700 (nd2097 -> nd2101) - measured W161. */
 /* Array declaration orders selected_ids/list/transformed: nd1960-1968, object3740/window3712 (all over by28); no win - measured W419. */
 #pragma opt_loop_invariants on
 // FUN_003da700
+#ifndef PC_BUILD
 asm s32 fclCombineList003da700(FclList* param_1)
 {
   .set noreorder
@@ -1793,6 +1796,7 @@ asm s32 fclCombineList003da700(FclList* param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants off
 // FUN_003db580
@@ -1818,6 +1822,7 @@ void fclCombineList003db5e0(FclOwner* param_1)
 
 
 // FUN_003db650
+#ifndef PC_BUILD
 asm void fclCombineList003db650(FclResultStream* stream, FclDb650Result* result,
                              FclOwner* owner)
 {
@@ -2575,6 +2580,7 @@ asm void fclCombineList003db650(FclResultStream* stream, FclDb650Result* result,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003dc210
 void fclCombineList003dc210(s32 unused0, s32 unused1, s32 unused2, FclOwner* owner)
@@ -2598,6 +2604,7 @@ void fclCombineList003dc210(s32 unused0, s32 unused1, s32 unused2, FclOwner* own
 }
 
 // FUN_003dc2d0
+#ifndef PC_BUILD
 asm void fclCombineList003dc2d0(s32 base_x, s32 base_y, s16 alpha, FclOwner* owner,
                              FclTaskLink* source_link, s32 selected_style,
                              s32 alternate_layout)
@@ -2872,8 +2879,10 @@ asm void fclCombineList003dc2d0(s32 base_x, s32 base_y, s16 alpha, FclOwner* own
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003dc700
+#ifndef PC_BUILD
 asm void fclCombineList003dc700(s32 base_x, s32 base_y, s16 alpha, FclOwner* owner,
                              FclTaskLink* source_link, s32 selected_style,
                              s32 unused_alternate)
@@ -3076,6 +3085,7 @@ asm void fclCombineList003dc700(s32 base_x, s32 base_y, s16 alpha, FclOwner* own
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003dca10
 void fclCombineList003dca10(s32 base_x, s32 base_y, s16 alpha, FclOwner* owner,
@@ -3125,6 +3135,7 @@ void fclCombineList003dca10(s32 base_x, s32 base_y, s16 alpha, FclOwner* owner,
 }
 
 // FUN_003dcc90
+#ifndef PC_BUILD
 asm void fclCombineList003dcc90(s32 x, s32 y, s16 alpha, FclOwner* owner,
                              FclTaskLink* source_link, s32 selected)
 {
@@ -3330,8 +3341,10 @@ asm void fclCombineList003dcc90(s32 x, s32 y, s16 alpha, FclOwner* owner,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003dcfb0
+#ifndef PC_BUILD
 asm void fclCombineList003dcfb0(FclResultStream* callback_target, FclDrawResult* result,
                              FclDrawCallbackRecord* record, s32 selected)
 {
@@ -3509,9 +3522,11 @@ asm void fclCombineList003dcfb0(FclResultStream* callback_target, FclDrawResult*
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* opt_loop_invariants on retained: 003dd260 nd901->900; off immediately after. */
 #pragma opt_loop_invariants on
 // FUN_003dd260
+#ifndef PC_BUILD
 asm void fclCombineList003dd260(FclResultStream* callback_target, FclDrawResult* result,
                              FclDrawCallbackRecord* record)
 {
@@ -3877,9 +3892,11 @@ asm void fclCombineList003dd260(FclResultStream* callback_target, FclDrawResult*
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 // FUN_003dd800
+#ifndef PC_BUILD
 asm void fclCombineList003dd800(s32 x, s32 y, s32 alpha, FclOwner* owner,
                              FclTaskLink* candidate)
 {
@@ -4005,6 +4022,7 @@ asm void fclCombineList003dd800(s32 x, s32 y, s32 alpha, FclOwner* owner,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003dd9e0
 s32 fclCombineList003dd9e0(FclList* list)
@@ -4101,6 +4119,7 @@ void fclCombineList003ddb90(FclList* list, FclSelection* selection)
 }
 
 // FUN_003ddd20
+#ifndef PC_BUILD
 asm s32 fclCombineList003ddd20(FclSelection* selection)
 {
   .set noreorder
@@ -4377,6 +4396,7 @@ asm s32 fclCombineList003ddd20(FclSelection* selection)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003de160
 s32 fclCombineList003de160(FclSelection* selection)
@@ -4803,6 +4823,7 @@ FclAnimationNode* fclCombineList003df100(FclAnimationNode* node,
 }
 
 // FUN_003df220
+#ifndef PC_BUILD
 asm void fclCombineList003df220(FclAnimationNode* node, s32 value, s32 preset,
                              s32 source_value, s16 direction, s16 duration)
 {
@@ -4968,6 +4989,7 @@ asm void fclCombineList003df220(FclAnimationNode* node, s32 value, s32 preset,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // HARVESTED 3D-42FF
 
@@ -4992,6 +5014,7 @@ asm void fclCombineList003df220(FclAnimationNode* node, s32 value, s32 preset,
 
 
 // FUN_003DF4A0
+#ifndef PC_BUILD
 asm u64 FUN_003df4a0(u64 param_1,int param_2)
 {
   .set noreorder
@@ -5388,6 +5411,7 @@ asm u64 FUN_003df4a0(u64 param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003DFAC0
 
@@ -5405,6 +5429,7 @@ u32 FUN_003dfac0(int *param_1)
 // FUN_003DFAE0
 
 
+#ifndef PC_BUILD
 asm void FUN_003dfae0(int *param_1,int *param_2)
 {
   .set noreorder
@@ -5653,6 +5678,7 @@ asm void FUN_003dfae0(int *param_1,int *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003DFEB0
 int * FUN_003dfeb0(int param_1)
@@ -5725,6 +5751,7 @@ int FUN_003dff80(int* param_1, int param_2)
 // FUN_003DFFC0
 
 
+#ifndef PC_BUILD
 asm int FUN_003dffc0(int *param_1,int param_2,s32 param_3)
 {
   .set noreorder
@@ -5777,6 +5804,7 @@ asm int FUN_003dffc0(int *param_1,int param_2,s32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003E0080
 
@@ -6486,6 +6514,7 @@ u32 FUN_003e0bc0(void)
     } while (0)
 
 // FUN_003E0C20
+#ifndef PC_BUILD
 asm void FUN_003e0c20(void *param_1, u32 param_2, u32 param_3)
 {
   .set noreorder
@@ -11538,6 +11567,7 @@ asm void FUN_003e0c20(void *param_1, u32 param_2, u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef FCL_COMBINE_CASE
 
 
@@ -12020,6 +12050,7 @@ void FUN_003e6130(int ownerAddress)
 // FUN_003E6400
 
 
+#ifndef PC_BUILD
 asm void FUN_003e6400_y2(u32 param_1,u8* param_2)
 {
   .set noreorder
@@ -12616,6 +12647,7 @@ asm void FUN_003e6400_y2(u32 param_1,u8* param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef auStack_f0
 #undef auStack_d0
 #undef apuStack_b0

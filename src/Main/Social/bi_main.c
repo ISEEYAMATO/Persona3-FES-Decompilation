@@ -160,6 +160,7 @@ void func_0023f500(void)
 
 /* Mode 2's three-stage sprite sequence is reconstructed; stack geometry remains nonmatching. */
 // FUN_0023F540
+#ifndef PC_BUILD
 asm void func_0023f540(void)
 {
   .set noreorder
@@ -2456,6 +2457,7 @@ asm void func_0023f540(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #define BI_MAIN_DRAW_ALT(base) \
     do { \
@@ -2489,6 +2491,7 @@ asm void func_0023f540(void)
     } while (0)
 /* W419 OpSocial2: direct absolute D_0096009C callback nd1389/object2424 exceeds 2384; cached/panel/macro variants worsened nd or remained over-window. */
 // FUN_00241910
+#ifndef PC_BUILD
 asm void func_00241910(void)
 {
   .set noreorder
@@ -3089,6 +3092,7 @@ asm void func_00241910(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef BI_MAIN_DRAW_DIGITS
 #undef BI_MAIN_DRAW_BASIC
 #undef BI_MAIN_DRAW_ALT

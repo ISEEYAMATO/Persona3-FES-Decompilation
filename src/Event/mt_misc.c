@@ -2065,6 +2065,7 @@ void FUN_00395930(int param_1,u32 param_2,u32 param_3)
 
 
 
+#ifndef PC_BUILD
 asm void FUN_00395950(int param_1)
 {
   .set noreorder
@@ -2377,6 +2378,7 @@ asm void FUN_00395950(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #undef FUN_00395e20
 #define FUN_00395950(...) FUN_00395950(__VA_ARGS__)
@@ -2880,6 +2882,7 @@ void FUN_003965d0(u32 *param_1)
 // FUN_003965F0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003965f0(int *param_1)
 {
   .set noreorder
@@ -2976,6 +2979,7 @@ asm u32 FUN_003965f0(int *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Region call-cast macros */
 #undef FUN_00396760
@@ -3210,6 +3214,7 @@ void FUN_00396bf0(u64 param_1)
 // FUN_00396C70
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00396c70(int param_1,int param_2,int param_3,u16 param_4,u16 param_5,
             u16 param_6,u16 param_7)
 {
@@ -3327,6 +3332,7 @@ asm u32 FUN_00396c70(int param_1,int param_2,int param_3,u16 param_4,u16 param_5
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_00396c70(...) FUN_00396c70(__VA_ARGS__)
 // FUN_00396E30
 
@@ -3404,6 +3410,7 @@ u32 FUN_00396ed0(int param_1)
 // FUN_00396F50
 
 
+#ifndef PC_BUILD
 asm void FUN_00396f50(int param_1)
 {
   .set noreorder
@@ -3464,6 +3471,7 @@ asm void FUN_00396f50(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef FUN_00397030
 #define FUN_00396f50(...) FUN_00396f50(__VA_ARGS__)
 // FUN_00397030

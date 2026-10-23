@@ -1974,6 +1974,7 @@ void func_0019ff10()
 }
 
 // FUN_001a0040
+#ifndef PC_BUILD
 asm void func_001a0040(u32 visible, u32 updateField)
 {
   .set noreorder
@@ -2046,6 +2047,7 @@ asm void func_001a0040(u32 visible, u32 updateField)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001a0150
 void func_001a0150(u16 resTypeId, u32 visible)
@@ -2676,6 +2678,7 @@ u32 func_001a11d0()
 
 
 // FUN_001a1210
+#ifndef PC_BUILD
 asm void func_001a1210(RwCamera* camera, const RwV3d* target, const RwV3d* position, const RwV3d* upVector)
 {
   .set noreorder
@@ -2784,6 +2787,7 @@ asm void func_001a1210(RwCamera* camera, const RwV3d* target, const RwV3d* posit
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001a13b0
 void* func_001a13b0(SceneDrawObject* object, void** listHead)
@@ -3721,6 +3725,7 @@ void func_001a23d0(KwlnTask* task, u32 request)
 }
 
 // FUN_001A23E0
+#ifndef PC_BUILD
 asm void func_001a23e0(KwlnTask* task, const RwRect* rect)
 {
   .set noreorder
@@ -3933,6 +3938,7 @@ asm void func_001a23e0(KwlnTask* task, const RwRect* rect)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /*
  * The task below owns the small text/value editor used by the debug window.
  * Its work area is deliberately kept separate from KWindowTaskWork above:
@@ -4146,6 +4152,7 @@ static inline void KWindow_DrawSelection(KWindowManagerWork* manager)
 
 // W415 census negative: direct R_MIPS_26 calls are 10/10 with retail after resolving the H_Dbprt helpers; no wrong-callee edit is justified.
 // FUN_001A2720
+#ifndef PC_BUILD
 asm void func_001a2720(KwlnTask* task)
 {
   .set noreorder
@@ -4366,6 +4373,7 @@ asm void func_001a2720(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W417: moved the state-3 func_001a2720 call ahead of the flag branch to match retail call order; nd3046 -> nd3008 and object 4032/4064. */
 /* W417 negative: placing func_001a2720 after KWindow_DrawSelection yielded nd3020; the pre-branch placement above is nd3008. */

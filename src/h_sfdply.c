@@ -2143,6 +2143,7 @@ asm void* func_0010c3a0(HSfdAsyncEntry* entry, u32* wasReady, s32* byteCount)
 }
 
 // FUN_0010C5F0
+#ifndef PC_BUILD
 asm void func_0010c5f0(void)
 {
   .set noreorder
@@ -2267,11 +2268,13 @@ asm void func_0010c5f0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W318 measured: opt_common_subs off changes c7d0 nd406->385; object676/window752. */
 /* W418 six local declaration orders were neutral: nd385,obj676/window752. */
 #pragma opt_common_subs off
 // FUN_0010C7D0
+#ifndef PC_BUILD
 asm void func_0010c7d0(HSfdQueueSlot* slot)
 {
   .set noreorder
@@ -2464,6 +2467,7 @@ asm void func_0010c7d0(HSfdQueueSlot* slot)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 /* W419 probes: all six declaration orders of i/slots/j, plus absolute aliases on every sSfdDecodeSlots use, stayed nd8,obj532/window544. */
@@ -2477,6 +2481,7 @@ asm void func_0010c7d0(HSfdQueueSlot* slot)
  * global-base/index register colouring. */
 
 // FUN_0010CAC0
+#ifndef PC_BUILD
 asm void func_0010cac0(void)
 {
   .set noreorder
@@ -2617,6 +2622,7 @@ asm void func_0010cac0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 

@@ -96,6 +96,7 @@ extern void FUN_002561e0(f32 amount, void* node);
 // FUN_0025A130
 
 
+#ifndef PC_BUILD
 asm void FUN_0025a130(void)
 {
   .set noreorder
@@ -296,6 +297,7 @@ asm void FUN_0025a130(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0025A440
 
@@ -469,6 +471,7 @@ void sflCursor0025aa70(void)
 // FUN_0025AAD0
 
 
+#ifndef PC_BUILD
 asm void FUN_0025aad0(void)
 {
   .set noreorder
@@ -997,6 +1000,7 @@ asm void FUN_0025aad0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0025b300
 void sflCursor0025b300(u32 param_1)

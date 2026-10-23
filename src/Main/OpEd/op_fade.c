@@ -680,6 +680,7 @@ extern void func_002798f0(void);
 #define brpSeqPutU8(offset, value) (*(u8*)(work + (offset)) = (value))
 /* SocialBig W419 negatives: named equal=slot==last probe (without scoped slot/last locals) was nd2332/3912B, 93 worse than the retained scoped shape nd2239/3912B; removing last and re-reading brpSeqU32(0x2c) regressed nd2460/3924B. */
 // FUN_00272810
+#ifndef PC_BUILD
 asm void func_00272810(void)
 {
   .set noreorder
@@ -1680,6 +1681,7 @@ asm void func_00272810(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef brpSeqBytes
 #undef brpSeqU32
 #undef brpSeqS32
@@ -2089,6 +2091,7 @@ void func_002743e0(void* destination, s32* count)
 /* W418 cast probe: (u32)randomValue reduced nd689/1644B (0.4191) to nd688/1644B (0.4185); declaration move stayed nd689/1644B. */
 /* SocialA W417 negative: moving rankMap after skillCount was byte-identical (nd 689, object 1644/1648); retained source order. */
 // FUN_00274590
+#ifndef PC_BUILD
 asm void func_00274590(void)
 {
   .set noreorder
@@ -2505,6 +2508,7 @@ asm void func_00274590(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Removing this loses func_00274c00 (MATCH nd0 -> MISMATCH nd8) - measured W161. */
 // FUN_00274C00

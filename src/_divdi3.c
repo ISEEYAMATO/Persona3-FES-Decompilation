@@ -73,6 +73,7 @@ static const float sAtanTerms[] = {
 #pragma optimization_level 3
 /* W416 negative: canonical s64 wrapper nd71/84 (85% differing) shrank from the 296-byte window versus baseline nd192/232 (83%); explicit half-negation nd181/224 (81%) also moved away. Retail therefore does not match a helper-call wrapper; no rewrite retained. */
 // FUN_0052EEB0
+#ifndef PC_BUILD
 asm u64 FUN_0052eeb0(long param_1,long param_2)
 {
   .set noreorder
@@ -151,11 +152,13 @@ asm u64 FUN_0052eeb0(long param_1,long param_2)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 #pragma optimization_level 2
 /* opt_propagation off: 1748/1736 nd1571 -> 1732/1736 nd1521. */
 #pragma opt_propagation off
 // FUN_0052EFD8
+#ifndef PC_BUILD
 asm u64 FUN_0052efd8(u64 n, u64 d, u64 *rp)
 {
   .set noreorder
@@ -594,4 +597,5 @@ asm u64 FUN_0052efd8(u64 n, u64 d, u64 *rp)
   .word 0x1000ff64
   .word 0x01af600b
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset

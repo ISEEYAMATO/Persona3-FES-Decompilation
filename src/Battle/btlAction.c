@@ -532,6 +532,7 @@ void FUN_002899e0(BtlAction* action)
 }
 
 // FUN_00289b50
+#ifndef PC_BUILD
 asm void FUN_00289b50(BtlAction* action)
 {
   .set noreorder
@@ -788,6 +789,7 @@ asm void FUN_00289b50(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00289f40
 u32 FUN_00289f40(BtlAction* action)
@@ -1177,6 +1179,7 @@ void btlActionUpdateStateStandBy(BtlAction* action)
 #pragma opt_lifetimes on
 /* W415 negatives: restoring the three missing calls matched the census but measured 2068/2064; retained source stays within the retail window. */
 // FUN_0028aa20
+#ifndef PC_BUILD
 asm void btlActionInitStateStart(BtlAction* action)
 {
   .set noreorder
@@ -1697,10 +1700,12 @@ asm void btlActionInitStateStart(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 /* W212: transferring 00297760's early-return cascade holds nd907/1480 (window 1488). Narrow u16 stat/message/table contracts improve nd907 to nd285 but grow to 1504, so were reverted; residual first differs at offset 48, a common-exit branch displaced by the 8-byte deficit. */
 // FUN_0028b230
+#ifndef PC_BUILD
 asm void btlActionUpdateStateStart(BtlAction* action)
 {
   .set noreorder
@@ -2077,6 +2082,7 @@ asm void btlActionUpdateStateStart(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0028b800
 void btlActionInitStateStartHome(BtlAction* action)
@@ -2298,6 +2304,7 @@ void btlActionInitStateCommand(BtlAction* action)
 }
 /* W417 negatives: command input-branch inversion measured nd512 -> 545, object 876/912; a boolean switch measured nd530, object 912/912; a flag switch measured nd582, object 936/912 (over window); retained source. */
 // FUN_0028bf80
+#ifndef PC_BUILD
 asm void btlActionUpdateStateCommand(BtlAction* action)
 {
   .set noreorder
@@ -2530,6 +2537,7 @@ asm void btlActionUpdateStateCommand(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* DUMMYDUMB session 2026-10-21: the frame is 16 bytes too big (ours
  * `addiu $sp,$sp,-0x50`, retail's `-0x40`) because we save one more callee-saved
@@ -2539,6 +2547,7 @@ asm void btlActionUpdateStateCommand(BtlAction* action)
  * not change the allocation, so which value mwcc chooses to spill is not
  * source-reachable from here. Confirmed wall. */
 // FUN_0028c310
+#ifndef PC_BUILD
 asm void btlActionInitStateTarget(BtlAction* action)
 {
   .set noreorder
@@ -2703,8 +2712,10 @@ asm void btlActionInitStateTarget(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* W417 negative: target input-branch inversion measured nd666 -> 693, object 1084/1120; retained source. */
 // FUN_0028c590
+#ifndef PC_BUILD
 asm void btlActionUpdateStateTarget(BtlAction* action)
 {
   .set noreorder
@@ -2989,6 +3000,7 @@ asm void btlActionUpdateStateTarget(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0028c9f0
 void btlActionInitStateAnalyze(BtlAction* action)
@@ -2997,6 +3009,7 @@ void btlActionInitStateAnalyze(BtlAction* action)
 }
 /* W415 negatives: moving the terminal state call before the two helpers measured nd229/896 and branch inversion nd234/896 versus nd227/896. */
 // FUN_0028ca00
+#ifndef PC_BUILD
 asm void btlActionUpdateStateAnalyze(BtlAction* action)
 {
   .set noreorder
@@ -3233,6 +3246,7 @@ asm void btlActionUpdateStateAnalyze(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0028cda0
 void btlActionInitStateAI(BtlAction* action)
@@ -3311,6 +3325,7 @@ void btlActionInitStateSupport(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 846/1228; singles LI=846/1228 CS=846/1228 LT=846/1228 PR=839/1232 SR=846/1228 DA=846/1228; retain PR off. */
 #pragma opt_propagation off
 // FUN_0028d080
+#ifndef PC_BUILD
 asm void btlActionUpdateStateSupport(BtlAction* action)
 {
   .set noreorder
@@ -3627,6 +3642,7 @@ asm void btlActionUpdateStateSupport(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_0028d560
@@ -3641,6 +3657,7 @@ void btlActionInitStateBad(BtlAction* action)
 #pragma opt_common_subs off
 /* W415 negative: reversing the moved-home branch reduced object 1596->1588 but raised nd273->274, so source order was retained. */
 // FUN_0028d5a0
+#ifndef PC_BUILD
 asm void btlActionUpdateStateBad(BtlAction* action)
 {
   .set noreorder
@@ -4045,6 +4062,7 @@ asm void btlActionUpdateStateBad(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_0028dbe0
@@ -4053,6 +4071,7 @@ void btlActionInitStateReady(BtlAction* action)
     // nothing
 }
 // FUN_0028dbf0
+#ifndef PC_BUILD
 asm void btlActionUpdateStateReady(BtlAction* action)
 {
   .set noreorder
@@ -4253,11 +4272,13 @@ asm void btlActionUpdateStateReady(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W373 pragma sweep nd/obj: base 1396/1948; singles LI=1444/1992 CS=1459/2020 LT=1362/1936 PR=1397/1948 SR=1396/1948 DA=1396/1964; retain LT on. */
 #pragma opt_lifetimes on
 /* Retail algorithm: target distance/facing, helper-offset chain, camera dispatch, and move-speed packet; implemented 1976/2112 bytes (94%); remaining register/layout differences. */
 // FUN_0028df00
+#ifndef PC_BUILD
 asm void btlActionInitStateMoveTarget(BtlAction* action)
 {
   .set noreorder
@@ -4790,6 +4811,7 @@ asm void btlActionInitStateMoveTarget(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 // FUN_0028e740
 void btlActionUpdateStateMoveTarget(BtlAction* action)
@@ -4965,6 +4987,7 @@ void btlActionInitStateAttack(BtlAction* action)
 // FUN_0028eb50
 #pragma push
 #pragma schedule on
+#ifndef PC_BUILD
 asm void btlActionUpdateStateAttack(BtlAction* action)
 {
   .set noreorder
@@ -7049,6 +7072,7 @@ asm void btlActionUpdateStateAttack(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_loop_invariants reset
 // FUN_00290bd0
@@ -7064,6 +7088,7 @@ void btlActionInitStateSkill(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 11197/16672; singles LI=11166/16660 CS=12393/17036(over) LT=11197/16672 PR=12288/16848 SR=11197/16672 DA=11639/16696(over); retain LI on. */
 #pragma opt_loop_invariants on
 // FUN_00290be0
+#ifndef PC_BUILD
 asm void btlActionUpdateStateSkill(BtlAction *action) 
 {
   .set noreorder
@@ -11240,6 +11265,7 @@ asm void btlActionUpdateStateSkill(BtlAction *action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 /* Warning: struct Model is not defined (only forward-declared) */
 
@@ -11250,6 +11276,7 @@ void btlActionInitStateReinforce(BtlAction* action)
     gBtl->unk_a06 &= ~(1 << 0);
 }
 // FUN_00294d40
+#ifndef PC_BUILD
 asm void btlActionUpdateStateReinforce(BtlAction* action)
 {
   .set noreorder
@@ -11514,6 +11541,7 @@ asm void btlActionUpdateStateReinforce(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00295150
 void btlActionInitStateSummon(BtlAction* action)
@@ -11524,6 +11552,7 @@ void btlActionInitStateSummon(BtlAction* action)
 /* Pair nd/obj: LI+CS=1324/2188 LI+LT=1210/2172 LI+PR=1531/2196 LI+SR=1253/2180 LI+DA=1252/2180 CS+LT=1270/2180 CS+PR=1325/2188 CS+SR=1324/2188 CS+DA=1324/2188 LT+PR=1446/2180 LT+SR=1210/2172 LT+DA=1210/2172 PR+SR=1503/2188 PR+DA=1503/2188 SR+DA=1254/2180; retain LT on. */
 #pragma opt_lifetimes on
 // FUN_00295160
+#ifndef PC_BUILD
 asm void btlActionUpdateStateSummon(BtlAction* action)
 {
   .set noreorder
@@ -12084,6 +12113,7 @@ asm void btlActionUpdateStateSummon(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 // FUN_00295a10
@@ -12143,6 +12173,7 @@ void btlActionInitStateError(BtlAction* action)
 #pragma opt_common_subs off
 
 // FUN_00295c00
+#ifndef PC_BUILD
 asm void btlActionUpdateStateError(BtlAction* action)
 {
   .set noreorder
@@ -12339,6 +12370,7 @@ asm void btlActionUpdateStateError(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_00295f00
@@ -12609,6 +12641,7 @@ void btlActionInitStateEscape(BtlAction* action)
 }
 #pragma opt_loop_invariants on
 // FUN_00296890
+#ifndef PC_BUILD
 asm void btlActionUpdateStateEscape(BtlAction* action)
 {
   .set noreorder
@@ -13377,6 +13410,7 @@ asm void btlActionUpdateStateEscape(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 // FUN_00297480
 void btlActionInitStatePersona(BtlAction* action)
@@ -13572,6 +13606,7 @@ u32 FUN_00297a50(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 1024/1492; singles LI=907/1488 CS=1073/1532 LT=1024/1492 PR=1024/1492 SR=1024/1492 DA=1024/1492; retain LI on. */
 #pragma opt_loop_invariants on
 // FUN_00297a60
+#ifndef PC_BUILD
 asm void btlActionInitStateRoundUpMes(BtlAction* action)
 {
   .set noreorder
@@ -13960,8 +13995,10 @@ asm void btlActionInitStateRoundUpMes(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 // FUN_00298060
+#ifndef PC_BUILD
 asm void btlActionUpdateStateRoundUpMes(BtlAction* action)
 {
   .set noreorder
@@ -14254,6 +14291,7 @@ asm void btlActionUpdateStateRoundUpMes(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002984e0
 void btlActionInitStateRoundUp(BtlAction* action)
@@ -14302,6 +14340,7 @@ void btlActionInitStateRoundUp(BtlAction* action)
 #pragma opt_lifetimes on
 /* Retail algorithm: build camera/voice/area packet chain, per-target loops, and final wait packet; implemented 2780/2784 bytes (99%); remaining register/order differences. */
 // FUN_00298610
+#ifndef PC_BUILD
 asm void btlActionUpdateStateRoundUp(BtlAction* action)
 {
   .set noreorder
@@ -15002,6 +15041,7 @@ asm void btlActionUpdateStateRoundUp(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 
@@ -15325,6 +15365,7 @@ void btlActionInitStateExit(BtlAction* action)
 }
 /* W419 negative: permuting btlActionUpdateStateExit locals (including i-first) left nd99 unchanged at object 532/544. */
 // FUN_00299b00
+#ifndef PC_BUILD
 asm void btlActionUpdateStateExit(BtlAction* action)
 {
   .set noreorder
@@ -15465,6 +15506,7 @@ asm void btlActionUpdateStateExit(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00299d20
 void btlActionInitStateTest(BtlAction* action)

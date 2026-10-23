@@ -400,6 +400,7 @@ u32 func_00311640(RtAnimInterpolator* param_2, RtAnimInterpolator* param_3,
 // FUN_00311730
 
 
+#ifndef PC_BUILD
 asm u32 func_00311730(u32 *param_1,u16 *param_2,u16 *param_3,int param_4)
 {
   .set noreorder
@@ -1764,6 +1765,7 @@ asm u32 func_00311730(u32 *param_1,u16 *param_2,u16 *param_3,int param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
@@ -2046,6 +2048,7 @@ u32 func_00312f90(u32 param_1)
 // FUN_00313090
 
 
+#ifndef PC_BUILD
 asm u32 func_00313090(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -2154,6 +2157,7 @@ asm u32 func_00313090(u32 param_1,u32 param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* DUMMYDUMB session 2026-10-21: 1 differing byte, the operand order of one
  * add.  Ours "addu v0,v1,v0" puts the scaled index in rs, retail "addu v0,v0,v1"
@@ -2220,6 +2224,7 @@ void func_00313230(MdlAnimSlot* param_1)
 // FUN_003132C0
 
 
+#ifndef PC_BUILD
 asm void func_003132c0(u8* param_1)
 {
   .set noreorder
@@ -2340,6 +2345,7 @@ asm void func_003132c0(u8* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma push
 #pragma opt_propagation off
 // FUN_00313490
@@ -2637,6 +2643,7 @@ asm void* func_00313490(MdlAnimSlot* param_1,void* param_2)
 // FUN_003138E0
 
 
+#ifndef PC_BUILD
 asm void func_003138e0(MdlAnim* param_1,s16 param_2,u16 param_3,u16 param_4)
 {
   .set noreorder
@@ -2833,6 +2840,7 @@ asm void func_003138e0(MdlAnim* param_1,s16 param_2,u16 param_3,u16 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00313BE0
 
@@ -3442,6 +3450,7 @@ void func_00314730(u8* param_2,f32 param_1)
 // FUN_00314850
 
 
+#ifndef PC_BUILD
 asm void func_00314850(RpClump* param_1,void* param_2,s16 param_3,u16 param_4,u16 param_5)
 {
   .set noreorder
@@ -3758,6 +3767,7 @@ asm void func_00314850(RpClump* param_1,void* param_2,s16 param_3,u16 param_4,u1
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma pop
 
@@ -3767,6 +3777,7 @@ asm void func_00314850(RpClump* param_1,void* param_2,s16 param_3,u16 param_4,u1
 // FUN_00314D30
 
 
+#ifndef PC_BUILD
 asm void func_00314d30(void* param_1)
 {
   .set noreorder
@@ -3955,6 +3966,7 @@ asm void func_00314d30(void* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma pop
 
@@ -3978,6 +3990,7 @@ void* func_00315010(void* object, void* data)
 // FUN_00315090
 
 
+#ifndef PC_BUILD
 asm u32 func_00315090(RwMatrix* param_1,u16 *param_2,u16 param_3,int param_4)
 {
   .set noreorder
@@ -4062,11 +4075,13 @@ asm u32 func_00315090(RwMatrix* param_1,u16 *param_2,u16 param_3,int param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_003151D0
 
 
+#ifndef PC_BUILD
 asm void func_003151d0(Model* param_1)
 {
   .set noreorder
@@ -4731,10 +4746,12 @@ asm void func_003151d0(Model* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00315C20
 
 
+#ifndef PC_BUILD
 asm void func_00315c20(int param_1)
 {
   .set noreorder
@@ -4911,6 +4928,7 @@ asm void func_00315c20(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00315ED0
 
@@ -4941,6 +4959,7 @@ Model* func_00315ed0(Model* param_1)
 #pragma push
 #pragma opt_dead_assignments off
 // FUN_00315F50
+#ifndef PC_BUILD
 asm u32 func_00315f50(void* param_1,u32 *param_2)
 {
   .set noreorder
@@ -5189,6 +5208,7 @@ asm u32 func_00315f50(void* param_1,u32 *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma pop
 
@@ -5275,6 +5295,7 @@ void mdl003164c0(void* param_1)
 // FUN_003164F0
 
 
+#ifndef PC_BUILD
 asm void func_003164f0(int param_1,int param_2)
 {
   .set noreorder
@@ -5339,6 +5360,7 @@ asm void func_003164f0(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 #pragma push
@@ -5525,6 +5547,7 @@ Model* mdlSearch(u16 type, u16 id, u16 flags)
 // FUN_00316970
 
 
+#ifndef PC_BUILD
 asm void func_00316970(Model* param_1)
 {
   .set noreorder
@@ -5645,6 +5668,7 @@ asm void func_00316970(Model* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_00316b40
@@ -5988,6 +6012,7 @@ u32 mdlStreamRead(Model* mdl)
 
 
 // FUN_003170c0
+#ifndef PC_BUILD
 asm void mdlCopy(const Model* src, Model* dst)
 {
   .set noreorder
@@ -6220,6 +6245,7 @@ asm void mdlCopy(const Model* src, Model* dst)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -6349,6 +6375,7 @@ void func_003176c0(Model* mdl)
 // FUN_00317730
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void mdl00317730(Model* mdl)
 {
   .set noreorder
@@ -6541,6 +6568,7 @@ asm void mdl00317730(Model* mdl)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 
@@ -6549,6 +6577,7 @@ asm void mdl00317730(Model* mdl)
 #pragma push
 #pragma opt_lifetimes on
 // FUN_00317A20
+#ifndef PC_BUILD
 asm void FUN_00317a20(Model* param_1)
 {
   .set noreorder
@@ -7109,6 +7138,7 @@ asm void FUN_00317a20(Model* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma pop
 
@@ -7508,6 +7538,7 @@ RpClump* mdlGetClump(Model* mdl)
 // FUN_00318B90
 
 
+#ifndef PC_BUILD
 asm u32 func_00318b90(u32 param_1)
 {
   .set noreorder
@@ -7608,6 +7639,7 @@ asm u32 func_00318b90(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -7618,6 +7650,7 @@ asm u32 func_00318b90(u32 param_1)
 // FUN_00318D10
 
 
+#ifndef PC_BUILD
 asm u32 func_00318d10(u8* param_1,u32 param_2,u32* param_3)
 {
   .set noreorder
@@ -7734,6 +7767,7 @@ asm u32 func_00318d10(u8* param_1,u32 param_2,u32* param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 
@@ -8138,6 +8172,7 @@ void func_00319390(int param_1,u32 param_2,u16 param_3,u16 param_4,u32 param_5,
 // FUN_00319490
 
 
+#ifndef PC_BUILD
 asm void func_00319490(int param_1,u32 param_2,u16 param_3,u16 param_4,u32 param_5)
 {
   .set noreorder
@@ -8230,6 +8265,7 @@ asm void func_00319490(int param_1,u32 param_2,u16 param_3,u16 param_4,u32 param
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -8440,6 +8476,7 @@ void mdlStreamDestroy(Model* mdl)
 // FUN_00319970
 
 
+#ifndef PC_BUILD
 asm u32 func_00319970(Model* param_1)
 {
   .set noreorder
@@ -9556,6 +9593,7 @@ asm u32 func_00319970(Model* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef uStack_6
 #undef uStack_4
 #undef uStack_2
@@ -9574,6 +9612,7 @@ asm u32 func_00319970(Model* param_1)
 // FUN_0031AAD0
 
 
+#ifndef PC_BUILD
 asm int func_0031aad0(Model* param_1)
 {
   .set noreorder
@@ -10046,6 +10085,7 @@ asm int func_0031aad0(Model* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma pop
 
@@ -10259,6 +10299,7 @@ void func_0031b470(void)
 // FUN_0031B4A0
 
 
+#ifndef PC_BUILD
 asm void func_0031b4a0(char* param_1,u16 param_2)
 {
   .set noreorder
@@ -10383,6 +10424,7 @@ asm void func_0031b4a0(char* param_1,u16 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 
@@ -10438,6 +10480,7 @@ u32 func_0031b680(int param_1,int param_2,int *param_3,int *param_4)
 // FUN_0031B820
 
 
+#ifndef PC_BUILD
 asm void func_0031b820(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -10850,6 +10893,7 @@ asm void func_0031b820(u32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

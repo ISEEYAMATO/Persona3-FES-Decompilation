@@ -109,6 +109,7 @@ extern int func_0x00076680();
 // and FUN_0077f710 remains normalized_diff 0 but NONMATCHING by design.
 // COP0/TLB instructions below are genuine kernel hardware operations.
 // FUN_0077F710
+#ifndef PC_BUILD
 asm int FUN_0077f710(u32 param_1)
 {
   .set noreorder
@@ -419,11 +420,13 @@ asm int FUN_0077f710(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 /* #pragma schedule on: prior for-loop nd90/object136; explicit do-while plus 0x80070000 base/table+=0x11e0 measured nd61/object132 (window136); symbol-address variant nd79/object132. */
 #pragma schedule on
 // FUN_0077FBD8
+#ifndef PC_BUILD
 asm int FUN_0077fbd8(u32 param_1)
 {
   .set noreorder
@@ -462,12 +465,14 @@ asm int FUN_0077fbd8(u32 param_1)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 #pragma push
 /* #pragma schedule on: baseline nd133/object176 -> nd116/object172; corrected retail first mask (~1U, not ~2U) nd115/object172; split-local role probe flat nd115/object172; without it nd135/object176. */
 #pragma schedule on
 // FUN_0077FC60
+#ifndef PC_BUILD
 asm void FUN_0077fc60(u32 *param_1)
 {
   .set noreorder
@@ -516,6 +521,7 @@ asm void FUN_0077fc60(u32 *param_1)
   .word 0xa4820002
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
  #pragma pop
 
 #pragma push
@@ -524,6 +530,7 @@ asm void FUN_0077fc60(u32 *param_1)
 /* Row-level residual: at +0x30 candidate `sw $t3,0x47a8($v1)` replaces retail `and $v1,$v1,$a3`; at +0x40 candidate `lui $a1,0xffff` replaces retail `sw $v1,0x47a8($a1)`, then the same store cadence remains shifted. */
 #pragma schedule on
 // FUN_0077FD10
+#ifndef PC_BUILD
 asm void FUN_0077fd10(u32 *param_1)
 {
   .set noreorder
@@ -572,10 +579,12 @@ asm void FUN_0077fd10(u32 *param_1)
   .word 0xa4e20002
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 
 // FUN_0077FDC0
+#ifndef PC_BUILD
 asm void FUN_0077fdc0(void)
 {
   .set noreorder
@@ -628,8 +637,10 @@ asm void FUN_0077fdc0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // Retail sibling recovered from 0x0077FE80-0x0077FF24.
 // FUN_0077FE80
+#ifndef PC_BUILD
 asm u64 FUN_0077fe80(u8 *param_1,u32 param_2,u32 param_3)
 {
   .set noreorder
@@ -676,9 +687,11 @@ asm u64 FUN_0077fe80(u8 *param_1,u32 param_2,u32 param_3)
   .word 0x3042000f
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Retail sibling recovered from 0x0077FF28-0x0077FF9C.
 // FUN_0077FF28
+#ifndef PC_BUILD
 asm void FUN_0077ff28(u8 *param_1,u32 param_2,u32 param_3)
 {
   .set noreorder
@@ -713,12 +726,14 @@ asm void FUN_0077ff28(u8 *param_1,u32 param_2,u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // Retail polls the INTC status register at its uncached hardware address,
 // acknowledges interrupt bit 2, then dispatches the seven kernel callbacks
 // stored in the absolute 0x8007474c-0x80074764 vector slots.
 // FUN_0077FFA0
+#ifndef PC_BUILD
 asm void FUN_0077ffa0(void)
 {
   .set noreorder
@@ -775,6 +790,7 @@ asm void FUN_0077ffa0(void)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma push
 /* Removing this worsens FUN_00780070 (nd342 -> nd358) - measured W161. */
 #pragma schedule on
@@ -786,6 +802,7 @@ asm void FUN_0077ffa0(void)
 // is added because that would overlap the real 0x7803D4 entry.
  
 // FUN_00780070
+#ifndef PC_BUILD
 asm int FUN_00780070(int param_1,u32 param_2,int param_3,int param_4)
 {
   .set noreorder
@@ -1007,6 +1024,7 @@ asm int FUN_00780070(int param_1,u32 param_2,int param_3,int param_4)
   .word 0x24630008
   .word 0x03e00008
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // Retail shape: move $v0,$zero / slt $a0,$a1,$a0 / beqz $a0,+24 / lui $v0,1 /
@@ -1021,6 +1039,7 @@ asm int FUN_00780070(int param_1,u32 param_2,int param_3,int param_4)
 // far over window), and `else { return param_2; }` (40B, over window).
 // Retail sibling recovered from 0x007803D4-0x007803F4.
 // FUN_007803D4
+#ifndef PC_BUILD
 asm int FUN_007803d4(int param_1,int param_2)
 {
   .set noreorder
@@ -1034,6 +1053,7 @@ asm int FUN_007803d4(int param_1,int param_2)
   .word 0x00a0102d
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 typedef struct {
@@ -1046,6 +1066,7 @@ typedef struct {
 } Code2Entry;
 
 // FUN_007803F8
+#ifndef PC_BUILD
 asm int FUN_007803f8(int param_1,int param_2)
 {
   .set noreorder
@@ -1116,8 +1137,10 @@ asm int FUN_007803f8(int param_1,int param_2)
   .word 0x27bd0080
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00780500
+#ifndef PC_BUILD
 asm int FUN_00780500(u32 param_1,u32 param_2,u32 param_3)
 {
   .set noreorder
@@ -1202,8 +1225,10 @@ asm int FUN_00780500(u32 param_1,u32 param_2,u32 param_3)
   .word 0x27bd0090
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00780640
+#ifndef PC_BUILD
 asm int FUN_00780640(int param_1)
 {
   .set noreorder
@@ -1312,6 +1337,7 @@ asm int FUN_00780640(int param_1)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 /* Removing this loses FUN_007807e0 (MATCH nd0 -> MISMATCH nd19) - measured W161. */
@@ -1346,6 +1372,7 @@ volatile u32* FUN_00780800(u32 value)
 #pragma pop
 
 // FUN_00780828
+#ifndef PC_BUILD
 asm void FUN_00780828(void)
 {
   .set noreorder
@@ -1476,6 +1503,7 @@ asm void FUN_00780828(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // The handler's code ends at 0x780A84 (the jr $ra delay-slot load). The
 // following 88 bytes, 0x780A88..0x780ADF, are ten nop words followed by six
 // data-table pairs at 0x780AB0..0x780ADC. A whole-image reference scan found
@@ -1484,6 +1512,7 @@ asm void FUN_00780828(void)
 // padding/data-window artifact.
 // Retail kernel handler recovered from 0x00780A20-0x00780A84.
 // FUN_00780A20
+#ifndef PC_BUILD
 asm void FUN_00780a20(void)
 {
   .set noreorder
@@ -1536,6 +1565,7 @@ asm void FUN_00780a20(void)
   .word 0x00000008
   .word 0x800766c0
 }
+#endif /* PC_BUILD: asm function omitted */
 // 0x780AE0..0x780AF3 is a 20-byte syscall trampoline; the remaining bytes in
 // its 1312-byte Ghidra window are zero/data payload and contain no jr $ra.
 // The only address materialization is the loader's pointer to 0x780AE0, with
@@ -1543,6 +1573,7 @@ asm void FUN_00780a20(void)
 // therefore a permanent boundary-data artifact, not missing C logic.
 // Separate syscall trampoline at 0x00780AE0.
 // FUN_00780AE0
+#ifndef PC_BUILD
 asm void FUN_00780ae0(void)
 {
   .set noreorder
@@ -1875,3 +1906,4 @@ asm void FUN_00780ae0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

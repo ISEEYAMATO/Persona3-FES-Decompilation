@@ -212,6 +212,7 @@ void func_0018f2b0(void)
 }
 
 // FUN_0018f2c0. Advance the save/load card-dialog state machine.
+#ifndef PC_BUILD
 asm s32 func_0018f2c0(void)
 {
   .set noreorder
@@ -1416,6 +1417,7 @@ asm s32 func_0018f2c0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00190580
 void func_00190580(void)

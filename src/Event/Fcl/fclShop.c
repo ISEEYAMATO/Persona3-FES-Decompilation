@@ -518,6 +518,7 @@ u32 FUN_003e6e20(u32 param_1)
 // FUN_003E6E80
 
 
+#ifndef PC_BUILD
 asm u64 FUN_003e6e80(void)
 {
   .set noreorder
@@ -2074,6 +2075,7 @@ asm u64 FUN_003e6e80(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_003E86C0
@@ -7695,6 +7697,7 @@ u64 FUN_003eee80(u64 unused, u64 handle)
 #pragma opt_lifetimes on
 
 
+#ifndef PC_BUILD
 asm u64 FUN_003ef2b0(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -8131,6 +8134,7 @@ asm u64 FUN_003ef2b0(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_loop_invariants reset
 #undef FUN_0040e3c0

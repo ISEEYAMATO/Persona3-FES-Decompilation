@@ -222,6 +222,7 @@ void func_00208b20(void)
 
 /* W419 negative probes: iGpffffb6fc .sdata alias and 24 declaration permutations left FUN_00208B30 at nd457/1060B, window1072B, rate43.11%; bausMul on FUN_00208F60 frame-width product left nd727/1360B, window1424B, rate53.46%, rectangle product regressed nd728/1360B, window1424B, rate53.53%; reverted. */
 // FUN_00208b30
+#ifndef PC_BUILD
 asm void func_00208b30(void)
 {
   .set noreorder
@@ -494,8 +495,10 @@ asm void func_00208b30(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00208f60
+#ifndef PC_BUILD
 asm void func_00208f60(void)
 {
   .set noreorder
@@ -856,6 +859,7 @@ asm void func_00208f60(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002094f0
 void func_002094f0(void)

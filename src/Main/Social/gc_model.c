@@ -225,6 +225,7 @@ static void sflResCopyFile(u32 request, s32 fileIndex, u32* destination)
 
 /* W419 probes: first alpha casts `(u8)(u32)` gave nd2486/4136B (window4304, rate .601064) and a direct first-block cast nd2483/4060B (rate .611576); `<=`, schedule toggles, and D_0068E0A0_abs all stayed nd2420/4064B (rate .595472), reverted. */
 // FUN_0020b250
+#ifndef PC_BUILD
 asm void func_0020b250(void* work)
 {
   .set noreorder
@@ -1305,6 +1306,7 @@ asm void func_0020b250(void* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0020c320
 void func_0020c320(s32 unused, const f32* source, f32 scale, void* viewport)
@@ -1731,6 +1733,7 @@ void func_0020cd50(void* work, void* resource)
 /* W414 full fndiff/JAL review: retail and candidate each call K_ASSERT once; direct-global/preheader probes stayed nd12/384B (window 384B), reverted. Remaining rows are preheader hoist-order differences. */
 /* W419 static-inline gcMul(rowStep, row) operand-order probe stayed nd12/384B (window384, rate .031250), reverted. */
 // FUN_0020cda0
+#ifndef PC_BUILD
 asm void func_0020cda0(u8* work)
 {
   .set noreorder
@@ -1831,6 +1834,7 @@ asm void func_0020cda0(u8* work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 static inline f32 gcModelMul(f32 left, f32 right)
@@ -1840,6 +1844,7 @@ static inline f32 gcModelMul(f32 left, f32 right)
 
 #pragma opt_lifetimes on
 // FUN_0020cf20
+#ifndef PC_BUILD
 asm void func_0020cf20(void* destination, PanelTransform* transform)
 {
   .set noreorder
@@ -2220,6 +2225,7 @@ asm void func_0020cf20(void* destination, PanelTransform* transform)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma pop

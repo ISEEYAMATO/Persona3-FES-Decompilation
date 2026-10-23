@@ -14,6 +14,7 @@ extern float func_0052dc48(float x, float y, s32 iy);
 
 #pragma optimization_level 3
 // FUN_0052e6d8
+#ifndef PC_BUILD
 asm float cosf(float x)
 {
   .set noreorder
@@ -62,3 +63,4 @@ asm float cosf(float x)
   .word 0x1000ffed
   .word 0x46000007
 }
+#endif /* PC_BUILD: asm function omitted */

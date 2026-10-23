@@ -1205,6 +1205,7 @@ void func_001a9760(KwlnTask* task, u32 value, const RwV3d* position, u32 sound, 
 }
 
 // FUN_001a9850
+#ifndef PC_BUILD
 asm void func_001a9850(void)
 {
   .set noreorder
@@ -1809,6 +1810,7 @@ asm void func_001a9850(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001aa1b0
 void func_001aa1b0(void)
@@ -2039,6 +2041,7 @@ void func_001aaac0(KwlnTask* task, u32 value)
  * schedule on (nd189) changed anything, both far worse; the rest stayed at
  * nd1. Confirmed wall: branch threading / jump-to-jump elimination. */
 // FUN_001aaad0
+#ifndef PC_BUILD
 asm u32 K_FldFrame_IsPointInTriangle(const RwV3d* point, const RwV3d** tri, const RwV3d* normal)
 {
   .set noreorder
@@ -2251,6 +2254,7 @@ asm u32 K_FldFrame_IsPointInTriangle(const RwV3d* point, const RwV3d** tri, cons
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* DUMMYDUMB session 2026-10-21: 1 differing byte, the branch target of the
  * "axis = 2" path.  Ours jumps straight to the function's merge, retail jumps
@@ -2604,6 +2608,7 @@ asm void* func_001aaf30(const RwV3d* point, void* unused,
 // FUN_001ab390
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm s32 func_001ab390(void* collision, const RwV3d* pos,
                   RwV3d* translation, f32 sphereCollisRadius)
 {
@@ -2781,6 +2786,7 @@ asm s32 func_001ab390(void* collision, const RwV3d* pos,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // The existing model/matrix-derived position guess did not match retail
@@ -3224,6 +3230,7 @@ void* func_001abcd0(void* collisionWorld, void* state)
 }
 
 // FUN_001abd20
+#ifndef PC_BUILD
 asm s32 func_001abd20(void* collisionWorld, const RwV3d* pos,
                    RwV3d* translation, f32 sphereCollisRadius, u16 resTypeId)
 {
@@ -3881,6 +3888,7 @@ asm s32 func_001abd20(void* collisionWorld, const RwV3d* pos,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001ac750
 void K_FldFrame_HandleCollis(const RwV3d* pos, RwV3d* translation, f32 sphereCollisRadius,
@@ -4095,6 +4103,7 @@ u32 func_001acb70(void* collisionWorld, const RwV3d* line,
 }
 
 // FUN_001acc30
+#ifndef PC_BUILD
 asm u32 K_FldFrame_Raycast(const RwV3d* line, RwV3d* hitPointDst)
 {
   .set noreorder
@@ -4251,6 +4260,7 @@ asm u32 K_FldFrame_Raycast(const RwV3d* line, RwV3d* hitPointDst)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001ace90
 void* func_001ace90(void* resource, void* unused, FldFrameMaterialSet* set)
@@ -6635,6 +6645,7 @@ void func_001b0260(KwlnTask* task, s32 mode)
 }
 
 // FUN_001b02c0
+#ifndef PC_BUILD
 asm f32 func_001b02c0(s32 inputIndex, s32 usePad)
 {
   .set noreorder
@@ -6915,3 +6926,4 @@ asm f32 func_001b02c0(s32 inputIndex, s32 usePad)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

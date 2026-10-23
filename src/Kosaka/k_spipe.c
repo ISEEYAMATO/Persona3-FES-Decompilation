@@ -2136,6 +2136,7 @@ void* func_0019ab30(void* atomic, FldShadowAtomicContext* context)
 /* W417: kept the mixed float/integer declaration order used by the two calls in func_0019b2b0; this reduces func_0019ab80 nd1115 -> nd1101 without changing its 1820/1840-byte size. */
 /* W417 negative: adding a local projectionMatrix assignment to this interleaved candidate raised nd to 1131; rejected. */
 // FUN_0019ab80
+#ifndef PC_BUILD
 asm u32 func_0019ab80(RwCamera* camera,
                   RwRaster* raster,
                   s32 drawField,
@@ -2607,6 +2608,7 @@ asm u32 func_0019ab80(RwCamera* camera,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 #pragma opt_lifetimes reset
 

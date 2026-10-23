@@ -351,6 +351,7 @@ u32 clndGetCurrentWeekDay()
 #pragma opt_loop_invariants on
 /* W416 width audit: retail candidate offsets 0xd4/0xf8/0x120/0x128/0x12c all use 0x10 extension shifts; ours' corresponding pairs also use 0x10 (layout differs), so no shift-width defect was confirmed. A complete explicit s16 cast probe measured nd301/object444 (window432), rejected vs nd268/object404 (rates 0.677928 vs 0.663366). */
 // FUN_0017DB40
+#ifndef PC_BUILD
 asm u32 func_0017db40(s16 daysSinceApr5)
 {
   .set noreorder
@@ -463,6 +464,7 @@ asm u32 func_0017db40(s16 daysSinceApr5)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 #pragma push
 #pragma opt_loop_invariants on
@@ -517,6 +519,7 @@ u8 clndIsHolidayOrSunday()
 /* W416 width audit: retail candidate offsets 0x104/0x108/0x188/0x1e8 all use 0x10 extension shifts; ours' corresponding pairs also use 0x10. Complete explicit s16 increment/subtraction casts measured nd392/object624 (window608), rejected vs nd288/object608 (rates 0.628205 vs 0.473684). */
 /* Preserve the scoped opt_lifetimes/opt_loop_invariants state below; this probe did not justify changing it. */
 // FUN_0017DDF0
+#ifndef PC_BUILD
 asm u32 func_0017ddf0(s16* monthOut, s16* dayOut)
 {
   .set noreorder
@@ -673,12 +676,14 @@ asm u32 func_0017ddf0(s16* monthOut, s16* dayOut)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 /* Reset the outer loop-invariant state restored by the 17DDF0 push/pop: without this, 185B40 is 1304/1296; with it, 1280/1296. */
 #pragma opt_loop_invariants reset
 
 #pragma opt_lifetimes reset
 // FUN_0017E050
+#ifndef PC_BUILD
 asm u32 func_0017e050(s32 category, s16 month, s32 day)
 {
   .set noreorder
@@ -951,6 +956,7 @@ asm u32 func_0017e050(s32 category, s16 month, s32 day)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0017e480
 u32 clndIsDateInRange(u32 startMonth, u32 startDay, u32 endMonth, u32 endDay)
 {
@@ -2540,6 +2546,7 @@ void func_00180030(void)
 }
 
 // FUN_00180220
+#ifndef PC_BUILD
 asm void func_00180220(void)
 {
   .set noreorder
@@ -3056,6 +3063,7 @@ asm void func_00180220(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00180A20
 KwlnTask* func_00180a20(KwlnTask* clndTask)
@@ -3400,6 +3408,7 @@ done:
 }
 /* W416 width audit: retail candidate offsets 0x40/0x74/0x78 all use 0x10 extension shifts; ours' corresponding date-value pairs also use 0x10 at different layout offsets. No width edit was justified. */
 // FUN_00181720
+#ifndef PC_BUILD
 asm s32 clndFindAndExecSiteibiEvents()
 {
   .set noreorder
@@ -3544,6 +3553,7 @@ asm s32 clndFindAndExecSiteibiEvents()
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00181950
 KwlnTask* func_00181950(KwlnTask* clndTask, s32 eventIndex)
@@ -4035,6 +4045,7 @@ u8 func_00182810(u32 index)
 /* W357 measured opt_propagation off: without nd554/object820, with nd461/object832; window 896; retained. */
 #pragma opt_propagation off
 // FUN_001828D0
+#ifndef PC_BUILD
 asm u32 func_001828d0(s16 id, DatEquipment* out)
 {
   .set noreorder
@@ -4263,6 +4274,7 @@ asm u32 func_001828d0(s16 id, DatEquipment* out)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation reset
 // FUN_00182C50
@@ -4314,6 +4326,7 @@ u32 func_00182c50(s16 id, DatEquipment* out)
 }
 
 // FUN_00182D90
+#ifndef PC_BUILD
 asm u32 func_00182d90(s16 id, u8 row, u8 effect, DatEquipment* out)
 {
   .set noreorder
@@ -4522,6 +4535,7 @@ asm u32 func_00182d90(s16 id, u8 row, u8 effect, DatEquipment* out)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001830C0
 u32 func_001830c0(const DatEquipment* record)
@@ -4928,6 +4942,7 @@ asm void* func_00183410(KwlnTask* task)
 #pragma opt_common_subs off
 /* W414: y57-only hoist reached nd597/object924 but did not grow the frame; y67-only reached nd681. */
 // FUN_00183840
+#ifndef PC_BUILD
 asm void func_00183840(void* resource,
                    f32 baseX,
                    f32 baseY,
@@ -5169,6 +5184,7 @@ asm void func_00183840(void* resource,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation reset
 /* W357 measured opt_propagation off: without nd462/object892, with nd420/object888; window 896; retained. */
@@ -5176,6 +5192,7 @@ asm void func_00183840(void* resource,
 #pragma opt_common_subs reset
 /* W414 negative: pre-call y15 hoist worsened nd420->588; assigning after the second draw reached nd418/object888. */
 // FUN_00183BE0
+#ifndef PC_BUILD
 asm void func_00183be0(void* resource,
                    f32 baseX,
                    f32 baseY,
@@ -5409,6 +5426,7 @@ asm void func_00183be0(void* resource,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation reset
 // FUN_00183F60
@@ -5483,6 +5501,7 @@ extern u8 D_00960090_abs[];
  * changes 1440/1488 nd945 to 1456/1488 nd789; the result remains under the window.
  * The same family covers func_00183410, but its absolute-alias probe is 1088/1072 and blocked. */
 // FUN_001842C0
+#ifndef PC_BUILD
 asm void func_001842c0(KwlnTask* task,
                    s32 month,
                    s32 day,
@@ -5865,6 +5884,7 @@ asm void func_001842c0(KwlnTask* task,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 extern void* DAT_007cdff0;
 
@@ -5887,6 +5907,7 @@ void func_00184890(KwlnTask* task)
 /* W357 measured opt_common_subs off: without nd472/object808, with nd467/object820; window 912; retained. */
 #pragma opt_common_subs off
 // FUN_001848F0
+#ifndef PC_BUILD
 asm void func_001848f0(KwlnTask* task, u32 confirmed)
 {
   .set noreorder
@@ -6119,6 +6140,7 @@ asm void func_001848f0(KwlnTask* task, u32 confirmed)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 // FUN_00184C80
@@ -7565,6 +7587,7 @@ void func_00185ae0(void* resource, CalendarPackedPosition position, u32 alpha, s
 }
 
 // FUN_00185B40
+#ifndef PC_BUILD
 asm void func_00185b40(void* resource,
                    CalendarPackedPosition position,
                    u32 alpha,
@@ -7897,6 +7920,7 @@ asm void func_00185b40(void* resource,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 /* Removing this worsens func_00186050 (nd29 -> nd37) - measured W161. */
@@ -8831,6 +8855,7 @@ KwlnTask* func_00187550(KwlnTask* parent)
  * transformed-vector copy loop, scale-only loop, and vertex-fill loop;
  * implemented here, with residuals limited to layout and register code. */
 // FUN_001875F0
+#ifndef PC_BUILD
 asm void func_001875f0(s32 angle, s32 scaleAngle, s32 alpha)
 {
   .set noreorder
@@ -9215,6 +9240,7 @@ asm void func_001875f0(s32 angle, s32 scaleAngle, s32 alpha)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_dead_assignments reset
 // FUN_00187BE0
@@ -12909,6 +12935,7 @@ void func_0018c0c0(KwlnTask* task, s32 visible)
 /* W357 measured opt_common_subs off: without nd1165/object1568, with nd984/object1564; window 1584; retained. */
 #pragma opt_common_subs off
 // FUN_0018C150
+#ifndef PC_BUILD
 asm void func_0018c150(KwlnTask* task)
 {
   .set noreorder
@@ -13309,9 +13336,11 @@ asm void func_0018c150(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 // FUN_0018C780
+#ifndef PC_BUILD
 asm void func_0018c780(KwlnTask* task)
 {
   .set noreorder
@@ -13752,12 +13781,14 @@ asm void func_0018c780(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W357 measured opt_common_subs off: without nd815/object1152, with nd782/object1088; window 1232; retained. */
 #pragma opt_common_subs off
 /* W375 measured opt_propagation off: without nd782/object1088, with nd771/object1088; window 1232; retained. */
 #pragma opt_propagation off
 // FUN_0018CE50
+#ifndef PC_BUILD
 asm void func_0018ce50(KwlnTask* task)
 {
   .set noreorder
@@ -14070,12 +14101,14 @@ asm void func_0018ce50(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 #pragma opt_common_subs reset
 /* W357 measured opt_propagation off: without nd1487/object2016, with nd1359/object1884; window 2048; retained. */
 #pragma opt_propagation off
 // FUN_0018D320
+#ifndef PC_BUILD
 asm void func_0018d320(KwlnTask* task)
 {
   .set noreorder
@@ -14592,6 +14625,7 @@ asm void func_0018d320(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation reset
 /* W419 operand-order probes at atlas = pcId*4 + object + 0x3c: pointer,

@@ -666,6 +666,7 @@ u32 FUN_002a3850(int param_1)
 }
 /* W419 negative: narrowed btlCameraSetState loop variable var_7 from u64 to u32; nd36 -> 184 at object 388/400. */
 // FUN_002a38f0
+#ifndef PC_BUILD
 asm void btlCameraSetState(u16 state, BtlAction* action, u32 param_3)
 {
   .set noreorder
@@ -770,6 +771,7 @@ asm void btlCameraSetState(u16 state, BtlAction* action, u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002A3A80
 
@@ -957,6 +959,7 @@ BtlPacket* btlCameraCreateMoveToPacket(BtlAction* action,
 // FUN_002A3E80
 
 
+#ifndef PC_BUILD
 asm void FUN_002a3e80(u8* param_2,u8* param_3,u8* param_4,u32 param_5,float param_1)
 {
   .set noreorder
@@ -1225,6 +1228,7 @@ asm void FUN_002a3e80(u8* param_2,u8* param_3,u8* param_4,u32 param_5,float para
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma alias FUN_002a3e80_call FUN_002a3e80
 extern void FUN_002a3e80_call(float param_1,u8* param_2,u8* param_3,u8* param_4,u32 param_5);
@@ -1540,6 +1544,7 @@ extern u32 FUN_002d63b0(int, s16, int);
 
 /* W419 negative: moved FUN_002a4c70 radius before the other f32 locals; nd63 -> 73 at object 1972/1984 (rate .031947 -> .037018). */
 // FUN_002a4c70
+#ifndef PC_BUILD
 asm void FUN_002a4c70(BtlCamera* camera, f32 param_1, f32 param_2)
 {
   .set noreorder
@@ -2040,6 +2045,7 @@ asm void FUN_002a4c70(BtlCamera* camera, f32 param_1, f32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002A5430
 void FUN_002a5430(BtlCamera* camera)
@@ -2920,6 +2926,7 @@ void FUN_002a6ed0(void)
 }
 
 // FUN_002a6ee0
+#ifndef PC_BUILD
 asm void btlCameraFrameActionSide(BtlCamera* camera)
 {
   .set noreorder
@@ -3218,6 +3225,7 @@ asm void btlCameraFrameActionSide(BtlCamera* camera)
   .word 0xc7b40000
   .word 0x27bd0110
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002a7378
 void FUN_002a7378(void)
@@ -3434,6 +3442,7 @@ typedef struct BtlCameraTargetingWork
 
 
 // FUN_002a79f0
+#ifndef PC_BUILD
 asm void btlCameraFrameActionTargeting(BtlCamera* camera)
 {
   .set noreorder
@@ -3910,8 +3919,10 @@ asm void btlCameraFrameActionTargeting(BtlCamera* camera)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002a8150
+#ifndef PC_BUILD
 asm void btlCameraFrameActionPersona(BtlCamera* camera, u32 suppressEffects,
                                  u32 useCurrentTarget)
 {
@@ -4673,6 +4684,7 @@ asm void btlCameraFrameActionPersona(BtlCamera* camera, u32 suppressEffects,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002a8d20
 void btlCameraFrameActionAll(BtlCamera* camera, u32 suppressEffects)
@@ -4854,6 +4866,7 @@ void btlCameraFrameActionAll(BtlCamera* camera, u32 suppressEffects)
 #pragma opt_dead_assignments off
 #pragma opt_lifetimes on
 // FUN_002a95d0
+#ifndef PC_BUILD
 asm void btlCameraFrameActionResult(BtlCamera* camera, u32 suppressEffects,
                                 u32 useCurrentTarget)
 {
@@ -5683,6 +5696,7 @@ asm void btlCameraFrameActionResult(BtlCamera* camera, u32 suppressEffects,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -5923,6 +5937,7 @@ extern u8* iGpffffb73c;
 
 // FUN_002AA2B0
 
+#ifndef PC_BUILD
 asm void func_002aa2b0(BtlCamera* camera, int param_2, int param_3)
 {
   .set noreorder
@@ -6947,6 +6962,7 @@ asm void func_002aa2b0(BtlCamera* camera, int param_2, int param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002AB2A0
 
@@ -6974,6 +6990,7 @@ void func_002ab2a0(BtlCamera* camera)
 #pragma opt_propagation off
 // FUN_002AB330
 
+#ifndef PC_BUILD
 asm void func_002ab330(BtlCamera* camera, int param_2, int param_3)
 {
   .set noreorder
@@ -8134,6 +8151,7 @@ asm void func_002ab330(BtlCamera* camera, int param_2, int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002AC540
 
@@ -8337,6 +8355,7 @@ extern void FUN_002a3110_c920(BtlCamera* camera, f32 step);
 #pragma opt_propagation off
 // FUN_002AC920
 
+#ifndef PC_BUILD
 asm void func_002ac920(BtlCamera* camera, long unused)
 {
   .set noreorder
@@ -8753,12 +8772,14 @@ asm void func_002ac920(BtlCamera* camera, long unused)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W331: removing the immediately overwritten local store and disabling dead-assignment folding measured 1780B/nd889 baseline; 1772B/nd965 without the pragma; 1768B/nd551 with it (window 1776B). */
 #pragma opt_dead_assignments off
 #pragma opt_propagation reset
 // FUN_002ACF90
 
+#ifndef PC_BUILD
 asm void func_002acf90(BtlCamera* camera, long unused)
 {
   .set noreorder
@@ -9207,6 +9228,7 @@ asm void func_002acf90(BtlCamera* camera, long unused)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 // FUN_002AD680
@@ -9410,6 +9432,7 @@ void func_002ADD00(void)
 #pragma opt_propagation off
 // FUN_002ADD10
 
+#ifndef PC_BUILD
 asm u32 func_002add10(BtlCamera* camera, u32 param_2, float* param_3, float* param_4)
 {
   .set noreorder
@@ -9686,6 +9709,7 @@ asm u32 func_002add10(BtlCamera* camera, u32 param_2, float* param_3, float* par
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_002AE150
@@ -9854,6 +9878,7 @@ void func_002ae730(void)
 #pragma opt_lifetimes on
 // FUN_002AE740
 
+#ifndef PC_BUILD
 asm void func_002ae740(BtlCamera* camera, int param_2)
 {
   .set noreorder
@@ -10386,6 +10411,7 @@ asm void func_002ae740(BtlCamera* camera, int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Retail 0x2AEF80-0x2AF7E0: retain the measured framing frame slots as real aggregates. */
 typedef struct BtlCameraFramingPoseLocal {
@@ -10460,6 +10486,7 @@ typedef struct BtlCameraFramingWork {
 /* W417 negative: moving FUN_002a4470 after the initial scalar helpers left nd1485 unchanged at object 2060/2160; retained order. */
 // FUN_002AEF80
 
+#ifndef PC_BUILD
 asm void func_002aef80(BtlCamera* camera, int param_2)
 {
   .set noreorder
@@ -11004,6 +11031,7 @@ asm void func_002aef80(BtlCamera* camera, int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 
@@ -11088,6 +11116,7 @@ update:
 #pragma opt_dead_assignments off
 // FUN_002AF960
 
+#ifndef PC_BUILD
 asm void func_002af960(BtlCamera* camera)
 {
   .set noreorder
@@ -11648,6 +11677,7 @@ asm void func_002af960(BtlCamera* camera)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_dead_assignments off
 #pragma opt_lifetimes on
@@ -11714,6 +11744,7 @@ extern f32 FUN_0052e930_b280(f32 angle);
 #pragma opt_propagation off
 // FUN_002b0280
 
+#ifndef PC_BUILD
 asm void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1)
 {
   .set noreorder
@@ -12590,6 +12621,7 @@ asm void FUN_002b0280(BtlCamera* param_2,long param_3,long param_4,float param_1
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002b1020
 
@@ -12609,6 +12641,7 @@ void btlCameraNoOp(void)
 #pragma opt_propagation reset
 // FUN_002b1060
 
+#ifndef PC_BUILD
 asm void FUN_002b1060(BtlCamera* camera, f32 param_1, f32 param_2)
 {
   .set noreorder
@@ -13077,6 +13110,7 @@ asm void FUN_002b1060(BtlCamera* camera, f32 param_1, f32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_dead_assignments reset
 /* W414/W421 classification: baseline verify nd3 at 1052/1056 (rate
@@ -13089,6 +13123,7 @@ asm void FUN_002b1060(BtlCamera* camera, f32 param_1, f32 param_2)
 /* W422 three static-inline scalar helper directions at +508 all measured nd805 at 1044/1056; reverted. */
 // FUN_002b17a0
 
+#ifndef PC_BUILD
 asm void FUN_002b17a0(BtlCamera* camera, f32 param_1, f32 param_2)
 {
   .set noreorder
@@ -13357,6 +13392,7 @@ asm void FUN_002b17a0(BtlCamera* camera, f32 param_1, f32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002b1bc0
 
@@ -13587,6 +13623,7 @@ void FUN_002b2060(int param_1)
 #pragma push
 #pragma opt_lifetimes on
 
+#ifndef PC_BUILD
 asm void FUN_002b21f0(BtlCamera *camera, f32 param_1, int param_2)
 {
   .set noreorder
@@ -13979,6 +14016,7 @@ asm void FUN_002b21f0(BtlCamera *camera, f32 param_1, int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 #pragma pop
@@ -15703,6 +15741,7 @@ void FUN_002b5cd0(BtlCamera* camera)
 #undef sp118
 // FUN_002b6070
 
+#ifndef PC_BUILD
 asm void FUN_002b6070(BtlCamera* camera, f32 param_1, f32 param_2)
 {
   .set noreorder
@@ -15959,6 +15998,7 @@ asm void FUN_002b6070(BtlCamera* camera, f32 param_1, f32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002b6460
 
@@ -16060,6 +16100,7 @@ extern void FUN_002a3110_b64d0(BtlCamera* camera, f32 step);
 
 /* W419: DAT_00697888_abs restores retail absolute addressing; nd417 -> 326, object 1776 -> 1780/1792, rate .234797 -> .183146. */
 // FUN_002b64d0
+#ifndef PC_BUILD
 asm u32 FUN_002b64d0(BtlCamera* camera, B64CameraWork* work)
 {
   .set noreorder
@@ -16512,6 +16553,7 @@ asm u32 FUN_002b64d0(BtlCamera* camera, B64CameraWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002b6bd0
 

@@ -511,6 +511,7 @@ s32 btlUnit0027f930(s32 param_1)
 
 /* W389 measured: opt_loop_invariants on nd964->936, object 1260/1328 -> 1244/1328. */
 // FUN_0027f940
+#ifndef PC_BUILD
 asm void func_0027f940(BtlUnit* unit, BtlUnit* source, BtlUnit* target,
                    u16 tableIndex, RwV3d* position, void* rotationOut, u8 mode)
 {
@@ -724,6 +725,7 @@ asm void func_0027f940(BtlUnit* unit, BtlUnit* source, BtlUnit* target,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W389 measured: opt_propagation off (replacing prior loop-invariants scope) nd871->862, object 1176/1232 -> 1168/1232. */
 // FUN_0027FC80
@@ -1073,6 +1075,7 @@ void func_002807a0(BtlUnit* unit, RwV3d* param_2)
 #pragma push
 #pragma opt_loop_invariants on
 // FUN_00280870
+#ifndef PC_BUILD
 asm f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
                   f32* param_4, f32* param_5, u32 param_6)
 {
@@ -1410,6 +1413,7 @@ asm f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_loop_invariants reset
 
@@ -1417,6 +1421,7 @@ asm f32 func_00280870(u32 param_1, u32 param_2, RwV3d* param_3,
 #pragma push
 #pragma opt_propagation off
 // FUN_00280DA0
+#ifndef PC_BUILD
 asm void func_00280da0(BtlUnit* unit)
 {
   .set noreorder
@@ -1729,6 +1734,7 @@ asm void func_00280da0(BtlUnit* unit)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma pop
 #pragma opt_propagation reset
@@ -1794,6 +1800,7 @@ void btlUnitInitMovePacket(void* work)
 }
 
 // FUN_002813f0
+#ifndef PC_BUILD
 asm u32 btlUnitUpdateMovePacket(void* work)
 {
   .set noreorder
@@ -2166,6 +2173,7 @@ asm u32 btlUnitUpdateMovePacket(void* work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002819b0
 void btlUnitDestroyMovePacket(void* work)
@@ -2219,6 +2227,7 @@ void btlUnitInitMoveToUnitPacket(void* work)
 
 /* W415: swapped mutually exclusive no-rotation branch layout; final call census matches retail (nd 392 -> 396, object 872/912; offset movement raises nd). */
 // FUN_00281ad0
+#ifndef PC_BUILD
 asm u32 btlUnitUpdateMoveToUnitPacket(void* work)
 {
   .set noreorder
@@ -2451,6 +2460,7 @@ asm u32 btlUnitUpdateMoveToUnitPacket(void* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00281e60
 void btlUnitDestroyMoveToUnitPacket(void* work)
@@ -2488,6 +2498,7 @@ BtlPacket* btlUnitCreateMoveToUnitPacket(BtlUnit* unit, BtlUnit* targetUnit, f32
 #pragma push
 #pragma opt_dead_assignments off
 // FUN_00281F20
+#ifndef PC_BUILD
 asm u32 func_00281f20(void* workData)
 {
   .set noreorder
@@ -2624,6 +2635,7 @@ asm u32 func_00281f20(void* workData)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 
@@ -2852,6 +2864,7 @@ BtlPacket* btlUnitCreateRotateTowardUnitPacket(BtlUnit* unit, BtlUnit* targetUni
 }
 
 // FUN_002826D0
+#ifndef PC_BUILD
 asm void func_002826d0(BtlUnit* unit)
 {
   .set noreorder
@@ -3172,6 +3185,7 @@ asm void func_002826d0(BtlUnit* unit)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00282BC0
 void func_00282bc0(BtlUnit* unit)
@@ -3242,6 +3256,7 @@ u32 btlUnit00282cd0(BtlUnit* unit)
 }
 
 // FUN_00282d40
+#ifndef PC_BUILD
 asm void btlUnitAnimate(BtlUnit* unit, s32 id, u16 blendFrameCount, f32 speed, u16 mode)
 {
   .set noreorder
@@ -3534,9 +3549,11 @@ asm void btlUnitAnimate(BtlUnit* unit, s32 id, u16 blendFrameCount, f32 speed, u
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W420: grouped PC/EC switch and single-case availability checks corrected EXTRA 002831c0 (nd394, obj740/848; baseline nd552, obj820/848). */
 // FUN_002831C0
+#ifndef PC_BUILD
 asm void func_002831c0(BtlUnit* unit, s32 blendFrameCount)
 {
   .set noreorder
@@ -3753,6 +3770,7 @@ asm void func_002831c0(BtlUnit* unit, s32 blendFrameCount)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00283510
 s16 func_00283510(BtlUnit* unit, s32 id)
@@ -4073,6 +4091,7 @@ void func_00283c50(f32 speed, BtlUnit* unit)
 
 /* W416 width audit: retail offset 0x98 has a 0x10 extension pair; ours has no extension pair at 0x98 (the candidate is a layout mismatch, not a confirmed ours shift-width disagreement). Category's s32 declaration is therefore retained: retyping to s16 measured nd263/object476 (window464, rate 0.552521 vs baseline 0.513043), u16 measured nd276/object476 (rate 0.579832), and complete (s16) casts at compare/index uses measured nd275/object468 (rate 0.587607); all moved away from the window/regressed, so the width is already correct for the retained source. */
 // FUN_00283C70
+#ifndef PC_BUILD
 asm s16 func_00283c70(BtlUnit* unit, u16 id)
 {
   .set noreorder
@@ -4193,9 +4212,11 @@ asm s16 func_00283c70(BtlUnit* unit, u16 id)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W420: inlined btlUnitAnimCategory and u16 id recovery: nd211, obj412/416; baseline nd193, obj264/416. */
 // FUN_00283E40
+#ifndef PC_BUILD
 asm u16 func_00283e40(BtlUnit* unit, u16 id)
 {
   .set noreorder
@@ -4304,6 +4325,7 @@ asm u16 func_00283e40(BtlUnit* unit, u16 id)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00283FE0
 const void* func_00283fe0(BtlUnit* unit, u32 id)
@@ -5095,6 +5117,7 @@ void btlUnitInitModelPacket(void* work)
 }
 
 // FUN_002850f0
+#ifndef PC_BUILD
 asm u32 btlUnitUpdateModelPacket(void* work)
 {
   .set noreorder
@@ -5451,6 +5474,7 @@ asm u32 btlUnitUpdateModelPacket(void* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00285670
 void btlUnitDestroyModelPacket(void* work)
@@ -5567,6 +5591,7 @@ void btlUnitInit00285d30Packet(void* work)
 }
 
 // FUN_00285880
+#ifndef PC_BUILD
 asm u32 btlUnitUpdate00285d30Packet(void* work)
 {
   .set noreorder
@@ -5863,6 +5888,7 @@ asm u32 btlUnitUpdate00285d30Packet(void* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00285d10
 void btlUnitDestroy00285d30Packet(void* work)
@@ -6287,6 +6313,7 @@ u32 btlUnit00287580(BtlUnit* unit);
 #pragma push
 #pragma opt_propagation off
 // FUN_00286540
+#ifndef PC_BUILD
 asm void func_00286540(void)
 {
   .set noreorder
@@ -7235,6 +7262,7 @@ asm void func_00286540(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 
@@ -8189,6 +8217,7 @@ BtlPacket* btlUnitCreateLookAtDeactivatePacket(BtlUnit* unit, u16 flags)
 #pragma push
 #pragma opt_propagation off
 // FUN_002889c0
+#ifndef PC_BUILD
 asm void btlUnitInitFromCharId(BtlUnit* unit, u16 id)
 {
   .set noreorder
@@ -8441,6 +8470,7 @@ asm void btlUnitInitFromCharId(BtlUnit* unit, u16 id)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 
@@ -8612,6 +8642,7 @@ int FUN_002890a0(BtlUnitSortEntry** param_1, BtlUnitSortEntry** param_2)
 // FUN_002891E0
 
 
+#ifndef PC_BUILD
 asm void FUN_002891e0(void)
 {
   .set noreorder
@@ -8900,6 +8931,7 @@ asm void FUN_002891e0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset

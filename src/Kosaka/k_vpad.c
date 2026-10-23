@@ -2420,6 +2420,7 @@ HCdvd* func_001e2da0(u16 majorId, u16 minorId, s16 variant)
  * best was the W422 declaration split at 234. Confirmed partial: 234 -> 229
  * bytes. */
 // FUN_001E2E50
+#ifndef PC_BUILD
 asm u32 func_001e2e50(FieldArchiveRequest* request, void** outFileMemory,
                   u16 majorId, u16 minorId, s16 variant)
 {
@@ -3125,6 +3126,7 @@ asm u32 func_001e2e50(FieldArchiveRequest* request, void** outFileMemory,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001E3940
 s32 func_001e3940(void* resource, u8* fileData)
@@ -3441,6 +3443,7 @@ s32 func_001e3940(void* resource, u8* fileData)
 }
 
 // FUN_001E3F10
+#ifndef PC_BUILD
 asm void func_001e3f10(RuntimeTask* task)
 {
   .set noreorder
@@ -4213,6 +4216,7 @@ asm void func_001e3f10(RuntimeTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001E4B10
 void func_001e4b10(RuntimeTask* task, u32 request)
@@ -4236,6 +4240,7 @@ void* func_001e4b40(void* parent)
 }
 
 // FUN_001E4BC0
+#ifndef PC_BUILD
 asm s32 func_001e4bc0(RuntimeTask* task)
 {
   .set noreorder
@@ -5032,6 +5037,7 @@ asm s32 func_001e4bc0(RuntimeTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001E5820
 void func_001e5820(RuntimeTask* task, u32 request)
@@ -5059,6 +5065,7 @@ void* func_001e5850(void* parent)
 // reconstructed state machine and both input branches are implemented;
 // residual differences are register/layout choices in the resource path.
 // FUN_001E58D0
+#ifndef PC_BUILD
 asm s32 func_001e58d0(RuntimeTask* task)
 {
   .set noreorder
@@ -5523,6 +5530,7 @@ asm s32 func_001e58d0(RuntimeTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001E6000
 void func_001e6000(RuntimeTask* task, u32 request)
@@ -5561,6 +5569,7 @@ void* func_001e6030(void* parent)
 // Direct firstAxis input reconstruction measured 1485/2424 and distance
 // field loads measured 1419/2144; both are rejected despite retail loads.
 // FUN_001E60B0
+#ifndef PC_BUILD
 asm s32 func_001e60b0(RuntimeTask* task)
 {
   .set noreorder
@@ -6177,6 +6186,7 @@ asm s32 func_001e60b0(RuntimeTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001E6A40
 void func_001e6a40(RuntimeTask* task, u32 request)
@@ -6329,6 +6339,7 @@ u32 func_001e6d50(HCdvd* request, void** outFile, u16 majorId,
 }
 
 // FUN_001E6EA0
+#ifndef PC_BUILD
 asm void func_001e6ea0(u8* data)
 {
   .set noreorder
@@ -6549,6 +6560,7 @@ asm void func_001e6ea0(u8* data)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001E7200. Request the field event archive.
 void* func_001e7200(u16 majorId)
@@ -8276,6 +8288,7 @@ void func_001e9a90(void* workData)
 
 // FUN_001E9AF0
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void func_001e9af0(RuntimeWork* workData, u32* renderRef)
 {
   .set noreorder
@@ -10212,6 +10225,7 @@ asm void func_001e9af0(RuntimeWork* workData, u32* renderRef)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_lifetimes reset
 
@@ -10378,6 +10392,7 @@ void func_001eba80(RuntimeCommandWork* work, u32* unused)
 }
 
 // FUN_001EBD80
+#ifndef PC_BUILD
 asm void func_001ebd80(RuntimeWork* work, s32 param2)
 {
   .set noreorder
@@ -11410,6 +11425,7 @@ asm void func_001ebd80(RuntimeWork* work, s32 param2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001ECD90
 f32 func_001ecd90(void* data, s32 index, s32 vectorSet)
@@ -11742,6 +11758,7 @@ void func_001eda90(RuntimeWork* work)
 /* W419 accepted: reversing the four scalar declarations and deferring activeEntry assignment reduced func_001edbe0 from nd464/object752/window752 (61.70%) to nd461/object752/window752 (61.30%); no size change. */
 /* W419 rejected: direct command/offset expressions were nd439/object756/window752 (58.07%, over window), and direct entry expressions were nd577/object768/window752 (75.13%, over window). */
 // FUN_001EDBE0
+#ifndef PC_BUILD
 asm void func_001edbe0(RuntimeRenderCollection* work)
 {
   .set noreorder
@@ -11934,6 +11951,7 @@ asm void func_001edbe0(RuntimeRenderCollection* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001EDED0. Mark an active field runtime node for processing.
 void func_001eded0(RuntimeWork* work)

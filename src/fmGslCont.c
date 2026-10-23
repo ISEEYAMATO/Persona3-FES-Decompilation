@@ -859,6 +859,7 @@ void FUN_003b4a90(int *param_1,int param_2,int param_3,int param_4,int param_5,i
 // FUN_003B4B40
 
 
+#ifndef PC_BUILD
 asm void FUN_003b4b40(s32* param_1, u32* param_2, u8* param_3, u8* param_4)
 {
   .set noreorder
@@ -979,6 +980,7 @@ asm void FUN_003b4b40(s32* param_1, u32* param_2, u8* param_3, u8* param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003b4b40(...) FUN_003b4b40(__VA_ARGS__)
 #pragma alias FUN_003b4b40_direct FUN_003b4b40
 extern void FUN_003b4b40_direct(s32* positions, u32* colors, u8* positionIndices,

@@ -1239,6 +1239,7 @@ s32 func_0010cce0(void* dst, const void* src, s32 size)
 #pragma opt_loop_invariants on
 /* W419 scalar-size probe was unchanged at nd1332, object 2032/window2336. */
 // FUN_0010CDD0
+#ifndef PC_BUILD
 asm void func_0010cdd0(void)
 {
   .set noreorder
@@ -1827,6 +1828,7 @@ asm void func_0010cdd0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants off
 // FUN_0010D6F0
@@ -2466,6 +2468,7 @@ void* func_0010e5f0(void* stream, void* output)
 
 #pragma opt_loop_invariants on
 // FUN_0010E630
+#ifndef PC_BUILD
 asm void func_0010e630(void* destination, const void* source, u32 size)
 {
   .set noreorder
@@ -2618,6 +2621,7 @@ asm void func_0010e630(void* destination, const void* source, u32 size)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants off
 // Retail reconstruction covers TMX validation, raster setup, pixel decode, and palette upload from offsets 0x00-0x3C8; all non-padding retail logic is represented, with only register/relocation differences remaining.
@@ -2755,6 +2759,7 @@ void* func_0010e880(const u8* stream)
 #pragma opt_loop_invariants reset
 
 // FUN_0010EC50
+#ifndef PC_BUILD
 asm void func_0010ec50(KwlnTask* task)
 {
   .set noreorder
@@ -3427,6 +3432,7 @@ asm void func_0010ec50(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 // FUN_0010F6C0
 asm void* func_0010f6c0(KwlnTask* task)
@@ -4377,6 +4383,7 @@ void func_00110620(KwlnTask* task, s16 index, s16 param_3, s16 param_4, s16 para
 }
 
 // FUN_00110650
+#ifndef PC_BUILD
 asm void func_00110650_y2(void* param_1, s32 sourceIndex, s32 destinationIndex)
 {
   .set noreorder
@@ -4477,6 +4484,7 @@ asm void func_00110650_y2(void* param_1, s32 sourceIndex, s32 destinationIndex)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001107D0
 asm void* func_001107d0(KwlnTask* task)
@@ -5972,6 +5980,7 @@ void* func_00112420(void* source)
     return node;
 }
 // FUN_001124B0
+#ifndef PC_BUILD
 asm void func_001124b0(void* param_1)
 {
   .set noreorder
@@ -6048,6 +6057,7 @@ asm void func_001124b0(void* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_001125D0
 void func_001125d0(void)
 {
@@ -6127,6 +6137,7 @@ f32 func_00112740(void* param_1)
     return (f32)value;
 }
 // FUN_001127D0
+#ifndef PC_BUILD
 asm void func_001127d0(void* param_1, u32 enabled)
 {
   .set noreorder
@@ -7307,6 +7318,7 @@ asm void func_001127d0(void* param_1, u32 enabled)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants on
 /* W419 mask-then-shift color extraction probe for both 00113A30/00113D80 worsened nd434,obj808 to nd549,obj816; reverted. */
 /* W420 mixed int/float parameter order: nd434,obj808/window848 (rate 0.537129) -> nd424,obj808/window848 (rate 0.524752); retained. */
@@ -7551,6 +7563,7 @@ void func_001140d0(f32 depth,
 #pragma opt_loop_invariants on
 /* W418 rejected color-width probes: s32 nd864,obj1680 -> nd932,obj1624; u32 -> nd948,obj1672; u16/u8 object2320 nd1708/1699; declaration/mask permutations were neutral. */
 // FUN_00114450
+#ifndef PC_BUILD
 asm void func_00114450(f32 depth,
                    u32 color,
                    u32 colorAlpha,
@@ -7986,6 +7999,7 @@ asm void func_00114450(f32 depth,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 
 /*
@@ -8092,6 +8106,7 @@ void func_00114af0(f32 depth,
 /* Scoped loop-invariant pragma measured W330: without nd741, with nd736 (obj 1196/1248). */
 #pragma opt_loop_invariants on
 // FUN_00114E70
+#ifndef PC_BUILD
 asm void func_00114e70(s32 orientation,
                    f32 depth,
                    u32 color,
@@ -8417,6 +8432,7 @@ asm void func_00114e70(s32 orientation,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 
 /* Retail 0x115350-0x1158a0 builds a four-vertex strip with inline state setup,
@@ -8428,6 +8444,7 @@ asm void func_00114e70(s32 orientation,
 /* W417 signature-order negative: one float argument leaves no float/int class ordering; alpha permutation is semantically unsafe. */
 /* W419 adding explicit final 0xff masks to the extracted channels was neutral: nd877, object1232/window1376. */
 // FUN_00115350
+#ifndef PC_BUILD
 asm void func_00115350(f32 depth,
                    u32 color,
                    u64 point0,
@@ -8785,6 +8802,7 @@ asm void func_00115350(f32 depth,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 // FUN_001158B0
 void* func_001158b0(param_1,param_2,param_3)
@@ -9178,6 +9196,7 @@ void func_00115cd0(int unused0, int unused1, int unused2,
 // FUN_00115DE0
 
 
+#ifndef PC_BUILD
 asm void func_00115de0(int unused0, int unused1, int unused2,
                    f32 param_1, f32 param_2, u16 param_4, u8 param_5,
                    u8 param_6, u8 param_7, u8 param_8, f32 param_3)
@@ -9256,11 +9275,13 @@ asm void func_00115de0(int unused0, int unused1, int unused2,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants on
 // FUN_00115F00
 
 
+#ifndef PC_BUILD
 asm u32 func_00115f00(KwlnTask* param_1)
 {
   .set noreorder
@@ -9697,6 +9718,7 @@ asm u32 func_00115f00(KwlnTask* param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 #pragma opt_loop_invariants off
@@ -9858,6 +9880,7 @@ u32 func_001167c0(int param_1,u32 param_2)
 // FUN_001167F0
 
 
+#ifndef PC_BUILD
 asm u32 func_001167f0(u32 param_1)
 {
   .set noreorder
@@ -10182,6 +10205,7 @@ asm u32 func_001167f0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00116CF0
 

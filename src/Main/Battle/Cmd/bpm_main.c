@@ -121,6 +121,7 @@ void FUN_00248580(void* destination, void* origin)
 }
 
 // FUN_00248620
+#ifndef PC_BUILD
 asm void FUN_00248620(void)
 {
   .set noreorder
@@ -481,6 +482,7 @@ asm void FUN_00248620(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00248BB0
 void FUN_00248bb0(void)

@@ -283,6 +283,7 @@ void FUN_0029a570(void)
  * tools/permute.py agrees: 1747 compiles, best score 5, verdict
  * "5x register allocation / scheduling". */
 // FUN_0029a690
+#ifndef PC_BUILD
 asm void FUN_0029a690(u16 genus)
 {
   .set noreorder
@@ -335,11 +336,13 @@ asm void FUN_0029a690(u16 genus)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 /* Removing this worsens FUN_0029a750 (nd120 -> nd774) - measured W161. */
 // The residual is limited to MWCCPS2 register coloring/scheduling; logical control flow and object size match retail.
 // FUN_0029a750
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void FUN_0029a750(void)
 {
   .set noreorder
@@ -636,6 +639,7 @@ asm void FUN_0029a750(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 static inline void btlOrderFinishAction(BtlAction* action)

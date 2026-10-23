@@ -203,6 +203,7 @@ void sflResult001f9d70(u16 index)
 #pragma push
 #pragma opt_propagation off
 // FUN_001f9e90
+#ifndef PC_BUILD
 asm void sflResult001f9e90(u16 owner, s32 exp)
 {
   .set noreorder
@@ -351,6 +352,7 @@ asm void sflResult001f9e90(u16 owner, s32 exp)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma pop
 #define FUN_00182c50 FUN_00182c50_typed
@@ -491,6 +493,7 @@ void func_001fa450(void)
 // FUN_001FA4F0
 
 
+#ifndef PC_BUILD
 asm void func_001fa4f0(u32 param_1)
 {
   .set noreorder
@@ -1115,12 +1118,14 @@ asm void func_001fa4f0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* W389 measured func_001faea0 opt_common_subs off: nd 325 -> 303; object 652/656 -> 656/656. */
 #pragma push
 #pragma opt_common_subs off
 // FUN_001FAEA0
 
 
+#ifndef PC_BUILD
 asm u32 func_001faea0(void)
 {
   .set noreorder
@@ -1289,6 +1294,7 @@ asm u32 func_001faea0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 #pragma pop
 

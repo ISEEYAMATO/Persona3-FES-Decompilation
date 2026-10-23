@@ -340,6 +340,7 @@ void sflGround00239280(void)
 
 /* Retail frame-gates the first overlay before the final 255-alpha pass; implemented 99.2%, strip replay remains. */
 // FUN_002392D0
+#ifndef PC_BUILD
 asm void func_002392d0(void)
 {
   .set noreorder
@@ -2824,8 +2825,10 @@ asm void func_002392d0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0023B990
+#ifndef PC_BUILD
 asm void func_0023b990(void)
 {
   .set noreorder
@@ -3402,6 +3405,7 @@ asm void func_0023b990(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0023C280
 void func_0023c280(void)
@@ -3474,6 +3478,7 @@ void func_0023c3a0(void* destination)
 #pragma opt_loop_invariants off
 
 // FUN_0023C520
+#ifndef PC_BUILD
 asm void func_0023c520(void* destination, const SflGroundVec2* center,
                    const SflGroundVec2* direction, const SflGroundVec2* scale)
 {
@@ -3683,6 +3688,7 @@ asm void func_0023c520(void* destination, const SflGroundVec2* center,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0023C850
 void func_0023c850(void* vertices, const SflGroundColor* color)

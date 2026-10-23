@@ -368,6 +368,7 @@ void func_001fb4b0(void* entries, s32 capacity, s32 lowerBound, s32 range,
 // FUN_001FB560
 
 
+#ifndef PC_BUILD
 asm u16 func_001fb560(u32 param_1)
 {
   .set noreorder
@@ -696,6 +697,7 @@ asm u16 func_001fb560(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 2
 /* W389 measured func_001fba70 opt_loop_invariants on: nd 283 -> 280; object 556/560 -> 556/560. */
 #pragma push
@@ -703,6 +705,7 @@ asm u16 func_001fb560(u32 param_1)
 // FUN_001FBA70
 
 
+#ifndef PC_BUILD
 asm u32 func_001fba70(u16 param_1)
 {
   .set noreorder
@@ -847,6 +850,7 @@ asm u32 func_001fba70(u16 param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 #pragma pop
 
@@ -980,6 +984,7 @@ int func_001fbdf0(s32 start, s32 end, s32 amount, s32 category, s32 scaleMode)
 // FUN_001FBFA0
 
 
+#ifndef PC_BUILD
 asm int func_001fbfa0(int param_1,int param_2,int param_3,u16 param_4,int param_5,long param_6)
 {
   .set noreorder
@@ -1132,6 +1137,7 @@ asm int func_001fbfa0(int param_1,int param_2,int param_3,u16 param_4,int param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma pop
 // FUN_001FC1F0

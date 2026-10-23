@@ -659,6 +659,7 @@ void FUN_0039f350(int *param_1)
 // FUN_0039F410
 
 
+#ifndef PC_BUILD
 asm void FUN_0039f410(int *param_1)
 {
   .set noreorder
@@ -843,6 +844,7 @@ asm void FUN_0039f410(int *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039f410(...) FUN_0039f410(__VA_ARGS__)
 #undef FUN_0039f6e0
 // FUN_0039F6E0
@@ -1002,6 +1004,7 @@ u8 FUN_0039f850(int param_1)
 // FUN_0039F950
 
 
+#ifndef PC_BUILD
 asm void FUN_0039f950(int param_1)
 {
   .set noreorder
@@ -1118,6 +1121,7 @@ asm void FUN_0039f950(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039f950(...) FUN_0039f950(__VA_ARGS__)
 #undef FUN_0039fb10
 // FUN_0039FB10
@@ -1165,6 +1169,7 @@ void FUN_0039fb10(void)
 #pragma opt_lifetimes on
 
 
+#ifndef PC_BUILD
 asm void FUN_0039fbd0(int param_1)
 {
   .set noreorder
@@ -1421,12 +1426,14 @@ asm void FUN_0039fbd0(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #define FUN_0039fbd0(...) FUN_0039fbd0(__VA_ARGS__)
 #undef FUN_0039ffc0
 // FUN_0039FFC0
 
 
+#ifndef PC_BUILD
 asm void FUN_0039ffc0(int param_1,float *param_2,int param_3,u32 param_4)
 {
   .set noreorder
@@ -1583,12 +1590,14 @@ asm void FUN_0039ffc0(int param_1,float *param_2,int param_3,u32 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_0039ffc0(...) FUN_0039ffc0(__VA_ARGS__)
 #undef FUN_003a0220
 /* W415 ORDER probe: invert the condition so the retail-sized body precedes the fallback call; nd595 -> 575 (obj892/window912). The ordered calls now follow retail; residual frame/local layout remains NONMATCHING. */
 // FUN_003A0220
 
 
+#ifndef PC_BUILD
 asm u64 FUN_003a0220(int param_1)
 {
   .set noreorder
@@ -1821,11 +1830,13 @@ asm u64 FUN_003a0220(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003a0220(...) FUN_003a0220(__VA_ARGS__)
 #undef FUN_003a05b0
 // FUN_003A05B0
 
 
+#ifndef PC_BUILD
 asm void FUN_003a05b0(int param_1,int param_2)
 {
   .set noreorder
@@ -2066,11 +2077,13 @@ asm void FUN_003a05b0(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003a05b0(...) FUN_003a05b0(__VA_ARGS__)
 #undef FUN_003a0960
 // FUN_003A0960
 
 
+#ifndef PC_BUILD
 asm void FUN_003a0960(int param_1,int param_2,u64 param_3)
 {
   .set noreorder
@@ -2199,6 +2212,7 @@ asm void FUN_003a0960(int param_1,int param_2,u64 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003a0960(...) FUN_003a0960(__VA_ARGS__)
 #undef FUN_003a0b50
 // FUN_003A0B50
@@ -2403,6 +2417,7 @@ u32 FUN_003a0b50(int param_1)
 // FUN_003A0E90
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003a0e90(int param_1)
 {
   .set noreorder
@@ -3267,6 +3282,7 @@ asm u32 FUN_003a0e90(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003a0e90(...) FUN_003a0e90(__VA_ARGS__)
 #undef FUN_003a1c00
 // FUN_003A1C00

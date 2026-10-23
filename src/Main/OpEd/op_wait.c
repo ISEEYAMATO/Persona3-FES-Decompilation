@@ -286,6 +286,7 @@ void opWait0026ddc0(void)
 }
 
 // FUN_0026E000
+#ifndef PC_BUILD
 asm void opWait0026e000(void)
 {
   .set noreorder
@@ -770,6 +771,7 @@ asm void opWait0026e000(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0026E780
 void opWait0026e780(void)
@@ -973,6 +975,7 @@ u32 opWait0026ee80(void)
 // tests in opWaitClamp01 reproduce the retail branch orientation.
 // The frame dimensions and mode fallback were previously approximated.
 // FUN_0026EED0
+#ifndef PC_BUILD
 asm void opWait0026eed0(void)
 {
   .set noreorder
@@ -3241,6 +3244,7 @@ asm void opWait0026eed0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 static inline RwIm2DVertex* opWaitVertex(u32* param)
 {
@@ -3253,6 +3257,7 @@ static inline RwIm2DVertex* opWaitVertex(u32* param)
 
 
 // FUN_00271230
+#ifndef PC_BUILD
 asm void func_00271230(u32* param)
 {
   .set noreorder
@@ -3553,8 +3558,10 @@ asm void func_00271230(u32* param)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002716D0
+#ifndef PC_BUILD
 asm void func_002716d0(u32* param)
 {
   .set noreorder
@@ -3895,6 +3902,7 @@ asm void func_002716d0(u32* param)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00271C10
 void func_00271c10(void)

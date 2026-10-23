@@ -73,6 +73,7 @@ extern float FUN_0052c398(float);
 #pragma optimization_level 3
 
 // FUN_0052e930
+#ifndef PC_BUILD
 asm float tanf(float x)
 {
   .set noreorder
@@ -105,6 +106,7 @@ asm float tanf(float x)
   .word 0x00822023
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma optimization_level 2
 #pragma tailcall on
@@ -119,6 +121,7 @@ asm float tanf(float x)
 // Also ruled out: tailcall combinations, unused volatile locals/arrays, old-style prototypes, and address-taken locals.
 // All nine wrappers are identical. Retail's non-leaf prologue wraps a tail call that needs neither; MWCC emits either a true leaf tail-jump or a real call-and-return, never this hybrid.
 // FUN_0052E9A0
+#ifndef PC_BUILD
 asm u64 FUN_0052e9a0(long param_1)
 {
   .set noreorder
@@ -129,7 +132,9 @@ asm u64 FUN_0052e9a0(long param_1)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052E9B8
+#ifndef PC_BUILD
 asm u64 FUN_0052e9b8(u32 param_1)
 {
   .set noreorder
@@ -140,7 +145,9 @@ asm u64 FUN_0052e9b8(u32 param_1)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052E9D0
+#ifndef PC_BUILD
 asm u32 FUN_0052e9d0(u32 param_1, u32 param_2)
 {
   .set noreorder
@@ -151,7 +158,9 @@ asm u32 FUN_0052e9d0(u32 param_1, u32 param_2)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052E9E8
+#ifndef PC_BUILD
 asm float FUN_0052e9e8(float param_1)
 {
   .set noreorder
@@ -162,7 +171,9 @@ asm float FUN_0052e9e8(float param_1)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052EA00
+#ifndef PC_BUILD
 asm float FUN_0052ea00(float param_1)
 {
   .set noreorder
@@ -173,7 +184,9 @@ asm float FUN_0052ea00(float param_1)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052EA18
+#ifndef PC_BUILD
 asm float FUN_0052ea18(float param_1, float param_2)
 {
   .set noreorder
@@ -184,7 +197,9 @@ asm float FUN_0052ea18(float param_1, float param_2)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052EA30
+#ifndef PC_BUILD
 asm float FUN_0052ea30(float param_1)
 {
   .set noreorder
@@ -195,7 +210,9 @@ asm float FUN_0052ea30(float param_1)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052EA48
+#ifndef PC_BUILD
 asm float FUN_0052ea48(float param_1, float param_2)
 {
   .set noreorder
@@ -206,7 +223,9 @@ asm float FUN_0052ea48(float param_1, float param_2)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0052EA60
+#ifndef PC_BUILD
 asm float FUN_0052ea60(float param_1)
 {
   .set noreorder
@@ -217,3 +236,4 @@ asm float FUN_0052ea60(float param_1)
   .word 0x27bd0010
   .set reorder
 }
+#endif /* PC_BUILD: asm function omitted */

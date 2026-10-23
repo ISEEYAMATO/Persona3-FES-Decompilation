@@ -246,6 +246,7 @@ u32 PTR_FUN_007cda44[];
 // FUN_00410E70
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00410e70(u32 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -410,6 +411,7 @@ asm u32 FUN_00410e70(u32 param_1,int param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 // FUN_004110F0
@@ -638,6 +640,7 @@ u32 FUN_00411340(u64 param_1,u64 param_2,s16 *param_3)
 // FUN_004113F0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_004113f0(u64 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -842,6 +845,7 @@ asm u32 FUN_004113f0(u64 param_1,int param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00411710
 u64 FUN_00411710(u64 param_1, int param_2)
@@ -872,6 +876,7 @@ u64 FUN_00411710(u64 param_1, int param_2)
 // FUN_00411790
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00411790(u64 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -1344,12 +1349,14 @@ asm u32 FUN_00411790(u64 param_1,int param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // W419 negative: DAT_006b0050 array/absolute alias changed FUN_00411ee0 nd298/object424 to nd303/object428 (window448); regressed and reverted.
 // FUN_00411EE0
 #pragma opt_lifetimes on
 
 
+#ifndef PC_BUILD
 asm u64 FUN_00411ee0(u64 param_1,int param_2)
 {
   .set noreorder
@@ -1466,6 +1473,7 @@ asm u64 FUN_00411ee0(u64 param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_lifetimes reset
 
@@ -1474,6 +1482,7 @@ asm u64 FUN_00411ee0(u64 param_1,int param_2)
 // FUN_004120A0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_004120a0(u64 param_1, int param_2, int param_3) 
 {
   .set noreorder
@@ -1790,6 +1799,7 @@ asm u32 FUN_004120a0(u64 param_1, int param_2, int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 // FUN_00412580
@@ -1831,6 +1841,7 @@ u64 FUN_00412580(u64 param_1,int param_2)
 // FUN_00412610
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00412610(u64 param_1, int param_2, long param_3) 
 {
   .set noreorder
@@ -2147,6 +2158,7 @@ asm u32 FUN_00412610(u64 param_1, int param_2, long param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00412AF0
 #pragma push
@@ -2210,6 +2222,7 @@ u64 FUN_00412af0(u64 param_1,int param_2)
 // FUN_00412BC0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00412bc0(u64 param_1, int param_2, long param_3) 
 {
   .set noreorder
@@ -2490,6 +2503,7 @@ asm u32 FUN_00412bc0(u64 param_1, int param_2, long param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_propagation off
 /* W442: MATCH at 400/400 via the interleaved FUN_0040e3f0_i2f1i3f3 alias, the
@@ -2628,6 +2642,7 @@ u64 FUN_00413010(u64 param_1,int param_2)
 // FUN_004131A0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_004131a0(u64 param_1, int param_2, int param_3) 
 {
   .set noreorder
@@ -2944,12 +2959,14 @@ asm u32 FUN_004131a0(u64 param_1, int param_2, int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 // W415 census: 8 calls exactly match retail; cosf/sinf aliases resolve to 0x0052e6d8/0x0052e878, so no source defect was found.
 // FUN_00413680
 
 
+#ifndef PC_BUILD
 asm u64 FUN_00413680(u64 param_1,int param_2)
 {
   .set noreorder
@@ -3106,11 +3123,13 @@ asm u64 FUN_00413680(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // W418 negative: declaring fGpffffad18 extern instead of defining it left nd356/obj532 unchanged (window 560); neutral and rejected.
 // FUN_004138E0
 
 
+#ifndef PC_BUILD
 asm u64 FUN_004138e0(u64 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -3255,6 +3274,7 @@ asm u64 FUN_004138e0(u64 param_1,int param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00413B10
 #pragma push
@@ -3301,6 +3321,7 @@ u64 FUN_00413b10(u64 param_1,int param_2)
 // FUN_00413B70
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00413b70(u64 param_1, int param_2, int param_3) 
 {
   .set noreorder
@@ -3661,6 +3682,7 @@ asm u32 FUN_00413b70(u64 param_1, int param_2, int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 #pragma push
@@ -3720,6 +3742,7 @@ void FUN_00414280(u64 param_1,u64 param_2,int param_3,int param_4,int param_5,
 // FUN_00414320
 
 
+#ifndef PC_BUILD
 asm void FUN_00414320(u64 param_1,u64 param_2,int param_3,int param_4,int param_5,
                  u32 param_6)
 {
@@ -3845,6 +3868,7 @@ asm void FUN_00414320(u64 param_1,u64 param_2,int param_3,int param_4,int param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00414500
 
@@ -4087,6 +4111,7 @@ void FUN_00414d70(u64 param_1,u64 param_2,int param_3,int param_4,int param_5,
 #pragma opt_lifetimes on
 
 
+#ifndef PC_BUILD
 asm u64 FUN_00414e10(int param_1,int param_2)
 {
   .set noreorder
@@ -4207,6 +4232,7 @@ asm u64 FUN_00414e10(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 /* W327 measured: opt_loop_invariants on normalized_diff 719 -> 672; object 1252/1280 -> 1252/1280 (without/with). */
@@ -4214,6 +4240,7 @@ asm u64 FUN_00414e10(int param_1,int param_2)
 // FUN_00414FE0
 
 
+#ifndef PC_BUILD
 asm u32 FUN_00414fe0(u64 param_1,int param_2,long param_3)
 {
   .set noreorder
@@ -4538,9 +4565,11 @@ asm u32 FUN_00414fe0(u64 param_1,int param_2,long param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 // FUN_004154E0
+#ifndef PC_BUILD
 asm void FUN_004154e0(u64 param_1,u64 param_2,int param_3,int param_4,
                  int param_5,int param_6)
 {
@@ -4638,7 +4667,9 @@ asm void FUN_004154e0(u64 param_1,u64 param_2,int param_3,int param_4,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00415650
+#ifndef PC_BUILD
 asm void FUN_00415650(u64 param_1,u64 param_2,int param_3,int param_4,
                  int param_5,int param_6)
 {
@@ -4736,6 +4767,7 @@ asm void FUN_00415650(u64 param_1,u64 param_2,int param_3,int param_4,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // FUN_004157C0
@@ -4760,6 +4792,7 @@ void FUN_004157c0(u64 param_1,u64 param_2,int param_3,int param_4,int param_5,
 }
 
 // FUN_00415880
+#ifndef PC_BUILD
 asm void FUN_00415880(u64 param_1,u64 param_2,int param_3,int param_4,
                  int param_5,int param_6)
 {
@@ -4889,6 +4922,7 @@ asm void FUN_00415880(u64 param_1,u64 param_2,int param_3,int param_4,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00415A70
 
@@ -4954,6 +4988,7 @@ void FUN_00415b70(u64 param_1,u64 param_2,int param_3,int param_4,int param_5,
 // FUN_00415C30
 
 
+#ifndef PC_BUILD
 asm u64 FUN_00415c30(int param_1, int param_2) 
 {
   .set noreorder
@@ -5058,6 +5093,7 @@ asm u64 FUN_00415c30(int param_1, int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W327 measured: opt_loop_invariants on normalized_diff 573 -> 524; object 1116/1152 -> 1116/1152 (without/with). */
 #pragma opt_loop_invariants on
@@ -5065,6 +5101,7 @@ asm u64 FUN_00415c30(int param_1, int param_2)
 // FUN_00415DC0
 
 
+#ifndef PC_BUILD
 asm u64 FUN_00415dc0(u64 param_1,int param_2,u8 *param_3)
 {
   .set noreorder
@@ -5357,11 +5394,13 @@ asm u64 FUN_00415dc0(u64 param_1,int param_2,u8 *param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 // FUN_00416240
 
 
+#ifndef PC_BUILD
 asm void FUN_00416240(u64 param_1,int param_2,int param_3,int param_4,int param_5,u32 param_6)
 {
   .set noreorder
@@ -5474,12 +5513,14 @@ asm void FUN_00416240(u64 param_1,int param_2,int param_3,int param_4,int param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W327 measured: opt_common_subs off normalized_diff 555 -> 486; object 752/736 -> 736/736 (without/with). */
 #pragma opt_common_subs off
 // FUN_004163F0
 
 
+#ifndef PC_BUILD
 asm void FUN_004163f0(u64 param_1,int param_2,int param_3,int param_4,int param_5,u32 param_6)
 {
   .set noreorder
@@ -5668,6 +5709,7 @@ asm void FUN_004163f0(u64 param_1,int param_2,int param_3,int param_4,int param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 // FUN_004166D0
@@ -5721,6 +5763,7 @@ void FUN_004166d0(u64 param_1,int param_2,int param_3,int param_4,int param_5,
 #pragma schedule on
 
 
+#ifndef PC_BUILD
 asm void FUN_004167d0(u64 param_1,int param_2,int param_3,int param_4,int param_5,
                  u8 param_6)
 {
@@ -5966,6 +6009,7 @@ asm void FUN_004167d0(u64 param_1,int param_2,int param_3,int param_4,int param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // W415 probes (all reverted): direct arithmetic for CONCAT12 gave nd 199 -> 209, obj 388 -> 384; masked composition gave nd 199 -> 216, obj 396; typed f32 alias plus masked composition gave nd 199 -> 207, obj 384.
@@ -5973,6 +6017,7 @@ asm void FUN_004167d0(u64 param_1,int param_2,int param_3,int param_4,int param_
 // FUN_00416B90
 
 
+#ifndef PC_BUILD
 asm void FUN_00416b90(u64 param_1,int param_2,int param_3,int param_4,int param_5,u32 param_6)
 {
   .set noreorder
@@ -6077,12 +6122,14 @@ asm void FUN_00416b90(u64 param_1,int param_2,int param_3,int param_4,int param_
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W327 measured: opt_common_subs off normalized_diff 582 -> 458; object 804/784 -> 784/784 (without/with). */
 #pragma opt_common_subs off
 // FUN_00416D20
 
 
+#ifndef PC_BUILD
 asm void FUN_00416d20(u64 param_1,int param_2,int param_3,int param_4,int param_5,
                  u8 param_6)
 {
@@ -6284,12 +6331,14 @@ asm void FUN_00416d20(u64 param_1,int param_2,int param_3,int param_4,int param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 // W419 negative: PTR_FUN_006b1830 array/absolute alias left FUN_00417030 at nd119/object292 (baseline nd119/object292, window304); neutral and reverted.
 // FUN_00417030
 
 
+#ifndef PC_BUILD
 asm u64 FUN_00417030(int param_1, int param_2) 
 {
   .set noreorder
@@ -6370,3 +6419,4 @@ asm u64 FUN_00417030(int param_1, int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

@@ -53,6 +53,7 @@ static int sif_copy_path(char* destination, const char* source, int capacity)
     return length;
 }
 // FUN_0050B598
+#ifndef PC_BUILD
 asm int sceSifInitIopHeap(void)
 {
   .set noreorder
@@ -91,7 +92,9 @@ asm int sceSifInitIopHeap(void)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050b620
+#ifndef PC_BUILD
 asm u32 FUN_0050b620(u32 param_1)
 {
   .set noreorder
@@ -124,7 +127,9 @@ asm u32 FUN_0050b620(u32 param_1)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050B690
+#ifndef PC_BUILD
 asm u32 FUN_0050b690(u32 param_1,u32 param_2,u32 param_3)
 {
   .set noreorder
@@ -161,7 +166,9 @@ asm u32 FUN_0050b690(u32 param_1,u32 param_2,u32 param_3)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050B710
+#ifndef PC_BUILD
 asm u32 FUN_0050b710(u32 param_1)
 {
   .set noreorder
@@ -196,6 +203,7 @@ asm u32 FUN_0050b710(u32 param_1)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma push
 #pragma schedule on
 // FUN_0050B788
@@ -205,6 +213,7 @@ int FUN_0050b788(void* address)
 }
 #pragma pop
 // FUN_0050B7A8
+#ifndef PC_BUILD
 asm int sceSifLoadIopHeap(const char* path, void* address)
 {
   .set noreorder
@@ -269,8 +278,10 @@ asm int sceSifLoadIopHeap(const char* path, void* address)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0050B898
+#ifndef PC_BUILD
 asm u32 FUN_0050b898(void)
 {
   .set noreorder
@@ -303,7 +314,9 @@ asm u32 FUN_0050b898(void)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050B908
+#ifndef PC_BUILD
 asm u32 FUN_0050b908(void)
 {
   .set noreorder
@@ -336,7 +349,9 @@ asm u32 FUN_0050b908(void)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050B978
+#ifndef PC_BUILD
 asm u32 FUN_0050b978(void)
 {
   .set noreorder
@@ -369,7 +384,9 @@ asm u32 FUN_0050b978(void)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050B9E8
+#ifndef PC_BUILD
 asm u32 FUN_0050b9e8(u32 param_1)
 {
   .set noreorder
@@ -406,7 +423,9 @@ asm u32 FUN_0050b9e8(u32 param_1)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050BA68
+#ifndef PC_BUILD
 asm u32 FUN_0050ba68(u32 param_1)
 {
   .set noreorder
@@ -443,3 +462,4 @@ asm u32 FUN_0050ba68(u32 param_1)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

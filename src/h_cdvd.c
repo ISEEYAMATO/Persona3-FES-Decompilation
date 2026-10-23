@@ -1058,6 +1058,7 @@ void* func_00101ad0(s32 count, void* source, s32 stride,
 }
 
 // FUN_00101c70
+#ifndef PC_BUILD
 asm void func_00101c70(void)
 {
   .set noreorder
@@ -1174,6 +1175,7 @@ asm void func_00101c70(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

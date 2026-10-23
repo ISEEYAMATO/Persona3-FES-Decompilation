@@ -97,6 +97,7 @@ void H_Pad_Init(void)
 #pragma opt_loop_invariants reset
 
 // FUN_00103110
+#ifndef PC_BUILD
 asm void H_Pad_Poll(HPad* pad)
 {
   .set noreorder
@@ -385,6 +386,7 @@ asm void H_Pad_Poll(HPad* pad)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00103580
 void H_Pad_Update(void)
@@ -505,6 +507,7 @@ void H_Pad_UpdateDirectionalButtonRepeat(HPadPort port, u16 buttons, s32 repeatI
 }
 
 // FUN_00103B10
+#ifndef PC_BUILD
 asm void H_Pad_UpdateRumble(void)
 {
   .set noreorder
@@ -581,6 +584,7 @@ asm void H_Pad_UpdateRumble(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00103C30
 void H_Pad_StartRumblePattern(s16 duration, u16 intensity, s16 onFrames, s16 offFrames)

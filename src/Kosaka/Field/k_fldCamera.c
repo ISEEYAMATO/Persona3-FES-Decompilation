@@ -1195,6 +1195,7 @@ request:
 
 // Negative probe: all 24 permutations of cmr/fldCamera/camera/cameraFrame declarations were neutral at nd211, object 1212/1248 (W418).
 // FUN_001d6bc0
+#ifndef PC_BUILD
 asm u32 func_001d6bc0(HCdvd* cmrRequest, RwMatrix* matrix, f32* fov, u32* type,
                   RwV3d* posOffset, f32* xzDeadZone, f32* yDeadZone)
 {
@@ -1512,6 +1513,7 @@ asm u32 func_001d6bc0(HCdvd* cmrRequest, RwMatrix* matrix, f32* fov, u32* type,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d70a0
 void func_001d70a0(void)
@@ -1596,6 +1598,7 @@ void func_001d7260(void)
 }
 
 // FUN_001d7300
+#ifndef PC_BUILD
 asm u32 K_Encount_001d7300(u32 param_1, u16 flag, u32 areaId)
 {
   .set noreorder
@@ -1788,6 +1791,7 @@ asm u32 K_Encount_001d7300(u32 param_1, u16 flag, u32 areaId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d75f0
 u8 K_Encount_001d75f0(u32 param_1, u16 flag, u32 areaId)

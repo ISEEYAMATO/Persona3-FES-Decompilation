@@ -1763,6 +1763,7 @@ void func_0021f3c0(void)
  * reduced this function from 0x1f0/496B, nd7333 to 0x110/272B, nd7288.
  * Retail remains 0xd0/208B; the frame excess is now s5-s7 vs f28-f31. */
 // FUN_0021f410
+#ifndef PC_BUILD
 asm void func_0021f410(void)
 {
   .set noreorder
@@ -4283,6 +4284,7 @@ asm void func_0021f410(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00221b60
 void func_00221b60(void)
@@ -4982,6 +4984,7 @@ void FUN_002230e0(void)
  * nd2317/3388B, rate 0.683884. Baseline retained at nd2128/3240B,
  * window 3776B, rate 0.656790. */
 // FUN_00223290
+#ifndef PC_BUILD
 asm void FUN_00223290(void)
 {
   .set noreorder
@@ -5930,6 +5933,7 @@ asm void FUN_00223290(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 /* W414 named D_0096009C_abs alias-placement probes (top-level and secondary declaration sites) stayed nd11/1292B (window 1296B); reverted. Residual is the documented slot0/setQuad register-bank floor. */
@@ -5943,6 +5947,7 @@ asm void FUN_00223290(void)
  * and 532 likewise select the alternate pointer register. No commutative
  * operation differs. */
 // FUN_00224150
+#ifndef PC_BUILD
 asm void FUN_00224150(void)
 {
   .set noreorder
@@ -6271,6 +6276,7 @@ asm void FUN_00224150(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Previous body used bcm_panel_read/write's wrong work-relative base for
 // the 0x55c/0x550 count/progress fields (should be overlay0-relative,
@@ -6351,6 +6357,7 @@ void FUN_00224860(void)
 #pragma push
 #pragma opt_dead_assignments off
 // FUN_00224940
+#ifndef PC_BUILD
 asm void FUN_00224940(void)
 {
   .set noreorder
@@ -6803,10 +6810,12 @@ asm void FUN_00224940(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 
 // FUN_00225040
+#ifndef PC_BUILD
 asm void FUN_00225040(void)
 {
   .set noreorder
@@ -7091,6 +7100,7 @@ asm void FUN_00225040(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002254A0
 void FUN_002254A0(void)
@@ -7201,6 +7211,7 @@ void FUN_00225670(void)
 /* W420 obj2-local elimination/reuse: nd390/2108B, window 2128B, rate
  * 0.185009 unchanged; reverted. */
 // FUN_002257F0
+#ifndef PC_BUILD
 asm void FUN_002257F0(void)
 {
   .set noreorder
@@ -7737,6 +7748,7 @@ asm void FUN_002257F0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Previous body was a wrong-helper stub unrelated to retail (1168B window).
 // Rewritten from disasm: retail sets a fixed initial vtable state(9,2),
@@ -7856,6 +7868,7 @@ panel_tail:
 
 
 // FUN_002265D0
+#ifndef PC_BUILD
 asm void FUN_002265D0(void)
 {
   .set noreorder
@@ -9024,6 +9037,7 @@ asm void FUN_002265D0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W389 measured opt_loop_invariants on: nd1997/2852B -> nd1941/2732B (window 3024B). */
 #pragma push
@@ -9193,6 +9207,7 @@ void FUN_00227D10(void)
 
 /* Retail rebuild: six panel slots, state alpha, frame/scrollbar, and four two-part list rows are implemented. */
 // FUN_00227F30
+#ifndef PC_BUILD
 asm void FUN_00227F30(void)
 {
   .set noreorder
@@ -9869,6 +9884,7 @@ asm void FUN_00227F30(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002289B0
 void FUN_002289B0(void)
@@ -9967,6 +9983,7 @@ void FUN_002289B0(void)
 /* W389 measured opt_lifetimes on: nd1910/3296B -> nd1908/3296B (window 3328B). */
 #pragma opt_lifetimes on
 // FUN_00228E40
+#ifndef PC_BUILD
 asm void FUN_00228E40(void)
 {
   .set noreorder
@@ -10803,11 +10820,13 @@ asm void FUN_00228E40(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 
 /* W389 measured opt_loop_invariants on: nd797/1676B -> nd716/1676B (window 1728B). */
 // FUN_00229B40
+#ifndef PC_BUILD
 asm void FUN_00229B40(void)
 {
   .set noreorder
@@ -11288,6 +11307,7 @@ asm void FUN_00229B40(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef BCM_29_STATE
 #undef BCM_29_STATE2
 #undef BCM_29_QUAD
@@ -11302,6 +11322,7 @@ asm void FUN_00229B40(void)
 #pragma push
 #pragma opt_loop_invariants on
 // FUN_0022A2B0
+#ifndef PC_BUILD
 asm void FUN_0022A2B0(void)
 {
   .set noreorder
@@ -12062,10 +12083,12 @@ asm void FUN_0022A2B0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_loop_invariants reset
 
 // FUN_0022AE80
+#ifndef PC_BUILD
 asm void FUN_0022AE80(void)
 {
   .set noreorder
@@ -12478,6 +12501,7 @@ asm void FUN_0022AE80(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #undef BCM_2AE_STATE
 #undef BCM_2AE_QUAD
@@ -12515,6 +12539,7 @@ void bcmPanel0022b580(void)
 #pragma push
 #pragma opt_loop_invariants on
 // FUN_0022B630
+#ifndef PC_BUILD
 asm void FUN_0022B630(void)
 {
   .set noreorder
@@ -12951,6 +12976,7 @@ asm void FUN_0022B630(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_loop_invariants reset
 

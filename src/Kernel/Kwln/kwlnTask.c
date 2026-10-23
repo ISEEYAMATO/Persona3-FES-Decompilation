@@ -312,6 +312,7 @@ u8 kwlnTaskUpdate(KwlnTask* task)
    retail's `sltu/xori`, and retail hoists `addiu v1,3` (STATE_DESTROY) before
    the cursor loop. Forcing either made the diff worse (43 words). */
 // FUN_00194100
+#ifndef PC_BUILD
 asm void kwlnTaskUpdateAll()
 {
   .set noreorder
@@ -376,6 +377,7 @@ asm void kwlnTaskUpdateAll()
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001941f0. Destroy every task in the hierarchy
 void kwlnTaskDestroyHierarchy(KwlnTask* task)

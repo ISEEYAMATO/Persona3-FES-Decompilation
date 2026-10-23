@@ -1333,6 +1333,7 @@ u32 func_001f65e0(void)
 /* SocialA W417 negative: swapping work/i declarations in func_001f6630 was byte-identical (nd 586, object 1060/1072); retained source order. */
 /* W389 measured sflResult001f9170 opt_lifetimes on: nd 471 -> 465; object 1212/1216 -> 1212/1216. */
 // FUN_001f6630
+#ifndef PC_BUILD
 asm void func_001f6630(void)
 {
   .set noreorder
@@ -1605,6 +1606,7 @@ asm void func_001f6630(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Removing this loses FUN_001f9680 (MATCH nd0 -> MISMATCH nd57) - measured W161. */
 // FUN_001f6a60
@@ -1936,6 +1938,7 @@ void func_001f7170(void)
 }
 
 // FUN_001f7210
+#ifndef PC_BUILD
 asm void func_001f7210(void)
 {
   .set noreorder
@@ -3920,6 +3923,7 @@ asm void func_001f7210(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f9100
 void sflResult001f9100_y2(void)
@@ -4202,6 +4206,7 @@ void sflResult001f99f0_y2(void)
 
 /* W415 census recheck: all eight relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
 // FUN_001f9a80
+#ifndef PC_BUILD
 asm void sflResult001f9a80(void)
 {
   .set noreorder
@@ -4326,6 +4331,7 @@ asm void sflResult001f9a80(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f9c60
 void sflResult001f9c60(void)

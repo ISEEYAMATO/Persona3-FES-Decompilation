@@ -227,6 +227,7 @@ extern RwInt32 rwMatrixTolerancesOffset;
 RwGlobals rwGlobals;
 
 // FUN_004BE310
+#ifndef PC_BUILD
 asm void FUN_004be310(float *param_1,float *param_2,float *param_3)
 {
   .set noreorder
@@ -623,8 +624,10 @@ asm void FUN_004be310(float *param_1,float *param_2,float *param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 2
 // FUN_004BE930
+#ifndef PC_BUILD
 asm u64 FUN_004be930(u64 param_1,int param_2,int param_3,int param_4,int param_5,u32 param_6)
 {
   .set noreorder
@@ -817,7 +820,9 @@ asm u64 FUN_004be930(u64 param_1,int param_2,int param_3,int param_4,int param_5
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BEC20
+#ifndef PC_BUILD
 asm long FUN_004bec20(long param_1,long param_2,long param_3,long param_4,long param_5,code *param_6,
                  code *param_7,int *param_8,int param_9)
 {
@@ -1407,7 +1412,9 @@ asm long FUN_004bec20(long param_1,long param_2,long param_3,long param_4,long p
   .word 0x27bd01b0
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BF540
+#ifndef PC_BUILD
 asm void FUN_004bf540(void)
 {
   .set noreorder
@@ -1420,7 +1427,9 @@ asm void FUN_004bf540(void)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BF560
+#ifndef PC_BUILD
 asm u64 FUN_004bf560(u64 param_1,int param_2,int param_3,long param_4)
 {
   .set noreorder
@@ -1521,7 +1530,9 @@ asm u64 FUN_004bf560(u64 param_1,int param_2,int param_3,long param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BF6E0
+#ifndef PC_BUILD
 asm long FUN_004bf6e0(u64 param_1,int param_2,u64 param_3,u64 param_4)
 {
   .set noreorder
@@ -1590,7 +1601,9 @@ asm long FUN_004bf6e0(u64 param_1,int param_2,u64 param_3,u64 param_4)
   .word 0x27bd0050
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BF7E0
+#ifndef PC_BUILD
 asm int FUN_004bf7e0(int param_1)
 {
   .set noreorder
@@ -1635,7 +1648,9 @@ asm int FUN_004bf7e0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BF880
+#ifndef PC_BUILD
 asm u64 FUN_004bf880(u64 param_1,int param_2,u64 param_3,u64 param_4,char param_5)
 {
   .set noreorder
@@ -1704,7 +1719,9 @@ asm u64 FUN_004bf880(u64 param_1,int param_2,u64 param_3,u64 param_4,char param_
   .word 0x03e00008
   .word 0x27bd0080
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BF980
+#ifndef PC_BUILD
 asm bool FUN_004bf980(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -1745,7 +1762,9 @@ asm bool FUN_004bf980(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFA10
+#ifndef PC_BUILD
 asm void FUN_004bfa10(int param_1,long param_2)
 {
   .set noreorder
@@ -1774,7 +1793,9 @@ asm void FUN_004bfa10(int param_1,long param_2)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFA70
+#ifndef PC_BUILD
 asm u32 FUN_004bfa70(int param_1,u64 param_2)
 {
   .set noreorder
@@ -1823,7 +1844,9 @@ asm u32 FUN_004bfa70(int param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFB20
+#ifndef PC_BUILD
 asm void FUN_004bfb20(long param_1)
 {
   .set noreorder
@@ -1864,7 +1887,9 @@ asm void FUN_004bfb20(long param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFBB0
+#ifndef PC_BUILD
 asm void FUN_004bfbb0(u32 param_1)
 {
   .set noreorder
@@ -1897,7 +1922,9 @@ asm void FUN_004bfbb0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFC20
+#ifndef PC_BUILD
 asm u32 FUN_004bfc20(void)
 {
   .set noreorder
@@ -1926,7 +1953,9 @@ asm u32 FUN_004bfc20(void)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFC80
+#ifndef PC_BUILD
 asm u32 FUN_004bfc80(u64 param_1)
 {
   .set noreorder
@@ -1983,6 +2012,7 @@ asm u32 FUN_004bfc80(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFD50
 asm u32 * FUN_004bfd50(u64 param_1)
 {
@@ -2025,6 +2055,7 @@ asm u32 * FUN_004bfd50(u64 param_1)
   .word 0x00000000
 }
 // FUN_004BFDE0
+#ifndef PC_BUILD
 asm u32 FUN_004bfde0(u64 param_1)
 {
   .set noreorder
@@ -2077,7 +2108,9 @@ asm u32 FUN_004bfde0(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004BFEA0
+#ifndef PC_BUILD
 asm long FUN_004bfea0(long param_1,u64 param_2,u32 param_3,u32 param_4,
                  u32 param_5)
 {
@@ -2195,6 +2228,7 @@ asm long FUN_004bfea0(long param_1,u64 param_2,u32 param_3,u32 param_4,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C0060
 u32 * FUN_004c0060(void)
@@ -2334,6 +2368,7 @@ void FUN_004c0230(u32 param_1)
 }
 #pragma optimization_level 2
 // FUN_004C0240
+#ifndef PC_BUILD
 asm u64 FUN_004c0240(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -2414,7 +2449,9 @@ asm u64 FUN_004c0240(u64 param_1,u64 param_2)
   .word 0x27bd0060
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0370
+#ifndef PC_BUILD
 asm u64 FUN_004c0370(int param_1)
 {
   .set noreorder
@@ -2443,7 +2480,9 @@ asm u64 FUN_004c0370(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C03D0
+#ifndef PC_BUILD
 asm u32 FUN_004c03d0(u32 param_1,u32 param_2,u32 param_3,u32 param_4)
 {
   .set noreorder
@@ -2468,7 +2507,9 @@ asm u32 FUN_004c03d0(u32 param_1,u32 param_2,u32 param_3,u32 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0420
+#ifndef PC_BUILD
 asm u32 FUN_004c0420(u32 param_1,u32 param_2,u32 param_3,u32 param_4)
 {
   .set noreorder
@@ -2493,7 +2534,9 @@ asm u32 FUN_004c0420(u32 param_1,u32 param_2,u32 param_3,u32 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0470
+#ifndef PC_BUILD
 asm u32 FUN_004c0470(u64 param_1,u32 param_2,long param_3)
 {
   .set noreorder
@@ -2554,7 +2597,9 @@ asm u32 FUN_004c0470(u64 param_1,u32 param_2,long param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0550
+#ifndef PC_BUILD
 asm u64 FUN_004c0550(u64 param_1,int param_2,u64 param_3)
 {
   .set noreorder
@@ -2647,6 +2692,7 @@ asm u64 FUN_004c0550(u64 param_1,int param_2,u64 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C06B0
 #pragma tailcall on
 void FUN_004c06b0(int param_1)
@@ -2657,6 +2703,7 @@ void FUN_004c06b0(int param_1)
 }
 #pragma tailcall off
 // FUN_004C06C0
+#ifndef PC_BUILD
 asm u64 FUN_004c06c0(u64 param_1)
 {
   .set noreorder
@@ -2749,6 +2796,7 @@ asm u64 FUN_004c06c0(u64 param_1)
   .word 0x03e00008
   .word 0x27bd00e0
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C0820
 u32 FUN_004c0820(int param_1)
@@ -2757,6 +2805,7 @@ u32 FUN_004c0820(int param_1)
   return *(u32 *)(param_1 + 0x10);
 }
 // FUN_004C0830
+#ifndef PC_BUILD
 asm u32 FUN_004c0830(u32 *param_1,u32 param_2)
 {
   .set noreorder
@@ -2777,6 +2826,7 @@ asm u32 FUN_004c0830(u32 *param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0870
 u32 * FUN_004c0870(void)
 {
@@ -2825,6 +2875,7 @@ typedef struct RtFilePS2_004C0A80 {
    check-write, fseek-start and async-open blocks match retail's layout.
    param-vs-local $s0 allocation wall (docs/matching.md). */
 // FUN_004C08A0
+#ifndef PC_BUILD
 asm u32 FUN_004c08a0(RtFileSystem_004C08A0 *fs, RtFilePS2_004C0A80 *file, const char *filename, u32 flags)
 {
   .set noreorder
@@ -2945,6 +2996,7 @@ asm u32 FUN_004c08a0(RtFileSystem_004C08A0 *fs, RtFilePS2_004C0A80 *file, const 
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 // FUN_004C0A70
 u32 FUN_004c0a70(u32 param_1)
@@ -2958,6 +3010,7 @@ u32 FUN_004c0a70(u32 param_1)
    `lw $v0,0x64` load-delay slot; retail puts it after `sw $v0,0x64`.
    The permuter found no improvement in 3608 compiles. Scheduling tie-break. */
 // FUN_004C0A80
+#ifndef PC_BUILD
 asm u32 FUN_004c0a80(RtFilePS2_004C0A80 *file, void *buffer, u32 nBytes)
 {
   .set noreorder
@@ -3078,9 +3131,11 @@ asm u32 FUN_004c0a80(RtFilePS2_004C0A80 *file, void *buffer, u32 nBytes)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma optimization_level 2
 // FUN_004C0C50
+#ifndef PC_BUILD
 asm long FUN_004c0c50(long *param_1,u64 param_2,long param_3)
 {
   .set noreorder
@@ -3125,7 +3180,9 @@ asm long FUN_004c0c50(long *param_1,u64 param_2,long param_3)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0CF0
+#ifndef PC_BUILD
 asm void FUN_004c0cf0(u32 *param_1,u64 param_2,int param_3,int param_4)
 {
   .set noreorder
@@ -3226,7 +3283,9 @@ asm void FUN_004c0cf0(u32 *param_1,u64 param_2,int param_3,int param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0E70
+#ifndef PC_BUILD
 asm int FUN_004c0e70(u64 param_1,long param_2)
 {
   .set noreorder
@@ -3295,7 +3354,9 @@ asm int FUN_004c0e70(u64 param_1,long param_2)
   .word 0xac820038
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0F70
+#ifndef PC_BUILD
 asm u32 FUN_004c0f70(int param_1)
 {
   .set noreorder
@@ -3324,7 +3385,9 @@ asm u32 FUN_004c0f70(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C0FD0
+#ifndef PC_BUILD
 asm u64 FUN_004c0fd0(int param_1,int param_2,int param_3,u64 param_4,u64 param_5)
 {
   .set noreorder
@@ -3521,7 +3584,9 @@ asm u64 FUN_004c0fd0(int param_1,int param_2,int param_3,u64 param_4,u64 param_5
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C12D0
+#ifndef PC_BUILD
 asm u32 FUN_004c12d0(int *param_1)
 {
   .set noreorder
@@ -3622,7 +3687,9 @@ asm u32 FUN_004c12d0(int *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1450
+#ifndef PC_BUILD
 asm u32 FUN_004c1450(u64 param_1,long param_2,long param_3,long param_4,long param_5)
 {
   .set noreorder
@@ -3711,7 +3778,9 @@ asm u32 FUN_004c1450(u64 param_1,long param_2,long param_3,long param_4,long par
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C15A0
+#ifndef PC_BUILD
 asm u64 FUN_004c15a0(u64 param_1,u32 param_2,u32 param_3,u32 param_4,u32 param_5
                  )
 {
@@ -3741,7 +3810,9 @@ asm u64 FUN_004c15a0(u64 param_1,u32 param_2,u32 param_3,u32 param_4,u32 param_5
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1600
+#ifndef PC_BUILD
 asm u32 FUN_004c1600(u64 param_1,int param_2,long param_3,long param_4)
 {
   .set noreorder
@@ -3830,7 +3901,9 @@ asm u32 FUN_004c1600(u64 param_1,int param_2,long param_3,long param_4)
   .word 0x03e00008
   .word 0x27bd0070
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1750
+#ifndef PC_BUILD
 asm u64 FUN_004c1750(u64 param_1,int param_2,u32 param_3)
 {
   .set noreorder
@@ -3875,6 +3948,7 @@ asm u64 FUN_004c1750(u64 param_1,int param_2,u32 param_3)
   .word 0x03e00008
   .word 0x27bd0150
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C17F0
 u64 FUN_004c17f0(u64 param_1,u64 param_2,u32 param_3)
@@ -3894,6 +3968,7 @@ u64 FUN_004c1820(u64 param_1,u64 param_2,u32 param_3)
 }
 #pragma optimization_level 2
 // FUN_004C1850
+#ifndef PC_BUILD
 asm u64 FUN_004c1850(u64 param_1)
 {
   .set noreorder
@@ -3922,7 +3997,9 @@ asm u64 FUN_004c1850(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C18B0
+#ifndef PC_BUILD
 asm u64 FUN_004c18b0(u64 param_1)
 {
   .set noreorder
@@ -3951,7 +4028,9 @@ asm u64 FUN_004c18b0(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1910
+#ifndef PC_BUILD
 asm u64 FUN_004c1910(u64 param_1)
 {
   .set noreorder
@@ -3980,10 +4059,12 @@ asm u64 FUN_004c1910(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma push
 #pragma opt_rebuildconditionals off
 #pragma schedule on
 // FUN_004C1970
+#ifndef PC_BUILD
 asm u32 FUN_004c1970(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -4020,9 +4101,11 @@ asm u32 FUN_004c1970(u32 param_1,u32 param_2)
   .word 0x03e00008
   .word 0x27bd0040
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule off
 #pragma pop
 // FUN_004C19F0
+#ifndef PC_BUILD
 asm long FUN_004c19f0(u64 param_1,long param_2)
 {
   .set noreorder
@@ -4179,7 +4262,9 @@ asm long FUN_004c19f0(u64 param_1,long param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1C50
+#ifndef PC_BUILD
 asm u64 FUN_004c1c50(u64 param_1)
 {
   .set noreorder
@@ -4216,7 +4301,9 @@ asm u64 FUN_004c1c50(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1CD0
+#ifndef PC_BUILD
 asm u64 FUN_004c1cd0(u64 param_1)
 {
   .set noreorder
@@ -4237,7 +4324,9 @@ asm u64 FUN_004c1cd0(u64 param_1)
   .word 0xac830004
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1D10
+#ifndef PC_BUILD
 asm long FUN_004c1d10(RwInt32 param_1,...)
 {
   .set noreorder
@@ -4258,7 +4347,9 @@ asm long FUN_004c1d10(RwInt32 param_1,...)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1D50
+#ifndef PC_BUILD
 asm long FUN_004c1d50(int param_1,u32 param_2)
 {
   .set noreorder
@@ -4331,6 +4422,7 @@ asm long FUN_004c1d50(int param_1,u32 param_2)
   .word 0x03e00008
   .word 0x27bd0060
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C1E60
 void FUN_004c1e60(int param_1)
@@ -4341,6 +4433,7 @@ void FUN_004c1e60(int param_1)
 }
 #pragma optimization_level 2
 // FUN_004C1E70
+#ifndef PC_BUILD
 asm int FUN_004c1e70(int *param_1,u64 param_2)
 {
   .set noreorder
@@ -4409,7 +4502,9 @@ asm int FUN_004c1e70(int *param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C1F70
+#ifndef PC_BUILD
 asm int FUN_004c1f70(int *param_1,int param_2)
 {
   .set noreorder
@@ -4482,6 +4577,7 @@ asm int FUN_004c1f70(int *param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2080
 #pragma optimization_level 3
 void FUN_004c2080(int param_1,int param_2)
@@ -4490,6 +4586,7 @@ void FUN_004c2080(int param_1,int param_2)
 }
 #pragma optimization_level 2
 // FUN_004C2090
+#ifndef PC_BUILD
 asm u32 FUN_004c2090(u32 *param_1)
 {
   .set noreorder
@@ -4502,7 +4599,9 @@ asm u32 FUN_004c2090(u32 *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C20B0
+#ifndef PC_BUILD
 asm u32 FUN_004c20b0(int param_1)
 {
   .set noreorder
@@ -4535,6 +4634,7 @@ asm u32 FUN_004c20b0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C2120
 u32 FUN_004c2120(int param_1)
@@ -4544,6 +4644,7 @@ u32 FUN_004c2120(int param_1)
 }
 #pragma optimization_level 2
 // FUN_004C2130
+#ifndef PC_BUILD
 asm int FUN_004c2130(u64 param_1)
 {
   .set noreorder
@@ -4580,6 +4681,7 @@ asm int FUN_004c2130(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C21B0
 int FUN_004c21b0()
@@ -4697,6 +4799,7 @@ asm RwMatrix* RwMatrixMultiply(RwMatrix* matrixOut, const RwMatrix* matrixIn1, c
   .word 0xe4800038
 }
 // FUN_004C2330
+#ifndef PC_BUILD
 asm u64 FUN_004c2330(u64 param_1,float *param_2)
 {
   .set noreorder
@@ -5033,7 +5136,9 @@ asm u64 FUN_004c2330(u64 param_1,float *param_2)
   .word 0x03e00008
   .word 0x27bd0040
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2860
+#ifndef PC_BUILD
 asm u64 FUN_004c2860(u64 param_1,float *param_2)
 {
   .set noreorder
@@ -5154,7 +5259,9 @@ asm u64 FUN_004c2860(u64 param_1,float *param_2)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2A30
+#ifndef PC_BUILD
 asm u32 FUN_004c2a30(u8 *param_1)
 {
   .set noreorder
@@ -5175,7 +5282,9 @@ asm u32 FUN_004c2a30(u8 *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2A70
+#ifndef PC_BUILD
 asm float FUN_004c2a70(float *param_1)
 {
   .set noreorder
@@ -5200,7 +5309,9 @@ asm float FUN_004c2a70(float *param_1)
   .word 0x4604281c
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2AC0
+#ifndef PC_BUILD
 asm float FUN_004c2ac0(float *param_1)
 {
   .set noreorder
@@ -5229,7 +5340,9 @@ asm float FUN_004c2ac0(float *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2B20
+#ifndef PC_BUILD
 asm float FUN_004c2b20(float *param_1)
 {
   .set noreorder
@@ -5262,7 +5375,9 @@ asm float FUN_004c2b20(float *param_1)
   .word 0x4600001c
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2B90
+#ifndef PC_BUILD
 asm u64 FUN_004c2b90(u64 param_1)
 {
   .set noreorder
@@ -5295,7 +5410,9 @@ asm u64 FUN_004c2b90(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2C00
+#ifndef PC_BUILD
 asm u64 FUN_004c2c00(u64 param_1,int param_2)
 {
   .set noreorder
@@ -5348,6 +5465,7 @@ asm u64 FUN_004c2c00(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004c2cc0
 #pragma optimization_level 3
 RwBool RwEngineGetMatrixTolerances(RwMatrixTolerance* const tolerance)
@@ -5520,6 +5638,7 @@ RwMatrix* RwMatrixUpdate(RwMatrix* matrix)
 #pragma optimization_level 2
 
 // FUN_004C2F30
+#ifndef PC_BUILD
 asm u64 FUN_004c2f30(u64 param_1,u8 (*param_2) [16],u8 (*param_3) [16])
 {
   .set noreorder
@@ -5556,10 +5675,12 @@ asm u64 FUN_004c2f30(u64 param_1,u8 (*param_2) [16],u8 (*param_3) [16])
   .word 0x0080102d
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
 // FUN_004C2FB0 thunk_FUN_004c2330
+#ifndef PC_BUILD
 asm u64 thunk_FUN_004c2330(u64 param_1,float *param_2)
 {
   .set noreorder
@@ -5568,6 +5689,7 @@ asm u64 thunk_FUN_004c2330(u64 param_1,float *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2FC0
 asm float * FUN_004c2fc0(float param_1,float param_2,float *param_3,float *param_4,long param_5)
 {
@@ -5764,6 +5886,7 @@ asm RwMatrix* RwMatrixRotate(RwMatrix* matrix, const RwV3d* axis, RwReal angle, 
 }
 
 // FUN_004C32A0
+#ifndef PC_BUILD
 asm u64 FUN_004c32a0(u64 param_1,float *param_2)
 {
   .set noreorder
@@ -5844,6 +5967,7 @@ asm u64 FUN_004c32a0(u64 param_1,float *param_2)
   .word 0x27bd0010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004c33d0
 asm RwMatrix* RwMatrixScale(RwMatrix* matrix, const RwV3d* scale, RwOpCombineType combineOp)
 {
@@ -6171,6 +6295,7 @@ u32 FUN_004c3880(u64 param_1)
 }
 #pragma schedule off
 // FUN_004C38C0
+#ifndef PC_BUILD
 asm void FUN_004c38c0(void)
 {
   .set noreorder
@@ -6215,6 +6340,7 @@ asm void FUN_004c38c0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C3960
 void FUN_004c3960(RwBool useDefaultMemory)
@@ -6225,6 +6351,7 @@ void FUN_004c3960(RwBool useDefaultMemory)
 }
 #pragma optimization_level 2
 // FUN_004C3970
+#ifndef PC_BUILD
 asm long FUN_004c3970(int param_1,u32 param_2,long param_3,int param_4,long param_5,u32 param_6)
 {
   .set noreorder
@@ -6349,6 +6476,7 @@ asm long FUN_004c3970(int param_1,u32 param_2,long param_3,int param_4,long para
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C3B50
 long FUN_004c3b50(int param_1, u32 param_2, long param_3, int param_4)
@@ -6360,6 +6488,7 @@ long FUN_004c3b50(int param_1, u32 param_2, long param_3, int param_4)
 
 
 // FUN_004C3B60 thunk_FUN_004c3970
+#ifndef PC_BUILD
 asm long thunk_FUN_004c3970(int param_1,u32 param_2,long param_3,int param_4,long param_5,u32 param_6
                        )
 {
@@ -6369,7 +6498,9 @@ asm long thunk_FUN_004c3970(int param_1,u32 param_2,long param_3,int param_4,lon
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C3B70
+#ifndef PC_BUILD
 asm void FUN_004c3b70(int param_1)
 {
   .set noreorder
@@ -6422,7 +6553,9 @@ asm void FUN_004c3b70(int param_1)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C3C30
+#ifndef PC_BUILD
 asm u32 FUN_004c3c30(int param_1)
 {
   .set noreorder
@@ -6483,7 +6616,9 @@ asm u32 FUN_004c3c30(int param_1)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C3D10
+#ifndef PC_BUILD
 asm u32 FUN_004c3d10(int *param_1)
 {
   .set noreorder
@@ -6604,7 +6739,9 @@ asm u32 FUN_004c3d10(int *param_1)
   .word 0x27bd0050
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C3EE0
+#ifndef PC_BUILD
 asm u64 FUN_004c3ee0(u64 param_1,u32 param_2)
 {
   .set noreorder
@@ -6713,7 +6850,9 @@ asm u64 FUN_004c3ee0(u64 param_1,u32 param_2)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4080
+#ifndef PC_BUILD
 asm int FUN_004c4080(int *param_1)
 {
   .set noreorder
@@ -6814,7 +6953,9 @@ asm int FUN_004c4080(int *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4200
+#ifndef PC_BUILD
 asm u64 FUN_004c4200(u64 param_1,code *param_2,u64 param_3)
 {
   .set noreorder
@@ -6927,7 +7068,9 @@ asm u64 FUN_004c4200(u64 param_1,code *param_2,u64 param_3)
   .word 0x03e00008
   .word 0x27bd00f0
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C43B0
+#ifndef PC_BUILD
 asm int FUN_004c43b0(void)
 {
   .set noreorder
@@ -6972,7 +7115,9 @@ asm int FUN_004c43b0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4450
+#ifndef PC_BUILD
 asm u32 FUN_004c4450(long param_1)
 {
   .set noreorder
@@ -7049,7 +7194,9 @@ asm u32 FUN_004c4450(long param_1)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4570
+#ifndef PC_BUILD
 asm void FUN_004c4570(void)
 {
   .set noreorder
@@ -7086,7 +7233,9 @@ asm void FUN_004c4570(void)
   .word 0x27bd0010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C45F0
+#ifndef PC_BUILD
 asm u64 FUN_004c45f0(u64 param_1,long param_2)
 {
   .set noreorder
@@ -7155,7 +7304,9 @@ asm u64 FUN_004c45f0(u64 param_1,long param_2)
   .word 0x03e00008
   .word 0x27bd0040
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C46F0
+#ifndef PC_BUILD
 asm u64 FUN_004c46f0(u64 param_1,int param_2)
 {
   .set noreorder
@@ -7184,7 +7335,9 @@ asm u64 FUN_004c46f0(u64 param_1,int param_2)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4750
+#ifndef PC_BUILD
 asm u64 FUN_004c4750(u64 param_1)
 {
   .set noreorder
@@ -7225,7 +7378,9 @@ asm u64 FUN_004c4750(u64 param_1)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C47E0
+#ifndef PC_BUILD
 asm u32 FUN_004c47e0(u64 param_1)
 {
   .set noreorder
@@ -7274,7 +7429,9 @@ asm u32 FUN_004c47e0(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4890
+#ifndef PC_BUILD
 asm void FUN_004c4890(void)
 {
   .set noreorder
@@ -7319,7 +7476,9 @@ asm void FUN_004c4890(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4930
+#ifndef PC_BUILD
 asm long FUN_004c4930(u32 param_1,long param_2,u64 param_3,u32 param_4)
 {
   .set noreorder
@@ -7504,7 +7663,9 @@ asm long FUN_004c4930(u32 param_1,long param_2,u64 param_3,u32 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4C00
+#ifndef PC_BUILD
 asm u32 FUN_004c4c00(u64 param_1)
 {
   .set noreorder
@@ -7581,7 +7742,9 @@ asm u32 FUN_004c4c00(u64 param_1)
   .word 0x27bd0050
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4D20
+#ifndef PC_BUILD
 asm int FUN_004c4d20(void)
 {
   .set noreorder
@@ -7606,7 +7769,9 @@ asm int FUN_004c4d20(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4D70
+#ifndef PC_BUILD
 asm u32 FUN_004c4d70(void)
 {
   .set noreorder
@@ -7691,7 +7856,9 @@ asm u32 FUN_004c4d70(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4EB0
+#ifndef PC_BUILD
 asm u64 FUN_004c4eb0(u64 param_1,int param_2)
 {
   .set noreorder
@@ -7728,7 +7895,9 @@ asm u64 FUN_004c4eb0(u64 param_1,int param_2)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4F30
+#ifndef PC_BUILD
 asm u64 FUN_004c4f30(u64 param_1)
 {
   .set noreorder
@@ -7757,7 +7926,9 @@ asm u64 FUN_004c4f30(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C4F90
+#ifndef PC_BUILD
 asm u64 FUN_004c4f90(u64 param_1,long param_2,u64 param_3)
 {
   .set noreorder
@@ -7826,7 +7997,9 @@ asm u64 FUN_004c4f90(u64 param_1,long param_2,u64 param_3)
   .word 0x03e00008
   .word 0x27bd0060
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5090
+#ifndef PC_BUILD
 asm u64 FUN_004c5090(u64 param_1,long param_2,u32 *param_3)
 {
   .set noreorder
@@ -7875,7 +8048,9 @@ asm u64 FUN_004c5090(u64 param_1,long param_2,u32 *param_3)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5140
+#ifndef PC_BUILD
 asm long FUN_004c5140(long param_1,u32 param_2,long param_3,u64 param_4,u64 param_5
                  )
 {
@@ -7949,7 +8124,9 @@ asm long FUN_004c5140(long param_1,u32 param_2,long param_3,u64 param_4,u64 para
   .word 0x27bd0050
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5250
+#ifndef PC_BUILD
 asm u32 FUN_004c5250(int *param_1,u64 param_2,u32 param_3)
 {
   .set noreorder
@@ -8058,7 +8235,9 @@ asm u32 FUN_004c5250(int *param_1,u64 param_2,u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C53F0
+#ifndef PC_BUILD
 asm u64 FUN_004c53f0(u64 param_1,u64 param_2,u32 param_3)
 {
   .set noreorder
@@ -8203,7 +8382,9 @@ asm u64 FUN_004c53f0(u64 param_1,u64 param_2,u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5620
+#ifndef PC_BUILD
 asm u64 FUN_004c5620(u64 param_1,u32 param_2)
 {
   .set noreorder
@@ -8296,7 +8477,9 @@ asm u64 FUN_004c5620(u64 param_1,u32 param_2)
   .word 0x27bd0050
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5780
+#ifndef PC_BUILD
 asm bool FUN_004c5780(u64 param_1,long param_2)
 {
   .set noreorder
@@ -8373,7 +8556,9 @@ asm bool FUN_004c5780(u64 param_1,long param_2)
   .word 0x27bd0040
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C58A0
+#ifndef PC_BUILD
 asm u32 FUN_004c58a0(u32 param_1,u32 param_2,u32 param_3)
 {
   .set noreorder
@@ -8426,7 +8611,9 @@ asm u32 FUN_004c58a0(u32 param_1,u32 param_2,u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5960
+#ifndef PC_BUILD
 asm u32 FUN_004c5960(int param_1,int param_2,u32 param_3,u32 param_4,u32 param_5)
 {
   .set noreorder
@@ -8451,7 +8638,9 @@ asm u32 FUN_004c5960(int param_1,int param_2,u32 param_3,u32 param_4,u32 param_5
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C59B0
+#ifndef PC_BUILD
 asm u32 FUN_004c59b0(int param_1,int param_2,u32 param_3)
 {
   .set noreorder
@@ -8476,7 +8665,9 @@ asm u32 FUN_004c59b0(int param_1,int param_2,u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5A00
+#ifndef PC_BUILD
 asm u32 FUN_004c5a00(int param_1,int param_2,u32 param_3)
 {
   .set noreorder
@@ -8501,7 +8692,9 @@ asm u32 FUN_004c5a00(int param_1,int param_2,u32 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5A50
+#ifndef PC_BUILD
 asm u64 FUN_004c5a50(u64 param_1,u64 param_2,u64 param_3)
 {
   .set noreorder
@@ -8626,7 +8819,9 @@ asm u64 FUN_004c5a50(u64 param_1,u64 param_2,u64 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5C30
+#ifndef PC_BUILD
 asm u64 FUN_004c5c30(u64 param_1,int param_2,u64 param_3)
 {
   .set noreorder
@@ -8663,7 +8858,9 @@ asm u64 FUN_004c5c30(u64 param_1,int param_2,u64 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5CB0
+#ifndef PC_BUILD
 asm int FUN_004c5cb0(int param_1,u64 param_2)
 {
   .set noreorder
@@ -8700,7 +8897,9 @@ asm int FUN_004c5cb0(int param_1,u64 param_2)
   .word 0x27bd0040
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5D30
+#ifndef PC_BUILD
 asm u64 FUN_004c5d30(u64 param_1,u64 param_2,u64 param_3)
 {
   .set noreorder
@@ -8797,7 +8996,9 @@ asm u64 FUN_004c5d30(u64 param_1,u64 param_2,u64 param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5EA0
+#ifndef PC_BUILD
 asm u64 FUN_004c5ea0(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -8854,7 +9055,9 @@ asm u64 FUN_004c5ea0(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5F70
+#ifndef PC_BUILD
 asm bool FUN_004c5f70(void)
 {
   .set noreorder
@@ -8879,7 +9082,9 @@ asm bool FUN_004c5f70(void)
   .word 0x27bd0010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C5FC0
+#ifndef PC_BUILD
 asm void FUN_004c5fc0(int param_1,int param_2)
 {
   .set noreorder
@@ -8900,7 +9105,9 @@ asm void FUN_004c5fc0(int param_1,int param_2)
   .word 0x00400008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6000
+#ifndef PC_BUILD
 asm u32 FUN_004c6000(void)
 {
   .set noreorder
@@ -8997,7 +9204,9 @@ asm u32 FUN_004c6000(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6170
+#ifndef PC_BUILD
 asm u32 FUN_004c6170(int param_1,int param_2)
 {
   .set noreorder
@@ -9018,7 +9227,9 @@ asm u32 FUN_004c6170(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C61B0
+#ifndef PC_BUILD
 asm int FUN_004c61b0(int *param_1,int param_2,int param_3,long param_4,long param_5,long param_6)
 {
   .set noreorder
@@ -9215,7 +9426,9 @@ asm int FUN_004c61b0(int *param_1,int param_2,int param_3,long param_4,long para
   .word 0x03e00008
   .word 0x27bd00b0
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C64B0
+#ifndef PC_BUILD
 asm u32 FUN_004c64b0(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -9264,7 +9477,9 @@ asm u32 FUN_004c64b0(u32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6560
+#ifndef PC_BUILD
 asm u64 FUN_004c6560(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -9297,8 +9512,10 @@ asm u64 FUN_004c6560(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C65D0
+#ifndef PC_BUILD
 asm u64 FUN_004c65d0(u32 *param_1, u32 *param_2, u32 *param_3)
 {
   .set noreorder
@@ -9331,6 +9548,7 @@ asm u64 FUN_004c65d0(u32 *param_1, u32 *param_2, u32 *param_3)
   .word 0x03e00008
   .word 0x27bd0050
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6640
 asm RwV3d* FUN_004c6640(RwV3d *out, const RwV3d *in, int count, const RwMatrix *matrix)
 {
@@ -9519,6 +9737,7 @@ asm RwV3d* FUN_004c6840(RwV3d *out, const RwV3d *in, const RwMatrix *matrix)
 
 
 // FUN_004C68C0
+#ifndef PC_BUILD
 asm u32 FUN_004c68c0(u8 *param_1,u8 *param_2,u8 *param_3,u8 *param_4)
 {
   .set noreorder
@@ -9567,7 +9786,9 @@ asm u32 FUN_004c68c0(u8 *param_1,u8 *param_2,u8 *param_3,u8 *param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6970
+#ifndef PC_BUILD
 asm void FUN_004c6970(float *param_1,float *param_2)
 {
   .set noreorder
@@ -9604,7 +9825,9 @@ asm void FUN_004c6970(float *param_1,float *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004c69f0
+#ifndef PC_BUILD
 asm RwReal RwV3dNormalize(RwV3d* out, const RwV3d* in)
 {
   .set noreorder
@@ -9661,6 +9884,7 @@ asm RwReal RwV3dNormalize(RwV3d* out, const RwV3d* in)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004c6ac0
 #pragma optimization_level 3
@@ -9685,6 +9909,7 @@ float FUN_004c6af0(float *param_1)
 #pragma optimization_level 2
 #pragma schedule off
 // FUN_004C6B20
+#ifndef PC_BUILD
 asm float FUN_004c6b20(float *param_1,float *param_2)
 {
   .set noreorder
@@ -9737,6 +9962,7 @@ asm float FUN_004c6b20(float *param_1,float *param_2)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6BE0
 #pragma schedule on
 u64 FUN_004c6be0(u64 param_1)
@@ -9795,6 +10021,7 @@ u64 FUN_004c6ce0(u64 param_1)
 }
 #pragma optimization_level 2
 // FUN_004C6D00
+#ifndef PC_BUILD
 asm u64 FUN_004c6d00(u64 param_1,u32 param_2)
 {
   .set noreorder
@@ -9823,7 +10050,9 @@ asm u64 FUN_004c6d00(u64 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6D60
+#ifndef PC_BUILD
 asm void FUN_004c6d60(u32 *param_1,int param_2)
 {
   .set noreorder
@@ -9864,7 +10093,9 @@ asm void FUN_004c6d60(u32 *param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6DF0
+#ifndef PC_BUILD
 asm bool FUN_004c6df0(u32 *param_1,int param_2)
 {
   .set noreorder
@@ -9893,6 +10124,7 @@ asm bool FUN_004c6df0(u32 *param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C6E50
 u32 FUN_004c6e50(void)
@@ -9902,6 +10134,7 @@ u32 FUN_004c6e50(void)
 }
 #pragma optimization_level 2
 // FUN_004C6E60
+#ifndef PC_BUILD
 asm void FUN_004c6e60(int param_1)
 {
   .set noreorder
@@ -9958,7 +10191,9 @@ asm void FUN_004c6e60(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C6F30
+#ifndef PC_BUILD
 asm int FUN_004c6f30(int param_1,int param_2)
 {
   .set noreorder
@@ -10023,7 +10258,9 @@ asm int FUN_004c6f30(int param_1,int param_2)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7020
+#ifndef PC_BUILD
 asm u64 FUN_004c7020(u64 param_1,int param_2)
 {
   .set noreorder
@@ -10060,6 +10297,7 @@ asm u64 FUN_004c7020(u64 param_1,int param_2)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C70A0
 #pragma schedule on
 #pragma no_branch_likely on
@@ -10074,6 +10312,7 @@ u64 FUN_004c70a0(u64 param_1)
 }
 #pragma no_branch_likely off
 // FUN_004C7100
+#ifndef PC_BUILD
 asm int FUN_004c7100(char *param_1,char *param_2)
 {
   .set noreorder
@@ -10126,6 +10365,7 @@ asm int FUN_004c7100(char *param_1,char *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C71C0
 asm char * FUN_004c71c0(char *param_1)
 {
@@ -10219,6 +10459,7 @@ asm char * FUN_004c72a0(char *param_1,int param_2)
   .word 0x00000000
 }
 // FUN_004C72E0
+#ifndef PC_BUILD
 asm u32 FUN_004c72e0(void)
 {
   .set noreorder
@@ -10295,6 +10536,7 @@ asm u32 FUN_004c72e0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7400
 void FUN_004c7400(void)
 
@@ -10302,6 +10544,7 @@ void FUN_004c7400(void)
   return;
 }
 // FUN_004C7410
+#ifndef PC_BUILD
 asm u32 FUN_004c7410(long param_1)
 {
   .set noreorder
@@ -10326,7 +10569,9 @@ asm u32 FUN_004c7410(long param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7460
+#ifndef PC_BUILD
 asm long FUN_004c7460(long param_1,u64 param_2)
 {
   .set noreorder
@@ -10379,7 +10624,9 @@ asm long FUN_004c7460(long param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7520
+#ifndef PC_BUILD
 asm int FUN_004c7520(int param_1,u64 param_2,u32 param_3)
 {
   .set noreorder
@@ -10488,7 +10735,9 @@ asm int FUN_004c7520(int param_1,u64 param_2,u32 param_3)
   .word 0x27bd00e0
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C76C0
+#ifndef PC_BUILD
 asm int FUN_004c76c0(int param_1,u64 param_2,u32 param_3)
 {
   .set noreorder
@@ -10613,7 +10862,9 @@ asm int FUN_004c76c0(int param_1,u64 param_2,u32 param_3)
   .word 0x27bd0130
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C78A0
+#ifndef PC_BUILD
 asm u64 FUN_004c78a0(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -10698,7 +10949,9 @@ asm u64 FUN_004c78a0(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C79E0
+#ifndef PC_BUILD
 asm u32 FUN_004c79e0(long param_1)
 {
   .set noreorder
@@ -10731,7 +10984,9 @@ asm u32 FUN_004c79e0(long param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7A50
+#ifndef PC_BUILD
 asm u32 FUN_004c7a50(u32 param_1,float *param_2,int param_3)
 {
   .set noreorder
@@ -10804,7 +11059,9 @@ asm u32 FUN_004c7a50(u32 param_1,float *param_2,int param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7B60
+#ifndef PC_BUILD
 asm void FUN_004c7b60(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
 {
   .set noreorder
@@ -10821,7 +11078,9 @@ asm void FUN_004c7b60(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7B90
+#ifndef PC_BUILD
 asm long FUN_004c7b90(u64 param_1)
 {
   .set noreorder
@@ -10914,6 +11173,7 @@ asm long FUN_004c7b90(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004C7CF0
 void FUN_004c7cf0(u32 param_1)
@@ -10924,6 +11184,7 @@ void FUN_004c7cf0(u32 param_1)
 }
 #pragma optimization_level 2
 // FUN_004C7D00
+#ifndef PC_BUILD
 asm void FUN_004c7d00(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
 {
   .set noreorder
@@ -10940,7 +11201,9 @@ asm void FUN_004c7d00(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7D30
+#ifndef PC_BUILD
 asm u64 FUN_004c7d30(u64 param_1)
 {
   .set noreorder
@@ -10965,7 +11228,9 @@ asm u64 FUN_004c7d30(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C7D80
+#ifndef PC_BUILD
 asm u64 FUN_004c7d80(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -11234,7 +11499,9 @@ asm u64 FUN_004c7d80(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C81A0
+#ifndef PC_BUILD
 asm void FUN_004c81a0(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
 {
   .set noreorder
@@ -11251,7 +11518,9 @@ asm void FUN_004c81a0(u64 param_1,u64 param_2,u64 param_3,u64 param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C81D0
+#ifndef PC_BUILD
 asm int FUN_004c81d0(u64 param_1)
 {
   .set noreorder
@@ -11284,7 +11553,9 @@ asm int FUN_004c81d0(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C8240
+#ifndef PC_BUILD
 asm u64 FUN_004c8240(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -11385,7 +11656,9 @@ asm u64 FUN_004c8240(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C83C0
+#ifndef PC_BUILD
 asm long FUN_004c83c0(u64 param_1)
 {
   .set noreorder
@@ -11554,6 +11827,7 @@ asm long FUN_004c83c0(u64 param_1)
   .word 0x27bd0180
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule on
 // FUN_004C8650
 u64 FUN_004c8650(u64 param_1)
@@ -11564,6 +11838,7 @@ u64 FUN_004c8650(u64 param_1)
 }
 #pragma schedule off
 // FUN_004C8680
+#ifndef PC_BUILD
 asm long FUN_004c8680(u64 param_1)
 {
   .set noreorder
@@ -11768,7 +12043,9 @@ asm long FUN_004c8680(u64 param_1)
   .word 0x27bd0070
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C89A0
+#ifndef PC_BUILD
 asm u64 FUN_004c89a0(u64 param_1)
 {
   .set noreorder
@@ -11821,7 +12098,9 @@ asm u64 FUN_004c89a0(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C8A60
+#ifndef PC_BUILD
 asm void FUN_004c8a60(int param_1)
 {
   .set noreorder
@@ -12342,7 +12621,9 @@ asm void FUN_004c8a60(int param_1)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9270
+#ifndef PC_BUILD
 asm u64 FUN_004c9270(u64 param_1)
 {
   .set noreorder
@@ -12447,7 +12728,9 @@ asm u64 FUN_004c9270(u64 param_1)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9400
+#ifndef PC_BUILD
 asm void FUN_004c9400(int param_1)
 {
   .set noreorder
@@ -12788,7 +13071,9 @@ asm void FUN_004c9400(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9940
+#ifndef PC_BUILD
 asm u64 FUN_004c9940(u64 param_1)
 {
   .set noreorder
@@ -12893,7 +13178,9 @@ asm u64 FUN_004c9940(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9AD0
+#ifndef PC_BUILD
 asm u64 FUN_004c9ad0(u64 param_1)
 {
   .set noreorder
@@ -12926,7 +13213,9 @@ asm u64 FUN_004c9ad0(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9BA0
+#ifndef PC_BUILD
 asm u64 FUN_004c9ba0(u64 param_1)
 {
   .set noreorder
@@ -12955,7 +13244,9 @@ asm u64 FUN_004c9ba0(u64 param_1)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9C00
+#ifndef PC_BUILD
 asm u64 FUN_004c9c00(u64 param_1)
 {
   .set noreorder
@@ -12988,7 +13279,9 @@ asm u64 FUN_004c9c00(u64 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9C70
+#ifndef PC_BUILD
 asm u64 FUN_004c9c70(u64 param_1,int param_2)
 {
   .set noreorder
@@ -13029,7 +13322,9 @@ asm u64 FUN_004c9c70(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9D20
+#ifndef PC_BUILD
 asm u64 FUN_004c9d20(u64 param_1,u32 *param_2)
 {
   .set noreorder
@@ -13054,7 +13349,9 @@ asm u64 FUN_004c9d20(u64 param_1,u32 *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9D70
+#ifndef PC_BUILD
 asm u64 FUN_004c9d70(u32 param_1,u64 param_2)
 {
   .set noreorder
@@ -13075,7 +13372,9 @@ asm u64 FUN_004c9d70(u32 param_1,u64 param_2)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9DB0
+#ifndef PC_BUILD
 asm u64 FUN_004c9db0(u32 param_1,u64 param_2)
 {
   .set noreorder
@@ -13096,7 +13395,9 @@ asm u64 FUN_004c9db0(u32 param_1,u64 param_2)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C9ED0
+#ifndef PC_BUILD
 asm u64 FUN_004c9ed0(u64 param_1)
 {
   .set noreorder
@@ -13113,7 +13414,9 @@ asm u64 FUN_004c9ed0(u64 param_1)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA000
+#ifndef PC_BUILD
 asm void FUN_004ca000(u64 param_1,u64 param_2,u64 param_3,u64 param_4,
                  u64 param_5)
 {
@@ -13131,7 +13434,9 @@ asm void FUN_004ca000(u64 param_1,u64 param_2,u64 param_3,u64 param_4,
   .word 0x2484e5e0
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA030
+#ifndef PC_BUILD
 asm u32 FUN_004ca030(u64 param_1)
 {
   .set noreorder
@@ -13160,7 +13465,9 @@ asm u32 FUN_004ca030(u64 param_1)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA090
+#ifndef PC_BUILD
 asm long FUN_004ca090(void)
 {
   .set noreorder
@@ -13229,7 +13536,9 @@ asm long FUN_004ca090(void)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA190
+#ifndef PC_BUILD
 asm bool FUN_004ca190(void)
 {
   .set noreorder
@@ -13382,7 +13691,9 @@ asm bool FUN_004ca190(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA3E0
+#ifndef PC_BUILD
 asm u32 FUN_004ca3e0(int param_1,u64 param_2,u64 param_3,u64 param_4,long param_5
                   )
 {
@@ -13460,6 +13771,7 @@ asm u32 FUN_004ca3e0(int param_1,u64 param_2,u64 param_3,u64 param_4,long param_
   .word 0x03e00008
   .word 0x27bd0060
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_004CA500
 u32 FUN_004ca500(void)
@@ -13487,6 +13799,7 @@ void FUN_004ca550(int param_1)
   FUN_004c6170((int)(DAT_00780000 - 0x19d0),param_1);
 }
 // FUN_004CA560
+#ifndef PC_BUILD
 asm u64 FUN_004ca560(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -13511,7 +13824,9 @@ asm u64 FUN_004ca560(u64 param_1,u64 param_2)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA5B0
+#ifndef PC_BUILD
 asm u32 FUN_004ca5b0(void)
 {
   .set noreorder
@@ -13536,6 +13851,7 @@ asm u32 FUN_004ca5b0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA600
 bool FUN_004ca600(u64 param_1)
 
@@ -13548,6 +13864,7 @@ bool FUN_004ca600(u64 param_1)
   return uVar1 != 0;
 }
 // FUN_004CA640
+#ifndef PC_BUILD
 asm u32 FUN_004ca640(void)
 {
   .set noreorder
@@ -13600,7 +13917,9 @@ asm u32 FUN_004ca640(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004CA700
+#ifndef PC_BUILD
 asm bool FUN_004ca700(long param_1)
 {
   .set noreorder
@@ -13689,7 +14008,9 @@ asm bool FUN_004ca700(long param_1)
   .word 0x03e00008
   .word 0x27bd0060
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004ca850
+#ifndef PC_BUILD
 asm RwBool RwEngineInit(const RwMemoryFunctions* memFuncs, RwUInt32 flags, RwUInt32 resArenaSize)
 {
   .set noreorder
@@ -13782,3 +14103,4 @@ asm RwBool RwEngineInit(const RwMemoryFunctions* memFuncs, RwUInt32 flags, RwUIn
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

@@ -1437,6 +1437,7 @@ extern u32 D_00960178[];
 // opt_loop_invariants on: func_00108740 normalized_diff 472 -> 451, object 1080/1152; off restores 472.
 #pragma opt_loop_invariants on
 // FUN_00108740
+#ifndef PC_BUILD
 asm void func_00108740(void)
 {
   .set noreorder
@@ -1729,6 +1730,7 @@ asm void func_00108740(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 extern void func_00540ec0(void);

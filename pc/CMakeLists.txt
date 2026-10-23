@@ -24,6 +24,9 @@ target_include_directories(persona3fes PRIVATE
 
 target_compile_definitions(persona3fes PRIVATE PC_BUILD=1)
 
-# TODO: find_package(SDL2), link SDL2, add asset data path.
-# find_package(SDL2 REQUIRED)
-# target_link_libraries(persona3fes PRIVATE SDL2::SDL2)
+# SDL2 is optional for the stub build; required once shims are implemented.
+find_package(SDL2 QUIET)
+if(SDL2_FOUND)
+    target_link_libraries(persona3fes PRIVATE SDL2::SDL2)
+    target_compile_definitions(persona3fes PRIVATE HAVE_SDL2=1)
+endif()

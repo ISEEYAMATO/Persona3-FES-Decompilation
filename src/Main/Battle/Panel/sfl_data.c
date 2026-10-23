@@ -889,6 +889,7 @@ extern void func_0020cf20(void* destination, PanelTransform* transform);
 // Remaining excess is retained pending MWCCPS2 register-allocation and scheduling convergence.
 
 // FUN_0020ac90
+#ifndef PC_BUILD
 asm void func_0020ac90(void* work)
 {
   .set noreorder
@@ -1261,6 +1262,7 @@ asm void func_0020ac90(void* work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

@@ -45,6 +45,7 @@ u8 * FUN_003c3fe0(int param_1);
  * repeated state assignments are kept as separate case bodies below. */
 // FUN_003C33C0
 
+#ifndef PC_BUILD
 asm u8 FUN_003c33c0(u8 *param_1, int *param_2, long param_3)
 {
   .set noreorder
@@ -737,6 +738,7 @@ asm u8 FUN_003c33c0(u8 *param_1, int *param_2, long param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #undef FUN_003c33c0
 #undef FUN_003c3e80

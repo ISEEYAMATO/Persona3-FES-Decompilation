@@ -13,6 +13,7 @@
 #pragma tailcall off
 #pragma optimization_level 2
 // FUN_0052EA78
+#ifndef PC_BUILD
 asm u64 FUN_0052ea78(long param_1, long param_2)
 {
   .set noreorder
@@ -37,3 +38,4 @@ asm u64 FUN_0052ea78(long param_1, long param_2)
   .word 0x004f1025
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

@@ -695,6 +695,7 @@ void H_Dbprt_Flush()
 /* Removing this worsens FUN_00104420 (nd244 -> nd268) - measured W161. */
 #pragma opt_loop_invariants on
 // FUN_00104420
+#ifndef PC_BUILD
 asm void H_Dbprt_Main()
 {
   .set noreorder
@@ -887,6 +888,7 @@ asm void H_Dbprt_Main()
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 #pragma opt_lifetimes reset
@@ -1291,6 +1293,7 @@ asm static void H_Dbprt_DrawText3D(void)
  * stack-address scheduling. */
 
 // FUN_00104D10
+#ifndef PC_BUILD
 asm void H_Dbprt_FmtAt(volatile /* Removing this qualifier worsens H_Dbprt_FmtAt (NONMATCHING nd170 -> NONMATCHING nd290, size 412 -> 424) - measured W170. */ RwV2d pos, const char* fmt, ...)
 {
   .set noreorder
@@ -1399,6 +1402,7 @@ asm void H_Dbprt_FmtAt(volatile /* Removing this qualifier worsens H_Dbprt_FmtAt
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -1852,6 +1856,7 @@ void H_Chrdsp_Main(void)
 #pragma opt_dead_assignments off
 // Retail draws the middle quad only while alphaPhase is nonzero, duplicates the six-step timer update for both phases, and then draws the top quad; 8 bytes remain (3448/3456 bytes, 99.8%).
 // FUN_001059B0
+#ifndef PC_BUILD
 asm void H_Chrdsp_UpdateWork(HChrdspWork* work)
 {
   .set noreorder
@@ -2720,6 +2725,7 @@ asm void H_Chrdsp_UpdateWork(HChrdspWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_loop_invariants reset
 

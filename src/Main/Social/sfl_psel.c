@@ -166,6 +166,7 @@ void func_00215aa0(void)
 /* opt_lifetimes on: func_00215b00 nd765 -> nd748, object 1216 -> 1212/1216; measured W328. W415 reused the cached texture for the final frame lookup (calls 48 -> 47, nd 748 -> 762, object 1212 -> 1204/1216). */
 #pragma opt_lifetimes on
 // FUN_00215B00
+#ifndef PC_BUILD
 asm void func_00215b00(void)
 {
   .set noreorder
@@ -474,10 +475,12 @@ asm void func_00215b00(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 /* SocialBig W419 negative: nested result switch case order 0/1 produced nd929/2108B versus baseline nd883/2100B; reversed order produced nd930/2108B. */
 // FUN_00215FC0
+#ifndef PC_BUILD
 asm void func_00215fc0(void)
 {
   .set noreorder
@@ -1010,6 +1013,7 @@ asm void func_00215fc0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00216800
 void func_00216800(void)
 {
@@ -1037,6 +1041,7 @@ u32 func_002168a0(void)
 /* opt_lifetimes on: func_002168f0 nd777 -> nd716, object 1992 -> 1992/2000; measured W328. */
 #pragma opt_lifetimes on
 // FUN_002168F0
+#ifndef PC_BUILD
 asm void func_002168f0(void)
 {
   .set noreorder
@@ -1541,6 +1546,7 @@ asm void func_002168f0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 // FUN_002170C0
@@ -1705,6 +1711,7 @@ void func_00217610(void)
     }
 }
 // FUN_00217780
+#ifndef PC_BUILD
 asm void func_00217780(void)
 {
   .set noreorder
@@ -2297,6 +2304,7 @@ asm void func_00217780(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002180B0
 u32 func_002180b0(u32 value)
@@ -2688,6 +2696,7 @@ void func_00218b20(void* panel, const u32* entry, s32 selected,
 }
 /* SocialA W417 negatives: callback declaration permutations were byte-identical (nd 688, object 1520/1536); direct callback-global forms failed MWCC type checking. */
 // FUN_00219370
+#ifndef PC_BUILD
 asm void func_00219370(void* panel, const u32* entry, s32 selected)
 {
   .set noreorder
@@ -3076,6 +3085,7 @@ asm void func_00219370(void* panel, const u32* entry, s32 selected)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00219970
 void func_00219970(void)

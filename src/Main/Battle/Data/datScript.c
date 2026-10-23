@@ -380,6 +380,7 @@ u32 FUN_0030fdc0(void)
 
 // FUN_0030fdf0
 
+#ifndef PC_BUILD
 asm float FUN_0030fdf0(int param_1,u32 param_2)
 {
   .set noreorder
@@ -1636,6 +1637,7 @@ asm float FUN_0030fdf0(int param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #undef DAT_00957190
 #undef DAT_00957194

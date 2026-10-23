@@ -199,6 +199,7 @@ void func_0024dc10(void)
 
 // W419 negative probes: extra gcPose0024fba0 call nd4005/5088B, window5120B, rate78.72%; declaration permutations stayed nd3958/5072B, window5120B, rate78.04%; reverted.
 // FUN_0024DC90
+#ifndef PC_BUILD
 asm void func_0024dc90(void* camera)
 {
   .set noreorder
@@ -1483,6 +1484,7 @@ asm void func_0024dc90(void* camera)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0024F090
 void gcPose0024f090(GcPoseController* pose)

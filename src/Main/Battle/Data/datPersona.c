@@ -934,6 +934,7 @@ s8 datPersonaGetStat3(DatPersonaWork* persona, u16 statId)
 }
 
 // FUN_00173C60
+#ifndef PC_BUILD
 asm s8 FUN_00173c60(DatPersonaWork* persona, u16 statId)
 {
   .set noreorder
@@ -1574,6 +1575,7 @@ asm s8 FUN_00173c60(DatPersonaWork* persona, u16 statId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00174650
 u16 datPersonaAddToNaturalStat(DatPersonaWork* persona, u16 statId, s8 amount)
@@ -2351,6 +2353,7 @@ s32 FUN_00175ca0_y2(DatPersonaWork* persona)
 #pragma opt_loop_invariants on
 
 // FUN_00175CE0
+#ifndef PC_BUILD
 asm void func_00175ce0(DatPersonaWork* param_1,u8* param_2)
 {
   .set noreorder
@@ -2619,6 +2622,7 @@ asm void func_00175ce0(DatPersonaWork* param_1,u8* param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_00176100
@@ -2675,6 +2679,7 @@ u8 func_001761b0(DatPersonaWork* param_1)
 
 
 
+#ifndef PC_BUILD
 asm u32 func_00176210(DatPersonaWork* persona, u16 level)
 {
   .set noreorder
@@ -2847,6 +2852,7 @@ asm u32 func_00176210(DatPersonaWork* persona, u16 level)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Removing this loses FUN_00176fb0 (MATCH nd0 -> MISMATCH nd62) - measured W161. */
 #pragma opt_loop_invariants on
@@ -4115,6 +4121,7 @@ u8* func_001778b0(s16 param_1)
 /* W389 classification: register-colouring/loop-index allocation floor; six singles and all 15 knob pairs were neutral, declaration-order trial nd19 vs baseline nd14. */
 // FUN_001779A0
 #pragma opt_loop_invariants on
+#ifndef PC_BUILD
 asm void func_001779a0(void)
 {
   .set noreorder
@@ -4159,6 +4166,7 @@ asm void func_001779a0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 // FUN_00177A40
 u8 func_00177a40(u32 param_1,int param_2)

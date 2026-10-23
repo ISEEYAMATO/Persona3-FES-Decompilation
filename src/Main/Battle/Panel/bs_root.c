@@ -256,6 +256,7 @@ void opTitle002673f0(void)
 /* W455 retail state-1 dispatch keeps the polygon transform path out of line;
  * the explicit switch preserves that decoded branch skeleton. */
 // FUN_00267430
+#ifndef PC_BUILD
 asm void opTitle00267430(void)
 {
   .set noreorder
@@ -1920,6 +1921,7 @@ asm void opTitle00267430(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00268E20
 void opTitle00268e20(void)

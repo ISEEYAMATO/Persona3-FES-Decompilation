@@ -127,6 +127,7 @@ static inline s32 bsaSkillCategory(u32 flags)
 #pragma optimization_level 2
 /* W418 width negative: bsaMain0020FE30 i s16 nd1134/3856B -> 2935/4056B (over 3888B). */
 // FUN_0020FE30
+#ifndef PC_BUILD
 asm void bsaMain0020fe30(u32* p, s32 mode, u32 unitId)
 {
   .set noreorder
@@ -1103,6 +1104,7 @@ asm void bsaMain0020fe30(u32* p, s32 mode, u32 unitId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef p
 
 // FUN_00210D60
@@ -1152,6 +1154,7 @@ static inline void bsaTransition(s32* p, f32* alpha, f32* slide, f32* iconAlpha)
 /* W454 frame work: direct origin scratch and a direct word-pointer parameter
  * reduce this function from 0x120/288B, nd7333 to 0x110/272B, nd7328. */
 // FUN_00210D90
+#ifndef PC_BUILD
 asm void bsaMain00210d90(s32* p)
 {
   .set noreorder
@@ -4288,9 +4291,11 @@ asm void bsaMain00210d90(s32* p)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W418 width negative: bsaMain00213E80 i s16 nd3862/6212B -> 4380/6492B (over 6384B). */
 // FUN_00213E80
+#ifndef PC_BUILD
 asm void bsaMain00213e80(BsaWork* work)
 {
   .set noreorder
@@ -5891,6 +5896,7 @@ asm void bsaMain00213e80(BsaWork* work)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef D_00960090_abs
 #undef D_0096009C_abs
 

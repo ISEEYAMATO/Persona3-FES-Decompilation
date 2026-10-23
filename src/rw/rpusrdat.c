@@ -18,6 +18,7 @@ RwInt32 RpMaterialAddUserDataArray(RpMaterial* material, RwChar* name, RpUserDat
 #pragma optimization_level 2
 
 // FUN_0048ee80
+#ifndef PC_BUILD
 asm RwInt32 RpMaterialGetUserDataArrayCount(const RpMaterial* material)
 {
   .set noreorder
@@ -42,6 +43,7 @@ asm RwInt32 RpMaterialGetUserDataArrayCount(const RpMaterial* material)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048eed0
 asm RpUserDataArray* RpMaterialGetUserDataArray(const RpMaterial* material, RwInt32 data)
@@ -2732,6 +2734,7 @@ void FUN_004ae060(int param_1);
 void FUN_004ae940(u64 param_1);
 
 // FUN_0048E020
+#ifndef PC_BUILD
 asm u64 FUN_0048e020(int *param_1,u64 param_2)
 {
   .set noreorder
@@ -2908,8 +2911,10 @@ asm u64 FUN_0048e020(int *param_1,u64 param_2)
   .word 0x03e00008
   .word 0x27bd0070
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048E2D0
+#ifndef PC_BUILD
 asm u64 FUN_0048e2d0(int *param_1,u64 param_2)
 {
   .set noreorder
@@ -3050,8 +3055,10 @@ asm u64 FUN_0048e2d0(int *param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048E4F0
+#ifndef PC_BUILD
 asm int FUN_0048e4f0(long param_1)
 {
   .set noreorder
@@ -3128,8 +3135,10 @@ asm int FUN_0048e4f0(long param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048E610
+#ifndef PC_BUILD
 asm void FUN_0048e610(int *param_1)
 {
   .set noreorder
@@ -3214,8 +3223,10 @@ asm void FUN_0048e610(int *param_1)
   .word 0x03e00008
   .word 0x27bd0080
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048E750
+#ifndef PC_BUILD
 asm u64 FUN_0048e750(long param_1,u64 param_2)
 {
   .set noreorder
@@ -3300,8 +3311,10 @@ asm u64 FUN_0048e750(long param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048E890
+#ifndef PC_BUILD
 asm int FUN_0048e890(int *param_1,long param_2,u64 param_3,int param_4)
 {
   .set noreorder
@@ -3442,8 +3455,10 @@ asm int FUN_0048e890(int *param_1,long param_2,u64 param_3,int param_4)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048EAB0
+#ifndef PC_BUILD
 asm u64 FUN_0048eab0(u64 param_1,int param_2)
 {
   .set noreorder
@@ -3488,8 +3503,10 @@ asm u64 FUN_0048eab0(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048EB50
+#ifndef PC_BUILD
 asm u64 FUN_0048eb50(u64 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -3546,8 +3563,10 @@ asm u64 FUN_0048eb50(u64 param_1,int param_2,int param_3)
   .word 0x03e00008
   .word 0x27bd0060
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048EC20
+#ifndef PC_BUILD
 asm u64 FUN_0048ec20(u64 param_1,u64 param_2,int param_3,int param_4)
 {
   .set noreorder
@@ -3604,6 +3623,7 @@ asm u64 FUN_0048ec20(u64 param_1,u64 param_2,int param_3,int param_4)
   .word 0x27bd0070
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma optimization_level 3
 // FUN_0048ECF0
@@ -3617,6 +3637,7 @@ u64 FUN_0048ecf0(u64 param_1,u64 param_2,int param_3,int param_4)
 #pragma optimization_level 2
 
 // FUN_0048ED20
+#ifndef PC_BUILD
 asm int FUN_0048ed20(int param_1,int param_2)
 {
   .set noreorder
@@ -3669,8 +3690,10 @@ asm int FUN_0048ed20(int param_1,int param_2)
   .word 0x03e00008
   .word 0x27bd0060
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048EDE0
+#ifndef PC_BUILD
 asm int FUN_0048ede0(int param_1)
 {
   .set noreorder
@@ -3695,8 +3718,10 @@ asm int FUN_0048ede0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048EE30
+#ifndef PC_BUILD
 asm int FUN_0048ee30(int param_1,int param_2)
 {
   .set noreorder
@@ -3717,6 +3742,7 @@ asm int FUN_0048ee30(int param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048EF30
 
@@ -3764,6 +3790,7 @@ void FUN_0048efc0(int param_1,int param_2,f32 param_3)
 #pragma optimization_level 2
 
 // FUN_0048EFE0
+#ifndef PC_BUILD
 asm RwInt32 FUN_0048efe0(RpUserDataFormat format)
 {
   .set noreorder
@@ -3788,3 +3815,4 @@ asm RwInt32 FUN_0048efe0(RpUserDataFormat format)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

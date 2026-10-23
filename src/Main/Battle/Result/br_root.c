@@ -1798,6 +1798,7 @@ void func_001f0ab0_y2(KwlnTask *task)
 /* W419 static-inline brRootAdd(offset, base) address-order probe stayed nd23/368B (window368, rate .062500), reverted. */
 
 // FUN_001f0ad0
+#ifndef PC_BUILD
 asm void func_001f0ad0(KwlnTask *task, const BrRootSetupParams *params)
 {
   .set noreorder
@@ -1894,10 +1895,12 @@ asm void func_001f0ad0(KwlnTask *task, const BrRootSetupParams *params)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // `>= 100` -> `> 99` drops the clamp temp-register mismatch (12 -> 8 words); the
 // remainder is argument-materialization scheduling (`lh $a1` vs `addiu`) at both calls.
 // FUN_001f0c40
+#ifndef PC_BUILD
 asm void func_001f0c40(KwlnTask *task)
 {
   .set noreorder
@@ -1978,6 +1981,7 @@ asm void func_001f0c40(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f0d70
 void func_001f0d70_y2(KwlnTask *task)
@@ -2146,6 +2150,7 @@ void func_001f1240(KwlnTask *task)
 }
 
 // FUN_001f13b0
+#ifndef PC_BUILD
 asm void func_001f13b0(KwlnTask *task)
 {
   .set noreorder
@@ -2594,6 +2599,7 @@ asm void func_001f13b0(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f1aa0
 void *func_001f1aa0_y2(KwlnTask *task)
@@ -2668,6 +2674,7 @@ u8 *brRoot001f1c50(void)
 /* W419 retail loop-branch reconstruction with conditional stores grew to nd237/328B (window352, rate .722561) versus landed nd216/300B; reverted. */
 /* W419 target setup reorder/removal of non-retail flag bit: nd239/324B -> nd216/300B, window352; rates .737654 -> .720000. */
 // FUN_001f1c90
+#ifndef PC_BUILD
 asm void func_001f1c90_y2(KwlnTask *task)
 {
   .set noreorder
@@ -2760,6 +2767,7 @@ asm void func_001f1c90_y2(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_001f1df0

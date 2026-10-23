@@ -2427,6 +2427,7 @@ body:
 // FUN_003D32E0
 
 
+#ifndef PC_BUILD
 asm u64 FUN_003d32e0(u64 param_1,u32 param_2)
 {
   .set noreorder
@@ -2615,6 +2616,7 @@ asm u64 FUN_003d32e0(u64 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003d35c0
 s32 fclCombine003d35c0(s32 param_1, s32 param_2)
@@ -2744,6 +2746,7 @@ void FUN_003d3760(int param_1, int param_2, int param_3)
 // FUN_003D38B0
 
 
+#ifndef PC_BUILD
 asm void FUN_003d38b0(u64 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -2896,6 +2899,7 @@ asm void FUN_003d38b0(u64 param_1,int param_2,int param_3)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003d3b00
 s32 fclCombine003d3b00(s32 param_1, s32 param_2)

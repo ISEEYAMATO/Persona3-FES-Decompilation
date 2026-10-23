@@ -918,6 +918,7 @@ void sflCard00253920(void)
 
 
 
+#ifndef PC_BUILD
 asm void FUN_00253a40(void)
 {
   .set noreorder
@@ -2030,6 +2031,7 @@ asm void FUN_00253a40(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma pop
 #undef auStack_70
@@ -2046,6 +2048,7 @@ asm void FUN_00253a40(void)
 #pragma push
 #pragma opt_lifetimes on
 // FUN_00254B90
+#ifndef PC_BUILD
 asm void bpTexSortVisibleNodes(void)
 {
   .set noreorder
@@ -2210,6 +2213,7 @@ asm void bpTexSortVisibleNodes(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 
@@ -2455,6 +2459,7 @@ s32 bpTexGetNodeCount(void)
 /* SocialA W417 negatives: opt_common_subs on worsened bpTexQueueNodeRange (nd 407 -> 434, object 668 -> 648); node/selected, action/node, and i/total declaration permutations were byte-identical. */
 #pragma opt_common_subs off
 // FUN_00255570
+#ifndef PC_BUILD
 asm void bpTexQueueNodeRange(s32 start, s32 count)
 {
   .set noreorder
@@ -2627,12 +2632,14 @@ asm void bpTexQueueNodeRange(s32 start, s32 count)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs on
 
 /* W310 measured: opt_common_subs off nd477->392, object 776/784; reset nd477. */
 #pragma opt_common_subs off
 // FUN_00255810
+#ifndef PC_BUILD
 asm void bpTexRemoveNodeAt_y2(s32 index)
 {
   .set noreorder
@@ -2833,6 +2840,7 @@ asm void bpTexRemoveNodeAt_y2(s32 index)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 /* Recovered battle-misc harvest: 0x00253A40-0x002594C0 */
@@ -2846,6 +2854,7 @@ asm void bpTexRemoveNodeAt_y2(s32 index)
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes on
 // FUN_00255B20
+#ifndef PC_BUILD
 asm void bpTexShuffleNodes(void)
 {
   .set noreorder
@@ -3110,6 +3119,7 @@ asm void bpTexShuffleNodes(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
@@ -3490,6 +3500,7 @@ u32 bpTexHasPendingNode_y2(void)
 /* W389 measured opt_lifetimes on: nd442/636B -> nd441/636B (window 640B). */
 #pragma optimization_level 3
 // FUN_002564C0
+#ifndef PC_BUILD
 asm void bpTexUpdateNode(void* nodeData)
 {
   .set noreorder
@@ -4158,6 +4169,7 @@ asm void bpTexUpdateNode(void* nodeData)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma optimization_level 2
 
@@ -4246,6 +4258,7 @@ void bpTexCollectLeaves(void* nodeData, void* values, s32* count)
 #pragma push
 #pragma opt_propagation off
 // FUN_00257130
+#ifndef PC_BUILD
 asm void bpTexApplyActions(void)
 {
   .set noreorder
@@ -5006,6 +5019,7 @@ asm void bpTexApplyActions(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset

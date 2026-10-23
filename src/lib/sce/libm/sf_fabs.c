@@ -16,6 +16,7 @@
  * every C bit-reinterpretation form spills through the stack and cannot
  * produce mfc1/mtc1; this is the same ee-gcc libm floor as sf_tan. */
 // FUN_0052e788
+#ifndef PC_BUILD
 asm float fabsf(register float x)
 {
   .set noreorder
@@ -26,3 +27,4 @@ asm float fabsf(register float x)
   .word 0x03e00008
   .word 0x448e0000
 }
+#endif /* PC_BUILD: asm function omitted */

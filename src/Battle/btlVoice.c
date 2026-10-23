@@ -2177,6 +2177,7 @@ void func_002e4a30(void)
 #pragma opt_dead_assignments off
 /* W419 negative: inverted the outer guard in func_002e4a40; nd895 -> 929 at object 1288/1296. */
 // FUN_002e4a40
+#ifndef PC_BUILD
 asm void func_002e4a40(u64 param_1)
 {
   .set noreorder
@@ -2505,6 +2506,7 @@ asm void func_002e4a40(u64 param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_lifetimes reset
 
@@ -2625,6 +2627,7 @@ void func_002e5040(void)
 /* W417 negative: inverting func_002e5060 branch layout measured nd1395 -> 1400 at object 1924/2112; retained order. */
 /* Retail algorithm: encounter guard, preset quaternion blend polynomial, and target-offset camera path; implemented 1916/2112 bytes (91%); remaining frame/branch-layout tail. */
 // FUN_002e5060
+#ifndef PC_BUILD
 asm void func_002e5060(BtlCamera* camera)
 {
   .set noreorder
@@ -3157,12 +3160,14 @@ asm void func_002e5060(BtlCamera* camera)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 #pragma opt_dead_assignments off
 /* W419 negative: inverted the tiny boolean assignment in func_002e58a0; nd1467 -> 1467 at object 2020/2192. */
 /* W419 measured: absolute pilot globals plus scalar quaternion copy and bVar3-first tail => nd1474, object 2088/2192, rate .705939; retained as best rate. */
 // FUN_002e58a0
+#ifndef PC_BUILD
 asm void func_002e58a0(BtlCamera* param_1)
 {
   .set noreorder
@@ -3715,6 +3720,7 @@ asm void func_002e58a0(BtlCamera* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 // FUN_002e6130
@@ -3934,6 +3940,7 @@ f32 func_002e6130(BtlUnit* param_1,BtlUnit* param_2,float* param_3,float* param_
 
 #pragma opt_propagation off
 // FUN_002e6a20
+#ifndef PC_BUILD
 asm void func_002e6a20(BtlCamera* camera, float weight)
 {
   .set noreorder
@@ -4358,6 +4365,7 @@ asm void func_002e6a20(BtlCamera* camera, float weight)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_002e70b0
@@ -4442,6 +4450,7 @@ void func_002e7320(void)
 }
 
 // FUN_002e7330
+#ifndef PC_BUILD
 asm void func_002e7330(int param_1)
 {
   .set noreorder
@@ -4658,6 +4667,7 @@ asm void func_002e7330(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002e7680
 void func_002e7680(int param_1)
@@ -4741,6 +4751,7 @@ void func_002e7880(void)
 }
 
 // FUN_002e7890
+#ifndef PC_BUILD
 asm void func_002e7890(u32 param_1)
 {
   .set noreorder
@@ -5073,8 +5084,10 @@ asm void func_002e7890(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002e7db0
+#ifndef PC_BUILD
 asm void func_002e7db0(BtlCamera* param_1)
 {
   .set noreorder
@@ -5399,6 +5412,7 @@ asm void func_002e7db0(BtlCamera* param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002e82b0
 void func_002e82b0(BtlCamera* camera)
@@ -6621,6 +6635,7 @@ void func_002eabb0(void)
 
 #pragma opt_propagation off
 // FUN_002eabf0
+#ifndef PC_BUILD
 asm void func_002eabf0(void)
 {
   .set noreorder
@@ -7033,6 +7048,7 @@ asm void func_002eabf0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_002eb250
@@ -7052,6 +7068,7 @@ u32 func_002eb250(BtlAction* action)
 
 #pragma opt_propagation off
 // FUN_002eb2c0
+#ifndef PC_BUILD
 asm void func_002eb2c0(void)
 {
   .set noreorder
@@ -7512,6 +7529,7 @@ asm void func_002eb2c0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_002eb9e0
@@ -7533,6 +7551,7 @@ u32 func_002eb9e0(BtlAction* action)
 #pragma opt_propagation off
 /* W419 negative: moved the long non-null branch before the short null branch in func_002eba50; nd696 -> 760 at object 1100/1136. */
 // FUN_002eba50
+#ifndef PC_BUILD
 asm void func_002eba50(BtlAction* action)
 {
   .set noreorder
@@ -7821,6 +7840,7 @@ asm void func_002eba50(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_common_subs reset
 
@@ -8310,6 +8330,7 @@ u32 func_002ecc20(void)
 }
 
 // FUN_002ecc60
+#ifndef PC_BUILD
 asm void func_002ecc60(s16 *param_1, s16 *param_2)
 {
   .set noreorder
@@ -8514,6 +8535,7 @@ asm void func_002ecc60(s16 *param_1, s16 *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 #pragma alias FUN_002d1de0_6a20 FUN_002d1de0
@@ -8641,6 +8663,7 @@ void func_002ed350(void)
 #pragma push
 #pragma schedule on
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm u32 func_002ed360(u64 *param_1)
 {
   .set noreorder
@@ -9853,6 +9876,7 @@ asm u32 func_002ed360(u64 *param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 #pragma opt_loop_invariants on
@@ -10593,6 +10617,7 @@ u32 func_002efdb0(BtlUnit* unit)
 }
 
 // FUN_002efe50
+#ifndef PC_BUILD
 asm void func_002efe50(BtlAction* action)
 {
   .set noreorder
@@ -11057,6 +11082,7 @@ asm void func_002efe50(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002f0580
 s32 func_002f0580(BtlAction* action)
@@ -11072,6 +11098,7 @@ s32 func_002f0580(BtlAction* action)
 
 #pragma opt_common_subs off
 // FUN_002f05f0
+#ifndef PC_BUILD
 asm void func_002f05f0(BtlAction *action)
 {
   .set noreorder
@@ -11604,6 +11631,7 @@ asm void func_002f05f0(BtlAction *action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_002f0e30
@@ -11619,6 +11647,7 @@ s32 func_002f0e30(BtlAction* action)
 }
 
 // FUN_002f0ea0
+#ifndef PC_BUILD
 asm void func_002f0ea0(u64 *param_1)
 {
   .set noreorder
@@ -12007,8 +12036,10 @@ asm void func_002f0ea0(u64 *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002f14a0
+#ifndef PC_BUILD
 asm u32 func_002f14a0(BtlAction* action)
 {
   .set noreorder
@@ -12133,6 +12164,7 @@ asm u32 func_002f14a0(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002f1680
 void func_002f1680(void)
@@ -12664,6 +12696,7 @@ int func_002f2510(int param_1)
  * measured nd24 at 752/752 (rate 0.031915); exhaustive declaration
  * permutations and const-pointer spelling stayed at or above nd17. */
 // FUN_002f2550
+#ifndef PC_BUILD
 asm void func_002f2550(BtlAction* action)
 {
   .set noreorder
@@ -12856,6 +12889,7 @@ asm void func_002f2550(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_002f2840
 u32 func_002f2840(BtlAction* action)
 {
@@ -12956,6 +12990,7 @@ u32 func_002f2b40(BtlAction* action)
 }
 
 // FUN_002f2b90
+#ifndef PC_BUILD
 asm void func_002f2b90(BtlAction* action)
 {
   .set noreorder
@@ -13344,6 +13379,7 @@ asm void func_002f2b90(BtlAction* action)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W367 pragma probe: opt_propagation off nd 1176 -> 1109; on nd 1176; object 1812/1824. */
 // FUN_002f3190
@@ -13592,6 +13628,7 @@ void func_002f39b0(BtlAction* action)
 #pragma push
 #pragma schedule on
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void func_002f3a80(BtlAction* param_1)
 {
   .set noreorder
@@ -14180,6 +14217,7 @@ asm void func_002f3a80(BtlAction* param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_002f43a0
@@ -14600,6 +14638,7 @@ void func_002f4e70(void)
 /* W367 pragma probe: opt_loop_invariants on nd 569 -> 539; off nd 569; object 728/752. */
 #pragma opt_loop_invariants on
 // FUN_002f5030
+#ifndef PC_BUILD
 asm void func_002f5030(int param_1)
 {
   .set noreorder
@@ -14792,6 +14831,7 @@ asm void func_002f5030(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 /* W212: template 002f3320's packet-local structure is already present. Recasting the unit search as retail's explicit do/while held nd444 but shrank 968 to 960 (window 976), so it was reverted; residual first differs at offset 28 as cyclic saved-register coloring, then at offset 292 in the search dispatch. */
@@ -15157,6 +15197,7 @@ LAB_002f5d34:
 #pragma opt_propagation off
 /* W419 negative: moved the long in-range branch before the short out-of-range branch in func_002f5d80; nd441 -> 448 at object 924/928. */
 // FUN_002f5d80
+#ifndef PC_BUILD
 asm void func_002f5d80(u32 param_1)
 {
   .set noreorder
@@ -15393,6 +15434,7 @@ asm void func_002f5d80(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 

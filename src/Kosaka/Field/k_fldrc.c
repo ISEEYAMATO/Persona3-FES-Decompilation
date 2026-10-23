@@ -702,6 +702,7 @@ void K_Fldrc_DestroyFldFpc()
  */
 #pragma push
 // FUN_001b0a20
+#ifndef PC_BUILD
 asm void K_Fldrc_001b0a20(s16 majorId, s16 minorId)
 {
   .set noreorder
@@ -1142,6 +1143,7 @@ asm void K_Fldrc_001b0a20(s16 majorId, s16 minorId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_loop_invariants off
 #pragma pop
@@ -1157,6 +1159,7 @@ asm void K_Fldrc_001b0a20(s16 majorId, s16 minorId)
 #pragma opt_lifetimes on
 #pragma opt_propagation off
 // FUN_001b10f0
+#ifndef PC_BUILD
 asm u32 K_Fldrc_Init()
 {
   .set noreorder
@@ -2605,6 +2608,7 @@ asm u32 K_Fldrc_Init()
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 #pragma pop
@@ -2839,6 +2843,7 @@ u32 FUN_001b2b30(u32 resource)
 /* W389: baseline obj 856/880, nd 528; opt_common_subs off -> obj 856/880, nd 521. */
 #pragma opt_common_subs off
 // FUN_001b2b90
+#ifndef PC_BUILD
 asm void FUN_001b2b90(u32 resource)
 {
   .set noreorder
@@ -3063,11 +3068,13 @@ asm void FUN_001b2b90(u32 resource)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_common_subs reset
 #pragma pop
 
 // FUN_001b2f00
+#ifndef PC_BUILD
 asm u32 FUN_001b2f00(u32* resource)
 {
   .set noreorder
@@ -3324,6 +3331,7 @@ asm u32 FUN_001b2f00(u32* resource)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001b32f0
 u32 FUN_001b32f0(void* resource, u32 wanted, u32* hasOverlay)
@@ -3394,6 +3402,7 @@ done:
 /* W389: baseline obj 1352/1376, nd 991; opt_dead_assignments off -> obj 1352/1376, nd 990. */
 #pragma opt_dead_assignments off
 // FUN_001b3480
+#ifndef PC_BUILD
 asm void FUN_001b3480(u32 resource)
 {
   .set noreorder
@@ -3742,11 +3751,13 @@ asm void FUN_001b3480(u32 resource)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma pop
 
 /* W418 negative: all 24 permutations of firstIndex/secondIndex/record/type were neutral at nd343/object652. */
 // FUN_001b39e0
+#ifndef PC_BUILD
 asm u32 FUN_001b39e0(u32 resource)
 {
   .set noreorder
@@ -3923,6 +3934,7 @@ asm u32 FUN_001b39e0(u32 resource)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001b3c90
 void FUN_001b3c90(void* resource)
@@ -3991,6 +4003,7 @@ void FUN_001b3c90(void* resource)
 // 0x004c9d10,0x00198610,0x00198610,0x0049a250. nd1255, object2256/window2256;
 // zero headroom means any repair must be size-neutral.
 // FUN_001b3e50
+#ifndef PC_BUILD
 asm void FUN_001b3e50(void* camera, u32* resource)
 {
   .set noreorder
@@ -4559,11 +4572,13 @@ asm void FUN_001b3e50(void* camera, u32* resource)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 /* W389: baseline obj 1568/1760, nd 912; opt_lifetimes on -> obj 1560/1760, nd 854. */
 #pragma opt_lifetimes on
 // FUN_001b4720
+#ifndef PC_BUILD
 asm void FUN_001b4720(void* camera, u32* resource)
 {
   .set noreorder
@@ -5008,6 +5023,7 @@ asm void FUN_001b4720(void* camera, u32* resource)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma pop
 
@@ -5015,6 +5031,7 @@ asm void FUN_001b4720(void* camera, u32* resource)
 /* Removing this worsens FUN_001b4e00 (nd650 -> nd651) - measured W161. */
 #pragma opt_loop_invariants on
 // FUN_001b4e00
+#ifndef PC_BUILD
 asm void FUN_001b4e00(u32* resource, const f32* offset, f32 unused)
 {
   .set noreorder
@@ -5275,6 +5292,7 @@ asm void FUN_001b4e00(u32* resource, const f32* offset, f32 unused)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_001b5200
@@ -5840,6 +5858,7 @@ done:
  * (an extra K_Field_Get_A before 0x003b5d50 at index 28). The retained
  * three-statement permutation closes the 76-call order at nd2116. */
 // FUN_001b61f0
+#ifndef PC_BUILD
 asm u32 FUN_001b61f0(void* resource, u32 archiveEntry)
 {
   .set noreorder
@@ -6660,10 +6679,12 @@ asm u32 FUN_001b61f0(void* resource, u32 archiveEntry)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_lifetimes reset
 #pragma pop
 // FUN_001b6eb0
+#ifndef PC_BUILD
 asm u32 FUN_001b6eb0(u16 group, u32 id)
 {
   .set noreorder
@@ -7128,6 +7149,7 @@ asm u32 FUN_001b6eb0(u16 group, u32 id)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_001b75e0
 u32 FUN_001b75e0(u32 task)
 {

@@ -246,6 +246,7 @@ void primAxisLine3D(const RwMatrix* mat, f32 length, u32 saveAndRestoreRenderSta
 // FUN_00359560
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, const RwMatrix* mat, u32 saveAndRestoreRenderState)
 {
   .set noreorder
@@ -626,6 +627,7 @@ asm void primCircleLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, 
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 /* DUMMYDUMB session 2026-10-20: 40 differing bytes in a 784-byte function (the
@@ -733,6 +735,7 @@ void primSphereLine3D(const RwV3d* center, f32 radius, const RwRGBA* color, u32 
 #pragma pop
 
 // FUN_00359e50
+#ifndef PC_BUILD
 asm void primCylinderLine3D(const RwV3d* center, f32 radius, f32 height, const RwRGBA* color, u32 saveAndRestoreRenderState)
 {
   .set noreorder
@@ -1009,6 +1012,7 @@ asm void primCylinderLine3D(const RwV3d* center, f32 radius, f32 height, const R
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 /* ---- Recovered range 0x35A290-0x35AD50 (Ghidra reference, pending match) ---- */
@@ -1300,6 +1304,7 @@ u32 LAB_0035a850(void* param_1)
 // FUN_0035A870
 
 
+#ifndef PC_BUILD
 asm void FUN_0035a870(void* param_1, void* param_2)
 {
   .set noreorder
@@ -1408,6 +1413,7 @@ asm void FUN_0035a870(void* param_1, void* param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0035AA10
 void FUN_0035aa10(int param_1, int param_2, int param_3)
 {

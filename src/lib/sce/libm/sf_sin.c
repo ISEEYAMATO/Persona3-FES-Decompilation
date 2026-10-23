@@ -15,6 +15,7 @@ extern float func_0052dc48(float x, float y, s32 iy);
 
 #pragma optimization_level 3
 // FUN_0052e878
+#ifndef PC_BUILD
 asm float sinf(float x)
 {
   .set noreorder
@@ -65,3 +66,4 @@ asm float sinf(float x)
   .word 0x1000ffe2
   .word 0xdfbf0010
 }
+#endif /* PC_BUILD: asm function omitted */

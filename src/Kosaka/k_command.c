@@ -1135,6 +1135,7 @@ u32 FUN_001C4080()
 
 /* W417 negative: swapping the requestedId/state declarations left FUN_001C4120 at nd518; rejected. */
 // FUN_001C4120
+#ifndef PC_BUILD
 asm u32 FUN_001C4120()
 {
   .set noreorder
@@ -1443,6 +1444,7 @@ asm u32 FUN_001C4120()
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001c45e0
 u32 K_Cmd_CREATE_FLD_MDL()
@@ -2179,6 +2181,7 @@ u32 func_001c5900()
 // FUN_001c5980
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm u32 func_001c5980()
 {
   .set noreorder
@@ -2419,6 +2422,7 @@ asm u32 func_001c5980()
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_001c5d30

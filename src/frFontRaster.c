@@ -71,6 +71,7 @@ void FUN_003b3f90(int param_1,u8 *param_2,int param_3);
  * `$a0,$a1,$a1,$a1,$a1,$a1,$a0` for the loop limit/node pair. Declaration
  * permutations and bound helpers stayed nd=7/344 and were reverted. */
 // FUN_003B35E0
+#ifndef PC_BUILD
 asm void FUN_003b35e0(int count)
 {
   .set noreorder
@@ -163,6 +164,7 @@ asm void FUN_003b35e0(int count)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003b35e0(...) FUN_003b35e0(__VA_ARGS__)
 #undef FUN_003b3740
 // FUN_003B3740
@@ -186,6 +188,7 @@ void FUN_003b3740(void)
 // FUN_003B3770
 
 
+#ifndef PC_BUILD
 asm void FUN_003b3770(void)
 {
   .set noreorder
@@ -286,6 +289,7 @@ asm void FUN_003b3770(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003b3770(...) FUN_003b3770(__VA_ARGS__)
 #undef FUN_003b38f0
 /* W389 pragma pair: opt_loop_invariants on + opt_lifetimes on; without nd=740/object=1084, with nd=709/object=1072; window=1136. */
@@ -293,6 +297,7 @@ asm void FUN_003b3770(void)
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes on
 // FUN_003B38F0
+#ifndef PC_BUILD
 asm u64 FUN_003b38f0(float param_1,int param_2,int param_3,u32 *param_4,int param_5,int param_6,
             int param_7,u32 param_8)
 {
@@ -582,6 +587,7 @@ asm u64 FUN_003b38f0(float param_1,int param_2,int param_3,u32 *param_4,int para
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset

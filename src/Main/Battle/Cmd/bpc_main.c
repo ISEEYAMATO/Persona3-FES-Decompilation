@@ -283,6 +283,7 @@ LAB_0024307c:
 /* W418 width negatives: FUN_00243150 iVar10 s16 nd2467/3996B -> 2559/4036B; iVar11 s16 -> 2574/4012B. FUN_002441B0 iVar10 s16 nd872/1464B -> 917/1512B (over 1472B), iVar4 s16 -> 965/1556B (over), iVar6 s16 -> 931/1500B (over). */
 /* W420 verified: swapping uVar3/uVar4 declarations reduced FUN_00243150 nd2467/3996B to nd2466/3996B, window4048B; rate61.74% to61.71%. */
 // FUN_00243150
+#ifndef PC_BUILD
 asm void FUN_00243150(void)
 {
   .set noreorder
@@ -1299,6 +1300,7 @@ asm void FUN_00243150(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -1323,6 +1325,7 @@ void FUN_00244120(u32 param_1)
 
 /* W419 negative probes: DAT_007ce4e8 .sdata alias and DAT_007ce320 pointer .sdata alias left FUN_002441B0 at nd700/1460B, window1472B, rate47.95%; reverted. */
 // FUN_002441B0
+#ifndef PC_BUILD
 asm void FUN_002441b0(u32 param_1)
 {
   .set noreorder
@@ -1695,6 +1698,7 @@ asm void FUN_002441b0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -2059,6 +2063,7 @@ void FUN_002453d0(u16 param_1)
 #pragma opt_dead_assignments off
 /* W414 argument-order probes: literal-first call stayed nd8/1264B (window1264B, rate0.63%); typed prototype regressed nd601/1268B (over window); schedule-on regressed nd736/1076B (over window). Reverted; residual is the two-argument evaluation-order floor. */
 // FUN_00245420
+#ifndef PC_BUILD
 asm void FUN_00245420(uint *param_1,uint param_2)
 {
   .set noreorder
@@ -2379,6 +2384,7 @@ asm void FUN_00245420(uint *param_1,uint param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 
@@ -2586,6 +2592,7 @@ void FUN_00245e50(void)
 /* W419 negative probe: DAT_007caf38 float-array .sdata alias left FUN_00245EA0 at nd6938/9468B, window9712B, rate73.28%; reverted. */
 /* Retail decodes three status-icon switches plus four flag-conditioned coordinate switches; all 9708/9712 bytes of the draw tail are represented, with only scheduler residuals remaining. */
 // FUN_00245EA0
+#ifndef PC_BUILD
 asm void FUN_00245ea0(void)
 {
   .set noreorder
@@ -5018,6 +5025,7 @@ asm void FUN_00245ea0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 

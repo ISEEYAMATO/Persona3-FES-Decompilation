@@ -489,6 +489,7 @@ typedef struct BrRootSetupParams {
  * unchanged because the remaining 192-byte difference is stack layout/liveness,
  * and adding padding would fabricate growth. */
 // FUN_001f3270
+#ifndef PC_BUILD
 asm void func_001f3270(KwlnTask *task)
 {
   .set noreorder
@@ -1765,6 +1766,7 @@ asm void func_001f3270(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f4650
 void func_001f4650(KwlnTask *task, const u8 *params)
@@ -1890,6 +1892,7 @@ u32 func_001f4990(void)
 }
 
 // FUN_001f4a00
+#ifndef PC_BUILD
 asm void func_001f4a00(void)
 {
   .set noreorder
@@ -2510,6 +2513,7 @@ asm void func_001f4a00(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f53a0
 void func_001f53a0(void)

@@ -693,6 +693,7 @@ const BtlCameraStateEntry* btlBossGetCameraStateEntry(u16 cameraState)
  * 64-bit literal context, which this source does not have. Same wall family as
  * FUN_002b17a0's literal-width floor. */
 // FUN_002f88c0
+#ifndef PC_BUILD
 asm u64 func_002f88c0()
 {
   .set noreorder
@@ -793,6 +794,7 @@ asm u64 func_002f88c0()
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* DUMMYDUMB session 2026-10-21: 2 bytes away.  Both differences are the same
  * word form: ours "li v0,1" (the 32-bit addiu) where retail has
@@ -1146,6 +1148,7 @@ return_result:
 #pragma opt_loop_invariants on
 /* W414 switch probes: nested genus switches plus id/character variants regressed; retain the measured 823/1248 shape. */
 // FUN_002f8fd0
+#ifndef PC_BUILD
 asm s16 func_002f8fd0(BtlUnit* unit, s16 id)
 {
   .set noreorder
@@ -1506,6 +1509,7 @@ asm s16 func_002f8fd0(BtlUnit* unit, s16 id)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 // FUN_002f9560
@@ -1885,6 +1889,7 @@ BtlPacket* btlBossCreateLoadPakPacket()
 
 /* W414 negatives: per-case local copies worsened nd1022->1059 (1504B); direct field expansion exceeded the 1584B window (1644B). */
 // FUN_002f9c10
+#ifndef PC_BUILD
 asm u32 func_002f9c10(BtlAction* action)
 {
   .set noreorder
@@ -2285,6 +2290,7 @@ asm u32 func_002f9c10(BtlAction* action)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002fa240
 u32 func_002fa240(void)
@@ -2321,6 +2327,7 @@ u32 func_002fa240(void)
 #pragma opt_common_subs off
 /* W414 negative: removing eager charId worsened nd871->943 (1300B); retain the baseline local. */
 // FUN_002fa510
+#ifndef PC_BUILD
 asm void func_002fa510(BtlAction* action, s32 mode)
 {
   .set noreorder
@@ -2661,6 +2668,7 @@ asm void func_002fa510(BtlAction* action, s32 mode)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 
@@ -2894,6 +2902,7 @@ encounter_default:
 
 /* Retail algorithm: genus-gated encounter jump table returns 16-bit values from per-character tables; implemented 2980/2992 bytes (99%); remaining 12-byte tail/layout gap. */
 // FUN_002fb860
+#ifndef PC_BUILD
 asm s16 func_002fb860(BtlUnit* unit, u16 index)
 {
   .set noreorder
@@ -3646,6 +3655,7 @@ asm s16 func_002fb860(BtlUnit* unit, u16 index)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -3688,6 +3698,7 @@ BtlUnitAnimBounds* func_002fc520(BtlUnit* unit)
 }
 
 // FUN_002fc5d0
+#ifndef PC_BUILD
 asm f32 func_002fc5d0(BtlUnit* unit, BtlUnit* target, s32 animation)
 {
   .set noreorder
@@ -4000,6 +4011,7 @@ asm f32 func_002fc5d0(BtlUnit* unit, BtlUnit* target, s32 animation)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Recovered battle-misc harvest: 0x002FCAA0-0x002FED10 */
 // FUN_002FCAA0
@@ -4431,6 +4443,7 @@ u32 FUN_002fd220(BtlAction* action, BtlAction* target)
 }
 
 // FUN_002FD2E0
+#ifndef PC_BUILD
 asm u32 FUN_002fd2e0(int param_1, u16 param_2)
 {
   .set noreorder
@@ -4547,6 +4560,7 @@ asm u32 FUN_002fd2e0(int param_1, u16 param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002FD4A0
 
@@ -5185,6 +5199,7 @@ u32 FUN_002fdfe0(int param_1)
 
 
 // FUN_002FE0B0
+#ifndef PC_BUILD
 asm void FUN_002fe0b0(float param_1, u8* param_2, u64 param_3, u64 param_4,
                   u64 param_5)
 {
@@ -5626,6 +5641,7 @@ asm void FUN_002fe0b0(float param_1, u8* param_2, u64 param_3, u64 param_4,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -5660,6 +5676,7 @@ asm void FUN_002fe0b0(float param_1, u8* param_2, u64 param_3, u64 param_4,
    0x2fe888-0x2fe9cc, 40-iteration strip 0x2fe9e0-0x2feb60, and final
    vertex/draw path 0x2feb70-0x2fecbc. */
 // FUN_002FE780
+#ifndef PC_BUILD
 asm void FUN_002fe780(float param_1, u8* param_2, u8* param_3,
                   u64 param_4, u64 param_5)
 {
@@ -6021,12 +6038,14 @@ asm void FUN_002fe780(float param_1, u8* param_2, u8* param_3,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* W373 pragma sweep nd/obj: base 889/1356; singles LI=889/1356 CS=982/1444(over) LT=889/1356 PR=837/1348 SR=889/1356 DA=887/1356. */
 /* Pair nd/obj: LI+CS=982/1444 LI+LT=889/1356 LI+PR=837/1348 LI+SR=889/1356 LI+DA=887/1356 CS+LT=982/1444 CS+PR=982/1444 CS+SR=982/1444 CS+DA=982/1444 LT+PR=837/1348 LT+SR=889/1356 LT+DA=887/1356 PR+SR=837/1348 PR+DA=837/1348 SR+DA=887/1356; retain PR off. */
 #pragma opt_propagation off
 /* W414 negative: replacing the state-2 render-state pair with FUN_002fe780 worsened nd837->852 (1352B); retain baseline. */
 // FUN_002FED10
+#ifndef PC_BUILD
 asm u32 FUN_002fed10(int param_1)
 {
   .set noreorder
@@ -6371,4 +6390,5 @@ asm u32 FUN_002fed10(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset

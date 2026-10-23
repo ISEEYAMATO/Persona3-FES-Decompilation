@@ -826,6 +826,7 @@ void func_001da000(KwlnTask* task, u32 disabled)
 // offset 1896 that is not yet reconstructed.
 /* W422 rejected direct-play probes: both explicit K_Footstep_Play callsites in this update inlined = 7405/10096/9936; first only = 7661/10016/9936; second only = 7642/10016/9936. mdlId reintroduction/order/no-type variants = 6856/9948/9936, 6852/9948/9936, and 2448/9936/9936. Baseline 2335/9936 retained. */
 // FUN_001da020
+#ifndef PC_BUILD
 asm void K_Footstep_Update(Model* mdl, u16 charId, u16 resTypeId)
 {
   .set noreorder
@@ -3314,6 +3315,7 @@ asm void K_Footstep_Update(Model* mdl, u16 charId, u16 resTypeId)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001dc6f0
 asm void* func_001dc6f0(KwlnTask* task)
@@ -4204,6 +4206,7 @@ u32 func_001dd600(void)
 
 #pragma opt_loop_invariants on
 // FUN_001dd8e0
+#ifndef PC_BUILD
 asm void func_001dd8e0(void)
 {
   .set noreorder
@@ -4356,6 +4359,7 @@ asm void func_001dd8e0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 // FUN_001ddb30
@@ -5273,6 +5277,7 @@ static KwlnTask* K_Encount_CreatePeriodicScript(PeriodicWork* work, u32 slot, u3
 }
 
 // FUN_001ded40
+#ifndef PC_BUILD
 asm s32 func_001ded40(s32 charId)
 {
   .set noreorder
@@ -5729,6 +5734,7 @@ asm s32 func_001ded40(s32 charId)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001df450
 s32 func_001df450(s32 mode)

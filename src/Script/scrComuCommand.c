@@ -1752,6 +1752,7 @@ u32 scrComu00360d40(void)
 #pragma opt_common_subs off
 /* W415 census recheck: all six relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
 // FUN_00360ed0. Checks a comu event's availability condition ('objtype' 0..2)
+#ifndef PC_BUILD
 asm u32 scrComu00360ed0(int param_1)
 {
   .set noreorder
@@ -1852,6 +1853,7 @@ asm u32 scrComu00360ed0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 
@@ -2179,6 +2181,7 @@ void FUN_00361200(int param_1,int param_2)
 // FUN_00361270
 
 
+#ifndef PC_BUILD
 asm void FUN_00361270(int param_1)
 {
   .set noreorder
@@ -2239,6 +2242,7 @@ asm void FUN_00361270(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

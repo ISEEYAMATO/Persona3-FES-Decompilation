@@ -330,6 +330,7 @@ void func_00275cb0(void)
  * through the decoded result frame. Implemented those accesses; 8 bytes remain
  * in the callee-saved frame/layout difference. */
 // FUN_002760f0
+#ifndef PC_BUILD
 asm void func_002760f0(void)
 {
   .set noreorder
@@ -778,6 +779,7 @@ asm void func_002760f0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002767e0
 void brLvpnlStartEntranceAnimation(void)

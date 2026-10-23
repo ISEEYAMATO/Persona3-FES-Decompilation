@@ -1,10 +1,10 @@
-src\Battle\btlAction.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlAction.c:535:5: error: expected '(' after 'asm'
+src\Battle\btlAction.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlAction.c:1111:42: error: call to undeclared function 'FUN_0030b5a0'; ISO C99 and later do not support implic
 src\Battle\btlBoss.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlBoss.c:14:21: error: ISO C requires a named parameter before '...'
 src\Battle\btlCamera.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlCamera.c:13:21: error: ISO C requires a named parameter before '...'
 src\Battle\btlEffect.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlEffect.c:33:21: error: ISO C requires a named parameter before '...'
 src\Battle\btlFormation.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlFormation.c:23:21: error: ISO C requires a named parameter before '...'
 src\Battle\btlMain.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlMain.c:21:21: error: ISO C requires a named parameter before '...'
-src\Battle\btlOrder.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlOrder.c:286:5: error: expected '(' after 'asm'
+src\Battle\btlOrder.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlOrder.c:791:17: error: call to undeclared function 'FUN_0029a750'; ISO C99 and later do not support implicit
 src\Battle\btlPacket.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlPacket.c:327:5: error: call to undeclared library function 'memset' with type 'void *(void *, int, __size_t)
 src\Battle\btlSound.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlSound.c:37:21: error: ISO C requires a named parameter before '...'
 src\Battle\btlTarget.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlTarget.c:597:38: error: ISO C requires a named parameter before '...'
@@ -16,11 +16,11 @@ src\Event\Fcl\fclBankManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Even
 src\Event\Fcl\fclCombine.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombine.c:70:21: error: ISO C requires a named parameter before '...'
 src\Event\Fcl\fclCombineList.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombineList.c:3:18: error: ISO C requires a named parameter before '...'
 src\Event\Fcl\fclCombineMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombineMisc.c:155:21: error: ISO C requires a named parameter before '...'
-src\Event\Fcl\fclDrawSprite.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclDrawSprite.c:120:5: error: expected '(' after 'asm'
+src\Event\Fcl\fclDrawSprite.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclDrawSprite.c:341:13: error: call to undeclared function 'H_Maestro_001120a0'; ISO C99 and later do not su
 src\Event\Fcl\fclMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclMisc.c:4:21: error: ISO C requires a named parameter before '...'
 src\Event\Fcl\fclShop.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclShop.c:476:21: error: call to undeclared function 'FUN_003c5460'; ISO C99 and later do not support implic
-src\Event\Fcl\fclShopBGManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclShopBGManager.c:249:5: error: expected '(' after 'asm'
-src\Event\Fcl\fclShopMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclShopMisc.c:1271:5: error: expected '(' after 'asm'
+src\Event\Fcl\fclShopBGManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclShopBGManager.c:473:7: error: call to undeclared function 'FUN_003ef970'; ISO C99 and later do not suppor
+src\Event\Fcl\fclShopMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclShopMisc.c:1450:11: error: call to undeclared function 'datGetSocialLinkLevel'; ISO C99 and later do not 
 src\Event\Fcl\fcl_misc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fcl_misc.c:4:21: error: ISO C requires a named parameter before '...'
 src\Event\mt_evtCustomEvent.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtCustomEvent.c:3:21: error: ISO C requires a named parameter before '...'
 src\Event\mt_evtCutin.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtCutin.c:2:21: error: ISO C requires a named parameter before '...'
@@ -37,32 +37,28 @@ src\Graphics\Effect\eff_afpack.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Gr
 src\Graphics\Model\mdlEffect.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Graphics\Model\mdlEffect.c:28:21: error: ISO C requires a named parameter before '...'
 src\Graphics\Model\mdlFile.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Graphics\Model\mdlFile.c:1:27: error: ISO C requires a named parameter before '...'
 src\Graphics\Model\mdlManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Graphics\Model\mdlManager.c:116:21: error: ISO C requires a named parameter before '...'
-src\Graphics\primitive.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Graphics\primitive.c:249:5: error: expected '(' after 'asm'
 src\Kernel\Kwln\kwln.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kernel\Kwln\kwln.c:221:29: error: array has incomplete element type 'const void'
-src\Kernel\Kwln\kwlnTask.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kernel\Kwln\kwlnTask.c:315:5: error: expected '(' after 'asm'
+src\Kernel\Kwln\kwlnTask.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kernel\Kwln\kwlnTask.c:746:5: error: call to undeclared function 'kwlnTaskUpdateAll'; ISO C99 and later do not support
 src\Kernel\h_fileSetup.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kernel\h_fileSetup.c:316:57: error: invalid output constraint '=f' in asm
 src\Kernel\h_malloc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kernel\h_malloc.c:70:5: error: expected '(' after 'asm'
-src\Kernel\h_memcard.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kernel\h_memcard.c:215:5: error: expected '(' after 'asm'
 src\Kosaka\Field\k_dungeon.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_dungeon.c:432:21: error: call to undeclared function 'func_001a01c0'; ISO C99 and later do not support 
 src\Kosaka\Field\k_event.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_event.c:688:9: error: call to undeclared function 'datGetFlag'; ISO C99 and later do not support implic
-src\Kosaka\Field\k_field.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_field.c:339:5: error: expected '(' after 'asm'
+src\Kosaka\Field\k_field.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_field.c:564:5: error: expected '(' after 'asm'
 src\Kosaka\Field\k_fldCamera.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldCamera.c:239:5: error: expected '(' after 'asm'
 src\Kosaka\Field\k_fldFilter.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldFilter.c:92:5: error: expected '(' after 'asm'
-src\Kosaka\Field\k_fldFrame.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldFrame.c:1208:5: error: expected '(' after 'asm'
+src\Kosaka\Field\k_fldFrame.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldFrame.c:2317:5: error: expected '(' after 'asm'
 src\Kosaka\Field\k_fldrc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldrc.c:33:21: error: ISO C requires a named parameter before '...'
 src\Kosaka\Field\k_sceneDraw.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_sceneDraw.c:669:5: error: expected '(' after 'asm'
 src\Kosaka\Field\k_shadow.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_shadow.c:564:5: error: expected '(' after 'asm'
 src\Kosaka\Field\k_unit.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_unit.c:481:5: error: expected '(' after 'asm'
 src\Kosaka\k_battle.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_battle.c:133:15: error: call to undeclared library function 'atan2f' with type 'float (float, float)'; ISO C9
 src\Kosaka\k_clump.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_clump.c:727:5: error: expected '(' after 'asm'
-src\Kosaka\k_command.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_command.c:1138:5: error: expected '(' after 'asm'
 src\Kosaka\k_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_data.c:257:5: error: expected '(' after 'asm'
 src\Kosaka\k_draw.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_draw.c:462:5: error: non-void function 'func_001a5000' should return a value [-Wreturn-mismatch]
 src\Kosaka\k_footstep.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_footstep.c:338:5: error: expected '(' after 'asm'
 src\Kosaka\k_sequence.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_sequence.c:633:13: error: call to undeclared function 'FUN_001b5610'; ISO C99 and later do not support implic
 src\Kosaka\k_spipe.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_spipe.c:1209:5: error: expected '(' after 'asm'
 src\Kosaka\k_vpad.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\k_vpad.c:536:36: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Cmd\bai_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bai_main.c:42:5: error: expected '(' after 'asm'
 src\Main\Battle\Cmd\bcm_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bcm_main.c:629:9: error: call to undeclared function 'FUN_005225a8'; ISO C99 and later do not support 
 src\Main\Battle\Cmd\bp_dialog.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bp_dialog.c:9:21: error: ISO C requires a named parameter before '...'
 src\Main\Battle\Cmd\bp_rush.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bp_rush.c:5:21: error: ISO C requires a named parameter before '...'
@@ -71,51 +67,44 @@ src\Main\Battle\Cmd\bp_tuta.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\
 src\Main\Battle\Cmd\bpc_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpc_main.c:249:15: error: call to undeclared function 'datCalcGetHp'; ISO C99 and later do not support
 src\Main\Battle\Cmd\bpd_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpd_main.c:7:21: error: ISO C requires a named parameter before '...'
 src\Main\Battle\Cmd\bpe_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpe_main.c:316:9: error: call to undeclared function 'func_00474630'; ISO C99 and later do not support
-src\Main\Battle\Cmd\bpm_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpm_main.c:124:5: error: expected '(' after 'asm'
+src\Main\Battle\Cmd\bpm_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpm_main.c:503:13: error: call to undeclared function 'FUN_00248620'; ISO C99 and later do not support
 src\Main\Battle\Cmd\bpo_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpo_main.c:5:21: error: ISO C requires a named parameter before '...'
 src\Main\Battle\Cmd\bpp_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bpp_main.c:326:9: error: conflicting types for 'bppMain0020f720'
 src\Main\Battle\Cmd\bsa_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\bsa_main.c:17:21: error: ISO C requires a named parameter before '...'
 src\Main\Battle\Cmd\gc_pose.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Cmd\gc_pose.c:43:21: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Data\datCalc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Data\datCalc.c:446:5: error: expected '(' after 'asm'
+src\Main\Battle\Data\datCalc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Data\datCalc.c:11280:20: error: conflicting types for 'FUN_00306e80'
 src\Main\Battle\Data\datPersona.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Data\datPersona.c:319:31: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Data\datScript.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Data\datScript.c:383:5: error: expected '(' after 'asm'
 src\Main\Battle\Data\datUnit.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Data\datUnit.c:46:5: error: expected '(' after 'asm'
 src\Main\Battle\Panel\baus_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Panel\baus_main.c:194:5: error: call to undeclared function 'func_00209ea0'; ISO C99 and later do not supp
 src\Main\Battle\Panel\bp_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Panel\bp_root.c:501:5: error: expected '(' after 'asm'
 src\Main\Battle\Panel\bp_tex.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Panel\bp_tex.c:1370:5: error: expected '(' after 'asm'
-src\Main\Battle\Panel\bpp_panel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Panel\bpp_panel.c:80:5: error: expected '(' after 'asm'
 src\Main\Battle\Panel\bs_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Panel\bs_root.c:9:21: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Panel\sfl_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Panel\sfl_data.c:892:5: error: expected '(' after 'asm'
 src\Main\Battle\Result\bp_ifont.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\bp_ifont.c:378:5: error: call to undeclared function 'RpSkyRenderStateSet'; ISO C99 and later do no
 src\Main\Battle\Result\br_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_data.c:218:9: error: call to undeclared function 'FUN_00175ca0'; ISO C99 and later do not suppor
-src\Main\Battle\Result\br_friend.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_friend.c:206:5: error: expected '(' after 'asm'
+src\Main\Battle\Result\br_friend.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_friend.c:406:17: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not sup
 src\Main\Battle\Result\br_hero.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_hero.c:121:13: error: call to undeclared function 'FUN_0016c470'; ISO C99 and later do not suppo
 src\Main\Battle\Result\br_item.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_item.c:91:21: error: ISO C requires a named parameter before '...'
 src\Main\Battle\Result\br_lvpnl.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_lvpnl.c:6:21: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Result\br_panel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_panel.c:249:5: error: expected '(' after 'asm'
+src\Main\Battle\Result\br_panel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_panel.c:1310:5: error: expected '(' after 'asm'
 src\Main\Battle\Result\br_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_root.c:372:36: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Result\brp_birth.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\brp_birth.c:287:5: error: expected '(' after 'asm'
 src\Main\Battle\Result\brp_param.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\brp_param.c:145:21: error: ISO C requires a named parameter before '...'
 src\Main\Battle\Result\brp_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\brp_root.c:8:21: error: ISO C requires a named parameter before '...'
-src\Main\Battle\Result\sfl_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\sfl_root.c:492:5: error: expected '(' after 'asm'
 src\Main\Game\game_support_late.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Game\game_support_late.c:338:16: error: call to undeclared function 'datGetMaxHp'; ISO C99 and later do not suppo
 src\Main\OpEd\brp_persona.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\brp_persona.c:3:21: error: ISO C requires a named parameter before '...'
 src\Main\OpEd\ed_res.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\ed_res.c:196:32: error: call to undeclared function 'func_00279940'; ISO C99 and later do not support implic
 src\Main\OpEd\ed_scroll.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\ed_scroll.c:306:28: error: call to undeclared function 'func_00279af0'; ISO C99 and later do not support imp
 src\Main\OpEd\op_fade.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\op_fade.c:165:21: error: ISO C requires a named parameter before '...'
-src\Main\OpEd\op_menu.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\op_menu.c:172:5: error: expected '(' after 'asm'
-src\Main\OpEd\op_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\op_root.c:181:5: error: expected '(' after 'asm'
-src\Main\OpEd\op_wait.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\op_wait.c:289:5: error: expected '(' after 'asm'
-src\Main\Social\bi_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\bi_main.c:163:5: error: expected '(' after 'asm'
-src\Main\Social\gc_model.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\gc_model.c:228:5: error: expected '(' after 'asm'
+src\Main\OpEd\op_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\op_root.c:1025:5: error: call to undeclared function 'FUN_00108f70'; ISO C99 and later do not support implic
+src\Main\OpEd\op_wait.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\OpEd\op_wait.c:861:5: error: call to undeclared function 'func_0021d3b0'; ISO C99 and later do not support implic
+src\Main\Social\bi_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\bi_main.c:3133:5: error: call to undeclared function 'kwlnGetMainCamera'; ISO C99 and later do not support
+src\Main\Social\gc_model.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\gc_model.c:1452:5: error: call to undeclared function 'func_00209ea0'; ISO C99 and later do not support im
 src\Main\Social\pb_main.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\pb_main.c:195:9: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support impli
 src\Main\Social\sfl_card.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_card.c:10:21: error: ISO C requires a named parameter before '...'
 src\Main\Social\sfl_count.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_count.c:4:21: error: ISO C requires a named parameter before '...'
 src\Main\Social\sfl_cursor.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_cursor.c:4:21: error: ISO C requires a named parameter before '...'
 src\Main\Social\sfl_ground.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_ground.c:224:5: error: call to undeclared function 'RpSkyRenderStateSet'; ISO C99 and later do not sup
 src\Main\Social\sfl_panel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_panel.c:24:21: error: ISO C requires a named parameter before '...'
-src\Main\Social\sfl_psel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_psel.c:169:5: error: expected '(' after 'asm'
-src\Main\Social\sfl_psel2.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_psel2.c:248:5: error: expected '(' after 'asm'
+src\Main\Social\sfl_psel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_psel.c:1025:5: error: call to undeclared function 'sflPsel00260bd0'; ISO C99 and later do not support 
 src\Main\Social\sfl_result.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_result.c:666:5: error: expected '(' after 'asm'
 src\Main\Social\sfl_script.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_script.c:10:21: error: ISO C requires a named parameter before '...'
 src\Main\g_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\g_data.c:264:31: error: ISO C requires a named parameter before '...'
@@ -136,7 +125,7 @@ src\comuSasoi.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\comuSasoi.c:2:21: e
 src\comuTimerSequence.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\comuTimerSequence.c:2:21: error: ISO C requires a named parameter before '...'
 src\cri\cri_adx.c :: include\mw_harvest_compat.h:5:21: error: ISO C requires a named parameter before '...'
 src\crt0.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\crt0.c:10:27: error: ISO C requires a named parameter before '...'
-src\datCalendar.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\datCalendar.c:354:5: error: expected '(' after 'asm'
+src\datCalendar.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\datCalendar.c:1024:5: error: expected '(' after 'asm'
 src\fmGslCont.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\fmGslCont.c:2:21: error: ISO C requires a named parameter before '...'
 src\frFont.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\frFont.c:2:21: error: ISO C requires a named parameter before '...'
 src\frFontEx.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\frFontEx.c:5:21: error: ISO C requires a named parameter before '...'
@@ -147,9 +136,8 @@ src\h_cursor.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_cursor.c:11:5: err
 src\h_dbprt.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_dbprt.c:429:17: error: call to undeclared function 'func_0050d3a0'; ISO C99 and later do not support implicit functi
 src\h_fade.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_fade.c:480:5: error: expected '(' after 'asm'
 src\h_maestro.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_maestro.c:1220:13: error: call to undeclared function 'sceSifSetDma'; ISO C99 and later do not support implicit func
-src\h_pad.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_pad.c:100:5: error: expected '(' after 'asm'
+src\h_pad.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_pad.c:640:17: error: call to undeclared function 'func_0050d3a0'; ISO C99 and later do not support implicit function
 src\h_sfdply.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_sfdply.c:456:5: error: expected '(' after 'asm'
-src\h_snd.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_snd.c:375:5: error: expected '(' after 'asm'
 src\itfMesManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\itfMesManager.c:5:21: error: ISO C requires a named parameter before '...'
 src\lib\cri\libmwsfde\uty_tmr.c :: include\mw_harvest_compat.h:5:21: error: ISO C requires a named parameter before '...'
 src\lib\gcc\libgcc\_fixdfdi.c :: include\mw_harvest_compat.h:5:21: error: ISO C requires a named parameter before '...'
@@ -168,8 +156,8 @@ src\libc_core.c :: include\mw_harvest_compat.h:5:21: error: ISO C requires a nam
 src\libcdvd.c :: include\mw_harvest_compat.h:5:21: error: ISO C requires a named parameter before '...'
 src\nmCmdList.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\nmCmdList.c:9:21: error: ISO C requires a named parameter before '...'
 src\nmSequence.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\nmSequence.c:2:21: error: ISO C requires a named parameter before '...'
-src\rw\rprandom.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rprandom.c:23:5: error: expected '(' after 'asm'
-src\rw\rpusrdat.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rpusrdat.c:21:5: error: expected '(' after 'asm'
+src\rw\rprandom.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rprandom.c:160:21: error: ISO C requires a named parameter before '...'
+src\rw\rpusrdat.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rpusrdat.c:49:5: error: expected '(' after 'asm'
 src\rw\rpworld.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rpworld.c:9:21: error: ISO C requires a named parameter before '...'
 src\rw\rt2d.c :: include\mw_harvest_compat.h:5:21: error: ISO C requires a named parameter before '...'
 src\rw\rtanim.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rtanim.c:37:21: error: ISO C requires a named parameter before '...'

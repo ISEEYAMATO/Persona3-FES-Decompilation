@@ -73,6 +73,7 @@ static const float sAtanTerms[] = {
 // Reconstructed signed remainder wrapper; retail keeps a longer scheduled
 // 64-bit negate path that MWCCPS2 does not reproduce from equivalent C.
 // FUN_0052F6A0
+#ifndef PC_BUILD
 asm u64 FUN_0052f6a0(long param_1,long param_2)
 {
   .set noreorder
@@ -153,9 +154,11 @@ asm u64 FUN_0052f6a0(long param_1,long param_2)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 /* Structured unsigned core: 1936/1736 nd1750 -> 1732/1736 nd1521. */
 #pragma opt_propagation off
 // FUN_0052F7D0
+#ifndef PC_BUILD
 asm u64 FUN_0052f7d0(u64 n, u64 d, u64 *rp)
 {
   .set noreorder
@@ -594,8 +597,10 @@ asm u64 FUN_0052f7d0(u64 n, u64 d, u64 *rp)
   .word 0x1000ff64
   .word 0x01af600b
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 // FUN_0052FE98
+#ifndef PC_BUILD
 asm u32 FUN_0052fe98(long param_1,long param_2)
 {
   .set noreorder
@@ -1040,3 +1045,4 @@ asm u32 FUN_0052fe98(long param_1,long param_2)
   .word 0x1000ff64
   .word 0x01af600b
 }
+#endif /* PC_BUILD: asm function omitted */

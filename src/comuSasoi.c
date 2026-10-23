@@ -795,6 +795,7 @@ work:
 #pragma opt_loop_invariants on
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003c3190(int *param_1)
 {
   .set noreorder
@@ -927,6 +928,7 @@ asm u32 FUN_003c3190(int *param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 #define FUN_003c3190(...) FUN_003c3190(__VA_ARGS__)
 #undef FUN_003c3390

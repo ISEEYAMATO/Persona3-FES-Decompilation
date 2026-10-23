@@ -1636,6 +1636,7 @@ ResrcModelNpc* K_FldEvent_FindInteractableNpc()
 
 /* W415 negative probes: moving 001d8d60 ahead of 001d8d50 via found/sentinel/do-while loop forms raised nd 334 to 385, 391, 398, 434, 461, 482, 485, or 489; baseline retained. */
 // FUN_001c7830
+#ifndef PC_BUILD
 asm void func_001c7830(void* output, void* script)
 {
   .set noreorder
@@ -1824,6 +1825,7 @@ asm void func_001c7830(void* output, void* script)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001c7b10
 u32 K_FldEvent_IsUnitHero(const FldUnit* fldUnit)
@@ -2019,6 +2021,7 @@ void func_001c80c0(void)
 }
 
 // FUN_001c8120
+#ifndef PC_BUILD
 asm void func_001c8120(void* work)
 {
   .set noreorder
@@ -2343,6 +2346,7 @@ asm void func_001c8120(void* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Retail routes the camera aggregate through an aligned 0x60-byte scratch area before copying six quadwords back; this preserves that real data flow even though the wider function remains NONMATCHING.
 // FUN_001c8620

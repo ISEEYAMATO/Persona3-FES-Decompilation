@@ -77,6 +77,7 @@ void FUN_0022c850(u32* object)
 // MWCCPS2 retains a different branch layout, so the function stays pending.
 // W418 width negatives: FUN_0022C8A0 first color-loop j s16 nd4183/5656B -> 4184/5672B; second color-loop j s16 -> 4182/5672B (near-flat rate, rejected).
 // FUN_0022C8A0
+#ifndef PC_BUILD
 asm void FUN_0022c8a0(u32* object_param)
 {
   .set noreorder
@@ -1517,12 +1518,14 @@ asm void FUN_0022c8a0(u32* object_param)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // W212: matched-sibling vtable transfer changed nd 1383 -> 1343 and
 // reached the 2160/2160 window. The first residual is a saved-register
 // bank mismatch at +0x20 (ours object in s3, retail s4); declaration
 // ordering cannot safely solve the cascading allocation difference.
 // FUN_0022DF10
+#ifndef PC_BUILD
 asm void FUN_0022df10(u32* object)
 {
   .set noreorder
@@ -2067,6 +2070,7 @@ asm void FUN_0022df10(u32* object)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0022E780
 void FUN_0022e780(u32* object, u32 command)
@@ -2447,6 +2451,7 @@ void FUN_0022f1c0(u32* object, u64 event)
 
 // W418 width negative: FUN_0022F3B0 i s16 nd1087/1724B -> 1279/1876B (over 1744B); reverted.
 // FUN_0022F3B0
+#ifndef PC_BUILD
 asm void FUN_0022f3b0(u32* object)
 {
   .set noreorder
@@ -2887,6 +2892,7 @@ asm void FUN_0022f3b0(u32* object)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Partially reconstructed. Retail dispatches on the state at byte 0x830
 // (object[0x20c]) through an 11-entry jump table at 0x7b77e0, decoded from the
@@ -2901,6 +2907,7 @@ asm void FUN_0022f3b0(u32* object)
 /* W418 negative probe: case-0 i narrowed u32->s16 regressed nd10216/13344B -> nd10408/13432B (over the 13344B window); reverted. */
 /* W418 width negatives for FUN_0022FA80: case2 i/j/k s16 -> nd10373/10299/10295 with object 13416/13360/13360B; case3 i/j -> nd10288/10419 with object 13392/13440B; case4 i -> nd10304/13424B; case5 i -> nd10314/13392B; case6 i -> nd10385/13488B; case7 i -> nd10357/13400B. All were worse or over the 13344B window; reverted. */
 // FUN_0022FA80
+#ifndef PC_BUILD
 asm void FUN_0022fa80(u32* object)
 {
   .set noreorder
@@ -6241,6 +6248,7 @@ asm void FUN_0022fa80(u32* object)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -6258,6 +6266,7 @@ asm void FUN_0022fa80(u32* object)
 
 // W418 width negative: bppPanelDrawParameterLayout i s16 nd416/2276B -> 1520/2444B (over 2288B); reverted.
 // FUN_00232EA0
+#ifndef PC_BUILD
 asm void bppPanelDrawParameterLayout(BppPanelWork* work)
 {
   .set noreorder
@@ -6834,6 +6843,7 @@ asm void bppPanelDrawParameterLayout(BppPanelWork* work)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00233790
 void bppPanelRequestStatusRefresh(BppPanelWork* work)

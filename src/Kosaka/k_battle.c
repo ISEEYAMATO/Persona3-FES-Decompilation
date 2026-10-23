@@ -506,6 +506,7 @@ static u32 K_Encount_HpRatio(u16 id, f32* ratio)
 }
 
 // FUN_001d9310
+#ifndef PC_BUILD
 asm u32 func_001d9310(EncounterRecord* out)
 {
   .set noreorder
@@ -622,8 +623,10 @@ asm u32 func_001d9310(EncounterRecord* out)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d94d0
+#ifndef PC_BUILD
 asm u32 func_001d94d0(EncounterRecord* out)
 {
   .set noreorder
@@ -744,8 +747,10 @@ asm u32 func_001d94d0(EncounterRecord* out)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d96a0
+#ifndef PC_BUILD
 asm u32 func_001d96a0(EncounterRecord* out)
 {
   .set noreorder
@@ -862,6 +867,7 @@ asm u32 func_001d96a0(EncounterRecord* out)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 static KwlnTask* K_Encount_CreatePeriodicScript(PeriodicWork* work, u32 slot, u32 procedure)

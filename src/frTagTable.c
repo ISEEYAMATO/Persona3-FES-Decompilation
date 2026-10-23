@@ -514,6 +514,7 @@ u64 FUN_003ae9b0(u64 param_1,u64 param_2)
 // FUN_003AEA50
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003aea50(u64 param_1, int param_2)
 {
   .set noreorder
@@ -634,6 +635,7 @@ asm u32 FUN_003aea50(u64 param_1, int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_dead_assignments reset
 #pragma opt_lifetimes reset
@@ -652,6 +654,7 @@ static inline u8 *frTagAddOffset(u8 *base, u32 offset) { return base + offset; }
 
 // FUN_003AEC20
 
+#ifndef PC_BUILD
 asm u32 FUN_003aec20(u64 unused, int context)
 {
   .set noreorder
@@ -716,6 +719,7 @@ asm u32 FUN_003aec20(u64 unused, int context)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003aec20(...) FUN_003aec20(__VA_ARGS__)
 #undef FUN_003aed10
 // FUN_003AED10
@@ -888,6 +892,7 @@ u64 FUN_003aee20(u64 param_1, int param_2)
 // FUN_003AF110
 
 
+#ifndef PC_BUILD
 asm u32 FUN_003af110(u64 param_1,int param_2)
 {
   .set noreorder
@@ -1040,6 +1045,7 @@ asm u32 FUN_003af110(u64 param_1,int param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_common_subs reset
 #define FUN_003af110(...) FUN_003af110(__VA_ARGS__)
@@ -1333,6 +1339,7 @@ void FUN_003af770(u64 param_1,u64 param_2)
 
 
 
+#ifndef PC_BUILD
 asm void FUN_003af7a0(int param_1, u64 param_2)
 {
   .set noreorder
@@ -1505,6 +1512,7 @@ asm void FUN_003af7a0(int param_1, u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset

@@ -246,6 +246,7 @@ void brPanel00235010(void)
  * move both declarations after other locals: nd2014/3524B -> nd2013/3524B
  * (window3648B), rate 0.571510 -> 0.571226; retained. */
 // FUN_002350f0
+#ifndef PC_BUILD
 asm void brPanel002350f0(void)
 {
   .set noreorder
@@ -1162,6 +1163,7 @@ asm void brPanel002350f0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 #undef D_00960090
 #undef D_0096009C

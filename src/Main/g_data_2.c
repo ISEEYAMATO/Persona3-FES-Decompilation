@@ -3516,6 +3516,7 @@ void FUN_0017c960(const void* record)
 #pragma opt_lifetimes on
 /* W389 classification: loop-index lifetime/register-colouring floor; six singles and all 15 knob pairs were neutral; final nd15/object796/800 with opt_lifetimes on. */
 // FUN_0017ca10
+#ifndef PC_BUILD
 asm s32 FUN_0017ca10(const void* record)
 {
   .set noreorder
@@ -3720,6 +3721,7 @@ asm s32 FUN_0017ca10(const void* record)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 // FUN_0017cd30
@@ -4392,6 +4394,7 @@ void FUN_0017d3c0(void)
 
 // W419 date comparator declaration-order and u64 aggregate probes stayed nd228/object440; u8 flag was nd302/object456 (over window).
 // FUN_0017d450
+#ifndef PC_BUILD
 asm u32 FUN_0017d450(s32 index, const void* date)
 {
   .set noreorder
@@ -4508,6 +4511,7 @@ asm u32 FUN_0017d450(s32 index, const void* date)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0017d610
 u32 FUN_0017d610(u32 index)

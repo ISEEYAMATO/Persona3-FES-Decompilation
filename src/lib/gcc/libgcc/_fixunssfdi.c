@@ -29,6 +29,7 @@ extern u64 FUN_00530da0_u64(u32);
  */
 // FUN_0052EDA0
 #pragma optimization_level 3
+#ifndef PC_BUILD
 asm long FUN_0052eda0(void)
 {
   .set noreorder
@@ -101,3 +102,4 @@ asm long FUN_0052eda0(void)
   .word 0x1000ffdb
   .word 0x0240202d
 }
+#endif /* PC_BUILD: asm function omitted */

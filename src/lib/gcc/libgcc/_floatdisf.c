@@ -19,6 +19,7 @@
  * at 200/200.
  */
 // FUN_0052EB60
+#ifndef PC_BUILD
 asm float FUN_0052eb60(s64 u)
 {
   .set noreorder
@@ -73,4 +74,5 @@ asm float FUN_0052eb60(s64 u)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule off

@@ -179,6 +179,7 @@ void K_FldFilter_Init()
 }
 
 // FUN_001d4610
+#ifndef PC_BUILD
 asm void K_FldFilter_Main()
 {
   .set noreorder
@@ -867,6 +868,7 @@ asm void K_FldFilter_Main()
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d50c0
 void FUN_001d50c0(s32 index, u32 type, s32 duration)

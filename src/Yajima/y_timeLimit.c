@@ -3813,6 +3813,7 @@ void FUN_0045a430(char param_1)
  * (83.8%); the retail-only tail still begins at byte offset 0x6e4. */
 // FUN_0045A490
 
+#ifndef PC_BUILD
 asm void FUN_0045a490(void)
 {
   .set noreorder
@@ -4349,6 +4350,7 @@ asm void FUN_0045a490(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Native `(u8)fVar8` costs +4 bytes (624/608 versus 620/608); retail keeps the expanded conversion.
 #pragma pop
@@ -4360,6 +4362,7 @@ asm void FUN_0045a490(void)
 /* W419 declaration-order probe: lVar5-first lowers FUN_0045ACE0 from nd284/object608 to nd274/object608; retained. */
 // FUN_0045ACE0
 
+#ifndef PC_BUILD
 asm void FUN_0045ace0(void)
 {
   .set noreorder
@@ -4516,6 +4519,7 @@ asm void FUN_0045ace0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma pop
 #pragma opt_loop_invariants reset
@@ -4905,6 +4909,7 @@ void FUN_0045b830(int param_1,long param_2)
 #pragma opt_common_subs off
 // FUN_0045B8F0
 
+#ifndef PC_BUILD
 asm void FUN_0045b8f0(int param_1)
 {
   .set noreorder
@@ -5149,6 +5154,7 @@ asm void FUN_0045b8f0(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_0045BCB0
@@ -5187,6 +5193,7 @@ LAB_0045bd70:
 #pragma opt_lifetimes on
 // FUN_0045BD90
 
+#ifndef PC_BUILD
 asm void FUN_0045bd90(int param_1)
 {
   .set noreorder
@@ -5679,11 +5686,13 @@ asm void FUN_0045bd90(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma pop
 #pragma opt_lifetimes reset
 // FUN_0045C530
 
+#ifndef PC_BUILD
 asm void FUN_0045c530(int param_1)
 {
   .set noreorder
@@ -5916,6 +5925,7 @@ asm void FUN_0045c530(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma push
 /* W373 singles base 697/964; loop 697/964; common 722/988; life 695/964; propagation 575/968; strength 697/964; dead 697/968; pair life+prop 571/968. */
@@ -5923,6 +5933,7 @@ asm void FUN_0045c530(int param_1)
 #pragma opt_propagation off
 // FUN_0045C8C0
 
+#ifndef PC_BUILD
 asm void FUN_0045c8c0(int param_1,int param_2)
 {
   .set noreorder
@@ -6251,6 +6262,7 @@ asm void FUN_0045c8c0(int param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0045CDD0
 
@@ -6282,6 +6294,7 @@ void FUN_0045cdd0(int param_1,long param_2)
 #pragma opt_lifetimes on
 // FUN_0045CE90
 
+#ifndef PC_BUILD
 asm void FUN_0045ce90(int param_1)
 {
   .set noreorder
@@ -6990,6 +7003,7 @@ asm void FUN_0045ce90(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef uStack_20
 #undef uStack_1c
 #undef uStack_18
@@ -7006,6 +7020,7 @@ asm void FUN_0045ce90(int param_1)
 #pragma opt_propagation off
 // FUN_0045D990
 
+#ifndef PC_BUILD
 asm void FUN_0045d990(int param_1,long param_2)
 {
   .set noreorder
@@ -7358,6 +7373,7 @@ asm void FUN_0045d990(int param_1,long param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 
@@ -7534,6 +7550,7 @@ u8 FUN_0045e170(int param_1)
 #pragma opt_lifetimes on
 // FUN_0045E3E0
 
+#ifndef PC_BUILD
 asm u32 FUN_0045e3e0(int param_1)
 {
   .set noreorder
@@ -7782,6 +7799,7 @@ asm u32 FUN_0045e3e0(int param_1)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma pop
 #pragma opt_lifetimes reset
