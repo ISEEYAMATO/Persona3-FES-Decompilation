@@ -166,42 +166,98 @@ static void K_Encount_CompactEc(EncounterWork* work)
 /* W423 probes: allocator global alias stayed nd55/object348/window352
  * (0.157670); chained pc/ec count assignment was nd142/object344/window352
  * (0.412791), both reverted. */
-// FUN_001d8b00 NONMATCHING
-KwlnTask* func_001d8b00(KwlnTask* parent, FldUnit* pc, FldUnit* ec)
+// FUN_001d8b00
+asm KwlnTask* func_001d8b00(KwlnTask* parent, FldUnit* pc, FldUnit* ec)
 {
-    KwlnTask* task;
-    EncounterWork* work;
-    s32 i;
-    KwlnTask** tasks;
-
-    work = (EncounterWork*)RwCalloc(1, sizeof(EncounterWork), rwMEMHINTDUR_GLOBAL);
-    if (work == NULL)
-    {
-        return NULL;
-    }
-    task = kwlnTaskCreateWithAutoPriority(parent, 10, "field encounter",
-                                          func_001d7d40, func_001d89b0, work);
-    work->pc[0] = pc;
-    work->pcCount = 1;
-    work->ec[0] = ec;
-    work->ecCount = work->pcCount;
-    tasks = D_00875A40;
-    for (i = 0; tasks[i] != NULL && i < 3; ++i)
-    {
-    }
-    if (i >= 3)
-    {
-        i = (u32)-1;
-        K_ASSERT(false, 0x29C);
-    }
-    work->taskSlot = i;
-    D_00875A40[i] = task;
-    work->duration = 0x78;
-    if (*(u16*)((u8*)ec->genusBase + 8) == 0x1FA)
-    {
-        work->reaperFlag = 1;
-    }
-    return task;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x00a0802d
+  .word 0x00c0982d
+  .word 0x24040001
+  .word 0x24050054
+  .word 0x3c060004
+  .word 0x3c020096
+  .word 0x8c420184
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x16200004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000003a
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x2405000a
+  .word 0x3c060068
+  .word 0x24c63b58
+  .word 0x3c07001d
+  .word 0x24e77d40
+  .word 0x3c08001e
+  .word 0x250889b0
+  .word 0x0220482d
+  .word 0x0c0652e0
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0xae300018
+  .word 0x24020001
+  .word 0xae220010
+  .word 0xae330028
+  .word 0xae220014
+  .word 0x0000802d
+  .word 0x3c030087
+  .word 0x24635a40
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x00101080
+  .word 0x00621021
+  .word 0x8c420000
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x26100001
+  .word 0x2a020003
+  .word 0x1440fff6
+  .word 0x00000000
+  .word 0x2410ffff
+  .word 0x06010006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24843b68
+  .word 0x2405029c
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0xae300004
+  .word 0x00101880
+  .word 0x3c020087
+  .word 0x24425a40
+  .word 0x00431021
+  .word 0xac520000
+  .word 0x24020078
+  .word 0xae22003c
+  .word 0x8e620048
+  .word 0x94430008
+  .word 0x240201fa
+  .word 0x14620003
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xae220040
+  .word 0x0240102d
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_001d8c60
@@ -449,134 +505,362 @@ static u32 K_Encount_HpRatio(u16 id, f32* ratio)
     return 1;
 }
 
-// FUN_001d9310 NONMATCHING
-u32 func_001d9310(EncounterRecord* out)
+// FUN_001d9310
+asm u32 func_001d9310(EncounterRecord* out)
 {
-    u32 i;
-    u32 found = 0;
-
-    memset(out, 0, sizeof(*out));
-    for (i = 1; i < 4; ++i)
-    {
-        FldUnit* unit;
-        s32 maxHp;
-        s32 hp;
-        f32 maxValue;
-        f32 hpValue;
-
-        if (gFldUnitsPc[i].genusBase == NULL ||
-            gFldUnitsPc[i].resrc == NULL ||
-            func_002ff790(gFldUnitsPc[i].genusBase) == 1)
-        {
-            continue;
-        }
-        unit = &gFldUnitsPc[i];
-        maxHp = datGetMaxHp((s16)unit->charId);
-        if (maxHp < 0)
-        {
-            continue;
-        }
-        maxValue = (f32)(u32)maxHp;
-        maxValue += maxValue;
-        hp = datGetHp((s16)unit->charId);
-        if (hp < 0)
-        {
-            continue;
-        }
-        hpValue = (f32)(u32)hp;
-        hpValue += hpValue;
-        if (hpValue / maxValue < 0.26f)
-        {
-            out->ids[out->count++] = unit->charId;
-            found = 1;
-        }
-    }
-    return found;
+  .set noreorder
+  .word 0x27bdffa0
+  .word 0xffbf0050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080982d
+  .word 0x0000882d
+  .word 0x0000282d
+  .word 0x24060010
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x24120001
+  .word 0x10000052
+  .word 0x00000000
+  .word 0x0000282d
+  .word 0x001210c0
+  .word 0x00521023
+  .word 0x00021980
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00431021
+  .word 0x8c440048
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x8c420054
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x0005102b
+  .word 0x10400040
+  .word 0x00000000
+  .word 0x0c0bfde4
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x1043003b
+  .word 0x00000000
+  .word 0x001210c0
+  .word 0x00521023
+  .word 0x00021980
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00431021
+  .word 0x245001a8
+  .word 0x844401a8
+  .word 0x0c05b17c
+  .word 0x00000000
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x4614a500
+  .word 0x86040000
+  .word 0x0c05b13c
+  .word 0x00000000
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x46140043
+  .word 0x00000000
+  .word 0xc7808390
+  .word 0x46000834
+  .word 0x4500000a
+  .word 0x00000000
+  .word 0x96030000
+  .word 0x8e620000
+  .word 0x00021080
+  .word 0x02621021
+  .word 0xac430004
+  .word 0x8e620000
+  .word 0x24420001
+  .word 0xae620000
+  .word 0x24110001
+  .word 0x26520001
+  .word 0x2a420004
+  .word 0x1440ffad
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0060
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_001d94d0 NONMATCHING
-u32 func_001d94d0(EncounterRecord* out)
+// FUN_001d94d0
+asm u32 func_001d94d0(EncounterRecord* out)
 {
-    u32 i;
-    u32 found = 0;
-
-    memset(out, 0, sizeof(*out));
-    for (i = 1; i < 4; ++i)
-    {
-        FldUnit* unit = &gFldUnitsPc[i];
-        u16* charId = &unit->charId;
-        s32 maxHp;
-        s32 hp;
-        f32 maxValue;
-        f32 hpValue;
-
-        if (unit->genusBase == NULL || unit->resrc == NULL ||
-            (datGetBadStatusNoDown((s16)*charId) & UNIT_BADSTATUS_POISON) == 0)
-        {
-            continue;
-        }
-        maxHp = datGetMaxHp((s16)*charId);
-        if (maxHp < 0)
-        {
-            continue;
-        }
-        maxValue = (f32)(u32)maxHp;
-        maxValue += maxValue;
-        hp = datGetHp((s16)*charId);
-        if (hp < 0)
-        {
-            continue;
-        }
-        hpValue = (f32)(u32)hp;
-        if (hpValue / maxValue >= 0.26f)
-        {
-            out->ids[out->count++] = unit->charId;
-            found = 1;
-        }
-    }
-    return found;
+  .set noreorder
+  .word 0x27bdff90
+  .word 0xffbf0060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080a02d
+  .word 0x0000902d
+  .word 0x0000282d
+  .word 0x24060010
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x24130001
+  .word 0x10000054
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x001310c0
+  .word 0x00531023
+  .word 0x00021980
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00431821
+  .word 0x8c620048
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x8c620054
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0004102b
+  .word 0x10400042
+  .word 0x00000000
+  .word 0x247101a8
+  .word 0x846401a8
+  .word 0x0c05b25c
+  .word 0x00000000
+  .word 0x30420080
+  .word 0x1040003b
+  .word 0x00000000
+  .word 0x001310c0
+  .word 0x00531023
+  .word 0x00021980
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00431021
+  .word 0x245001a8
+  .word 0x844401a8
+  .word 0x0c05b17c
+  .word 0x00000000
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x4614a500
+  .word 0x86040000
+  .word 0x0c05b13c
+  .word 0x00000000
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x46140043
+  .word 0x00000000
+  .word 0xc7808390
+  .word 0x46000834
+  .word 0x4501000a
+  .word 0x00000000
+  .word 0x96230000
+  .word 0x8e820000
+  .word 0x00021080
+  .word 0x02821021
+  .word 0xac430004
+  .word 0x8e820000
+  .word 0x24420001
+  .word 0xae820000
+  .word 0x24120001
+  .word 0x26730001
+  .word 0x2a620004
+  .word 0x1440ffab
+  .word 0x00000000
+  .word 0x0240102d
+  .word 0xdfbf0060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0070
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_001d96a0 NONMATCHING
-u32 func_001d96a0(EncounterRecord* out)
+// FUN_001d96a0
+asm u32 func_001d96a0(EncounterRecord* out)
 {
-    u32 i;
-    u32 found = 0;
-
-    memset(out, 0, sizeof(*out));
-    for (i = 1; i < 4; ++i)
-    {
-        FldUnit* unit;
-        s32 maxHp;
-        s32 hp;
-        f32 maxValue;
-        f32 hpValue;
-
-        if (gFldUnitsPc[i].genusBase == NULL || gFldUnitsPc[i].resrc == NULL)
-        {
-            continue;
-        }
-        unit = &gFldUnitsPc[i];
-        maxHp = datGetMaxHp((s16)unit->charId);
-        if (maxHp < 0)
-        {
-            continue;
-        }
-        maxValue = (f32)(u32)maxHp;
-        maxValue += maxValue;
-        hp = datGetHp((s16)unit->charId);
-        if (hp < 0)
-        {
-            continue;
-        }
-        hpValue = (f32)(u32)hp;
-        if (hpValue / maxValue >= 0.26f && hpValue / maxValue < 0.75f)
-        {
-            out->ids[out->count++] = unit->charId;
-            found = 1;
-        }
-    }
-    return found;
+  .set noreorder
+  .word 0x27bdffa0
+  .word 0xffbf0050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080982d
+  .word 0x0000882d
+  .word 0x0000282d
+  .word 0x24060010
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x24120001
+  .word 0x10000051
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x001210c0
+  .word 0x00521023
+  .word 0x00021980
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00431821
+  .word 0x8c620048
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x8c620054
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0004102b
+  .word 0x1040003f
+  .word 0x00000000
+  .word 0x001210c0
+  .word 0x00521023
+  .word 0x00021980
+  .word 0x3c020087
+  .word 0x244217a0
+  .word 0x00431021
+  .word 0x245001a8
+  .word 0x844401a8
+  .word 0x0c05b17c
+  .word 0x00000000
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x4614a500
+  .word 0x86040000
+  .word 0x0c05b13c
+  .word 0x00000000
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x46140043
+  .word 0x00000000
+  .word 0xc7808390
+  .word 0x46000834
+  .word 0x4501000e
+  .word 0x00000000
+  .word 0xc78080c4
+  .word 0x46000834
+  .word 0x4500000a
+  .word 0x00000000
+  .word 0x96030000
+  .word 0x8e620000
+  .word 0x00021080
+  .word 0x02621021
+  .word 0xac430004
+  .word 0x8e620000
+  .word 0x24420001
+  .word 0xae620000
+  .word 0x24110001
+  .word 0x26520001
+  .word 0x2a420004
+  .word 0x1440ffae
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0060
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 
