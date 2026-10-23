@@ -1928,41 +1928,98 @@ s16 func_0016e190(s32 socialLink)
     return 0;
 }
 
-// FUN_0016e2b0 NONMATCHING
-void func_0016e2b0(s16 socialLink, s32 amount)
+// FUN_0016e2b0
+asm void func_0016e2b0(s16 socialLink, s32 amount)
 {
-    s8* socialLinkBase;
-    s8 level;
-    u32* progress;
-    u32* table;
-    u32 personaId;
- 
-
-    socialLinkBase = gGlobalWork.heroStatus.socialLinkStat + socialLink;
-    level = socialLinkBase[0];
-    if (socialLink < 0 || socialLink >= 30)
-    {
-        return;
-    }
-    socialLink = socialLinkBase[0x76];
-    if (socialLink >= 10 || socialLink <= 0)
-    {
-        return;
-    }
-    if (func_0016dbc0(socialLink, &personaId) == true)
-    {
-        amount = (s32)((f32)amount * FUN_003BDB80());
-    }
-    progress = (u32*)((u8*)&gGlobalWork + 0x94 + socialLink * 4);
-    *progress += amount;
-    table = (u32*)FUN_003BDD90();
-    K_ASSERT(table != NULL, 1495);
-    if (*progress < table[(u8)level - 1])
-    {
-        return;
-    }
-    *progress = table[(u8)level - 1];
-    FUN_001723A0(socialLink, level + 1, true);
+  .set noreorder
+  .word 0x27bdff90
+  .word 0xffbf0050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080982d
+  .word 0x00a0902d
+  .word 0x0013243c
+  .word 0x0004243f
+  .word 0x3c030083
+  .word 0x24636276
+  .word 0x00641821
+  .word 0x80710000
+  .word 0x04800004
+  .word 0x00000000
+  .word 0x2883001e
+  .word 0x14600004
+  .word 0x00000000
+  .word 0x0000182d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10600036
+  .word 0x00000000
+  .word 0x2a21000a
+  .word 0x10200033
+  .word 0x00000000
+  .word 0x1a200031
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x27a5006c
+  .word 0x0c05b6f0
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430009
+  .word 0x00000000
+  .word 0x44920000
+  .word 0x00000000
+  .word 0x46800520
+  .word 0x0c0ef6e0
+  .word 0x00000000
+  .word 0x4600a002
+  .word 0x46000024
+  .word 0x44120000
+  .word 0x0013243c
+  .word 0x0004243f
+  .word 0x00041880
+  .word 0x3c020083
+  .word 0x24426294
+  .word 0x00438021
+  .word 0x8e020000
+  .word 0x00521021
+  .word 0xae020000
+  .word 0x0c0ef764
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x16400006
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24843098
+  .word 0x240505d7
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x00111880
+  .word 0x00721821
+  .word 0x8c65fffc
+  .word 0x8e030000
+  .word 0x0065082b
+  .word 0x14200008
+  .word 0x00000000
+  .word 0x0013243c
+  .word 0x0004243f
+  .word 0xae050000
+  .word 0x26250001
+  .word 0x24060001
+  .word 0x0c05c8e8
+  .word 0x00000000
+  .word 0xdfbf0050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0070
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 #pragma opt_propagation off
@@ -3172,63 +3229,130 @@ invalid:
     return 0;
 }
 
-// FUN_00170860 NONMATCHING
-void func_00170860(s16 pcId, s16 index, u16 value)
+// FUN_00170860
+asm void func_00170860(s16 pcId, s16 index, u16 value)
 {
-    u8* idBase;
-    u8* heroEquip;
-    s32 address;
-    s32 i;
-    s32 j;
-
-    K_ASSERT(value <= 99, 2341);
-    if (pcId == PC_HERO)
-    {
-        heroEquip = *(u8* volatile /* Removing this qualifier worsens func_00170860 (NONMATCHING nd68 -> NONMATCHING nd83, size 476 -> 476) - measured W170. */*)&gGlobalWork.heroEquip.unkPtr;
-        address = index * 2;
-        address += (s32)heroEquip;
-        *(u16*)(address - 8000) = value;
-        goto done;
-    }
-    if (pcId == -1)
-    {
-        *(u16*)(D_00831CE0 + index * 2) = value;
-        goto done;
-    }
-    if (pcId < 0x100)
-    {
-        goto done;
-    }
-    i = 0;
-    idBase = (u8*)gPcs + pcId * 0x364;
-    for (; i < 20; i++)
-    {
-        if (*(u16*)(idBase + i * 4 - 0x367b8) == pcId)
-        {
-            *(u16*)(D_007FD85A + pcId * 0x364 + i * 4) = value;
-            if (value == 0)
-            {
-                *(u16*)(D_007FD858 + pcId * 0x364 + i * 4) = 0;
-            }
-            goto done;
-        }
-    }
-
-    j = 0;
-    for (; j < 20; j++)
-    {
-        if (*(u16*)(idBase + j * 4 - 0x367b8) == 0)
-        {
-            *(u16*)(D_007FD85A + pcId * 0x364 + j * 4) = value;
-            if (value == 0)
-            {
-                *(u16*)(D_007FD858 + pcId * 0x364 + j * 4) = 0;
-            }
-            goto done;
-        }
-    }
-done:
-    return;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x00a0902d
+  .word 0x00c0882d
+  .word 0x3230ffff
+  .word 0x2a010064
+  .word 0x14200006
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24843098
+  .word 0x24050925
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x00133c3c
+  .word 0x00073c3f
+  .word 0x24030001
+  .word 0x14e3000a
+  .word 0x00000000
+  .word 0x3c030083
+  .word 0x8c646798
+  .word 0x00121c3c
+  .word 0x00031c3f
+  .word 0x00031840
+  .word 0x00641821
+  .word 0xa471e0c0
+  .word 0x10000050
+  .word 0x00000000
+  .word 0x2403ffff
+  .word 0x14e3000a
+  .word 0x00000000
+  .word 0x00121c3c
+  .word 0x00031c3f
+  .word 0x00032040
+  .word 0x3c030083
+  .word 0x24631ce0
+  .word 0x00641821
+  .word 0xa4710000
+  .word 0x10000044
+  .word 0x00000000
+  .word 0x28e30100
+  .word 0x14600041
+  .word 0x00000000
+  .word 0x0000482d
+  .word 0x00071940
+  .word 0x00672023
+  .word 0x000418c0
+  .word 0x00641823
+  .word 0x00033080
+  .word 0x3c030083
+  .word 0x24634010
+  .word 0x00664021
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x00092880
+  .word 0x01052021
+  .word 0x3c03fffd
+  .word 0x00831821
+  .word 0x94639848
+  .word 0x14e3000f
+  .word 0x00000000
+  .word 0x3c030080
+  .word 0x2463d85a
+  .word 0x00661821
+  .word 0x00a31821
+  .word 0xa4710000
+  .word 0x16000006
+  .word 0x00000000
+  .word 0x3c030080
+  .word 0x2463d858
+  .word 0x00661821
+  .word 0x00a31821
+  .word 0xa4600000
+  .word 0x10000021
+  .word 0x00000000
+  .word 0x25290001
+  .word 0x29230014
+  .word 0x1460ffe8
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x00072880
+  .word 0x01052021
+  .word 0x3c03fffd
+  .word 0x00831821
+  .word 0x94639848
+  .word 0x1460000f
+  .word 0x00000000
+  .word 0x3c030080
+  .word 0x2463d85a
+  .word 0x00661821
+  .word 0x00a31821
+  .word 0xa4710000
+  .word 0x16000006
+  .word 0x00000000
+  .word 0x3c030080
+  .word 0x2463d858
+  .word 0x00661821
+  .word 0x00a31821
+  .word 0xa4600000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x24e70001
+  .word 0x28e30014
+  .word 0x1460ffe8
+  .word 0x00000000
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00170a40
