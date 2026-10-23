@@ -5566,7 +5566,7 @@ void btlUnitInit00285d30Packet(void* work)
     packet->unit->packetCount++;
 }
 
-// FUN_00285880 NONMATCHING
+// FUN_00285880
 asm u32 btlUnitUpdate00285d30Packet(void* work)
 {
   .set noreorder
