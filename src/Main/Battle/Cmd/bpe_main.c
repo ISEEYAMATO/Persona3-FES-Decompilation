@@ -489,138 +489,358 @@ void func_002496e0(void* work)
 #pragma opt_loop_invariants off
 
 /* W418 width negative: func_00249C10 i s16 nd68/1384B -> 653/1408B (over 1392B). */
-// FUN_00249C10 NONMATCHING
-void func_00249c10(void* work)
+// FUN_00249C10
+asm void func_00249c10(void* work)
 {
-    struct Buffer {
-        u8* data;
-        s32 stride;
-    };
-    union Vec3 {
-        f32 data[3];
-    };
-    struct Local {
-        struct Buffer colors;
-        struct Buffer positions;
-        union Vec3 transformed;
-        u8 pad0[4];
-        f32 origin[3];
-        u8 pad1[4];
-        f32 point[3];
-    };
-    u8* base;
-    u8* camera;
-    union Pointer {
-        void* cameraMatrix;
-        f32* position;
-    };
-    void* frame;
-    void* matrix;
-    u8* color;
-    union Pointer pointer;
-    f32 deltaX;
-    f32 deltaY;
-    f32 deltaZ;
-    f32 alpha;
-    f32 distance;
-    s32 i;
-    struct Local local;
-
-    base = (u8*)work;
-    camera = (u8*)func_00198590();
-    if ((~*(u32*)(base + 0x604) & 1u) != 0) {
-        return;
-    }
-    pointer.cameraMatrix = func_004cb2f0(*(void**)(camera + 4));
-    frame = *(void**)(*(u8**)(base + 0x600) + 4);
-    matrix = func_004c38c0();
-    func_004c32a0(matrix, pointer.cameraMatrix);
-
-    local.origin[2] = 100.0f;
-    local.origin[0] = 0.0f;
-    local.origin[1] = 0.0f;
-    RwV3dTransformPoint(local.transformed.data, local.origin, pointer.cameraMatrix);
-
-    deltaX = local.transformed.data[0] - *(f32*)(base + 0x608);
-    deltaY = local.transformed.data[1] - *(f32*)(base + 0x60c);
-    deltaZ = local.transformed.data[2] - *(f32*)(base + 0x610);
-    func_004cb750(frame, local.transformed.data, 0);
-    func_00474640(*(void**)(base + 0x600), (void**)&local.positions.data, 2, 0x40000000);
-    func_00474640(*(void**)(base + 0x600), (void**)&local.colors.data, 1, 0x40000000);
-
-    {
-
-        color = local.colors.data;
-        pointer.position = (f32*)local.positions.data;
-        for (i = 0; i < 0x80; i++) {
-            f32* particle;
-            f32* particleY;
-            f32* particleZ;
-
-            particle = (f32*)(base + i * 0xc);
-            particle[0] -= deltaX;
-            particleY = (f32*)((u8*)particle + 4);
-            particleY[0] -= deltaY;
-            particleZ = (f32*)((u8*)particle + 8);
-            particleZ[0] -= deltaZ;
-            if (particle[0] < -150.0f) {
-                particle[0] += 300.0f;
-            } else if (particle[0] > 150.0f) {
-                particle[0] -= 300.0f;
-            }
-            if (particleY[0] < -150.0f) {
-                particleY[0] += 300.0f;
-            } else if (particleY[0] > 150.0f) {
-                particleY[0] -= 300.0f;
-            }
-            if (particleZ[0] < -150.0f) {
-                particleZ[0] += 300.0f;
-            } else if (particleZ[0] > 150.0f) {
-                particleZ[0] -= 300.0f;
-            }
-            pointer.position[0] = local.transformed.data[0] + *(f32*)(base + i * 0xc);
-            pointer.position[1] = local.transformed.data[1] + particleY[0];
-            pointer.position[2] = bpeAdd(*(f32*)(base + i * 0xc + 8), local.transformed.data[2]);
-            RwV3dTransformPoint(local.point, pointer.position, matrix);
-
-            if (local.point[2] < 100.0f) {
-                if (local.point[2] < 40.0f) {
-                    alpha = 0.0f;
-                } else if (local.point[2] < 100.0f) {
-                    alpha = (local.point[2] - 40.0f) / 60.0f;
-                } else if (local.point[2] < 170.0f) {
-                    alpha = 1.0f;
-                } else if (local.point[2] < 230.0f) {
-                    alpha = 1.0f - (local.point[2] - 170.0f) / 60.0f;
-                } else {
-                    alpha = 0.0f;
-                }
-            } else {
-                distance = local.point[2] - 100.0f;
-                distance = local.point[1] * local.point[1] +
-                           local.point[0] * local.point[0] +
-                           distance * distance;
-                alpha = 0.0f;
-                distance = sqrtf(distance);
-                if (distance < 100.0f) {
-                    alpha = 1.0f;
-                } else if (distance < 150.0f) {
-                    alpha = 1.0f - (distance - 100.0f) / 50.0f;
-                }
-            }
-
-            color[0] = *(u8*)(base + 0x614);
-            color[1] = *(u8*)(base + 0x615);
-            color[2] = *(u8*)(base + 0x616);
-            color[3] = (u8)((f32)*(u8*)(base + 0x617) * alpha);
-            color += local.colors.stride;
-            pointer.position = (f32*)((u8*)pointer.position + local.positions.stride);
-        }
-    }
-
-    *(union Vec3 *)(base + 0x608) = local.transformed;
-    func_004747f0(*(void**)(base + 0x600));
-    func_004c3880(matrix);
+  .set noreorder
+  .word 0x27bdff50
+  .word 0xffbf0060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b60008
+  .word 0xe7b50004
+  .word 0xe7b40000
+  .word 0x0080a02d
+  .word 0x0c066164
+  .word 0x00000000
+  .word 0x8e830604
+  .word 0x00601827
+  .word 0x30630001
+  .word 0x1460013d
+  .word 0x00000000
+  .word 0x8c440004
+  .word 0x0c132cbc
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x8e820600
+  .word 0x8c510004
+  .word 0x0c130e30
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x0200202d
+  .word 0x0240282d
+  .word 0x0c130ca8
+  .word 0x00000000
+  .word 0x3c0242c8
+  .word 0xafa20098
+  .word 0xafa00090
+  .word 0xafa00094
+  .word 0x27a40080
+  .word 0x27a50090
+  .word 0x0240302d
+  .word 0x0c131af8
+  .word 0x00000000
+  .word 0xc6810608
+  .word 0xc7a00080
+  .word 0x46010581
+  .word 0xc681060c
+  .word 0xc7a00084
+  .word 0x46010541
+  .word 0xc6810610
+  .word 0xc7a00088
+  .word 0x46010501
+  .word 0x0220202d
+  .word 0x27a50080
+  .word 0x0000302d
+  .word 0x0c132dd4
+  .word 0x00000000
+  .word 0x8e840600
+  .word 0x27a50078
+  .word 0x24060002
+  .word 0x3c074000
+  .word 0x0c11d190
+  .word 0x00000000
+  .word 0x8e840600
+  .word 0x27a50070
+  .word 0x24060001
+  .word 0x3c074000
+  .word 0x0c11d190
+  .word 0x00000000
+  .word 0x8fb30070
+  .word 0x8fb20078
+  .word 0x0000882d
+  .word 0x100000f9
+  .word 0x00000000
+  .word 0x00111040
+  .word 0x00511021
+  .word 0x00021080
+  .word 0x02822821
+  .word 0xc4a00000
+  .word 0x46160001
+  .word 0xe4a00000
+  .word 0x24a40004
+  .word 0xc4a00004
+  .word 0x46150001
+  .word 0xe4a00004
+  .word 0x24a30008
+  .word 0xc4a00008
+  .word 0x46140001
+  .word 0xe4a00008
+  .word 0xc4a10000
+  .word 0x3c02c316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x45000008
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000800
+  .word 0xe4a00000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x3c024316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000836
+  .word 0x45010006
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000801
+  .word 0xe4a00000
+  .word 0xc4810000
+  .word 0x3c02c316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x45000008
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000800
+  .word 0xe4800000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x3c024316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000836
+  .word 0x45010006
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000801
+  .word 0xe4800000
+  .word 0xc4610000
+  .word 0x3c02c316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x45000008
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000800
+  .word 0xe4600000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x3c024316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000836
+  .word 0x45010006
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000801
+  .word 0xe4600000
+  .word 0x00111040
+  .word 0x00511021
+  .word 0x00021080
+  .word 0x02821021
+  .word 0xc7a10080
+  .word 0xc4400000
+  .word 0x46000800
+  .word 0xe6600000
+  .word 0xc7a10084
+  .word 0xc4800000
+  .word 0x46000800
+  .word 0xe6600004
+  .word 0xc7a10088
+  .word 0xc4600000
+  .word 0x46000800
+  .word 0xe6600008
+  .word 0x27a400a0
+  .word 0x0260282d
+  .word 0x0200302d
+  .word 0x0c131af8
+  .word 0x00000000
+  .word 0xc7a400a8
+  .word 0x3c0242c8
+  .word 0x44821800
+  .word 0x00000000
+  .word 0x46032034
+  .word 0x45000035
+  .word 0x00000000
+  .word 0x3c024220
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46002034
+  .word 0x45000004
+  .word 0x00000000
+  .word 0x44801000
+  .word 0x1000004c
+  .word 0x00000000
+  .word 0x46032034
+  .word 0x4500000b
+  .word 0x00000000
+  .word 0x46002041
+  .word 0x3c024270
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000883
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x1000003f
+  .word 0x00000000
+  .word 0x3c02432a
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46012034
+  .word 0x45000005
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44821000
+  .word 0x10000035
+  .word 0x00000000
+  .word 0x3c024366
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46002034
+  .word 0x4500000c
+  .word 0x00000000
+  .word 0x46012041
+  .word 0x3c024270
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010081
+  .word 0x10000024
+  .word 0x00000000
+  .word 0x44801000
+  .word 0x10000021
+  .word 0x00000000
+  .word 0xc7a200a4
+  .word 0x46032041
+  .word 0xc7a000a0
+  .word 0x4602101a
+  .word 0x44801000
+  .word 0x4600001e
+  .word 0x4601081c
+  .word 0x46000044
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x46030834
+  .word 0x45000005
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44821000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x3c024316
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x4500000a
+  .word 0x00000000
+  .word 0x46030841
+  .word 0x3c024248
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010081
+  .word 0x92820614
+  .word 0xa2420000
+  .word 0x92820615
+  .word 0xa2420001
+  .word 0x92820616
+  .word 0xa2420002
+  .word 0x92820617
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x46020042
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0xa2430003
+  .word 0x8fa20074
+  .word 0x02629821
+  .word 0x8fa2007c
+  .word 0x02429021
+  .word 0x26310001
+  .word 0x2a220080
+  .word 0x1440ff06
+  .word 0x00000000
+  .word 0xc7a20080
+  .word 0xc7a10084
+  .word 0xc7a00088
+  .word 0xe6820608
+  .word 0xe681060c
+  .word 0xe6800610
+  .word 0x8e840600
+  .word 0x0c11d1fc
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c130e20
+  .word 0x00000000
+  .word 0xdfbf0060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b60008
+  .word 0xc7b50004
+  .word 0xc7b40000
+  .word 0x27bd00b0
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_loop_invariants reset
 
