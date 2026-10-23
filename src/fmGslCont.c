@@ -856,52 +856,128 @@ void FUN_003b4a90(int *param_1,int param_2,int param_3,int param_4,int param_5,i
 #define FUN_003b4a90(...) ((void (*)(...))FUN_003b4a90)(__VA_ARGS__)
 #pragma opt_loop_invariants reset
 #undef FUN_003b4b40
-// FUN_003B4B40 NONMATCHING
+// FUN_003B4B40
 
 
-void FUN_003b4b40(s32* param_1, u32* param_2, u8* param_3, u8* param_4)
+asm void FUN_003b4b40(s32* param_1, u32* param_2, u8* param_3, u8* param_4)
 {
-  RwIm2DVertex* vertices;
-  int* color;
-  int* position;
-  RwIm2DVertex* vertex;
-  void (**setRenderState)(u32 state, u32 value);
-  f32 recipZ;
-  f32 z;
-  int i;
-
-  recipZ = 1.0f / *(f32*)(FUN_00198590() + 0x80);
-  i = 0;
-  vertices = DAT_0095aec0_abs;
-  z = *(f32*)DAT_00960088_abs;
-  while (i < 4) {
-    position = param_1 + (u32)*param_3 * 2;
-    color = (int*)(param_2 + (u32)*param_4 * 4);
-    vertex = &vertices[i];
-
-    vertex->u.els.scrVertex.x = (f32)(position[0] >> 4);
-    vertex->u.els.scrVertex.y = (f32)(position[1] >> 3);
-    vertex->u.els.scrVertex.z = z;
-    vertex->u.els.color.r = (f32)color[0];
-    vertex->u.els.color.g = (f32)color[1];
-    vertex->u.els.color.b = (f32)color[2];
-    vertex->u.els.color.a = (f32)color[3];
-    vertex->u.els.recipZ = recipZ;
-
-    i++;
-    param_3++;
-    param_4++;
-  }
-
-  setRenderState = (void (**)(u32, u32))DAT_00960090_abs;
-  (*setRenderState)(1, 0);
-  (*setRenderState)(7, 2);
-  (*setRenderState)(0xC, 1);
-  (*setRenderState)(10, 3);
-  (*setRenderState)(0xB, 6);
-  FUN_004d7f60(2, 0x44);
-  FUN_004d7f60(3, 0x717FB);
-  (*DAT_009600a0_abs)(5, DAT_0095aec0_abs, 4);
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x00a0902d
+  .word 0x00c0882d
+  .word 0x00e0802d
+  .word 0x0c066164
+  .word 0x00000000
+  .word 0x3c033f80
+  .word 0x44830800
+  .word 0xc4400080
+  .word 0x46000883
+  .word 0x0000382d
+  .word 0x3c040096
+  .word 0x2484aec0
+  .word 0x3c020096
+  .word 0xc4410088
+  .word 0x10000026
+  .word 0x00000000
+  .word 0x92220000
+  .word 0x000210c0
+  .word 0x02623021
+  .word 0x92020000
+  .word 0x00021100
+  .word 0x02422821
+  .word 0x00071180
+  .word 0x00821821
+  .word 0x8cc20000
+  .word 0x00021103
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0xe4600000
+  .word 0x8cc20004
+  .word 0x000210c3
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0xe4600004
+  .word 0xe4610008
+  .word 0xc4a00000
+  .word 0x46800020
+  .word 0xe4600020
+  .word 0xc4a00004
+  .word 0x46800020
+  .word 0xe4600024
+  .word 0xc4a00008
+  .word 0x46800020
+  .word 0xe4600028
+  .word 0xc4a0000c
+  .word 0x46800020
+  .word 0xe460002c
+  .word 0xe4620018
+  .word 0x24e70001
+  .word 0x26310001
+  .word 0x26100001
+  .word 0x28e20004
+  .word 0x1440ffd9
+  .word 0x00000000
+  .word 0x3c100096
+  .word 0x26100090
+  .word 0x24040001
+  .word 0x0000282d
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040007
+  .word 0x24050002
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050001
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050003
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x2404000b
+  .word 0x24050006
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050044
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c020007
+  .word 0x344517fb
+  .word 0x0c135fd8
+  .word 0x00000000
+  .word 0x24040005
+  .word 0x3c050096
+  .word 0x24a5aec0
+  .word 0x24060004
+  .word 0x3c020096
+  .word 0x8c4200a0
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #define FUN_003b4b40(...) ((void (*)(...))FUN_003b4b40)(__VA_ARGS__)
 #pragma alias FUN_003b4b40_direct FUN_003b4b40
