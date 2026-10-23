@@ -3453,45 +3453,73 @@ void func_002BE610(int param_1)
 
 // FUN_002be620
 
-u64 func_002be620(int param_1,int param_2)
-
+asm u64 func_002be620(int param_1,int param_2)
 {
-  u16 uVar1 = 0;
-  u16 sVar2 = 0;
-  u64 uVar3 = 0;
-  int iVar4 = 0;
-  int iVar5 = 0;
-  u16 auStack_20[16];
-  
-  iVar5 = (int)param_1;
-  if ((*(u32 *)(DAT_007ce3ec + 0x14) & 0x2000000) != 0) {
-    *(u16 *)(iVar5 + 0xc) = 0x26f;
-  }
-  else {
-    uVar1 = func_002bde10(param_2,(u16*)auStack_20);
-    *(u16 *)(iVar5 + 0xc) = uVar1;
-  }
-  sVar2 = func_002bdfb0(param_1);
-  switch (sVar2) {
-  case 1:
-    uVar3 = 1;
-    break;
-  case 2:
-    iVar4 = (int)param_2;
-    *(u16 *)(iVar4 + 0x6c) = 2;
-    if ((*(u32 *)(DAT_007ce3ec + 0x14) & 0x2000000) != 0) {
-      *(short *)(iVar4 + 0x6e) = *(short *)(iVar5 + 6) + 1;
-    }
-    else {
-      *(u16 *)(iVar4 + 0x6e) = auStack_20[*(short *)(iVar5 + 6)];
-    }
-    uVar3 = 3;
-    break;
-  default:
-    uVar3 = 0;
-    break;
-  }
-  return uVar3;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x00a0802d
+  .word 0x8f82b6fc
+  .word 0x8c430014
+  .word 0x3c020200
+  .word 0x00621024
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x2402026f
+  .word 0xa622000c
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x27a50030
+  .word 0x0c0af784
+  .word 0x00000000
+  .word 0xa622000c
+  .word 0x0220202d
+  .word 0x0c0af7ec
+  .word 0x00000000
+  .word 0x3043ffff
+  .word 0x24020002
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0xa602006c
+  .word 0x8f82b6fc
+  .word 0x8c430014
+  .word 0x3c020200
+  .word 0x00621024
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x86220006
+  .word 0x24420001
+  .word 0xa602006e
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x86220006
+  .word 0x00021040
+  .word 0x005d1021
+  .word 0x94420030
+  .word 0xa602006e
+  .word 0x24020003
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 /* W357 measured func_002be720: opt_propagation off nd415/684B -> nd402/684B; window 688B. */
@@ -3683,30 +3711,49 @@ void FUN_002BE9D0(void)
 
 // FUN_002be9e0
 
-u64 func_002be9e0(int param_1,int param_2)
+asm u64 func_002be9e0(int param_1,int param_2)
 {
-  u16 sVar1 = 0;
-  u16 uVar2 = 0;
-  u64 uVar3 = 0;
-  
-  *(u16 *)(param_1 + 0xc) = 0xdf;
-  sVar1 = func_002bdfb0(param_1);
-  switch (sVar1) {
-  case 1:
-    uVar3 = 1;
-    break;
-  case 2:
-    *(u16 *)(param_2 + 0x6c) = 3;
-    *(short *)(param_2 + 0x70) = *(short *)(param_1 + 6) + 0xfa1;
-    uVar2 = func_0030bc20(*(u16 *)(param_2 + 0x70));
-    *(u16 *)(param_2 + 0x6e) = uVar2;
-    uVar3 = 3;
-    break;
-  default:
-    uVar3 = 0;
-    break;
-  }
-  return uVar3;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x00a0802d
+  .word 0x240200df
+  .word 0xa482000c
+  .word 0x0c0af7ec
+  .word 0x00000000
+  .word 0x3043ffff
+  .word 0x24020002
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x1000000f
+  .word 0x00000000
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x24020003
+  .word 0xa602006c
+  .word 0x84820006
+  .word 0x24420fa1
+  .word 0xa6020070
+  .word 0x96040070
+  .word 0x0c0c2f08
+  .word 0x00000000
+  .word 0xa602006e
+  .word 0x24020003
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x27bd0020
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_002bea80
