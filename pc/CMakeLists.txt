@@ -14,6 +14,7 @@ list(FILTER GAME_SRCS EXCLUDE REGEX ".*/(h_pad|h_snd|h_cdvd|h_memcard|h_fade|h_c
 add_executable(persona3fes
     ${GAME_SRCS}
     shims/h_pad.c
+    shims/shims.c
 )
 
 target_include_directories(persona3fes PRIVATE
