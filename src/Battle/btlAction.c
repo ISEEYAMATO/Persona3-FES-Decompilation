@@ -531,117 +531,262 @@ void FUN_002899e0(BtlAction* action)
     }
 }
 
-// FUN_00289b50 NONMATCHING
-void FUN_00289b50(BtlAction* action)
+// FUN_00289b50
+asm void FUN_00289b50(BtlAction* action)
 {
-    RwV3d destination;
-    RwMatrix rotation;
-    BtlPacket* movePacket;
-    BtlAction* current;
-    BtlUnit* unit;
-    BtlPacket* rotatePacket;
-    RwV3d home;
-    RwV3d target;
-    RwV3d direction;
-    f32 distance;
-    f32 angle;
-    f32 speed;
-
-    for (current = gBtl->actionList.tail; current != NULL; current = current->prev)
-    {
-        if ((current->unk_1a & 1) == 0)
-        {
-            continue;
-        }
-
-        unit = current->unit;
-        if (unit->genus != 0)
-        {
-            FUN_002fd8a0(current);
-            continue;
-        }
-        
-        if ((unit->flags3 & BTLUNIT_FLAG3_UNK08) == 0 ||
-            btlUnit00282c60(unit) == 0 ||
-            btlUnitIsMoving(unit) != 0 ||
-            datCalcChkBadStatus(unit->datUnit, 0x100000) != 0 ||
-            datCalcChkBadStatus(unit->datUnit, 0xfffff) != 0 ||
-            datCalcIsLowHp(unit->datUnit) != 0 ||
-            datCalcIsDead(unit->datUnit, 0) != 0)
-        {
-            continue;
-        }
-        switch (current->currState)
-        {
-        case BTLACTION_STATE_STANDBY:
-        case BTLACTION_STATE_COMMAND:
-        case BTLACTION_STATE_TARGET:
-            if (btlActionIdleWeaponAnim(current) != 0 ||
-                (gBtl->flags & BTL_FLAG_MULTIENEMY) == 0)
-            {
-                continue;
-            }
-            break;
-        default:
-            continue;
-        }
-        if (current->rand != 0)
-        {
-            current->rand--;
-            continue;
-        }
-
-        if (action == current || unit->charId == 4)
-        {
-            continue;
-        }
-        btlUnit0027f7c0(unit, &home, NULL, &target);
-        direction.x = target.x - home.x;
-        direction.y = target.y - home.y;
-        direction.z = target.z - home.z;
-        distance = RwV3dNormalize(&direction, &direction);
-
-        current->unk_34++;
-        if ((current->unk_34 & 1) == 0)
-        {
-            angle = -(effMiscRandFloat(NULL) * 10.0f + 5.0f);
-        }
-        else
-        {
-            angle = effMiscRandFloat(NULL) * 10.0f + 5.0f;
-        }
-        RwMatrixRotate(&rotation, &D_00697880, angle, rwCOMBINEREPLACE);
-        FUN_004c6c60(&direction, &direction, &rotation);
-
-        destination.y = target.y + direction.y * distance;
-        destination.x = target.x + direction.x * distance;
-        destination.z = target.z + direction.z * distance;
-
-        switch (unit->charId)
-        {
-        case 2:
-            speed = uGpffff83a4;
-            break;
-        case 5:
-            speed = uGpffff8390;
-            break;
-        default:
-            speed = uGpffff8088;
-            break;
-        }
-
-        movePacket = btlUnitCreateMovePacket(unit, &destination, speed, 8);
-        movePacket->actionUID = current->uid;
-        btlPacketRegister(movePacket, BTLPACKET_TYPE_1);
-
-        rotatePacket = btlUnitCreateRotatePacket(unit, &target, 0);
-        rotatePacket->unk_00 = 4;
-        rotatePacket->parentUID = movePacket->uid;
-        rotatePacket->actionUID = current->uid;
-        btlPacketRegister(rotatePacket, BTLPACKET_TYPE_1);
-
-        current->rand = datCalcRand(0xb4) + 0x3c;
-    }
+  .set noreorder
+  .word 0x27bdff20
+  .word 0xffbf0050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080982d
+  .word 0x8f83b6fc
+  .word 0x8c71014c
+  .word 0x100000e3
+  .word 0x00000000
+  .word 0x9623001a
+  .word 0x30630001
+  .word 0x106000de
+  .word 0x00000000
+  .word 0x8e300030
+  .word 0x920300a2
+  .word 0x10600006
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0bf628
+  .word 0x00000000
+  .word 0x100000d5
+  .word 0x00000000
+  .word 0x8e03009c
+  .word 0x30630008
+  .word 0x106000d1
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0a0b18
+  .word 0x00000000
+  .word 0x104000cc
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0a049c
+  .word 0x00000000
+  .word 0x144000c7
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x3c050010
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x144000c1
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x3c02000f
+  .word 0x3445ffff
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x144000ba
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x0c0c2d78
+  .word 0x00000000
+  .word 0x144000b5
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x144000af
+  .word 0x00000000
+  .word 0x9624000c
+  .word 0x24030006
+  .word 0x10830009
+  .word 0x00000000
+  .word 0x24030005
+  .word 0x10830006
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10830003
+  .word 0x00000000
+  .word 0x100000a3
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0a2618
+  .word 0x00000000
+  .word 0x1440009e
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c64000c
+  .word 0x3c030001
+  .word 0x00831824
+  .word 0x10600098
+  .word 0x00000000
+  .word 0x96230036
+  .word 0x18600005
+  .word 0x00000000
+  .word 0x2463ffff
+  .word 0xa6230036
+  .word 0x10000091
+  .word 0x00000000
+  .word 0x1271008f
+  .word 0x00000000
+  .word 0x960400a4
+  .word 0x24030004
+  .word 0x1083008b
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x27a500c0
+  .word 0x0000302d
+  .word 0x27a700b0
+  .word 0x0c09fdf0
+  .word 0x00000000
+  .word 0xc7a100c0
+  .word 0xc7a000b0
+  .word 0x46000801
+  .word 0xe7a000a0
+  .word 0xc7a100c4
+  .word 0xc7a000b4
+  .word 0x46000801
+  .word 0xe7a000a4
+  .word 0xc7a100c8
+  .word 0xc7a000b8
+  .word 0x46000801
+  .word 0xe7a000a8
+  .word 0x27a400a0
+  .word 0x0080282d
+  .word 0x0c131a7c
+  .word 0x00000000
+  .word 0x46000506
+  .word 0x96220034
+  .word 0x24420001
+  .word 0xa6220034
+  .word 0x3042ffff
+  .word 0x30420001
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0d600c
+  .word 0x00000000
+  .word 0x3c024120
+  .word 0x44821800
+  .word 0x3c0240a0
+  .word 0x44821000
+  .word 0x44800800
+  .word 0x00000000
+  .word 0x46020818
+  .word 0x46001b1c
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0d600c
+  .word 0x00000000
+  .word 0x3c024120
+  .word 0x44821800
+  .word 0x3c0240a0
+  .word 0x44821000
+  .word 0x44800800
+  .word 0x00000000
+  .word 0x46020818
+  .word 0x4600181c
+  .word 0x46000307
+  .word 0x27a40060
+  .word 0x3c050069
+  .word 0x24a57880
+  .word 0x0000302d
+  .word 0x0c130c6c
+  .word 0x00000000
+  .word 0x27a400a0
+  .word 0x0080282d
+  .word 0x27a60060
+  .word 0x0c131b18
+  .word 0x00000000
+  .word 0xc7a000a0
+  .word 0x461400c2
+  .word 0xe7a300a0
+  .word 0xc7a000a4
+  .word 0x46140082
+  .word 0xe7a200a4
+  .word 0xc7a000a8
+  .word 0x46140042
+  .word 0xe7a100a8
+  .word 0xc7a000b0
+  .word 0x46030000
+  .word 0xe7a000d0
+  .word 0xc7a000b4
+  .word 0x46020000
+  .word 0xe7a000d4
+  .word 0xc7a000b8
+  .word 0x46010000
+  .word 0xe7a000d8
+  .word 0x960300a4
+  .word 0x24020002
+  .word 0x1062000f
+  .word 0x00000000
+  .word 0x24020007
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020005
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0xc78c8390
+  .word 0x10000008
+  .word 0x00000000
+  .word 0xc78c8088
+  .word 0x10000005
+  .word 0x00000000
+  .word 0xc78c83a4
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xc78c8088
+  .word 0x0200202d
+  .word 0x27a500d0
+  .word 0x24060008
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0xde230000
+  .word 0xfc430060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x27a500b0
+  .word 0x0000302d
+  .word 0x0c0a08ac
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xde230000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x240400b4
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x2443003c
+  .word 0xa6230036
+  .word 0x8e3104a8
+  .word 0x1620ff1d
+  .word 0x00000000
+  .word 0xdfbf0050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd00e0
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00289f40
@@ -1031,361 +1176,906 @@ void btlActionUpdateStateStandBy(BtlAction* action)
 #pragma opt_common_subs off
 #pragma opt_lifetimes on
 /* W415 negatives: restoring the three missing calls matched the census but measured 2068/2064; retained source stays within the retail window. */
-// FUN_0028aa20 NONMATCHING
-void btlActionInitStateStart(BtlAction* action)
+// FUN_0028aa20
+asm void btlActionInitStateStart(BtlAction* action)
 {
-    BtlUnit* unit = action->unit;
-    u64 actionUID = action->uid;
-    u32 flags;
-    s16 var_2;
-    if (action->unk_18 & 0x8000)
-    {
-        btlActionSetState(action, BTLACTION_STATE_END);
-        return;
-    }
-    FUN_002d5e00(&action->unkData3[0x40]);
-    if (FUN_002e42e0(action) != 0)
-    {
-        action->evtFunc = FUN_002e4310;
-        action->stateAfterEvt = BTLACTION_STATE_START;
-        btlActionSetState(action, BTLACTION_STATE_EVENT);
-        return;
-    }
-    if (unit->genus == UNIT_GENUS_PC)
-    {
-        if (ACTION_S16(gBtl, 0xa38) != -1 &&
-            ((u32)(ACTION_S16(gBtl, 0xa3a) >> 1) >= (FUN_002d4e10(2, 0x80000) & 0xffff)) &&
-            ACTION_S16(gBtl, 0xa38) != FUN_002b7060() &&
-            FUN_00300580(unit->datUnit, 0x180000) == 0)
-        {
-            btlActionSetStateWithDelay(action, BTLACTION_STATE_CHANGEFORMA, 1);
-            return;
-        }
-        var_2 = 1;
-    }
-    else
-    {
-        var_2 = 0;
-    }
-    flags = gBtl->flags;
-    if (FUN_001feec0() == 0 && FUN_002d1a70() == 1)
-    {
-        gBtl->flags |= 0x4000;
-    }
-    else
-    {
-        gBtl->flags &= ~0x4000;
-        FUN_002d1a10();
-    }
-    if (action->unk_28 == 0)
-    {
-        action->unk_18 |= 0x400;
-        action->unk_1a &= ~0x40;
-    }
-    else if ((ACTION_U32(gBtl, 0x10) & 0x20) == 0)
-    {
-        FUN_001fef30(unit->genus != UNIT_GENUS_PC);
-        btlPacketRegister(btlVoice002e2be0(action, 9, 0, 0, 0), BTLPACKET_TYPE_1);
-    }
-    action->passiveSkillsFlags = action->unk_28 == 0 && ACTION_U8(action, 0x29) == 0 ?
-                                      FUN_00300d80(unit->datUnit) : 0;
-    if (action->passiveSkillsFlags == 0 && (flags & 0x80000) == 0)
-    {
-        btlActionSetState(action, (s8)FUN_00302f50(unit->datUnit) < 0 ?
-                                  (FUN_002dc070(action) ? BTLACTION_STATE_BAD : action->unk_14) :
-                                  BTLACTION_STATE_SUPPORT);
-    }
-    if (var_2 != 0)
-    {
-        if (unit->genus == 0 && unit->datUnit->aiTactic == 0xA)
-        {
-            u32 rootH;
-            u8 buf[4];
-            u32 posX, posY;
-            u32 animLen;
-            BtlPacket* pkt;
-            BtlPacket* pktB;
-            
-            btlAction0028a780(action);
-            rootH = FUN_002b8f90(0);
-            func_002bb6f0(0x156, buf);
-            pktB = FUN_002bac00(rootH, (s8*)buf, 0);
-            pktB->actionUID = actionUID;
-            btlPacketRegister(pktB, BTLPACKET_TYPE_1);
-            
-            pkt->unk_00 = 4;
-            pkt = FUN_002dd4a0(0x156, 0);
-            pkt->parentUID = pktB->uid;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            func_0029ea60(0x156, &posX, &posY);
-            pkt = func_0029f4b0(posX, posY, 0x10);
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            {
-                void* area = func_0029ec00(0x156);
-                func_0029ec80(0x156, &posX, &posY);
-                pkt = func_002a0050(area, posX, posY, 0x10, 0);
-                pkt->actionUID = actionUID;
-                btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            }
-            
-            {
-                void* hitArea = func_0029ec50(0x156);
-                pkt = func_002a1280(hitArea, 0x10);
-                pkt->actionUID = actionUID;
-                btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            }
-            
-            pkt = FUN_002a3b40(action, 9);
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            {
-                s16 weaponId = unit->genus == 0 ? 0x88 : 0x89;
-                pkt = FUN_002bd850(unit, weaponId);
-                ACTION_S16(pkt, 0x48) += 0x12;
-                pkt->actionUID = actionUID;
-                btlPacketRegister(pkt, BTLPACKET_TYPE_3D);
-            }
-            {
-                /* This caller needs the u16 second-argument ABI; the later skill caller needs u32. */
-                extern s64 FUN_002838d0(BtlUnit* unit, u16 a, f32 b);
-                animLen = (u16)FUN_002838d0(unit, 0xc, 1.0f);
-            }
-            
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            pktB = FUN_00284200(unit, 0xc, 6, 4, 1.0f);
-            ACTION_S16(pktB, 0x4a) = animLen + 6;
-            pktB->actionUID = actionUID;
-            btlPacketRegister(pktB, BTLPACKET_TYPE_1);
-            
-            pkt = FUN_002baf90(rootH, unit, unit, 1, 0);
-            pkt->unk_00 = 4;
-            pkt->parentUID = pktB->uid;
-            pkt->preUpdateWait.type = 4;
-            pkt->preUpdateWait.value = pktB->uid;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_2D);
-            
-            pkt = FUN_002dd5e0(1);
-            pkt->unk_00 = 5;
-            pkt->parentUID = pktB->uid;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            {
-                u32 extraWork[12];
-                FUN_002d5dc0(extraWork);
-                extraWork[2] = 0x100;
-                
-                pkt = FUN_002d7e20(action, action, extraWork, 1, 1);
-                pkt->unk_00 = 5;
-                pkt->parentUID = pktB->uid;
-                pkt->actionUID = actionUID;
-                btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            }
-            
-            pkt = FUN_002a3b40(action, 0x1b);
-            ACTION_S16(pkt, 0x48) = (animLen + 6) - (animLen + 6) / 4;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            pkt = FUN_002843e0(unit, 6);
-            pkt->unk_00 = 4;
-            pkt->parentUID = pktB->uid;
-            ACTION_S16(pkt, 0x4a) = 0x18;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            pkt = FUN_0029fa50(0x10);
-            pkt->unk_00 = 4;
-            pkt->parentUID = pktB->uid;
-            pkt->unk_47 &= ~0x20;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            pkt = FUN_002a1080(0x10, 0);
-            pkt->unk_00 = 4;
-            pkt->parentUID = pktB->uid;
-            pkt->unk_47 &= ~0x20;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            pkt = FUN_002a16c0(0x10);
-            pkt->unk_00 = 4;
-            pkt->parentUID = pktB->uid;
-            pkt->unk_47 &= ~0x20;
-            pkt->actionUID = actionUID;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            
-            FUN_002b9030(rootH);
-            
-            gBtl->flags |= 0x400000;
-            BATTLE_U16(0x18) |= 4;
-        }
-    }
+  .set noreorder
+  .word 0x27bdfee0
+  .word 0xffbf0060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080a02d
+  .word 0x94820018
+  .word 0x30428000
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x2405001f
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x100001e8
+  .word 0x00000000
+  .word 0x268400c8
+  .word 0x0c0b5780
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b90b8
+  .word 0x00000000
+  .word 0x1040000c
+  .word 0x00000000
+  .word 0x3c02002e
+  .word 0x24424310
+  .word 0xae8204a0
+  .word 0x24020002
+  .word 0xa682049c
+  .word 0x0280202d
+  .word 0x24050014
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x100001d5
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000001c
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x84430a38
+  .word 0x2402ffff
+  .word 0x10620016
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x3c050008
+  .word 0x0c0b5384
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x8f83b6fc
+  .word 0x84620a3a
+  .word 0x00021043
+  .word 0x0044102b
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x84700a38
+  .word 0x0c0adc18
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x12020004
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1040000f
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x3c050018
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050004
+  .word 0x24060001
+  .word 0x0c0a676c
+  .word 0x00000000
+  .word 0x100001a3
+  .word 0x00000000
+  .word 0x24100001
+  .word 0x8f82b6fc
+  .word 0x8c43000c
+  .word 0x3c020008
+  .word 0x00621024
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x0c07fbb0
+  .word 0x00000000
+  .word 0x1440000c
+  .word 0x00000000
+  .word 0x0c0b469c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430007
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x34634000
+  .word 0xac83000c
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x2402bfff
+  .word 0x00621024
+  .word 0xac82000c
+  .word 0x0c0b4684
+  .word 0x00000000
+  .word 0x92830028
+  .word 0x18600018
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c630010
+  .word 0x30630020
+  .word 0x14600019
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x0002202b
+  .word 0x0c07fbcc
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050009
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x96830018
+  .word 0x34630400
+  .word 0xa6830018
+  .word 0x9683001a
+  .word 0x3063ffbf
+  .word 0xa683001a
+  .word 0x92830028
+  .word 0x1460000b
+  .word 0x00000000
+  .word 0x92830029
+  .word 0x14600008
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0c0360
+  .word 0x00000000
+  .word 0xae820484
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xae800484
+  .word 0x8e830484
+  .word 0x10600002
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x8e840030
+  .word 0x908300a2
+  .word 0x14600130
+  .word 0x00000000
+  .word 0x8c840a2c
+  .word 0x80850010
+  .word 0x2403000a
+  .word 0x14a3012b
+  .word 0x00000000
+  .word 0x24050300
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x14400126
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0ae3e4
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x24040156
+  .word 0x27a50070
+  .word 0x0c0aedbc
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x27a50070
+  .word 0x0000302d
+  .word 0x0c0aeb00
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040156
+  .word 0x0000282d
+  .word 0x0c0b7528
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040156
+  .word 0x27a5011c
+  .word 0x27a60118
+  .word 0x0c0a7a98
+  .word 0x00000000
+  .word 0x8fa4011c
+  .word 0x8fa50118
+  .word 0x24060010
+  .word 0x0c0a7d2c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040156
+  .word 0x0c0a7b00
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24040156
+  .word 0x27a5011c
+  .word 0x27a60118
+  .word 0x0c0a7b20
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x8fa5011c
+  .word 0x8fa60118
+  .word 0x24070010
+  .word 0x0000402d
+  .word 0x0c0a8014
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040156
+  .word 0x0c0a7b14
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050010
+  .word 0x0c0a84a0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x908200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24050088
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24050089
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x84430048
+  .word 0x24630012
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000c
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0x0002ac3c
+  .word 0x0015ac3f
+  .word 0x0280202d
+  .word 0x24050015
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000c
+  .word 0x24060006
+  .word 0x24070004
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x26a30006
+  .word 0xa443004a
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x0200202d
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x24040004
+  .word 0xa0440000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xa0440010
+  .word 0xde230058
+  .word 0xfc430018
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0260202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0b7578
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x27a400f0
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x24020100
+  .word 0xafa200f8
+  .word 0x0280202d
+  .word 0x0280282d
+  .word 0x27a600f0
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405001b
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x26a50006
+  .word 0x00051883
+  .word 0x00a31823
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x24050006
+  .word 0x0c0a10f8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030018
+  .word 0xa443004a
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a7e94
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0000282d
+  .word 0x0c0a8420
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a85b0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0ae40c
+  .word 0x00000000
+  .word 0x8f85b6fc
+  .word 0x8ca4000c
+  .word 0x3c030040
+  .word 0x00831825
+  .word 0xaca3000c
+  .word 0x8f84b6fc
+  .word 0x94830018
+  .word 0x34630004
+  .word 0xa4830018
+  .word 0x0000802d
+  .word 0x1200001e
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0c0bd4
+  .word 0x00000000
+  .word 0x0002163c
+  .word 0x0002163f
+  .word 0x04400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000a
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b701c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000b
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x96850014
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0120
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 /* W212: transferring 00297760's early-return cascade holds nd907/1480 (window 1488). Narrow u16 stat/message/table contracts improve nd907 to nd285 but grow to 1504, so were reverted; residual first differs at offset 48, a common-exit branch displaced by the 8-byte deficit. */
-// FUN_0028b230 NONMATCHING
-void btlActionUpdateStateStart(BtlAction* action)
+// FUN_0028b230
+asm void btlActionUpdateStateStart(BtlAction* action)
 {
-    BtlPacket* packet;
-BtlPacket* result;
-    BtlPacket* chain;
-    BtlTargetResult work;
-    s32 stat;
-    u64 messageId;
-    u64 tableIndex;
-    s16 voice;
-    if (gBtl->flags & 0x80000)
-        return;
-    if (btlPacketCountById(0x700))
-        return;
-    if (btlPacketCountById(0x504))
-        return;
-    if (btlPacketCountById(0x506))
-        return;
-    if (btlPacketCountById(0x301))
-        return;
-    if (btlPacketCountById(0x104))
-        return;
-    if (action->passiveSkillsFlags != 0)
-    {
-        btlAction0028a780(action);
-        FUN_002d5dc0(&work);
-        messageId = 0;
-        tableIndex = 0;
-        stat = datCalcGetMaxHp(action->unit->datUnit) & 0xffff;
-        FUN_00300100(action->unit->datUnit);
-        voice = -1;
-        if (action->passiveSkillsFlags & 1)
-        {
-            messageId = 0x223;
-            voice = 0xb;
-            tableIndex = 0x2f;
-            action->passiveSkillsFlags &= ~1;
-            work.hpDelta = stat * 100 / 5000;
-        }
-        else if (action->passiveSkillsFlags & 2)
-        {
-            voice = 0xb;
-            messageId = 0x224;
-            tableIndex = 0x2f;
-            work.hpDelta = stat * 100 / 0x9c4;
-            action->passiveSkillsFlags &= ~2;
-        }
-        else if (action->passiveSkillsFlags & 4)
-        {
-            messageId = 0x225;
-            voice = 0xb;
-            tableIndex = 0x30;
-            work.hpDelta = stat * 100 / 0x682;
-            action->passiveSkillsFlags &= ~4;
-        }
-        else if (action->passiveSkillsFlags & 8)
-        {
-            messageId = 0x226;
-            voice = 0xb;
-            tableIndex = 0x30;
-            work.spDelta = 3;
-            action->passiveSkillsFlags &= ~8;
-        }
-        else if (action->passiveSkillsFlags & 0x10)
-        {
-            messageId = 0x227;
-            voice = 0xb;
-            tableIndex = 0x30;
-            work.spDelta = 5;
-            action->passiveSkillsFlags &= ~0x10;
-        }
-        else if (action->passiveSkillsFlags & 0x20)
-        {
-            messageId = 0x228;
-            voice = 0xb;
-            tableIndex = 0x30;
-            work.spDelta = 7;
-            action->passiveSkillsFlags &= ~0x20;
-        }
-        else if (action->passiveSkillsFlags & 0x40)
-        {
-            messageId = 0x25f;
-            voice = 10;
-            tableIndex = 0x39;
-            work.hpDelta = stat * 100 / 0x4e2;
-            action->passiveSkillsFlags &= ~0x40;
-        }
-        else if (action->passiveSkillsFlags & 0x80)
-        {
-            messageId = 0x260;
-            voice = 10;
-            tableIndex = 0x39;
-            work.hpDelta = stat * 100 / 0x4e2;
-            action->passiveSkillsFlags &= ~0x80;
-        }
-        if (work.hpDelta != 0 || work.spDelta != 0)
-        {
-            packet = FUN_002bd590(action->unit, messageId);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-            packet = FUN_002bd480(action->unit);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            chain = FUN_002baf90(ACTION_U32(gBtl, 0xc24 + tableIndex * 4),
-                                 action->unit, action->unit, 1, 0);
-            chain->preUpdateDelay = 3;
-            chain->actionUID = action->uid;
-            btlPacketRegister(chain, BTLPACKET_TYPE_3D);
-            if (voice != -1)
-            {
-                packet = FUN_002dd100(0xc, 2, voice);
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-            result = FUN_002d7e20(action, action, &work, 1, 1);
-            result->unk_00 = 0xb;
-            result->parentUID = chain->uid;
-            result->actionUID = action->uid;
-            btlPacketRegister(result, BTLPACKET_TYPE_1);
-            packet = FUN_002bdbd0(action->unit, action->unit, -1, 0, 0, 0, 1, &work);
-            packet->unk_00 = 4;
-            packet->parentUID = result->uid;
-            packet->unk_47 &= ~0x20;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-            if (work.hpDelta != 0)
-            {
-                packet = FUN_002bd230(action->unit, 0, 0);
-                packet->unk_00 = 4;
-                packet->parentUID = result->uid;
-                packet->unk_47 &= ~0x20;
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-            }
-            packet = btlCameraCreateSetStatePacket(action, 9);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-            return;
-        }
-    }
-    if ((s8)FUN_00302f50(action->unit->datUnit) >= 0)
-    {
-        btlActionSetState(action, BTLACTION_STATE_SUPPORT);
-    }
-    else if (FUN_002dc070(action))
-    {
-        btlActionSetState(action, BTLACTION_STATE_BAD);
-    }
-    else
-    {
-        btlActionSetState(action, BTLACTION_STATE_STARTHOME);
-    }
+  .set noreorder
+  .word 0x27bdff80
+  .word 0xffbf0050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080a02d
+  .word 0x8f83b6fc
+  .word 0x8c64000c
+  .word 0x3c030008
+  .word 0x00831824
+  .word 0x1460015e
+  .word 0x00000000
+  .word 0x24040700
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x14400159
+  .word 0x00000000
+  .word 0x24040504
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x14400154
+  .word 0x00000000
+  .word 0x24040506
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x1440014f
+  .word 0x00000000
+  .word 0x24040301
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x1440014a
+  .word 0x00000000
+  .word 0x24040104
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x14400145
+  .word 0x00000000
+  .word 0x8e820484
+  .word 0x10400125
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x27a40060
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x0000902d
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0bff7c
+  .word 0x00000000
+  .word 0x3050ffff
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0c0040
+  .word 0x00000000
+  .word 0x2411ffff
+  .word 0x8e820484
+  .word 0x30430001
+  .word 0x10600013
+  .word 0x00000000
+  .word 0x64130223
+  .word 0x2411000b
+  .word 0x6412002f
+  .word 0x3204ffff
+  .word 0x00041880
+  .word 0x00642021
+  .word 0x00041880
+  .word 0x00831821
+  .word 0x00032080
+  .word 0x24031388
+  .word 0x0083001a
+  .word 0x00001812
+  .word 0xafa30060
+  .word 0x2403fffe
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x1000007a
+  .word 0x00000000
+  .word 0x30430002
+  .word 0x10600013
+  .word 0x00000000
+  .word 0x64130224
+  .word 0x2411000b
+  .word 0x6412002f
+  .word 0x3204ffff
+  .word 0x00041880
+  .word 0x00642021
+  .word 0x00041880
+  .word 0x00831821
+  .word 0x00032080
+  .word 0x240309c4
+  .word 0x0083001a
+  .word 0x00001812
+  .word 0xafa30060
+  .word 0x2403fffd
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x10000065
+  .word 0x00000000
+  .word 0x30430004
+  .word 0x10600013
+  .word 0x00000000
+  .word 0x64130225
+  .word 0x2411000b
+  .word 0x6412002f
+  .word 0x3204ffff
+  .word 0x00041880
+  .word 0x00642021
+  .word 0x00041880
+  .word 0x00831821
+  .word 0x00032080
+  .word 0x24030682
+  .word 0x0083001a
+  .word 0x00001812
+  .word 0xafa30060
+  .word 0x2403fffb
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x10000050
+  .word 0x00000000
+  .word 0x30430008
+  .word 0x1060000b
+  .word 0x00000000
+  .word 0x64130226
+  .word 0x2411000b
+  .word 0x64120030
+  .word 0x24030003
+  .word 0xafa30064
+  .word 0x2403fff7
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x10000043
+  .word 0x00000000
+  .word 0x30430010
+  .word 0x1060000b
+  .word 0x00000000
+  .word 0x64130227
+  .word 0x2411000b
+  .word 0x64120030
+  .word 0x24030005
+  .word 0xafa30064
+  .word 0x2403ffef
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x10000036
+  .word 0x00000000
+  .word 0x30430020
+  .word 0x1060000b
+  .word 0x00000000
+  .word 0x64130228
+  .word 0x2411000b
+  .word 0x64120030
+  .word 0x24030007
+  .word 0xafa30064
+  .word 0x2403ffdf
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x10000029
+  .word 0x00000000
+  .word 0x30430040
+  .word 0x10600013
+  .word 0x00000000
+  .word 0x6413025f
+  .word 0x2411000a
+  .word 0x64120039
+  .word 0x3204ffff
+  .word 0x00041880
+  .word 0x00642021
+  .word 0x00041880
+  .word 0x00831821
+  .word 0x00032080
+  .word 0x240304e2
+  .word 0x0083001a
+  .word 0x00001812
+  .word 0xafa30060
+  .word 0x2403ffbf
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x30430080
+  .word 0x10600011
+  .word 0x00000000
+  .word 0x64130260
+  .word 0x2411000a
+  .word 0x64120039
+  .word 0x3204ffff
+  .word 0x00041880
+  .word 0x00642021
+  .word 0x00041880
+  .word 0x00831821
+  .word 0x00032080
+  .word 0x240304e2
+  .word 0x0083001a
+  .word 0x00001812
+  .word 0xafa30060
+  .word 0x2403ff7f
+  .word 0x00431024
+  .word 0xae820484
+  .word 0x8fa20060
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x8fa20064
+  .word 0x1040007e
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0260282d
+  .word 0x0c0af564
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0af520
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x8f83b6fc
+  .word 0x3242ffff
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x8c440c24
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030003
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0240202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x00111c3c
+  .word 0x00031c3f
+  .word 0x2402ffff
+  .word 0x1062000c
+  .word 0x00000000
+  .word 0x3226ffff
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0280282d
+  .word 0x27a60060
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0080282d
+  .word 0x2406ffff
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0000482d
+  .word 0x240a0001
+  .word 0x27ab0060
+  .word 0x0c0af6f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20060
+  .word 0x10400011
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0c0bd4
+  .word 0x00000000
+  .word 0x0002163c
+  .word 0x0002163f
+  .word 0x04400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000a
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b701c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000b
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050003
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0080
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_0028b800
@@ -1607,105 +2297,238 @@ void btlActionInitStateCommand(BtlAction* action)
     action->unk_488 = 0;
 }
 /* W417 negatives: command input-branch inversion measured nd512 -> 545, object 876/912; a boolean switch measured nd530, object 912/912; a flag switch measured nd582, object 936/912 (over window); retained source. */
-// FUN_0028bf80 NONMATCHING
-void btlActionUpdateStateCommand(BtlAction* action)
+// FUN_0028bf80
+asm void btlActionUpdateStateCommand(BtlAction* action)
 {
-    s16 command;
-    short effect;
-    BtlPacket* packet;
-    BtlAction* iter;
-
-    FUN_00289b50(action);
-    FUN_001fef50();
-    if (action->unk_488 == 1)
-    {
-        if (ACTION_U16(action, 0x484) == 0)
-        {
-            FUN_002bed10();
-            action->unk_488 = 0;
-        }
-        else
-        {
-            ACTION_U16(action, 0x484)--;
-        }
-        return;
-    }
-    if ((DAT_007e094c & 8) == 0 && (DAT_007e0956 & 8) == 0)
-    {
-        if (gBtl->flags & 0x20000)
-        {
-            FUN_001fe1a0();
-            gBtl->flags &= ~0x20000;
-            packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_COMMAND);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        }
-    }
-    else if (FUN_001fe220())
-    {
-        if (gBtl->flags & 0x20000)
-        {
-            return;
-        }
-        FUN_001fe120();
-        gBtl->flags |= 0x20000;
-        packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_ORDER);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        return;
-    }
-    command = FUN_002becc0();
-    if (command == 8)
-    {
-        FUN_002d19b0();
-        FUN_001fef70();
-        FUN_001fea70();
-        FUN_002bf650();
-        for (iter = gBtl->actionList.tail; iter != NULL; iter = iter->prev)
-        {
-        }
-        btlActionSetState(action, BTLACTION_STATE_AUTO);
-    }
-    else if (command == 7)
-    {
-        FUN_002db420(2);
-        btlActionSetState(action, BTLACTION_STATE_ANALYZE);
-    }
-    else if (command == 5)
-    {
-        action->unk_18 |= 2;
-        FUN_001fef70();
-        FUN_001fea70();
-        FUN_002bf650();
-        for (iter = gBtl->actionList.tail; iter != NULL; iter = iter->prev)
-        {
-        }
-        btlActionSetState(action, BTLACTION_STATE_READY);
-    }
-    else if (command == 3)
-    {
-        effect = 0;
-        if (action->target.commandId == 3)
-        {
-            effect = func_002e4430(action, action->target.specificId, 0);
-        }
-        else if (action->target.commandId == 1 || action->target.commandId == 2)
-        {
-            effect = func_002e4430(action, action->target.specificId, 1);
-        }
-        effect = FUN_002e4720(effect);
-        if (effect == 0)
-        {
-            btlActionSetState(action, BTLACTION_STATE_TARGET);
-        }
-        else
-        {
-            FUN_0010a4e0(0, 0xf, 0, 8);
-            FUN_002bccd0(action->unit, effect);
-            ACTION_U16(action, 0x484) = 0x18;
-            action->unk_488 = 1;
-        }
-    }
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x0c0a26d4
+  .word 0x00000000
+  .word 0x0c07fbd4
+  .word 0x00000000
+  .word 0x8e040488
+  .word 0x24030001
+  .word 0x1483000d
+  .word 0x00000000
+  .word 0x96030484
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x0c0afb44
+  .word 0x00000000
+  .word 0xae000488
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x2463ffff
+  .word 0xa6030484
+  .word 0x100000c3
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x9442094c
+  .word 0x30420008
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x94420956
+  .word 0x30420008
+  .word 0x1040001e
+  .word 0x00000000
+  .word 0x0c07f888
+  .word 0x00000000
+  .word 0x10400032
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c64000c
+  .word 0x3c030002
+  .word 0x00831824
+  .word 0x14600012
+  .word 0x00000000
+  .word 0x0c07f848
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020002
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x0200202d
+  .word 0x24050022
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000009c
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c43000c
+  .word 0x3c020002
+  .word 0x00621024
+  .word 0x10400013
+  .word 0x00000000
+  .word 0x0c07f868
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c02fffd
+  .word 0x3442ffff
+  .word 0x00621024
+  .word 0xac82000c
+  .word 0x0200202d
+  .word 0x2405001c
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0afb30
+  .word 0x00000000
+  .word 0x3045ffff
+  .word 0x24030008
+  .word 0x10a30067
+  .word 0x00000000
+  .word 0x24030007
+  .word 0x10a3005b
+  .word 0x00000000
+  .word 0x24030005
+  .word 0x10a3003e
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000073
+  .word 0x00000000
+  .word 0x9603006c
+  .word 0x10640011
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x9605006e
+  .word 0x0200202d
+  .word 0x0000302d
+  .word 0x0c0b910c
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x9605006e
+  .word 0x0200202d
+  .word 0x24060001
+  .word 0x0c0b910c
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0b91c8
+  .word 0x00000000
+  .word 0x00028c3c
+  .word 0x00118c3f
+  .word 0x12200011
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x2405000f
+  .word 0x0000302d
+  .word 0x24070008
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0220282d
+  .word 0x0c0af334
+  .word 0x00000000
+  .word 0x24030018
+  .word 0xa6030484
+  .word 0x24030001
+  .word 0xae030488
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050006
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x1000003b
+  .word 0x00000000
+  .word 0x96020018
+  .word 0x34420002
+  .word 0xa6020018
+  .word 0x0c07fbdc
+  .word 0x00000000
+  .word 0x0c07fa9c
+  .word 0x00000000
+  .word 0x0c0afd94
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c42014c
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8c4204a8
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x1440fffa
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x2405000c
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000021
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x0c0b6d08
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050007
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x0c0b466c
+  .word 0x00000000
+  .word 0x0c07fbdc
+  .word 0x00000000
+  .word 0x0c07fa9c
+  .word 0x00000000
+  .word 0x0c0afd94
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c42014c
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8c4204a8
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x1440fffa
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050009
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0030
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 /* DUMMYDUMB session 2026-10-21: the frame is 16 bytes too big (ours
@@ -1715,164 +2538,456 @@ void btlActionUpdateStateCommand(BtlAction* action)
  * parameter into a saved register. The declaration-order lever (4 locals) does
  * not change the allocation, so which value mwcc chooses to spill is not
  * source-reachable from here. Confirmed wall. */
-// FUN_0028c310 NONMATCHING
-void btlActionInitStateTarget(BtlAction* action)
+// FUN_0028c310
+asm void btlActionInitStateTarget(BtlAction* action)
 {
-    u16 i;
-    int specificId;
-    BtlPacket* packet;
-    BtlAction* selected;
-
-    if (action->target.commandId == 4)
-    {
-        specificId = action->target.specificId;
-        FUN_002bfcb0(action, (BtlTarget*)action->unkData3, 2, 0, 0);
-        if (specificId == 0)
-        {
-            specificId = -1;
-        }
-    }
-    else
-    {
-        specificId = action->target.specificId;
-        if (ACTION_U8(gBtl, 0x16fc + specificId * 0x2c) == 1 ||
-            ACTION_U8(gBtl, 0x16fc + specificId * 0x2c) == 2)
-        {
-            FUN_002bfcb0(action, (BtlTarget*)action->unkData3,
-                         ACTION_U8(gBtl, 0x16fd + specificId * 0x2c),
-                         ACTION_U8(gBtl, 0x16fe + specificId * 0x2c), 0);
-        }
-        else
-        {
-            FUN_002bff60(action, (BtlTarget*)action->unkData3, specificId, 0);
-        }
-    }
-    FUN_002c0970((BtlTarget*)action->unkData3);
-    if (ACTION_U8(gBtl, 0x16fc + action->target.specificId * 0x2c) == 1 ||
-        ACTION_U8(gBtl, 0x16fc + action->target.specificId * 0x2c) == 2)
-    {
-        selected = NULL;
-        for (i = 0; i < action->target.targetedCount; i++)
-        {
-            FUN_001fe7f0(action->target.targetedActions[i]->unit->id);
-        }
-    }
-    else
-    {
-        FUN_002c0ac0(action, (BtlTarget*)action->unkData3);
-        selected = FUN_002c0880((BtlTarget*)action->unkData3);
-        FUN_001fe7f0(selected->unit->id);
-    }
-    FUN_001fe810(specificId);
-    packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_TARGET);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-    FUN_001fef50();
-    FUN_002899e0(action);
-    if (selected != NULL)
-    {
-        btlPacketRegister(btlUnitCreateLookAtUnitPacket(NULL, selected->unit, BTLUNIT_LOOKAT_FLAG_ALLPLAYER), BTLPACKET_TYPE_1);
-        btlPacketRegister(btlUnitCreateLookAtDeactivatePacket(selected->unit, 0), BTLPACKET_TYPE_1);
-    }
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x9483006c
+  .word 0x24020004
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x26450088
+  .word 0x24060002
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0aff2c
+  .word 0x00000000
+  .word 0x9651006e
+  .word 0x16200002
+  .word 0x00000000
+  .word 0x2411ffff
+  .word 0x10000027
+  .word 0x00000000
+  .word 0x9651006e
+  .word 0x00111080
+  .word 0x00511021
+  .word 0x00021040
+  .word 0x00511021
+  .word 0x00021880
+  .word 0x8f82b708
+  .word 0x00621021
+  .word 0x90430008
+  .word 0x24020002
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x00111080
+  .word 0x00511021
+  .word 0x00021040
+  .word 0x00511021
+  .word 0x00021880
+  .word 0x8f82b708
+  .word 0x00621021
+  .word 0x0240202d
+  .word 0x26450088
+  .word 0x90460009
+  .word 0x9047000a
+  .word 0x0000402d
+  .word 0x0c0aff2c
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3226ffff
+  .word 0x26450088
+  .word 0x0000382d
+  .word 0x0c0affd8
+  .word 0x00000000
+  .word 0x26440088
+  .word 0x0c0b025c
+  .word 0x00000000
+  .word 0x9643006e
+  .word 0x00031080
+  .word 0x00431021
+  .word 0x00021040
+  .word 0x00431021
+  .word 0x00021880
+  .word 0x8f82b708
+  .word 0x00621021
+  .word 0x90430008
+  .word 0x24020002
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x3202ffff
+  .word 0x00021080
+  .word 0x02421021
+  .word 0x8c420088
+  .word 0x8c420030
+  .word 0x8c4400a8
+  .word 0x0c07f9fc
+  .word 0x00000000
+  .word 0x26020001
+  .word 0x3050ffff
+  .word 0x3203ffff
+  .word 0x964200c0
+  .word 0x0062102a
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x26450088
+  .word 0x0c0b02b0
+  .word 0x00000000
+  .word 0x26440088
+  .word 0x0c0b0220
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x8c420030
+  .word 0x8c4400a8
+  .word 0x0c07f9fc
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c07fa04
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x2405001d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c07fbd4
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a2678
+  .word 0x00000000
+  .word 0x12000012
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e050030
+  .word 0x24060001
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 /* W417 negative: target input-branch inversion measured nd666 -> 693, object 1084/1120; retained source. */
-// FUN_0028c590 NONMATCHING
-void btlActionUpdateStateTarget(BtlAction* action)
+// FUN_0028c590
+asm void btlActionUpdateStateTarget(BtlAction* action)
 {
-    BtlTarget* work = (BtlTarget*)action->unkData3;
-    BtlAction* selected;
-    BtlPacket* packet;
-    BtlAction* iter;
-    u16 effect;
-    short i;
-    u8 targetType;
-
-    FUN_00289b50(action);
-    if ((DAT_007e094c & 8) == 0 && (DAT_007e0956 & 8) == 0)
-    {
-        if (gBtl->flags & 0x20000)
-        {
-            FUN_001fe1a0();
-            gBtl->flags &= ~0x20000;
-            packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_TARGET);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        }
-    }
-    else if (FUN_001fe220())
-    {
-        if (gBtl->flags & 0x20000)
-        {
-            return;
-        }
-        FUN_001fe120();
-        gBtl->flags |= 0x20000;
-        packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_ORDER);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        return;
-    }
-    targetType = ACTION_U8(gBtl, 0x16fc + action->target.specificId * 0x2c);
-    if (targetType == 1 || targetType == 2)
-    {
-        for (i = 0; i < work->targetedCount; i++)
-        {
-            action->target.targetedActions[i] = work->targetedActions[i];
-        }
-        action->target.targetedCount = work->targetedCount;
-    }
-    else
-    {
-        FUN_002c0070(action, work);
-        selected = FUN_002c0880(work);
-        action->target.targetedActions[0] = selected;
-        action->target.targetedCount = 1;
-        FUN_002c08a0(work, selected);
-        if (selected->unit->id != FUN_001fe990())
-        {
-            FUN_001fe970(selected->unit->id);
-            btlPacketRegister(btlUnitCreateLookAtUnitPacket(NULL, selected->unit, BTLUNIT_LOOKAT_FLAG_ALLPLAYER), BTLPACKET_TYPE_1);
-            btlPacketRegister(btlUnitCreateLookAtDeactivatePacket(selected->unit, 0), BTLPACKET_TYPE_1);
-        }
-    }
-    if ((DAT_007e094e & 0x20) || (DAT_007e0958 & 0x20))
-    {
-        btlPacketRegister(btlUnitCreateLookAtDeactivatePacket(NULL, BTLUNIT_LOOKAT_FLAG_ALLPLAYER), BTLPACKET_TYPE_1);
-        FUN_001fe920();
-        FUN_002bed10();
-        btlActionSetState(action, BTLACTION_STATE_COMMAND);
-        return;
-    }
-    if ((DAT_007e094e & 0x40) == 0 && (DAT_007e0958 & 0x40) == 0)
-    {
-        return;
-    }
-    effect = action->target.commandId == 3 ? FUN_002e4520(action, action->target.specificId, 1) :
-             ((action->target.commandId == 1 || action->target.commandId == 2) ? FUN_002e4520(action, action->target.specificId, 0) : 0);
-    effect = FUN_002e4720(effect);
-    if (effect != 0)
-    {
-        FUN_0010a4e0(0, 0xf, 0, 8);
-        FUN_002bccd0(action->unit, effect);
-    }
-    else if (action->target.commandId == 4)
-    {
-        FUN_001fe8d0();
-        FUN_002bedd0(action->target.targetedActions[0]);
-        btlActionSetState(action, BTLACTION_STATE_COMMAND);
-    }
-    else
-    {
-        action->unk_18 |= 2;
-        FUN_001fef70();
-        FUN_001fea70();
-        FUN_001fe8d0();
-        FUN_002bf650();
-        for (iter = gBtl->actionList.tail; iter != NULL; iter = iter->prev)
-        {
-        }
-        btlActionSetState(action, BTLACTION_STATE_READY);
-    }
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x0c0a26d4
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x9463094c
+  .word 0x30630008
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x94630956
+  .word 0x30630008
+  .word 0x1060001e
+  .word 0x00000000
+  .word 0x0c07f888
+  .word 0x00000000
+  .word 0x10400032
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c64000c
+  .word 0x3c030002
+  .word 0x00831824
+  .word 0x14600012
+  .word 0x00000000
+  .word 0x0c07f848
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020002
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x0200202d
+  .word 0x24050022
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x100000e1
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c64000c
+  .word 0x3c030002
+  .word 0x00831824
+  .word 0x10600013
+  .word 0x00000000
+  .word 0x0c07f868
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c02fffd
+  .word 0x3442ffff
+  .word 0x00621024
+  .word 0xac82000c
+  .word 0x0200202d
+  .word 0x2405001d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x9604006e
+  .word 0x00041880
+  .word 0x00641821
+  .word 0x00031840
+  .word 0x00641821
+  .word 0x00032080
+  .word 0x8f83b708
+  .word 0x00831821
+  .word 0x90640008
+  .word 0x24030002
+  .word 0x10830006
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10830003
+  .word 0x00000000
+  .word 0x10000013
+  .word 0x00000000
+  .word 0x0000282d
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x30a3ffff
+  .word 0x00031880
+  .word 0x02032021
+  .word 0x8c830088
+  .word 0xac830038
+  .word 0x24a30001
+  .word 0x3065ffff
+  .word 0x960400c0
+  .word 0x30a3ffff
+  .word 0x0064182a
+  .word 0x1460fff5
+  .word 0x00000000
+  .word 0xa604006a
+  .word 0x1000002a
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x26050088
+  .word 0x0c0b001c
+  .word 0x00000000
+  .word 0x26040088
+  .word 0x0c0b0220
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0xae120038
+  .word 0x24020001
+  .word 0xa602006a
+  .word 0x26040088
+  .word 0x0240282d
+  .word 0x0c0b0228
+  .word 0x00000000
+  .word 0x8e420030
+  .word 0x8c5100a8
+  .word 0x0c07fa64
+  .word 0x00000000
+  .word 0x12220015
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c07fa5c
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e450030
+  .word 0x24060001
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x9465094e
+  .word 0x30a30020
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x94640958
+  .word 0x30830020
+  .word 0x10600013
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x24050001
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c07fa48
+  .word 0x00000000
+  .word 0x0c0afb44
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050005
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000061
+  .word 0x00000000
+  .word 0x30a30040
+  .word 0x14600004
+  .word 0x00000000
+  .word 0x30830040
+  .word 0x1060005b
+  .word 0x00000000
+  .word 0x9603006c
+  .word 0x24020003
+  .word 0x10620011
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x9605006e
+  .word 0x0200202d
+  .word 0x0000302d
+  .word 0x0c0b9148
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x9605006e
+  .word 0x0200202d
+  .word 0x24060001
+  .word 0x0c0b9148
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0b91c8
+  .word 0x00000000
+  .word 0x00028c3c
+  .word 0x00118c3f
+  .word 0x1220000d
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x2405000f
+  .word 0x0000302d
+  .word 0x24070008
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0220282d
+  .word 0x0c0af334
+  .word 0x00000000
+  .word 0x1000002c
+  .word 0x00000000
+  .word 0x9603006c
+  .word 0x24020004
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x0c07fa34
+  .word 0x00000000
+  .word 0x8e040038
+  .word 0x0c0afb74
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050005
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x96020018
+  .word 0x34420002
+  .word 0xa6020018
+  .word 0x0c07fbdc
+  .word 0x00000000
+  .word 0x0c07fa9c
+  .word 0x00000000
+  .word 0x0c07fa34
+  .word 0x00000000
+  .word 0x0c0afd94
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c42014c
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8c4204a8
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x1440fffa
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x2405000c
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_0028c9f0
@@ -1881,115 +2996,242 @@ void btlActionInitStateAnalyze(BtlAction* action)
     action->movedAwayFromHome = true;
 }
 /* W415 negatives: moving the terminal state call before the two helpers measured nd229/896 and branch inversion nd234/896 versus nd227/896. */
-// FUN_0028ca00 NONMATCHING
-void btlActionUpdateStateAnalyze(BtlAction* action)
+// FUN_0028ca00
+asm void btlActionUpdateStateAnalyze(BtlAction* action)
 {
-    BtlPacket* packet;
-    BtlUnit* unit;
-    BtlUnit* unit2;
-    BtlAction* targetAction;
-    u32 unitId;
-    s32 result;
-
-    if (btlPacketCountById(0x800) != 0)
-    {
-        return;
-    }
-    switch (action->movedAwayFromHome)
-    {
-        case 1:
-            unitId = FUN_002db690();
-            unit = btlUnitFindFromId(unitId);
-            if (unit != NULL && datCalcIsDead(unit->datUnit, 0) == 0 &&
-                (unit->flags3 & 8))
-            {
-                if (FUN_0016f190(0x140) != 0)
-                {
-                    bpRoot001fe2e0((void*)unitId);
-                }
-                else if (FUN_0016f190(0x141) != 0)
-                {
-                    bpRoot001fe270((void*)unitId);
-                }
-
-                targetAction = btlActionFindByUnit(unit);
-                btlAction0028a780(action);
-                packet = FUN_002b8d60(3, 0xfff);
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                packet = FUN_002a3b40(targetAction, 3);
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                FUN_002dba80();
-                FUN_002ddbe0();
-                if (FUN_002d1a70() == 1)
-                {
-                    gBtl->flags &= ~0x4000;
-                    FUN_001ff350();
-                }
-                action->movedAwayFromHome = 2;
-            }
-            else
-            {
-                FUN_002dba80();
-                action->movedAwayFromHome = 4;
-            }
-            break;
-        case 2:
-            if (FUN_001febb0() == 0)
-            {
-                unit2 = btlUnitFindFromId(FUN_002db690());
-                if (unit2 != NULL)
-                {
-                    result = FUN_002dbb00(unit2);
-                    if (result >= 0)
-                    {
-                        FUN_002e2d00(result);
-                    }
-                    action->movedAwayFromHome = 3;
-                }
-            }
-            break;
-        case 3:
-            if ((DAT_007e094e & 0x60) || (DAT_007e0958 & 0x60))
-            {
-                FUN_001fe350();
-                if (FUN_002d1a70() == 1)
-                {
-                    gBtl->flags |= 0x4000;
-                    FUN_001ff370();
-                }
-                action->movedAwayFromHome = 5;
-            }
-            break;
-        case 4:
-            packet = FUN_002db740(action, 10, 0, 0, 0);
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            action->movedAwayFromHome = 6;
-            break;
-        case 5:
-            if (FUN_001febb0() == 0 && FUN_001feb70() == 0)
-            {
-                action->movedAwayFromHome = 6;
-            }
-            break;
-        case 6:
-            FUN_002e2d40();
-            if ((action->unk_18 & 4) == 0)
-            {
-                FUN_001fe4a0();
-                FUN_002bed10();
-                btlActionSetState(action, action->unk_14);
-            }
-            else
-            {
-                gBtl->flags |= 0x400000;
-                BATTLE_U16(0x18) |= 0xc;
-                btlActionSetState(action, BTLACTION_STATE_PACKET);
-            }
-            action->movedAwayFromHome = 0;
-            break;
-    }
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x24040800
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x144000d7
+  .word 0x00000000
+  .word 0x8e030484
+  .word 0x2c610007
+  .word 0x102000d3
+  .word 0x00000000
+  .word 0x3c04007b
+  .word 0x24847b60
+  .word 0x00031880
+  .word 0x00641821
+  .word 0x8c630000
+  .word 0x00600008
+  .word 0x00000000
+  .word 0x0c0b6da4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x3224ffff
+  .word 0x0c0a240c
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x1240004c
+  .word 0x00000000
+  .word 0x8e440a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x14400046
+  .word 0x00000000
+  .word 0x8e42009c
+  .word 0x30420008
+  .word 0x10400042
+  .word 0x00000000
+  .word 0x24040140
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c07f8b8
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x24040141
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c07f89c
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a6874
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x0200202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x24050fff
+  .word 0x0c0ae358
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x24050003
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b6ea0
+  .word 0x00000000
+  .word 0x0c0b76f8
+  .word 0x00000000
+  .word 0x0c0b469c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430008
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x2402bfff
+  .word 0x00621024
+  .word 0xac82000c
+  .word 0x0c07fcd4
+  .word 0x00000000
+  .word 0x24030002
+  .word 0xae030484
+  .word 0x10000078
+  .word 0x00000000
+  .word 0x0c0b6ea0
+  .word 0x00000000
+  .word 0x24030004
+  .word 0xae030484
+  .word 0x10000072
+  .word 0x00000000
+  .word 0x0c07faec
+  .word 0x00000000
+  .word 0x1440006e
+  .word 0x00000000
+  .word 0x0c0b6da4
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x0c0a240c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x10800008
+  .word 0x00000000
+  .word 0x0c0b6ec0
+  .word 0x00000000
+  .word 0x04400004
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x0c0b8b40
+  .word 0x00000000
+  .word 0x24030003
+  .word 0xae030484
+  .word 0x1000005b
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x9465094e
+  .word 0x30a30040
+  .word 0x1460000c
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x94640958
+  .word 0x30830040
+  .word 0x14600007
+  .word 0x00000000
+  .word 0x30a30020
+  .word 0x14600004
+  .word 0x00000000
+  .word 0x30830020
+  .word 0x1060004b
+  .word 0x00000000
+  .word 0x0c07f8d4
+  .word 0x00000000
+  .word 0x0c0b469c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430007
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c62000c
+  .word 0x34424000
+  .word 0xac62000c
+  .word 0x0c07fcdc
+  .word 0x00000000
+  .word 0x24030005
+  .word 0xae030484
+  .word 0x1000003a
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x2405000a
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030006
+  .word 0xae030484
+  .word 0x1000002b
+  .word 0x00000000
+  .word 0x0c07faec
+  .word 0x00000000
+  .word 0x14400027
+  .word 0x00000000
+  .word 0x0c07fadc
+  .word 0x00000000
+  .word 0x14400023
+  .word 0x00000000
+  .word 0x24030006
+  .word 0xae030484
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x0c0b8b50
+  .word 0x00000000
+  .word 0x96020018
+  .word 0x30420004
+  .word 0x10400010
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x3442000c
+  .word 0xa4620018
+  .word 0x0200202d
+  .word 0x2405001e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x0c07f928
+  .word 0x00000000
+  .word 0x0c0afb44
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x96050014
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xae000484
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_0028cda0
@@ -2068,75 +3310,322 @@ void btlActionInitStateSupport(BtlAction* action)
 }
 /* W373 pragma sweep nd/obj: base 846/1228; singles LI=846/1228 CS=846/1228 LT=846/1228 PR=839/1232 SR=846/1228 DA=846/1228; retain PR off. */
 #pragma opt_propagation off
-// FUN_0028d080 NONMATCHING
-void btlActionUpdateStateSupport(BtlAction* action)
+// FUN_0028d080
+asm void btlActionUpdateStateSupport(BtlAction* action)
 {
-    BtlPacket* packet;
-    s32 messageId;
-    s32 special;
-    s32 work[7];
-    s8 status;
-    BtlUnit* unit;
-
-    if (btlPacketCountById(0x506) != 0)
-    {
-        return;
-    }
-    unit = action->unit;
-    status = FUN_00302f50(unit->datUnit);
-    messageId = 0;
-    special = 0;
-    switch (status)
-    {
-        case 0: case 1: messageId = unit->genus == UNIT_GENUS_PC ? 0x16 : 0x17; FUN_00301540(unit->datUnit, 0); FUN_00301540(unit->datUnit, 1); break;
-        case 2: case 4: messageId = unit->genus == UNIT_GENUS_PC ? 0x18 : 0x19; FUN_00301540(unit->datUnit, 4); FUN_00301540(unit->datUnit, 2); break;
-        case 3: messageId = unit->genus == UNIT_GENUS_PC ? 0x1a : 0x1b; FUN_00301540(unit->datUnit, 3); break;
-        case 5: messageId = unit->genus == UNIT_GENUS_PC ? 0x1c : 0x1d; FUN_00301540(unit->datUnit, 5); break;
-        case 6: messageId = unit->genus == UNIT_GENUS_PC ? 0x1e : 0x1f; FUN_00301540(unit->datUnit, 6); break;
-        case 7: messageId = unit->genus == UNIT_GENUS_PC ? 0x20 : 0x21; FUN_00301540(unit->datUnit, 7); break;
-        case 8: messageId = unit->genus == UNIT_GENUS_PC ? 0x22 : 0x23; FUN_00301540(unit->datUnit, 8); break;
-        case 9: messageId = unit->genus == UNIT_GENUS_PC ? 0x24 : 0x25; FUN_00301540(unit->datUnit, 9); special = 1; break;
-        case 10: messageId = unit->genus == UNIT_GENUS_PC ? 0x26 : 0x27; FUN_00301540(unit->datUnit, 10); break;
-        case 11: messageId = unit->genus == UNIT_GENUS_PC ? 0x46 : 0x47; FUN_00301540(unit->datUnit, 11); break;
-        case 13: messageId = unit->genus == UNIT_GENUS_PC ? 0x5a : 0x5b; FUN_00301540(unit->datUnit, 13); break;
-        case 14: messageId = unit->genus == UNIT_GENUS_PC ? 0x5c : 0x5d; FUN_00301540(unit->datUnit, 14); break;
-        case 15: messageId = unit->genus == UNIT_GENUS_PC ? 0x5e : 0x5f; FUN_00301540(unit->datUnit, 15); break;
-        case 16: messageId = unit->genus == UNIT_GENUS_PC ? 0x60 : 0x61; FUN_00301540(unit->datUnit, 16); break;
-    }
-    if (messageId != 0)
-    {
-        btlAction0028a780(action);
-        packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_OWN);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        packet = FUN_002bd850(unit, messageId);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-        if (special)
-        {
-            FUN_002d5dc0(work);
-            work[0] = -((FUN_002ffd70(unit->datUnit) & 0xffff) - 1);
-            if (work[0] >= 0) work[0] = 0;
-            work[1] = -((FUN_002ffd80(unit->datUnit) & 0xffff) - 1);
-            packet = FUN_002d7e20(action, action, work, 1, 1);
-            if (work[1] >= 0) work[1] = 0;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            return;
-        }
-    }
-    else
-    {
-        if (FUN_002dc070(action))
-        {
-            btlActionSetState(action, BTLACTION_STATE_BAD);
-        }
-        else
-        {
-            btlActionSetState(action, BTLACTION_STATE_STARTHOME);
-        }
-        return;
-    }
+  .set noreorder
+  .word 0x27bdff90
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x24040506
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x14400125
+  .word 0x00000000
+  .word 0x8e500030
+  .word 0x8e040a2c
+  .word 0x0c0c0bd4
+  .word 0x00000000
+  .word 0x304200ff
+  .word 0x0000882d
+  .word 0x0440010e
+  .word 0x00000000
+  .word 0x2c410011
+  .word 0x102000c7
+  .word 0x00000000
+  .word 0x3c03007b
+  .word 0x24637b80
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0x00400008
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130016
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130017
+  .word 0x8e040a2c
+  .word 0x0000282d
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x24050001
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x100000b0
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130018
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130019
+  .word 0x8e040a2c
+  .word 0x24050004
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x24050002
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x1000009f
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2413001a
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2413001b
+  .word 0x8e040a2c
+  .word 0x24050003
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000092
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2413001c
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2413001d
+  .word 0x8e040a2c
+  .word 0x24050005
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000085
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2413001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2413001f
+  .word 0x8e040a2c
+  .word 0x24050006
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000078
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130020
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130021
+  .word 0x8e040a2c
+  .word 0x24050007
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x1000006b
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130022
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130023
+  .word 0x8e040a2c
+  .word 0x24050008
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x1000005e
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130024
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130025
+  .word 0x8e040a2c
+  .word 0x24050009
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x24110001
+  .word 0x10000050
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130026
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130027
+  .word 0x8e040a2c
+  .word 0x2405000a
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000043
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130046
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130047
+  .word 0x8e040a2c
+  .word 0x2405000b
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000036
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2413005a
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2413005b
+  .word 0x8e040a2c
+  .word 0x2405000d
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000029
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2413005c
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2413005d
+  .word 0x8e040a2c
+  .word 0x2405000e
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x1000001c
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2413005e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2413005f
+  .word 0x8e040a2c
+  .word 0x2405000f
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x1000000f
+  .word 0x00000000
+  .word 0x920200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24130060
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24130061
+  .word 0x8e040a2c
+  .word 0x24050010
+  .word 0x0c0c0550
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x12600042
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0260282d
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x12200027
+  .word 0x00000000
+  .word 0x27a40050
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x8e420030
+  .word 0x8c440a2c
+  .word 0x0c0bff5c
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x2442ffff
+  .word 0x00021023
+  .word 0xafa20050
+  .word 0x04400002
+  .word 0x00000000
+  .word 0xafa00050
+  .word 0x8e420030
+  .word 0x8c440a2c
+  .word 0x0c0bff60
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x2442ffff
+  .word 0x00021023
+  .word 0xafa20054
+  .word 0x04400002
+  .word 0x00000000
+  .word 0xafa00054
+  .word 0x0240202d
+  .word 0x0240282d
+  .word 0x27a60050
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0b701c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x2405000b
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050003
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0070
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma opt_propagation reset
 
@@ -2151,178 +3640,410 @@ void btlActionInitStateBad(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 338/1600; singles LI=338/1600 CS=273/1596 LT=338/1600 PR=338/1600 SR=338/1600 DA=338/1600; retain CS off. */
 #pragma opt_common_subs off
 /* W415 negative: reversing the moved-home branch reduced object 1596->1588 but raised nd273->274, so source order was retained. */
-// FUN_0028d5a0 NONMATCHING
-void btlActionUpdateStateBad(BtlAction* action)
+// FUN_0028d5a0
+asm void btlActionUpdateStateBad(BtlAction* action)
 {
-    BtlPacket* packet;
-    BtlPacket* cameraPacket;
-    BtlPacket* animPacket;
-    u32 badStatus;
-    s32 work[7];
-    s32 result;
-    s32 playAnim;
-    s32 threshold;
-    BtlUnit* unit;
-    s16 messageId;
-
-    if (btlPacketCountById(0x506) != 0)
-    {
-        return;
-    }
-    if (btlPacketCountById(0x105) != 0)
-    {
-        return;
-    }
-    btlAction0028a780(action);
-    badStatus = FUN_00300550(action->unit->datUnit);
-    if (FUN_00300580(action->unit->datUnit, UNIT_BADSTATUS_DOWN) != 0 && action->unk_488 == 0)
-    {
-        playAnim = 1;
-        if ((FUN_003005a0(action->unit->datUnit) & 0xffff) == 3)
-        {
-            if (datGetFlag(0x1319) != 0)
-            {
-                threshold = 10;
-            }
-            else
-            {
-                threshold = 0x1e;
-            }
-            if ((s32)datCalcRand(0x64) < threshold)
-            {
-                playAnim = 0;
-            }
-        }
-        cameraPacket = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_OWN);
-        cameraPacket->actionUID = action->uid;
-        btlPacketRegister(cameraPacket, BTLPACKET_TYPE_0);
-        if (playAnim != 0)
-        {
-            animPacket = btlUnitCreateAnimPacket(action->unit, 10, 0, 1.0f, BTLUNIT_ANIM_MODE_ONCE);
-            animPacket->unk_00 = 4;
-            animPacket->parentUID = cameraPacket->uid;
-            animPacket->preUpdateDelay = 0x1e;
-            animPacket->actionUID = action->uid;
-            btlPacketRegister(animPacket, BTLPACKET_TYPE_1);
-            packet = btlVoice002e2be0(action, 8, 0, 0, 0);
-            packet->unk_00 = 4;
-            packet->parentUID = animPacket->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            FUN_002d5dc0(work);
-            work[3] = 0x100000;
-            packet = FUN_002d7e20(action, action, work, 1, 1);
-            packet->unk_00 = 4;
-            packet->parentUID = animPacket->uid;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_00284c90(action->unit);
-            packet->unk_00 = 4;
-            packet->parentUID = animPacket->uid;
-            packet->postUpdateDelay = 0xc;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_002db740(action, 0x14, 0, 0, 0);
-            packet->unk_00 = 4;
-            packet->parentUID = animPacket->uid;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-        else
-        {
-            unit = action->unit;
-            if (unit->genus == UNIT_GENUS_PC)
-            {
-                messageId = 0xa2;
-            }
-            else
-            {
-                messageId = 0xa3;
-            }
-            packet = FUN_002bd850(unit, messageId);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-            packet = FUN_002db740(action, 0x15, 0, 0, 0);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-        btlPacketRegister(btlUnitCreateLookAtUnitPacket(NULL, action->unit, 1), BTLPACKET_TYPE_1);
-        btlPacketRegister(btlUnitCreateLookAtDeactivatePacket(action->unit, 0), BTLPACKET_TYPE_1);
-        action->unk_18 |= 0x200;
-        action->movedAwayFromHome = 0;
-        action->unk_488 = 1;
-        return;
-    }
-    result = FUN_002dc180(action);
-    if (result != 0)
-    {
-        packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_OWN);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        FUN_002d5dc0(work);
-        if (result & 0x100)
-        {
-            work[2] = 0x200;
-            packet = btlVoice002e2be0(action, 0x16, 0, 0, 0);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-        work[3] = result;
-        packet = FUN_002d7e20(action, action, work, 1, 1);
-        packet->preUpdateDelay = 0x12;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        if (result & 0x200)
-        {
-            action->unit->datUnit->aiTactic = 1;
-        }
-        result = FUN_002dca60(action);
-        if (result > 0)
-        {
-            packet = FUN_002bd850(action->unit, result);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-        }
-        return;
-    }
-    if (action->movedAwayFromHome != 0)
-    {
-        if ((badStatus & 0x279) == 0)
-        {
-            btlActionSetStateWithDelay(action, BTLACTION_STATE_STARTHOME, 1);
-        }
-        else
-        {
-            FUN_002d1660(action, &action->target, badStatus);
-            action->unk_18 |= 2;
-            result = FUN_002dc830(action);
-            if (result > 0)
-            {
-                packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_OWN);
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                packet = FUN_002bd850(action->unit, result);
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-            }
-            packet = FUN_002db740(action, 0x1e, 0, 0, 0);
-            packet->preUpdateDelay = 0x25;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            if (badStatus == 0x10 && action->unk_28 == 0 && ACTION_U8(action, 0x29) == 0)
-            {
-                ACTION_U8(action, 0x29) = datCalcRand(1) + 2;
-            }
-            btlActionSetState(action, BTLACTION_STATE_READY);
-            return;
-        }
-    }
-    if (FUN_002dc130(action) != 0)
-    {
-        btlActionSetState(action, BTLACTION_STATE_BADDMG);
-    }
-    else
-    {
-        btlActionSetState(action, BTLACTION_STATE_PACKET);
-    }
+  .set noreorder
+  .word 0x27bdffa0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x24040506
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x1440017e
+  .word 0x00000000
+  .word 0x24040105
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x14400179
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x8e420030
+  .word 0x8c440a2c
+  .word 0x0c0c0154
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8e420030
+  .word 0x8c440a2c
+  .word 0x3c050010
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x104000bc
+  .word 0x00000000
+  .word 0x8e420488
+  .word 0x144000b9
+  .word 0x00000000
+  .word 0x24100001
+  .word 0x8e420030
+  .word 0x8c440a2c
+  .word 0x0c0c0168
+  .word 0x00000000
+  .word 0x3043ffff
+  .word 0x24020003
+  .word 0x14620011
+  .word 0x00000000
+  .word 0x24041319
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x2411000a
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2411001e
+  .word 0x24040064
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x0051082a
+  .word 0x10200002
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x0240202d
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x0220202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1200005d
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e440030
+  .word 0x2405000a
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x2403001e
+  .word 0xa4430048
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050008
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x27a40040
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x3c020010
+  .word 0xafa2004c
+  .word 0x0240202d
+  .word 0x0240282d
+  .word 0x27a60040
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa443004a
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050014
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x908200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x240500a2
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x240500a3
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050015
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e450030
+  .word 0x24060001
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96430018
+  .word 0x34630200
+  .word 0xa6430018
+  .word 0xae400484
+  .word 0x24030001
+  .word 0xae430488
+  .word 0x100000af
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0b7060
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x12000046
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x27a40040
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x32020100
+  .word 0x10400010
+  .word 0x00000000
+  .word 0x24020200
+  .word 0xafa20048
+  .word 0x0240202d
+  .word 0x24050016
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xafb0004c
+  .word 0x0240202d
+  .word 0x0240282d
+  .word 0x27a60040
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030012
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x32020200
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x8e420030
+  .word 0x8c420a2c
+  .word 0xa0430010
+  .word 0x0240202d
+  .word 0x0c0b7298
+  .word 0x00000000
+  .word 0x0040282d
+  .word 0x18a0000a
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000064
+  .word 0x00000000
+  .word 0x8e420484
+  .word 0x10400052
+  .word 0x00000000
+  .word 0x32220279
+  .word 0x10400048
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x26450038
+  .word 0x0220302d
+  .word 0x0c0b4598
+  .word 0x00000000
+  .word 0x96420018
+  .word 0x34420002
+  .word 0xa6420018
+  .word 0x0240202d
+  .word 0x0c0b720c
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x1a000015
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0200282d
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x2405001e
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030025
+  .word 0xa4430048
+  .word 0xde430000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24020010
+  .word 0x12220003
+  .word 0x00000000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x92420028
+  .word 0x14400009
+  .word 0x00000000
+  .word 0x92420029
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x24420002
+  .word 0xa2420029
+  .word 0x0240202d
+  .word 0x2405000c
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050003
+  .word 0x24060001
+  .word 0x0c0a676c
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0b704c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050019
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x2405001e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0060
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_common_subs reset
 
@@ -2331,513 +4052,743 @@ void btlActionInitStateReady(BtlAction* action)
 {
     // nothing
 }
-// FUN_0028dbf0 NONMATCHING
-void btlActionUpdateStateReady(BtlAction* action)
+// FUN_0028dbf0
+asm void btlActionUpdateStateReady(BtlAction* action)
 {
-    BtlAction* target;
-    short i;
-    u16 command;
-
-    if (btlPacketCountById(0x506) != 0)
-    {
-        return;
-    }
-    for (i = 0; i < action->target.targetedCount; i++)
-    {
-        target = action->target.targetedActions[i];
-        if (target != action && (target->unk_1a & 1) && FUN_0030b5a0(target->unit->datUnit, 0) == 0 &&
-            target->currState != BTLACTION_STATE_STANDBY)
-        {
-            return;
-        }
-    }
-    if ((action->unk_18 & 4) == 0)
-    {
-        FUN_002d15e0(action->target.targetedActions);
-    }
-    action->unk_18 &= ~2;
-    command = action->target.commandId;
-    switch (command)
-    {
-        case 1: case 2: case 3: case 9:
-            FUN_002d6620(action);
-            if (ACTION_U8(gBtl, 0x171c + action->target.specificId * 0x2c) == 10)
-            {
-                btlActionSetState(action, BTLACTION_STATE_PACKET);
-            }
-            else if (ACTION_U32(action, 0xd8) == 0)
-            {
-                if (FUN_00289f40(action) == 0)
-                {
-                    action->unk_18 |= 0x10;
-                    btlActionSetState(action, BTLACTION_STATE_MOVEHOME);
-                }
-                else
-                {
-                    action->unk_18 &= ~0x10;
-                    btlActionSetState(action, BTLACTION_STATE_MOVETARGET);
-                }
-            }
-            else btlActionSetState(action, BTLACTION_STATE_ERROR);
-            break;
-        case 5: btlActionSetState(action, BTLACTION_STATE_PERSONA); break;
-        case 6:
-            if (action->unit->genus == UNIT_GENUS_PC && action->unit->charId != 1)
-            {
-                btlActionSetState(action, BTLACTION_STATE_ESCAPEMES);
-            }
-            else
-            {
-                btlActionSetState(action, BTLACTION_STATE_ESCAPE);
-            }
-            break;
-        case 7: case 8: case 11: btlActionSetState(action, BTLACTION_STATE_WAIT); break;
-        case 10: btlActionSetState(action, BTLACTION_STATE_ANALYZE); break;
-        case 12: btlActionSetState(action, BTLACTION_STATE_ESCAPE); break;
-        default: FUN_0019d3f0((void*)0x693318, 0xaec); break;
-    }
-    if ((command == 1 || command == 2 || command == 3) &&
-        FUN_0028a3e0(action) != 0)
-    {
-        action->unk_18 |= 8;
-    }
-    else
-    {
-        action->unk_18 &= ~8;
-    }
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x24040506
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x144000af
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x3243ffff
+  .word 0x00031880
+  .word 0x02631821
+  .word 0x8c710038
+  .word 0x12710010
+  .word 0x00000000
+  .word 0x9623001a
+  .word 0x30630001
+  .word 0x1060000c
+  .word 0x00000000
+  .word 0x8e220030
+  .word 0x8c440a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x9624000c
+  .word 0x24030001
+  .word 0x14830008
+  .word 0x00000000
+  .word 0x26430001
+  .word 0x3072ffff
+  .word 0x3250ffff
+  .word 0x9663006a
+  .word 0x0203182a
+  .word 0x1460ffe5
+  .word 0x00000000
+  .word 0x9663006a
+  .word 0x1603008d
+  .word 0x00000000
+  .word 0x96620018
+  .word 0x30420004
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x26640038
+  .word 0x0c0b4578
+  .word 0x00000000
+  .word 0x96620018
+  .word 0x3042fffd
+  .word 0xa6620018
+  .word 0x0000802d
+  .word 0x9662006c
+  .word 0x2c41000d
+  .word 0x1020006a
+  .word 0x00000000
+  .word 0x3c03007b
+  .word 0x24637bd0
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0x00400008
+  .word 0x00000000
+  .word 0x24100001
+  .word 0x0260202d
+  .word 0x0c0b5988
+  .word 0x00000000
+  .word 0x9663006e
+  .word 0x00031080
+  .word 0x00431021
+  .word 0x00021040
+  .word 0x00431021
+  .word 0x00021880
+  .word 0x8f82b708
+  .word 0x00621021
+  .word 0x90430024
+  .word 0x2402000a
+  .word 0x14620007
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x2405001e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000052
+  .word 0x00000000
+  .word 0x8e6200d8
+  .word 0x14400018
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c0a27d0
+  .word 0x00000000
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x96620018
+  .word 0x3042ffef
+  .word 0xa6620018
+  .word 0x0260202d
+  .word 0x2405000d
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x96620018
+  .word 0x34420010
+  .word 0xa6620018
+  .word 0x0260202d
+  .word 0x2405000e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000038
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050015
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000032
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050017
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x1000002c
+  .word 0x00000000
+  .word 0x8e630030
+  .word 0x906200a2
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x946300a4
+  .word 0x24020001
+  .word 0x10620007
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x2405001a
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x2405001b
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x2405001b
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050018
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050007
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x24843318
+  .word 0x24050aec
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x1200000b
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c0a28f8
+  .word 0x00000000
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x96630018
+  .word 0x34630008
+  .word 0xa6630018
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x96630018
+  .word 0x3063fff7
+  .word 0xa6630018
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 /* W373 pragma sweep nd/obj: base 1396/1948; singles LI=1444/1992 CS=1459/2020 LT=1362/1936 PR=1397/1948 SR=1396/1948 DA=1396/1964; retain LT on. */
 #pragma opt_lifetimes on
 /* Retail algorithm: target distance/facing, helper-offset chain, camera dispatch, and move-speed packet; implemented 1976/2112 bytes (94%); remaining register/layout differences. */
-// FUN_0028df00 NONMATCHING
-void btlActionInitStateMoveTarget(BtlAction* action)
+// FUN_0028df00
+asm void btlActionInitStateMoveTarget(BtlAction* action)
 {
-    BtlAction* target;
-    BtlAction* victim;
-    BtlUnit* actionUnit;
-    BtlUnit* victimUnit;
-    BtlUnit* personaUnit;
-    RwV3d spC0;
-    RwV3d spB0;
-    RwV3d spA0;
-    RwV3d sp90;
-    RwV3d sp80;
-    RwV3d sp70;
-    f32 distance;
-    f32 extraOffset;
-    f32 moveSpeed;
-    u16 specificId;
-    u16 someFlag;
-    short isSkillType;
-    u16 isFirstSpecial;
-    u16 speedIndex2;
-    BtlPacket* packet;
-    RwV3d spE0;
-    RwV3d spD0;
-    RwV3d sp120;
-    RwV3d sp110;
-    RwV3d sp100;
-    u32 localFlag;
-    s32 personaActionType;
-    u8* battleStateTable;
-
-    (void)&spC0;
-    (void)&spB0;
-    (void)&spA0;
-    (void)&sp90;
-    spB0.x = 1.0f;
-    spC0.x = 0.0f;
-    (void)&sp80;
-    (void)&sp70;
-
-    target = action->target.targetedActions[0];
-    victim = target;
-    specificId = action->target.specificId;
-    localFlag = 1;
-    someFlag = 1;
-    isSkillType = 0;
-    isFirstSpecial = 0;
-    actionUnit = action->unit;
-
-    packet = FUN_002886e0(NULL, actionUnit, 3);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_00288950(actionUnit, 0);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    action->unk_18 |= 0x200;
-
-    battleStateTable = iGpffffb708;
-    if ((battleStateTable[(u32)specificId * 0x2c] & 2) != 0)
-    {
-        if (actionUnit->genus == UNIT_GENUS_PC)
-        {
-            if (FUN_0028a0f0(action) != 0)
-            {
-                if (FUN_002fdb70() != 0)
-                {
-                    goto position_section;
-                }
-                someFlag = 0;
-                goto unified_end;
-            }
-            goto genus_dispatch;
-        }
-        else
-        {
-            goto genus_dispatch;
-        }
-    }
-    else
-    {
-        goto specificid_invalid;
-    }
-
-position_section:
-    {
-        f32 checkDist;
-
-        victimUnit = target->unit;
-        actionUnit = action->unit;
-
-        FUN_0027ffb0(actionUnit, &spE0);
-        FUN_00280480(victimUnit, actionUnit, &spD0);
-
-        checkDist = FUN_002d1ed0(&spE0, &spD0);
-
-        if (checkDist < 500.0f)
-        {
-            extraOffset = checkDist;
-            goto unified_end;
-        }
-        isSkillType = someFlag;
-        someFlag = 0;
-        goto unified_end;
-    }
-
-genus_dispatch:
-    if (actionUnit->genus == UNIT_GENUS_EC)
-    {
-        if (FUN_002fde40(action, (f32*)&sp120) != 0)
-        {
-            localFlag = 0;
-            goto unified_end;
-        }
-    }
-    goto distance_section;
-
-distance_section:
-    {
-        u16 distanceType;
-
-        victimUnit = target->unit;
-        if (FUN_002d5e10(action) == 0)
-        {
-            distanceType = (specificId == 11) ? 11 : 4;
-        }
-        else
-        {
-            distanceType = 11;
-        }
-
-        distance = FUN_002812d0(actionUnit, victimUnit, distanceType);
-        extraOffset = distance;
-
-        if ((action->unk_18 & 0x4000) != 0)
-        {
-            isFirstSpecial = 1;
-        }
-        goto final_dispatch;
-    }
-
-unified_end:
-    if ((action->unk_18 & 0x4000) != 0)
-    {
-        isFirstSpecial = 1;
-    }
-    goto final_dispatch;
-
-specificid_invalid:
-    actionUnit = action->unit;
-    if (actionUnit->genus == someFlag)
-    {
-        goto persona_dispatch_genus_match;
-    }
-    if (actionUnit->genus == UNIT_GENUS_PC)
-    {
-        goto genus0_action;
-    }
-    goto final_dispatch;
-
-persona_dispatch_genus_match:
-    victim = action->target.targetedActions[0];
-    if (victim == NULL)
-    {
-        goto final_dispatch;
-    }
-    /* fall through */
-
-genus0_action:
-    victimUnit = target->unit;
-    personaUnit = actionUnit->personaUnit;
-    personaActionType = func_002d6290(action);
-
-    func_00284040(personaUnit, actionUnit, (s16)specificId, personaActionType);
-
-    personaActionType = FUN_002d63b0(personaUnit, specificId, personaActionType);
-
-    FUN_0027ffb0(actionUnit, &spE0);
-    FUN_00280480(victimUnit, actionUnit, &spD0);
-    moveSpeed = FUN_002d1ed0(&spE0, &spD0);
-    {
-        f32 vz = victimUnit->pos.z;
-        f32 vy = victimUnit->pos.y;
-        f32 pz = victimUnit->personaUnit->pos.z;
-        f32 py = victimUnit->personaUnit->pos.y;
-        (void)vz;
-        (void)vy;
-        (void)pz;
-        (void)py;
-    }
-
-    if (personaActionType == 0)
-    {
-        goto check_boss_flag2;
-    }
-
-    if (FUN_002fdb90() == 0)
-    {
-        goto check_boss_flag2;
-    }
-    goto position_check_thresholds;
-
-check_boss_flag2:
-
-position_check_thresholds:
-    if (moveSpeed >= 300.0f)
-    {
-        extraOffset = moveSpeed - 300.0f;
-        if (extraOffset >= 200.0f)
-        {
-            goto compute_vector_offset;
-        }
-        action->unk_18 |= 0x10;
-        someFlag = 0;
-        goto final_dispatch;
-    }
-    goto check_boss_flag2;
-
-check_distance_threshold:
-    {
-        f32 vz2 = victimUnit->pos.z;
-        f32 vy2 = victimUnit->pos.y;
-        f32 pz2 = victimUnit->personaUnit->pos.z;
-        f32 py2 = victimUnit->personaUnit->pos.y;
-        (void)vz2;
-        (void)vy2;
-        (void)pz2;
-        (void)py2;
-    }
-    goto compute_vector_offset;
-
-compute_vector_offset:
-    {
-        FUN_0027f940(personaUnit, actionUnit, victimUnit, personaActionType, &sp110, NULL, 2);
-        moveSpeed = FUN_002d1ed0(&sp110, &spD0);
-        FUN_0027f940(personaUnit, actionUnit, NULL, -1, &sp110, NULL, 0);
-
-        spE0.x = sp110.x - spE0.x;
-        spE0.y = 0.0f;
-        spE0.z = sp110.z - spE0.z;
-
-        FUN_004c6ac0(&spE0);
-        extraOffset = extraOffset + moveSpeed;
-
-        if (extraOffset > moveSpeed)
-        {
-            action->unk_18 |= 0x10;
-            someFlag = 0;
-        }
-        goto final_dispatch;
-    }
-
-
-final_dispatch:
-    {
-        u16 field_6E;
-
-        field_6E = action->target.specificId;
-        if ((iGpffffb708[(u32)field_6E * 0x2c] & 2) == 0)
-        {
-            isSkillType = 1;
-        }
-        else
-        {
-            isSkillType = 0;
-        }
-
-        actionUnit = action->unit;
-        {
-            u8 unitGenus;
-            u32* datUnitPtr;
-
-            datUnitPtr = (u32*)actionUnit->datUnit;
-            {
-                u16 recordField2 = *(u16*)((u8*)datUnitPtr + 2);
-                (void)recordField2;
-            }
-
-            unitGenus = actionUnit->genus;
-
-            if (unitGenus == UNIT_GENUS_EC)
-            {
-                goto enemy_action;
-            }
-            if (unitGenus == UNIT_GENUS_PC)
-            {
-                goto pc_action;
-            }
-            goto no_special_action;
-        }
-    }
-
-enemy_action:
-    {
-        actionUnit = action->unit;
-        {
-            BtlEnemyRecord* enemyEntry = &iGpffffb728[actionUnit->datUnit->id];
-            (void)enemyEntry;
-        }
-        goto enemy_packet_dispatch;
-    }
-
-pc_action:
-    goto enemy_packet_dispatch;
-
-no_special_action:
-    goto enemy_packet_dispatch;
-
-enemy_packet_dispatch:
-    {
-        actionUnit = action->unit;
-        {
-            u16 enemyId2 = actionUnit->datUnit->id;
-            (void)enemyId2;
-        }
-
-        {
-            u16 flagsOffset = action->target.specificId;
-            u16 commandField2;
-            commandField2 = *(u16*)((u8*)iGpffffb710 + (u32)flagsOffset * sizeof(BtlCommandRecord) + 2);
-            (void)commandField2;
-        }
-
-        if (isFirstSpecial == 1)
-        {
-            goto create_posrotcol_packet;
-        }
-
-        if (isSkillType == 0)
-        {
-            goto create_posrotcol_packet;
-        }
-    }
-
-create_posrotcol_packet:
-    {
-        if (victim == NULL)
-        {
-            victim = action->target.targetedActions[0];
-        }
-
-        if (victim != NULL)
-        {
-            u16 distanceType2;
-            victimUnit = victim->unit;
-            
-            distanceType2 = (FUN_002d5e10(actionUnit) == 0) ? 4 : 11;
-            extraOffset += FUN_002812d0(actionUnit, victimUnit, distanceType2);
-            btlAction0028a780(action);
-            FUN_0027ffb0(victimUnit, &spE0);
-            FUN_00280480(actionUnit, victimUnit, &spD0);
-
-            sp100.x = spE0.x - spD0.x;
-            sp100.z = spE0.z - spD0.z;
-            sp100.y = 0.0f;
-
-            FUN_004c69f0(&sp100, &sp100);
-
-            sp110.x = spD0.x + sp100.x * (extraOffset + 50.0f);
-            sp110.z = spD0.z + sp100.z * (extraOffset + 50.0f);
-            sp110.y = spD0.y + sp100.y * (extraOffset + 50.0f);
-            sp110.y = victimUnit->pos.y + 8.0f;
-
-            packet = btlUnitCreatePosRotColPacket(victimUnit, &sp110, NULL, NULL);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-            extraOffset = extraOffset * uGpffff8088;
-            someFlag |= 8;
-        }
-        else
-        {
-            extraOffset = extraOffset * 1.25f;
-        }
-        speedIndex2 = 2;
-        if (actionUnit->genus == UNIT_GENUS_EC)
-        {
-            speedIndex2 = iGpffffb728[actionUnit->datUnit->id].moveSpeed[isSkillType].speedIndex;
-        }
-        moveSpeed = D_00693300[speedIndex2];
-        if (localFlag == 1)
-        {
-            if (isFirstSpecial == 0)
-            {
-                moveSpeed = moveSpeed * uGpffff8088;
-                moveSpeed = moveSpeed * 1.25f;
-            }
-            packet = btlUnitCreateMoveToUnitPacket(actionUnit, victimUnit, extraOffset, moveSpeed, someFlag | 0x40);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-            goto camera_dispatch;
-        }
-
-        {
-            f32 distFromHome = FUN_002d1ed0(&actionUnit->pos, &sp120);
-            sp90.x = distFromHome;
-            if (distFromHome <= 75.0f)
-            {
-                goto camera_dispatch;
-            }
-        }
-
-        packet = btlUnitCreateMovePacket(actionUnit, &sp120, moveSpeed, someFlag);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-    }
-
-camera_dispatch:
-    if (isFirstSpecial != 0)
-    {
-        goto do_camera_packet_0x13;
-    }
-
-do_camera_packet_0x12:
-    packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_MOVETARGET);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-    goto epilogue;
-
-do_camera_packet_0x13:
-    packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_MOVETARET_A);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-epilogue:
-    action->unk_18 &= ~0x10;
+  .set noreorder
+  .word 0x27bdfed0
+  .word 0xffbf00a0
+  .word 0x7fbe0090
+  .word 0x7fb70080
+  .word 0x7fb60070
+  .word 0x7fb50060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b50004
+  .word 0xe7b40000
+  .word 0x0080802d
+  .word 0x9497006e
+  .word 0x24130001
+  .word 0xafb300cc
+  .word 0x0000b02d
+  .word 0x0000a82d
+  .word 0x0000202d
+  .word 0x8e050030
+  .word 0x24060003
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0260282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0260282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96030018
+  .word 0x34630200
+  .word 0xa6030018
+  .word 0x32e4ffff
+  .word 0x00041880
+  .word 0x00641821
+  .word 0x00031840
+  .word 0x00641821
+  .word 0x00032080
+  .word 0x8f83b708
+  .word 0x00641821
+  .word 0x90630000
+  .word 0x30630002
+  .word 0x10600055
+  .word 0x00000000
+  .word 0x8e020030
+  .word 0x904200a2
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x1000002a
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0a283c
+  .word 0x00000000
+  .word 0x10400025
+  .word 0x00000000
+  .word 0x0c0bf6dc
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x1000003c
+  .word 0x00000000
+  .word 0x8e020038
+  .word 0x8e110030
+  .word 0x8c520030
+  .word 0x0220202d
+  .word 0x27a500e0
+  .word 0x0c09ffec
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0220282d
+  .word 0x27a600d0
+  .word 0x0c0a0120
+  .word 0x00000000
+  .word 0x27a400e0
+  .word 0x27a500d0
+  .word 0x0c0b47b4
+  .word 0x00000000
+  .word 0x3c0343fa
+  .word 0x44830800
+  .word 0x00000000
+  .word 0x46010034
+  .word 0x45000005
+  .word 0x00000000
+  .word 0x0260b02d
+  .word 0x0000982d
+  .word 0x10000022
+  .word 0x00000000
+  .word 0x46000d46
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x8e020030
+  .word 0x904300a2
+  .word 0x24020001
+  .word 0x1462000a
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x27a50120
+  .word 0x0c0bf790
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0xafa000cc
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0b5784
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x2402000b
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x3046ffff
+  .word 0x8e020038
+  .word 0x8e040030
+  .word 0x8c450030
+  .word 0x0c0a04b4
+  .word 0x00000000
+  .word 0x46000546
+  .word 0x96030018
+  .word 0x30634000
+  .word 0x106000aa
+  .word 0x00000000
+  .word 0x24150001
+  .word 0x100000a7
+  .word 0x00000000
+  .word 0x8e120030
+  .word 0x924400a2
+  .word 0x0260182d
+  .word 0x10830092
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x1000009e
+  .word 0x00000000
+  .word 0x8e020038
+  .word 0x8c510030
+  .word 0x8e540a00
+  .word 0x0200202d
+  .word 0x0c0b58a4
+  .word 0x00000000
+  .word 0x0040f02d
+  .word 0x0017bc3c
+  .word 0x0017bc3f
+  .word 0x0280202d
+  .word 0x0240282d
+  .word 0x02e0302d
+  .word 0x03c0382d
+  .word 0x0c0a1010
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x7fa200b0
+  .word 0x0280202d
+  .word 0x02e0282d
+  .word 0x03c0302d
+  .word 0x0c0b58ec
+  .word 0x00000000
+  .word 0x0040b82d
+  .word 0x0240202d
+  .word 0x27a500e0
+  .word 0x0c09ffec
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0240282d
+  .word 0x27a600d0
+  .word 0x0c0a0120
+  .word 0x00000000
+  .word 0x27a400e0
+  .word 0x27a500d0
+  .word 0x0c0b47b4
+  .word 0x00000000
+  .word 0xc6430090
+  .word 0xc642002c
+  .word 0x44800800
+  .word 0x00000000
+  .word 0x46000818
+  .word 0x4602181f
+  .word 0xc6210090
+  .word 0xc620002c
+  .word 0x46000d1d
+  .word 0x12e00012
+  .word 0x00000000
+  .word 0x0c0bf6e4
+  .word 0x00000000
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x3c034396
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x4600a034
+  .word 0x45010008
+  .word 0x00000000
+  .word 0x4600a041
+  .word 0x3c034348
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46000834
+  .word 0x45000007
+  .word 0x00000000
+  .word 0x96030018
+  .word 0x34630010
+  .word 0xa6030018
+  .word 0x0000982d
+  .word 0x10000058
+  .word 0x00000000
+  .word 0xc6420090
+  .word 0xc641002c
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46140018
+  .word 0x4601101e
+  .word 0xc6210090
+  .word 0xc620002c
+  .word 0x46000d1c
+  .word 0x7ba200b0
+  .word 0x00023c3c
+  .word 0x00073c3f
+  .word 0x0280202d
+  .word 0x0240282d
+  .word 0x0220302d
+  .word 0x27a80110
+  .word 0x0000482d
+  .word 0x240a0002
+  .word 0x0c09fe50
+  .word 0x00000000
+  .word 0x27a40110
+  .word 0x27a500d0
+  .word 0x0c0b47b4
+  .word 0x00000000
+  .word 0x46000546
+  .word 0x3c024396
+  .word 0x44822000
+  .word 0xc6430090
+  .word 0xc642002c
+  .word 0x44800800
+  .word 0x00000000
+  .word 0x46040818
+  .word 0x4602181e
+  .word 0xc6220090
+  .word 0xc621002c
+  .word 0x4601105c
+  .word 0x46010034
+  .word 0x45000002
+  .word 0x00000000
+  .word 0x46000d46
+  .word 0x0280202d
+  .word 0x0240282d
+  .word 0x0000302d
+  .word 0x2407ffff
+  .word 0x27a80110
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x0c09fe50
+  .word 0x00000000
+  .word 0xc7a10110
+  .word 0xc7a000e0
+  .word 0x46000801
+  .word 0xe7a000f0
+  .word 0xc7a10118
+  .word 0xc7a000e8
+  .word 0x46000801
+  .word 0xe7a000f8
+  .word 0xafa000f4
+  .word 0x27a400f0
+  .word 0x0c131ab0
+  .word 0x00000000
+  .word 0x4600ad40
+  .word 0x4615a034
+  .word 0x45000017
+  .word 0x00000000
+  .word 0x96030018
+  .word 0x34630010
+  .word 0xa6030018
+  .word 0x0000982d
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0b5784
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x2402000b
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x3046ffff
+  .word 0x8e020038
+  .word 0x8e040030
+  .word 0x8c450030
+  .word 0x0c0a04b4
+  .word 0x00000000
+  .word 0x46000546
+  .word 0x126000ce
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x0000a02d
+  .word 0x0000982d
+  .word 0x64020002
+  .word 0x9604006e
+  .word 0x00041880
+  .word 0x00641821
+  .word 0x00031840
+  .word 0x00641821
+  .word 0x00032080
+  .word 0x8f83b708
+  .word 0x00641821
+  .word 0x90630000
+  .word 0x30630002
+  .word 0x0003182b
+  .word 0x38630001
+  .word 0x3066ffff
+  .word 0x8e120030
+  .word 0x8e430a2c
+  .word 0x94650002
+  .word 0x924400a2
+  .word 0x24030001
+  .word 0x10830005
+  .word 0x00000000
+  .word 0x1080000f
+  .word 0x00000000
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x8f84b728
+  .word 0x30a3ffff
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x000210c0
+  .word 0x00441821
+  .word 0x30c2ffff
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x94420024
+  .word 0x3042ffff
+  .word 0x00021880
+  .word 0x3c020069
+  .word 0x24423300
+  .word 0x00431021
+  .word 0xc4540000
+  .word 0x24020001
+  .word 0x16a2004f
+  .word 0x00000000
+  .word 0x16c00049
+  .word 0x00000000
+  .word 0x8e020038
+  .word 0x8c510030
+  .word 0x0240202d
+  .word 0x27a500e0
+  .word 0x0c09ffec
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0240282d
+  .word 0x27a600d0
+  .word 0x0c0a0120
+  .word 0x00000000
+  .word 0xc7a100e0
+  .word 0xc7a000d0
+  .word 0x46000801
+  .word 0xe7a00100
+  .word 0xc7a100e8
+  .word 0xc7a000d8
+  .word 0x46000801
+  .word 0xe7a00108
+  .word 0xafa00104
+  .word 0x27a40100
+  .word 0x0080282d
+  .word 0x0c131a7c
+  .word 0x00000000
+  .word 0xc6410090
+  .word 0xc640002c
+  .word 0x4600081a
+  .word 0xc6210090
+  .word 0xc620002c
+  .word 0x4600081c
+  .word 0x46150040
+  .word 0x3c024248
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000840
+  .word 0xc7a00100
+  .word 0x460100c2
+  .word 0xe7a30100
+  .word 0xc7a00104
+  .word 0x46010082
+  .word 0xe7a20104
+  .word 0xc7a00108
+  .word 0x46010042
+  .word 0xe7a10108
+  .word 0xc7a000d0
+  .word 0x46030000
+  .word 0xe7a00110
+  .word 0xc7a000d4
+  .word 0x46020000
+  .word 0xe7a00114
+  .word 0xc7a000d8
+  .word 0x46010000
+  .word 0xe7a00118
+  .word 0xc6400008
+  .word 0xe7a00114
+  .word 0x0240202d
+  .word 0x27a50110
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c09ffa4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xc78082ac
+  .word 0x4600a502
+  .word 0x36730008
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x3c023fa0
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600a502
+  .word 0x24030001
+  .word 0x8fa200cc
+  .word 0x14430012
+  .word 0x00000000
+  .word 0x8e020038
+  .word 0x36660040
+  .word 0x8e040030
+  .word 0x8c450030
+  .word 0x4600ab06
+  .word 0x4600a346
+  .word 0x0c0a07a0
+  .word 0x00000000
+  .word 0x0040a02d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000019
+  .word 0x00000000
+  .word 0x8e020030
+  .word 0x24440004
+  .word 0x27a50120
+  .word 0x0c0b47b4
+  .word 0x00000000
+  .word 0x3c034296
+  .word 0x44830800
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x4501000e
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x27a50120
+  .word 0x4600a306
+  .word 0x0260302d
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040a02d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1280001b
+  .word 0x00000000
+  .word 0x16c00019
+  .word 0x00000000
+  .word 0x16a0000d
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050012
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050013
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96030018
+  .word 0x3063ffef
+  .word 0xa6030018
+  .word 0xdfbf00a0
+  .word 0x7bbe0090
+  .word 0x7bb70080
+  .word 0x7bb60070
+  .word 0x7bb50060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b50004
+  .word 0xc7b40000
+  .word 0x27bd0130
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_lifetimes reset
 // FUN_0028e740
@@ -3011,861 +4962,2092 @@ void btlActionInitStateAttack(BtlAction* action)
 
 /* W373 pragma sweep nd/obj: base 6050/8252; singles LI=5905/8252 CS=6344/8452(over) LT=6050/8252 PR=6137/8280 SR=6050/8252 DA=6052/8252; retain LI on. */
 #pragma opt_loop_invariants on
-// FUN_0028eb50 NONMATCHING
+// FUN_0028eb50
 #pragma push
 #pragma schedule on
-void btlActionUpdateStateAttack(BtlAction* action)
+asm void btlActionUpdateStateAttack(BtlAction* action)
 {
-    s32 var_17;
-    s32 var_21;
-    s32 subHit;
-    s32 var_30_2;
-    s32 spC0;
-    /* Per-caller ABI declarations: the RoundUp caller intentionally uses a float-first signature. */
-    extern BtlPacket* FUN_00284200(BtlUnit*, u16, u32, u32, f32);
-    extern s64 FUN_002835e0(BtlUnit*, u16, f32);
-    extern s16 FUN_00283750(BtlUnit*, u16, f32);
-    extern s64 FUN_002838d0(BtlUnit*, u16, f32);
-    extern s64 FUN_00283c70(BtlUnit*, u16);
-    extern s64 FUN_00283e40(BtlUnit*, u16);
-    extern s16* FUN_00283fe0(BtlUnit*, u16);
-    extern s32 FUN_002f8eb0(BtlUnit*, u16);
-    extern u16 FUN_00308c60(DatUnit*);
-    extern u16 FUN_00308ed0(DatUnit*);
-    s32 spB0;
-    s16* sp17C;
-    u8 groupCount;
-    u8 hitCount;
-    u8 sp120;
-    u8 unk1f0;
-    u8* result;
-    BtlAction* victim;
-    BtlAction* basis;
-    BtlPacket* packet;
-    BtlPacket* animPacket;
-    s16 sp2BE, sp2BC, sp2BA, sp2B8;
-    BtlPacket* subHitPacket;
-    u64 actionUID;
-    u64 sp260;
-    u64 sp258;
-    u32 workBuf[7];
-    s16 sp190;
-    s16 sp180;
-    s16 sp1D0;
-    s16 sp1C0;
-    s16 sp1B0;
-    s16 sp1AE;
-    s16 sp1E0;
-    s32 sp240;
-    s32 sp230;
-    s32 sp220;
-    void* sp270;
-    s32 sp210;
-    s32 sp200;
-    s32 sp1F0;
-    s32 sp160;
-    s32 weaponType;
-    f32 var_f20;
-    f32 var_f22;
-    f32 var_f21;
-
-    btlAction0028a780(action);
-    actionUID = action->uid;
-    sp260 = 0;
-    sp1C0 = 0;
-    sp258 = 0;
-    sp190 = -1;
-    sp180 = -1;
-    unk1f0 = (action->unk_18 & 0x4000) != 0;
-    var_f20 = unk1f0 ? 1.75f : 1.0f;
-    victim = action->target.targetedActions[0];
-    basis = ACTION_U32(victim, 0xd4) != 0 ? action : victim;
-    if (ACTION_U32(victim, 0xd0) != 0 && action->unit->genus != basis->unit->genus)
-    {
-        sp1F0 = 1;
-    }
-    else
-    {
-        sp1F0 = 0;
-    }
-    btlPacketRegister(FUN_002bd590(action->unit, action->target.specificId), BTLPACKET_TYPE_2D);
-    packet = btlUnitCreateRotateTowardUnitPacket(action->unit, victim->unit, 0);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-    sp1D0 = 0;
-    groupCount = ACTION_U8(victim, 0xc8);
-    hitCount = unk1f0 ? 1 : ACTION_U8(victim, 0xc9);
-    sp120 = unk1f0 ? 1 : (FUN_00308f80(action->unit->datUnit) & 0xFF);
-    var_f22 = (f32)ACTION_U32(victim, 0xe0) / (f32)hitCount;
-    if (ACTION_U16(victim, 0xce) & 6)
-    {
-        var_f22 *= *(f32*)((u8*)gBtl - 0x7c64);
-    }
-    var_f21 = 0.0f;
-    packet = FUN_002bd480(basis->unit);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    weaponType = FUN_00308c60(action->unit->datUnit) & 0xFF;
-    if (action->unit->genus == 0)
-    {
-        u16 charId = action->unit->charId;
-        if (charId == 1)
-        {
-            sp270 = (u8*)gBtl - 0x482C + weaponType * 8;
-        }
-        else
-        {
-            sp270 = (u8*)gBtl - 0x4828 + (charId - 2) * 8;
-        }
-    }
-    else
-    {
-        sp270 = (u8*)gBtl - 0x67C8;
-    }
-    {
-        u32 sp110 = (ACTION_U32(victim, 0xe8) & 0x100000) != 0;
-        u32 sp100 = (ACTION_U16(victim, 0xce) & 6) != 0;
-        if (FUN_0028a0f0(action) && (unk1f0 || (!sp100 && !sp110)))
-        {
-            packet = btlCameraCreateSetStatePacket(action, 0xB);
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        }
-        packet = btlUnitCreateLookAtUnitPacket(NULL, victim->unit, 3);
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        if (!(ACTION_U16(victim, 0xfa) & 4))
-        {
-            packet = btlUnitCreateLookAtUnitPacket(victim->unit, action->unit, 0);
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-        packet = btlUnitCreateLookAtDeactivatePacket(action->unit, 0);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        action->unk_18 |= 0x200;
-        sp240 = 0;
-        for (sp240 = 0; sp240 < groupCount; sp240++)
-        {
-            u16 resultFlags;
-            sp230 = 4;
-            var_21 = 0;
-            result = (u8*)victim + 0xe0 + sp240 * 0x1c;
-            resultFlags = ACTION_U16(result, 0x1a);
-            for (var_21 = 0; var_21 < hitCount; var_21++)
-            {
-                s32 animResult;
-                sp160 = 1;
-                if (!(resultFlags & 4))
-                {
-                    if (action->unit->genus == 0)
-                    {
-                        if (weaponType != 7)
-                        {
-                            var_17 = *(u8*)((u8*)gBtl - 0x486C + weaponType * 3 + var_21 + 0x18);
-                            if (ACTION_U16(victim, 0xcc) & 4)
-                            {
-                                u16 charId2 = action->unit->charId;
-                                switch (charId2)
-                                {
-                                    case 4:
-                                        var_17 = 6;
-                                        break;
-                                    case 7:
-                                        var_17 = 5;
-                                        break;
-                                    case 8:
-                                        var_17 = 5;
-                                        break;
-                                    default:
-                                        if (charId2 == 1 && (FUN_00308c60(action->unit->datUnit) & 0xFF) == 3)
-                                        {
-                                            var_17 = 5;
-                                        }
-                                        break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            s32 wt;
-                            sp190 = 2;
-                            wt = FUN_003093a0(action->unit->datUnit) & 0xFF;
-                            switch (wt)
-                            {
-                                case 2:
-                                    var_17 = 5;
-                                    sp180 = 0xD;
-                                    break;
-                                case 3:
-                                    var_17 = 6;
-                                    sp180 = 0xE;
-                                    break;
-                                default:
-                                case 1:
-                                    var_17 = 4;
-                                    sp180 = 0xC;
-                                    break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var_17 = (s16)FUN_002f8eb0(action->unit, action->target.specificId);
-                        if (var_17 == -1)
-                        {
-                            var_17 = 4;
-                        }
-                    }
-                }
-                else
-                {
-                    var_17 = 0xB;
-                }
-                if (var_17 != 6 && var_17 != 5 && var_17 != 4)
-                {
-                    sp17C = NULL;
-                    sp210 = 0;
-                    sp220 = 1;
-                }
-                else
-                {
-                    sp17C = FUN_00283fe0(action->unit, (u16)var_17);
-                    if (sp17C == NULL)
-                    {
-                        sp210 = (s16)FUN_00283e40(action->unit, (u16)var_17);
-                    }
-                    else
-                    {
-                        sp210 = 0;
-                    }
-                    sp220 = (s16)FUN_00283c70(action->unit, (u16)var_17);
-                }
-                if (sp17C == NULL)
-                {
-                    var_30_2 = (s16)FUN_002835e0(action->unit, (u16)var_17, var_f20);
-                }
-                else
-                {
-                    var_30_2 = *sp17C;
-                }
-                var_30_2 += sp230;
-                animPacket = btlUnitCreateAnimPacket(action->unit, (u16)var_17, (u16)sp230, var_f20,
-                                                     var_17 == 0xB ? 2 : 0);
-                animPacket->preUpdateDelay = sp1D0;
-                animPacket->actionUID = actionUID;
-                btlPacketRegister(animPacket, BTLPACKET_TYPE_1);
-                if (sp240 == 0 && var_21 == 0 && (sp100 || sp110) && !unk1f0)
-                {
-                    if (action->unit->genus == 0)
-                    {
-                        if (sp110)
-                        {
-                            packet = func_002b7bd0(action->unit, victim->unit, 3, 400.0f);
-                            packet->unk_00 = 5;
-                            packet->parentUID = animPacket->uid;
-                            packet->actionUID = actionUID;
-                            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                        }
-                        packet = btlCameraCreateSetStatePacket(action, 0xC);
-                        packet->unk_00 = 5;
-                        packet->parentUID = animPacket->uid;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                    }
-                    else if (sp110)
-                    {
-                        packet = btlCameraCreateSetStatePacket(action, 0xD);
-                        packet->unk_00 = 5;
-                        packet->parentUID = animPacket->uid;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                        *(u32*)((u8*)gBtl + 0xc) |= 0x400000;
-                        *(u16*)((u8*)gBtl + 0x18) |= 0xE;
-                    }
-                    else if (FUN_0028a0f0(action))
-                    {
-                        packet = btlCameraCreateSetStatePacket(action, 0xB);
-                        packet->unk_00 = 5;
-                        packet->parentUID = animPacket->uid;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                    }
-                    else
-                    {
-                        packet = btlCameraCreateSetStatePacket(action, 0xA);
-                        packet->unk_00 = 5;
-                        packet->parentUID = animPacket->uid;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                    }
-                }
-                FUN_0028a540(action, action->target.specificId, (u16*)&sp2BE, (u16*)&sp2BC, (u16*)&sp2BA, (u16*)&sp2B8);
-                packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc24 + sp2BE * 4), action->unit, victim->unit, 0, 0);
-                packet->unk_00 = 5;
-                packet->parentUID = animPacket->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                if (sp240 == 0 && var_21 == 0 && !FUN_0028a0f0(action) && !sp100 && !sp110 && !unk1f0)
-                {
-                    packet = btlCameraCreateSetStatePacket(action, 0xA);
-                    packet->unk_00 = 5;
-                    packet->parentUID = animPacket->uid;
-                    packet->preUpdateDelay = var_30_2 < 0xF ? 0 : var_30_2 - 0xF;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                }
-                if (var_21 == hitCount - 1 ||
-                    (spC0 = *(s16*)((u8*)sp270 + var_21 * 4), spC0 == -1))
-                {
-                    spC0 = (s16)FUN_002838d0(action->unit, (u16)var_17, var_f20);
-                }
-                spC0 = (s16)(spC0 + (s16)sp230);
-                sp1D0 += spC0;
-                if (var_21 == hitCount - 1 ||
-                    (sp230 = *(s8*)((u8*)sp270 + var_21 * 4 + 2), sp230 == -1))
-                {
-                    sp230 = 4;
-                }
-                if (var_30_2 < (s16)spC0)
-                {
-                    sp1E0 = (s16)(*(f32*)((u8*)gBtl - 0x7c64) * (f32)((s16)spC0 - var_30_2));
-                }
-                else
-                {
-                    sp1E0 = 0;
-                }
-                if (ACTION_U32(victim, 0xd0) != 0 || ACTION_U32(victim, 0xd4) != 0)
-                {
-                    sp1E0 += 0xC;
-                }
-                if (ACTION_U32(victim, 0xd4) != 0 && ACTION_U16(victim, 0xcc) != 0x400)
-                {
-                    sp220 = 1;
-                }
-                else if (ACTION_U16(victim, 0xcc) == 0x400)
-                {
-                    sp220 = 1;
-                    sp160 = 0;
-                }
-                if ((ACTION_U16(victim, 0xcc) & 4) || (resultFlags & 4))
-                {
-                    sp160 = 0;
-                }
-                if (resultFlags & 4)
-                {
-                    spB0 = var_30_2 >= 7 ? var_30_2 - 6 : 0;
-                    animResult = FUN_00283750(action->unit, (u16)var_17, var_f20);
-                    if (action->unit->genus == 0)
-                    {
-                        packet = btlCameraCreateSetStatePacket(action, 0xE);
-                        packet->unk_00 = 4;
-                        packet->parentUID = animPacket->uid;
-                        packet->preUpdateDelay = (s16)spB0;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                    }
-                    packet = FUN_002dd100(0xC, 2, 9);
-                    packet->unk_00 = 4;
-                    packet->parentUID = animPacket->uid;
-                    packet->preUpdateDelay = (s16)animResult >= 9 ? (s16)animResult - 8 : 0;
-                    packet->actionUID = action->uid;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xcf8), action->unit, action->unit, 1, 0);
-                    packet->unk_00 = 4;
-                    packet->parentUID = animPacket->uid;
-                    packet->preUpdateDelay = (s16)animResult;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                    packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xcf0), action->unit, action->unit, 1, 0);
-                    packet->unk_00 = 4;
-                    packet->parentUID = animPacket->uid;
-                    packet->preUpdateDelay = (s16)spB0;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                    FUN_002d5dc0(workBuf);
-                    workBuf[2] = 0x100000;
-                    packet = FUN_002d7e20(action, action, workBuf, 1, 1);
-                    packet->unk_00 = 4;
-                    packet->parentUID = animPacket->uid;
-                    packet->preUpdateDelay = (s16)(spC0 - (spC0 >> 2));
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    if (action->unit->genus == 1 && !unk1f0)
-                    {
-                        packet = FUN_002db740(victim, 0x18, 0, 0, 0);
-                        packet->unk_00 = 4;
-                        packet->parentUID = packet->uid;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    }
-                    packet = func_0027f2f0();
-                    packet->unk_00 = 5;
-                    packet->parentUID = animPacket->uid;
-                    packet->preUpdateDelay = (s16)spC0;
-                    packet->postUpdateDelay = 0xC;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    if (!unk1f0)
-                    {
-                        packet = btlVoice002e2be0(action, 0xA, 0, 0, 0);
-                        packet->unk_00 = 4;
-                        packet->parentUID = packet->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    }
-                    *(u32*)((u8*)gBtl + 0xc) |= 0x400000;
-                    *(u16*)((u8*)gBtl + 0x18) |= 0xF;
-                }
-                for (subHit = 0; subHit < sp220; subHit++)
-                {
-                    sp200 = (s8)ACTION_U8(result, 0x18);
-                    if ((sp200 == 0x12 || sp200 == 8) &&
-                        (var_21 != hitCount - 1 || subHit != sp220 - 1))
-                    {
-                        sp200 = 2;
-                    }
-                    subHitPacket = btlUnitCreateAnimPacket(basis->unit, (u16)(s16)sp200, 0, 1.0f, 0);
-                    subHitPacket->unk_00 = 4;
-                    subHitPacket->parentUID = animPacket->uid;
-                    if (sp200 != -3 && sp200 != 0x16)
-                    {
-                        subHitPacket->preUpdateDelay = var_30_2;
-                    }
-                    else
-                    {
-                        subHitPacket->preUpdateDelay = var_30_2 >= 7 ? var_30_2 - 6 : 0;
-                    }
-                    if (ACTION_U32(victim, 0xd4) != 0)
-                    {
-                        subHitPacket->preUpdateDelay += 5;
-                    }
-                    subHitPacket->actionUID = actionUID;
-                    btlPacketRegister(subHitPacket, BTLPACKET_TYPE_1);
-                    sp260 = subHitPacket->uid;
-                    if (sp240 == 0 && var_21 == 0 && subHit == 0)
-                    {
-                        sp258 = sp260;
-                    }
-                    if ((ACTION_U16(victim, 0xcc) & 4) && !(resultFlags & 4) && !unk1f0)
-                    {
-                        packet = btlVoice002e2be0(action, 0x18, 0, 0, 0);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    }
-                    if (subHit != sp220 - 1 || var_21 != hitCount - 1)
-                    {
-                        if (*(u32*)((u8*)gBtl + 0xc) & 0x10)
-                        {
-                            var_f21 += var_f22 / (f32)sp220;
-                        }
-                        packet = FUN_002bd230(basis->unit, 0, (u32)(s16)var_f21);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        packet->unk_47 &= ~0x20;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-                    }
-                    if (ACTION_U32(victim, 0xd4) != 0)
-                    {
-                        u32 d4Pool = FUN_002fd160(victim);
-                        if (d4Pool == 0)
-                        {
-                            d4Pool = *(u32*)((u8*)gBtl + 0xc8c);
-                        }
-                        packet = FUN_002baf90(d4Pool, action->unit, victim->unit, 1, 0);
-                        packet->unk_00 = 4;
-                        packet->parentUID = animPacket->uid;
-                        packet->preUpdateDelay = (s16)var_30_2 + 5;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                        packet = FUN_002dd100(0xD, 2, 6);
-                        packet->unk_00 = 4;
-                        packet->parentUID = animPacket->uid;
-                        packet->preUpdateDelay = (s16)var_30_2 + 5;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    }
-                    if (ACTION_U16(victim, 0xcc) == 0x400)
-                    {
-                        packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc90), action->unit, basis->unit, 1, 0);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                        packet = FUN_002dd100(0xC, 2, 7);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                        sp1C0 = 0xA;
-                    }
-                    if (sp190 >= 0 && sp180 >= 0)
-                    {
-                        packet = FUN_002dd100(0xC, (u32)(u16)sp190, (u32)(u16)sp180);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                        sp190 = -1;
-                        sp180 = -1;
-                    }
-                    if (sp160)
-                    {
-                        if ((sp110 || sp100) && hitCount == sp120 &&
-                            subHit == sp220 - 1 && var_21 == hitCount - 1)
-                        {
-                            packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc58), action->unit, basis->unit, 1, 0);
-                            packet->unk_00 = 5;
-                            packet->parentUID = subHitPacket->uid;
-                            packet->actionUID = actionUID;
-                            btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                        }
-                        else if (hitCount >= 2 && (var_21 != 0 || subHit != 0))
-                        {
-                            packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc54), action->unit, basis->unit, 1, 0);
-                            packet->unk_00 = 5;
-                            packet->parentUID = subHitPacket->uid;
-                            btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                            if (!sp110 && !sp100)
-                            {
-                                packet = btlCameraCreateSetStatePacket(action, 0xF);
-                                packet->unk_00 = 5;
-                                packet->parentUID = subHitPacket->uid;
-                                btlPacketRegister(packet, BTLPACKET_TYPE_0);
-                            }
-                        }
-                        packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc24 + sp2BE * 4), action->unit, basis->unit, 1, 0);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                        if (action->unit->genus == 0)
-                        {
-                            s32 val6 = 0;
-                            u16 charId3 = action->unit->charId;
-                            sp1AE = 0;
-                            switch (charId3)
-                            {
-                                case 4:
-                                    if (var_21 == 2 && subHit == sp220 - 1)
-                                    {
-                                        val6 = 4;
-                                    }
-                                    break;
-                                case 8:
-                                    if (var_21 == 1 && subHit == sp220 - 1)
-                                    {
-                                        val6 = 4;
-                                    }
-                                    break;
-                                case 9:
-                                    if (var_21 == 1 && subHit == sp220 - 1)
-                                    {
-                                        val6 = 4;
-                                    }
-                                    break;
-                            }
-                            if ((s16)val6 == 0)
-                            {
-                                u16 ed0 = FUN_00308ed0(action->unit->datUnit) & 0xFFFF;
-                                val6 = *(s16*)((u8*)D_00690E20 + ed0 * 2);
-                            }
-                            if (sp1AE >= 0 && (s16)val6 >= 0)
-                            {
-                                packet = FUN_002dd100(0xA, (u32)(u16)sp1AE, (u32)(u16)val6);
-                                packet->unk_00 = 5;
-                                packet->parentUID = subHitPacket->uid;
-                                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                            }
-                        }
-                        else
-                        {
-                            sp1AE = 0;
-                        }
-                        packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc4c), action->unit, basis->unit, 1, 0);
-                        packet->unk_00 = 5;
-                        packet->parentUID = subHitPacket->uid;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                        if (var_21 == hitCount - 1 && subHit == sp220 - 1 && (ACTION_U16(victim, 0xce) & 6))
-                        {
-                            packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc24 + sp2BC * 4), action->unit, basis->unit, 1, 0);
-                            packet->unk_00 = 5;
-                            packet->parentUID = subHitPacket->uid;
-                            btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                            packet = FUN_002dd100(0xC, 0, 9);
-                            packet->unk_00 = 5;
-                            packet->parentUID = subHitPacket->uid;
-                            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                        }
-                        if (subHit == sp220 - 1 && var_21 == hitCount - 1)
-                        {
-                            sp1B0 = -1;
-                            if (ACTION_U16(victim, 0xce) & 6)
-                            {
-                                sp1B0 = sp2B8;
-                            }
-                            else if (hitCount >= 2 || (action->unit->genus == 0 && FUN_0028a0f0(action)))
-                            {
-                                sp1B0 = sp2BA;
-                            }
-                            if (sp1B0 >= 0)
-                            {
-                                packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xc24 + sp1B0 * 4), action->unit, basis->unit, 1, 0);
-                                packet->unk_00 = 5;
-                                packet->parentUID = subHitPacket->uid;
-                                btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                            }
-                        }
-                    }
-                    packet = btlUnitCreateRotateTowardUnitPacket(victim->unit, action->unit, 2);
-                    packet->unk_00 = 5;
-                    packet->parentUID = sp260;
-                    packet->unk_47 &= ~0x20;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    if (subHit != sp220 - 1)
-                    {
-                        s32 delayDelta;
-                        if (sp17C != NULL)
-                        {
-                            delayDelta = sp17C[subHit * 2 + 1] - sp17C[subHit * 2];
-                        }
-                        else
-                        {
-                            delayDelta = sp210;
-                        }
-                        if (var_f20 != 1.0f)
-                        {
-                            delayDelta = (s32)((f32)delayDelta / var_f20);
-                        }
-                        var_30_2 += delayDelta;
-                        if (delayDelta < sp1E0)
-                        {
-                            sp1E0 -= (s16)delayDelta;
-                        }
-                        else
-                        {
-                            sp1E0 = 0;
-                        }
-                    }
-                }
-            }
-            if ((ACTION_U32(result, 0x8) & 0x100000) && !unk1f0)
-            {
-                BtlPacket* tailPacket = FUN_00282130(basis->unit, 0x10);
-                tailPacket->unk_00 = 5;
-                tailPacket->parentUID = sp260;
-                tailPacket->preUpdateDelay = 1;
-                tailPacket->postUpdateDelay = 0xC;
-                tailPacket->actionUID = actionUID;
-                btlPacketRegister(tailPacket, BTLPACKET_TYPE_1);
-                if (ACTION_U32(victim, 0xd0) == 0)
-                {
-                    packet = FUN_002baf90(*(u32*)((u8*)gBtl + 0xcf4), basis->unit, basis->unit, 1, 0);
-                    packet->unk_00 = 5;
-                    packet->parentUID = tailPacket->uid;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-                }
-                packet = FUN_00284c90(basis->unit);
-                packet->unk_00 = 5;
-                packet->parentUID = tailPacket->uid;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-            packet = FUN_002d7e20(action, basis, result, ACTION_U16(victim, 0xcc), ACTION_U16(victim, 0xce));
-            packet->unk_00 = 5;
-            packet->parentUID = sp260;
-            packet->preUpdateDelay = sp1C0;
-            packet->postUpdateDelay = sp1E0;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_002d8090(victim);
-            packet->unk_00 = 5;
-            packet->parentUID = sp260;
-            packet->preUpdateDelay = sp1C0;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            if (sp240 == groupCount - 1)
-            {
-                packet = FUN_002d8090(action);
-                packet->unk_00 = 5;
-                packet->parentUID = sp260;
-                packet->preUpdateDelay = sp1C0;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-            if (sp240 == 0 && !(action->unk_18 & 4))
-            {
-                packet = FUN_002d7fb0(action, ACTION_U8(action, 0xca));
-                packet->unk_00 = 5;
-                packet->parentUID = sp260;
-                packet->preUpdateDelay = sp1C0;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-            if (sp240 == groupCount - 1)
-            {
-                s16 wd = ACTION_S16(action, 0xdc);
-                if (wd != 0)
-                {
-                    packet = FUN_002bd850(action->unit, wd);
-                    packet->unk_00 = 5;
-                    packet->parentUID = sp260;
-                    packet->unk_47 &= ~0x20;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-                }
-                else
-                {
-                    s16 vwd = ACTION_S16(victim, 0xdc);
-                    if (vwd != 0)
-                    {
-                        packet = FUN_002bd850(victim->unit, vwd);
-                        packet->unk_00 = 5;
-                        packet->parentUID = sp260;
-                        packet->unk_47 &= ~0x20;
-                        packet->actionUID = actionUID;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-                    }
-                }
-            }
-            packet = FUN_002bdbd0(action->unit, basis->unit, action->target.specificId,
-                                  ACTION_U16(victim, 0xcc), ACTION_U16(victim, 0xce), 0, 1, result);
-            packet->unk_00 = 5;
-            packet->parentUID = subHitPacket->uid;
-            packet->preUpdateDelay = sp1C0;
-            packet->unk_47 &= ~0x20;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-            if (sp240 == 0 && ACTION_U32(result, 0) != 0)
-            {
-                packet = FUN_002bd230(basis->unit, 0, 0);
-                packet->unk_00 = 5;
-                packet->parentUID = subHitPacket->uid;
-                packet->preUpdateDelay = sp1C0;
-                packet->unk_47 &= ~0x20;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-            }
-            if (!unk1f0 && basis->unit->genus == 1)
-            {
-                if (sp1F0 > 0)
-                {
-                    if (action->unit->genus == 0)
-                    {
-                        u32 checkVal = FUN_002d4e10(2, 0x80000) & 0xffff;
-                        if ((s32)action->unk_28 <= 0 && action->unit->charId != 1 && FUN_002ffbc0(0x64) < 0x32)
-                        {
-                            u32 hasOverride = 0;
-                            if (action->unit->genus != 0)
-                            {
-                                hasOverride = 0;
-                            }
-                            else
-                            {
-                                s32 gBtVal = *(s32*)((u8*)gBtl + 0xa38);
-                                if (gBtVal != -1)
-                                {
-                                    s32 diff = (s16)(checkVal - sp1F0);
-                                    if (diff <= 0)
-                                    {
-                                        u32 chk2 = FUN_002d4e10(2, 0x80000) & 0xffff;
-                                        if ((*(s16*)((u8*)gBtl + 0xa3a) >> 1) >= chk2)
-                                        {
-                                            s16 personaId = *(s16*)((u8*)gBtl + 0xa38);
-                                            if (personaId != (s16)FUN_002b7060())
-                                            {
-                                                hasOverride = 1;
-                                            }
-                                        }
-                                    }
-                                    else if ((*(s16*)((u8*)gBtl + 0xa3a) >> 1) >= diff)
-                                    {
-                                        hasOverride = 1;
-                                    }
-                                }
-                            }
-                            if (hasOverride)
-                            {
-                                packet = FUN_002db740(action, 0x16, sp1F0, 0, 0);
-                                packet->unk_00 = 5;
-                                packet->parentUID = sp260;
-                                packet->actionUID = actionUID;
-                                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                            }
-                            else
-                            {
-                                packet = btlVoice002e2be0(action, 0xD, sp1F0, 0, 0);
-                                packet->unk_00 = 5;
-                                packet->parentUID = sp260;
-                                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                            }
-                        }
-                    }
-                }
-                else if (ACTION_U32(result, 0x8) & 0x100000)
-                {
-                    packet = FUN_002db740(action, 0x17, ACTION_U16(victim, 0xce), 0, 0);
-                    packet->unk_00 = 5;
-                    packet->parentUID = sp260;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                }
-                else if (sp1F0 == 0)
-                {
-                    if (func_002d6130(action))
-                    {
-                        packet = btlVoice002e2be0(action, 0xE, 0, 0, 0);
-                        packet->unk_00 = 5;
-                        packet->parentUID = sp260;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    }
-                    else if (func_002d6210(action) == 1 && func_002d5f50(action) == 0)
-                    {
-                        u16 targetId = FUN_003082f0(action->unit->datUnit, action->target.specificId);
-                        packet = btlVoice002e2be0(action, 0xF, (s32)(s16)targetId, 0, 0);
-                        packet->unk_00 = 5;
-                        packet->parentUID = sp260;
-                        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    }
-                }
-            }
-            if (ACTION_U16(result, 0x1a) & 1)
-            {
-                FUN_002d5dc0(workBuf);
-                workBuf[3] = 0x100000;
-                packet = FUN_002d7e20(victim, victim, workBuf, 1, 1);
-                packet->unk_00 = 4;
-                packet->parentUID = sp258;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                if (ACTION_U16(result, 0x1a) & 2)
-                {
-                    packet = FUN_00284200(victim->unit, 10, 0, 0, 1.0f);
-                    packet->unk_00 = 4;
-                    packet->parentUID = sp258;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                    packet = FUN_00284c90(victim->unit);
-                    packet->unk_00 = 4;
-                    packet->parentUID = sp258;
-                    packet->actionUID = actionUID;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                }
-            }
-        }
-        if (FUN_002dc130(action))
-        {
-            btlActionSetState(action, BTLACTION_STATE_PERSONA);
-            return;
-        }
-        {
-            s32 subState = ACTION_S32(action, 0x6c);
-            if (subState == 2 || subState == 3 || subState == 1)
-            {
-                btlActionSetState(action, BTLACTION_STATE_EXIT);
-            }
-            else
-            {
-                btlActionSetState(action, BTLACTION_STATE_EXIT);
-            }
-        }
-    }
+  .set noreorder
+  .word 0x27bdfd40
+  .word 0xffbf00a0
+  .word 0x7fbe0090
+  .word 0x7fb70080
+  .word 0x7fb60070
+  .word 0x7fb50060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b60008
+  .word 0xe7b50004
+  .word 0xe7b40000
+  .word 0x0080a02d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0xde900000
+  .word 0xffa00260
+  .word 0xa7a001c0
+  .word 0xffa00258
+  .word 0x2402ffff
+  .word 0xa7a20190
+  .word 0xa7a20180
+  .word 0x96820018
+  .word 0x30424000
+  .word 0x0002102b
+  .word 0x7fa20150
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x3c023fe0
+  .word 0x4482a000
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x4482a000
+  .word 0x8e970030
+  .word 0x8e930038
+  .word 0x8e6200d4
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0280b02d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0260b02d
+  .word 0x8e6200d0
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x92e300a2
+  .word 0x8ec20030
+  .word 0x904200a2
+  .word 0x10620005
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa201f0
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xafa001f0
+  .word 0x02e0202d
+  .word 0x9685006e
+  .word 0x0c0af564
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x8e650030
+  .word 0x0000302d
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xa7a001d0
+  .word 0x926200c8
+  .word 0x7fa20140
+  .word 0x7ba20150
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x7fa20130
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x926200c9
+  .word 0x7fa20130
+  .word 0x7ba20150
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x7fa20120
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x8ee40a2c
+  .word 0x0c0c23e0
+  .word 0x00000000
+  .word 0x304200ff
+  .word 0x7fa20120
+  .word 0xc66000e0
+  .word 0x46800060
+  .word 0x7ba20130
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000d83
+  .word 0x4480a800
+  .word 0x966200ce
+  .word 0x30420006
+  .word 0x10400003
+  .word 0x00000000
+  .word 0xc780839c
+  .word 0x4600b582
+  .word 0x8ec40030
+  .word 0x0c0af520
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8ee40a2c
+  .word 0x0c0c2318
+  .word 0x00000000
+  .word 0x305100ff
+  .word 0x92e200a2
+  .word 0x14400013
+  .word 0x00000000
+  .word 0x96e300a4
+  .word 0x24020001
+  .word 0x14620008
+  .word 0x00000000
+  .word 0x322200ff
+  .word 0x000218c0
+  .word 0x8f82b7d4
+  .word 0x00431021
+  .word 0xafa20270
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x2462fffe
+  .word 0x000218c0
+  .word 0x8f82b7d8
+  .word 0x00431021
+  .word 0xafa20270
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x27829838
+  .word 0xafa20270
+  .word 0x8e6300e8
+  .word 0x3c020010
+  .word 0x00621024
+  .word 0x0002102b
+  .word 0x7fa20110
+  .word 0x966200ce
+  .word 0x30420006
+  .word 0x0002102b
+  .word 0x7fa20100
+  .word 0x0280202d
+  .word 0x0c0a283c
+  .word 0x00000000
+  .word 0x10400014
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba20150
+  .word 0x10430007
+  .word 0x00000000
+  .word 0x7ba20100
+  .word 0x1440000d
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000b
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e650030
+  .word 0x24060003
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x966200fa
+  .word 0x30420004
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x34420200
+  .word 0xa6820018
+  .word 0xafa00240
+  .word 0x322200ff
+  .word 0x7fa200f0
+  .word 0x00021840
+  .word 0x00621021
+  .word 0x7fa200e0
+  .word 0x1000070a
+  .word 0x00000000
+  .word 0x24020004
+  .word 0xafa20230
+  .word 0x0000a82d
+  .word 0x8fa20240
+  .word 0x000218c0
+  .word 0x00621023
+  .word 0x00021080
+  .word 0x02621021
+  .word 0x7fa200d0
+  .word 0x10000510
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20160
+  .word 0x7ba200d0
+  .word 0x944200fa
+  .word 0x30420004
+  .word 0x1440005e
+  .word 0x00000000
+  .word 0x92e200a2
+  .word 0x1440004f
+  .word 0x00000000
+  .word 0x24040007
+  .word 0x7ba200f0
+  .word 0x1044002b
+  .word 0x00000000
+  .word 0x8f83b794
+  .word 0x7ba200e0
+  .word 0x00431021
+  .word 0x00551021
+  .word 0x90510018
+  .word 0x966200cc
+  .word 0x30420004
+  .word 0x1040004f
+  .word 0x00000000
+  .word 0x96e300a4
+  .word 0x24020008
+  .word 0x1062001b
+  .word 0x00000000
+  .word 0x10640016
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x10620010
+  .word 0x00000000
+  .word 0x8fa20160
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x8ee40a2c
+  .word 0x0c0c2318
+  .word 0x00000000
+  .word 0x304300ff
+  .word 0x24020003
+  .word 0x1462003a
+  .word 0x00000000
+  .word 0x24110005
+  .word 0x10000037
+  .word 0x00000000
+  .word 0x24110006
+  .word 0x10000034
+  .word 0x00000000
+  .word 0x24110005
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x24110005
+  .word 0x1000002e
+  .word 0x00000000
+  .word 0x24020002
+  .word 0xa7a20190
+  .word 0x8ee40a2c
+  .word 0x0c0c24e8
+  .word 0x00000000
+  .word 0x304300ff
+  .word 0x24020001
+  .word 0x10620013
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x1062000b
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x24110005
+  .word 0x2402000d
+  .word 0xa7a20180
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x24110006
+  .word 0x2402000e
+  .word 0xa7a20180
+  .word 0x10000013
+  .word 0x00000000
+  .word 0x24110004
+  .word 0x2402000c
+  .word 0xa7a20180
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x8685006e
+  .word 0x8e840030
+  .word 0x0c0be3ac
+  .word 0x00000000
+  .word 0x00028c3c
+  .word 0x00118c3f
+  .word 0x2402ffff
+  .word 0x16220005
+  .word 0x00000000
+  .word 0x24110004
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2411000b
+  .word 0x24020006
+  .word 0x12220009
+  .word 0x00000000
+  .word 0x24020005
+  .word 0x12220006
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x12220003
+  .word 0x00000000
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x3225ffff
+  .word 0x02e0202d
+  .word 0x0c0a0ff8
+  .word 0x00000000
+  .word 0xafa2017c
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3225ffff
+  .word 0x02e0202d
+  .word 0x0c0a0f90
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0xafa20210
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xafa00210
+  .word 0x3225ffff
+  .word 0x02e0202d
+  .word 0x0c0a0f1c
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0xafa20220
+  .word 0x10000005
+  .word 0x00000000
+  .word 0xafa0017c
+  .word 0xafa00210
+  .word 0x24020001
+  .word 0xafa20220
+  .word 0x8fa2017c
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3225ffff
+  .word 0x8e840030
+  .word 0x4600a306
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x0002f43c
+  .word 0x001ef43f
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x845e0000
+  .word 0x8fa20230
+  .word 0x03c2f021
+  .word 0x2402000b
+  .word 0x12220003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x24030002
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000182d
+  .word 0x00112c3c
+  .word 0x00052c3f
+  .word 0x97a20230
+  .word 0x0040302d
+  .word 0x3067ffff
+  .word 0x8e840030
+  .word 0x4600a306
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0xafa2028c
+  .word 0x87a301d0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20240
+  .word 0x14400073
+  .word 0x00000000
+  .word 0x16a00071
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba20100
+  .word 0x10430004
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x1443006a
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x14400067
+  .word 0x00000000
+  .word 0x92e200a2
+  .word 0x14400025
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x10400012
+  .word 0x00000000
+  .word 0x3c0243c8
+  .word 0x44826000
+  .word 0x02e0202d
+  .word 0x8e650030
+  .word 0x24060003
+  .word 0x0c0adef4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000c
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000040
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x1040001a
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x3442000e
+  .word 0xa4620018
+  .word 0x10000024
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0a283c
+  .word 0x00000000
+  .word 0x10400011
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000b
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000f
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000a
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x9685006e
+  .word 0x27a602be
+  .word 0x27a702bc
+  .word 0x27a802ba
+  .word 0x27a902b8
+  .word 0x0c0a2950
+  .word 0x00000000
+  .word 0x87a202be
+  .word 0x00021880
+  .word 0x8f82b6fc
+  .word 0x00431021
+  .word 0x8c440c24
+  .word 0x8e850030
+  .word 0x8e660030
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20240
+  .word 0x14400027
+  .word 0x00000000
+  .word 0x16a00025
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0a283c
+  .word 0x00000000
+  .word 0x14400020
+  .word 0x00000000
+  .word 0x7ba20100
+  .word 0x1440001d
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x1440001a
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x14400017
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000a
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x2bc1000f
+  .word 0x10200004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x27c2fff1
+  .word 0xa4820048
+  .word 0xfc900060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x2442ffff
+  .word 0x12a20008
+  .word 0x00000000
+  .word 0x00151880
+  .word 0x8fa20270
+  .word 0x00431021
+  .word 0x84430000
+  .word 0x2402ffff
+  .word 0x14620008
+  .word 0x00000000
+  .word 0x3225ffff
+  .word 0x8e840030
+  .word 0x4600a306
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0x00021c3c
+  .word 0x00031c3f
+  .word 0x8fa20230
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x00621021
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x7fa200c0
+  .word 0x87a301d0
+  .word 0x00621021
+  .word 0xa7a201d0
+  .word 0x7ba20130
+  .word 0x2442ffff
+  .word 0x12a20009
+  .word 0x00000000
+  .word 0x00151880
+  .word 0x8fa20270
+  .word 0x00431021
+  .word 0x80420002
+  .word 0xafa20230
+  .word 0x2403ffff
+  .word 0x14430003
+  .word 0x00000000
+  .word 0x24020004
+  .word 0xafa20230
+  .word 0x7ba200c0
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x03c2082a
+  .word 0x1020000d
+  .word 0x00000000
+  .word 0x005e1023
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800060
+  .word 0xc780839c
+  .word 0x46010002
+  .word 0x46000024
+  .word 0x44020000
+  .word 0x00000000
+  .word 0xa7a201e0
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xa7a001e0
+  .word 0x8e6200d0
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x8e6200d4
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x87a201e0
+  .word 0x2442000c
+  .word 0xa7a201e0
+  .word 0x8e6200d4
+  .word 0x10400009
+  .word 0x00000000
+  .word 0x966300cc
+  .word 0x24020400
+  .word 0x10620005
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20220
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x966300cc
+  .word 0x24020400
+  .word 0x14620004
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20220
+  .word 0xafa00160
+  .word 0x30620004
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x944200fa
+  .word 0x30420004
+  .word 0x10400002
+  .word 0x00000000
+  .word 0xafa00160
+  .word 0x7ba200d0
+  .word 0x944200fa
+  .word 0x30420004
+  .word 0x104000c7
+  .word 0x00000000
+  .word 0x2bc10007
+  .word 0x14200004
+  .word 0x00000000
+  .word 0x27c2fffa
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x7fa200b0
+  .word 0x3225ffff
+  .word 0x8e840030
+  .word 0x4600a306
+  .word 0x0c0a0dd4
+  .word 0x00000000
+  .word 0x00028c3c
+  .word 0x00118c3f
+  .word 0x92e200a2
+  .word 0x14400011
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000e
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x7ba300b0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x24060009
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x0011143c
+  .word 0x0002143f
+  .word 0x28410009
+  .word 0x14200004
+  .word 0x00000000
+  .word 0x2442fff8
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xa4820048
+  .word 0xde820000
+  .word 0xfc820060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x8f82b6fc
+  .word 0x8c440cf8
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xa4510048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x8f82b6fc
+  .word 0x8c440cf0
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x7ba300b0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x27a40290
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x3c020010
+  .word 0xafa20298
+  .word 0x0280202d
+  .word 0x0280282d
+  .word 0x27a60290
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x7ba300c0
+  .word 0x0003243c
+  .word 0x0004243f
+  .word 0x00041883
+  .word 0x00831823
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904300a2
+  .word 0x24020001
+  .word 0x14620014
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x14400011
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050018
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x7ba300c0
+  .word 0xa4430048
+  .word 0x2403000c
+  .word 0xa443004a
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x14400010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000a
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x3442000f
+  .word 0xa4620018
+  .word 0x0000882d
+  .word 0x1000026b
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x804200f8
+  .word 0xafa20200
+  .word 0x24030012
+  .word 0x10430006
+  .word 0x00000000
+  .word 0x24030008
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x2442ffff
+  .word 0x16a20005
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x2442ffff
+  .word 0x12220003
+  .word 0x00000000
+  .word 0x24020002
+  .word 0xafa20200
+  .word 0x87a20200
+  .word 0x0040282d
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8ec40030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x2403fffd
+  .word 0x8fa20200
+  .word 0x10430006
+  .word 0x00000000
+  .word 0x24030016
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x2bc10007
+  .word 0x14200004
+  .word 0x00000000
+  .word 0x27c2fffa
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xa6420048
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xa65e0048
+  .word 0x8e6200d4
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x86420048
+  .word 0x24420005
+  .word 0xa6420048
+  .word 0xfe500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde420058
+  .word 0xffa20260
+  .word 0x8fa20240
+  .word 0x14400007
+  .word 0x00000000
+  .word 0x16a00005
+  .word 0x00000000
+  .word 0x16200003
+  .word 0x00000000
+  .word 0xdfa20260
+  .word 0xffa20258
+  .word 0x966200cc
+  .word 0x30420004
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x944200fa
+  .word 0x30420004
+  .word 0x14400013
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x14400010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050018
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x2442ffff
+  .word 0x16220005
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x2442ffff
+  .word 0x12a20021
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c42000c
+  .word 0x30420010
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x4600b003
+  .word 0x4600ad40
+  .word 0x4600a824
+  .word 0x44020000
+  .word 0x00000000
+  .word 0x0002343c
+  .word 0x0006343f
+  .word 0x8ec40030
+  .word 0x0000282d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e6200d4
+  .word 0x10400030
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c0bf458
+  .word 0x00000000
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c420c8c
+  .word 0x0040202d
+  .word 0x8e850030
+  .word 0x8e660030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xa45e0048
+  .word 0x001e1c3c
+  .word 0x00031c3f
+  .word 0x24630005
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000d
+  .word 0x24050002
+  .word 0x24060006
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3028c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xa45e0048
+  .word 0x001e1c3c
+  .word 0x00031c3f
+  .word 0x24630005
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x966300cc
+  .word 0x24020400
+  .word 0x14620020
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c90
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x24060007
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2402000a
+  .word 0xa7a201c0
+  .word 0x87a20190
+  .word 0x0040102d
+  .word 0x04400017
+  .word 0x00000000
+  .word 0x87a20180
+  .word 0x0040102d
+  .word 0x04400013
+  .word 0x00000000
+  .word 0x97a20190
+  .word 0x0040282d
+  .word 0x97a20180
+  .word 0x0040302d
+  .word 0x2404000c
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0xa7a20190
+  .word 0xa7a20180
+  .word 0x8fa20160
+  .word 0x1040012d
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba20110
+  .word 0x10430004
+  .word 0x00000000
+  .word 0x7ba20100
+  .word 0x14430020
+  .word 0x00000000
+  .word 0x7ba30130
+  .word 0x7ba20120
+  .word 0x1462001c
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x2442ffff
+  .word 0x16220018
+  .word 0x00000000
+  .word 0x70601628
+  .word 0x2442ffff
+  .word 0x16a20014
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c58
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000002c
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x28410002
+  .word 0x14200028
+  .word 0x00000000
+  .word 0x16a00003
+  .word 0x00000000
+  .word 0x12200024
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c54
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba20110
+  .word 0x10430010
+  .word 0x00000000
+  .word 0x7ba20100
+  .word 0x1043000d
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000f
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x87a202be
+  .word 0x00021880
+  .word 0x8f82b6fc
+  .word 0x00431021
+  .word 0x8c440c24
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x92e200a2
+  .word 0x1440003b
+  .word 0x00000000
+  .word 0xa7a001ae
+  .word 0x0000102d
+  .word 0x96e500a4
+  .word 0x24030009
+  .word 0x10a3001e
+  .word 0x00000000
+  .word 0x24030008
+  .word 0x10a30011
+  .word 0x00000000
+  .word 0x24040004
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x24030002
+  .word 0x16a3001b
+  .word 0x00000000
+  .word 0x8fa30220
+  .word 0x2463ffff
+  .word 0x16230017
+  .word 0x00000000
+  .word 0x0004143c
+  .word 0x0002143f
+  .word 0x10000013
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x16a30010
+  .word 0x00000000
+  .word 0x8fa30220
+  .word 0x2463ffff
+  .word 0x1623000c
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x16a30006
+  .word 0x00000000
+  .word 0x8fa30220
+  .word 0x2463ffff
+  .word 0x16230002
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x00021c3c
+  .word 0x00031c3f
+  .word 0x1460000e
+  .word 0x00000000
+  .word 0x8ee40a2c
+  .word 0x0c0c23b4
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x00021840
+  .word 0x3c020069
+  .word 0x24420e20
+  .word 0x00431021
+  .word 0x84420000
+  .word 0x10000003
+  .word 0x00000000
+  .word 0xa7a001ae
+  .word 0x0000102d
+  .word 0x87a301ae
+  .word 0x0060182d
+  .word 0x04600013
+  .word 0x00000000
+  .word 0x00021c3c
+  .word 0x00031c3f
+  .word 0x0460000f
+  .word 0x00000000
+  .word 0x97a301ae
+  .word 0x0060282d
+  .word 0x3046ffff
+  .word 0x2404000a
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c4c
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x2442ffff
+  .word 0x16a20029
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x2442ffff
+  .word 0x16220025
+  .word 0x00000000
+  .word 0x966200ce
+  .word 0x30420006
+  .word 0x10400021
+  .word 0x00000000
+  .word 0x87a202bc
+  .word 0x00021880
+  .word 0x8f82b6fc
+  .word 0x00431021
+  .word 0x8c440c24
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x0000282d
+  .word 0x24060009
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x2442ffff
+  .word 0x16220034
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x2442ffff
+  .word 0x16a20030
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0xa7a201b0
+  .word 0x966200ce
+  .word 0x30420006
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x87a202b8
+  .word 0xa7a201b0
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x7ba20130
+  .word 0x28410002
+  .word 0x1020000a
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0a283c
+  .word 0x00000000
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x87a202ba
+  .word 0xa7a201b0
+  .word 0x87a201b0
+  .word 0x0040102d
+  .word 0x04400013
+  .word 0x00000000
+  .word 0x00021880
+  .word 0x8f82b6fc
+  .word 0x00431021
+  .word 0x8c440c24
+  .word 0x8e850030
+  .word 0x8ec60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x8e850030
+  .word 0x24060002
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x2442ffff
+  .word 0x12220026
+  .word 0x00000000
+  .word 0x8fa2017c
+  .word 0x10400008
+  .word 0x00000000
+  .word 0x00111840
+  .word 0x00431021
+  .word 0x84430002
+  .word 0x84420000
+  .word 0x00621823
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8fa30210
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46140032
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46140003
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x03c3f021
+  .word 0x87a201e0
+  .word 0x0040102d
+  .word 0x0062082a
+  .word 0x10200008
+  .word 0x00000000
+  .word 0x00031c3c
+  .word 0x00031c3f
+  .word 0x87a201e0
+  .word 0x00431023
+  .word 0xa7a201e0
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xa7a001e0
+  .word 0x26310001
+  .word 0x8fa20220
+  .word 0x0222102a
+  .word 0x1440fd93
+  .word 0x00000000
+  .word 0x26b50001
+  .word 0x7ba20130
+  .word 0x02a2102a
+  .word 0x1440faee
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x245500e8
+  .word 0x8c4300e8
+  .word 0x3c020010
+  .word 0x00621024
+  .word 0x10400035
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x14400032
+  .word 0x00000000
+  .word 0x8ec40030
+  .word 0x24050010
+  .word 0x0c0a084c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0xa4450048
+  .word 0x2403000c
+  .word 0xa443004a
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e6200d0
+  .word 0x14400012
+  .word 0x00000000
+  .word 0x8ec50030
+  .word 0x8f82b6fc
+  .word 0x8c440cf4
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8ec40030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x245100e0
+  .word 0x0280202d
+  .word 0x02c0282d
+  .word 0x0220302d
+  .word 0x966700cc
+  .word 0x966800ce
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x87a301c0
+  .word 0xa4430048
+  .word 0x87a301e0
+  .word 0xa443004a
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c0b6024
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x87a301c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20140
+  .word 0x2443ffff
+  .word 0x8fa20240
+  .word 0x1443000f
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b6024
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x87a301c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20240
+  .word 0x14400014
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x30420004
+  .word 0x14400010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x928500ca
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x87a301c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20140
+  .word 0x2443ffff
+  .word 0x8fa20240
+  .word 0x14430027
+  .word 0x00000000
+  .word 0x868500dc
+  .word 0x10a00012
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000013
+  .word 0x00000000
+  .word 0x866500dc
+  .word 0x10a00010
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x9686006e
+  .word 0x8e840030
+  .word 0x8ec50030
+  .word 0x966700cc
+  .word 0x966800ce
+  .word 0x0000482d
+  .word 0x240a0001
+  .word 0x0220582d
+  .word 0x0c0af6f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x87a301c0
+  .word 0xa4430048
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20240
+  .word 0x14400018
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x8c4200e0
+  .word 0x10400014
+  .word 0x00000000
+  .word 0x8ec40030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x87a301c0
+  .word 0xa4430048
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x144000c5
+  .word 0x00000000
+  .word 0x8ec20030
+  .word 0x904300a2
+  .word 0x24020001
+  .word 0x146200c0
+  .word 0x00000000
+  .word 0x8fa201f0
+  .word 0x1840006d
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x144000b9
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x3c050008
+  .word 0x0c0b5384
+  .word 0x00000000
+  .word 0x3051ffff
+  .word 0x92820028
+  .word 0x1c40003e
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x944300a4
+  .word 0x24020001
+  .word 0x10620039
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x2c410032
+  .word 0x10200033
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000002a
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x84830a38
+  .word 0x2402ffff
+  .word 0x10620024
+  .word 0x00000000
+  .word 0x8fa201f0
+  .word 0x02221023
+  .word 0x00021c3c
+  .word 0x00031c3f
+  .word 0x1c600016
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x3c050008
+  .word 0x0c0b5384
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x8f83b6fc
+  .word 0x84620a3a
+  .word 0x00021043
+  .word 0x0044102b
+  .word 0x14400013
+  .word 0x00000000
+  .word 0x84710a38
+  .word 0x0c0adc18
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x1222000c
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x84820a3a
+  .word 0x00021043
+  .word 0x0043102a
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10400013
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050016
+  .word 0x8fa601f0
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000062
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000d
+  .word 0x8fa601f0
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000051
+  .word 0x00000000
+  .word 0x8ea30000
+  .word 0x3c020010
+  .word 0x00621024
+  .word 0x10400013
+  .word 0x00000000
+  .word 0x966600ce
+  .word 0x0280202d
+  .word 0x24050017
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000003a
+  .word 0x00000000
+  .word 0x8fa201f0
+  .word 0x14400037
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b584c
+  .word 0x00000000
+  .word 0x10400012
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000e
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000021
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b5884
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x1443001b
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b57d4
+  .word 0x00000000
+  .word 0x14400016
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x9685006e
+  .word 0x0c0c20bc
+  .word 0x00000000
+  .word 0x0002343c
+  .word 0x0006343f
+  .word 0x0280202d
+  .word 0x2405000f
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30260
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200d0
+  .word 0x245100fa
+  .word 0x944200fa
+  .word 0x30420001
+  .word 0x10400037
+  .word 0x00000000
+  .word 0x27a40290
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x3c020010
+  .word 0xafa2029c
+  .word 0x0260202d
+  .word 0x0260282d
+  .word 0x27a60290
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30258
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96220000
+  .word 0x30420002
+  .word 0x1040001e
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e640030
+  .word 0x2405000a
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30258
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30258
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20240
+  .word 0x24420001
+  .word 0xafa20240
+  .word 0x8fa30240
+  .word 0x7ba20140
+  .word 0x0062102a
+  .word 0x1440f8f3
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b704c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050019
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x9683006c
+  .word 0x24020002
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x0280202d
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf00a0
+  .word 0x7bbe0090
+  .word 0x7bb70080
+  .word 0x7bb60070
+  .word 0x7bb50060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b60008
+  .word 0xc7b50004
+  .word 0xc7b40000
+  .word 0x27bd02c0
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma pop
 #pragma opt_loop_invariants reset
@@ -3881,1837 +7063,4182 @@ void btlActionInitStateSkill(BtlAction* action)
 /* Skill-state reconstruction is complete; remaining drift is MWCC local-layout codegen. */
 /* W373 pragma sweep nd/obj: base 11197/16672; singles LI=11166/16660 CS=12393/17036(over) LT=11197/16672 PR=12288/16848 SR=11197/16672 DA=11639/16696(over); retain LI on. */
 #pragma opt_loop_invariants on
-// FUN_00290be0 NONMATCHING
-void btlActionUpdateStateSkill(BtlAction *action) {
-    extern u8 *gp0xffffb714;
-    u32 sp53C;
-    u32 sp538;
-    u32 sp530;
-    u32 sp52C;
-    u32 sp528;
-    RwV3d sp518;
-    s32 sp4FC;
-    s32 sp4F8;
-    s32 sp4F4;
-    s32 sp4F0;
-    s8 sp470;
-    BtlAction *sp460;
-    BtlUnit *sp450;
-    BtlPacket *sp44C;
-    BtlPacket *sp448;
-    BtlPacket *sp444;
-    BtlPacket *sp440;
-    BtlPacket *sp43C;
-    s32 sp438;
-    u64 sp420;
-    u64 sp410;
-    u64 sp400;
-    s16 sp3F0;
-    s16 sp3E0;
-    s16 sp3D0;
-    s16 sp3C0;                                      /* compiler-managed */
-    s32 sp3B0;
-    s32 sp3A0;
-    s32 sp390;
-    s32 sp380;
-    u16 sp370;
-    u16 sp360;
-    short sp350;
-    u16 sp340;
-    u16 sp330;
-    u16 sp320;
-    u16 sp310;
-    u16 sp300;
-    s32 sp2F0;
-    s32 sp2EC;
-    s32 sp2D0;
-    s32 sp2C0;
-    s32 sp2B0;
-    s32 sp2AC;
-    s32 sp290;
-    s32 sp280;
-    s32 sp27C;
-    s32 sp260;
-    u16 sp250;
-    u16 sp240;
-    s32 sp230;
-    s32 *sp220;
-    BtlPacket *sp21C;
-    BtlPacket *sp218;
-    BtlPacket *sp214;
-    s16 sp200;
-    void *sp1FC;
-    u64 sp1E0;
-    u64 sp1D0;
-    u64 sp1C0;
-    u64 sp1B0;
-    u64 sp1A0;
-    u64 sp190;
-    u64 sp180;
-    u64 sp170;
-    u64 sp160;
-    u64 sp150;
-    u64 sp140;
-    u64 sp130;
-    u64 sp120;
-    u64 sp110;
-    u64 sp100;
-    u64 spF0;
-    u64 spE0;
-    u64 spD0;
-    u64 spC0;
-    u64 spB0;
-    BtlAction *temp_s2_3;
-    BtlAction *temp_v0_64;
-    BtlAction *var_a2;
-    BtlAction *var_s5_2;
-    BtlPacket *temp_v0_101;
-    BtlPacket *temp_v0_102;
-    BtlPacket *temp_v0_103;
-    BtlPacket *temp_v0_104;
-    BtlPacket *temp_v0_105;
-    BtlPacket *temp_v0_106;
-    BtlPacket *temp_v0_107;
-    BtlPacket *temp_v0_108;
-    BtlPacket *temp_v0_109;
-    BtlPacket *temp_v0_10;
-    BtlPacket *temp_v0_110;
-    BtlPacket *temp_v0_111;
-    BtlPacket *temp_v0_112;
-    BtlPacket *temp_v0_113;
-    BtlPacket *temp_v0_114;
-    BtlPacket *temp_v0_115;
-    BtlPacket *temp_v0_117;
-    BtlPacket *temp_v0_118;
-    BtlPacket *temp_v0_119;
-    BtlPacket *temp_v0_11;
-    BtlPacket *temp_v0_120;
-    BtlPacket *temp_v0_121;
-    BtlPacket *temp_v0_122;
-    BtlPacket *temp_v0_123;
-    BtlPacket *temp_v0_125;
-    BtlPacket *temp_v0_126;
-    BtlPacket *temp_v0_127;
-    BtlPacket *temp_v0_128;
-    BtlPacket *temp_v0_129;
-    BtlPacket *temp_v0_12;
-    BtlPacket *temp_v0_130;
-    BtlPacket *temp_v0_131;
-    BtlPacket *temp_v0_132;
-    BtlPacket *temp_v0_133;
-    BtlPacket *temp_v0_134;
-    BtlPacket *temp_v0_136;
-    BtlPacket *temp_v0_137;
-    BtlPacket *temp_v0_138;
-    BtlPacket *temp_v0_139;
-    BtlPacket *temp_v0_13;
-    BtlPacket *temp_v0_140;
-    BtlPacket *temp_v0_141;
-    BtlPacket *temp_v0_142;
-    BtlPacket *temp_v0_143;
-    BtlPacket *temp_v0_144;
-    BtlPacket *temp_v0_145;
-    BtlPacket *temp_v0_146;
-    BtlPacket *temp_v0_147;
-    BtlPacket *temp_v0_148;
-    BtlPacket *temp_v0_149;
-    BtlPacket *temp_v0_14;
-    BtlPacket *temp_v0_150;
-    BtlPacket *temp_v0_151;
-    BtlPacket *temp_v0_152;
-    BtlPacket *temp_v0_153;
-    BtlPacket *temp_v0_154;
-    BtlPacket *temp_v0_155;
-    BtlPacket *temp_v0_156;
-    BtlPacket *temp_v0_157;
-    BtlPacket *temp_v0_158;
-    BtlPacket *temp_v0_159;
-    BtlPacket *temp_v0_15;
-    BtlPacket *temp_v0_160;
-    BtlPacket *temp_v0_161;
-    BtlPacket *temp_v0_162;
-    BtlPacket *temp_v0_163;
-    BtlPacket *temp_v0_164;
-    BtlPacket *temp_v0_165;
-    BtlPacket *temp_v0_166;
-    BtlPacket *temp_v0_167;
-    BtlPacket *temp_v0_16;
-    BtlPacket *temp_v0_17;
-    BtlPacket *temp_v0_18;
-    BtlPacket *temp_v0_19;
-    BtlPacket *temp_v0_20;
-    BtlPacket *temp_v0_21;
-    BtlPacket *temp_v0_22;
-    BtlPacket *temp_v0_23;
-    BtlPacket *temp_v0_24;
-    BtlPacket *temp_v0_25;
-    BtlPacket *temp_v0_26;
-    BtlPacket *temp_v0_27;
-    BtlPacket *temp_v0_28;
-    BtlPacket *temp_v0_29;
-    BtlPacket *temp_v0_32;
-    BtlPacket *temp_v0_33;
-    BtlPacket *temp_v0_34;
-    BtlPacket *temp_v0_35;
-    BtlPacket *temp_v0_36;
-    BtlPacket *temp_v0_37;
-    BtlPacket *temp_v0_38;
-    BtlPacket *temp_v0_39;
-    BtlPacket *temp_v0_3;
-    BtlPacket *temp_v0_40;
-    BtlPacket *temp_v0_41;
-    BtlPacket *temp_v0_42;
-    BtlPacket *temp_v0_43;
-    BtlPacket *temp_v0_44;
-    BtlPacket *temp_v0_45;
-    BtlPacket *temp_v0_46;
-    BtlPacket *temp_v0_48;
-    BtlPacket *temp_v0_49;
-    BtlPacket *temp_v0_4;
-    BtlPacket *temp_v0_50;
-    BtlPacket *temp_v0_51;
-    BtlPacket *temp_v0_52;
-    BtlPacket *temp_v0_53;
-    BtlPacket *temp_v0_54;
-    BtlPacket *temp_v0_55;
-    BtlPacket *temp_v0_56;
-    BtlPacket *temp_v0_57;
-    BtlPacket *temp_v0_58;
-    BtlPacket *temp_v0_59;
-    BtlPacket *temp_v0_5;
-    BtlPacket *temp_v0_60;
-    BtlPacket *temp_v0_61;
-    BtlPacket *temp_v0_62;
-    BtlPacket *temp_v0_63;
-    BtlPacket *temp_v0_65;
-    BtlPacket *temp_v0_66;
-    BtlPacket *temp_v0_67;
-    BtlPacket *temp_v0_68;
-    BtlPacket *temp_v0_69;
-    BtlPacket *temp_v0_6;
-    BtlPacket *temp_v0_70;
-    BtlPacket *temp_v0_71;
-    BtlPacket *temp_v0_72;
-    BtlPacket *temp_v0_73;
-    BtlPacket *temp_v0_74;
-    BtlPacket *temp_v0_75;
-    BtlPacket *temp_v0_76;
-    BtlPacket *temp_v0_77;
-    BtlPacket *temp_v0_78;
-    BtlPacket *temp_v0_79;
-    BtlPacket *temp_v0_7;
-    BtlPacket *temp_v0_80;
-    BtlPacket *temp_v0_81;
-    BtlPacket *temp_v0_82;
-    BtlPacket *temp_v0_83;
-    BtlPacket *temp_v0_84;
-    BtlPacket *temp_v0_85;
-    BtlPacket *temp_v0_86;
-    BtlPacket *temp_v0_87;
-    BtlPacket *temp_v0_88;
-    BtlPacket *temp_v0_89;
-    BtlPacket *temp_v0_8;
-    BtlPacket *temp_v0_90;
-    BtlPacket *temp_v0_91;
-    BtlPacket *temp_v0_92;
-    BtlPacket *temp_v0_93;
-    BtlPacket *temp_v0_94;
-    BtlPacket *temp_v0_95;
-    BtlPacket *temp_v0_96;
-    BtlPacket *temp_v0_97;
-    BtlPacket *temp_v0_99;
-    BtlPacket *temp_v0_9;
-    BtlPacket *var_s1_2;
-    BtlPacket *var_s1_3;
-    BtlPacket *var_s2_4;
-    BtlPacket *var_s3;
-    BtlPacket *var_s3_3;
-    BtlPacket *var_v0_6;
-    BtlUnit *temp_a0;
-    BtlUnit *temp_a0_10;
-    BtlUnit *temp_a0_13;
-    BtlUnit *temp_a0_14;
-    BtlUnit *temp_a0_6;
-    BtlUnit *temp_a0_8;
-    BtlUnit *temp_a1;
-    BtlUnit *temp_a1_2;
-    BtlUnit *temp_a1_3;
-    BtlUnit *temp_a1_4;
-    BtlUnit *temp_a1_7;
-    BtlUnit *temp_v0;
-    BtlUnit *temp_v1_15;
-    BtlUnit *var_a2_2;
-    f32 temp_f20;
-    u64 temp_v0_2;
-    u64 var_a1;
-    s16 temp_a1_5;
-    s16 temp_a1_6;
-    s16 temp_s3_4;
-    s16 temp_s7;
-    s16 temp_v1_11;
-    s16 var_s2_2;
-    s16 var_v0_12;
-    s16 var_v0_4;
-    s16 var_v1_2;
-    s32 *temp_v0_124;
-    s32 temp_a0_2;
-    s32 temp_a0_9;
-    s32 temp_fp;
-    s32 temp_s2;
-    s32 temp_s3_3;
-    s32 temp_v0_100;
-    s32 temp_v0_47;
-    s32 temp_v0_98;
-    s32 temp_v1_10;
-    s32 temp_v1_5;
-    s32 var_v0_10;
-    s32 var_v0_11;
-    s32 var_v0_2;
-    s32 var_v0_3;
-    s32 var_v0_7;
-    s32 var_v0_8;
-    s32 var_v0_9;
-    s64 temp_s3;
-    s64 temp_s3_2;
-    s64 temp_v0_30;
-    s32 temp_v0_31;
-    s64 temp_v1_12;
-    s64 var_s1;
-    s64 var_s2;
-    s64 var_s2_3;
-    s32 var_v0;
-    s64 var_v1;
-    s32 var_s6;
-    u16 temp_a2;
-    u16 temp_v1;
-    u16 temp_v1_16;
-    u16 temp_v1_2;
-    u16 temp_v1_6;
-    u16 var_a3;
-    u16 var_v1_3;
-    u32 temp_a0_12;
-    u32 var_v0_5;
-    u64 temp_s0;
-    u64 temp_s2_2;
-    u64 temp_s2_4;
-    u64 var_s3_2;
-    u64 var_s5;
-    u8 temp_v1_14;
-    u8 var_a2_3;
-    void *temp_a0_11;
-    void *temp_a0_3;
-    void *temp_a0_4;
-    void *temp_a0_5;
-    void *temp_a0_7;
-    void *temp_v0_116;
-    void *temp_v0_135;
-    void *temp_v1_13;
-    void *temp_v1_3;
-    void *temp_v1_4;
-    void *temp_v1_7;
-    void *temp_v1_8;
-    void *temp_v1_9;
-
-    u64 saved_reg_s1, saved_reg_s2, saved_reg_s5;
-    BtlPacket *saved_reg_s3;
-    var_s1 = saved_reg_s1;
-    var_s2 = saved_reg_s2;
-    var_s3 = saved_reg_s3;
-    var_s5 = saved_reg_s5;
-    temp_v0 = action->unit;
-    var_s6 = (s8) temp_v0->genus;
-    sp450 = temp_v0->personaUnit;
-    temp_s7 = (s16) action->target.specificId;
-    sp460 = action->target.targetedActions[0];
-    sp410 = 0;
-    sp400 = 0;
-    sp390 = 0;
-    sp380 = 0;
-    sp320 = 0;
-    sp3D0 = 0;
-    sp3A0 = 0;
-    sp2F0 = 0;
-    sp2D0 = 0;
-    sp2C0 = 0;
-    sp2B0 = 0;
-    sp2AC = 0;
-    sp290 = 0;
-    sp280 = 0;
-    sp27C = 0;
-    sp300 = 6;
-    sp1E0 = (*(iGpffffb708 + (temp_s7 * 0x2C)) & 2) != 0;
-    temp_v0_2 = (action->unk_1a & 0x10) != 0;
-    sp1D0 = temp_v0_2;
-    if (temp_v0_2 != 0) {
-        sp1D0 = sp1E0 == 0;
-    }
-    sp1C0 = action->target.commandId == 3;
-    sp2EC = func_002d6290(action);
-    sp1B0 = func_002d6370(temp_s7);
-    sp1A0 = func_00308a50(action->target.originalSpecificId);
-    sp440 = NULL;
-    temp_s0 = action->uid;
-    btlAction0028a780(action);
-    sp438 = func_002b8f90(1);
-    if (action->unk_18 & 0x100) {
-        var_s6 = -1;
-    }
-    sp310 = 1;
-    var_s6 = (s64) ((s64) var_s6 << 0x38) >> 0x38;
-    if (var_s6 == 0) {
-        temp_a0 = action->unit;
-        temp_v1 = temp_a0->charId;
-        if ((temp_v1 != 0xA) && (temp_v1 != 3)) {
-
-        } else {
-            sp310 = 0x10;
-        }
-        if ((func_002d5bf0(temp_a0) != 0) || (func_002d5c70(action->unit) != 0)) {
-            sp310 = 0x10;
-        }
-    } else if (var_s6 == 1) {
-        temp_v1_2 = action->unit->charId;
-        if ((temp_v1_2 != 0xEE) && (temp_v1_2 != 0xE9) && (temp_v1_2 != 0x126) && (temp_v1_2 != 0x110) && (temp_v1_2 != 0x10B)) {
-
-        } else {
-            sp310 = 0x10;
-        }
-    }
-    if (var_s6 >= 0) {
-        if (sp2EC != 0) {
-            temp_v0_3 = btlUnitCreateRotateTowardUnitPacket(action->unit, action->target.targetedActions[0]->unit, 0U);
-            temp_v0_3->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_3, 0U);
-        } else if (var_s6 == 0) {
-            func_00280870(func_002d1600(&action->target) & 0xFFFF, 1, &sp518, 0, 0, 1);
-            temp_v0_4 = btlUnitCreateRotatePacket(action->unit, &sp518, 0U);
-            temp_v0_4->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_4, 0U);
-        } else if (func_002fdcb0(action->unit) != 0) {
-            func_002fddb0(action->unit, &sp518);
-            temp_v0_5 = btlUnitCreateRotatePacket(action->unit, &sp518, 0U);
-            temp_v0_5->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_5, 0U);
-        }
-        temp_v0_6 = btlUnitCreateLookAtUnitPacket(NULL, action->unit, 3U);
-        temp_v0_6->actionUID = action->uid;
-        btlPacketRegister(temp_v0_6, 1U);
-        temp_v0_7 = btlUnitCreateLookAtDeactivatePacket(action->unit, 0U);
-        temp_v0_7->actionUID = action->uid;
-        btlPacketRegister(temp_v0_7, 1U);
-        action->unk_18 |= 0x200;
-        temp_v0_8 = func_002d8330(action);
-        temp_v0_8->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_8, 1U);
-    }
-    temp_fp = temp_s7 * 0x1C;
-    if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x100) {
-        var_v0 = 3;
-    } else {
-        var_v0 = 1;
-    }
-    sp190 = (u64) ((s64) (var_v0 << 0x30) >> 0x30);
-    if (sp1C0 == 0) {
-        temp_v0_9 = func_002bd590(action->unit, temp_s7 & 0xFFFF);
-        temp_v0_9->preUpdateDelay = (s16) sp190;
-        temp_v0_9->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_9, 3U);
-    } else {
-        temp_v0_10 = func_002bd690(action->unit, action->target.unk_38);
-        temp_v0_10->preUpdateDelay = (s16) sp190;
-        temp_v0_10->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_10, 3U);
-    }
-    if ((sp1D0 == 1) && (var_s6 != -1)) {
-        if ((sp1C0 == 0) && (sp1A0 == 0)) {
-            if (var_s6 == 0) {
-                if (!(action->unk_18 & 0x40) && ((temp_s2 = func_002ddc80(action->unit->charId), (func_002d5eb0(action) != 0)) || (temp_s2 != 0))) {
-                    var_s1 = (s16)func_002e33f0(action);
-                    if ((var_s1 != -1) && ((datCalcRand(0x64U) < 0x14U) || (temp_s2 != 0))) {
-                        sp2F0 = 1;
-                        action->unk_18 |= 0x40;
-                    }
-                }
-            } else if ((var_s6 == 1) && !(action->unk_18 & 0x40)) {
-                var_s1 = (s16)func_002e33f0(action);
-                if (var_s1 != -1) {
-                    sp2F0 = 1;
-                    action->unk_18 |= 0x40;
-                }
-            }
-            if (func_002fcaa0(action, &sp528) == 0) {
-                temp_v1_3 = (u8*)gBtl;
-                sp528 = (*(u32*)((u8*)gBtl + 0xC94));
-                sp52C = (*(u32*)((u8*)gBtl + 0xC98));
-                sp530 = (*(u32*)((u8*)gBtl + 0xC9C));
-            }
-            if ((func_002d6370(temp_s7) == 0) && (func_002d5f50(action) == 0)) {
-                temp_a0_2 = func_002d1600(&action->target) & 0xFFFF;
-                if ((var_s6 == 0) && ((temp_a0_2 & 0xFFFF) == 2)) {
-                    sp2D0 = (effMiscRand(NULL) & 1) != 0;
-                } else if ((var_s6 == 1) && ((temp_a0_2 & 0xFFFF) == 1)) {
-                    sp2D0 = 1;
-                }
-            }
-            if ((func_002fdbb0(action, sp450) != 0) || ((*(u32*)((u8*)gBtl + 0x10)) & 0x40)) {
-                sp2D0 = 1;
-            }
-            if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x4000) {
-                sp2D0 = 1;
-                sp3A0 = 0xC;
-            }
-            if ((var_s6 == 0) && (func_002d62d0(action) != 0) && (temp_s7 != 0xEA)) {
-                sp280 = 1;
-                sp2D0 = 1;
-                sp2F0 = 0;
-                temp_v0_11 = btlUnitCreateLookAtDeactivatePacket(NULL, 3U);
-                temp_v0_11->actionUID = action->uid;
-                btlPacketRegister(temp_v0_11, 1U);
-                temp_a0_3 = (u8*)gBtl;
-                (*(u32*)((u8*)gBtl + 0xC)) = (s32) ((*(u32*)((u8*)gBtl + 0xC)) | 0x400000);
-                temp_v1_4 = (u8*)gBtl;
-                *(u16*)((u8*)gBtl + 0x18) = (u16)(*(u16*)((u8*)gBtl + 0x18) | 6);
-            }
-            if ((var_s6 == 0) && (func_002d5fb0(action) != 0)) {
-                btlPacketRegister(btlVoice002e2be0(action, 0x10, 0, 0, 0), 1U);
-            } else if (sp2F0 != 0) {
-                temp_v0_12 = func_002dd960(action->unit);
-                temp_v0_12->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_12, 1U);
-            }
-            if (var_s6 == 1) {
-                var_v1 = (s64) (func_002f9690(action->unit) << 0x30) >> 0x30;
-                if (var_v1 == -1) {
-                    var_v1 = 6;
-                }
-            } else {
-                var_v1 = 6;
-            }
-            temp_v0_13 = btlUnitCreateAnimPacket(action->unit, 0xCU, var_v1 & 0xFFFF, 1.0f, 4U);
-            temp_v0_13->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_13, 1U);
-            var_s3_2 = temp_v0_13->uid;
-            if (var_s6 == 0) {
-                temp_v0_14 = btlUnit00286240(action->unit);
-                temp_v0_14->unk_00 = 4;
-                temp_v0_14->parentUID = var_s3_2;
-                temp_v0_14->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_14, 1U);
-                temp_v0_15 = btlUnit002860b0(action->unit);
-                temp_v0_15->unk_00 = 4;
-                temp_v0_15->parentUID = var_s3_2;
-                temp_v0_15->preUpdateDelay = 6;
-                temp_v0_15->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_15, 1U);
-            }
-            var_s2_2 = ((s64) (func_002838d0(action->unit, 0xC, 1.0f) << 0x30) >> 0x30) + 6;
-            if (var_s6 == 0) {
-                var_v0_2 = 0x10;
-            } else {
-                var_v0_2 = 0x11;
-            }
-            temp_v0_16 = btlCameraCreateSetStatePacket(action, var_v0_2 & 0xFFFF);
-            temp_v0_16->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_16, 0U);
-            var_s5 = temp_v0_16->uid;
-            if (sp2F0 != 0) {
-                temp_v0_17 = func_002e35d0(var_s1 & 0xFFFF, sp450->charId);
-                temp_v0_17->unk_00 = 4;
-                temp_v0_17->parentUID = var_s3_2;
-                temp_v0_17->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_17, 1U);
-                temp_v0_18 = func_002e36f0();
-                temp_v0_18->unk_00 = 4;
-                temp_v0_18->parentUID = temp_v0_17->uid;
-                temp_v0_18->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_18, 1U);
-                temp_v0_19 = btlVoice002e2be0(action, 0xC, sp450->charId, 0, 0);
-                temp_v0_19->unk_00 = 5;
-                temp_v0_19->parentUID = temp_v0_18->uid;
-                temp_v0_19->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_19, 1U);
-                temp_v0_20 = func_002dd100(0xA, 2, 0x12U);
-                temp_v0_20->unk_00 = 5;
-                temp_v0_20->parentUID = temp_v0_18->uid;
-                temp_v0_20->preUpdateDelay = 5;
-                temp_v0_20->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_20, 1U);
-                temp_v0_21 = func_002dd8e0(action->unit);
-                temp_v0_21->unk_00 = 4;
-                temp_v0_21->parentUID = temp_v0_18->uid;
-                temp_v0_21->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_21, 1U);
-                var_s3_2 = temp_v0_18->uid;
-                sp400 = var_s3_2;
-                var_s2_2 = 0;
-                temp_v0_22 = func_002e37e0();
-                temp_v0_22->unk_00 = 4;
-                temp_v0_22->parentUID = var_s3_2;
-                temp_v0_22->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_22, 1U);
-            }
-            temp_v0_23 = func_002b8900(action, (action->unk_18 & 0x10) != 0, 1);
-            temp_v0_23->unk_00 = 4;
-            temp_v0_23->parentUID = var_s3_2;
-            temp_v0_23->preUpdateDelay = var_s2_2 - (var_s2_2 >> 3);
-            temp_v0_23->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_23, 0U);
-            sp410 = temp_v0_23->uid;
-            if (sp2EC != 0) {
-                var_a2 = action->target.targetedActions[0];
-            } else {
-                var_a2 = NULL;
-            }
-            temp_v0_24 = func_002b8b70(sp450, action, var_a2, temp_s7 & 0xFFFF);
-            temp_v0_24->unk_00 = 5;
-            temp_v0_24->parentUID = sp410;
-            temp_v0_24->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_24, 0U);
-            if (sp2F0 != 0) {
-                temp_v0_25 = btlUnitCreateModelPacket(sp450, sp450->charId, 0x1DU);
-                var_s1_2 = temp_v0_25;
-                temp_v0_25->unk_00 = 5;
-                temp_v0_25->parentUID = sp400;
-                temp_v0_25->postUpdateWaits[0].type = 5;
-                temp_v0_25->postUpdateWaits[0].value = sp410;
-            } else {
-                temp_v0_26 = btlUnitCreateModelPacket(sp450, sp450->charId, 0xDU);
-                var_s1_2 = temp_v0_26;
-                temp_v0_26->preUpdateDelay = var_s2_2;
-            }
-            var_s1_2->actionUID = temp_s0;
-            btlPacketRegister(var_s1_2, 1U);
-            temp_v0_27 = func_0027f2f0();
-            temp_v0_27->unk_00 = 4;
-            temp_v0_27->parentUID = var_s1_2->uid;
-            temp_v0_27->preUpdateDelay = 0xC;
-            temp_v0_27->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_27, 1U);
-            temp_v0_28 = func_002bb2f0(sp528, action->unit, 0U, temp_v0_27->uid, 0);
-            temp_v0_28->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_28, 2U);
-            temp_v0_29 = func_002dd100(0xA, 2, 0U);
-            temp_v0_29->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_29, 1U);
-            temp_a1 = action->unit;
-            temp_v0_30 = (s16)func_00284040(temp_a1->personaUnit, temp_a1, temp_s7, sp2EC);
-            sp3F0 = (s16) temp_v0_30;
-            temp_v0_31 = (s64) (func_002835e0(action->unit->personaUnit, temp_v0_30 & 0xFFFF, 1.0f) << 0x30) >> 0x30;
-            sp3B0 = (s32) temp_v0_31;
-            sp300 = func_00283a70(action->unit, 0xF);
-            var_s1 = (s64) var_s1_2->uid;
-            temp_v1_5 = temp_v0_31 + 0x12;
-            if (sp3A0 < temp_v1_5) {
-                var_s2 = temp_v1_5 - sp3A0;
-            } else {
-                var_s2 = 0;
-            }
-            temp_v0_32 = btlUnitCreateAnimPacket(action->unit, 0xEU, 0U, 1.0f, 5U);
-            temp_v0_32->unk_00 = 4;
-            temp_v0_32->parentUID = (u64) var_s1;
-            temp_v0_32->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_32, 1U);
-            temp_s3 = (s64) (func_002835e0(action->unit, 0xEU, 1.0f) << 0x30) >> 0x30;
-            temp_v0_33 = func_002bb2f0(sp52C, action->unit, 0U, 0U, 0);
-            temp_v0_33->unk_00 = 4;
-            temp_v0_33->parentUID = (u64) var_s1;
-            temp_v0_33->preUpdateDelay = (s16) temp_s3;
-            temp_v0_33->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_33, 2U);
-            temp_v0_34 = func_002dd100(0xC, 2, sp310);
-            temp_v0_34->unk_00 = 4;
-            temp_v0_34->parentUID = (u64) var_s1;
-            temp_v0_34->preUpdateDelay = (s16) temp_s3;
-            temp_v0_34->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_34, 1U);
-            temp_v0_35 = func_002bb2f0(sp530, action->unit, 0U, 0U, 0);
-            temp_v0_35->unk_00 = 4;
-            temp_v0_35->parentUID = (u64) var_s1;
-            temp_v0_35->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_35, 2U);
-            temp_v0_36 = func_002dd100(0xD, 2, 2U);
-            temp_v0_36->unk_00 = 4;
-            temp_v0_36->parentUID = (u64) var_s1;
-            temp_v0_36->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_36, 1U);
-            temp_v0_37 = btlUnit00285d30(action->unit, 0xFF808080U, 0, 0xC, 0, 0);
-            temp_v0_37->unk_00 = 4;
-            temp_v0_37->parentUID = (u64) var_s1;
-            temp_v0_37->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_37, 1U);
-            temp_v0_38 = btlUnitCreateAnimPacket(sp450, (u16) sp3F0, 0U, 1.0f, 2U);
-            var_s3 = temp_v0_38;
-            temp_v0_38->unk_00 = 4;
-            temp_v0_38->parentUID = (u64) var_s1;
-            temp_v0_38->preUpdateDelay = 0xF;
-            temp_v0_38->actionUID = temp_s0;
-            btlPacketRegister(var_s3, 1U);
-            temp_v0_39 = btlUnit00285d30(sp450, func_0027fc80(sp450), 8, 0, 0, 0);
-            temp_v0_39->unk_00 = 4;
-            temp_v0_39->parentUID = var_s3->uid;
-            temp_v0_39->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_39, 1U);
-            if ((sp2D0 == 1) && (sp280 == 0) && !((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x40)) {
-                if (var_s6 == 0) {
-                    var_v0_3 = 0x15;
-                } else {
-                    var_v0_3 = 0x16;
-                }
-                temp_v0_40 = btlCameraCreateSetStatePacket(action, var_v0_3 & 0xFFFF);
-                temp_v0_40->unk_00 = 4;
-                temp_v0_40->parentUID = var_s3->uid;
-                if (sp3B0 >= sp3A0) {
-                    var_v0_4 = sp3B0 - sp3A0;
-                } else {
-                    var_v0_4 = 0;
-                }
-                temp_v0_40->preUpdateDelay = var_v0_4;
-                temp_v0_40->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_40, 0U);
-            }
-            sp420 = var_s3->uid;
-        } else if ((sp1C0 == 0) && (sp1A0 == 1)) {
-            temp_v0_41 = btlUnitCreateAnimPacket(action->unit, 0xCU, 6U, 1.0f, 4U);
-            temp_v0_41->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_41, 1U);
-            temp_s2_2 = temp_v0_41->uid;
-            temp_s3_2 = (s64) (func_002838d0(action->unit, 0xC, 1.0f) << 0x30) >> 0x30;
-            temp_v0_42 = btlCameraCreateSetStatePacket(action, 0x10U);
-            temp_v0_42->unk_00 = 4;
-            temp_v0_42->parentUID = temp_s2_2;
-            temp_v0_42->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_42, 0U);
-            var_s5 = temp_v0_42->uid;
-            temp_v0_43 = func_002e3de0(action->unit->charId, action->target.originalSpecificId);
-            temp_v0_43->unk_00 = 4;
-            temp_v0_43->parentUID = temp_s2_2;
-            temp_v0_43->preUpdateDelay = temp_s3_2 + 6;
-            temp_v0_43->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_43, 1U);
-            temp_v0_44 = func_002e3f20();
-            temp_v0_44->unk_00 = 4;
-            temp_v0_44->parentUID = temp_v0_43->uid;
-            temp_v0_44->preUpdateDelay = 0x17;
-            temp_v0_44->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_44, 1U);
-            temp_v0_45 = func_002dd690(3, (s8 *)(D_00693318_abs + 0x10));
-            temp_v0_45->unk_00 = 5;
-            temp_v0_45->parentUID = temp_v0_44->uid;
-            temp_v0_45->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_45, 1U);
-            temp_a2 = action->target.originalSpecificId;
-            if ((temp_a2 != 0x11D) && (temp_a2 != 0x11C) && (temp_a2 != 0x117) && (temp_a2 != 0x114) && (temp_a2 != 0x113)) {
-                sprintf((char*)&sp470, (char *)(D_00693318_abs + 0x20), temp_a2);
-                temp_v0_46 = func_002dd690(3, &sp470);
-                temp_v0_46->unk_00 = 0xA;
-                temp_v0_46->parentUID = 0x400;
-                temp_v0_46->preUpdateWait.type = 0xA;
-                temp_v0_46->preUpdateWait.value = 0x903;
-                temp_v0_46->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_46, 1U);
-            }
-            sp400 = temp_v0_43->uid;
-            sp2F0 = 1;
-            temp_v1_6 = *((u8*)iGpffffb710 + 2 + temp_fp);
-            if (temp_v1_6 & 0x400) {
-                sp200 = 0x18;
-            } else {
-                sp200 = 0x19;
-            }
-            if (temp_v1_6 & 0x1000) {
-                temp_v0_47 = func_002d62d0(action);
-                sp27C = temp_v0_47;
-                if (temp_v0_47 != 0) {
-                    sp280 = 1;
-                }
-                temp_v0_48 = btlUnitCreateLookAtDeactivatePacket(NULL, 3U);
-                temp_v0_48->actionUID = action->uid;
-                btlPacketRegister(temp_v0_48, 1U);
-                temp_a0_4 = (u8*)gBtl;
-                (*(u32*)((u8*)gBtl + 0xC)) = (s32) ((*(u32*)((u8*)gBtl + 0xC)) | 0x400000);
-                temp_v1_7 = (u8*)gBtl;
-                *(u16*)((u8*)gBtl + 0x18) = (u16)(*(u16*)((u8*)gBtl + 0x18) | 6);
-            }
-            temp_v0_49 = btlUnitCreateAnimPacket(action->unit, 0x17U, 0U, 1.0f, 2 & 0xFFFF);
-            temp_v0_49->unk_00 = 4;
-            temp_v0_49->parentUID = sp400;
-            temp_v0_49->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_49, 1U);
-            temp_v0_50 = func_0027f2f0();
-            temp_v0_50->unk_00 = 4;
-            temp_v0_50->parentUID = temp_v0_49->uid;
-            temp_v0_50->preUpdateDelay = 0xC;
-            temp_v0_50->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_50, 1U);
-            temp_v0_51 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xC94)), action->unit, 0U, temp_v0_50->uid, 0);
-            temp_v0_51->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_51, 2U);
-            temp_v0_52 = func_002dd100(0xA, 2, 0U);
-            temp_v0_52->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_52, 1U);
-            temp_v0_53 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xC98)), action->unit, 0U, 0U, 0);
-            temp_v0_53->unk_00 = 4;
-            temp_v0_53->parentUID = temp_v0_49->uid;
-            temp_v0_53->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_53, 2U);
-            temp_v0_54 = func_002dd100(0xC, 2, sp310);
-            temp_v0_54->unk_00 = 4;
-            temp_v0_54->parentUID = temp_v0_49->uid;
-            temp_v0_54->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_54, 1U);
-            temp_v0_55 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xC9C)), action->unit, 0U, 0U, 0);
-            temp_v0_55->unk_00 = 4;
-            temp_v0_55->parentUID = temp_v0_49->uid;
-            temp_v0_55->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_55, 2U);
-            temp_v0_56 = func_002dd100(0xD, 2, 2U);
-            temp_v0_56->unk_00 = 4;
-            temp_v0_56->parentUID = temp_v0_49->uid;
-            temp_v0_56->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_56, 1U);
-            temp_v0_57 = btlUnitCreateAnimPacket(action->unit, (u16) sp200, 0U, 1.0f, 2U);
-            var_s3 = temp_v0_57;
-            temp_v0_57->unk_00 = 4;
-            temp_v0_57->parentUID = temp_v0_44->uid;
-            var_s3->preUpdateDelay = func_002838d0(action->unit, 0x17, 1.0f);
-            var_s3->actionUID = temp_s0;
-            btlPacketRegister(var_s3, 1U);
-            var_s1 = (s64) var_s3->uid;
-            var_s2 = (s64) (func_002835e0(action->unit, (u16) sp200, 1.0f) << 0x30) >> 0x30;
-            temp_v0_58 = func_0027f2f0();
-            sp214 = temp_v0_58;
-            temp_v0_58->unk_00 = 4;
-            temp_v0_58->parentUID = var_s3->uid;
-            temp_v0_58->preUpdateDelay = 0xC;
-            temp_v0_58->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_58, 1U);
-            temp_v0_59 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xC94)), action->unit, 0U, temp_v0_58->uid, 0);
-            temp_v0_59->unk_00 = 4;
-            temp_v0_59->parentUID = sp400;
-            temp_v0_59->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_59, 2U);
-            temp_v0_60 = func_002dd100(0xA, 2, 0U);
-            temp_v0_60->unk_00 = 4;
-            temp_v0_60->parentUID = sp400;
-            temp_v0_60->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_60, 1U);
-            temp_v0_61 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xD0C)), action->unit, 0U, 0U, 0);
-            temp_v0_61->unk_00 = 4;
-            temp_v0_61->parentUID = var_s3->uid;
-            temp_v0_61->preUpdateDelay = 0;
-            temp_v0_61->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_61, 2U);
-            temp_v0_62 = func_002dd100(0xE, 2, 3U);
-            temp_v0_62->unk_00 = 4;
-            temp_v0_62->parentUID = var_s3->uid;
-            temp_v0_62->preUpdateDelay = 0;
-            temp_v0_62->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_62, 1U);
-            temp_v0_63 = btlUnit00285d30(action->unit, 0xFF808080U, 0, 0xC, 0, 0);
-            temp_v0_63->unk_00 = 4;
-            temp_v0_63->parentUID = var_s3->uid;
-            temp_v0_63->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_63, 1U);
-            if (((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x1000) && (sp27C == 0)) {
-                temp_v0_64 = action->target.targetedActions[0];
-                sp460 = temp_v0_64;
-                temp_v0_65 = btlCameraCreateSetStatePacket(action, 0x15U);
-                temp_v0_65->unk_00 = 4;
-                temp_v0_65->parentUID = (u64) var_s1;
-                temp_v0_65->preUpdateDelay = (s16) var_s2;
-                temp_v0_65->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_65, 0U);
-                temp_v0_66 = btlUnitCreateRotateTowardUnitPacket(temp_v0_64->unit, action->unit, 2U);
-                temp_v0_66->unk_00 = 4;
-                temp_v0_66->parentUID = (u64) var_s1;
-                temp_v0_66->preUpdateDelay = (s16) var_s2;
-                temp_v0_66->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_66, 0U);
-            }
-            sp410 = var_s3->uid;
-        } else if ((sp1C0 == 1) && (sp1A0 == 0)) {
-            if ((var_s6 == 0) && (func_002d62d0(action) != 0) && (temp_s7 != 0xEA)) {
-                sp280 = 1;
-                sp2D0 = 1;
-                temp_v0_67 = btlUnitCreateLookAtDeactivatePacket(NULL, 3U);
-                temp_v0_67->actionUID = action->uid;
-                btlPacketRegister(temp_v0_67, 1U);
-                temp_a0_5 = (u8*)gBtl;
-                (*(u32*)((u8*)gBtl + 0xC)) = (s32) ((*(u32*)((u8*)gBtl + 0xC)) | 0x400000);
-                temp_v1_8 = (u8*)gBtl;
-                *(u16*)((u8*)gBtl + 0x18) = (u16)(*(u16*)((u8*)gBtl + 0x18) | 6);
-            }
-            temp_v0_68 = btlUnitCreateAnimPacket(action->unit, 0x15U, 6U, 1.0f, 0U);
-            var_s3 = temp_v0_68;
-            temp_v0_68->actionUID = temp_s0;
-            btlPacketRegister(var_s3, 1U);
-            var_s5 = var_s3->uid;
-            var_s1 = 0;
-            var_s2 = ((s64) (func_002838d0(action->unit, 0x15, 1.0f) << 0x30) >> 0x30) + 6;
-            if (!((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x40)) {
-                if (func_002d6290(action) == 1) {
-                    temp_v0_69 = func_002b8900(action, 0, 1);
-                    temp_v0_69->unk_00 = 4;
-                    temp_v0_69->parentUID = var_s3->uid;
-                    temp_v0_69->actionUID = temp_s0;
-                    btlPacketRegister(temp_v0_69, 0U);
-                }
-                if (sp2D0 == 0) {
-                    temp_v0_70 = btlCameraCreateSetStatePacket(action, 0x15U);
-                    temp_v0_70->unk_00 = 4;
-                    temp_v0_70->parentUID = var_s3->uid;
-                    temp_v0_70->actionUID = temp_s0;
-                    btlPacketRegister(temp_v0_70, 0U);
-                } else {
-                    temp_v0_71 = btlCameraCreateSetStatePacket(action, 0x17U);
-                    temp_v0_71->unk_00 = 4;
-                    temp_v0_71->parentUID = var_s3->uid;
-                    temp_v0_71->actionUID = temp_s0;
-                    btlPacketRegister(temp_v0_71, 0U);
-                }
-            }
-            temp_v0_72 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xD04)), action->unit, var_s2 + 6, 0U, 0);
-            temp_v0_72->unk_00 = 4;
-            temp_v0_72->parentUID = var_s3->uid;
-            btlPacketRegister(temp_v0_72, 1U);
-        }
-    } else if ((sp1D0 == 0) && (var_s6 != -1)) {
-        sp2B0 = 1;
-        if ((sp1E0 == 1) || (func_002d6370(temp_s7) != 0)) {
-            if ((sp1E0 == 1) || (var_s2_3 = (s64) (func_002f8fd0(action->unit, temp_s7) << 0x30) >> 0x30, (var_s2_3 == -1))) {
-                var_s2_3 = 4;
-            }
-            var_a3 = 2;
-        } else {
-            var_s2_3 = (s64) (func_002f8fd0(action->unit, temp_s7) << 0x30) >> 0x30;
-            if (var_s2_3 == -1) {
-                var_s2_3 = 7;
-            }
-            var_a3 = 3;
-        }
-        temp_a0_6 = action->unit;
-        if ((temp_a0_6->genus == 1) && ((*(u16*)((u8*)iGpffffb728 + temp_a0_6->charId * 0xE8 + 0x18)) & 1)) {
-            var_a3 = 0;
-            sp2AC = 1;
-            sp2B0 = 0;
-        }
-        if (!((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x100)) {
-            temp_v0_73 = btlUnitCreateAnimPacket(temp_a0_6, (u16) var_s2_3, 6U, 1.0f, var_a3);
-            var_s3 = temp_v0_73;
-            temp_v0_73->actionUID = temp_s0;
-            btlPacketRegister(var_s3, 1U);
-            temp_v0_74 = btlCameraCreateSetStatePacket(action, 0x11U);
-            temp_v0_74->unk_00 = 4;
-            temp_v0_74->parentUID = var_s3->uid;
-            temp_v0_74->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_74, 0U);
-        } else {
-            temp_v0_75 = func_0027f2f0();
-            var_s3 = temp_v0_75;
-            temp_v0_75->actionUID = temp_s0;
-            btlPacketRegister(var_s3, 1U);
-        }
-        var_s5 = var_s3->uid;
-        var_s1 = 0;
-        var_s2 = ((s64) (func_002835e0(action->unit, var_s2_3 & 0xFFFF, 1.0f) << 0x30) >> 0x30) + 6;
-        if (!((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x40)) {
-            temp_v0_76 = func_002b8900(action, (action->unk_18 & 0x10) != 0, 1);
-            sp218 = temp_v0_76;
-            temp_v0_76->unk_00 = 4;
-            temp_v0_76->parentUID = var_s3->uid;
-            if (var_s2 >= 0xD) {
-                var_v1_2 = var_s2 - 0xC;
-            } else {
-                var_v1_2 = 0;
-            }
-            sp218->preUpdateDelay = var_v1_2;
-            sp218->actionUID = temp_s0;
-            btlPacketRegister(sp218, 0U);
-            sp410 = sp218->uid;
-            temp_v0_77 = btlCameraCreateSetStatePacket(action, 0x16U);
-            temp_v0_77->unk_00 = 4;
-            temp_v0_77->parentUID = sp410;
-            temp_v0_77->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_77, 0U);
-        }
-        if (sp1E0 == 0) {
-            var_v0_5 = func_002fd060(action);
-            if (var_v0_5 == 0) {
-                var_v0_5 = (*(u32*)((u8*)gBtl + 0xCA8));
-            }
-            temp_v0_78 = func_002bb2f0(var_v0_5, action->unit, var_s2 + 6, 0U, 0);
-            temp_v0_78->unk_00 = 4;
-            temp_v0_78->parentUID = var_s3->uid;
-            btlPacketRegister(temp_v0_78, 1U);
-            temp_v0_79 = func_002dd100(0xA, 2, 5U);
-            temp_v0_79->unk_00 = 4;
-            temp_v0_79->parentUID = var_s3->uid;
-            btlPacketRegister(temp_v0_79, 1U);
-        }
-    } else {
-        var_s5 = 0;
-        var_s1 = 0;
-        var_s2 = 0;
-        if (action->unk_18 & 0x100) {
-            temp_v0_80 = func_002e35d0(6, (*(u16*)((u8*)datPersonaGetByPcId(6) + 2)));
-            sp21C = temp_v0_80;
-            temp_v0_80->unk_00 = 4;
-            temp_v0_80->parentUID = (u64) saved_reg_s3;
-            temp_v0_80->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_80, 1U);
-            temp_v0_81 = func_002e36f0();
-            temp_v0_81->unk_00 = 4;
-            temp_v0_81->parentUID = sp21C->uid;
-            temp_v0_81->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_81, 1U);
-            temp_v0_82 = func_002dd690(3, (s8 *)(D_00693318_abs + 0x30));
-            temp_v0_82->unk_00 = 5;
-            temp_v0_82->parentUID = temp_v0_81->uid;
-            temp_v0_82->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_82, 1U);
-            var_s1 = (s64) temp_v0_81->uid;
-            temp_v0_83 = func_002e37e0();
-            temp_v0_83->unk_00 = 4;
-            temp_v0_83->parentUID = (u64) var_s1;
-            temp_v0_83->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_83, 1U);
-            temp_v0_84 = btlCameraCreateSetStatePacket(action, 4U);
-            temp_v0_84->unk_00 = 4;
-            temp_v0_84->parentUID = (u64) var_s1;
-            temp_v0_84->preUpdateDelay = 4;
-            temp_v0_84->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_84, 0U);
-            sp280 = 1;
-            temp_v0_85 = btlUnitCreateLookAtDeactivatePacket(NULL, 3U);
-            temp_v0_85->actionUID = action->uid;
-            btlPacketRegister(temp_v0_85, 1U);
-            temp_a0_7 = (u8*)gBtl;
-            (*(u32*)((u8*)gBtl + 0xC)) = (s32) ((*(u32*)((u8*)gBtl + 0xC)) | 0x400000);
-            temp_v1_9 = (u8*)gBtl;
-            *(u16*)((u8*)gBtl + 0x18) = (u16)(*(u16*)((u8*)gBtl + 0x18) | 6);
-        } else {
-            temp_v0_86 = btlCameraCreateSetStatePacket(action, 0x25U);
-            temp_v0_86->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_86, 0U);
-        }
-    }
-    sp250 = temp_s7 & 0xFFFF;
-    func_0029ea60(sp250, &sp53C, &sp538);
-    temp_v0_87 = func_0029f4b0(sp53C, sp538, 0x10U);
-    temp_v0_87->unk_00 = 4;
-    temp_v0_87->parentUID = var_s5;
-    temp_v0_87->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_87, 1U);
-    sp1FC = func_0029ec00(sp250);
-    func_0029ec80(sp250, &sp53C, &sp538);
-    temp_v0_88 = func_002a0050(sp1FC, sp53C, sp538, 0x10U, 0);
-    temp_v0_88->unk_00 = 4;
-    temp_v0_88->parentUID = var_s5;
-    temp_v0_88->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_88, 1U);
-    sp240 = temp_s7 & 0xFFFF;
-    temp_v0_89 = func_002a1280(func_0029ec50(sp240), 0x10U);
-    temp_v0_89->unk_00 = 4;
-    temp_v0_89->parentUID = var_s5;
-    temp_v0_89->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_89, 1U);
-    temp_v0_90 = func_002a1b00(action, sp240, 8U);
-    temp_v0_90->unk_00 = 4;
-    temp_v0_90->parentUID = var_s5;
-    temp_v0_90->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_90, 1U);
-    func_002bb6f0(sp240, &sp470);
-    if (sp2F0 != 0) {
-        temp_v0_91 = func_0027f2f0();
-        temp_v0_91->unk_00 = 4;
-        temp_v0_91->parentUID = (u64) var_s1;
-        temp_v0_91->preUpdateDelay = (s16) var_s2;
-        btlPacketRegister(temp_v0_91, 1U);
-        temp_v0_92 = func_002bac00(sp438, &sp470, 1);
-        sp44C = temp_v0_92;
-        temp_v0_92->unk_00 = 5;
-        temp_v0_92->parentUID = sp400;
-        temp_v0_92->postUpdateWaits[0].type = 5;
-        temp_v0_92->postUpdateWaits[0].value = temp_v0_91->uid;
-        temp_v0_92->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_92, 1U);
-        temp_v0_93 = btlSoundCreateSkillSEPacket(sp250, 1U);
-        sp448 = temp_v0_93;
-        temp_v0_93->unk_00 = 5;
-        temp_v0_93->parentUID = sp400;
-        btlPacketRegister(temp_v0_93, 1U);
-    } else {
-        temp_v0_94 = func_002bac00(sp438, &sp470, 0);
-        sp44C = temp_v0_94;
-        temp_v0_94->unk_00 = 4;
-        temp_v0_94->parentUID = (u64) var_s1;
-        temp_v0_94->preUpdateDelay = (s16) var_s2;
-        temp_v0_94->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_94, 1U);
-        temp_v0_95 = btlSoundCreateSkillSEPacket(sp250, 0U);
-        sp448 = temp_v0_95;
-        temp_v0_95->unk_00 = 4;
-        temp_v0_95->parentUID = sp44C->uid;
-        btlPacketRegister(temp_v0_95, 1U);
-    }
-    if (action->target.targetedCount == 1) {
-        var_a2_2 = sp460->unit;
-    } else {
-        var_a2_2 = action->unit;
-    }
-    temp_v0_96 = func_002baf90(sp438, action->unit, var_a2_2, 0);
-    var_s1_3 = temp_v0_96;
-    temp_v0_96->unk_00 = 4;
-    temp_v0_96->parentUID = sp44C->uid;
-    temp_v0_96->preUpdateWait.type = 4;
-    temp_v0_96->preUpdateWait.value = sp448->uid;
-    if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x80) {
-        var_s1_3->actionUID = temp_s0;
-    }
-    btlPacketRegister(var_s1_3, 2U);
-    sp180 = (u64) var_s1_3->uid;
-    temp_v0_97 = func_002dd5e0(0);
-    temp_v0_97->unk_00 = 5;
-    temp_v0_97->parentUID = var_s1_3->uid;
-    btlPacketRegister(temp_v0_97, 1U);
-    temp_v0_98 = func_002fded0(temp_s7);
-    if (temp_v0_98 != 0) {
-        temp_v0_99 = func_0027f410(temp_v0_98, action);
-        temp_v0_99->unk_00 = 5;
-        temp_v0_99->parentUID = var_s1_3->uid;
-        btlPacketRegister(temp_v0_99, 1U);
-    }
-    sp444 = NULL;
-    sp3E0 = 0x1E;
-    sp330 = 0;
-    sp170 = func_002d4cc0(sp250) & 0xFFFF;
-    sp3C0 = 0;
-    sp370 = 0;
-    sp260 = temp_s7;
-loop_306:
-    sp230 = (s32) sp370;
-    if ((s32) sp370 < (s32) action->target.targetedCount) {
-        temp_s2_3 = action->target.targetedActions[sp370];
-        sp350 = (u16) ACTION_U8(temp_s2_3, 0xc8);
-        sp340 = 0;
-        sp160 = func_002b9640(&ACTION_U8(temp_s2_3, 0xc8));
-        temp_v1_10 = ACTION_U32(temp_s2_3, 0xd4);
-        if (temp_v1_10 != 0) {
-            var_s5_2 = action;
-        } else {
-            var_s5_2 = temp_s2_3;
-        }
-        temp_v0_100 = ACTION_U32(temp_s2_3, 0xd0);
-        if ((temp_v0_100 != 0) && (action->unit->genus != var_s5_2->unit->genus)) {
-            sp390 += 1;
-        }
-        if (ACTION_U32(temp_s2_3, 0xcc + sp350 * 0x1c) & 0x100000) {
-            sp380 += 1;
-            sp320 |= ACTION_U16(temp_s2_3, 0xce);
-        }
-        temp_a0_8 = var_s5_2->unit;
-        var_a2_3 = temp_a0_8->genus;
-        var_a1 = 1;
-        sp150 = 1;
-        if (var_a2_3 == 1) {
-            var_a2_3 = temp_a0_8->charId * 0x4C;
-            var_a1 = (*(gp0xffffb714 + var_a2_3) & 1) == 0;
-            sp150 = var_a1;
-        }
-        if ((temp_v0_100 != 0) || (temp_v1_10 != 0)) {
-            sp3E0 = 0x2D;
-        }
-        temp_v0_101 = func_002bd480(temp_a0_8, var_a1, var_a2_3);
-        temp_v0_101->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_101, 1U);
-        if ((ACTION_U16(temp_s2_3, 0xcc) != 0x400) && (ACTION_U32(temp_s2_3, 0xd4) != 1)) {
-            var_s1_3 = func_002baf90(sp438, action->unit, var_s5_2->unit, 1);
-            if (sp444 == NULL) {
-                if (!((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x2000)) {
-                    var_s1_3->unk_00 = 4;
-                    var_s1_3->parentUID = sp44C->uid;
-                    var_s1_3->preUpdateWait.type = 4;
-                    var_s1_3->preUpdateWait.value = sp448->uid;
-                } else {
-                    var_s1_3->unk_00 = 4;
-                    var_s1_3->parentUID = (u64) sp180;
-                }
-                var_s1_3->preUpdateDelay = (s16) sp330;
-            } else {
-                var_s1_3->unk_00 = 4;
-                var_s1_3->parentUID = sp444->uid;
-            }
-            if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x80) {
-                var_s1_3->actionUID = temp_s0;
-            }
-            btlPacketRegister(var_s1_3, 2U);
-            temp_v0_102 = func_002dd5e0(1);
-            temp_v0_102->unk_00 = 5;
-            temp_v0_102->parentUID = var_s1_3->uid;
-            btlPacketRegister(temp_v0_102, 1U);
-        } else {
-            temp_v0_103 = func_002baf90(sp438, action->unit, var_s5_2->unit, 1);
-            var_s1_3 = temp_v0_103;
-            temp_v0_103->unk_00 = 4;
-            temp_v0_103->parentUID = sp44C->uid;
-            temp_v0_103->preUpdateWait.type = 4;
-            temp_v0_103->preUpdateWait.value = sp448->uid;
-            temp_v0_103->preUpdateDelay = (s16) sp330;
-            if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x80) {
-                var_s1_3->actionUID = temp_s0;
-            }
-            btlPacketRegister(var_s1_3, 2U);
-            if ((ACTION_U16(temp_s2_3, 0xcc) != 0x400) && (ACTION_U32(temp_s2_3, 0xd4) == 1) && (sp230 == 0)) {
-                temp_v0_104 = func_002baf90(sp438, action->unit, var_s5_2->unit, 1);
-                sp43C = temp_v0_104;
-                temp_v0_104->unk_00 = 5;
-                temp_v0_104->parentUID = var_s1_3->uid;
-                if ((ACTION_U32(temp_s2_3, 0xd4) != 0) && ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 8)) {
-                    sp43C->preUpdateDelay = 8;
-                }
-                sp43C->actionUID = temp_s0;
-                btlPacketRegister(sp43C, 2U);
-                temp_v0_105 = func_002dd5e0(1);
-                temp_v0_105->unk_00 = 5;
-                temp_v0_105->parentUID = sp43C->uid;
-                btlPacketRegister(temp_v0_105, 1U);
-            }
-        }
-        if (sp2EC != 0) {
-            temp_v0_106 = btlUnitCreateLookAtUnitPacket(NULL, var_s5_2->unit, 3U);
-            temp_v0_106->unk_00 = 5;
-            temp_v0_106->parentUID = var_s1_3->uid;
-            temp_v0_106->actionUID = action->uid;
-            btlPacketRegister(temp_v0_106, 1U);
-            if (var_s5_2 != action) {
-                temp_v0_107 = btlUnitCreateLookAtUnitPacket(var_s5_2->unit, action->unit, 0U);
-                temp_v0_107->unk_00 = 5;
-                temp_v0_107->parentUID = var_s1_3->uid;
-                temp_v0_107->actionUID = action->uid;
-                btlPacketRegister(temp_v0_107, 1U);
-            } else {
-                temp_v0_108 = btlUnitCreateLookAtDeactivatePacket(var_s5_2->unit, 0U);
-                temp_v0_108->unk_00 = 5;
-                temp_v0_108->parentUID = var_s1_3->uid;
-                temp_v0_108->actionUID = action->uid;
-                btlPacketRegister(temp_v0_108, 1U);
-            }
-            action->unk_18 |= 0x200;
-        } else if ((sp230 == 0) && (var_s6 == 0)) {
-            temp_a0_9 = func_002d1600(&action->target) & 0xFFFF;
-            if (temp_a0_9 == 2) {
-                func_00280870(temp_a0_9, 1, &sp518, 0, 0, 1);
-                temp_v0_109 = btlUnitCreateLookAtPacket(NULL, &sp518, 1U);
-                temp_v0_109->unk_00 = 5;
-                temp_v0_109->parentUID = var_s1_3->uid;
-                temp_v0_109->actionUID = action->uid;
-                btlPacketRegister(temp_v0_109, 1U);
-            }
-        }
-        if (sp280 == 1) {
-            if ((sp444 == NULL) && (var_s6 != -1)) {
-                if ((sp1D0 == 1) && (sp1A0 == 0) && (sp1C0 == 0)) {
-                    temp_v0_110 = btlUnit00285d30(sp450, 0U, 0, 0, 0, 0);
-                    temp_v0_110->unk_00 = 5;
-                    temp_v0_110->parentUID = var_s1_3->uid;
-                    temp_v0_110->actionUID = temp_s0;
-                    btlPacketRegister(temp_v0_110, 0U);
-                }
-                if (sp2B0 == 0) {
-                    var_v0_6 = btlUnit002843e0(action->unit, sp300);
-                } else {
-                    var_v0_6 = btlUnit00284f50(action->unit, 0, 1.0f, 0);
-                }
-                var_v0_6->unk_00 = 5;
-                var_v0_6->parentUID = var_s1_3->uid;
-                var_v0_6->actionUID = temp_s0;
-                btlPacketRegister(var_v0_6, 1U);
-                temp_v0_111 = btlUnit00285d30(action->unit, -1U, 0, 0, 0, 0);
-                temp_v0_111->unk_00 = 5;
-                temp_v0_111->parentUID = var_s1_3->uid;
-                temp_v0_111->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_111, 1U);
-            }
-            if (var_s5_2 != action) {
-                temp_v0_112 = btlUnitCreateRotateTowardUnitPacket(var_s5_2->unit, action->unit, 2U);
-                temp_v0_112->unk_00 = 5;
-                temp_v0_112->parentUID = var_s1_3->uid;
-                temp_v0_112->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_112, 0U);
-            }
-            temp_v0_113 = btlCameraCreateSetStatePacket(var_s5_2, 0x18U);
-            sp444 = temp_v0_113;
-            temp_v0_113->unk_00 = 5;
-            temp_v0_113->parentUID = var_s1_3->uid;
-            temp_v0_113->postUpdateWaits[0].type = 0xB;
-            temp_v0_113->postUpdateWaits[0].value = var_s1_3->uid;
-            temp_v0_113->postUpdateDelay = 0x12;
-            temp_v0_113->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_113, 0U);
-        }
-        if (ACTION_U32(temp_s2_3, 0xd4) != 0) {
-            var_v0_7 = func_002fd160(temp_s2_3);
-            if (var_v0_7 == 0) {
-                var_v0_7 = (*(u32*)((u8*)gBtl + 0xC8C));
-            }
-            sp440 = func_002baf90(var_v0_7, action->unit, temp_s2_3->unit, 1);
-            if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 4) {
-                sp440->unk_00 = 0xB;
-                sp440->parentUID = var_s1_3->uid;
-            } else {
-                sp440->unk_00 = 5;
-                sp440->parentUID = (u64) sp180;
-            }
-            btlPacketRegister(sp440, 1U);
-            temp_v0_114 = func_002dd100(0xD, 2, 6U);
-            temp_v0_114->unk_00 = 5;
-            temp_v0_114->parentUID = sp440->uid;
-            btlPacketRegister(temp_v0_114, 1U);
-        }
-        var_v1_3 = ACTION_U16(temp_s2_3, 0xcc);
-        if (var_v1_3 == 0x400) {
-            sp440 = func_002baf90((*(u32*)((u8*)gBtl + 0xC90)), action->unit, var_s5_2->unit, 1);
-            if ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 4) {
-                sp440->unk_00 = 0xB;
-                sp440->parentUID = var_s1_3->uid;
-            } else {
-                sp440->unk_00 = 5;
-                sp440->parentUID = (u64) sp180;
-            }
-            btlPacketRegister(sp440, 1U);
-            temp_v0_115 = func_002dd100(0xC, 2, 7U);
-            temp_v0_115->unk_00 = 5;
-            temp_v0_115->parentUID = sp440->uid;
-            var_v1_3 = (u16) (u32) btlPacketRegister(temp_v0_115, 1U);
-            sp3D0 = 0xA;
-        }
-        sp360 = 0;
-        sp140 = (u64) sp350;
-        sp130 = sp350 - 1;
-        sp120 = sp3D0 + 0x2B;
-loop_302:
-        spB0 = (u64) sp360;
-        if ((s32) var_v1_3 < sp140) {
-            temp_v0_116 = (u8*)temp_s2_3 + sp360 * 0x1C;
-            sp110 = (u64) temp_v0_116;
-            sp100 = (u64) ((u8*)temp_v0_116 + 0xF8);
-            temp_v0_117 = btlUnitCreateAnimPacket(var_s5_2->unit, ACTION_U8(temp_s2_3, 0xf8 + sp360 * 0x1c), 0U, 1.0f, 0U);
-            var_s3 = temp_v0_117;
-            temp_v0_117->unk_00 = 0xB;
-            temp_v0_117->parentUID = var_s1_3->uid;
-            temp_v0_117->preUpdateDelay = (s16) sp340;
-            if ((ACTION_U32(temp_s2_3, 0xd4) != 0) && ((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 8)) {
-                var_s3->preUpdateDelay += 8;
-            }
-            var_s3->actionUID = temp_s0;
-            btlPacketRegister(var_s3, 1U);
-            if ((spB0 == sp130) && (ACTION_U32(temp_s2_3, 0xe8 + sp360 * 0x1c) & 0x100000)) {
-                if (sp150 != 0) {
-                    if (sp2EC != 0) {
-                        if (sp410 != 0) {
-                            temp_f20 = 100.0f * func_002b9590(var_s5_2->unit);
-                            if (func_002d6370(temp_s7) != 0) {
-                                var_v0_8 = 3;
-                            } else {
-                                var_v0_8 = 2;
-                            }
-                            temp_v0_118 = func_002b7bd0(action->unit, var_s5_2->unit, var_v0_8 & 0xFFFF, temp_f20);
-                            temp_v0_118->unk_00 = 5;
-                            temp_v0_118->parentUID = sp410;
-                            temp_v0_118->actionUID = temp_s0;
-                            btlPacketRegister(temp_v0_118, 0U);
-                        }
-                        temp_a1_2 = var_s5_2->unit;
-                        temp_v0_119 = func_002baf90((*(u32*)((u8*)gBtl + 0xD00)), temp_a1_2, temp_a1_2, 1);
-                        temp_v0_119->unk_00 = 5;
-                        temp_v0_119->parentUID = var_s3->uid;
-                        temp_v0_119->preUpdateDelay = 1;
-                        temp_v0_119->actionUID = temp_s0;
-                        btlPacketRegister(temp_v0_119, 2U);
-                    } else {
-                        temp_a1_3 = var_s5_2->unit;
-                        temp_v0_120 = func_002baf90((*(u32*)((u8*)gBtl + 0xCFC)), temp_a1_3, temp_a1_3, 1);
-                        temp_v0_120->unk_00 = 5;
-                        temp_v0_120->parentUID = var_s3->uid;
-                        temp_v0_120->preUpdateDelay = 1;
-                        temp_v0_120->actionUID = temp_s0;
-                        btlPacketRegister(temp_v0_120, 2U);
-                    }
-                    if (ACTION_U32(temp_s2_3, 0xd0) == 0) {
-                        temp_a1_4 = var_s5_2->unit;
-                        temp_v0_121 = func_002baf90((*(u32*)((u8*)gBtl + 0xCF8)), temp_a1_4, temp_a1_4, 1);
-                        temp_v0_121->unk_00 = 5;
-                        temp_v0_121->parentUID = var_s3->uid;
-                        temp_v0_121->preUpdateDelay = 0x10;
-                        temp_v0_121->actionUID = temp_s0;
-                        btlPacketRegister(temp_v0_121, 2U);
-                    }
-                }
-                temp_v0_122 = btlUnit00284c90(var_s5_2->unit);
-                temp_v0_122->unk_00 = 5;
-                temp_v0_122->parentUID = var_s3->uid;
-                temp_v0_122->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_122, 1U);
-            }
-            if ((sp280 == 0) && ((ACTION_U8(temp_s2_3, 0xf8 + sp360 * 0x1c) != -1) || (temp_s2_3->unit->genus != action->unit->genus)) && (datCalcChkBadStatus(temp_s2_3->unit->datUnit, 0x180000U) == 0)) {
-                temp_v0_123 = btlUnitCreateRotateTowardUnitPacket(temp_s2_3->unit, action->unit, 2U);
-                if ((ACTION_U32(temp_s2_3, 0xd4) != 0) && (sp440 != NULL)) {
-                    temp_v0_123->unk_00 = 5;
-                    temp_v0_123->parentUID = sp440->uid;
-                } else {
-                    temp_v0_123->unk_00 = 5;
-                    temp_v0_123->parentUID = var_s3->uid;
-                }
-                temp_v0_123->unk_47 &= 0xDF;
-                temp_v0_123->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_123, 1U);
-            }
-            temp_v0_124 = (void*)((u8*)temp_s2_3 + sp360 * 0x1C + 0xE0);
-            sp220 = temp_v0_124;
-            temp_v0_125 = func_002d7e20(action, var_s5_2, temp_v0_124, ACTION_U16(temp_s2_3, 0xcc));
-            temp_v0_125->unk_00 = 5;
-            temp_v0_125->parentUID = var_s3->uid;
-            temp_v0_125->preUpdateDelay = sp3D0;
-            temp_v0_125->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_125, 1U);
-            temp_v0_126 = func_002d8090(temp_s2_3);
-            temp_v0_126->unk_00 = 5;
-            temp_v0_126->parentUID = var_s3->uid;
-            temp_v0_126->preUpdateDelay = sp3D0;
-            temp_v0_126->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_126, 1U);
-            if ((sp230 == (action->target.targetedCount - 1)) && (spB0 == (ACTION_U8(temp_s2_3, 0xc8) - 1))) {
-                temp_v0_127 = func_002d8090(action);
-                temp_v0_127->unk_00 = 5;
-                temp_v0_127->parentUID = var_s3->uid;
-                temp_v0_127->preUpdateDelay = sp3D0;
-                temp_v0_127->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_127, 1U);
-            }
-            if ((sp230 == 0) && (spB0 == 0) && !(action->unk_18 & 4)) {
-                temp_v0_128 = func_002d7fb0(action, ACTION_U8(action, 0xca));
-                temp_v0_128->unk_00 = 5;
-                temp_v0_128->parentUID = var_s3->uid;
-                temp_v0_128->preUpdateDelay = sp3D0;
-                temp_v0_128->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_128, 1U);
-            }
-            if (spB0 == (ACTION_U8(temp_s2_3, 0xc8) - 1)) {
-                temp_a1_5 = ACTION_S16(action, 0xDC);
-                if (temp_a1_5 != 0) {
-                    temp_v0_129 = func_002bd850(action->unit, temp_a1_5);
-                    temp_v0_129->unk_00 = 5;
-                    temp_v0_129->parentUID = var_s3->uid;
-                    temp_v0_129->unk_47 &= 0xDF;
-                    temp_v0_129->actionUID = temp_s0;
-                    btlPacketRegister(temp_v0_129, 3U);
-                } else {
-                    temp_a1_6 = ACTION_U32(temp_s2_3, 0xdc);
-                    if (temp_a1_6 != 0) {
-                        temp_v0_130 = func_002bd850(temp_s2_3->unit, temp_a1_6);
-                        temp_v0_130->unk_00 = 5;
-                        temp_v0_130->parentUID = var_s3->uid;
-                        temp_v0_130->unk_47 &= 0xDF;
-                        temp_v0_130->actionUID = temp_s0;
-                        btlPacketRegister(temp_v0_130, 3U);
-                    }
-                }
-            }
-            if ((spB0 == 0) && ((*(s32*)((u8*)temp_s2_3 + 0xe0 + sp360 * 0x1c)) != 0)) {
-                temp_v0_131 = func_002bd230(var_s5_2->unit, 0, 0);
-                temp_v0_131->unk_00 = 5;
-                temp_v0_131->parentUID = var_s3->uid;
-                temp_v0_131->preUpdateDelay = sp3D0;
-                temp_v0_131->unk_47 &= 0xDF;
-                temp_v0_131->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_131, 3U);
-            }
-            spF0 = sp110 + 0xFA;
-            if (ACTION_U16(temp_s2_3, 0xfa + sp360 * 0x1c) & 1) {
-                func_002d5dc0(&sp4F0);
-                sp4FC = 0x100000;
-                temp_v0_132 = func_002d7e20(temp_s2_3, temp_s2_3, &sp4F0, 1U, 1U);
-                temp_v0_132->unk_00 = 4;
-                temp_v0_132->parentUID = var_s3->uid;
-                temp_v0_132->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_132, 1U);
-                if (ACTION_U16(temp_s2_3, 0xfa + sp360 * 0x1c) & 2) {
-                    temp_v0_133 = btlUnitCreateAnimPacket(temp_s2_3->unit, 0xAU, 0U, 1.0f, 0U);
-                    temp_v0_133->unk_00 = 4;
-                    temp_v0_133->parentUID = var_s3->uid;
-                    temp_v0_133->actionUID = temp_s0;
-                    btlPacketRegister(temp_v0_133, 1U);
-                }
-                temp_v0_134 = btlUnit00284c90(temp_s2_3->unit);
-                temp_v0_134->unk_00 = 4;
-                temp_v0_134->parentUID = var_s3->uid;
-                temp_v0_134->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_134, 1U);
-            }
-            if (ACTION_U16(temp_s2_3, 0xfa + sp360 * 0x1c) & 0x20) {
-                sp2C0 = 1;
-                (*(u16*)((u8*)gBtl + 0x1C)) = 3;
-            }
-            if (ACTION_U16(temp_s2_3, 0xfa + sp360 * 0x1c) & 0x40) {
-                sp290 = 1;
-            }
-            temp_v0_135 = (u8*)temp_s2_3 + sp360 * 0x1C;
-            spE0 = (u64) temp_v0_135;
-            temp_v0_136 = func_002bdbd0(action->unit, var_s5_2->unit, sp260, ACTION_U16(temp_s2_3, 0xcc), ACTION_U16(temp_s2_3, 0xce), sp360, sp350, (u8*)temp_s2_3 + 0xe0 + sp360 * 0x1c);
-            temp_v0_136->unk_00 = 5;
-            temp_v0_136->parentUID = var_s3->uid;
-            temp_v0_136->preUpdateDelay = sp3D0;
-            temp_v0_136->unk_47 &= 0xDF;
-            temp_v0_136->actionUID = temp_s0;
-            var_v1_3 = (u16) (u32) btlPacketRegister(temp_v0_136, 3U);
-            spD0 = (u64) ((u8*)temp_v0_135 + 0xF4);
-            if ((ACTION_S16(temp_s2_3, 0xf4 + sp360 * 0x1c) > 0) || (ACTION_S16(temp_s2_3, 0xf6 + sp360 * 0x1c) > 0)) {
-                spC0 = (u64) ((s64) ((s64) sp120 << 0x30) >> 0x30);
-                func_002d5dc0(&sp4F0);
-                sp4F0 = (s32) ACTION_S16(temp_s2_3, 0xf4 + sp360 * 0x1c);
-                sp4F4 = (s32) ACTION_S16(temp_s2_3, 0xf6 + sp360 * 0x1c);
-                temp_v0_137 = func_002d7e20(action, action, &sp4F0, 1U, 1U);
-                temp_v0_137->unk_00 = 4;
-                temp_v0_137->parentUID = var_s3->uid;
-                temp_v0_137->preUpdateDelay = (s16) spC0;
-                temp_v0_137->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_137, 1U);
-                temp_a0_10 = action->unit;
-                temp_v0_138 = func_002bdbd0(temp_a0_10, temp_a0_10, -1, 1U, 1U, sp360, sp350, &sp4F0);
-                temp_v0_138->unk_00 = 4;
-                temp_v0_138->parentUID = var_s3->uid;
-                temp_v0_138->preUpdateDelay = (s16) spC0;
-                temp_v0_138->actionUID = temp_s0;
-                var_v1_3 = (u16) (u32) btlPacketRegister(temp_v0_138, 3U);
-                if (sp4F0 != 0) {
-                    if (spB0 == 0) {
-                        temp_v0_139 = func_002bd480(action->unit);
-                        temp_v0_139->actionUID = temp_s0;
-                        btlPacketRegister(temp_v0_139, 1U);
-                    }
-                    temp_v0_140 = func_002bd230(action->unit, 0, 0);
-                    temp_v0_140->unk_00 = 4;
-                    temp_v0_140->parentUID = var_s3->uid;
-                    temp_v0_140->preUpdateDelay = (s16) spC0;
-                    temp_v0_140->actionUID = temp_s0;
-                    var_v1_3 = (u16) (u32) btlPacketRegister(temp_v0_140, 3U);
-                }
-            }
-            sp340 += 7;
-            sp360 += 1;
-            goto loop_302;
-        }
-        if (sp3C0 < (s32) sp340) {
-            sp3C0 = sp340;
-        }
-        sp330 += sp170;
-        sp370 += 1;
-        goto loop_306;
-    }
-    temp_s2_4 = var_s3->uid;
-    temp_v1_11 = ACTION_S16(action, 0xDE);
-    if (temp_v1_11 != -1) {
-        temp_v0_141 = func_002db740(action, temp_v1_11 & 0xFFFF, 0, 0);
-        temp_v0_141->unk_00 = 5;
-        temp_v0_141->parentUID = temp_s2_4;
-        temp_v0_141->preUpdateDelay = (s16) sp3C0;
-        temp_v0_141->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_141, 1U);
-    } else if (sp390 > 0) {
-        if (var_s6 == 0) {
-            temp_s3_3 = func_002d4e10(2, 0x80000) & 0xFFFF;
-            if (((s32) action->unk_28 <= 0) && (action->unit->charId != 1) && (datCalcRand(0x64U) < 0x32U)) {
-                if (action->unit->genus != 0) {
-                    var_v0_9 = 0;
-                } else {
-                    temp_a0_11 = (u8*)gBtl;
-                    if ((*(s16*)((u8*)gBtl + 0xA38)) != -1) {
-                        temp_v1_12 = (s64) ((temp_s3_3 - sp390) << 0x30) >> 0x30;
-                        if (temp_v1_12 <= 0) {
-                            temp_a0_12 = func_002d4e10(2, 0x80000) & 0xFFFF;
-                            temp_v1_13 = (u8*)gBtl;
-                            if (((u32) ((s16) (*(s16*)((u8*)gBtl + 0xA3A)) >> 1) >= temp_a0_12) && (temp_s3_4 = (*(s16*)((u8*)gBtl + 0xA38)), (temp_s3_4 != ((s64) (func_002b7060(temp_a0_12) << 0x30) >> 0x30)))) {
-                                var_v0_9 = 1;
-                            } else {
-                                goto block_323;
-                            }
-                        } else if (((s16) (*(s16*)((u8*)gBtl + 0xA3A)) >> 1) >= temp_v1_12) {
-                            var_v0_9 = 1;
-                        } else {
-                            goto block_323;
-                        }
-                    } else {
-block_323:
-                        var_v0_9 = 0;
-                    }
-                }
-                if (var_v0_9 != 0) {
-                    goto block_325;
-                }
-                temp_v0_142 = btlVoice002e2be0(action, 0xD, sp390, 0, 0);
-                temp_v0_142->unk_00 = 5;
-                temp_v0_142->parentUID = temp_s2_4;
-                temp_v0_142->preUpdateDelay = (s16) sp3C0;
-                btlPacketRegister(temp_v0_142, 1U);
-            } else {
-block_325:
-                temp_v0_143 = func_002db740(action, 0x16, sp390, 0);
-                temp_v0_143->unk_00 = 5;
-                temp_v0_143->parentUID = temp_s2_4;
-                temp_v0_143->preUpdateDelay = (s16) sp3C0;
-                temp_v0_143->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_143, 1U);
-            }
-        }
-    } else if ((sp380 > 0) && (temp_v1_14 = ACTION_U8(action, 0xca), ((temp_v1_14 & 1) != 0)) && !(temp_v1_14 & 2)) {
-        temp_v0_144 = func_002db740(action, 0x17, sp320, 0);
-        temp_v0_144->unk_00 = 5;
-        temp_v0_144->parentUID = temp_s2_4;
-        temp_v0_144->preUpdateDelay = (s16) sp3C0;
-        temp_v0_144->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_144, 1U);
-    } else if ((sp2EC != 0) && (action->unit->charId == 1) && (var_s6 == 0) && (func_002d5fb0(action) != 0) && (func_002d6090(action) == 0)) {
-        temp_v0_145 = btlVoice002e2be0(action->target.targetedActions[0], 0x11, 0, 0, 0);
-        temp_v0_145->unk_00 = 5;
-        temp_v0_145->parentUID = temp_s2_4;
-        temp_v0_145->preUpdateDelay = (s16) sp3C0;
-        btlPacketRegister(temp_v0_145, 1U);
-    } else if (sp390 == 0) {
-        if (func_002d6130(action) != 0) {
-            temp_v0_146 = btlVoice002e2be0(action, 0xE, 0, 0, 0);
-            temp_v0_146->unk_00 = 5;
-            temp_v0_146->parentUID = temp_s2_4;
-            temp_v0_146->preUpdateDelay = (s16) sp3C0;
-            btlPacketRegister(temp_v0_146, 1U);
-        } else if ((func_002d6210(action) == 1) && (func_002d5f50(action) == 0) && (sp290 == 0)) {
-            temp_v0_147 = btlVoice002e2be0(action, 0xF, (s16)func_003082f0(action->unit->datUnit, sp250), 0, 0);
-            temp_v0_147->unk_00 = 5;
-            temp_v0_147->parentUID = temp_s2_4;
-            temp_v0_147->preUpdateDelay = (s16) sp3C0;
-            btlPacketRegister(temp_v0_147, 1U);
-        }
-    }
-    if (sp290 != 0) {
-        if (sp280 == 1) {
-            temp_v0_148 = btlCameraCreateSetStatePacket(action, 0x17U);
-            sp444 = temp_v0_148;
-            temp_v0_148->unk_00 = 0xB;
-            temp_v0_148->parentUID = var_s1_3->uid;
-            temp_v0_148->preUpdateDelay = 0x18;
-            temp_v0_148->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_148, 0U);
-        }
-        if (action->unit->genus == 0) {
-            func_002d5dc0(&sp4F0);
-            sp4F0 = -((datCalcGetHp(action->unit->datUnit) & 0xFFFF) - 1);
-            var_s2_4 = func_002d7e20(action, action, &sp4F0, 1U, 1U);
-            if (sp280 == 1) {
-                var_s2_4->unk_00 = 4;
-                var_s2_4->parentUID = sp444->uid;
-            } else {
-                var_s2_4->unk_00 = 0xB;
-                var_s2_4->parentUID = var_s1_3->uid;
-            }
-            var_s2_4->actionUID = temp_s0;
-            btlPacketRegister(var_s2_4, 1U);
-            temp_a0_13 = action->unit;
-            temp_v0_149 = func_002bdbd0(temp_a0_13, temp_a0_13, -1, 0U);
-            temp_v0_149->unk_00 = 4;
-            temp_v0_149->parentUID = var_s2_4->uid;
-            temp_v0_149->unk_47 &= 0xDF;
-            temp_v0_149->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_149, 3U);
-            temp_v0_150 = func_002bd230(action->unit, 0, 0);
-            temp_v0_150->unk_00 = 4;
-            temp_v0_150->parentUID = var_s2_4->uid;
-            temp_v0_150->unk_47 &= 0xDF;
-            temp_v0_150->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_150, 3U);
-        } else {
-            func_002d5dc0(&sp4F0);
-            sp4F8 = 0x80000;
-            var_s2_4 = func_002d7e20(action, action, &sp4F0, 1U, 1U);
-            if (sp280 == 1) {
-                var_s2_4->unk_00 = 4;
-                var_s2_4->parentUID = sp444->uid;
-            } else {
-                var_s2_4->unk_00 = 0xB;
-                var_s2_4->parentUID = var_s1_3->uid;
-            }
-            var_s2_4->actionUID = temp_s0;
-            btlPacketRegister(var_s2_4, 1U);
-        }
-        if (sp2AC == 0) {
-            if (sp2B0 == 0) {
-                var_s3_3 = btlUnit002843e0(action->unit, sp300);
-            } else {
-                var_s3_3 = btlUnit00284f50(action->unit, 0, 1.0f, 0);
-            }
-            var_s3_3->unk_00 = 4;
-            var_s3_3->parentUID = var_s2_4->uid;
-            var_s3_3->actionUID = temp_s0;
-            btlPacketRegister(var_s3_3, 1U);
-        } else {
-            temp_v0_151 = btlUnit00284c90(action->unit);
-            var_s3_3 = temp_v0_151;
-            temp_v0_151->unk_00 = 4;
-            temp_v0_151->parentUID = var_s2_4->uid;
-            temp_v0_151->actionUID = temp_s0;
-            btlPacketRegister(var_s3_3, 1U);
-        }
-        temp_a0_14 = action->unit;
-        if (temp_a0_14->flags3 & 0x20) {
-            temp_v0_152 = func_0027f2f0();
-            temp_v0_152->unk_00 = 4;
-            temp_v0_152->parentUID = var_s2_4->uid;
-            temp_v0_152->postUpdateDelay = 0x3C;
-            temp_v0_152->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_152, 1U);
-        } else {
-            temp_v0_153 = btlUnit00285d30(temp_a0_14, 0xFFFFFFU, 6, 0, 0, 0);
-            temp_v0_153->unk_00 = 4;
-            temp_v0_153->parentUID = var_s2_4->uid;
-            temp_v0_153->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_153, 1U);
-            temp_a1_7 = action->unit;
-            temp_v0_154 = func_002baf90((*(u32*)((u8*)gBtl + 0xCB0)), temp_a1_7, temp_a1_7, 0);
-            temp_v0_154->unk_00 = 4;
-            temp_v0_154->parentUID = var_s2_4->uid;
-            temp_v0_154->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_154, 2U);
-            temp_v0_155 = func_002dd100(0xA, 2, 8U);
-            temp_v0_155->unk_00 = 4;
-            temp_v0_155->parentUID = var_s2_4->uid;
-            temp_v0_155->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_155, 1U);
-            temp_v1_15 = action->unit;
-            temp_v1_15->flags3 |= 0x100;
-        }
-    } else if (sp2AC == 0) {
-        if (sp2B0 == 0) {
-            var_s3_3 = btlUnit002843e0(action->unit, sp300);
-        } else {
-            var_s3_3 = btlUnit00284f50(action->unit, 0, 1.0f, 0);
-        }
-        var_s3_3->unk_00 = 0xB;
-        var_s3_3->parentUID = var_s1_3->uid;
-        if (var_s6 == 0) {
-            var_s3_3->preUpdateDelay = sp3E0;
-        } else {
-            var_s3_3->preUpdateDelay = 8;
-            var_s3_3->postUpdateDelay = sp3E0;
-        }
-        var_s3_3->actionUID = temp_s0;
-        btlPacketRegister(var_s3_3, 1U);
-    } else {
-        temp_v0_156 = btlUnit00284c90(action->unit);
-        var_s3_3 = temp_v0_156;
-        temp_v0_156->unk_00 = 0xB;
-        temp_v0_156->parentUID = var_s1_3->uid;
-        temp_v0_156->preUpdateDelay = sp3E0;
-        temp_v0_156->actionUID = temp_s0;
-        btlPacketRegister(var_s3_3, 1U);
-    }
-    temp_v0_157 = func_0029fa50(0x10);
-    temp_v0_157->unk_00 = 4;
-    temp_v0_157->parentUID = var_s3_3->uid;
-    temp_v0_157->unk_47 &= 0xDF;
-    temp_v0_157->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_157, 1U);
-    if (sp2C0 != 0) {
-        var_v0_10 = 2;
-    } else {
-        var_v0_10 = 0;
-    }
-    temp_v0_158 = func_002a1080(0x10, var_v0_10 & 0xFFFF);
-    temp_v0_158->unk_00 = 4;
-    temp_v0_158->parentUID = var_s3_3->uid;
-    temp_v0_158->unk_47 &= 0xDF;
-    temp_v0_158->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_158, 1U);
-    temp_v0_159 = func_002a16c0(0x10);
-    temp_v0_159->unk_00 = 4;
-    temp_v0_159->parentUID = var_s3_3->uid;
-    temp_v0_159->unk_47 &= 0xDF;
-    temp_v0_159->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_159, 1U);
-    temp_v0_160 = func_002a1db0(8);
-    temp_v0_160->unk_00 = 4;
-    temp_v0_160->parentUID = var_s1_3->uid;
-    temp_v0_160->unk_47 &= 0xDF;
-    temp_v0_160->actionUID = temp_s0;
-    btlPacketRegister(temp_v0_160, 0U);
-    if ((sp1D0 == 1) && (var_s6 != -1) && (sp1C0 == 0)) {
-        if (sp2D0 == 0) {
-            if (!((*(u16*)((u8*)iGpffffb710 + temp_fp + 2)) & 0x40)) {
-                if (var_s6 == 0) {
-                    var_v0_11 = 0x15;
-                } else {
-                    var_v0_11 = 0x16;
-                }
-                temp_v0_161 = btlCameraCreateSetStatePacket(action, var_v0_11 & 0xFFFF);
-                temp_v0_161->unk_00 = 5;
-                temp_v0_161->parentUID = sp410;
-                temp_v0_161->actionUID = temp_s0;
-                btlPacketRegister(temp_v0_161, 0U);
-            }
-        } else {
-            temp_v0_162 = btlCameraCreateSetStatePacket(action, 0x19U);
-            temp_v0_162->unk_00 = 5;
-            temp_v0_162->parentUID = sp410;
-            temp_v0_162->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_162, 0U);
-        }
-        if (sp2C0 == 0) {
-            temp_v0_163 = btlUnit00285d30(action->unit, -1U, 0, 0xC, 0, 0);
-            temp_v0_163->unk_00 = 0xB;
-            temp_v0_163->parentUID = var_s1_3->uid;
-            temp_v0_163->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_163, 1U);
-        }
-        if (sp1A0 == 0) {
-            temp_v0_164 = btlUnit00285d30(sp450, 0xFFFFFFU, 8, 0, 0, 0);
-            temp_v0_164->unk_00 = 0xB;
-            temp_v0_164->parentUID = var_s1_3->uid;
-            if (sp2EC != 0) {
-                if (sp1B0 == 0) {
-                    goto block_394;
-                }
-                var_v0_12 = 7;
-            } else {
-block_394:
-                var_v0_12 = 0xF;
-            }
-            temp_v0_164->preUpdateDelay = var_v0_12;
-            temp_v0_164->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_164, 1U);
-            temp_v0_165 = func_002bb2f0((*(u32*)((u8*)gBtl + 0xCEC)), sp450, sp3B0, 0U, 0);
-            temp_v0_165->unk_00 = 4;
-            temp_v0_165->parentUID = sp420;
-            temp_v0_165->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_165, 2U);
-            temp_v0_166 = btlUnit002857f0(sp450);
-            temp_v0_166->unk_00 = 4;
-            temp_v0_166->parentUID = temp_v0_164->uid;
-            temp_v0_166->preUpdateDelay = 1;
-            temp_v0_166->actionUID = temp_s0;
-            btlPacketRegister(temp_v0_166, 1U);
-        }
-    }
-    if (sp2C0 == 1) {
-        temp_v0_167 = btlCreateSetFlagsPacket(0x80U);
-        temp_v0_167->unk_00 = 4;
-        temp_v0_167->parentUID = var_s1_3->uid;
-        temp_v0_167->preUpdateDelay = 0xC;
-        temp_v0_167->actionUID = temp_s0;
-        btlPacketRegister(temp_v0_167, 1U);
-    }
-    func_002b9030(sp438);
-    if (func_002dc130(action) != 0) {
-        btlActionSetState(action, BTLACTION_STATE_BADDMG);
-    } else {
-        btlActionSetState(action, BTLACTION_STATE_PACKET);
-    }
+// FUN_00290be0
+asm void btlActionUpdateStateSkill(BtlAction *action) 
+{
+  .set noreorder
+  .word 0x27bdfac0
+  .word 0xffbf00a0
+  .word 0x7fbe0090
+  .word 0x7fb70080
+  .word 0x7fb60070
+  .word 0x7fb50060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080a02d
+  .word 0x8c820030
+  .word 0x805600a2
+  .word 0x8c420a00
+  .word 0xafa20450
+  .word 0x8497006e
+  .word 0x8c820038
+  .word 0xafa20460
+  .word 0xffa00410
+  .word 0xffa00400
+  .word 0xafa00390
+  .word 0xafa00380
+  .word 0xa7a00320
+  .word 0xa7a003d0
+  .word 0xafa003a0
+  .word 0xafa002f0
+  .word 0xafa002d0
+  .word 0xafa002c0
+  .word 0xafa002b0
+  .word 0xafa002ac
+  .word 0xafa00290
+  .word 0xafa00280
+  .word 0xafa0027c
+  .word 0x64020006
+  .word 0xa7a20300
+  .word 0x00171080
+  .word 0x00571021
+  .word 0x00021040
+  .word 0x00571021
+  .word 0x00021880
+  .word 0x8f82b708
+  .word 0x00431021
+  .word 0x90420000
+  .word 0x30420002
+  .word 0x0002102b
+  .word 0x7fa201e0
+  .word 0x9482001a
+  .word 0x30420010
+  .word 0x0002102b
+  .word 0x7fa201d0
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x7ba201e0
+  .word 0x00401026
+  .word 0x2c420001
+  .word 0x7fa201d0
+  .word 0x9682006c
+  .word 0x38420003
+  .word 0x2c420001
+  .word 0x7fa201c0
+  .word 0x0280202d
+  .word 0x0c0b58a4
+  .word 0x00000000
+  .word 0xafa202ec
+  .word 0x02e0202d
+  .word 0x0c0b58dc
+  .word 0x00000000
+  .word 0x7fa201b0
+  .word 0x96840072
+  .word 0x0c0c2294
+  .word 0x00000000
+  .word 0x7fa201a0
+  .word 0xafa00440
+  .word 0xde900000
+  .word 0x0280202d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0ae3e4
+  .word 0x00000000
+  .word 0xafa20438
+  .word 0x96820018
+  .word 0x30420100
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x2416ffff
+  .word 0x24030001
+  .word 0x64020001
+  .word 0xa7a20310
+  .word 0x0016b63c
+  .word 0x0016b63f
+  .word 0x16c0001a
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x948300a4
+  .word 0x2402000a
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x64020010
+  .word 0xa7a20310
+  .word 0x0c0b56fc
+  .word 0x00000000
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0b571c
+  .word 0x00000000
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x64020010
+  .word 0xa7a20310
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x16c30016
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x944300a4
+  .word 0x240200ee
+  .word 0x1062000f
+  .word 0x00000000
+  .word 0x240200e9
+  .word 0x1062000c
+  .word 0x00000000
+  .word 0x24020126
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020110
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x2402010b
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x64020010
+  .word 0xa7a20310
+  .word 0x06c0005d
+  .word 0x00000000
+  .word 0x8fa202ec
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x8e820038
+  .word 0x8e840030
+  .word 0x8c450030
+  .word 0x0000302d
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000002d
+  .word 0x00000000
+  .word 0x16c00018
+  .word 0x00000000
+  .word 0x26840038
+  .word 0x0c0b4580
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x24050001
+  .word 0x27a60518
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x00a0482d
+  .word 0x0c0a021c
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x27a50518
+  .word 0x0000302d
+  .word 0x0c0a08ac
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0bf72c
+  .word 0x00000000
+  .word 0x1040000f
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x27a50518
+  .word 0x0c0bf76c
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x27a50518
+  .word 0x0000302d
+  .word 0x0c0a08ac
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e850030
+  .word 0x24060003
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x34420200
+  .word 0xa6820018
+  .word 0x0280202d
+  .word 0x0c0b60cc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x001710c0
+  .word 0x00571023
+  .word 0x0002f080
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420100
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x7fa20190
+  .word 0x7ba201c0
+  .word 0x1440000e
+  .word 0x00000000
+  .word 0x32e5ffff
+  .word 0x8e840030
+  .word 0x0c0af564
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x7ba30190
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x96850070
+  .word 0x0c0af5a4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x7ba30190
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba201d0
+  .word 0x1443051e
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x12c2051b
+  .word 0x00000000
+  .word 0x7ba201c0
+  .word 0x144002ba
+  .word 0x00000000
+  .word 0x7ba201a0
+  .word 0x144002b7
+  .word 0x00000000
+  .word 0x16c00028
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x30420040
+  .word 0x14400037
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x944400a4
+  .word 0x0c0b7720
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x0280202d
+  .word 0x0c0b57ac
+  .word 0x00000000
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x1240002b
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b8cfc
+  .word 0x00000000
+  .word 0x00028c3c
+  .word 0x00118c3f
+  .word 0x2402ffff
+  .word 0x12220023
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x2c420014
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x1240001b
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa202f0
+  .word 0x96820018
+  .word 0x34420040
+  .word 0xa6820018
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x16c30012
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x30420040
+  .word 0x1440000e
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b8cfc
+  .word 0x00000000
+  .word 0x00028c3c
+  .word 0x00118c3f
+  .word 0x2402ffff
+  .word 0x12220006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa202f0
+  .word 0x96820018
+  .word 0x34420040
+  .word 0xa6820018
+  .word 0x0280202d
+  .word 0x27a50528
+  .word 0x0c0bf2a8
+  .word 0x00000000
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c620c94
+  .word 0xafa20528
+  .word 0x8c620c98
+  .word 0xafa2052c
+  .word 0x8c620c9c
+  .word 0xafa20530
+  .word 0x02e0202d
+  .word 0x0c0b58dc
+  .word 0x00000000
+  .word 0x1440001f
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b57d4
+  .word 0x00000000
+  .word 0x1440001a
+  .word 0x00000000
+  .word 0x26840038
+  .word 0x0c0b4580
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x16c0000d
+  .word 0x00000000
+  .word 0x3083ffff
+  .word 0x24020002
+  .word 0x14620009
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0d5ff4
+  .word 0x00000000
+  .word 0x30420001
+  .word 0x0002102b
+  .word 0xafa202d0
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x16c30005
+  .word 0x00000000
+  .word 0x3082ffff
+  .word 0x14430002
+  .word 0x00000000
+  .word 0xafa302d0
+  .word 0x0280202d
+  .word 0x8fa50450
+  .word 0x0c0bf6ec
+  .word 0x00000000
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c420010
+  .word 0x30420040
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa202d0
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30424000
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa202d0
+  .word 0x2402000c
+  .word 0xafa203a0
+  .word 0x16c00020
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b58b4
+  .word 0x00000000
+  .word 0x1040001b
+  .word 0x00000000
+  .word 0x240200ea
+  .word 0x12e20018
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20280
+  .word 0xafa202d0
+  .word 0xafa002f0
+  .word 0x0000202d
+  .word 0x24050003
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x34420006
+  .word 0xa4620018
+  .word 0x16c00013
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b57ec
+  .word 0x00000000
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050010
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x8fa202f0
+  .word 0x10400009
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0b7658
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x16c2000c
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0be5a4
+  .word 0x00000000
+  .word 0x00021c3c
+  .word 0x00031c3f
+  .word 0x2402ffff
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x3066ffff
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000c
+  .word 0x24070004
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde730058
+  .word 0x16c00019
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0a1890
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc530008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0a182c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc530008
+  .word 0x24030006
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000c
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x24520006
+  .word 0x16c00004
+  .word 0x00000000
+  .word 0x24020010
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020011
+  .word 0x3045ffff
+  .word 0x0280202d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040a82d
+  .word 0xfc500060
+  .word 0x02a0202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xdeb50058
+  .word 0x8fa202f0
+  .word 0x10400054
+  .word 0x00000000
+  .word 0x3224ffff
+  .word 0x8fa20450
+  .word 0x944500a4
+  .word 0x0c0b8d74
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc530008
+  .word 0xfc500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b8dbc
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20450
+  .word 0x944600a4
+  .word 0x0280202d
+  .word 0x2405000c
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x24060012
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050005
+  .word 0xa0450000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xa4450048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0b7638
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde330058
+  .word 0xffb30400
+  .word 0x0000902d
+  .word 0x0c0b8df8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc530008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x30420010
+  .word 0x0002282b
+  .word 0x0280202d
+  .word 0x24060001
+  .word 0x0c0ae240
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc530008
+  .word 0x001218c3
+  .word 0x02431823
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde220058
+  .word 0xffa20410
+  .word 0x8fa202ec
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x8e860038
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000302d
+  .word 0x32e7ffff
+  .word 0x8fa40450
+  .word 0x0280282d
+  .word 0x0c0ae2dc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30410
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202f0
+  .word 0x10400011
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x0080102d
+  .word 0x944500a4
+  .word 0x2406001d
+  .word 0x0c0a15a4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24040005
+  .word 0xa0440000
+  .word 0xdfa30400
+  .word 0xfc430008
+  .word 0xa0440020
+  .word 0xdfa30410
+  .word 0xfc430028
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x0080102d
+  .word 0x944500a4
+  .word 0x2406000d
+  .word 0x0c0a15a4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0xa4520048
+  .word 0xfe300060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40528
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0xde470058
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x0000302d
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x8ca40a00
+  .word 0x02e0302d
+  .word 0x8fa702ec
+  .word 0x0c0a1010
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0xa7a203f0
+  .word 0x8e830030
+  .word 0x0040102d
+  .word 0x3045ffff
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8c640a00
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0xafa203b0
+  .word 0x8e840030
+  .word 0x2405000f
+  .word 0x0c0a0e9c
+  .word 0x00000000
+  .word 0xa7a20300
+  .word 0xde310058
+  .word 0x8fa203b0
+  .word 0x24430012
+  .word 0x8fa203a0
+  .word 0x0043082a
+  .word 0x10200004
+  .word 0x00000000
+  .word 0x00629023
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000e
+  .word 0x0000302d
+  .word 0x24070005
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000e
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x00029c3c
+  .word 0x00139c3f
+  .word 0x8fa4052c
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4530048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x97a60310
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4530048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40530
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000d
+  .word 0x24050002
+  .word 0x00a0302d
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x3c02ff80
+  .word 0x34458080
+  .word 0x0000302d
+  .word 0x2407000c
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8fa40450
+  .word 0x87a503f0
+  .word 0x0000302d
+  .word 0x24070002
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0x2403000f
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x0c09ff20
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x0040282d
+  .word 0x24060008
+  .word 0x0000382d
+  .word 0x24080003
+  .word 0x24090001
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x8fa202d0
+  .word 0x14430028
+  .word 0x00000000
+  .word 0x8fa20280
+  .word 0x14400025
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420040
+  .word 0x1440001f
+  .word 0x00000000
+  .word 0x16c00004
+  .word 0x00000000
+  .word 0x24020015
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020016
+  .word 0x3045ffff
+  .word 0x0280202d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x8fa303b0
+  .word 0x8fa203a0
+  .word 0x0062102a
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x8fa203a0
+  .word 0x00621023
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xa4820048
+  .word 0xfc900060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde620058
+  .word 0xffa20420
+  .word 0x10000395
+  .word 0x00000000
+  .word 0x7ba201c0
+  .word 0x144001d2
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba201a0
+  .word 0x144301ce
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000c
+  .word 0x24060006
+  .word 0x24070004
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde320058
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x2405000c
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0x00029c3c
+  .word 0x00139c3f
+  .word 0x0280202d
+  .word 0x24050010
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde350058
+  .word 0x8e820030
+  .word 0x944400a4
+  .word 0x96850072
+  .word 0x0c0b8f78
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x26630006
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b8fc8
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24030017
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c050069
+  .word 0x24a53328
+  .word 0x0c0b75a4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96860072
+  .word 0x2402011d
+  .word 0x10c20022
+  .word 0x00000000
+  .word 0x2402011c
+  .word 0x10c2001f
+  .word 0x00000000
+  .word 0x24020117
+  .word 0x10c2001c
+  .word 0x00000000
+  .word 0x24020114
+  .word 0x10c20019
+  .word 0x00000000
+  .word 0x24020113
+  .word 0x10c20016
+  .word 0x00000000
+  .word 0x27a40470
+  .word 0x3c050069
+  .word 0x24a53338
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x27a50470
+  .word 0x0c0b75a4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2405000a
+  .word 0xa0450000
+  .word 0x24030400
+  .word 0xa4430008
+  .word 0xa0450010
+  .word 0x24030903
+  .word 0xa4430018
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde220058
+  .word 0xffa20400
+  .word 0x24020001
+  .word 0xafa202f0
+  .word 0x8f82b710
+  .word 0x24420002
+  .word 0x005e1021
+  .word 0x94430000
+  .word 0x30620400
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x24110002
+  .word 0x24020018
+  .word 0xa7a20200
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x24110002
+  .word 0x24020019
+  .word 0xa7a20200
+  .word 0x30621000
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b58b4
+  .word 0x00000000
+  .word 0xafa2027c
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20280
+  .word 0x0000202d
+  .word 0x24050003
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x34420006
+  .word 0xa4620018
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x3227ffff
+  .word 0x8e840030
+  .word 0x24050017
+  .word 0x0000302d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30400
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c94
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0xde670058
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x0000302d
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c98
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x97a60310
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c9c
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000d
+  .word 0x24050002
+  .word 0x00a0302d
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x87a50200
+  .word 0x0000302d
+  .word 0x24070002
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x24050017
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0xa6620048
+  .word 0xfe700060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde710058
+  .word 0x0000902d
+  .word 0x97a20200
+  .word 0x0040282d
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x02429021
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0xafa20214
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c94
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x8fa20214
+  .word 0xdc470058
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30400
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x0000302d
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30400
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440d0c
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xa4400048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000e
+  .word 0x24050002
+  .word 0x24060003
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xa4400048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x3c02ff80
+  .word 0x34458080
+  .word 0x0000302d
+  .word 0x2407000c
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30421000
+  .word 0x10400022
+  .word 0x00000000
+  .word 0x8fa2027c
+  .word 0x1440001f
+  .word 0x00000000
+  .word 0x8e820038
+  .word 0xafa20460
+  .word 0x0280202d
+  .word 0x24050015
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4520048
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20460
+  .word 0x8c440030
+  .word 0x8e850030
+  .word 0x24060002
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4520048
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde620058
+  .word 0xffa20410
+  .word 0x100001c1
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba201c0
+  .word 0x144301bd
+  .word 0x00000000
+  .word 0x7ba201a0
+  .word 0x144001ba
+  .word 0x00000000
+  .word 0x16c0001f
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b58b4
+  .word 0x00000000
+  .word 0x1040001a
+  .word 0x00000000
+  .word 0x240200ea
+  .word 0x12e20017
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20280
+  .word 0xafa202d0
+  .word 0x0000202d
+  .word 0x24050003
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x34420006
+  .word 0xa4620018
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x24050015
+  .word 0x24060006
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde750058
+  .word 0x0000882d
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x24050015
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x24520006
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420040
+  .word 0x14400033
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b58a4
+  .word 0x00000000
+  .word 0x24060001
+  .word 0x1446000e
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0c0ae240
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202d0
+  .word 0x14400010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050015
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050017
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x26460006
+  .word 0x8f82b6fc
+  .word 0x8c440d04
+  .word 0x8e850030
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000137
+  .word 0x00000000
+  .word 0x7ba201d0
+  .word 0x144000ca
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x12c200c7
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa202b0
+  .word 0x7ba301e0
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x02e0202d
+  .word 0x0c0b58dc
+  .word 0x00000000
+  .word 0x10400012
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba201e0
+  .word 0x1043000a
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x02e0282d
+  .word 0x0c0be3f4
+  .word 0x00000000
+  .word 0x0002943c
+  .word 0x0012943f
+  .word 0x2402ffff
+  .word 0x16420002
+  .word 0x00000000
+  .word 0x24120004
+  .word 0x64070002
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x02e0282d
+  .word 0x0c0be3f4
+  .word 0x00000000
+  .word 0x0002943c
+  .word 0x0012943f
+  .word 0x2402ffff
+  .word 0x16420002
+  .word 0x00000000
+  .word 0x24120007
+  .word 0x64070003
+  .word 0x8e840030
+  .word 0x908200a2
+  .word 0x24050001
+  .word 0x14450010
+  .word 0x00000000
+  .word 0x948300a4
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x000218c0
+  .word 0x8f82b728
+  .word 0x00621021
+  .word 0x84420018
+  .word 0x30420001
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0xafa502ac
+  .word 0xafa002b0
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420100
+  .word 0x1440001c
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x0240282d
+  .word 0x24060006
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050011
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde750058
+  .word 0x0000882d
+  .word 0x3245ffff
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x24520006
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420040
+  .word 0x1440002b
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x30420010
+  .word 0x0002282b
+  .word 0x0280202d
+  .word 0x24060001
+  .word 0x0c0ae240
+  .word 0x00000000
+  .word 0xafa20218
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x2a41000d
+  .word 0x14200004
+  .word 0x00000000
+  .word 0x2643fff4
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000182d
+  .word 0x8fa20218
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20218
+  .word 0xdc420058
+  .word 0xffa20410
+  .word 0x0280202d
+  .word 0x24050016
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30410
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba201e0
+  .word 0x14400090
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0bf418
+  .word 0x00000000
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c420ca8
+  .word 0x26460006
+  .word 0x0040202d
+  .word 0x8e850030
+  .word 0x0000382d
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x24060005
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000006b
+  .word 0x00000000
+  .word 0x0000a82d
+  .word 0x0000882d
+  .word 0x0000902d
+  .word 0x96820018
+  .word 0x30420100
+  .word 0x1040005b
+  .word 0x00000000
+  .word 0x24040006
+  .word 0x0c05d200
+  .word 0x00000000
+  .word 0x24040006
+  .word 0x94450002
+  .word 0x0c0b8d74
+  .word 0x00000000
+  .word 0xafa2021c
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc530008
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b8dbc
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3021c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c050069
+  .word 0x24a53348
+  .word 0x0c0b75a4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde310058
+  .word 0x0c0b8df8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050004
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20280
+  .word 0x0000202d
+  .word 0x24050003
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621025
+  .word 0xac82000c
+  .word 0x8f83b6fc
+  .word 0x94620018
+  .word 0x34420006
+  .word 0xa4620018
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050025
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x32e2ffff
+  .word 0xa7a20250
+  .word 0x97a40250
+  .word 0x27a5053c
+  .word 0x27a60538
+  .word 0x0c0a7a98
+  .word 0x00000000
+  .word 0x8fa4053c
+  .word 0x8fa50538
+  .word 0x24060010
+  .word 0x0c0a7d2c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc550008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x97a40250
+  .word 0x0c0a7b00
+  .word 0x00000000
+  .word 0xafa201fc
+  .word 0x97a40250
+  .word 0x27a5053c
+  .word 0x27a60538
+  .word 0x0c0a7b20
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420002
+  .word 0x0002102b
+  .word 0x3048ffff
+  .word 0x8fa401fc
+  .word 0x8fa5053c
+  .word 0x8fa60538
+  .word 0x24070010
+  .word 0x0c0a8014
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc550008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x32e2ffff
+  .word 0xa7a20240
+  .word 0x97a40240
+  .word 0x0c0a7b14
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050010
+  .word 0x0c0a84a0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc550008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x97a50240
+  .word 0x24060008
+  .word 0x0c0a86c0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc550008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x97a40240
+  .word 0x27a50470
+  .word 0x0c0aedbc
+  .word 0x00000000
+  .word 0x8fa202f0
+  .word 0x1040002d
+  .word 0x00000000
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040a82d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4520048
+  .word 0x02a0202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40438
+  .word 0x27a50470
+  .word 0x24060001
+  .word 0x0c0aeb00
+  .word 0x00000000
+  .word 0xafa2044c
+  .word 0x24040005
+  .word 0xa0440000
+  .word 0xdfa30400
+  .word 0xfc430008
+  .word 0xa0440020
+  .word 0xdea30058
+  .word 0xfc430028
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x97a40250
+  .word 0x24050001
+  .word 0x0c0b7528
+  .word 0x00000000
+  .word 0xafa20448
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30400
+  .word 0xfc430008
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x8fa40438
+  .word 0x27a50470
+  .word 0x0000302d
+  .word 0x0c0aeb00
+  .word 0x00000000
+  .word 0xafa2044c
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xa4520048
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x97a40250
+  .word 0x0000282d
+  .word 0x0c0b7528
+  .word 0x00000000
+  .word 0xafa20448
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3044c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x9683006a
+  .word 0x24020001
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x8fa20460
+  .word 0x8c460030
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8e860030
+  .word 0x8fa40438
+  .word 0x8e850030
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24040004
+  .word 0xa0440000
+  .word 0x8fa3044c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xa0440010
+  .word 0x8fa30448
+  .word 0xdc630058
+  .word 0xfc430018
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420080
+  .word 0x10400002
+  .word 0x00000000
+  .word 0xfe300060
+  .word 0x0220202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde220058
+  .word 0x7fa20180
+  .word 0x0000202d
+  .word 0x0c0b7578
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x02e0202d
+  .word 0x0c0bf7b4
+  .word 0x00000000
+  .word 0x1040000d
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x0280282d
+  .word 0x0c09fd04
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xafa00444
+  .word 0x2402001e
+  .word 0xa7a203e0
+  .word 0xa7a00330
+  .word 0x97a40250
+  .word 0x0c0b5330
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x7fa20170
+  .word 0xa7a003c0
+  .word 0xa7a00370
+  .word 0x0017143c
+  .word 0x0002143f
+  .word 0xafa20260
+  .word 0x10000491
+  .word 0x00000000
+  .word 0x97a20370
+  .word 0x0040102d
+  .word 0x00021080
+  .word 0x02821021
+  .word 0x8c520038
+  .word 0x924200c8
+  .word 0xa7a20350
+  .word 0xa7a00340
+  .word 0x264400c8
+  .word 0x0c0ae590
+  .word 0x00000000
+  .word 0x7fa20160
+  .word 0x8e4300d4
+  .word 0x10600004
+  .word 0x00000000
+  .word 0x0280a82d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0240a82d
+  .word 0x8e4200d0
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x908500a2
+  .word 0x8ea40030
+  .word 0x908400a2
+  .word 0x10a40004
+  .word 0x00000000
+  .word 0x8fa40390
+  .word 0x24840001
+  .word 0xafa40390
+  .word 0x97a40350
+  .word 0x0080282d
+  .word 0x000520c0
+  .word 0x00852023
+  .word 0x00042080
+  .word 0x02442021
+  .word 0x8c8500cc
+  .word 0x3c040010
+  .word 0x00a42024
+  .word 0x10800008
+  .word 0x00000000
+  .word 0x8fa40380
+  .word 0x24840001
+  .word 0xafa40380
+  .word 0x964500ce
+  .word 0x97a40320
+  .word 0x00852025
+  .word 0xa7a40320
+  .word 0x8ea40030
+  .word 0x908600a2
+  .word 0x24050001
+  .word 0x7fa50150
+  .word 0x14c5000e
+  .word 0x00000000
+  .word 0x948600a4
+  .word 0x000628c0
+  .word 0x00a62821
+  .word 0x00052840
+  .word 0x00a62821
+  .word 0x00053080
+  .word 0x8f85b714
+  .word 0x00a62821
+  .word 0x90a50000
+  .word 0x30a50001
+  .word 0x0005282b
+  .word 0x38a50001
+  .word 0x7fa50150
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x2402002d
+  .word 0xa7a203e0
+  .word 0x0c0af520
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x964300cc
+  .word 0x24020400
+  .word 0x10620046
+  .word 0x00000000
+  .word 0x8e4200d4
+  .word 0x24070001
+  .word 0x10470042
+  .word 0x00000000
+  .word 0x7ba20160
+  .word 0x34481000
+  .word 0x8fa40438
+  .word 0x8e850030
+  .word 0x8ea60030
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8fa20444
+  .word 0x1440001a
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30422000
+  .word 0x1440000c
+  .word 0x00000000
+  .word 0x24030004
+  .word 0xa2230000
+  .word 0x8fa2044c
+  .word 0xdc420058
+  .word 0xfe220008
+  .word 0xa2230010
+  .word 0x8fa20448
+  .word 0xdc420058
+  .word 0xfe220018
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x24020004
+  .word 0xa2220000
+  .word 0x7ba20180
+  .word 0xfe220008
+  .word 0x97a20330
+  .word 0xa6220048
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x24020004
+  .word 0xa2220000
+  .word 0x8fa20444
+  .word 0xdc420058
+  .word 0xfe220008
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420080
+  .word 0x10400002
+  .word 0x00000000
+  .word 0xfe300060
+  .word 0x0220202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0b7578
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000055
+  .word 0x00000000
+  .word 0x7ba20160
+  .word 0x34480c00
+  .word 0x8fa40438
+  .word 0x8e850030
+  .word 0x8ea60030
+  .word 0x24070001
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24040004
+  .word 0xa0440000
+  .word 0x8fa3044c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xa0440010
+  .word 0x8fa30448
+  .word 0xdc630058
+  .word 0xfc430018
+  .word 0x97a30330
+  .word 0xa4430048
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420080
+  .word 0x10400002
+  .word 0x00000000
+  .word 0xfe300060
+  .word 0x0220202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x964300cc
+  .word 0x24020400
+  .word 0x10620032
+  .word 0x00000000
+  .word 0x8e4200d4
+  .word 0x24070001
+  .word 0x1447002e
+  .word 0x00000000
+  .word 0x8fa20230
+  .word 0x1440002b
+  .word 0x00000000
+  .word 0x7ba20160
+  .word 0x34481000
+  .word 0x8fa40438
+  .word 0x8e850030
+  .word 0x8ea60030
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0xafa2043c
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x8e4200d4
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420008
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24030008
+  .word 0x8fa2043c
+  .word 0xa4430048
+  .word 0x8fa2043c
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0b7578
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa3043c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202ec
+  .word 0x10400036
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8ea50030
+  .word 0x24060003
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x12b40012
+  .word 0x00000000
+  .word 0x8ea40030
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000f
+  .word 0x00000000
+  .word 0x8ea40030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x34420200
+  .word 0xa6820018
+  .word 0x10000023
+  .word 0x00000000
+  .word 0x8fa20230
+  .word 0x14400020
+  .word 0x00000000
+  .word 0x16c0001e
+  .word 0x00000000
+  .word 0x26840038
+  .word 0x0c0b4580
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x24020002
+  .word 0x14820017
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x27a60518
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x00a0482d
+  .word 0x0c0a021c
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x27a50518
+  .word 0x24060001
+  .word 0x0c0a20d8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x8fa20280
+  .word 0x1443006f
+  .word 0x00000000
+  .word 0x8fa20444
+  .word 0x14400048
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x12c20045
+  .word 0x00000000
+  .word 0x7ba201d0
+  .word 0x14430018
+  .word 0x00000000
+  .word 0x7ba201a0
+  .word 0x14400015
+  .word 0x00000000
+  .word 0x7ba201c0
+  .word 0x14400012
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202b0
+  .word 0x14400007
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x97a50300
+  .word 0x0c0a10f8
+  .word 0x00000000
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0a13d4
+  .word 0x00000000
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x2405ffff
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080003
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x12b4000f
+  .word 0x00000000
+  .word 0x8ea40030
+  .word 0x8e850030
+  .word 0x24060002
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x02a0202d
+  .word 0x24050018
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0xafa20444
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x2403000b
+  .word 0xa0430020
+  .word 0xde230058
+  .word 0xfc430028
+  .word 0x24030012
+  .word 0xa443004a
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e4200d4
+  .word 0x10400034
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0bf458
+  .word 0x00000000
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c420c8c
+  .word 0x0040202d
+  .word 0x8e850030
+  .word 0x8e460030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0xafa20440
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420004
+  .word 0x10400008
+  .word 0x00000000
+  .word 0x2403000b
+  .word 0x8fa20440
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x24030005
+  .word 0x8fa20440
+  .word 0xa0430000
+  .word 0x7ba30180
+  .word 0xfc430008
+  .word 0x8fa40440
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000d
+  .word 0x24050002
+  .word 0x24060006
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa30440
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x964300cc
+  .word 0x24020400
+  .word 0x14620030
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c90
+  .word 0x8e850030
+  .word 0x8ea60030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0xafa20440
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420004
+  .word 0x10400008
+  .word 0x00000000
+  .word 0x2403000b
+  .word 0x8fa20440
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x24030005
+  .word 0x8fa20440
+  .word 0xa0430000
+  .word 0x7ba30180
+  .word 0xfc430008
+  .word 0x8fa40440
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x24060007
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa30440
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2402000a
+  .word 0xa7a203d0
+  .word 0xa7a00360
+  .word 0x97a20350
+  .word 0x0040102d
+  .word 0x7fa20140
+  .word 0x2442ffff
+  .word 0x7fa20130
+  .word 0x87a203d0
+  .word 0x0040102d
+  .word 0x2442002b
+  .word 0x7fa20120
+  .word 0x1000024a
+  .word 0x00000000
+  .word 0x97a20360
+  .word 0x0040182d
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x02421021
+  .word 0x7fa20110
+  .word 0x244200f8
+  .word 0x7fa20100
+  .word 0x7ba20110
+  .word 0x804500f8
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8ea40030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x97a30340
+  .word 0xa4430048
+  .word 0x8e4200d4
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420008
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x86620048
+  .word 0x24420008
+  .word 0xa6620048
+  .word 0xfe700060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba300b0
+  .word 0x7ba20130
+  .word 0x14620079
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x8c4300e8
+  .word 0x3c020010
+  .word 0x00621024
+  .word 0x10400073
+  .word 0x00000000
+  .word 0x7ba20150
+  .word 0x10400064
+  .word 0x00000000
+  .word 0x8fa202ec
+  .word 0x10400038
+  .word 0x00000000
+  .word 0xdfa20410
+  .word 0x10400020
+  .word 0x00000000
+  .word 0x8ea40030
+  .word 0x0c0ae564
+  .word 0x00000000
+  .word 0x3c0242c8
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000d02
+  .word 0x02e0202d
+  .word 0x0c0b58dc
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x3046ffff
+  .word 0x8e840030
+  .word 0x8ea50030
+  .word 0x4600a306
+  .word 0x0c0adef4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30410
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8ea50030
+  .word 0x8f82b6fc
+  .word 0x8c440d00
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030001
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x8ea50030
+  .word 0x8f82b6fc
+  .word 0x8c440cfc
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030001
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e4200d0
+  .word 0x14400014
+  .word 0x00000000
+  .word 0x8ea50030
+  .word 0x8f82b6fc
+  .word 0x8c440cf8
+  .word 0x00a0302d
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030010
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8ea40030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20280
+  .word 0x14400031
+  .word 0x00000000
+  .word 0x7ba20100
+  .word 0x80430000
+  .word 0x2402ffff
+  .word 0x14620007
+  .word 0x00000000
+  .word 0x8e420030
+  .word 0x904300a2
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x10620026
+  .word 0x00000000
+  .word 0x8e420030
+  .word 0x8c440a2c
+  .word 0x3c050018
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x1440001f
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x8e850030
+  .word 0x24060002
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x8e4300d4
+  .word 0x1060000b
+  .word 0x00000000
+  .word 0x8fa30440
+  .word 0x10600008
+  .word 0x00000000
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa30440
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x244200e0
+  .word 0xafa20220
+  .word 0x0280202d
+  .word 0x02a0282d
+  .word 0x0040302d
+  .word 0x964700cc
+  .word 0x964800ce
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x87a303d0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0b6024
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x87a303d0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x9682006a
+  .word 0x2443ffff
+  .word 0x8fa20230
+  .word 0x14430014
+  .word 0x00000000
+  .word 0x924200c8
+  .word 0x2443ffff
+  .word 0x7ba200b0
+  .word 0x1443000f
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b6024
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x87a303d0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20230
+  .word 0x14400017
+  .word 0x00000000
+  .word 0x7ba200b0
+  .word 0x14400014
+  .word 0x00000000
+  .word 0x96820018
+  .word 0x30420004
+  .word 0x14400010
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x928500ca
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x87a303d0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x924200c8
+  .word 0x2443ffff
+  .word 0x7ba200b0
+  .word 0x14430027
+  .word 0x00000000
+  .word 0x868500dc
+  .word 0x10a00012
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000013
+  .word 0x00000000
+  .word 0x864500dc
+  .word 0x10a00010
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200b0
+  .word 0x14400018
+  .word 0x00000000
+  .word 0x8fa20220
+  .word 0x8c420000
+  .word 0x10400014
+  .word 0x00000000
+  .word 0x8ea40030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x87a303d0
+  .word 0xa4430048
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x244200fa
+  .word 0x7fa200f0
+  .word 0x7ba20110
+  .word 0x944200fa
+  .word 0x30420001
+  .word 0x10400038
+  .word 0x00000000
+  .word 0x27a404f0
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x3c020010
+  .word 0xafa204fc
+  .word 0x0240202d
+  .word 0x0240282d
+  .word 0x27a604f0
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200f0
+  .word 0x94420000
+  .word 0x30420002
+  .word 0x10400012
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e440030
+  .word 0x2405000a
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200f0
+  .word 0x94420000
+  .word 0x30420020
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa202c0
+  .word 0x24030003
+  .word 0x8f82b6fc
+  .word 0xa443001c
+  .word 0x7ba200f0
+  .word 0x94420000
+  .word 0x30420040
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa20290
+  .word 0x97a20360
+  .word 0x0040182d
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x02421021
+  .word 0x7fa200e0
+  .word 0x8e840030
+  .word 0x8ea50030
+  .word 0x8fa60260
+  .word 0x964700cc
+  .word 0x964800ce
+  .word 0x97a90360
+  .word 0x97aa0350
+  .word 0x8fab0220
+  .word 0x0c0af6f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x87a303d0
+  .word 0xa4430048
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200e0
+  .word 0x244200f4
+  .word 0x7fa200d0
+  .word 0x7ba200e0
+  .word 0x844200f4
+  .word 0x1c400005
+  .word 0x00000000
+  .word 0x7ba20110
+  .word 0x844200f6
+  .word 0x18400058
+  .word 0x00000000
+  .word 0x7ba20120
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x7fa200c0
+  .word 0x27a404f0
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x97a20360
+  .word 0x0040182d
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x02421821
+  .word 0x7ba200d0
+  .word 0x84420000
+  .word 0xafa204f0
+  .word 0x846200f6
+  .word 0xafa204f4
+  .word 0x0280202d
+  .word 0x0280282d
+  .word 0x27a604f0
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x7ba300c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0080282d
+  .word 0x2406ffff
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x97a90360
+  .word 0x97aa0350
+  .word 0x27ab04f0
+  .word 0x0c0af6f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x7ba300c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa204f0
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x7ba200b0
+  .word 0x14400009
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0af520
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x7ba300c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x97a20340
+  .word 0x24420007
+  .word 0xa7a20340
+  .word 0x97a20360
+  .word 0x24420001
+  .word 0xa7a20360
+  .word 0x97a20360
+  .word 0x0040102d
+  .word 0x7fa200b0
+  .word 0x70401e28
+  .word 0x7ba20140
+  .word 0x0062102a
+  .word 0x1440fdb0
+  .word 0x00000000
+  .word 0x87a203c0
+  .word 0x0040182d
+  .word 0x97a20340
+  .word 0x0040102d
+  .word 0x0062082a
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x97a20340
+  .word 0xa7a203c0
+  .word 0x97a30330
+  .word 0x7ba20170
+  .word 0x00621021
+  .word 0xa7a20330
+  .word 0x97a20370
+  .word 0x24420001
+  .word 0xa7a20370
+  .word 0x97a20370
+  .word 0x0040102d
+  .word 0xafa20230
+  .word 0x9683006a
+  .word 0x0043102a
+  .word 0x1440fb6a
+  .word 0x00000000
+  .word 0xde720058
+  .word 0x868300de
+  .word 0x2402ffff
+  .word 0x10620014
+  .word 0x00000000
+  .word 0x3065ffff
+  .word 0x0280202d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x100000f2
+  .word 0x00000000
+  .word 0x8fa20390
+  .word 0x1840006d
+  .word 0x00000000
+  .word 0x16c000ed
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x3c050008
+  .word 0x0c0b5384
+  .word 0x00000000
+  .word 0x3053ffff
+  .word 0x92820028
+  .word 0x1c40003e
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x944300a4
+  .word 0x24020001
+  .word 0x10620039
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x2c410032
+  .word 0x10200033
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000002a
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x84830a38
+  .word 0x2402ffff
+  .word 0x10620024
+  .word 0x00000000
+  .word 0x8fa20390
+  .word 0x02621023
+  .word 0x00021c3c
+  .word 0x00031c3f
+  .word 0x1c600016
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x3c050008
+  .word 0x0c0b5384
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x8f83b6fc
+  .word 0x84620a3a
+  .word 0x00021043
+  .word 0x0044102b
+  .word 0x14400013
+  .word 0x00000000
+  .word 0x84730a38
+  .word 0x0c0adc18
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x1262000c
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x84820a3a
+  .word 0x00021043
+  .word 0x0043102a
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10400014
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050016
+  .word 0x8fa60390
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000095
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000d
+  .word 0x8fa60390
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000083
+  .word 0x00000000
+  .word 0x8fa20380
+  .word 0x1840001c
+  .word 0x00000000
+  .word 0x928300ca
+  .word 0x30620001
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x30620002
+  .word 0x14400015
+  .word 0x00000000
+  .word 0x97a20320
+  .word 0x0040302d
+  .word 0x0280202d
+  .word 0x24050017
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000065
+  .word 0x00000000
+  .word 0x8fa202ec
+  .word 0x10400024
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x944300a4
+  .word 0x24020001
+  .word 0x1462001f
+  .word 0x00000000
+  .word 0x16c0001d
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b57ec
+  .word 0x00000000
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b5824
+  .word 0x00000000
+  .word 0x14400013
+  .word 0x00000000
+  .word 0x8e840038
+  .word 0x24050011
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000003f
+  .word 0x00000000
+  .word 0x8fa20390
+  .word 0x1440003c
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b584c
+  .word 0x00000000
+  .word 0x10400013
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405000e
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000025
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b5884
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x1443001f
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b57d4
+  .word 0x00000000
+  .word 0x1440001a
+  .word 0x00000000
+  .word 0x8fa20290
+  .word 0x14400017
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x97a50250
+  .word 0x0c0c20bc
+  .word 0x00000000
+  .word 0x0002343c
+  .word 0x0006343f
+  .word 0x0280202d
+  .word 0x2405000f
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x87a303c0
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa20290
+  .word 0x10400101
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x8fa20280
+  .word 0x14430011
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050017
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0xafa20444
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24030018
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x14400051
+  .word 0x00000000
+  .word 0x27a404f0
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0bff5c
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x2442ffff
+  .word 0x00021023
+  .word 0xafa204f0
+  .word 0x0280202d
+  .word 0x0280282d
+  .word 0x27a604f0
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030001
+  .word 0x8fa20280
+  .word 0x14430008
+  .word 0x00000000
+  .word 0x24020004
+  .word 0xa2420000
+  .word 0x8fa20444
+  .word 0xdc420058
+  .word 0xfe420008
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x2402000b
+  .word 0xa2420000
+  .word 0xde220058
+  .word 0xfe420008
+  .word 0xfe500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0080282d
+  .word 0x2406ffff
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0000482d
+  .word 0x240a0001
+  .word 0x27ab04f0
+  .word 0x0c0af6f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000022
+  .word 0x00000000
+  .word 0x27a404f0
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x3c020008
+  .word 0xafa204f8
+  .word 0x0280202d
+  .word 0x0280282d
+  .word 0x27a604f0
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030001
+  .word 0x8fa20280
+  .word 0x14430008
+  .word 0x00000000
+  .word 0x24020004
+  .word 0xa2420000
+  .word 0x8fa20444
+  .word 0xdc420058
+  .word 0xfe420008
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x2402000b
+  .word 0xa2420000
+  .word 0xde220058
+  .word 0xfe420008
+  .word 0xfe500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202ac
+  .word 0x1440001e
+  .word 0x00000000
+  .word 0x8fa202b0
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x97a50300
+  .word 0x0c0a10f8
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0a13d4
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x24020004
+  .word 0xa2620000
+  .word 0xde420058
+  .word 0xfe620008
+  .word 0xfe700060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x8c82009c
+  .word 0x30420020
+  .word 0x10400010
+  .word 0x00000000
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x2403003c
+  .word 0xa443004a
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000070
+  .word 0x00000000
+  .word 0x3c0200ff
+  .word 0x3445ffff
+  .word 0x24060006
+  .word 0x0000382d
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x8f82b6fc
+  .word 0x8c440cb0
+  .word 0x00a0302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x24060008
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e830030
+  .word 0x8c62009c
+  .word 0x34420100
+  .word 0xac62009c
+  .word 0x1000003a
+  .word 0x00000000
+  .word 0x8fa202ac
+  .word 0x14400028
+  .word 0x00000000
+  .word 0x8fa202b0
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x97a50300
+  .word 0x0c0a10f8
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0a13d4
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x2402000b
+  .word 0xa2620000
+  .word 0xde220058
+  .word 0xfe620008
+  .word 0x16c00005
+  .word 0x00000000
+  .word 0x87a203e0
+  .word 0xa6620048
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x24020008
+  .word 0xa6620048
+  .word 0x87a203e0
+  .word 0xa662004a
+  .word 0xfe700060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x87a303e0
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a7e94
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202c0
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x3045ffff
+  .word 0x24040010
+  .word 0x0c0a8420
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a85b0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x0c0a876c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x7ba201d0
+  .word 0x14430087
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x12c20084
+  .word 0x00000000
+  .word 0x7ba201c0
+  .word 0x14400081
+  .word 0x00000000
+  .word 0x8fa202d0
+  .word 0x1440001c
+  .word 0x00000000
+  .word 0x8f82b710
+  .word 0x03c21021
+  .word 0x94420002
+  .word 0x30420040
+  .word 0x14400023
+  .word 0x00000000
+  .word 0x16c00004
+  .word 0x00000000
+  .word 0x24020015
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020016
+  .word 0x3045ffff
+  .word 0x0280202d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30410
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050019
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xdfa30410
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa202c0
+  .word 0x14400012
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x2405ffff
+  .word 0x0000302d
+  .word 0x2407000c
+  .word 0x24080003
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba201a0
+  .word 0x1440003f
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x3c0200ff
+  .word 0x3445ffff
+  .word 0x24060008
+  .word 0x0000382d
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x8fa202ec
+  .word 0x10400009
+  .word 0x00000000
+  .word 0x7ba201b0
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x24020007
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2402000f
+  .word 0xa6420048
+  .word 0xfe500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440cec
+  .word 0x8fa50450
+  .word 0x8fa603b0
+  .word 0x0000382d
+  .word 0x24082100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdfa30420
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40450
+  .word 0x0c0a15fc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0xa4450048
+  .word 0xfc500060
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x8fa202c0
+  .word 0x1443000f
+  .word 0x00000000
+  .word 0x24040080
+  .word 0x0c09f700
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40438
+  .word 0x0c0ae40c
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b704c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050019
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x9683006c
+  .word 0x24020002
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x0280202d
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf00a0
+  .word 0x7bbe0090
+  .word 0x7bb70080
+  .word 0x7bb60070
+  .word 0x7bb50060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0540
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_loop_invariants reset
 /* Warning: struct Model is not defined (only forward-declared) */
@@ -5722,90 +11249,270 @@ void btlActionInitStateReinforce(BtlAction* action)
     action->unit->flags3 |= BTLUNIT_FLAG3_UNK08;
     gBtl->unk_a06 &= ~(1 << 0);
 }
-// FUN_00294d40 NONMATCHING
-void btlActionUpdateStateReinforce(BtlAction* action)
+// FUN_00294d40
+asm void btlActionUpdateStateReinforce(BtlAction* action)
 {
-    BtlPacket* root;
-    BtlPacket* packet;
-    RwV3d pos;
-    RwV3d direction;
-    RwV3d destination;
-    u16 state;
-    short charId;
-    BtlUnit* unit = action->unit;
-    charId = unit->charId;
-
-    root = btlVoice002e2be0(action, 0x14, 0, 0, 0);
-    btlPacketRegister(root, BTLPACKET_TYPE_1);
-    packet = FUN_002db740(action, 6, 0, 0, 2);
-    packet->unk_00 = 4;
-    packet->parentUID = root->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    packet = btlCameraCreateSetStatePacket(action, BTLCAMERA_STATE_REINFORCE);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-    unit->mdl = (Model*)FUN_00316910(unit->genus + 1, charId, 0);
-    if (action->unit->mdl == NULL)
-    {
-        root = FUN_00285690(action->unit, charId, 0x7e);
-        root->actionUID = action->uid;
-        btlPacketRegister(root, BTLPACKET_TYPE_1);
-    }
-    else
-    {
-        unit->flags2 |= BTLUNIT_FLAG2_UPDATE | BTLUNIT_FLAG2_DIRTY;
-        unit->resTypeId = FUN_003b6000(charId, unit->mdl);
-        FUN_001a0590(action->unit->resTypeId, 1);
-        FUN_00287b20(action->unit, 1);
-        FUN_002831c0(unit, 0);
-        FUN_00282bc0(unit);
-        packet = FUN_002864a0(unit, charId, 0x10);
-        packet->unk_00 = 4;
-        packet->parentUID = root->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    }
-    btlUnitAnimate(unit, -1, 0xc, 1.0f, 3);
-    FUN_002b77c0(unit);
-    btlUnit0027f7c0(unit, &pos, NULL, &direction);
-    packet = FUN_002864a0(unit, charId, 0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = root->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    FUN_00287b20(unit, 1);
-    FUN_002d3e00(unit, &destination);
-    FUN_00287490(unit);
-    packet = FUN_00285d30(unit, -1, 0xc, 0, 3, 1);
-    packet->unk_00 = 4;
-    packet->parentUID = root->uid;
-    ACTION_U16(packet, 0x48) = 1;
-    ACTION_U16(packet, 0x4a) = 0x2d;
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    destination.x = pos.x - direction.x;
-    destination.y = pos.y - direction.y;
-    destination.z = pos.z - direction.z;
-    FUN_004c69f0(&destination, &destination);
-    destination.x = pos.x + destination.x * 300.0f;
-    destination.y = pos.y + destination.y * 300.0f;
-    destination.z = pos.z + destination.z * 300.0f;
-    btlUnitSetPos(action->unit, &destination);
-    packet = FUN_002819d0_btlAction(action->unit, &destination, 0.5f, 0);
-    packet->unk_00 = 4;
-    packet->parentUID = root->uid;
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    switch (action->target.commandId)
-    {
-        case 1:
-        case 2:
-        case 3:
-            state = BTLACTION_STATE_PACKET;
-            break;
-        default:
-            state = BTLACTION_STATE_PACKET;
-            break;
-    }
-    btlActionSetState(action, state);
+  .set noreorder
+  .word 0x27bdff70
+  .word 0xffbf0050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x0000802d
+  .word 0x8c920030
+  .word 0x965100a4
+  .word 0x24050014
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040a02d
+  .word 0x0280202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050006
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080002
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde830058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050005
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x924200a2
+  .word 0x24420001
+  .word 0x3044ffff
+  .word 0x0220282d
+  .word 0x0000302d
+  .word 0x0c0c5a44
+  .word 0x00000000
+  .word 0xae4209f4
+  .word 0x1440001e
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0220282d
+  .word 0x2406007e
+  .word 0x0c0a15a4
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0220282d
+  .word 0x24060010
+  .word 0x0c0a1928
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde300058
+  .word 0x1000003e
+  .word 0x00000000
+  .word 0x8e420098
+  .word 0x34420002
+  .word 0xae420098
+  .word 0x34420008
+  .word 0xae420098
+  .word 0x0220202d
+  .word 0x8e4509f4
+  .word 0x0c0ed800
+  .word 0x00000000
+  .word 0xa64209f2
+  .word 0x964409f2
+  .word 0x24050001
+  .word 0x0c068164
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c0a1ec8
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0c0a0c70
+  .word 0x00000000
+  .word 0x824709e8
+  .word 0x0240202d
+  .word 0x864509e0
+  .word 0x0000302d
+  .word 0xc64c09e4
+  .word 0x0c0a0b50
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a0af0
+  .word 0x00000000
+  .word 0x8e4209f4
+  .word 0x8c4203f8
+  .word 0x1440000e
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0220282d
+  .word 0x24060010
+  .word 0x0c0a1928
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde100058
+  .word 0x0240202d
+  .word 0x24050004
+  .word 0x0c0a1ec8
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0c0b4f80
+  .word 0x00000000
+  .word 0xa2400033
+  .word 0x0240202d
+  .word 0x0c0a1d24
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x2405ffff
+  .word 0x2406000c
+  .word 0x0000382d
+  .word 0x24080003
+  .word 0x24090001
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc500008
+  .word 0x24050001
+  .word 0xa4450048
+  .word 0x2403002d
+  .word 0xa443004a
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0addf0
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x27a50080
+  .word 0x0000302d
+  .word 0x27a70070
+  .word 0x0c09fdf0
+  .word 0x00000000
+  .word 0xc7a10080
+  .word 0xc7a00070
+  .word 0x46000801
+  .word 0xe7a00060
+  .word 0xc7a10088
+  .word 0xc7a00078
+  .word 0x46000801
+  .word 0xe7a00068
+  .word 0xafa00064
+  .word 0x27a40060
+  .word 0x0080282d
+  .word 0x0c131a7c
+  .word 0x00000000
+  .word 0x3c024396
+  .word 0x44820800
+  .word 0xc7a00060
+  .word 0x460100c2
+  .word 0xe7a30060
+  .word 0xc7a00064
+  .word 0x46010082
+  .word 0xe7a20064
+  .word 0xc7a00068
+  .word 0x46010042
+  .word 0xe7a10068
+  .word 0xc7a00080
+  .word 0x46001800
+  .word 0xe7a00060
+  .word 0xc7a00084
+  .word 0x46001000
+  .word 0xe7a00064
+  .word 0xc7a00088
+  .word 0x46000800
+  .word 0xe7a00068
+  .word 0x0240202d
+  .word 0x27a50060
+  .word 0x0c09fd94
+  .word 0x00000000
+  .word 0x3c023f00
+  .word 0x44826000
+  .word 0x0240202d
+  .word 0x27a50080
+  .word 0x0000302d
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc500008
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x9663006c
+  .word 0x24020002
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x0260202d
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0090
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00295150
@@ -5816,261 +11523,566 @@ void btlActionInitStateSummon(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 1255/2180; singles LI=1253/2180 CS=1324/2188 LT=1210/2172 PR=1503/2188 SR=1255/2180 DA=1254/2180. */
 /* Pair nd/obj: LI+CS=1324/2188 LI+LT=1210/2172 LI+PR=1531/2196 LI+SR=1253/2180 LI+DA=1252/2180 CS+LT=1270/2180 CS+PR=1325/2188 CS+SR=1324/2188 CS+DA=1324/2188 LT+PR=1446/2180 LT+SR=1210/2172 LT+DA=1210/2172 PR+SR=1503/2188 PR+DA=1503/2188 SR+DA=1254/2180; retain LT on. */
 #pragma opt_lifetimes on
-// FUN_00295160 NONMATCHING
-void btlActionUpdateStateSummon(BtlAction* action)
+// FUN_00295160
+asm void btlActionUpdateStateSummon(BtlAction* action)
 {
-    BtlPacket* packet;
-    BtlPacket* castAnim;
-    BtlPacket* camPacket;
-    BtlPacket* castChain;
-    BtlPacket* savedSE;
-    BtlPacket* packet2;
-    BtlPacket* tailPacket;
-    BtlPacket* resourcePacket;
-    BtlPacket* modelPacket;
-    BtlPacket* waitPacket;
-    u32 formation;
-    u64 actionUID;
-    void* handle;
-    s16 specificId;
-    s16 castDelay;
-    u32 outA;
-    u32 outB;
-    char stackBufE0[0x98];
-    u32 didFormationSetup;
-    u64 chainUID;
-    u16 i;
-    u16 childId;
-    u16 state;
-    BtlAction* child;
-    BtlUnit* childUnit;
-
-    specificId = action->target.specificId;
-    actionUID = action->uid;
-    btlAction0028a780(action);
-    formation = FUN_002b8f90(1);
-
-    packet = FUN_002bd590(action->unit, specificId);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-
-    packet = FUN_002d8330(action);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002d7fb0(action, 0);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    castAnim = btlUnitCreateAnimPacket(action->unit, 7, 6, 1.0f, BTLUNIT_ANIM_MODE_ONCE);
-    castAnim->actionUID = actionUID;
-    btlPacketRegister(castAnim, BTLPACKET_TYPE_1);
-
-    camPacket = btlCameraCreateSetStatePacket(action, 0x11);
-    camPacket->unk_00 = 4;
-    camPacket->parentUID = castAnim->uid;
-    camPacket->actionUID = actionUID;
-    btlPacketRegister(camPacket, BTLPACKET_TYPE_0);
-
-    castDelay = func_002835e0(action->unit, 7, 1.0f);
-
-    func_0029ea60(specificId, &outB, &outA);
-    packet = func_0029f4b0(outB, outA, 0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    handle = func_0029ec00(specificId);
-    func_0029ec80(specificId, &outB, &outA);
-    packet = func_002a0050(handle, outB, outA, 0x10, 0);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    handle = func_0029ec50(specificId);
-    packet = func_002a1280(handle, 0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = func_002a1b00(action, specificId, 0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    func_002bb6f0(specificId, stackBufE0);
-    castChain = FUN_002bac00(formation, stackBufE0, 0);
-    castChain->unk_00 = 4;
-    castChain->parentUID = 0;
-    castChain->preUpdateDelay = castDelay + 6;
-    castChain->actionUID = actionUID;
-    btlPacketRegister(castChain, BTLPACKET_TYPE_1);
-
-    savedSE = btlSoundCreateSkillSEPacket(specificId, 0);
-    savedSE->unk_00 = 4;
-    savedSE->parentUID = castChain->uid;
-    savedSE->actionUID = actionUID;
-    btlPacketRegister(savedSE, BTLPACKET_TYPE_1);
-
-    packet2 = FUN_002baf90(formation, action->unit, action->unit, 0, 0);
-    packet2->unk_00 = 4;
-    packet2->parentUID = castChain->uid;
-    packet2->preUpdateWait.type = 4;
-    packet2->preUpdateWait.value = savedSE->uid;
-    btlPacketRegister(packet2, BTLPACKET_TYPE_3D);
-
-    waitPacket = FUN_002dd5e0(0);
-    waitPacket->unk_00 = 5;
-    waitPacket->parentUID = packet2->uid;
-    btlPacketRegister(waitPacket, BTLPACKET_TYPE_1);
-
-    chainUID = castChain->uid;
-
-    tailPacket = func_0027f2f0();
-    tailPacket->unk_00 = 4;
-    tailPacket->parentUID = chainUID;
-    tailPacket->preUpdateDelay = 0x18;
-    tailPacket->actionUID = actionUID;
-    btlPacketRegister(tailPacket, BTLPACKET_TYPE_1);
-
-    packet = func_002bb2f0(ACTION_U32(gBtl, 0xca8), action->unit, 0, tailPacket->uid, 0x100);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002dd100(0xa, 2, 5);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    didFormationSetup = 0;
-    for (i = 0; i < 3; i++)
-    {
-        childId = action->target.unk_3e[i];
-        if (childId == 0)
-        {
-            continue;
-        }
-        child = (BtlAction*)FUN_00289650(1, childId, 0);
-        childUnit = child->unit;
-        childUnit->datUnit = (DatUnit*)FUN_002ff540(ACTION_U32(gBtl, 0xbbc), childId);
-        FUN_002889c0(childUnit, childId);
-        if (!didFormationSetup)
-        {
-            packet = btlFormation002b8f40(0);
-            packet->unk_00 = 4;
-            packet->parentUID = savedSE->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-            if ((iGpffffb710[(s16)action->target.specificId].flags & 0x40) == 0)
-            {
-                packet = FUN_002bc7e0(8);
-                packet->unk_00 = 4;
-                packet->parentUID = savedSE->uid;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-                camPacket = btlCameraCreateSetStatePacket(action, 0x26);
-                camPacket->unk_00 = 4;
-                camPacket->parentUID = savedSE->uid;
-                camPacket->actionUID = actionUID;
-                btlPacketRegister(camPacket, BTLPACKET_TYPE_0);
-            }
-            didFormationSetup = 1;
-        }
-        modelPacket = btlUnitCreateModelPacket(childUnit, childId, 0x7e);
-        modelPacket->unk_00 = 4;
-        modelPacket->parentUID = chainUID;
-        modelPacket->actionUID = actionUID;
-        btlPacketRegister(modelPacket, BTLPACKET_TYPE_1);
-
-        resourcePacket = FUN_002864a0(childUnit, childId, 0x10);
-        resourcePacket->unk_00 = 4;
-        resourcePacket->parentUID = modelPacket->uid;
-        btlPacketRegister(resourcePacket, BTLPACKET_TYPE_1);
-
-        waitPacket = FUN_002baf90(formation, action->unit, childUnit, 1, 0x100);
-        waitPacket->unk_00 = 4;
-        waitPacket->parentUID = resourcePacket->uid;
-        waitPacket->preUpdateWait.type = 4;
-        waitPacket->preUpdateWait.value = savedSE->uid;
-        waitPacket->actionUID = actionUID;
-        btlPacketRegister(waitPacket, BTLPACKET_TYPE_3D);
-
-        packet = FUN_002dd5e0(1);
-        packet->unk_00 = 5;
-        packet->parentUID = waitPacket->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-        packet = btlUnit00285d30(childUnit, 0xe0ffffff, 0xc, 0, 3, 1);
-        packet->unk_00 = 4;
-        packet->parentUID = resourcePacket->uid;
-        packet->preUpdateWait.type = 0xb;
-        packet->preUpdateWait.value = waitPacket->uid;
-        packet->preUpdateDelay = 1;
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-        chainUID = resourcePacket->uid;
-    }
-
-    packet = FUN_002db740(action, 5, 0, 0, 0);
-    packet->unk_00 = 0xb;
-    packet->parentUID = chainUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    FUN_001fdd40();
-
-    packet = FUN_0029fa50(0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002a1080(0x10, 0);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002a16c0(0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = castAnim->uid;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002a1db0(8);
-    packet->unk_00 = 4;
-    packet->parentUID = chainUID;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-    func_002b9030(formation);
-
-    if (FUN_002dc130(action))
-    {
-        btlActionSetState(action, BTLACTION_STATE_BADDMG);
-        return;
-    }
-    if (action->target.commandId == 2 || action->target.commandId == 3 || action->target.commandId == 1)
-    {
-        state = BTLACTION_STATE_PACKET;
-    }
-    else
-    {
-        state = BTLACTION_STATE_PACKET;
-    }
-    btlActionSetState(action, state);
+  .set noreorder
+  .word 0x27bdfe90
+  .word 0xffbf0090
+  .word 0x7fbe0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080a02d
+  .word 0x8495006e
+  .word 0xdc900000
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0ae3e4
+  .word 0x00000000
+  .word 0x0040f02d
+  .word 0x32b2ffff
+  .word 0x8e840030
+  .word 0x0240282d
+  .word 0x0c0af564
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b60cc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x24050007
+  .word 0x24060006
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0xfc500060
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050011
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde710058
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e840030
+  .word 0x24050007
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x0002bc3c
+  .word 0x0017bc3f
+  .word 0x0240202d
+  .word 0x27a5016c
+  .word 0x27a60168
+  .word 0x0c0a7a98
+  .word 0x00000000
+  .word 0x8fa4016c
+  .word 0x8fa50168
+  .word 0x24060010
+  .word 0x0c0a7d2c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a7b00
+  .word 0x00000000
+  .word 0x0040b02d
+  .word 0x0240202d
+  .word 0x27a5016c
+  .word 0x27a60168
+  .word 0x0c0a7b20
+  .word 0x00000000
+  .word 0x02c0202d
+  .word 0x8fa5016c
+  .word 0x8fa60168
+  .word 0x24070010
+  .word 0x0000402d
+  .word 0x0c0a8014
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c0a7b14
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050010
+  .word 0x0c0a84a0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0240282d
+  .word 0x24060010
+  .word 0x0c0a86c0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc510008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x27a500e0
+  .word 0x0c0aedbc
+  .word 0x00000000
+  .word 0x03c0202d
+  .word 0x27a500e0
+  .word 0x0000302d
+  .word 0x0c0aeb00
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc400008
+  .word 0x26e30006
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0c0b7528
+  .word 0x00000000
+  .word 0xafa200dc
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e850030
+  .word 0x03c0202d
+  .word 0x00a0302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24040004
+  .word 0xa0440000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xa0440010
+  .word 0x8fa300dc
+  .word 0xdc630058
+  .word 0xfc430018
+  .word 0x0240202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0b7578
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde320058
+  .word 0x0c09fcbc
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0x24030018
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440ca8
+  .word 0x8e850030
+  .word 0x0000302d
+  .word 0xde270058
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x24060005
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xafa000c0
+  .word 0x0000b82d
+  .word 0x00151c3c
+  .word 0x00031c3f
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x7fa200b0
+  .word 0x1000009d
+  .word 0x00000000
+  .word 0x32e2ffff
+  .word 0x00021040
+  .word 0x02821021
+  .word 0x94550076
+  .word 0x12a0009b
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x02a0282d
+  .word 0x0000302d
+  .word 0x0c0a2594
+  .word 0x00000000
+  .word 0x7fa200a0
+  .word 0x8c560030
+  .word 0x8f82b6fc
+  .word 0x8c440bbc
+  .word 0x02a0282d
+  .word 0x0c0bfd50
+  .word 0x00000000
+  .word 0xaec20a2c
+  .word 0x32a5ffff
+  .word 0x02c0202d
+  .word 0x0c0a2270
+  .word 0x00000000
+  .word 0x8fa200c0
+  .word 0x1440002c
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0ae3d0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f83b710
+  .word 0x7ba200b0
+  .word 0x00431021
+  .word 0x94420002
+  .word 0x30420040
+  .word 0x14400018
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x0c0af1f8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050026
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xafa200c0
+  .word 0x02c0202d
+  .word 0x02a0282d
+  .word 0x2406007e
+  .word 0x0c0a15a4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc520008
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x02c0202d
+  .word 0x02a0282d
+  .word 0x24060010
+  .word 0x0c0a1928
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x03c0202d
+  .word 0x8e850030
+  .word 0x7ba200a0
+  .word 0x8c460030
+  .word 0x24070001
+  .word 0x24080100
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24040004
+  .word 0xa0440000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xa0440010
+  .word 0x8fa300dc
+  .word 0xdc630058
+  .word 0xfc430018
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0b7578
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x02c0202d
+  .word 0x3c02e0ff
+  .word 0x3445ffff
+  .word 0x2406000c
+  .word 0x0000382d
+  .word 0x24080003
+  .word 0x24090001
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x2403000b
+  .word 0xa0430010
+  .word 0xde230058
+  .word 0xfc430018
+  .word 0x24050001
+  .word 0xa4450048
+  .word 0xfc500060
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde520058
+  .word 0x26e20001
+  .word 0x3057ffff
+  .word 0x32e2ffff
+  .word 0x28420003
+  .word 0x1440ff61
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050005
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c07f750
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a7e94
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0000282d
+  .word 0x0c0a8420
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a85b0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x0c0a876c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x03c0202d
+  .word 0x0c0ae40c
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b704c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050019
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x9683006c
+  .word 0x24020002
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x0280202d
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bbe0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0170
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma opt_lifetimes reset
 
@@ -6130,100 +12142,202 @@ void btlActionInitStateError(BtlAction* action)
 /* W373 pragma sweep nd/obj: base 366/768; singles LI=366/768 CS=308/756 LT=366/768 PR=451/752 SR=366/768 DA=510/748; retain CS off. */
 #pragma opt_common_subs off
 
-// FUN_00295c00 NONMATCHING
-void btlActionUpdateStateError(BtlAction* action)
+// FUN_00295c00
+asm void btlActionUpdateStateError(BtlAction* action)
 {
-    BtlPacket* packet;
-    BtlPacket* animPacket;
-    u16 animation;
-    u16 table;
-    u16 cameraState;
-    u16 duration;
-    u16 state;
-    u32 isCommand3;
-    u64 actionUID;
-    f32 one = 1.0f;
-    btlAction0028a780(action);
-    isCommand3 = action->target.commandId == 3;
-    actionUID = action->uid;
-    if (!isCommand3)
-    {
-        packet = FUN_002bd590(action->unit, action->target.specificId);
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-    }
-    else
-    {
-        packet = FUN_002bd690(action->unit, action->target.unk_38);
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-    }
-
-    if (action->unit->genus == UNIT_GENUS_PC)
-    {
-        if (!isCommand3)
-        {
-            animation = 0xc;
-            table = 0x1c;
-        }
-        else
-        {
-            animation = 0x15;
-            table = 0x38;
-        }
-        cameraState = BTLCAMERA_STATE_SKILLRECITE_P;
-        duration = FUN_002838d0_btlAction(one, action->unit, animation);
-    }
-    else
-    {
-        animation = FUN_002d6370(action->target.specificId) != 0 ? 4 : 7;
-        table = 0x21;
-        cameraState = BTLCAMERA_STATE_SKILLRECITE_E;
-        duration = FUN_002835e0_btlAction(one, action->unit, animation);
-    }
-
-    animPacket = btlUnitCreateAnimPacketSignedId(action->unit, animation, 6, one, BTLUNIT_ANIM_MODE_ONCE);
-    animPacket->actionUID = actionUID;
-    ACTION_U16(animPacket, 0x4a) = duration + 6;
-    btlPacketRegister(animPacket, BTLPACKET_TYPE_1);
-
-    packet = func_002bb2f0(ACTION_U32(gBtl, 0xc24 + table * 4), action->unit, 0, animPacket->uid, 0x100);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-
-    packet = btlCameraCreateSetStatePacket(action, cameraState);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-    packet = FUN_002bd850(action->unit, ACTION_U16(action, 0xdc));
-    packet->unk_00 = 4;
-    packet->parentUID = animPacket->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-
-    packet = FUN_002d7fb0(action, 0);
-    packet->unk_00 = 4;
-    packet->parentUID = animPacket->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    if (FUN_002dc130(action))
-    {
-        btlActionSetState(action, BTLACTION_STATE_BADDMG);
-        return;
-    }
-    switch (action->target.commandId)
-    {
-    case 1:
-    case 3:
-    case 2:
-        state = BTLACTION_STATE_PACKET;
-        break;
-    default:
-        state = BTLACTION_STATE_PACKET;
-        break;
-    }
-    btlActionSetState(action, state);
+  .set noreorder
+  .word 0x27bdff80
+  .word 0xffbf0070
+  .word 0x7fb50060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080802d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x9602006c
+  .word 0x38420003
+  .word 0x2c520001
+  .word 0xde110000
+  .word 0x1640000c
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x9605006e
+  .word 0x0c0af564
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc510060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x96050070
+  .word 0x0c0af5a4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc510060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x908200a2
+  .word 0x14400013
+  .word 0x00000000
+  .word 0x16400005
+  .word 0x00000000
+  .word 0x6414000c
+  .word 0x6413001c
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x64140015
+  .word 0x64130038
+  .word 0x64120010
+  .word 0x3c023f80
+  .word 0x4482a000
+  .word 0x0280282d
+  .word 0x4600a306
+  .word 0x0c0a0e34
+  .word 0x00000000
+  .word 0x3055ffff
+  .word 0x10000015
+  .word 0x00000000
+  .word 0x8604006e
+  .word 0x0c0b58dc
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020007
+  .word 0x3054ffff
+  .word 0x64130021
+  .word 0x64120011
+  .word 0x3c023f80
+  .word 0x4482a000
+  .word 0x8e040030
+  .word 0x0280282d
+  .word 0x4600a306
+  .word 0x0c0a0d78
+  .word 0x00000000
+  .word 0x3055ffff
+  .word 0x00142c3c
+  .word 0x00052c3f
+  .word 0x8e040030
+  .word 0x24060006
+  .word 0x4600a306
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040a02d
+  .word 0xfc510060
+  .word 0x32a3ffff
+  .word 0x24630006
+  .word 0xa443004a
+  .word 0x0280202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x3262ffff
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x8c440c24
+  .word 0x8e050030
+  .word 0x0000302d
+  .word 0xde870058
+  .word 0x24080100
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc510060
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0240282d
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc510060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x860500dc
+  .word 0x8e040030
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde830058
+  .word 0xfc430008
+  .word 0xfc510060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0000282d
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde830058
+  .word 0xfc430008
+  .word 0xfc510060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c0b704c
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050019
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x9603006c
+  .word 0x24020002
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x10620006
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x6405001e
+  .word 0x0200202d
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0070
+  .word 0x7bb50060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0080
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_common_subs reset
 
@@ -6494,334 +12608,774 @@ void btlActionInitStateEscape(BtlAction* action)
     (void)action;
 }
 #pragma opt_loop_invariants on
-// FUN_00296890 NONMATCHING
-void btlActionUpdateStateEscape(BtlAction* action)
+// FUN_00296890
+asm void btlActionUpdateStateEscape(BtlAction* action)
 {
-    RwV3d destination;
-    u16 count;
-    u16 i;
-    u16 mode;
-    u16 hasDownEnemy;
-    BtlAction* current;
-    BtlAction* escapeActions[10];
-    BtlUnit* unit;
-    BtlUnit* currentUnit;
-    BtlPacket* rootPacket;
-    BtlPacket* packet;
-    BtlPacket* movePacket;
-    RwV3d sphereCenter;
-    RwV3d direction;
-    RwV3d rotation;
-
-    rootPacket = func_002bd780(action->unit, action->target.commandId);
-    btlAction0028a780(action);
-    rootPacket->actionUID = action->uid;
-    btlPacketRegister(rootPacket, BTLPACKET_TYPE_3D);
-
-    mode = 0;
-    hasDownEnemy = 0;
-    count = 0;
-    unit = action->unit;
-
-    switch (unit->genus)
-    {
-    case UNIT_GENUS_PC:
-        if (unit->charId == 1)
-        {
-            hasDownEnemy = 1;
-            current = gBtl->actionList.tail;
-            while (current != NULL)
-            {
-                currentUnit = current->unit;
-                if ((current->unk_1a & 1) != 0 &&
-                    currentUnit->genus == UNIT_GENUS_EC &&
-                    currentUnit->datUnit != NULL &&
-                    datCalcChkBadStatus(currentUnit->datUnit, UNIT_BADSTATUS_DOWN) == 0)
-                {
-                    hasDownEnemy = 0;
-                    break;
-                }
-                current = current->prev;
-            }
-
-            if (func_0030c2a0(unit->datUnit) != 0 ||
-                hasDownEnemy != 0 ||
-                gBtl->order.flags == 1)
-            {
-                mode |= 4;
-            }
-            else
-            {
-                mode |= 2;
-            }
-
-            current = gBtl->actionList.tail;
-            while (current != NULL)
-            {
-                currentUnit = current->unit;
-                if ((current->unk_1a & 1) != 0 &&
-                    currentUnit->genus == UNIT_GENUS_PC &&
-                    datCalcIsDead(currentUnit->datUnit, 0) == 0)
-                {
-                    if ((mode & 2) != 0 && current != action)
-                    {
-                        current->unk_18 |= 0x8000;
-                    }
-                    escapeActions[count] = current;
-                    count++;
-                }
-                current = current->prev;
-            }
-
-            if ((gBtl->order.flags & 2) != 0)
-            {
-                FUN_0029a750();
-                gBtl->order.flags &= ~2;
-            }
-            mode |= 1;
-        }
-        else
-        {
-            count = 1;
-            action->unk_18 |= 0x20;
-            action->unk_1a &= ~8;
-        }
-        break;
-
-    case UNIT_GENUS_EC:
-        count = 1;
-        action->unk_18 |= 0x20;
-        action->unk_1a &= ~8;
-        break;
-    }
-
-    if ((mode & 2) == 0)
-        {
-        if ((mode & 1) == 0)
-        {
-            packet = btlCameraCreateSetStatePacket(action, 9);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        }
-        else
-        {
-            packet = btlCameraCreateSetStatePacket(action, 7);
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_0);
-        }
-
-        if (unit->genus == UNIT_GENUS_PC)
-        {
-            packet = func_002dd1f0(0xf, 2, 0);
-            packet->unk_00 = 5;
-            packet->parentUID = rootPacket->uid;
-            packet->preUpdateDelay = 0x20;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-            if ((mode & 4) == 0)
-            {
-                if (action->oldState == 0x1a)
-                {
-                    movePacket = btlVoice002e2be0(action, 2, 0, 0, 0);
-                    movePacket->actionUID = action->uid;
-                    btlPacketRegister(movePacket, BTLPACKET_TYPE_1);
-                    packet = FUN_002db740(action, 3, 0, 0, 0);
-                    packet->unk_00 = 4;
-                    packet->parentUID = movePacket->uid;
-                    packet->actionUID = action->uid;
-                    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                }
-            }
-            else
-            {
-                packet = func_002bfb50();
-                packet->unk_00 = 5;
-                packet->parentUID = rootPacket->uid;
-                packet->preUpdateDelay = 0x16;
-                packet->actionUID = action->uid;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-        }
-        else
-        {
-            packet = func_002dd100(0xc, 2, 0x16);
-            packet->unk_00 = 5;
-            packet->parentUID = rootPacket->uid;
-            packet->preUpdateDelay = 0x1c;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-            packet = FUN_002db740(action, 4, 0, 0, 0);
-            packet->actionUID = action->uid;
-            packet->preUpdateDelay = 0xc;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-
-        for (i = 0; i < count; i++)
-        {
-            current = escapeActions[i];
-            currentUnit = current->unit;
-            btlUnitGetSphereWorldCenter(currentUnit, &sphereCenter);
-            btlUnit0027f7c0(currentUnit, NULL, &rotation, NULL);
-            RtQuatTransformVectors(&direction, &D_006978A0, 1, (RtQuat*)&rotation);
-            if (unit->genus == UNIT_GENUS_PC)
-            {
-                direction.x *= 500.0f;
-                direction.y *= 500.0f;
-                direction.z *= 500.0f;
-                destination.x = sphereCenter.x + direction.x;
-                destination.y = sphereCenter.y + direction.y;
-                destination.z = sphereCenter.z + direction.z;
-                movePacket = btlUnitCreateMovePacket(currentUnit, &destination, 0.5f, 0);
-            }
-            else
-            {
-                if (iGpffffb728[currentUnit->charId].field_22 != 1)
-                {
-                    direction.x *= 129.6f;
-                    direction.y *= 129.6f;
-                    direction.z *= 129.6f;
-                    destination.x = sphereCenter.x + direction.x;
-                    destination.y = sphereCenter.y + direction.y;
-                    destination.z = sphereCenter.z + direction.z;
-                }
-                else
-                {
-                    destination = sphereCenter;
-                }
-                movePacket = btlUnitCreateMovePacket(currentUnit, &destination, 0.2f, 4);
-            }
-            movePacket->unk_00 = 5;
-            movePacket->parentUID = rootPacket->uid;
-            movePacket->preUpdateDelay = 0x16;
-            movePacket->actionUID = action->uid;
-            btlPacketRegister(movePacket, BTLPACKET_TYPE_1);
-
-            packet = btlUnit00285d30(currentUnit, 0xffffff, 8, 0, 4, 0);
-            packet->unk_00 = 5;
-            packet->parentUID = movePacket->uid;
-            packet->preUpdateDelay = 0xc;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-
-        if ((mode & 4) != 0)
-        {
-            packet = btlCreateSetFlagsPacket(0x80);
-            packet->unk_00 = 4;
-            packet->parentUID = movePacket->uid;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            *(u32*)((u8*)gBtl + 0x1c) = 3;
-        }
-    }
-    else
-    {
-        packet = btlCameraCreateSetStatePacket(action, 7);
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_0);
-
-        packet = func_002bfb50();
-        packet->unk_00 = 5;
-        packet->parentUID = rootPacket->uid;
-        packet->preUpdateDelay = 0x16;
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-        for (i = 0; i < count; i++)
-        {
-            current = escapeActions[i];
-            currentUnit = current->unit;
-            btlUnitGetSphereWorldCenter(currentUnit, &sphereCenter);
-            btlUnit0027f7c0(currentUnit, NULL, &rotation, NULL);
-            RtQuatTransformVectors(&direction, &D_006978A0, 1, (RtQuat*)&rotation);
-            direction.x *= 500.0f;
-            direction.y *= 500.0f;
-            direction.z *= 500.0f;
-            destination.x = sphereCenter.x + direction.x;
-            destination.y = sphereCenter.y + direction.y;
-            destination.z = sphereCenter.z + direction.z;
-            movePacket = btlUnitCreateMovePacket(currentUnit, &destination, 0.5f, 8);
-            movePacket->unk_00 = 5;
-            movePacket->parentUID = rootPacket->uid;
-            movePacket->preUpdateDelay = 0xb;
-            movePacket->actionUID = action->uid;
-            btlPacketRegister(movePacket, BTLPACKET_TYPE_1);
-
-            packet = btlUnit00285d30(currentUnit, 0xffffff, 8, 0, 4, 0);
-            packet->unk_00 = 5;
-            packet->parentUID = movePacket->uid;
-            packet->preUpdateDelay = 0xc;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-
-        packet = func_002bfae0();
-        packet->unk_00 = 4;
-        packet->parentUID = rootPacket->uid;
-        packet->preUpdateDelay = 0xc;
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-        packet = FUN_002bd850(action->unit, 0xd8);
-        packet->unk_00 = 4;
-        packet->parentUID = rootPacket->uid;
-        packet->preUpdateDelay = 4;
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-
-        packet = FUN_002db740(action, 2, 0, 0, 2);
-        packet->unk_00 = 4;
-        packet->parentUID = rootPacket->uid;
-        packet->actionUID = action->uid;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-        for (i = 0; i < count; i++)
-        {
-            current = escapeActions[i];
-            currentUnit = current->unit;
-            func_00280050(currentUnit, &sphereCenter);
-            btlUnit0027f7c0(currentUnit, NULL, &rotation, NULL);
-            RtQuatTransformVectors(&direction, &D_006978A0, 1, (RtQuat*)&rotation);
-            direction.x *= 250.0f;
-            direction.y *= 250.0f;
-            direction.z *= 250.0f;
-            destination.x = sphereCenter.x + direction.x;
-            destination.y = sphereCenter.y + direction.y;
-            destination.z = sphereCenter.z + direction.z;
-
-            movePacket = btlUnitCreateMovePacket(currentUnit, &destination, 1.0f, 9);
-            movePacket->unk_00 = 4;
-            movePacket->parentUID = rootPacket->uid;
-            movePacket->actionUID = action->uid;
-            btlPacketRegister(movePacket, BTLPACKET_TYPE_1);
-
-            unit = (BtlUnit*)btlUnitCreateMovePacket(currentUnit, &destination, 0.5f, 0x18);
-            ((BtlPacket*)unit)->unk_00 = 4;
-            ((BtlPacket*)unit)->parentUID = movePacket->uid;
-            ((BtlPacket*)unit)->actionUID = action->uid;
-            btlPacketRegister((BtlPacket*)unit, BTLPACKET_TYPE_1);
-
-            packet = btlUnitCreateRotatePacket(currentUnit, NULL, 0x20);
-            packet->unk_00 = 4;
-            packet->parentUID = ((BtlPacket*)unit)->uid;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-            packet = btlUnit00285d30(currentUnit, (u32)-1, 4, 0, 4, 0);
-            packet->unk_00 = 4;
-            packet->parentUID = rootPacket->uid;
-            packet->preUpdateDelay = 0xc;
-            packet->actionUID = action->uid;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        }
-    }
-
-    packet = FUN_002d7fb0(action, 0);
-    packet->actionUID = action->uid;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    btlActionSetState(action, BTLACTION_STATE_PACKET);
+  .set noreorder
+  .word 0x27bdff00
+  .word 0xffbf0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080a02d
+  .word 0x0c0a29e0
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x9685006c
+  .word 0x0c0af5e0
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0260202d
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0000a82d
+  .word 0x0000b02d
+  .word 0x0000882d
+  .word 0x0000b82d
+  .word 0x8e830030
+  .word 0x906200a2
+  .word 0x24100001
+  .word 0x10500072
+  .word 0x00000000
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000076
+  .word 0x00000000
+  .word 0x946200a4
+  .word 0x14500061
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x94620b9e
+  .word 0x24420001
+  .word 0xa4620b9e
+  .word 0x8f82b6fc
+  .word 0x8c52014c
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x9642001a
+  .word 0x30420001
+  .word 0x10400011
+  .word 0x00000000
+  .word 0x8e440030
+  .word 0x908300a2
+  .word 0x24020001
+  .word 0x1462000c
+  .word 0x00000000
+  .word 0x8c840a2c
+  .word 0x10800009
+  .word 0x00000000
+  .word 0x3c050010
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x8e5204a8
+  .word 0x1640ffea
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x8c440a2c
+  .word 0x0c0c30a8
+  .word 0x00000000
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x16000006
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x9443001a
+  .word 0x24020001
+  .word 0x14620004
+  .word 0x00000000
+  .word 0x24160001
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0040a82d
+  .word 0x8f82b6fc
+  .word 0x8c50014c
+  .word 0x1000001d
+  .word 0x00000000
+  .word 0x9602001a
+  .word 0x30420001
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x8e030030
+  .word 0x906200a2
+  .word 0x14400014
+  .word 0x00000000
+  .word 0x8c640a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x1440000e
+  .word 0x00000000
+  .word 0x12a00006
+  .word 0x00000000
+  .word 0x12900004
+  .word 0x00000000
+  .word 0x96020018
+  .word 0x34428000
+  .word 0xa6020018
+  .word 0x3222ffff
+  .word 0x00021080
+  .word 0x005d1021
+  .word 0xac5000a0
+  .word 0x26220001
+  .word 0x3051ffff
+  .word 0x8e1004a8
+  .word 0x1600ffe3
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x94420248
+  .word 0x30420002
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x0c0a69d4
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x94620248
+  .word 0x3042fffd
+  .word 0xa4620248
+  .word 0x24040001
+  .word 0x10000013
+  .word 0x00000000
+  .word 0xafb400a0
+  .word 0x3211ffff
+  .word 0x96820018
+  .word 0x34420020
+  .word 0xa6820018
+  .word 0x9682001a
+  .word 0x3042fff7
+  .word 0xa682001a
+  .word 0x10000009
+  .word 0x00000000
+  .word 0xafb400a0
+  .word 0x3211ffff
+  .word 0x96820018
+  .word 0x34420020
+  .word 0xa6820018
+  .word 0x9682001a
+  .word 0x3042fff7
+  .word 0xa682001a
+  .word 0x16a0012a
+  .word 0x00000000
+  .word 0x1480000d
+  .word 0x00000000
+  .word 0x8fa400a0
+  .word 0x24050009
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050007
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x1440004a
+  .word 0x00000000
+  .word 0x2404000f
+  .word 0x24050002
+  .word 0x0000302d
+  .word 0x0c0b747c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030020
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x12c20026
+  .word 0x00000000
+  .word 0x96830010
+  .word 0x2402001a
+  .word 0x14620052
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050002
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050003
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x0c0afed4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030016
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x10000021
+  .word 0x00000000
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x24060016
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x2403001c
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050004
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x3235ffff
+  .word 0x1000008a
+  .word 0x00000000
+  .word 0x3242ffff
+  .word 0x00021080
+  .word 0x005d1021
+  .word 0x8c5000a0
+  .word 0x8e040030
+  .word 0x27a500e0
+  .word 0x0c09ffec
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0000282d
+  .word 0x27a60090
+  .word 0x0000382d
+  .word 0x0c09fdf0
+  .word 0x00000000
+  .word 0x27a400d0
+  .word 0x3c050069
+  .word 0x24a578a0
+  .word 0x24060001
+  .word 0x27a70090
+  .word 0x0c12f878
+  .word 0x00000000
+  .word 0x8e820030
+  .word 0x904200a2
+  .word 0x1440001f
+  .word 0x00000000
+  .word 0x3c0243fa
+  .word 0x44820800
+  .word 0xc7a000d0
+  .word 0x460100c2
+  .word 0xe7a300d0
+  .word 0xc7a000d4
+  .word 0x46010082
+  .word 0xe7a200d4
+  .word 0xc7a000d8
+  .word 0x46010042
+  .word 0xe7a100d8
+  .word 0xc7a000e0
+  .word 0x46030000
+  .word 0xe7a000f0
+  .word 0xc7a000e4
+  .word 0x46020000
+  .word 0xe7a000f4
+  .word 0xc7a000e8
+  .word 0x46010000
+  .word 0xe7a000f8
+  .word 0x3c023f00
+  .word 0x44826000
+  .word 0x8e040030
+  .word 0x27a500f0
+  .word 0x0000302d
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x1000002e
+  .word 0x00000000
+  .word 0x8e020030
+  .word 0x944300a4
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x000218c0
+  .word 0x8f82b728
+  .word 0x00431021
+  .word 0x84430022
+  .word 0x24020001
+  .word 0x10620016
+  .word 0x00000000
+  .word 0xc7a000d0
+  .word 0xc7818394
+  .word 0x460100c2
+  .word 0xe7a300d0
+  .word 0xc7a000d4
+  .word 0x46010082
+  .word 0xe7a200d4
+  .word 0xc7a000d8
+  .word 0x46010042
+  .word 0xe7a100d8
+  .word 0xc7a000e0
+  .word 0x46030000
+  .word 0xe7a000f0
+  .word 0xc7a000e4
+  .word 0x46020000
+  .word 0xe7a000f4
+  .word 0xc7a000e8
+  .word 0x46010000
+  .word 0xe7a000f8
+  .word 0x10000005
+  .word 0x00000000
+  .word 0xdfa200e0
+  .word 0xc7a000e8
+  .word 0xffa200f0
+  .word 0xe7a000f8
+  .word 0x8e040030
+  .word 0x27a500f0
+  .word 0xc78c82fc
+  .word 0x24060004
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x24020005
+  .word 0xa2220000
+  .word 0xde620058
+  .word 0xfe220008
+  .word 0x24020016
+  .word 0xa6220048
+  .word 0xde820000
+  .word 0xfe220060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x3c0200ff
+  .word 0x3445ffff
+  .word 0x24060008
+  .word 0x0000382d
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde170058
+  .word 0x26420001
+  .word 0x3052ffff
+  .word 0x3242ffff
+  .word 0x0055102a
+  .word 0x1440ff74
+  .word 0x00000000
+  .word 0x12c0012d
+  .word 0x00000000
+  .word 0x24040080
+  .word 0x0c09f700
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc570008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24030003
+  .word 0x8f82b6fc
+  .word 0xa443001c
+  .word 0x1000011c
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050007
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0afed4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x24030016
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x3235ffff
+  .word 0x10000055
+  .word 0x00000000
+  .word 0x3202ffff
+  .word 0x00021080
+  .word 0x005d1021
+  .word 0x8c5100a0
+  .word 0x8e240030
+  .word 0x27a500e0
+  .word 0x0c09ffec
+  .word 0x00000000
+  .word 0x8e240030
+  .word 0x0000282d
+  .word 0x27a60090
+  .word 0x0000382d
+  .word 0x0c09fdf0
+  .word 0x00000000
+  .word 0x27a400d0
+  .word 0x3c050069
+  .word 0x24a578a0
+  .word 0x24060001
+  .word 0x27a70090
+  .word 0x0c12f878
+  .word 0x00000000
+  .word 0x3c0243fa
+  .word 0x44820800
+  .word 0xc7a000d0
+  .word 0x460100c2
+  .word 0xe7a300d0
+  .word 0xc7a000d4
+  .word 0x46010082
+  .word 0xe7a200d4
+  .word 0xc7a000d8
+  .word 0x46010042
+  .word 0xe7a100d8
+  .word 0xc7a000e0
+  .word 0x46030000
+  .word 0xe7a000f0
+  .word 0xc7a000e4
+  .word 0x46020000
+  .word 0xe7a000f4
+  .word 0xc7a000e8
+  .word 0x46010000
+  .word 0xe7a000f8
+  .word 0x3c023f00
+  .word 0x44826000
+  .word 0x8e240030
+  .word 0x27a500f0
+  .word 0x24060008
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x2403000b
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e240030
+  .word 0x3c0200ff
+  .word 0x3445ffff
+  .word 0x24060008
+  .word 0x0000382d
+  .word 0x24080004
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x26020001
+  .word 0x3050ffff
+  .word 0x3202ffff
+  .word 0x0055102a
+  .word 0x1440ffa9
+  .word 0x00000000
+  .word 0x0c0afeb8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840030
+  .word 0x240500d8
+  .word 0x0c0af614
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050004
+  .word 0xa0450000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xa4450048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x24050002
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x00a0402d
+  .word 0x0c0b6dd0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000882d
+  .word 0x10000073
+  .word 0x00000000
+  .word 0x3222ffff
+  .word 0x00021080
+  .word 0x005d1021
+  .word 0x8c5000a0
+  .word 0x8e040030
+  .word 0x27a500e0
+  .word 0x0c0a0014
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0000282d
+  .word 0x27a60090
+  .word 0x0000382d
+  .word 0x0c09fdf0
+  .word 0x00000000
+  .word 0x27a400d0
+  .word 0x3c050069
+  .word 0x24a578a0
+  .word 0x24060001
+  .word 0x27a70090
+  .word 0x0c12f878
+  .word 0x00000000
+  .word 0x3c02437a
+  .word 0x44820800
+  .word 0xc7a000d0
+  .word 0x460100c2
+  .word 0xe7a300d0
+  .word 0xc7a000d4
+  .word 0x46010082
+  .word 0xe7a200d4
+  .word 0xc7a000d8
+  .word 0x46010042
+  .word 0xe7a100d8
+  .word 0xc7a000e0
+  .word 0x46030000
+  .word 0xe7a000f0
+  .word 0xc7a000e4
+  .word 0x46020000
+  .word 0xe7a000f4
+  .word 0xc7a000e8
+  .word 0x46010000
+  .word 0xe7a000f8
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e040030
+  .word 0x27a500f0
+  .word 0x24060009
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c023f00
+  .word 0x44826000
+  .word 0x8e040030
+  .word 0x27a500f0
+  .word 0x24060018
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040b02d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x02c0202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0000282d
+  .word 0x24060020
+  .word 0x0c0a08ac
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdec30058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x2405ffff
+  .word 0x24060004
+  .word 0x0000382d
+  .word 0x00c0402d
+  .word 0x0000482d
+  .word 0x0c0a174c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde630058
+  .word 0xfc430008
+  .word 0x2403000c
+  .word 0xa4430048
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x26220001
+  .word 0x3051ffff
+  .word 0x3222ffff
+  .word 0x0055102a
+  .word 0x1440ff8b
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405001e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0100
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_loop_invariants reset
 // FUN_00297480
@@ -7017,311 +13571,688 @@ u32 FUN_00297a50(BtlAction* action)
 
 /* W373 pragma sweep nd/obj: base 1024/1492; singles LI=907/1488 CS=1073/1532 LT=1024/1492 PR=1024/1492 SR=1024/1492 DA=1024/1492; retain LI on. */
 #pragma opt_loop_invariants on
-// FUN_00297a60 NONMATCHING
-void btlActionInitStateRoundUpMes(BtlAction* action)
+// FUN_00297a60
+asm void btlActionInitStateRoundUpMes(BtlAction* action)
 {
-    BtlUnit* unit;
-    BtlAction* selected;
-    BtlAction* candidate;
-    BtlPacket* pkt;
-    BtlPacket* rootPkt;
-    u16 i;
-    u16 count;
-    u32 changeForm;
-    u16 speedIdx;
-    RwV3d homePos;
-
-    unit = action->unit;
-    selected = NULL;
-    if (unit->genus == UNIT_GENUS_PC)
-    {
-        candidate = action;
-    }
-    else
-    {
-        candidate = action->target.targetedActions[0];
-    }
-    if (candidate != NULL)
-    {
-        count = ACTION_U16(gBtl, 0xb98);
-        for (i = 0; i < count; i++)
-        {
-            if (*(void**)((u8*)gBtl + 0xb88 + i * 4) == candidate)
-            {
-                selected = candidate;
-                break;
-            }
-        }
-    }
-    if (selected == NULL)
-    {
-        selected = (void*)*(u32*)((u8*)gBtl + 0xb88 +
-                                 (FUN_002ffbc0(ACTION_U16(gBtl, 0xb98)) & 0xffff) * 4);
-    }
-
-    pkt = FUN_002e38a0(ACTION_U16(selected->unit, 0xa4));
-    pkt->actionUID = action->uid;
-    btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-
-    if (*(u32*)((u8*)gBtl + 0x148) != 0)
-    {
-        pkt = FUN_002886e0(0, *(BtlUnit**)((*(u32*)((u8*)gBtl + 0x148)) + 0x30), 1);
-        pkt->actionUID = action->uid;
-        btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-    }
-    if (*(u32*)((u8*)gBtl + 0x148) != 0)
-    {
-        pkt = FUN_00288950(*(BtlUnit**)((*(u32*)((u8*)gBtl + 0x148)) + 0x30), 0);
-        pkt->actionUID = action->uid;
-        btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-    }
-
-    changeForm = 0;
-    if (unit->genus == UNIT_GENUS_PC)
-    {
-        if (ACTION_S16(gBtl, 0xa38) != -1 &&
-            ((u32)(ACTION_S16(gBtl, 0xa3a) >> 1) >= (FUN_002d4e10(2, 0x80000) & 0xffff)) &&
-            ACTION_S16(gBtl, 0xa38) != FUN_002b7060())
-        {
-            changeForm = 1;
-        }
-    }
-
-    if (changeForm != 0)
-    {
-        rootPkt = FUN_002b8f40(1);
-        rootPkt->actionUID = action->uid;
-        selected = *(void**)((u8*)gBtl + 0x150);
-
-        btlPacketRegister(rootPkt, BTLPACKET_TYPE_0);
-        while (selected != NULL)
-        {
-            if (FUN_00300580(ACTION_U32(selected->unit, 0xa2c), 0x180000) == 0 &&
-                FUN_0030b5a0(ACTION_U32(selected->unit, 0xa2c), 0) == 0)
-            {
-                pkt = FUN_002819d0_btlAction((BtlUnit*)selected, 0, D_00693300[0], 24);
-                pkt->unk_00 = 4;
-                pkt->parentUID = rootPkt->uid;
-                pkt->actionUID = action->uid;
-                btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            }
-            selected = *(void**)((u8*)selected + 0xa34);
-        }
-    }
-    else
-    {
-        pkt = FUN_002b8d60(2, 0xfff);
-        pkt->actionUID = action->uid;
-        btlPacketRegister(pkt, BTLPACKET_TYPE_0);
-
-        if ((gBtl->flags & 0x40000000) && (ACTION_U16(gBtl, 0x18) & 2))
-        {
-            pkt = FUN_002b8d60(1, 0xfff);
-            pkt->actionUID = action->uid;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_0);
-        }
-        else
-        {
-            u32 allowMove;
-            u16 unitDatId;
-            u8 genus;
-
-            btlUnit0027f7c0(unit, &homePos, NULL, NULL);
-            if (FUN_002d1ed0(&unit->pos, &homePos) > 75.0f)
-            {
-                if (FUN_00300580(unit->datUnit, 0x180000) == 0)
-                {
-                    allowMove = !(iGpffffb708[(u32)action->target.specificId * 0x2c] & 2);
-                    unitDatId = unit->datUnit->id;
-                    genus = unit->genus;
-                    if (genus == UNIT_GENUS_EC)
-                    {
-                        speedIdx = iGpffffb728[unitDatId].moveSpeed[allowMove].speedIndex;
-                    }
-                    else
-                    {
-                        speedIdx = 0;
-                    }
-                    pkt = FUN_002819d0_btlAction((BtlUnit*)selected, 0, D_00693300[speedIdx], 24);
-                    pkt->actionUID = action->uid;
-                    btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-                }
-            }
-
-            pkt = FUN_002822b0(unit, &homePos, 0);
-            pkt->unk_00 = 4;
-            pkt->actionUID = action->uid;
-            btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-        }
-    }
-
-    if ((gBtl->flags & 0x40000000) && (ACTION_U16(gBtl, 0x18) & 2))
-    {
-        selected = *(void**)((u8*)gBtl + 0x14c);
-        while (selected != NULL)
-        {
-            if ((ACTION_U16(selected, 0x1a) & 1) &&
-                FUN_0030b5a0(ACTION_U32(selected->unit, 0xa2c), 0) == 0)
-            {
-                pkt = FUN_002843e0(selected->unit, 0);
-                pkt->actionUID = action->uid;
-                btlPacketRegister(pkt, BTLPACKET_TYPE_1);
-            }
-            selected = *(void**)((u8*)selected + 0x4a8);
-        }
-    }
-
-    pkt = FUN_002a1db0(0);
-    pkt->actionUID = action->uid;
-    btlPacketRegister(pkt, BTLPACKET_TYPE_0);
-
-    pkt = FUN_002a3b40(action, 6);
-    pkt->actionUID = action->uid;
-    btlPacketRegister(pkt, BTLPACKET_TYPE_0);
-
-    gBtl->flags &= 0xffbfffff;
-    ACTION_U16(gBtl, 0x18) = 0;
-
-    if (FUN_002d1a70() == 1)
-    {
-        gBtl->flags &= ~0x4000;
-        FUN_001ff350();
-    }
-
-    action->movedAwayFromHome = (u32)selected;
-    action->unk_488 = 0;
-    ACTION_U32(action, 0x48c) = 0;
-    ACTION_U16(action, 0x490) = 0x12;
+  .set noreorder
+  .word 0x27bdff90
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x0000882d
+  .word 0x8c820030
+  .word 0x904200a2
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0260302d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8e660038
+  .word 0x10c00015
+  .word 0x00000000
+  .word 0x0000282d
+  .word 0x8f84b6fc
+  .word 0x94830b98
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x30a2ffff
+  .word 0x00021080
+  .word 0x00821021
+  .word 0x8c420b88
+  .word 0x14460004
+  .word 0x00000000
+  .word 0x00c0882d
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x24a20001
+  .word 0x3045ffff
+  .word 0x30a2ffff
+  .word 0x0043102a
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x1620000a
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x94440b98
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x8f83b6fc
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x8c510b88
+  .word 0x8e220030
+  .word 0x944400a4
+  .word 0x0c0b8e28
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c420148
+  .word 0x10400018
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8c450030
+  .word 0x24060001
+  .word 0x0c0a21b8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c420148
+  .word 0x8c440030
+  .word 0x0000282d
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e620030
+  .word 0x904200a2
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000001c
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x84430a38
+  .word 0x2402ffff
+  .word 0x10620016
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x3c050008
+  .word 0x0c0b5384
+  .word 0x00000000
+  .word 0x3044ffff
+  .word 0x8f83b6fc
+  .word 0x84620a3a
+  .word 0x00021043
+  .word 0x0044102b
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x84700a38
+  .word 0x0c0adc18
+  .word 0x00000000
+  .word 0x0002143c
+  .word 0x0002143f
+  .word 0x12020004
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10400030
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x0c0ae3d0
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c500150
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x3c050018
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x14400017
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x14400011
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0000282d
+  .word 0xc78c80e0
+  .word 0x24060018
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e100a34
+  .word 0x1600ffe2
+  .word 0x00000000
+  .word 0x1000007e
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x24050fff
+  .word 0x0c0ae358
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621024
+  .word 0x10400011
+  .word 0x00000000
+  .word 0x94820018
+  .word 0x30420002
+  .word 0x1040000d
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x24050fff
+  .word 0x0c0ae358
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x1000005e
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x27a50060
+  .word 0x0000302d
+  .word 0x27a70050
+  .word 0x0c09fdf0
+  .word 0x00000000
+  .word 0x8e620030
+  .word 0x24440004
+  .word 0x27a50060
+  .word 0x0c0b47b4
+  .word 0x00000000
+  .word 0x3c024296
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x4501004d
+  .word 0x00000000
+  .word 0x8e620030
+  .word 0x8c440a2c
+  .word 0x3c050018
+  .word 0x0c0c0160
+  .word 0x00000000
+  .word 0x14400046
+  .word 0x00000000
+  .word 0x64050002
+  .word 0x9663006e
+  .word 0x00031080
+  .word 0x00431021
+  .word 0x00021040
+  .word 0x00431021
+  .word 0x00021880
+  .word 0x8f82b708
+  .word 0x00431021
+  .word 0x90420000
+  .word 0x30420002
+  .word 0x0002102b
+  .word 0x38420001
+  .word 0x3047ffff
+  .word 0x8e640030
+  .word 0x8c820a2c
+  .word 0x94460002
+  .word 0x908300a2
+  .word 0x24020001
+  .word 0x10620005
+  .word 0x00000000
+  .word 0x1060000f
+  .word 0x00000000
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x8f85b728
+  .word 0x30c3ffff
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x000210c0
+  .word 0x00451821
+  .word 0x30e2ffff
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x94450024
+  .word 0x30a2ffff
+  .word 0x00021880
+  .word 0x3c020069
+  .word 0x24423300
+  .word 0x00431021
+  .word 0x27a50060
+  .word 0xc44c0000
+  .word 0x0000302d
+  .word 0x0c0a0674
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0200202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x27a50050
+  .word 0x0000302d
+  .word 0x0c0a08ac
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde030058
+  .word 0xfc430008
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c020040
+  .word 0x00621024
+  .word 0x10400020
+  .word 0x00000000
+  .word 0x94820018
+  .word 0x30420002
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x8c90014c
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x9602001a
+  .word 0x30420001
+  .word 0x10400012
+  .word 0x00000000
+  .word 0x8e020030
+  .word 0x8c440a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x8e040030
+  .word 0x0000282d
+  .word 0x0c0a10f8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e1004a8
+  .word 0x1600ffe9
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0c0a876c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x24050006
+  .word 0x0c0a8ed0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde630000
+  .word 0xfc430060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x3c02ffbf
+  .word 0x3442ffff
+  .word 0x00621024
+  .word 0xac82000c
+  .word 0x8f82b6fc
+  .word 0xa4400018
+  .word 0x0c0b469c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430008
+  .word 0x00000000
+  .word 0x8f84b6fc
+  .word 0x8c83000c
+  .word 0x2402bfff
+  .word 0x00621024
+  .word 0xac82000c
+  .word 0x0c07fcd4
+  .word 0x00000000
+  .word 0xae710484
+  .word 0xae600488
+  .word 0xae60048c
+  .word 0x24030012
+  .word 0xa6630490
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0070
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_loop_invariants reset
-// FUN_00298060 NONMATCHING
-void btlActionUpdateStateRoundUpMes(BtlAction* action)
+// FUN_00298060
+asm void btlActionUpdateStateRoundUpMes(BtlAction* action)
 {
-    BtlPacket* packet;
-    BtlPacket* callbackPacket;
-    u16 partyIds[3];
-    f32 setup[16];
-    u32 i;
-    u32 special;
-    s16 timer;
-    u64 actionUID;
-
-    actionUID = action->uid;
-    if (action->unk_488 == 0)
-    {
-        if (btlPacketCountById(0xc03) != 0)
-        {
-            return;
-        }
-        i = 0;
-        while (i < ACTION_U16(gBtl, 0xb98))
-        {
-            partyIds[i] = ((BtlAction*)ACTION_U32(gBtl, 0xb88 + i * 4))->unit->charId;
-            i++;
-        }
-        while (i < 3)
-        {
-            partyIds[i] = 0;
-            i++;
-        }
-        packet = func_002e3b50(partyIds[0], partyIds[1], partyIds[2]);
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        packet = func_002e3990();
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        packet = btlVoice002e2be0((BtlAction*)action->movedAwayFromHome, 4, 0, 0, 0);
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        packet = FUN_002dd100(10, 2, 0x12);
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        callbackPacket = func_0027f410((u32)btlActionInitStateRoundUpMes, action);
-        setup[0] = DAT_007cb050[0];
-
-        btlPacketRegister(callbackPacket, BTLPACKET_TYPE_1);
-        setup[1] = DAT_007cb050[1];
-        setup[2] = DAT_007cb050[2];
-        setup[3] = 3;
-        setup[4] = DAT_007cb050[3];
-        setup[5] = DAT_007cb050[4];
-        setup[6] = DAT_007cb050[5];
-        setup[8] = DAT_007cb050[6];
-        setup[9] = DAT_007cb050[7];
-        setup[10] = DAT_007cb050[8];
-        setup[12] = DAT_007cb050[9];
-        setup[13] = DAT_007cb050[10];
-        setup[14] = DAT_007cb050[11];
-        func_002b9600(setup);
-        packet = func_002bb2f0(ACTION_U32(gBtl, 0xd10), action->unit, 0,
-                               callbackPacket->uid, 0xc000);
-        btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-        action->unk_488 = 1;
-    }
-    timer = ACTION_S16(action, 0x490);
-    if (timer == 0)
-    {
-        FUN_001fef90(((BtlAction*)action->movedAwayFromHome)->unit->charId);
-        ACTION_S16(action, 0x490) = -1;
-    }
-    else if (timer > 0)
-    {
-        ACTION_S16(action, 0x490) = timer - 1;
-    }
-    if (btlPacketFindFirstByActionUID(actionUID, BTL_UIDMAX) != NULL)
-    {
-        return;
-    }
-    if (ACTION_U32(action, 0x48c) != 0)
-    {
-        goto set_state;
-    }
-    if (FUN_001ff100() == 0)
-    {
-        return;
-    }
-
-    special = 0;
-    if (FUN_001ff120() == 0)
-    {
-        packet = FUN_002d7fb0(action, 2);
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        ACTION_U32(gBtl->camera.action, 0x494) = ACTION_U32(action, 0x484);
-        gBtl->camera.action->unk_16 = 0x1d;
-        FUN_0029a380(gBtl->camera.action);
-    }
-    else
-    {
-        packet = btlVoice002e2be0((BtlAction*)action->movedAwayFromHome, 6, 0, 0, 0);
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        packet = func_002e3d10();
-        packet->unk_00 = 0xa;
-        ACTION_U16(packet, 8) = 0xc06;
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        special = 1;
-    }
-
-    FUN_001ff140();
-    packet = func_002e3a90();
-    if (special != 0)
-    {
-        packet->actionUID = actionUID;
-    }
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_00288950(NULL, 1);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    action->unk_18 &= ~8;
-    if (func_002d1a70() == 1)
-    {
-        gBtl->flags |= 0x4000;
-        FUN_001ff370();
-        action->unk_488 = 1;
-        return;
-    }
-set_state:
-    btlActionSetState(action, BTLACTION_STATE_ROUNDUP);
+  .set noreorder
+  .word 0x27bdff70
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x8c820488
+  .word 0x14400089
+  .word 0x00000000
+  .word 0x24040c03
+  .word 0x0c09f91c
+  .word 0x00000000
+  .word 0x1440010c
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0x8f86b6fc
+  .word 0x94c50b98
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x30e4ffff
+  .word 0x00041080
+  .word 0x00c21021
+  .word 0x8c420b88
+  .word 0x8c420030
+  .word 0x944300a4
+  .word 0x00041040
+  .word 0x005d1021
+  .word 0xa4430078
+  .word 0x24e20001
+  .word 0x3047ffff
+  .word 0x30e2ffff
+  .word 0x0045102a
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x30e2ffff
+  .word 0x00021040
+  .word 0x005d1021
+  .word 0xa4400078
+  .word 0x24e20001
+  .word 0x3047ffff
+  .word 0x30e2ffff
+  .word 0x2c420003
+  .word 0x1440fff7
+  .word 0x00000000
+  .word 0x97a40078
+  .word 0x97a5007a
+  .word 0x97a6007c
+  .word 0x0c0b8ed4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b8e64
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e040484
+  .word 0x24050004
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x24050002
+  .word 0x24060012
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3c040029
+  .word 0x24847a50
+  .word 0x0200282d
+  .word 0x0c09fd04
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xc7808360
+  .word 0xe7a00030
+  .word 0xc7808364
+  .word 0xe7a00034
+  .word 0xc7808368
+  .word 0xe7a00038
+  .word 0xc780836c
+  .word 0xe7a00040
+  .word 0xc7808370
+  .word 0xe7a00044
+  .word 0xc7808374
+  .word 0xe7a00048
+  .word 0xc7808378
+  .word 0xe7a00050
+  .word 0xc780837c
+  .word 0xe7a00054
+  .word 0xc7808380
+  .word 0xe7a00058
+  .word 0xafa00060
+  .word 0xafa00064
+  .word 0xafa00068
+  .word 0x24020003
+  .word 0xafa2003c
+  .word 0xc7808384
+  .word 0xe7a00080
+  .word 0xc7808388
+  .word 0xe7a00084
+  .word 0xc780838c
+  .word 0xe7a00088
+  .word 0xc7a20080
+  .word 0xc7a10084
+  .word 0xc7a00088
+  .word 0xe7a20060
+  .word 0xe7a10064
+  .word 0xe7a00068
+  .word 0x27a40030
+  .word 0x0c0ae580
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440d10
+  .word 0x8e050030
+  .word 0x0000302d
+  .word 0xde270058
+  .word 0x3408c000
+  .word 0x0c0aecbc
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xae020488
+  .word 0x8e030488
+  .word 0x24020001
+  .word 0x14620011
+  .word 0x00000000
+  .word 0x86020490
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x8e020484
+  .word 0x8c420030
+  .word 0x944400a4
+  .word 0x0c07fbe4
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0xa6020490
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x18400003
+  .word 0x00000000
+  .word 0x2442ffff
+  .word 0xa6020490
+  .word 0xde040000
+  .word 0x3c023fff
+  .word 0x3442ffff
+  .word 0x0002183c
+  .word 0x3402ffff
+  .word 0x00021438
+  .word 0x3442ffff
+  .word 0x00432825
+  .word 0x0c09f8e4
+  .word 0x00000000
+  .word 0x14400069
+  .word 0x00000000
+  .word 0x8e02048c
+  .word 0x14400062
+  .word 0x00000000
+  .word 0x0c07fc40
+  .word 0x00000000
+  .word 0x10400062
+  .word 0x00000000
+  .word 0x0c07fc48
+  .word 0x00000000
+  .word 0x1440001a
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x24050002
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e030484
+  .word 0x8f82b6fc
+  .word 0x8c420148
+  .word 0xac430494
+  .word 0x2403001d
+  .word 0x8f82b6fc
+  .word 0x8c420148
+  .word 0xa4430016
+  .word 0x8f82b6fc
+  .word 0x8c440148
+  .word 0x0c0a68e0
+  .word 0x00000000
+  .word 0x0000882d
+  .word 0x10000019
+  .word 0x00000000
+  .word 0x8e040484
+  .word 0x24050006
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b8f44
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2403000a
+  .word 0xa0430000
+  .word 0x24030c06
+  .word 0xa4430008
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24110001
+  .word 0x0c07fc50
+  .word 0x00000000
+  .word 0x0c0b8ea4
+  .word 0x00000000
+  .word 0x12200003
+  .word 0x00000000
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x24050001
+  .word 0x0c0a2254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde030000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x96020018
+  .word 0x3042fff7
+  .word 0xa6020018
+  .word 0x0c0b469c
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430007
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8c62000c
+  .word 0x34424000
+  .word 0xac62000c
+  .word 0x0c07fcdc
+  .word 0x00000000
+  .word 0x24030001
+  .word 0xae03048c
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x2405001e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0090
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_002984e0
@@ -7370,286 +14301,706 @@ void btlActionInitStateRoundUp(BtlAction* action)
 #pragma opt_common_subs off
 #pragma opt_lifetimes on
 /* Retail algorithm: build camera/voice/area packet chain, per-target loops, and final wait packet; implemented 2780/2784 bytes (99%); remaining register/order differences. */
-// FUN_00298610 NONMATCHING
-void btlActionUpdateStateRoundUp(BtlAction* action)
+// FUN_00298610
+asm void btlActionUpdateStateRoundUp(BtlAction* action)
 {
-    /* Retail passes the scalar in f12 here, unlike the unit-first callers of this symbol. */
-    extern BtlPacket* FUN_00284200(f32, BtlUnit*, u16, u16, u16);
-    BtlPacket* packet;
-    BtlPacket* rootPacket;
-    BtlUnit* actionUnit;
-    u64 actionUID = action->uid;
-    BtlPacket* skillPacket;
-    BtlPacket* targetLinkPacket;
-    BtlPacket* voicePacket;
-    BtlAction* target;
-    BtlAction* current;
-    u32 rootH;
-    u32 stackBuf[3];
-    u16 specificId;
-    u16 i;
-    u16 j;
-    u32 posX;
-    u32 posY;
-
-    u32 mode;
-    u8 workBuf[0x100];
-    u32 extraWork[7];
-    BtlAction* basis;
-
-    rootH = FUN_002b8f90(1);
-    for (current = gBtl->actionList.tail; current != NULL; current = current->prev)
-    {
-        if (current->unk_28 != 0)
-        {
-            FUN_002d7fb0(current, 2);
-        }
-    }
-    for (j = 0; j < 3; j++)
-    {
-        stackBuf[j] = 0;
-    }
-    for (j = 0; j < ACTION_U16(gBtl, 0xb98) && j < 3; j++)
-    {
-        stackBuf[j] = ACTION_U32(gBtl, 0xb88 + j * 4);
-    }
-
-    packet = FUN_002bc950(stackBuf[0], stackBuf[1], stackBuf[2]);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    rootPacket = FUN_002e3c80();
-    rootPacket->unk_00 = 0xa;
-    ACTION_U16(rootPacket, 8) = 0xc06;
-    ACTION_U8(rootPacket, 0x10) = 0xa;
-    ACTION_U16(rootPacket, 0x18) = 0xc05;
-    rootPacket->actionUID = actionUID;
-    btlPacketRegister(rootPacket, BTLPACKET_TYPE_1);
-
-    voicePacket = btlVoice002e2be0((BtlAction*)ACTION_U32(action, 0x494), 5, 0, 0, 0);
-    voicePacket->unk_00 = 5;
-    voicePacket->parentUID = packet->uid;
-    btlPacketRegister(voicePacket, BTLPACKET_TYPE_1);
-    voicePacket->actionUID = actionUID;
-
-    voicePacket = FUN_002dd690(3, 0x693358);
-    voicePacket->unk_00 = 5;
-    voicePacket->parentUID = packet->uid;
-    voicePacket->actionUID = actionUID;
-    btlPacketRegister(voicePacket, BTLPACKET_TYPE_1);
-    func_002bb6f0(action->target.specificId, workBuf);
-    packet = FUN_002bac00(rootH, (s8*)workBuf, 0);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    basis = action->target.targetedCount != 0 ? action->target.targetedActions[0] : action;
-    actionUnit = action->unit;
-    packet = FUN_002baf90(rootH, action->unit, basis->unit, 0, 0);
-    packet->unk_00 = 4;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    packet = FUN_002dd100(0xc, 2, ACTION_U32(action, 0x498) ? 0x13 : 0x14);
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    specificId = (u16)func_002d4cc0(0);
-    packet = func_002a1280(func_0029ec50(specificId), 0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = rootPacket->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    packet = func_002a1b00(action, specificId, 0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = rootPacket->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    for (i = 0; i < action->target.targetedCount; i++)
-    {
-        target = action->target.targetedActions[i];
-        if (target == NULL)
-        {
-            continue;
-        }
-
-        skillPacket = FUN_002bd480(target->unit);
-        skillPacket->actionUID = actionUID;
-        btlPacketRegister(skillPacket, BTLPACKET_TYPE_1);
-
-        packet = FUN_002baf90(rootH, actionUnit, target->unit, 1, 0);
-        packet->unk_00 = 0xb;
-        packet->parentUID = skillPacket->uid;
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_3D);
-        packet = FUN_002baf90(rootH, actionUnit, target->unit, 1, 0);
-        packet->unk_00 = 4;
-        packet->parentUID = skillPacket->uid;
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        packet = FUN_002dd100(10, 0, 4);
-        packet->parentUID = skillPacket->uid;
-        packet->actionUID = actionUID;
-        btlPacketRegister(packet, BTLPACKET_TYPE_1);
-        targetLinkPacket = FUN_002baf90(rootH, actionUnit, target->unit, 1, 0);
-        targetLinkPacket->unk_00 = 4;
-        targetLinkPacket->parentUID = skillPacket->uid;
-        targetLinkPacket->actionUID = actionUID;
-        btlPacketRegister(targetLinkPacket, BTLPACKET_TYPE_1);
-
-
-        for (j = 0; j < ACTION_U8(target, 0xc8); j++)
-        {
-            u8* result = (u8*)target + 0xe0 + j * 0x1c;
-
-            packet = FUN_002bdbd0(actionUnit, target->unit, action->target.specificId,
-                                  ACTION_U16(target, 0xcc), ACTION_U16(target, 0xce), j,
-                                  ACTION_U8(target, 0xc8), result);
-            packet->parentUID = skillPacket->uid;
-            packet->unk_47 &= ~0x20;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-
-            packet = FUN_00284200(1.0f, target->unit, ACTION_U8(target, 0xc8) - 1, 0, 0);
-            packet->unk_00 = 0xb;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-            packet = FUN_002bd230(target->unit, 0, 0);
-            packet->unk_00 = 5;
-            packet->parentUID = skillPacket->uid;
-            packet->unk_47 &= ~0x20;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_2D);
-            packet = FUN_00282650(target->unit, actionUnit, 2);
-            packet->unk_00 = 5;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_002d7e20(action, target, result,
-                                  ACTION_U16(target, 0xcc), ACTION_U16(target, 0xce));
-            packet->unk_00 = 5;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_002d8090(target);
-            packet->unk_00 = 5;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_002d8090(action);
-            packet->unk_00 = 5;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            FUN_002d5dc0(extraWork);
-            packet = FUN_002d7e20(target, target, extraWork, 1, 1);
-            packet->unk_00 = 4;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_00284200(1.0f, target->unit, 10, 0, 0);
-            packet->unk_00 = 4;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = FUN_00284c90(target->unit);
-            packet->unk_00 = 4;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-        }
-
-        {
-            func_0029ea60(target->uid, &posX, &posY);
-
-            packet = func_0029f4b0(posX, posY, 0x10);
-            packet->unk_00 = 4;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-            {
-                void* area = func_0029ec00(target->uid);
-                func_0029ec80(target->uid, &posX, &posY);
-
-                packet = func_002a0050(area, posX, posY, 0x10, 0);
-                packet->unk_00 = 4;
-                packet->parentUID = skillPacket->uid;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-
-            {
-                void* hitArea = func_0029ec50(target->uid);
-                packet = func_002a1280(hitArea, 0x10);
-                packet->unk_00 = 4;
-                packet->parentUID = skillPacket->uid;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-
-            FUN_002d5dc0(extraWork);
-            extraWork[3] = 0x10000;
-            packet = FUN_002d7e20((BtlAction*)target->unit, (BtlAction*)target->unit, extraWork, 1, 1);
-            packet->unk_00 = 4;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            packet = func_002a1b00(action, target->uid, 0x10);
-            packet->unk_00 = 4;
-            packet->parentUID = skillPacket->uid;
-            packet->actionUID = actionUID;
-            btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            if (((*(u16*)extraWork) & 2) != 0)
-            {
-                packet = FUN_00284200(1.0f, target->unit, 10, 0, 0);
-                packet->unk_00 = 4;
-                packet->parentUID = skillPacket->uid;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-                packet = FUN_00284c90(target->unit);
-                packet->unk_00 = 4;
-                packet->parentUID = skillPacket->uid;
-                packet->actionUID = actionUID;
-                btlPacketRegister(packet, BTLPACKET_TYPE_1);
-            }
-        }
-    }
-
-    packet = FUN_0029fa50(0x10);
-    packet->unk_00 = 4;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002a1080(0x10, 0);
-    packet->unk_00 = 4;
-    packet->parentUID = skillPacket->uid;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    packet = FUN_002a16c0(0x10);
-    packet->unk_00 = 4;
-    packet->parentUID = skillPacket->uid;
-    packet->unk_47 &= ~0x20;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    packet = FUN_002a1db0(8);
-    packet->unk_00 = 4;
-    packet->parentUID = skillPacket->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-    packet = FUN_002bc950(0, 0, 0);
-    packet->unk_00 = 4;
-    packet->parentUID = skillPacket->uid;
-    packet->preUpdateWait.type = 4;
-    packet->preUpdateWait.value = targetLinkPacket->uid;
-    packet->actionUID = actionUID;
-    btlPacketRegister(packet, BTLPACKET_TYPE_1);
-
-    FUN_002b9030(rootH);
-    btlActionSetState(action, BTLACTION_STATE_PACKET);
+  .set noreorder
+  .word 0x27bdfe10
+  .word 0xffbf0090
+  .word 0x7fbe0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080a02d
+  .word 0xdc900000
+  .word 0x24040001
+  .word 0x0c0ae3e4
+  .word 0x00000000
+  .word 0xafa20124
+  .word 0x8f82b6fc
+  .word 0x8c51014c
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x92220028
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x24050002
+  .word 0x0c0b5fec
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e3104a8
+  .word 0x1620fff2
+  .word 0x00000000
+  .word 0x8693006e
+  .word 0x8e9e0038
+  .word 0x0000382d
+  .word 0x8f86b6fc
+  .word 0x94c50b98
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x30e2ffff
+  .word 0x00022080
+  .word 0x00c41021
+  .word 0x8c420b88
+  .word 0x8c430030
+  .word 0x009d1021
+  .word 0xac4301d8
+  .word 0x24e20001
+  .word 0x3047ffff
+  .word 0x30e2ffff
+  .word 0x0045102a
+  .word 0x1440fff4
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x30e2ffff
+  .word 0x00021080
+  .word 0x005d1021
+  .word 0xac4001d8
+  .word 0x24e20001
+  .word 0x3047ffff
+  .word 0x30e2ffff
+  .word 0x2c420003
+  .word 0x1440fff7
+  .word 0x00000000
+  .word 0x8fa401d8
+  .word 0x8fa501dc
+  .word 0x8fa601e0
+  .word 0x0c0af254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0c0b8f20
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x2404000a
+  .word 0xa0440000
+  .word 0x24030c06
+  .word 0xa4430008
+  .word 0xa0440010
+  .word 0x24030c05
+  .word 0xa4430018
+  .word 0xfc500060
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e840494
+  .word 0x24050005
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0b8af8
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xde830000
+  .word 0xfc430060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x3c050069
+  .word 0x24a53358
+  .word 0x0c0b75a4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde230058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xde360058
+  .word 0x3271ffff
+  .word 0x0220202d
+  .word 0x27a501ec
+  .word 0x27a601e8
+  .word 0x0c0a7a98
+  .word 0x00000000
+  .word 0x8fa401ec
+  .word 0x8fa501e8
+  .word 0x24060010
+  .word 0x0c0a7d2c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc560008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0a7b00
+  .word 0x00000000
+  .word 0x0040b82d
+  .word 0x0220202d
+  .word 0x27a501ec
+  .word 0x27a601e8
+  .word 0x0c0a7b20
+  .word 0x00000000
+  .word 0x0013143c
+  .word 0x0002143f
+  .word 0xafa20100
+  .word 0x8f84b710
+  .word 0x000218c0
+  .word 0x00621023
+  .word 0x00021080
+  .word 0x00441021
+  .word 0x94420002
+  .word 0x30420002
+  .word 0x0002102b
+  .word 0x3048ffff
+  .word 0x02e0202d
+  .word 0x8fa501ec
+  .word 0x8fa601e8
+  .word 0x24070010
+  .word 0x0c0a8014
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc560008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x3273ffff
+  .word 0x0260202d
+  .word 0x0c0a7b14
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050010
+  .word 0x0c0a84a0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc560008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0260282d
+  .word 0x24060010
+  .word 0x0c0a86c0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc560008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x27a50130
+  .word 0x0c0aedbc
+  .word 0x00000000
+  .word 0x8fa40124
+  .word 0x27a50130
+  .word 0x0000302d
+  .word 0x0c0aeb00
+  .word 0x00000000
+  .word 0xafa2012c
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc560008
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40124
+  .word 0x8e850030
+  .word 0x8fc60030
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0xafa20128
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3012c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0040202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e820498
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24020013
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020014
+  .word 0x3046ffff
+  .word 0x2404000c
+  .word 0x24050002
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0x8fa30128
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x2403000f
+  .word 0xa4430048
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0xa7a00110
+  .word 0x0220202d
+  .word 0x0c0b5330
+  .word 0x00000000
+  .word 0x3042ffff
+  .word 0x7fa200d0
+  .word 0x0000f02d
+  .word 0x1000013b
+  .word 0x00000000
+  .word 0x33c2ffff
+  .word 0x00021080
+  .word 0x02821021
+  .word 0x8c510038
+  .word 0x262400c8
+  .word 0x0c0ae590
+  .word 0x00000000
+  .word 0x0040a82d
+  .word 0x8e2200d4
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x0280982d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0220982d
+  .word 0x8e640030
+  .word 0x0c0af520
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x36a81000
+  .word 0x8fa40124
+  .word 0x8e850030
+  .word 0x8e660030
+  .word 0x24070001
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040a82d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0x8fa3012c
+  .word 0xdc630058
+  .word 0xfc430008
+  .word 0x97a30110
+  .word 0xa4430048
+  .word 0xfc500060
+  .word 0x02a0202d
+  .word 0x24050002
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x2404000a
+  .word 0x0000282d
+  .word 0x24060004
+  .word 0x0c0b7440
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xdea30058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e2200d4
+  .word 0x10400011
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c8c
+  .word 0x8e850030
+  .word 0x8e260030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xdea30058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x962300cc
+  .word 0x24020400
+  .word 0x14620011
+  .word 0x00000000
+  .word 0x8f82b6fc
+  .word 0x8c440c90
+  .word 0x8e850030
+  .word 0x8e660030
+  .word 0x24070001
+  .word 0x0000402d
+  .word 0x0c0aebe4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xdea30058
+  .word 0xfc430008
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000b82d
+  .word 0x100000cd
+  .word 0x00000000
+  .word 0x32e3ffff
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x02221021
+  .word 0x7fa200c0
+  .word 0x804500f8
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e640030
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x2403000b
+  .word 0xa0430000
+  .word 0xdea30058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e240030
+  .word 0x8e850030
+  .word 0x24060002
+  .word 0x0c0a0994
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200c0
+  .word 0x244200e0
+  .word 0xafa200e0
+  .word 0x0280202d
+  .word 0x0260282d
+  .word 0x0040302d
+  .word 0x962700cc
+  .word 0x962800ce
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0b6024
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x9682006a
+  .word 0x2443ffff
+  .word 0x8fa200f0
+  .word 0x14430012
+  .word 0x00000000
+  .word 0x922200c8
+  .word 0x2443ffff
+  .word 0x7ba200a0
+  .word 0x1443000d
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c0b6024
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200a0
+  .word 0x14400016
+  .word 0x00000000
+  .word 0x8fa200e0
+  .word 0x8c420000
+  .word 0x10400012
+  .word 0x00000000
+  .word 0x8e640030
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af48c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200c0
+  .word 0x244200fa
+  .word 0x7fa200b0
+  .word 0x7ba200c0
+  .word 0x944200fa
+  .word 0x30420001
+  .word 0x10400037
+  .word 0x00000000
+  .word 0x27a401b0
+  .word 0x0c0b5770
+  .word 0x00000000
+  .word 0x3c020010
+  .word 0xafa201bc
+  .word 0x0220202d
+  .word 0x0220282d
+  .word 0x27a601b0
+  .word 0x24070001
+  .word 0x00e0402d
+  .word 0x0c0b5f88
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xfc560008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x7ba200b0
+  .word 0x94420000
+  .word 0x30420002
+  .word 0x1040001e
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44826000
+  .word 0x8e240030
+  .word 0x2405000a
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c0a1080
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8e240030
+  .word 0x0c0a1324
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x922a00c8
+  .word 0x8e840030
+  .word 0x8e650030
+  .word 0x8fa60100
+  .word 0x962700cc
+  .word 0x962800ce
+  .word 0x02e0482d
+  .word 0x8fab00e0
+  .word 0x0c0af6f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030005
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050003
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x26e20001
+  .word 0x3057ffff
+  .word 0x32e2ffff
+  .word 0x7fa200a0
+  .word 0x922300c8
+  .word 0x0043102a
+  .word 0x1440ff2f
+  .word 0x00000000
+  .word 0x97a30110
+  .word 0x7ba200d0
+  .word 0x00621021
+  .word 0xa7a20110
+  .word 0x27c20001
+  .word 0x305effff
+  .word 0x33c2ffff
+  .word 0xafa200f0
+  .word 0x9683006a
+  .word 0x0043102a
+  .word 0x1440fec1
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a7e94
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0000282d
+  .word 0x0c0a8420
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040010
+  .word 0x0c0a85b0
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xde430058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x24040008
+  .word 0x0c0a876c
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24030004
+  .word 0xa0430000
+  .word 0xdea30058
+  .word 0xfc430008
+  .word 0x90430047
+  .word 0x306300df
+  .word 0xa0430047
+  .word 0xfc500060
+  .word 0x0000282d
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c0af254
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x24050004
+  .word 0xa0450000
+  .word 0xdea30058
+  .word 0xfc430008
+  .word 0xa0450010
+  .word 0x8fa30128
+  .word 0xdc630058
+  .word 0xfc430018
+  .word 0xfc500060
+  .word 0x24050001
+  .word 0x0c09fb48
+  .word 0x00000000
+  .word 0x8fa40124
+  .word 0x0c0ae40c
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x2405001e
+  .word 0x0c0a6758
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bbe0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd01f0
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
@@ -7973,89 +15324,146 @@ void btlActionInitStateExit(BtlAction* action)
     }
 }
 /* W419 negative: permuting btlActionUpdateStateExit locals (including i-first) left nd99 unchanged at object 532/544. */
-// FUN_00299b00 NONMATCHING
-void btlActionUpdateStateExit(BtlAction* action)
+// FUN_00299b00
+asm void btlActionUpdateStateExit(BtlAction* action)
 {
-    BtlUnit* unit;
-    DatUnitPc* found;
-    u16 i;
-    DatUnitGenusBase* group;
-    DatUnitPc* current;
-
-    if (action->unk_1a & 1)
-    {
-        unit = action->unit;
-        if (unit->packetCount != 0)
-        {
-            return;
-        }
-
-        switch (unit->genus)
-        {
-            case UNIT_GENUS_PC:
-                if (action->unk_18 & 0x20)
-                {
-                    found = NULL;
-                    for (i = 0; i < 4; i++)
-                    {
-                        current = *(DatUnitPc**)((u8*)gBtl +
-                                                  (u32)(u16)i * 4 +
-                                                  0xbac);
-                        if (current != NULL && current->base.unit == unit->datUnit)
-                        {
-                            found = current;
-                            break;
-                        }
-                    }
-
-                    if (found == NULL)
-                    {
-                        for (i = 0; i < 3; i++)
-                        {
-                            group = *(DatUnitGenusBase**)((u8*)gBtl +
-                                                          (u32)(u16)i * 8 +
-                                                          0xbc4);
-                            if (group != NULL &&
-                                group->unit == unit->datUnit)
-                            {
-                                found = (DatUnitPc*)group;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (found != NULL)
-                    {
-                        ACTION_U16(found, 0xa) &= ~1;
-                    }
-
-                    datCalcClearBadStatus(unit->datUnit, 0xfff7ff7f);
-                    FUN_00301690(unit->datUnit);
-                    if (unit->datUnit->aiTactic == 10)
-                    {
-                        unit->datUnit->aiTactic = 1;
-                    }
-                }
-                break;
-
-            case UNIT_GENUS_EC:
-                if (datCalcIsDead(unit->datUnit, 0) != 0)
-                {
-                    datUnitEcRemoveEnemy(gBtl->startInfo.enmUnits,
-                                         action->unit->datUnit);
-                }
-                break;
-        }
-
-        FUN_002878d0(action->unit);
-        action->unit = NULL;
-        action->unk_1a &= ~1;
-        FUN_001fdd40();
-    }
-
-    btlAction00299e50(action);
-    FUN_002a3a90((int)action);
-    action->unk_1a |= 2;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x9483001a
+  .word 0x30630001
+  .word 0x1060006e
+  .word 0x00000000
+  .word 0x8e300030
+  .word 0x960300a0
+  .word 0x14600073
+  .word 0x00000000
+  .word 0x920300a2
+  .word 0x24020001
+  .word 0x10620051
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x10000059
+  .word 0x00000000
+  .word 0x96220018
+  .word 0x30420020
+  .word 0x10400055
+  .word 0x00000000
+  .word 0x0000182d
+  .word 0x0000382d
+  .word 0x8f82b6fc
+  .word 0x10000011
+  .word 0x00000000
+  .word 0x30e4ffff
+  .word 0x00043080
+  .word 0x00462021
+  .word 0x8c840bac
+  .word 0x10800009
+  .word 0x00000000
+  .word 0x8c850004
+  .word 0x8e040a2c
+  .word 0x14a40005
+  .word 0x00000000
+  .word 0x00c21821
+  .word 0x8c630bac
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x24e40001
+  .word 0x3087ffff
+  .word 0x30e4ffff
+  .word 0x2c840004
+  .word 0x1480ffed
+  .word 0x00000000
+  .word 0x14600017
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x30e4ffff
+  .word 0x000420c0
+  .word 0x00442021
+  .word 0x8c860bc4
+  .word 0x10c00008
+  .word 0x00000000
+  .word 0x8cc50004
+  .word 0x8e040a2c
+  .word 0x14a40004
+  .word 0x00000000
+  .word 0x00c0182d
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x24e40001
+  .word 0x3087ffff
+  .word 0x30e4ffff
+  .word 0x2c840003
+  .word 0x1480ffee
+  .word 0x00000000
+  .word 0x10600004
+  .word 0x00000000
+  .word 0x9462000a
+  .word 0x3042fffe
+  .word 0xa462000a
+  .word 0x8e040a2c
+  .word 0x3c02fff7
+  .word 0x3445ff7f
+  .word 0x0c0c0158
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x0c0c05a4
+  .word 0x00000000
+  .word 0x8e020a2c
+  .word 0x24440010
+  .word 0x80430010
+  .word 0x2402000a
+  .word 0x14620011
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xa0820000
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x8e040a2c
+  .word 0x0000282d
+  .word 0x0c0c2d68
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x8f83b6fc
+  .word 0x8e220030
+  .word 0x8c640bbc
+  .word 0x8c450a2c
+  .word 0x0c0bfd98
+  .word 0x00000000
+  .word 0x8e240030
+  .word 0x0c0a1e34
+  .word 0x00000000
+  .word 0xae200030
+  .word 0x9622001a
+  .word 0x3042fffe
+  .word 0xa622001a
+  .word 0x0c07f750
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0a6794
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0a8ea4
+  .word 0x00000000
+  .word 0x9623001a
+  .word 0x34630002
+  .word 0xa623001a
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0030
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00299d20
