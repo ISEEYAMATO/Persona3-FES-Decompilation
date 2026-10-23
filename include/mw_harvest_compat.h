@@ -2,7 +2,7 @@
 #define MW_HARVEST_COMPAT_H
 #include "temporary.h"
 typedef u8 bool;
-typedef int (*code)(...);
+typedef int (*code)();
 typedef union Vec128 { struct { u32 _0_4_; u32 _4_4_; u32 _8_4_; u32 _12_4_; }; struct { u64 _0_8_; u64 _8_8_; }; struct { u16 _0_2_; u16 _2_2_; u16 _4_2_; u16 _6_2_; }; struct { u8 _0_1_; u8 _1_1_; u8 _2_1_; u8 _3_1_; }; } Vec128;
 typedef u64 MwData;
 #define __int128 Vec128
