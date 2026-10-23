@@ -1290,6 +1290,7 @@ LAB_003b095c:
 // FUN_003B0970
 
 
+#ifndef PC_BUILD
 asm u8 *FUN_003b0970(u8 *param_1,u8 param_2,u8 param_3,u8 param_4,u8 *param_5)
 {
   .set noreorder
@@ -1438,6 +1439,7 @@ asm u8 *FUN_003b0970(u8 *param_1,u8 param_2,u8 param_3,u8 param_4,u8 *param_5)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003b0970(...) FUN_003b0970(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset

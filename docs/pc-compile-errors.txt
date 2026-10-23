@@ -9,10 +9,10 @@ src\Battle\btlPacket.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlPa
 src\Battle\btlSound.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlSound.c:2682:11: error: call to undeclared function 'FUN_0027ec10'; ISO C99 and later do not support implici
 src\Battle\btlTarget.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlTarget.c:1355:14: error: conflicting types for 'func_0035f160'
 src\Battle\btlUnit.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlUnit.c:2197:26: error: use of undeclared identifier 'btlUnitUpdateMovePacket'; did you mean 'btlUnitUpdateMo
-src\Battle\btlVoice.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlVoice.c:1230:5: error: expected '(' after 'asm'
+src\Battle\btlVoice.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Battle\btlVoice.c:2019:14: error: conflicting types for 'FUN_00301ca0'
 src\Camp\h_camp.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Camp\h_camp.c:6958:5: error: call to undeclared function 'FUN_0040eb50'; ISO C99 and later do not support implicit fun
 src\Event\Fcl\fclBankManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclBankManager.c:1869:5: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support
-src\Event\Fcl\fclCombine.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombine.c:1863:5: error: expected '(' after 'asm'
+src\Event\Fcl\fclCombine.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombine.c:2258:9: error: call to undeclared function 'fclCombine003d3010'; ISO C99 and later do not suppo
 src\Event\Fcl\fclCombineList.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombineList.c:161:5: error: 'FclSelectionSizeMustBeA8' declared as an array with a negative size
 src\Event\Fcl\fclCombineMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclCombineMisc.c:351:5: error: call to undeclared library function 'memset' with type 'void *(void *, int, _
 src\Event\Fcl\fclDrawSprite.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\Fcl\fclDrawSprite.c:341:13: error: call to undeclared function 'H_Maestro_001120a0'; ISO C99 and later do not su
@@ -42,7 +42,7 @@ src\Kosaka\Field\k_dungeon.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka
 src\Kosaka\Field\k_event.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_event.c:688:9: error: call to undeclared function 'datGetFlag'; ISO C99 and later do not support implic
 src\Kosaka\Field\k_field.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_field.c:1567:5: error: call to undeclared function 'func_00109170'; ISO C99 and later do not support im
 src\Kosaka\Field\k_fldCamera.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldCamera.c:1127:5: error: call to undeclared function 'memset_y2'; ISO C99 and later do not support im
-src\Kosaka\Field\k_fldFilter.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldFilter.c:92:5: error: expected '(' after 'asm'
+src\Kosaka\Field\k_fldFilter.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldFilter.c:180:5: error: call to undeclared function 'K_FldFilter_InitQuads'; ISO C99 and later do not
 src\Kosaka\Field\k_fldFrame.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_fldFrame.c:3232:19: error: use of undeclared identifier 'func_001ab640'
 src\Kosaka\Field\k_sceneDraw.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_sceneDraw.c:1810:5: error: call to undeclared function 'FldShadow_CreateShadowMapTask'; ISO C99 and lat
 src\Kosaka\Field\k_shadow.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Kosaka\Field\k_shadow.c:2254:13: error: expected comma
@@ -75,7 +75,6 @@ src\Main\Battle\Result\br_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Ma
 src\Main\Battle\Result\br_friend.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_friend.c:406:17: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not sup
 src\Main\Battle\Result\br_hero.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_hero.c:121:13: error: call to undeclared function 'FUN_0016c470'; ISO C99 and later do not suppo
 src\Main\Battle\Result\br_item.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_item.c:1818:5: error: call to undeclared function 'FUN_0021d8e0'; ISO C99 and later do not suppo
-src\Main\Battle\Result\br_panel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_panel.c:1310:5: error: expected '(' after 'asm'
 src\Main\Battle\Result\br_root.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\br_root.c:1704:102: error: unknown register name '$1' in asm
 src\Main\Battle\Result\brp_param.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Battle\Result\brp_param.c:2493:5: error: call to undeclared function 'func_003b0e90'; ISO C99 and later do not su
 src\Main\Game\game_support_late.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Game\game_support_late.c:338:16: error: call to undeclared function 'datGetMaxHp'; ISO C99 and later do not suppo
@@ -91,7 +90,6 @@ src\Main\Social\sfl_count.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\So
 src\Main\Social\sfl_cursor.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_cursor.c:323:5: error: call to undeclared function 'FUN_004d7f60'; ISO C99 and later do not support im
 src\Main\Social\sfl_ground.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_ground.c:224:5: error: call to undeclared function 'RpSkyRenderStateSet'; ISO C99 and later do not sup
 src\Main\Social\sfl_psel.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_psel.c:1025:5: error: call to undeclared function 'sflPsel00260bd0'; ISO C99 and later do not support 
-src\Main\Social\sfl_result.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_result.c:666:5: error: expected '(' after 'asm'
 src\Main\Social\sfl_script.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\Social\sfl_script.c:447:5: error: call to undeclared function 'bpTexQueueNodePair'; ISO C99 and later do not supp
 src\Main\g_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\g_data.c:1193:17: error: conflicting types for 'datSetFatigueCounter'
 src\Main\g_data_2.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\g_data_2.c:816:9: error: call to undeclared function 'FUN_0019d3f0_y2'; ISO C99 and later do not support implicit
@@ -115,21 +113,19 @@ src\frTagTable.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\frTagTable.c:224:1
 src\h_cdvd.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_cdvd.c:931:62: error: unknown register name '$v1' in asm
 src\h_cursor.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_cursor.c:256:27: error: use of undeclared identifier 'H_Cursor_UpdateTask'; did you mean 'H_Cursor_CreateTask'?
 src\h_dbprt.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_dbprt.c:429:17: error: call to undeclared function 'func_0050d3a0'; ISO C99 and later do not support implicit functi
-src\h_fade.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_fade.c:480:5: error: expected '(' after 'asm'
 src\h_maestro.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_maestro.c:1220:13: error: call to undeclared function 'sceSifSetDma'; ISO C99 and later do not support implicit func
 src\h_pad.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\h_pad.c:640:17: error: call to undeclared function 'func_0050d3a0'; ISO C99 and later do not support implicit function
 src\itfMesManager.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\itfMesManager.c:521:9: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support implicit fu
 src\lib\cri\libmwsfde\uty_tmr.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\lib\cri\libmwsfde\uty_tmr.c:1349:16: error: invalid instruction mnemonic 'sync'
-src\libc_core.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\libc_core.c:4370:5: error: expected '(' after 'asm'
 src\libcdvd.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\libcdvd.c:1057:3: error: call to undeclared function 'FUN_00505e48'; ISO C99 and later do not support implicit functio
 src\nmCmdList.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\nmCmdList.c:250:5: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support implicit functi
 src\nmSequence.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\nmSequence.c:111:5: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support implicit funct
 src\rw\rprandom.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rprandom.c:3282:5: error: expected '(' after 'asm'
-src\rw\rpworld.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rpworld.c:9515:5: error: expected '(' after 'asm'
-src\rw\rt2d.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rt2d.c:571:5: error: expected '(' after 'asm'
-src\rw\rwcore.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rwcore.c:1066:5: error: expected '(' after 'asm'
-src\rw\rwplcore.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rwplcore.c:2017:5: error: expected '(' after 'asm'
-src\sce\libmc2.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\sce\libmc2.c:2768:5: error: expected '(' after 'asm'
+src\rw\rpworld.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rpworld.c:23241:3: error: non-void function 'FUN_0049bc50' should return a value [-Wreturn-mismatch]
+src\rw\rt2d.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rt2d.c:1086:3: error: call to undeclared function 'FUN_004c3c30'; ISO C99 and later do not support implicit functio
+src\rw\rwcore.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rwcore.c:4011:3: error: call to undeclared function 'FUN_004cc6d0'; ISO C99 and later do not support implicit funct
+src\rw\rwplcore.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\rw\rwplcore.c:6504:10: error: call to undeclared function 'FUN_004c3970'; ISO C99 and later do not support implicit fu
+src\sce\libmc2.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\sce\libmc2.c:12343:3: error: call to undeclared function 'FUN_00512e48'; ISO C99 and later do not support implicit fun
 src\sce\loadfile.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\sce\loadfile.c:782:10: error: call to undeclared function 'FUN_0050bcb0'; ISO C99 and later do not support implicit fu
 src\sce\mc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\sce\mc.c:2170:3: error: call to undeclared function 'FUN_003e0650'; ISO C99 and later do not support implicit function
-src\sce\sifrpc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\sce\sifrpc.c:1709:5: error: expected '(' after 'asm'
+src\sce\sifrpc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\sce\sifrpc.c:2134:3: error: call to undeclared function 'FUN_00507ff0'; ISO C99 and later do not support implicit func

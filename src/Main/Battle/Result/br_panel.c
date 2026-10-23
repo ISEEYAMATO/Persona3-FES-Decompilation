@@ -1307,6 +1307,7 @@ u32 brPanel00236340(void)
  * Implemented those decoded blocks; the remaining deficit is compiler layout and
  * register scheduling rather than an unimplemented call sequence. */
 // FUN_00236390
+#ifndef PC_BUILD
 asm static void brPanel00236390(void)
 {
   .set noreorder
@@ -3739,6 +3740,7 @@ asm static void brPanel00236390(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef brRes00234570
 #undef BR_PANEL_SET_RECT
 #undef BR_PANEL_SET_VERTICES

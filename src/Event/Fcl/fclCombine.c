@@ -1860,6 +1860,7 @@ struct _m2c_stack_func_003d06d0 {
 // FUN_003D2740
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003d2740(s32 param_1,u32 param_2)
 {
   .set noreorder
@@ -2168,6 +2169,7 @@ asm u8 * FUN_003d2740(s32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003D2C00
 u32 FUN_003d2c00(void)
@@ -2996,6 +2998,7 @@ s32 fclCombine003d3cd0(s32 param_1, s32 param_2)
 // FUN_003D3D20
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003d3d20(u64 param_1,u64 param_2)
 {
   .set noreorder
@@ -3984,6 +3987,7 @@ asm u8 * FUN_003d3d20(u64 param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003d4c80
 s32 fclCombine003d4c80(s32 param_1, s32 param_2)
@@ -4099,6 +4103,7 @@ s32 fclCombine003d4f90(s32 param_1, s32 param_2)
 // FUN_003D4FF0
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003d4ff0(u64 param_1,u32 param_2)
 {
   .set noreorder
@@ -4355,6 +4360,7 @@ asm u8 * FUN_003d4ff0(u64 param_1,u32 param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003d53e0
 s32 fclCombine003d53e0(s32 param_1, s32 param_2)

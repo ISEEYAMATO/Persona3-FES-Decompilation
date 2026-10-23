@@ -11811,6 +11811,7 @@ void mdlFileBuildAxisRotation(f32 param_1)
 
 
 // FUN_003299B0
+#ifndef PC_BUILD
 asm f32 *FUN_003299b0(void)
 {
   .set noreorder
@@ -11859,6 +11860,7 @@ asm f32 *FUN_003299b0(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00329A60
 u32 FUN_00329a60(void)
@@ -20897,6 +20899,7 @@ void FUN_00332470(u32 *param_1,u16 param_2,int *param_3)
 
 
 // FUN_003325D0
+#ifndef PC_BUILD
 asm u32 *FUN_003325d0(int *arg0)
 {
   .set noreorder
@@ -20977,6 +20980,7 @@ asm u32 *FUN_003325d0(int *arg0)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -27216,6 +27220,7 @@ void FUN_00338530(int param_1)
    tried (param_1 vs iVar6 base, pre-loaded clamp, opt_loop_invariants) removes,
    so nd goes 140 -> 231. Reverted; fix the hoist first, then re-apply. */
 // FUN_003385D0
+#ifndef PC_BUILD
 asm float * FUN_003385d0(u32 param_1)
 {
   .set noreorder
@@ -27324,6 +27329,7 @@ asm float * FUN_003385d0(u32 param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

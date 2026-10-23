@@ -430,6 +430,7 @@ void* hmallocCreateTaskE(void)
 }
 
 // FUN_00192E70
+#ifndef PC_BUILD
 asm static void hmallocApplyInputTable(void)
 {
   .set noreorder
@@ -542,9 +543,11 @@ asm static void hmallocApplyInputTable(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // FUN_00193020
+#ifndef PC_BUILD
 asm static s32 hmallocTaskUpdateF(void* task)
 {
   .set noreorder
@@ -741,6 +744,7 @@ asm static s32 hmallocTaskUpdateF(void* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00193320
 static void hmallocTaskDestroyF(void* task)

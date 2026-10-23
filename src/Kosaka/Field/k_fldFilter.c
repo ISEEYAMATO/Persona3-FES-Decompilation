@@ -89,6 +89,7 @@ typedef struct FldFilterCameraWork
 } FldFilterCameraWork;
 
 // FUN_001d4460
+#ifndef PC_BUILD
 asm static void K_FldFilter_InitQuads(RwCamera* camera)
 {
   .set noreorder
@@ -157,6 +158,7 @@ asm static void K_FldFilter_InitQuads(RwCamera* camera)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d4560
 void K_FldFilter_Init()

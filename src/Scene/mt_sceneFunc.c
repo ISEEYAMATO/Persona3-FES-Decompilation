@@ -7601,6 +7601,7 @@ asm int FUN_003beca0(int param_1)
 // FUN_003BEE80
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003bee80(u16 param_1,int *param_2)
 {
   .set noreorder
@@ -7777,6 +7778,7 @@ asm u8 * FUN_003bee80(u16 param_1,int *param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #define FUN_003bee80(...) FUN_003bee80(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset

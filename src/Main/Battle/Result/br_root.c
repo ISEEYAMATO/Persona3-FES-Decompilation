@@ -2842,6 +2842,7 @@ u32 func_001f1f40(void)
 }
 
 // FUN_001f2080
+#ifndef PC_BUILD
 asm KwlnTask *func_001f2080(const u8 *params)
 {
   .set noreorder
@@ -3006,8 +3007,10 @@ asm KwlnTask *func_001f2080(const u8 *params)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f2300
+#ifndef PC_BUILD
 asm void *func_001f2300(KwlnTask *task)
 {
   .set noreorder
@@ -3800,6 +3803,7 @@ asm void *func_001f2300(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f2f50
 void *func_001f2f50(KwlnTask *task)

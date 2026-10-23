@@ -663,6 +663,7 @@ reward_done:
 }
 
 // FUN_001f5b20
+#ifndef PC_BUILD
 asm void *func_001f5b20(void)
 {
   .set noreorder
@@ -1283,6 +1284,7 @@ asm void *func_001f5b20(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001f64c0
 void func_001f64c0(void)

@@ -4462,6 +4462,7 @@ u16 * FUN_003645c0(u32 param_1,int param_2)
 // FUN_003646D0
 
 
+#ifndef PC_BUILD
 asm u16 * FUN_003646d0(u32 param_1,int param_2)
 {
   .set noreorder
@@ -4598,6 +4599,7 @@ asm u16 * FUN_003646d0(u32 param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 #pragma opt_common_subs reset
@@ -4727,6 +4729,7 @@ void FUN_00364a30(u32 param_1,int param_2)
 // FUN_00364B10
 
 
+#ifndef PC_BUILD
 asm u16 * FUN_00364b10(u32 param_1,int param_2)
 {
   .set noreorder
@@ -4935,6 +4938,7 @@ asm u16 * FUN_00364b10(u32 param_1,int param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 extern void FUN_00319090(void *param_1, f32 param_2);
@@ -5475,6 +5479,7 @@ asm void FUN_00365430(int param_1,int param_2)
 // FUN_003655F0
 
 
+#ifndef PC_BUILD
 asm u16 * FUN_003655f0(u32 param_1,int param_2,int param_3)
 {
   .set noreorder
@@ -5603,6 +5608,7 @@ asm u16 * FUN_003655f0(u32 param_1,int param_2,int param_3)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // FUN_003657E0
@@ -14022,6 +14028,7 @@ code * FUN_0036d500(void)
 // FUN_0036D5F0
 
 
+#ifndef PC_BUILD
 asm code * FUN_0036d5f0(void)
 {
   .set noreorder
@@ -14290,6 +14297,7 @@ asm code * FUN_0036d5f0(void)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 // b210 floor after an informed type attempt regressed and was reverted: all 22
@@ -15121,6 +15129,7 @@ asm u32 FUN_0036e2f0(int param_1)
 // FUN_0036E690
 
 
+#ifndef PC_BUILD
 asm code * FUN_0036e690(int param_1)
 {
   .set noreorder
@@ -15549,6 +15558,7 @@ asm code * FUN_0036e690(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 
 

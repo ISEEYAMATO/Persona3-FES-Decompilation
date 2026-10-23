@@ -897,6 +897,7 @@ asm void H_Dbprt_Main()
 #pragma push
 #pragma opt_propagation off
 // FUN_00104710
+#ifndef PC_BUILD
 asm static void H_Dbprt_DrawText3D(void)
 {
   .set noreorder
@@ -1285,6 +1286,7 @@ asm static void H_Dbprt_DrawText3D(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 #pragma opt_propagation reset
 
@@ -1541,6 +1543,7 @@ void H_Dbprt_FmtLog(const char* fmt, ...)
 }
 
 // FUN_001053F0
+#ifndef PC_BUILD
 asm static void H_Dbprt_DrawLog(void)
 {
   .set noreorder
@@ -1805,6 +1808,7 @@ asm static void H_Dbprt_DrawLog(void)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants on
 // FUN_00105800

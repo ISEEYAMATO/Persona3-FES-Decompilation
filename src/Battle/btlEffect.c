@@ -3043,6 +3043,7 @@ u16 func_002bde10(int unit, u16* output)
 #pragma opt_lifetimes on
 // FUN_002bdfb0
 
+#ifndef PC_BUILD
 asm static u32 func_002bdfb0(int state)
 {
   .set noreorder
@@ -3251,6 +3252,7 @@ asm static u32 func_002bdfb0(int state)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes off
 #pragma opt_loop_invariants off
 

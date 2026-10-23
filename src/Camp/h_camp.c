@@ -66158,6 +66158,7 @@ u32 FUN_0015B330(void *entries, void *blobPair,
  * Keep this marker NONMATCHING until register layout and dispatch scheduling converge.
  */
 // FUN_0015B430
+#ifndef PC_BUILD
 asm void *FUN_0015B430(KwlnTask *task)
 {
   .set noreorder
@@ -67198,6 +67199,7 @@ asm void *FUN_0015B430(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0015C460
 KwlnTask *FUN_0015C460(KwlnTask *param_1)
@@ -71514,6 +71516,7 @@ asm void FUN_0015FA90(CampDrawRecord *record, s32 recordIndex, CampSystemDrawWor
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00160800
+#ifndef PC_BUILD
 asm void *FUN_00160800(KwlnTask *task)
 {
   .set noreorder
@@ -72466,6 +72469,7 @@ asm void *FUN_00160800(KwlnTask *task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

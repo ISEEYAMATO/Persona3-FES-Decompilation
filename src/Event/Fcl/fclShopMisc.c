@@ -1596,6 +1596,7 @@ asm u32 FUN_003f04f0(u32 param_1,int param_2)
 // FUN_003F06E0
 
 
+#ifndef PC_BUILD
 asm u32 * FUN_003f06e0(int *param_1,u32 param_2)
 {
   .set noreorder
@@ -1684,6 +1685,7 @@ asm u32 * FUN_003f06e0(int *param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003F0830
 
@@ -15915,6 +15917,7 @@ void FUN_003ffe00(int param_1)
 // FUN_003FFE60
 
 
+#ifndef PC_BUILD
 asm int * FUN_003ffe60(int param_1)
 {
   .set noreorder
@@ -16255,6 +16258,7 @@ asm int * FUN_003ffe60(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 #pragma opt_loop_invariants reset
 

@@ -590,6 +590,7 @@ int FUN_00394270(void)
 #pragma opt_lifetimes on
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003942f0(u8 *param_1,u8 *param_2,u8 *param_3,u8 *param_4,u8 *param_5)
 {
   .set noreorder
@@ -1186,6 +1187,7 @@ asm u8 * FUN_003942f0(u8 *param_1,u8 *param_2,u8 *param_3,u8 *param_4,u8 *param_
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 #undef FUN_00394c30

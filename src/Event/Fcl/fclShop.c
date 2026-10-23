@@ -2188,6 +2188,7 @@ u64 FUN_003e8830(u64 param_1,u64 param_2)
 // FUN_003E8860
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003e8860(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -2556,6 +2557,7 @@ asm u8 * FUN_003e8860(u32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Reached only through a shop function-pointer table, never by jal, which is why nothing
  * in this file references it. Retail 0x003e8e10 is `daddu $v0, $zero, $zero; jr $ra; nop`. */
@@ -3163,6 +3165,7 @@ u64 FUN_003e9a90(u64 param_1,u64 param_2)
 // FUN_003E9AF0
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003e9af0(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -3799,6 +3802,7 @@ asm u8 * FUN_003e9af0(u32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003EA4D0
 u64 FUN_003ea4d0(u64 unused, u64 handle)
@@ -4298,6 +4302,7 @@ u64 FUN_003eaf30(u64 param_1,u64 param_2)
 // FUN_003EAF90
 
 
+#ifndef PC_BUILD
 asm u8 * FUN_003eaf90(u32 param_1,u32 param_2)
 {
   .set noreorder
@@ -4922,6 +4927,7 @@ asm u8 * FUN_003eaf90(u32 param_1,u32 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003EB940
 u64 FUN_003eb940(u64 unused, u64 handle)

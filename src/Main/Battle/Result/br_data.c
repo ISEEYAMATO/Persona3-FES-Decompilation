@@ -275,6 +275,7 @@ void func_001fb3f0(int param_1,int param_2,int param_3,int *param_4,int *param_5
   i = 0;
   foundStart = 0;
   /* Removing this barrier loses func_001fb3f0 (MATCH nd0 -> MISMATCH nd2) - measured W164. */
+#ifndef PC_BUILD
   asm ("" : "+r"(i));
   while (1) {
     entry = (u8 *)(param_1 + i * 10);
@@ -294,6 +295,7 @@ void func_001fb3f0(int param_1,int param_2,int param_3,int *param_4,int *param_5
     }
     i = i + 1;
   }
+#endif /* PC_BUILD: asm function omitted */
   if (foundStart) {
     *param_4 = first;
     *param_5 = (last + 1) - first;

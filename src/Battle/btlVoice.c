@@ -1227,6 +1227,7 @@ BtlPacket* func_002e30a0(u16 arg0, u16 arg1, u16 arg2, u16 flags)
 
 /* Removing this loses FUN_002f2090 (MATCH nd0 -> MISMATCH nd14) - measured W161. */
 // FUN_002e3120
+#ifndef PC_BUILD
 asm char * func_002e3120(int param_1)
 {
   .set noreorder
@@ -1327,6 +1328,7 @@ asm char * func_002e3120(int param_1)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_002e32a0
 void func_002e32a0(BtlAction* action, BtlAction* target, u32 id)
 {

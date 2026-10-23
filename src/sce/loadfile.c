@@ -783,6 +783,7 @@ int FUN_0050c2a0(u32 param_1, long param_2, u64 *param_3, u32 *param_4)
 }
 #pragma pop
 // FUN_0050C2C0
+#ifndef PC_BUILD
 asm static int sif_load_module_request(const char* path, int argument_length, const char* arguments, int* module_result, int function)
 {
   .set noreorder
@@ -925,6 +926,7 @@ asm static int sif_load_module_request(const char* path, int argument_length, co
   .word 0x27bd0080
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma schedule on
 // FUN_0050C4E8
@@ -2107,6 +2109,7 @@ asm void FUN_0050d408(void)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_0050D478
+#ifndef PC_BUILD
 asm u32 * FUN_0050d478(u32 *param_1,u32 param_2,u32 param_3)
 {
   .word 0x2403005a;
@@ -2144,6 +2147,7 @@ asm u32 * FUN_0050d478(u32 *param_1,u32 param_2,u32 param_3)
   .word 0x03e00008;
   .word 0x0080102d;
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050D500
 int FUN_0050d500(u32 param_1,u32 param_2,u32 param_3)
 
@@ -4671,6 +4675,7 @@ asm u32 FUN_0050f478(u32 param_1,u32 param_2,u32 param_3)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_0050F588
+#ifndef PC_BUILD
 asm u8 * FUN_0050f588(long param_1,u64 param_2)
 {
   .set noreorder
@@ -4717,6 +4722,7 @@ asm u8 * FUN_0050f588(long param_1,u64 param_2)
   .word 0x03e00008
   .word 0x27bd0050
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0050F630
 #ifndef PC_BUILD
 asm u32 FUN_0050f630(u32 param_1)

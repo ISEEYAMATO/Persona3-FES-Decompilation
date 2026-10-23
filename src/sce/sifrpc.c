@@ -1706,6 +1706,7 @@ asm int FUN_005079d0(void)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_00507A50
+#ifndef PC_BUILD
 asm u8 * FUN_00507a50(void)
 {
   .set noreorder
@@ -1744,6 +1745,7 @@ asm u8 * FUN_00507a50(void)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00507AD8
 #ifndef PC_BUILD
 asm int FUN_00507ad8(u32 param_1,u32 param_2,u32 param_3,u32 param_4,
@@ -1813,6 +1815,7 @@ asm int FUN_00507ad8(u32 param_1,u32 param_2,u32 param_3,u32 param_4,
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_00507BC8
+#ifndef PC_BUILD
 asm u8 * FUN_00507bc8(void)
 {
   .set noreorder
@@ -1845,6 +1848,7 @@ asm u8 * FUN_00507bc8(void)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00507C38
 #pragma push
 #pragma opt_lifetimes on

@@ -1063,6 +1063,7 @@ void FUN_005067f8(uint param_1,long param_2);
 void FUN_0050db38(void);
 
 // FUN_004c9b40
+#ifndef PC_BUILD
 asm static RwCamera* CameraEndUpdate(RwCamera* camera)
 {
   .set noreorder
@@ -1091,6 +1092,7 @@ asm static RwCamera* CameraEndUpdate(RwCamera* camera)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma optimization_level 3
 // FUN_004c9d00
@@ -53559,6 +53561,7 @@ asm undefined4 FUN_004fa9f8(byte *param_1)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_004FABD0
+#ifndef PC_BUILD
 asm undefined4 *FUN_004fabd0(undefined4 *param_1)
 {
   .set noreorder
@@ -53577,6 +53580,7 @@ asm undefined4 *FUN_004fabd0(undefined4 *param_1)
   .word 0x03e00008
   .word 0x0080102d
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004FAC08
 #ifndef PC_BUILD
@@ -65618,6 +65622,7 @@ asm void FUN_00504650(undefined4 param_1)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00504678
+#ifndef PC_BUILD
 asm undefined4 * FUN_00504678(undefined4 param_1)
 {
   .set noreorder
@@ -65632,6 +65637,7 @@ asm undefined4 * FUN_00504678(undefined4 param_1)
   .word 0xac64000c
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_005046A0
 #ifndef PC_BUILD
 asm void FUN_005046a0(int *param_1)

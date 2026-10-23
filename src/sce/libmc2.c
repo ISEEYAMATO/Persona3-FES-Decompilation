@@ -2765,6 +2765,7 @@ asm bool FUN_00514f30(char *param_1,char *param_2)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_005150B0
+#ifndef PC_BUILD
 asm char * FUN_005150b0(long param_1,u64 param_2)
 {
   .set noreorder
@@ -2841,6 +2842,7 @@ asm char * FUN_005150b0(long param_1,u64 param_2)
   .word 0x03e00008
   .word 0x27bd0050
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_005151D0
 #ifndef PC_BUILD
 asm int FUN_005151d0(char *param_1)
@@ -14242,6 +14244,7 @@ asm char * FUN_0051e4b0(u64 param_1,u32 param_2,u32 param_3,u32 param_4,int *par
  */
 #pragma schedule on
 // FUN_0051F690
+#ifndef PC_BUILD
 asm u8 * FUN_0051f690(void)
 {
   .set noreorder
@@ -14250,6 +14253,7 @@ asm u8 * FUN_0051f690(void)
   .word 0x8de22f30
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* DUMMYDUMB session 2026-10-21: 3 differing bytes, the register that holds
  * the address.  Ours "lui v0,0x0 / lw v0,0(v0)" builds the address through
@@ -14444,6 +14448,7 @@ asm long FUN_0051f898(u64 param_1,int param_2)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_0051F908
+#ifndef PC_BUILD
 asm u32 * FUN_0051f908(u64 param_1)
 {
   .set noreorder
@@ -14518,6 +14523,7 @@ asm u32 * FUN_0051f908(u64 param_1)
   .word 0x27bd0010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma tailcall on
 #pragma alias FUN_0051f838_u32 FUN_0051f838
 extern u32 FUN_0051f838_u32(u32 *param_1,u16 param_2,u16 param_3,u32 param_4);
@@ -15248,6 +15254,7 @@ asm u32 FUN_00520410(int param_1,u32 (*param_2)(int))
 #pragma schedule off
 #pragma optimization_level 2
 // FUN_005204A0
+#ifndef PC_BUILD
 asm u8 * FUN_005204a0(int param_1,u32 param_2,void *param_3)
 {
   .set noreorder
@@ -15286,6 +15293,7 @@ asm u8 * FUN_005204a0(int param_1,u32 param_2,void *param_3)
   .word 0x1000fff6
   .word 0x3c13007c
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma push
 #pragma schedule on
 // FUN_00520528
@@ -15450,6 +15458,7 @@ asm void FUN_005205d8(int *param_1)
 #pragma schedule on
 // FUN_00520728
 #pragma tailcall on
+#ifndef PC_BUILD
 asm u32 * FUN_00520728(int param_1)
 {
   .set noreorder
@@ -15462,6 +15471,7 @@ asm u32 * FUN_00520728(int param_1)
   .word 0x08148270
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma tailcall off
 #pragma schedule on
 // FUN_00520748
@@ -15640,6 +15650,7 @@ asm void FUN_00520768(u64 param_1,int param_2)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_005209C0
+#ifndef PC_BUILD
 asm u32 * FUN_005209c0(u64 param_1,int param_2)
 {
   .set noreorder
@@ -16086,6 +16097,7 @@ asm u32 * FUN_005209c0(u64 param_1,int param_2)
   .word 0x1000fe54
   .word 0x24110010
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_005210A8
 #ifndef PC_BUILD
 asm u32 FUN_005210a8(u64 param_1,u32 *param_2,long param_3,long param_4)

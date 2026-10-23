@@ -477,6 +477,7 @@ static void H_Fade_White()
  * travel/halfTravel register colouring and argument setup. */
 
 // FUN_00107b20
+#ifndef PC_BUILD
 asm static void H_Fade_Day()
 {
   .set noreorder
@@ -913,9 +914,11 @@ asm static void H_Fade_Day()
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants off
 // FUN_001081e0
+#ifndef PC_BUILD
 asm static void H_Fade_Custom()
 {
   .set noreorder
@@ -1148,6 +1151,7 @@ asm static void H_Fade_Custom()
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00108570
 u32 H_Fade_FadeOut()
