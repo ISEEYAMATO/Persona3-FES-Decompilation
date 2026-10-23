@@ -72,22 +72,38 @@ extern float FUN_0052c398(float);
 
 #pragma optimization_level 3
 
-// FUN_0052e930 NONMATCHING
-float tanf(float x)
+// FUN_0052e930
+asm float tanf(float x)
 {
-    u32 ix;
-    s32 n;
-    float y[2];
-
-    ix = *(u32*)&x;
-    ix &= 0x7FFFFFFF;
-    if (ix <= 0x3F490FDA)
-    {
-        return func_0052dd40(x, 0.0f, 1);
-    }
-
-    n = func_0052c000(x, y);
-    return func_0052dd40(y[0], y[1], 1 - ((n & 1) << 1));
+  .set noreorder
+  .word 0x3c0d7fff
+  .word 0x440f6000
+  .word 0x27bdffe0
+  .word 0x35adffff
+  .word 0x3c0e3f49
+  .word 0xffbf0010
+  .word 0x35ce0fda
+  .word 0x01ed7824
+  .word 0x01cf702a
+  .word 0x15c00008
+  .word 0x00000000
+  .word 0x44806800
+  .word 0x24040001
+  .word 0x0c14b750
+  .word 0x00000000
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x0c14b000
+  .word 0x03a0202d
+  .word 0x30420001
+  .word 0xc7ac0000
+  .word 0x00021040
+  .word 0xc7ad0004
+  .word 0x24040001
+  .word 0x1000fff3
+  .word 0x00822023
+  .word 0x00000000
 }
 
 #pragma optimization_level 2
