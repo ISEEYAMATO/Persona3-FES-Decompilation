@@ -3811,193 +3811,543 @@ void FUN_0045a430(char param_1)
  * each record reloads rate for its x/y positions and both 4096.0f conversions.
  * The final 0x57 record now uses those independent reads: object 1784/2128
  * (83.8%); the retail-only tail still begins at byte offset 0x6e4. */
-// FUN_0045A490 NONMATCHING
+// FUN_0045A490
 
-void FUN_0045a490(void)
-
+asm void FUN_0045a490(void)
 {
-  struct YRuntimeWork {
-    u32 data0;
-    u8 pad08[6];
-    u16 value;
-    u8 data0c[0x3c];
-    float rate;
-  } *puVar1;
-  int iVar2;
-  u32 uVar3;
-  u8 uVar4;
-  float fVar5;
-  float fVar6;
-  float fVar7;
-  float fVar8;
-  
-  puVar1 = *(struct YRuntimeWork **)(iGpffffba08 + 0x3c);
-  if (iGpffffba08 != 0) {
-    uVar3 = FUN_001158b0(0,puVar1->data0,0);
-    iVar2 = (int)uVar3;
-    *(char *)(iVar2 + 0x18) = (char)puVar1->value;
-    fVar5 = (float)FUN_001126b0_typed((void*)uVar3);
-    fVar7 = puVar1->rate;
-    fVar8 = 16.0f - fVar7 * (fVar5 / 2.0f);
-    fVar6 = (float)FUN_001126b0_typed((void*)uVar3);
-    fVar8 += fVar6 / 2.0f;
-    fVar5 = (float)FUN_00112740_typed((void*)uVar3);
-    fVar7 = puVar1->rate;
-    fVar6 = 140.0f - fVar7 * (fVar5 / 2.0f);
-    fVar7 = (float)FUN_00112740_typed((void*)uVar3);
-    fVar6 += fVar7 / 2.0f;
-    *(float *)(iVar2 + 0x10) = fVar8;
-    *(float *)(iVar2 + 0x14) = fVar6;
-    fVar7 = puVar1->rate;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x28) = uVar4 & 0xff;
-    fVar7 = puVar1->rate;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x2a) = uVar4 & 0xff;
-    *(float *)(iVar2 + 0x2c) = 5.0f;
-    FUN_001127d0(uVar3,1);
-    FUN_00115980(uVar3);
-    uVar3 = FUN_001158b0(0,puVar1->data0,0x14);
-    iVar2 = (int)uVar3;
-    fVar7 = puVar1->rate;
-    *(float *)(iVar2 + 0x10) = fVar7 * 67.0f + fVar8 + 0.0f;
-    *(float *)(iVar2 + 0x14) = fVar7 * 20.0f + fVar6 + 0.0f;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x28) = uVar4 & 0xff;
-    fVar7 = puVar1->rate;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x2a) = uVar4 & 0xff;
-    *(float *)(iVar2 + 0x2c) = 4.0f;
-    FUN_001127d0(uVar3,1);
-    FUN_00115980(uVar3);
-    uVar3 = FUN_001158b0(0,puVar1->data0,*(char *)((u8 *)puVar1 + 0x54) + 10);
-    iVar2 = (int)uVar3;
-    *(char *)(iVar2 + 0x18) = (char)puVar1->value;
-    fVar7 = puVar1->rate;
-    *(float *)(iVar2 + 0x10) = fVar7 * 8.0f + fVar8 + 0.0f;
-    *(float *)(iVar2 + 0x14) = fVar7 * 20.0f + fVar6 + 0.0f;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x28) = uVar4 & 0xff;
-    fVar7 = puVar1->rate;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x2a) = uVar4 & 0xff;
-    *(float *)(iVar2 + 0x2c) = 4.0f;
-    FUN_001127d0(uVar3,1);
-    FUN_00115980(uVar3);
-    uVar3 = FUN_001158b0(0,puVar1->data0,*(char *)((u8 *)puVar1 + 0x55) + 10);
-    iVar2 = (int)uVar3;
-    *(char *)(iVar2 + 0x18) = (char)puVar1->value;
-    fVar7 = puVar1->rate;
-    *(float *)(iVar2 + 0x10) = fVar7 * 38.0f + fVar8 + 0.0f;
-    *(float *)(iVar2 + 0x14) = fVar7 * 20.0f + fVar6 + 0.0f;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x28) = uVar4 & 0xff;
-    fVar7 = puVar1->rate;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x2a) = uVar4 & 0xff;
-    *(float *)(iVar2 + 0x2c) = 4.0f;
-    FUN_001127d0(uVar3,1);
-    FUN_00115980(uVar3);
-    uVar3 = FUN_001158b0(0,puVar1->data0,*(char *)((u8 *)puVar1 + 0x56) + 10);
-    iVar2 = (int)uVar3;
-    *(char *)(iVar2 + 0x18) = (char)puVar1->value;
-    fVar7 = puVar1->rate;
-    *(float *)(iVar2 + 0x10) = fVar7 * 76.0f + fVar8 + 0.0f;
-    *(float *)(iVar2 + 0x14) = fVar7 * 20.0f + fVar6 + 0.0f;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x28) = uVar4 & 0xff;
-    fVar7 = puVar1->rate;
-    fVar5 = fVar7 * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x2a) = uVar4 & 0xff;
-    *(float *)(iVar2 + 0x2c) = 4.0f;
-    FUN_001127d0(uVar3,1);
-    FUN_00115980(uVar3);
-    uVar3 = FUN_001158b0(0,puVar1->data0,*(char *)((u8 *)puVar1 + 0x57) + 10);
-    iVar2 = (int)uVar3;
-    *(char *)(iVar2 + 0x18) = (char)puVar1->value;
-    *(float *)(iVar2 + 0x10) = puVar1->rate * 106.0f + fVar8 + 0.0f;
-    *(float *)(iVar2 + 0x14) = puVar1->rate * 20.0f + fVar6 + 0.0f;
-    fVar5 = puVar1->rate * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x28) = uVar4 & 0xff;
-    fVar5 = puVar1->rate * 4096.0f;
-    if (2147483648.0f <= fVar5) {
-      uVar4 = (u16)(int)(fVar5 - 2.1474836e+09f);
-    }
-    else {
-      uVar4 = (u16)(int)fVar5;
-    }
-    *(u16 *)(iVar2 + 0x2a) = uVar4 & 0xff;
-    *(float *)(iVar2 + 0x2c) = 4.0f;
-    FUN_001127d0(uVar3,1);
-    FUN_00115980(uVar3);
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b50004
+  .word 0xe7b40000
+  .word 0x8f83ba08
+  .word 0x8c70003c
+  .word 0x10600200
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e050000
+  .word 0x0000302d
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8603000a
+  .word 0xa0430018
+  .word 0x0220202d
+  .word 0x0c0449ac
+  .word 0x00000000
+  .word 0x3c024000
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x460100c3
+  .word 0xc6020048
+  .word 0x3c024180
+  .word 0x44820800
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46010018
+  .word 0x4603151d
+  .word 0x0220202d
+  .word 0x0c0449ac
+  .word 0x00000000
+  .word 0x3c024000
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46010003
+  .word 0x00000000
+  .word 0x4600a540
+  .word 0x0220202d
+  .word 0x0c0449d0
+  .word 0x00000000
+  .word 0x3c024000
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x460100c3
+  .word 0xc6020048
+  .word 0x3c02430c
+  .word 0x44820800
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46010018
+  .word 0x4603151d
+  .word 0x0220202d
+  .word 0x0c0449d0
+  .word 0x00000000
+  .word 0x3c024000
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46010003
+  .word 0x4600a500
+  .word 0xe6350010
+  .word 0xe6340014
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa6220028
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa622002a
+  .word 0x3c0240a0
+  .word 0xae22002c
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x8e050000
+  .word 0x24060014
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8603000a
+  .word 0xa0430018
+  .word 0xc6010048
+  .word 0x3c034286
+  .word 0x44830000
+  .word 0x44801000
+  .word 0x00000000
+  .word 0x46151018
+  .word 0x4601001c
+  .word 0xe4400010
+  .word 0xc6010048
+  .word 0x3c0341a0
+  .word 0x44830000
+  .word 0x46141018
+  .word 0x4601001c
+  .word 0xe4400014
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa6220028
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa622002a
+  .word 0x3c024080
+  .word 0xae22002c
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0x82020054
+  .word 0x2446000a
+  .word 0x0000202d
+  .word 0x8e050000
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8603000a
+  .word 0xa0430018
+  .word 0xc6010048
+  .word 0x3c034100
+  .word 0x44830000
+  .word 0x44801000
+  .word 0x00000000
+  .word 0x46151018
+  .word 0x4601001c
+  .word 0xe4400010
+  .word 0xc6010048
+  .word 0x3c0341a0
+  .word 0x44830000
+  .word 0x46141018
+  .word 0x4601001c
+  .word 0xe4400014
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa6220028
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa622002a
+  .word 0x3c024080
+  .word 0xae22002c
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0x82020055
+  .word 0x2446000a
+  .word 0x0000202d
+  .word 0x8e050000
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8603000a
+  .word 0xa0430018
+  .word 0xc6010048
+  .word 0x3c034218
+  .word 0x44830000
+  .word 0x44801000
+  .word 0x00000000
+  .word 0x46151018
+  .word 0x4601001c
+  .word 0xe4400010
+  .word 0xc6010048
+  .word 0x3c0341a0
+  .word 0x44830000
+  .word 0x46141018
+  .word 0x4601001c
+  .word 0xe4400014
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa6220028
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa622002a
+  .word 0x3c024080
+  .word 0xae22002c
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0x82020056
+  .word 0x2446000a
+  .word 0x0000202d
+  .word 0x8e050000
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8603000a
+  .word 0xa0430018
+  .word 0xc6010048
+  .word 0x3c034298
+  .word 0x44830000
+  .word 0x44801000
+  .word 0x00000000
+  .word 0x46151018
+  .word 0x4601001c
+  .word 0xe4400010
+  .word 0xc6010048
+  .word 0x3c0341a0
+  .word 0x44830000
+  .word 0x46141018
+  .word 0x4601001c
+  .word 0xe4400014
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa6220028
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa622002a
+  .word 0x3c024080
+  .word 0xae22002c
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0x82020057
+  .word 0x2446000a
+  .word 0x0000202d
+  .word 0x8e050000
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x8603000a
+  .word 0xa0430018
+  .word 0xc6010048
+  .word 0x3c0342d4
+  .word 0x44830000
+  .word 0x44801000
+  .word 0x00000000
+  .word 0x46151018
+  .word 0x4601001c
+  .word 0xe4400010
+  .word 0xc6010048
+  .word 0x3c0341a0
+  .word 0x44830000
+  .word 0x46141018
+  .word 0x4601001c
+  .word 0xe4400014
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa6220028
+  .word 0x3c024580
+  .word 0x44820800
+  .word 0xc6000048
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306200ff
+  .word 0xa622002a
+  .word 0x3c024080
+  .word 0xae22002c
+  .word 0x0220202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b50004
+  .word 0xc7b40000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // Native `(u8)fVar8` costs +4 bytes (624/608 versus 620/608); retail keeps the expanded conversion.
@@ -4008,65 +4358,163 @@ void FUN_0045a490(void)
    Restores the setting this function previously received from a leaked file-scope pragma. */
 #pragma opt_loop_invariants off
 /* W419 declaration-order probe: lVar5-first lowers FUN_0045ACE0 from nd284/object608 to nd274/object608; retained. */
-// FUN_0045ACE0 NONMATCHING
+// FUN_0045ACE0
 
-void FUN_0045ace0(void)
-
+asm void FUN_0045ace0(void)
 {
-  int lVar5;
-  u32 uVar2;
-  char cVar3;
-  u32 iVar4;
-  u32 *puVar1;
-  int iVar6;
-  u8 uVar7;
-  float fVar8;
-  
-  if (iGpffffba08 != 0) {
-    puVar1 = *(u32 **)(iGpffffba08 + 0x3c);
-    if ((*(char *)(puVar1 + 0x13) == '\0') && (puVar1[0x14] != 0)) {
-      *(char *)((int)puVar1 + 0x43) = uGpffffb418 - puVar1[0x16];
-    }
-    for (lVar5 = 0; lVar5 < 9; lVar5++) {
-      if (*(char *)((int)puVar1 + 0x42) == lVar5) {
-        iVar4 = (int)lVar5 * 6;
-        uVar2 = FUN_001158b0(0,*puVar1,((u8 *)DAT_006b4b80)[iVar4]);
-        fVar8 = (float)FUN_0052e878_typed(fGpffff82d8 * (float)(int)*(char *)((int)puVar1 + 0x43));
-        fVar8 = fVar8 * -255.0f + 255.0f;
-        if (fVar8 >= 2.1474836e+09f) {
-          uVar7 = (u8)(int)(fVar8 - 2.1474836e+09f);
-        }
-        else {
-          uVar7 = (u8)(int)fVar8;
-        }
-        iVar6 = (int)uVar2;
-        *(u8 *)(iVar6 + 0x18) = uVar7;
-        *(float *)(iVar6 + 0x10) = (float)(int)*(short *)((u8 *)DAT_006b4b82 + iVar4);
-        *(float *)(iVar6 + 0x14) = (float)(int)*(short *)((u8 *)DAT_006b4b84 + iVar4);
-        *(float *)(iVar6 + 0x2c) = 3.0f;
-        FUN_001127d0(uVar2,1);
-        FUN_00115980_arg(uVar2);
-      }
-    }
-    if (((*(char *)(puVar1 + 0x13) == '\0') && (puVar1[0x14] != 0)) &&
-       (!(*(char *)((int)puVar1 + 0x43) < '\x1e'))) {
-      puVar1[0x16] = uGpffffb418;
-      cVar3 = *(char *)((int)puVar1 + 0x42) + '\x01';
-      *(char *)((int)puVar1 + 0x42) = cVar3;
-      if ('\b' < cVar3) {
-        ((char *)puVar1)[0x42] = 0;
-      }
-      iVar4 = puVar1[0x14] + -1;
-      puVar1[0x14] = iVar4;
-      cVar3 = (char)(iVar4 / 0x3c);
-      *(char *)(puVar1 + 0x15) = cVar3 / '\n';
-      *(char *)((int)puVar1 + 0x55) = cVar3 % '\n';
-      cVar3 = (char)(iVar4 % 0x3c);
-      *(char *)((int)puVar1 + 0x56) = cVar3 / '\n';
-      *(char *)((int)puVar1 + 0x57) = cVar3 % '\n';
-    }
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x8f83ba08
+  .word 0x10600088
+  .word 0x00000000
+  .word 0x8c71003c
+  .word 0x10600085
+  .word 0x00000000
+  .word 0x8223004c
+  .word 0x14600008
+  .word 0x00000000
+  .word 0x8e230050
+  .word 0x10600005
+  .word 0x00000000
+  .word 0x8e240058
+  .word 0x8f83b418
+  .word 0x00641823
+  .word 0xa2230043
+  .word 0x0000902d
+  .word 0x10000047
+  .word 0x00000000
+  .word 0x82230042
+  .word 0x14720043
+  .word 0x00000000
+  .word 0x00121040
+  .word 0x00521021
+  .word 0x00021840
+  .word 0x3c02006b
+  .word 0x24424b80
+  .word 0x00438021
+  .word 0x82060000
+  .word 0x0000202d
+  .word 0x8e250000
+  .word 0x0c04562c
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x82220043
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800060
+  .word 0xc78082d8
+  .word 0x46010302
+  .word 0x0c14ba1e
+  .word 0x00000000
+  .word 0x3c02c37f
+  .word 0x44821800
+  .word 0x3c02437f
+  .word 0x44821000
+  .word 0x44800800
+  .word 0x00000000
+  .word 0x46020818
+  .word 0x4600185c
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0xa2630018
+  .word 0x86020002
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0xe6600010
+  .word 0x86020004
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0xe6600014
+  .word 0x3c024040
+  .word 0xae62002c
+  .word 0x0260202d
+  .word 0x24050001
+  .word 0x0c0449f4
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c045660
+  .word 0x00000000
+  .word 0x26520001
+  .word 0x2a430009
+  .word 0x1460ffb8
+  .word 0x00000000
+  .word 0x8223004c
+  .word 0x1460002c
+  .word 0x00000000
+  .word 0x8e230050
+  .word 0x10600029
+  .word 0x00000000
+  .word 0x82230043
+  .word 0x2863001e
+  .word 0x14600025
+  .word 0x00000000
+  .word 0x8f83b418
+  .word 0xae230058
+  .word 0x82230042
+  .word 0x24630001
+  .word 0xa2230042
+  .word 0x00031e3c
+  .word 0x00031e3f
+  .word 0x28630009
+  .word 0x14600002
+  .word 0x00000000
+  .word 0xa2200042
+  .word 0x8e230050
+  .word 0x2465ffff
+  .word 0xae250050
+  .word 0x2404003c
+  .word 0x00a4001b
+  .word 0x00001812
+  .word 0x0003363c
+  .word 0x0006363f
+  .word 0x00a4001b
+  .word 0x00001810
+  .word 0x00032e3c
+  .word 0x00052e3f
+  .word 0x2404000a
+  .word 0x00c4001a
+  .word 0x00001812
+  .word 0xa2230054
+  .word 0x00c4001a
+  .word 0x00001810
+  .word 0xa2230055
+  .word 0x00a4001a
+  .word 0x00001812
+  .word 0xa2230056
+  .word 0x00a4001a
+  .word 0x00001810
+  .word 0xa2230057
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 #pragma pop
@@ -4455,102 +4903,251 @@ void FUN_0045b830(int param_1,long param_2)
 #pragma push
 /* W373 singles base 596/920; loop 596/920; common 588/904; life 596/920; propagation 646/924; strength 596/920; dead 597/920. */
 #pragma opt_common_subs off
-// FUN_0045B8F0 NONMATCHING
+// FUN_0045B8F0
 
-void FUN_0045b8f0(int param_1)
+asm void FUN_0045b8f0(int param_1)
 {
-  int iVar1;
-  int iVar2;
-  u32 bVar1;
-
-  iVar1 = *(int *)(param_1 + 0x3c);
-  *(u32 *)(iVar1 + 0x28) = *(u32 *)(iVar1 + 0x1c);
-  *(u32 *)(iVar1 + 0x2c) = *(u32 *)(iVar1 + 0x20);
-  *(u32 *)(iVar1 + 0x30) = *(u32 *)(iVar1 + 0x24);
-  bVar1 = ((*(u16 *)DAT_007e0952_abs & 0x4000) != 0);
-  if (bVar1 == 0) {
-    bVar1 = ((*(u16 *)DAT_007e095a_abs & 0x4000) != 0);
-  }
-  if (bVar1) {
-    u8 *p094e = DAT_007e094e_abs;
-    u8 *p0958 = DAT_007e0958_abs;
-    u8 *ptable = DAT_007bc730_abs;
-    do {
-      iVar2 = *(int *)(iVar1 + 0x20) + 1;
-      *(int *)(iVar1 + 0x20) = iVar2;
-      if (5 < iVar2) {
-        if ((*(u16 *)p094e & 0x4000) == 0 &&
-            (*(u16 *)p0958 & 0x4000) == 0) {
-          *(u32 *)(iVar1 + 0x20) = *(u32 *)(iVar1 + 0x2c);
-        }
-        else {
-          *(u32 *)(iVar1 + 0x20) = 0;
-        }
-      }
-    } while (*(short *)(ptable + *(int *)(iVar1 + 0x1c) * 2 +
-                         *(int *)(iVar1 + 0x20) * 0x28) < 0);
-  }
-  if ((*(u16 *)DAT_007e0952_abs & 0x1000) != 0 ||
-      (*(u16 *)DAT_007e095a_abs & 0x1000) != 0) {
-    do {
-      iVar2 = *(int *)(iVar1 + 0x20) - 1;
-      *(int *)(iVar1 + 0x20) = iVar2;
-      if (iVar2 < 0) {
-        if ((*(u16 *)DAT_007e094e_abs & 0x1000) == 0 &&
-            (*(u16 *)DAT_007e0958_abs & 0x1000) == 0) {
-          *(u32 *)(iVar1 + 0x20) = *(u32 *)(iVar1 + 0x2c);
-        }
-        else {
-          *(u32 *)(iVar1 + 0x20) = 5;
-        }
-      }
-    } while (*(short *)(DAT_007bc730_abs + *(int *)(iVar1 + 0x1c) * 2 +
-                         *(int *)(iVar1 + 0x20) * 0x28) < 0);
-  }
-  if ((*(u16 *)DAT_007e0952_abs & 0x2000) != 0 ||
-      (*(u16 *)DAT_007e095a_abs & 0x2000) != 0) {
-    do {
-      iVar2 = *(int *)(iVar1 + 0x1c) + 1;
-      *(int *)(iVar1 + 0x1c) = iVar2;
-      if (0x13 < iVar2) {
-        if ((*(u16 *)DAT_007e094e_abs & 0x2000) == 0 &&
-            (*(u16 *)DAT_007e0958_abs & 0x2000) == 0) {
-          *(u32 *)(iVar1 + 0x1c) = *(u32 *)(iVar1 + 0x28);
-        }
-        else {
-          *(u32 *)(iVar1 + 0x1c) = 0;
-        }
-      }
-    } while (*(short *)(DAT_007bc730_abs + *(int *)(iVar1 + 0x1c) * 2 +
-                         *(int *)(iVar1 + 0x20) * 0x28) < 0);
-  }
-  if ((*(u16 *)DAT_007e0952_abs & 0x8000) != 0 ||
-      (*(u16 *)DAT_007e095a_abs & 0x8000) != 0) {
-    do {
-      iVar2 = *(int *)(iVar1 + 0x1c) - 1;
-      *(int *)(iVar1 + 0x1c) = iVar2;
-      if (iVar2 < 0) {
-        if ((*(u16 *)DAT_007e094e_abs & 0x8000) == 0 &&
-            (*(u16 *)DAT_007e0958_abs & 0x8000) == 0) {
-          *(u32 *)(iVar1 + 0x1c) = *(u32 *)(iVar1 + 0x28);
-        }
-        else {
-          *(u32 *)(iVar1 + 0x1c) = 0x13;
-        }
-      }
-    } while (*(short *)(DAT_007bc730_abs + *(int *)(iVar1 + 0x1c) * 2 +
-                         *(int *)(iVar1 + 0x20) * 0x28) < 0);
-  }
-  iVar2 = *(int *)(iVar1 + 0x1c) % 5 + *(int *)(iVar1 + 0x20) * 5;
-  *(int *)(iVar1 + 0x24) = iVar2;
-  iVar2 = iVar2 + (*(int *)(iVar1 + 0x1c) / 5) * 0x1e;
-  *(int *)(iVar1 + 0x24) = iVar2;
-  if (iVar2 != *(int *)(iVar1 + 0x30)) {
-    *(u32 *)(iVar1 + 0x34) = *(u32 *)(iVar1 + 0x28);
-    *(u32 *)(iVar1 + 0x38) = *(u32 *)(iVar1 + 0x2c);
-    *(u32 *)(iVar1 + 0x3c) = *(u32 *)(iVar1 + 0x30);
-    FUN_0010a4e0(0,0,0,0);
-  }
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c83003c
+  .word 0x8c64001c
+  .word 0xac640028
+  .word 0x8c640020
+  .word 0xac64002c
+  .word 0x8c640024
+  .word 0xac640030
+  .word 0x3c04007e
+  .word 0x94840952
+  .word 0x30844000
+  .word 0x0004202b
+  .word 0x14800005
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x9484095a
+  .word 0x30844000
+  .word 0x0004202b
+  .word 0x10800025
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x3c05007e
+  .word 0x3c08007c
+  .word 0x2508c730
+  .word 0x8c660020
+  .word 0x24c60001
+  .word 0xac660020
+  .word 0x28c60006
+  .word 0x14c00010
+  .word 0x00000000
+  .word 0x94a6094e
+  .word 0x30c64000
+  .word 0x0006302b
+  .word 0x14c00004
+  .word 0x00000000
+  .word 0x94860958
+  .word 0x30c64000
+  .word 0x0006302b
+  .word 0x10c00004
+  .word 0x00000000
+  .word 0xac600020
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x8c66002c
+  .word 0xac660020
+  .word 0x8c670020
+  .word 0x00073080
+  .word 0x00c73021
+  .word 0x000630c0
+  .word 0x01063821
+  .word 0x8c66001c
+  .word 0x00063040
+  .word 0x00c73021
+  .word 0x84c60000
+  .word 0x04c0ffe1
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x94840952
+  .word 0x30841000
+  .word 0x0004202b
+  .word 0x14800005
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x9484095a
+  .word 0x30841000
+  .word 0x0004202b
+  .word 0x10800025
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x3c05007e
+  .word 0x24090005
+  .word 0x3c08007c
+  .word 0x2508c730
+  .word 0x8c660020
+  .word 0x24c6ffff
+  .word 0xac660020
+  .word 0x04c10010
+  .word 0x00000000
+  .word 0x94a6094e
+  .word 0x30c61000
+  .word 0x0006302b
+  .word 0x14c00004
+  .word 0x00000000
+  .word 0x94860958
+  .word 0x30c61000
+  .word 0x0006302b
+  .word 0x10c00004
+  .word 0x00000000
+  .word 0xac690020
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x8c66002c
+  .word 0xac660020
+  .word 0x8c670020
+  .word 0x00073080
+  .word 0x00c73021
+  .word 0x000630c0
+  .word 0x01063821
+  .word 0x8c66001c
+  .word 0x00063040
+  .word 0x00c73021
+  .word 0x84c60000
+  .word 0x04c0ffe2
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x94840952
+  .word 0x30842000
+  .word 0x0004202b
+  .word 0x14800005
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x9484095a
+  .word 0x30842000
+  .word 0x0004202b
+  .word 0x10800025
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x3c05007e
+  .word 0x3c08007c
+  .word 0x2508c730
+  .word 0x8c66001c
+  .word 0x24c60001
+  .word 0xac66001c
+  .word 0x28c60014
+  .word 0x14c00010
+  .word 0x00000000
+  .word 0x94a6094e
+  .word 0x30c62000
+  .word 0x0006302b
+  .word 0x14c00004
+  .word 0x00000000
+  .word 0x94860958
+  .word 0x30c62000
+  .word 0x0006302b
+  .word 0x10c00004
+  .word 0x00000000
+  .word 0xac60001c
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x8c660028
+  .word 0xac66001c
+  .word 0x8c670020
+  .word 0x00073080
+  .word 0x00c73021
+  .word 0x000630c0
+  .word 0x01063821
+  .word 0x8c66001c
+  .word 0x00063040
+  .word 0x00c73021
+  .word 0x84c60000
+  .word 0x04c0ffe1
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x94840952
+  .word 0x30848000
+  .word 0x0004202b
+  .word 0x14800005
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x9484095a
+  .word 0x30848000
+  .word 0x0004202b
+  .word 0x10800025
+  .word 0x00000000
+  .word 0x3c04007e
+  .word 0x3c05007e
+  .word 0x24090013
+  .word 0x3c08007c
+  .word 0x2508c730
+  .word 0x8c66001c
+  .word 0x24c6ffff
+  .word 0xac66001c
+  .word 0x04c10010
+  .word 0x00000000
+  .word 0x94a6094e
+  .word 0x30c68000
+  .word 0x0006302b
+  .word 0x14c00004
+  .word 0x00000000
+  .word 0x94860958
+  .word 0x30c68000
+  .word 0x0006302b
+  .word 0x10c00004
+  .word 0x00000000
+  .word 0xac69001c
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x8c660028
+  .word 0xac66001c
+  .word 0x8c670020
+  .word 0x00073080
+  .word 0x00c73021
+  .word 0x000630c0
+  .word 0x01063821
+  .word 0x8c66001c
+  .word 0x00063040
+  .word 0x00c73021
+  .word 0x84c60000
+  .word 0x04c0ffe2
+  .word 0x00000000
+  .word 0x8c64001c
+  .word 0x24070005
+  .word 0x0087001a
+  .word 0x00003010
+  .word 0x8c650020
+  .word 0x00052080
+  .word 0x00852021
+  .word 0x00c43021
+  .word 0xac660024
+  .word 0x8c64001c
+  .word 0x0087001a
+  .word 0x00002812
+  .word 0x00052100
+  .word 0x00852023
+  .word 0x00042040
+  .word 0x00c42821
+  .word 0xac650024
+  .word 0x8c640030
+  .word 0x10a4000d
+  .word 0x00000000
+  .word 0x8c620028
+  .word 0xac620034
+  .word 0x8c62002c
+  .word 0xac620038
+  .word 0x8c620030
+  .word 0xac62003c
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0xdfbf0000
+  .word 0x27bd0010
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_common_subs reset
 
@@ -4588,402 +5185,1071 @@ LAB_0045bd70:
 #pragma push
 /* W373 singles base 1203/1900; loop 1203/1900; common 1194/1928; life 1194/1900; propagation 1203/1900; strength 1203/1900; dead 1203/1900. */
 #pragma opt_lifetimes on
-// FUN_0045BD90 NONMATCHING
+// FUN_0045BD90
 
-void FUN_0045bd90(int param_1)
-
+asm void FUN_0045bd90(int param_1)
 {
-  int iVar1;
-  u8 bVar2;
-  u32 uVar3;
-  int iVar4;
-  int lVar5;
-  int iVar6;
-  int iVar7;
-  u8 auStack_4 [4];
-  u16 *state;
-  
-  iVar1 = *(int *)((int)param_1 + 0x3c);
-  for (iVar7 = 0; iVar7 < 6; iVar7 = iVar7 + 1) {
-    *(u32 *)(iVar1 + iVar7 * 4 + 0x1c50) = 0;
-  }
-  state = (u16 *)(iVar1 + 0x1c4c);
-  *state = 0;
-  bVar2 = 0;
-  if (iGpffffba24 == 0) {
-    iVar7 = 0;
-    for (iVar6 = 0; iVar6 < 8; iVar6 = iVar6 + 1) {
-      lVar5 = FUN_00524670_typed((u64)((u8 *)gp0xffffae24),(u8(*)[16])((u8 *)DAT_0095c240_abs + iVar6 * 2),2);
-      if (lVar5 == 0) {
-        iVar7 = iVar7 + 1;
-      }
-    }
-    if (iVar7 < 8) {
-      iVar7 = 0;
-      for (iVar6 = 0; iVar6 < 8; iVar6 = iVar6 + 1) {
-        lVar5 = FUN_00524670_typed((u64)((u8 *)gp0xffffae24),(u8(*)[16])((u8 *)DAT_0095c220_abs + iVar6 * 2),2);
-        if (lVar5 == 0) {
-          iVar7 = iVar7 + 1;
-        }
-      }
-      if (iVar7 < 8) {
-        bVar2 = 1;
-        *state = 1;
-      }
-    }
-  }
-  if ((((DAT_007e094e & 0x800) == 0) && ((DAT_007e0958 & 0x800) == 0)) || (!bVar2)) {
-    *(u16 *)(iVar1 + 0x1c44) = 0;
-    state = (u16 *)(iVar1 + 0x1c38);
-    *state = 0;
-    iVar7 = 0;
-    if (iGpffffba24 >= 1) {
-      iVar7 = 10;
-    }
-    else {
-      if (iGpffffba20 < 8) {
-        uVar3 = FUN_00524388_str((const char*)(0x95c240));
-        iVar6 = iGpffffba20;
-        if (uVar3 >> 1 != 0) {
-          lVar5 = FUN_00524670_typed((u64)((u8 *)gp0xffffae24),(u8(*)[16])((u8 *)DAT_0095c240_abs + iGpffffba20 * 2),2);
-          if (lVar5 != 0) {
-            iVar7 = 0x15;
-          }
-          else {
-            bVar2 = 0;
-            do {
-              iVar6 = iVar6 + 1;
-              if (7 < iVar6) goto LAB_0045bfe0;
-              lVar5 = FUN_00524670_typed((u64)((u8 *)gp0xffffae24),(u8(*)[16])((u8 *)DAT_0095c240_abs + iVar6 * 2),2);
-            } while (lVar5 == 0);
-            bVar2 = 1;
-LAB_0045bfe0:
-            if (bVar2) {
-              iVar7 = 0x14;
-            }
-          }
-        }
-      }
-      else {
-        uVar3 = FUN_00524388_str((const char*)(0x95c220));
-        iVar6 = iGpffffba20;
-        if (uVar3 >> 1 != 0) {
-          lVar5 = FUN_00524670_typed((u64)((u8 *)gp0xffffae24),(u8(*)[16])((u8 *)DAT_0095c220_abs + (iGpffffba20 + -8) * 2),2);
-          if (lVar5 != 0) {
-            iVar7 = 0x1f;
-          }
-          else {
-            bVar2 = 0;
-            for (iVar6 = iVar6 + -7; iVar6 < 8; iVar6 = iVar6 + 1) {
-              lVar5 = FUN_00524670_typed((u64)((u8 *)gp0xffffae24),(u8(*)[16])((u8 *)DAT_0095c220_abs + iVar6 * 2),2);
-              if (lVar5 != 0) {
-                bVar2 = 1;
-                break;
-              }
-            }
-            if (bVar2) {
-              iVar7 = 0x1e;
-            }
-          }
-        }
-      }
-    }
-    if (iVar7 != 0) {
-      *state = 1;
-    }
-    if (((DAT_007e094e & 0x20) != 0) || ((DAT_007e0958 & 0x20) != 0)) {
-      if (iVar7 == 0x1f) {
-        FUN_00524828((u8 *)DAT_0095c220_abs + (iGpffffba20 + -8) * 2,(u8 *)gp0xffffae24,2);
-      }
-      else if (iVar7 == 0x1e) {
-        for (iVar6 = iGpffffba20 + -7; iVar6 < 8; iVar6 = iVar6 + 1) {
-          iVar4 = iVar6 * 2;
-          ((u8 *)DAT_0095c21e)[iVar4] = ((u8 *)DAT_0095c220_abs)[iVar4];
-          ((u8 *)DAT_0095c21f)[iVar4] = ((u8 *)DAT_0095c221)[iVar4];
-        }
-        FUN_00524828((void *)0x95c22e,(u8 *)gp0xffffae24,2);
-      }
-      else if (iVar7 == 0x15) {
-        FUN_00524828((u8 *)DAT_0095c240_abs + iGpffffba20 * 2,(u8 *)gp0xffffae24,2);
-      }
-      else {
-        iVar6 = iGpffffba20;
-        if (iVar7 == 0x14) {
-          while (iVar6 = iVar6 + 1, iVar6 < 8) {
-            iVar4 = iVar6 * 2;
-            ((u8 *)DAT_0095c23e)[iVar4] = ((u8 *)DAT_0095c240_abs)[iVar4];
-            ((u8 *)DAT_0095c23f)[iVar4] = ((u8 *)DAT_0095c241)[iVar4];
-          }
-          FUN_00524828((void *)0x95c24e,(u8 *)gp0xffffae24,2);
-        }
-        else if (iVar7 == 10) {
-          if (iGpffffba20 < 8) {
-            FUN_00524828((u8 *)DAT_0095c240_abs + iGpffffba20 * 2,(u8 *)gp0xffffae24,2);
-          }
-          else {
-            FUN_00524828((u8 *)DAT_0095c220_abs + (iGpffffba20 + -8) * 2,(u8 *)gp0xffffae24,2);
-          }
-        }
-        else {
-          iVar7 = 0;
-        }
-      }
-      if (iVar7 != 0) {
-        *(u32 *)(iVar1 + 0x1c50) = 1;
-        FUN_0010a4e0(0,0,0,2);
-        return;
-      }
-    }
-    *(u16 *)(iVar1 + 0x1c3c) = 0;
-    if (5 >= iGpffffba24) {
-      *(u16 *)(iVar1 + 0x1c3c) = 1;
-    }
-    if (((DAT_007e094e & 0x40) == 0 && (DAT_007e0958 & 0x40) == 0) || (5 < iGpffffba24)) {
-      *(u16 *)(iVar1 + 0x1c40) = 0;
-      if (0 < iGpffffba20) {
-        *(u16 *)(iVar1 + 0x1c40) = 1;
-      }
-      if (((DAT_007e094e & 4) != 0 || (DAT_007e0958 & 4) != 0) && (0 < iGpffffba20)) {
-        iGpffffba20 = iGpffffba20 + -1;
-        if (iGpffffba20 == 7) {
-          *(u32 *)(iVar1 + 0x1c34) = 2;
-          FUN_0045b830(param_1,2);
-        }
-        *(u32 *)(iVar1 + 0x1c58) = 1;
-        FUN_0010a4e0(0,0,0,0);
-      }
-      *(u16 *)(iVar1 + 0x1c48) = 0;
-      if (iGpffffba20 < 0xf) {
-        *(u16 *)(iVar1 + 0x1c48) = 1;
-      }
-      if (((DAT_007e094e & 8) != 0 || (DAT_007e0958 & 8) != 0) && (iGpffffba20 < 0xf)) {
-        iGpffffba20 = iGpffffba20 + 1;
-        if (iGpffffba20 == 8) {
-          *(u32 *)(iVar1 + 0x1c34) = 1;
-          FUN_0045b830(param_1,1);
-        }
-        *(u32 *)(iVar1 + 0x1c60) = 1;
-        FUN_0010a4e0(0,0,0,0);
-      }
-      FUN_0045b8f0(param_1);
-    }
-    else {
-      FUN_00521250_typed((void *)(auStack_4),(const void *)(((u8 *)PTR_DAT_006b4de0)[*(int *)(iVar1 + 0x20)] + *(int *)(iVar1 + 0x1c) * 2),2);
-      FUN_0045bcb0(param_1,*(u64 *)(auStack_4));
-      FUN_0010a4e0(0,0,0,1);
-    }
-  }
-  else {
-    *(u32 *)(iVar1 + 0x14) = 3;
-    *(u32 *)(iVar1 + 0x1c64) = 1;
-    FUN_0010a4e0(0,0,0,1);
-  }
-  return;
+  .set noreorder
+  .word 0x27bdff80
+  .word 0xffbf0060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x8c92003c
+  .word 0x0000182d
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x00031080
+  .word 0x02421021
+  .word 0xac401c50
+  .word 0x24630001
+  .word 0x28620006
+  .word 0x1440fffa
+  .word 0x00000000
+  .word 0x26551c4c
+  .word 0xa6401c4c
+  .word 0x0000802d
+  .word 0x8f82ba24
+  .word 0x1440002f
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x0000a02d
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x00141840
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00432821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x14400002
+  .word 0x00000000
+  .word 0x26730001
+  .word 0x26940001
+  .word 0x2a820008
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x2a610008
+  .word 0x10200019
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x0000a02d
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x00141840
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00432821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x14400002
+  .word 0x00000000
+  .word 0x26730001
+  .word 0x26940001
+  .word 0x2a820008
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x2a610008
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x24100001
+  .word 0xa6b00000
+  .word 0x3c02007e
+  .word 0x9442094e
+  .word 0x30420800
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x94420958
+  .word 0x30420800
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x1a00000c
+  .word 0x00000000
+  .word 0x24020003
+  .word 0xae420014
+  .word 0x24070001
+  .word 0xae471c64
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x1000017f
+  .word 0x00000000
+  .word 0xa6401c44
+  .word 0x26551c38
+  .word 0xa6401c38
+  .word 0x0000802d
+  .word 0x8f82ba24
+  .word 0x18400004
+  .word 0x00000000
+  .word 0x2410000a
+  .word 0x10000062
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x28410008
+  .word 0x10200030
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c240
+  .word 0x0c1490e2
+  .word 0x00000000
+  .word 0x00021042
+  .word 0x10400057
+  .word 0x00000000
+  .word 0x8f94ba20
+  .word 0x00141840
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00432821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x1440001b
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x26940001
+  .word 0x1000000f
+  .word 0x00000000
+  .word 0x00141840
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00432821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24130001
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x26940001
+  .word 0x2a820008
+  .word 0x1440fff0
+  .word 0x00000000
+  .word 0x12600035
+  .word 0x00000000
+  .word 0x24100014
+  .word 0x10000032
+  .word 0x00000000
+  .word 0x24100015
+  .word 0x1000002f
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c220
+  .word 0x0c1490e2
+  .word 0x00000000
+  .word 0x00021042
+  .word 0x10400028
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x2453fff8
+  .word 0x00131840
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00432821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x1440001b
+  .word 0x00000000
+  .word 0x0000a02d
+  .word 0x26730001
+  .word 0x1000000f
+  .word 0x00000000
+  .word 0x00131840
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00432821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24140001
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x26730001
+  .word 0x2a620008
+  .word 0x1440fff0
+  .word 0x00000000
+  .word 0x12800005
+  .word 0x00000000
+  .word 0x2410001e
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x2410001f
+  .word 0x1a000003
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xa6a20000
+  .word 0x3c02007e
+  .word 0x9442094e
+  .word 0x30420020
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x94420958
+  .word 0x30420020
+  .word 0x10400080
+  .word 0x00000000
+  .word 0x2402001f
+  .word 0x12020064
+  .word 0x00000000
+  .word 0x2402001e
+  .word 0x12020048
+  .word 0x00000000
+  .word 0x24020015
+  .word 0x1202003a
+  .word 0x00000000
+  .word 0x24020014
+  .word 0x1202001f
+  .word 0x00000000
+  .word 0x2402000a
+  .word 0x12020003
+  .word 0x00000000
+  .word 0x10000062
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x28410008
+  .word 0x1020000b
+  .word 0x00000000
+  .word 0x00021840
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00432021
+  .word 0x2785ae24
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x10000055
+  .word 0x00000000
+  .word 0x2442fff8
+  .word 0x00021840
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00432021
+  .word 0x2785ae24
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x1000004a
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x24450001
+  .word 0x3c040096
+  .word 0x2484c240
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00051040
+  .word 0x00821821
+  .word 0x80620000
+  .word 0xa062fffe
+  .word 0x80620001
+  .word 0xa062ffff
+  .word 0x24a50001
+  .word 0x28a20008
+  .word 0x1440fff7
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c24e
+  .word 0x2785ae24
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x10000032
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x00021840
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00432021
+  .word 0x2785ae24
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x10000027
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x2442fff8
+  .word 0x24450001
+  .word 0x3c040096
+  .word 0x2484c220
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00051040
+  .word 0x00821821
+  .word 0x80620000
+  .word 0xa062fffe
+  .word 0x80620001
+  .word 0xa062ffff
+  .word 0x24a50001
+  .word 0x28a20008
+  .word 0x1440fff7
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c22e
+  .word 0x2785ae24
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x2442fff8
+  .word 0x00021840
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00432021
+  .word 0x2785ae24
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x1a00000b
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xae421c50
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x24070002
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x10000087
+  .word 0x00000000
+  .word 0x26431c3c
+  .word 0xa6401c3c
+  .word 0x0000202d
+  .word 0x8f82ba24
+  .word 0x28410006
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x24040001
+  .word 0xa4640000
+  .word 0x3c02007e
+  .word 0x9442094e
+  .word 0x30420040
+  .word 0x0002102b
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x94420958
+  .word 0x30420040
+  .word 0x0002102b
+  .word 0x1040001c
+  .word 0x00000000
+  .word 0x1880001a
+  .word 0x00000000
+  .word 0x8e420020
+  .word 0x00021880
+  .word 0x3c02006b
+  .word 0x24424de0
+  .word 0x00432021
+  .word 0x8e42001c
+  .word 0x00021840
+  .word 0x8c820000
+  .word 0x00432821
+  .word 0x27a4007c
+  .word 0x24060002
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x27a5007c
+  .word 0x0c116f2c
+  .word 0x00000000
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x24070001
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x10000057
+  .word 0x00000000
+  .word 0x26431c40
+  .word 0xa6401c40
+  .word 0x0000202d
+  .word 0x8f82ba20
+  .word 0x18400003
+  .word 0x00000000
+  .word 0x24040001
+  .word 0xa4640000
+  .word 0x3c02007e
+  .word 0x9442094e
+  .word 0x30420004
+  .word 0x0002102b
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x94420958
+  .word 0x30420004
+  .word 0x0002102b
+  .word 0x10400016
+  .word 0x00000000
+  .word 0x18800014
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x2443ffff
+  .word 0xaf83ba20
+  .word 0x24020007
+  .word 0x14620006
+  .word 0x00000000
+  .word 0x24050002
+  .word 0xae451c34
+  .word 0x0220202d
+  .word 0x0c116e0c
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xae421c58
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x26431c48
+  .word 0xa6401c48
+  .word 0x0000202d
+  .word 0x8f82ba20
+  .word 0x2841000f
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x24040001
+  .word 0xa4640000
+  .word 0x3c02007e
+  .word 0x9442094e
+  .word 0x30420008
+  .word 0x0002102b
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x94420958
+  .word 0x30420008
+  .word 0x0002102b
+  .word 0x10400016
+  .word 0x00000000
+  .word 0x18800014
+  .word 0x00000000
+  .word 0x8f82ba20
+  .word 0x24430001
+  .word 0xaf83ba20
+  .word 0x24020008
+  .word 0x14620006
+  .word 0x00000000
+  .word 0x24050001
+  .word 0xae451c34
+  .word 0x0220202d
+  .word 0x0c116e0c
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xae421c60
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c042938
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c116e3c
+  .word 0x00000000
+  .word 0xdfbf0060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0080
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 #pragma pop
 #pragma opt_lifetimes reset
-// FUN_0045C530 NONMATCHING
+// FUN_0045C530
 
-void FUN_0045c530(int param_1)
-
+asm void FUN_0045c530(int param_1)
 {
-  int iVar1;
-  int iVar2;
-  int lVar3;
-  int iVar4;
-  int iVar5;
-  float fVar6;
-  float fVar7;
-  u32 alpha;
-  
-  iVar1 = *(int *)(param_1 + 0x3c);
-  if (*(int *)(iVar1 + 0x14) != 1) {
-    lVar3 = FUN_0045b4b0(iVar1 + 0xe0);
-    if (lVar3 == 0) {
-      FUN_0045af90(iVar1 + 0xe0);
-    }
-  }
-  else {
-    if (*(int *)(iVar1 + 0x24) == *(int *)(iVar1 + 0x30)) {
-      iVar2 = *(int *)(iVar1 + 0x1c30) + 1;
-      *(int *)(iVar1 + 0x1c30) = iVar2;
-      if (0x59 < iVar2) {
-        *(u32 *)(iVar1 + 0x1c30) = 0;
-        iVar4 = (*(int *)(iVar1 + 0x1c) % 5) * 0x1b;
-        iVar2 = *(int *)(iVar1 + 0x1c) / 5;
-        if (iVar2 == 3) {
-          iVar4 = iVar4 + 0x1da;
-        }
-        else if (iVar2 == 2) {
-          iVar4 = iVar4 + 0x146;
-        }
-        else if (iVar2 == 1) {
-          iVar4 = iVar4 + 0xb2;
-        }
-        else if (iVar2 == 0) {
-          iVar4 = iVar4 + 0x1e;
-        }
-        iVar2 = *(int *)(iVar1 + 0x20) * 0x19 + 0xe5;
-        FUN_0045af90(iVar1 + 0xe0);
-        FUN_0045afd0(DAT_007cafc0,iVar1 + 0xe0,iVar4,iVar2,iVar4,iVar2,0,0,0x3c);
-      }
-    }
-    else {
-      *(u32 *)(iVar1 + 0x1c30) = 0;
-    }
-    lVar3 = FUN_0045b4b0(iVar1 + 0xe0);
-    if ((lVar3 == 0) && (lVar3 = FUN_0045b480(iVar1 + 0xe0), lVar3 != 0)) {
-      FUN_0045b190(iVar1 + 0xe0);
-      iVar4 = *(int *)(iVar1 + 0x20);
-      iVar5 = (*(int *)(iVar1 + 0x1c) % 5) * 0x1b;
-      iVar2 = *(int *)(iVar1 + 0x1c) / 5;
-      if (iVar2 == 3) {
-        iVar5 = iVar5 + 0x1da;
-      }
-      else if (iVar2 == 2) {
-        iVar5 = iVar5 + 0x146;
-      }
-      else if (iVar2 == 1) {
-        iVar5 = iVar5 + 0xb2;
-      }
-      else if (iVar2 == 0) {
-        iVar5 = iVar5 + 0x1e;
-      }
-      fVar7 = (float)FUN_0045b4e0(iVar1 + 0xe0);
-      if (fVar7 < 0.5f) {
-        fVar6 = fVar7 * 255.0f;
-        alpha = (u32)fVar6 & 0xff;
-      }
-      else {
-        fVar7 = 1.0f - fVar7;
-        fVar6 = fVar7 * 255.0f;
-        alpha = (u32)fVar6 & 0xff;
-      }
-      FUN_0045b620_call((float)(iVar5 + -0xc),(float)(iVar4 * 0x19 + 0xd9),fVar7 + 1.0f,
-                        fVar7 + 1.0f,0xf,alpha,1);
-    }
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x8c91003c
+  .word 0x8e220014
+  .word 0x24070001
+  .word 0x1047000b
+  .word 0x00000000
+  .word 0x262400e0
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x262400e0
+  .word 0x0c116be4
+  .word 0x00000000
+  .word 0x100000c9
+  .word 0x00000000
+  .word 0x8e230024
+  .word 0x8e220030
+  .word 0x1462003e
+  .word 0x00000000
+  .word 0x8e221c30
+  .word 0x24420001
+  .word 0xae221c30
+  .word 0x2842005a
+  .word 0x14400039
+  .word 0x00000000
+  .word 0xae201c30
+  .word 0x8e260020
+  .word 0x8e25001c
+  .word 0x24040005
+  .word 0x00a4001a
+  .word 0x00001810
+  .word 0x000310c0
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00438023
+  .word 0x00a4001a
+  .word 0x00001812
+  .word 0x24020003
+  .word 0x10620013
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x1062000d
+  .word 0x00000000
+  .word 0x10670008
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x2610001e
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x261000b2
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x26100146
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x261001da
+  .word 0x00061080
+  .word 0x00461821
+  .word 0x00031080
+  .word 0x00621021
+  .word 0x245200e5
+  .word 0x262400e0
+  .word 0x0c116be4
+  .word 0x00000000
+  .word 0x262400e0
+  .word 0x0200282d
+  .word 0x0240302d
+  .word 0x0200382d
+  .word 0x0240402d
+  .word 0xc78c82d0
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b003c
+  .word 0x0c116bf4
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xae201c30
+  .word 0x262400e0
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x14400082
+  .word 0x00000000
+  .word 0x262400e0
+  .word 0x0c116d20
+  .word 0x00000000
+  .word 0x1040007d
+  .word 0x00000000
+  .word 0x262400e0
+  .word 0x0c116c64
+  .word 0x00000000
+  .word 0x8e260020
+  .word 0x8e25001c
+  .word 0x24040005
+  .word 0x00a4001a
+  .word 0x00001810
+  .word 0x000310c0
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00439023
+  .word 0x00a4001a
+  .word 0x00001812
+  .word 0x24020003
+  .word 0x10620014
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x1062000e
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x2652001e
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x265200b2
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x26520146
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x265201da
+  .word 0x00061080
+  .word 0x00461821
+  .word 0x00031080
+  .word 0x00621021
+  .word 0x245000e5
+  .word 0x262400e0
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c023f00
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46010034
+  .word 0x4500001e
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000882
+  .word 0x3c024f00
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46020836
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46001064
+  .word 0x44030800
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46011041
+  .word 0x46000864
+  .word 0x44030800
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306500ff
+  .word 0x3c023f80
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000b80
+  .word 0x10000020
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000881
+  .word 0x3c02437f
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46020042
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306500ff
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46020380
+  .word 0x2642fff4
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x2602fff4
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x2404000f
+  .word 0x460073c6
+  .word 0x24060001
+  .word 0x0c116d88
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 #pragma push
 /* W373 singles base 697/964; loop 697/964; common 722/988; life 695/964; propagation 575/968; strength 697/964; dead 697/968; pair life+prop 571/968. */
 #pragma opt_lifetimes on
 #pragma opt_propagation off
-// FUN_0045C8C0 NONMATCHING
+// FUN_0045C8C0
 
-void FUN_0045c8c0(int param_1,int param_2)
-
+asm void FUN_0045c8c0(int param_1,int param_2)
 {
-  int iVar1;
-  int lVar2;
-  int iVar3;
-  int iVar4;
-  int *piVar6;
-  int *piVar5;
-  short *psVar7;
-  short *psVar8;
-  int iVar9;
-  float fVar10;
-  float fVar11;
-  float fVar12;
-  int aiStack_70 [26];
-  float fStack[2];
-  u32 drawContext1;
-  u32 drawContext2;
-  int xCoord;
-  int yCoord;
-  u8 alpha;
-  
-  
-  iVar4 = *(int *)(param_1 + 0x3c);
-  piVar6 = (int *)DAT_006b4e00;
-  piVar5 = aiStack_70;
-  iVar3 = 0xc;
-  do {
-    iVar9 = *piVar6;
-    iVar1 = piVar6[1];
-    piVar6 = piVar6 + 2;
-    iVar3 = iVar3 + -1;
-    *piVar5 = iVar9;
-    piVar5[1] = iVar1;
-    piVar5 = piVar5 + 2;
-  } while (0 < iVar3);
-  iVar3 = iVar4 + param_2 * 0x130;
-  iVar9 = iVar3 + 0x1510;
-  iVar3 = iVar3 + 0x15a8;
-  iVar4 = iVar4 + param_2 * 4;
-  psVar8 = (short *)(iVar4 + 0x1c38);
-  psVar7 = (short *)(iVar4 + 0x1c3a);
-  if (*(short *)(iVar4 + 0x1c38) == 3) {
-    if (*psVar7 != 3) {
-      iVar4 = aiStack_70[param_2 * 4 + 2];
-      iVar3 = aiStack_70[param_2 * 4 + 3];
-      FUN_0045af90(iVar9);
-      FUN_0045afd0(DAT_007cafc0,iVar9,iVar4,iVar3 + 0x1e,iVar4,iVar3,0,0,10);
-      *psVar7 = *psVar8;
-    }
-    FUN_0045b190(iVar9);
-    fVar11 = (float)FUN_0045b4e0(iVar9);
-    fVar10 = fVar11 * 255.0f;
-    alpha = (u8)fVar10;
-    FUN_0045b420((iVar9),fStack);
-    xCoord = (int)fStack[0];
-    yCoord = (int)fStack[1];
-    FUN_001159f0_3fv((float)xCoord,(float)yCoord,0,
-                     drawContext1,DAT_007ce718,
-                     aiStack_70[param_2 * 4 + 1],(u8)(0xff - alpha));
-  }
-  else {
-    if (*(int *)(iVar4 + 0x1c50) != 0) {
-      *(u32 *)(iVar4 + 0x1c50) = 0;
-      iVar4 = aiStack_70[param_2 * 4 + 2];
-      iVar1 = aiStack_70[param_2 * 4 + 3];
-      FUN_0045af90(iVar3);
-      FUN_0045afd0(DAT_007cafc0,iVar3,iVar4,iVar1,iVar4,iVar1,0,0,10);
-    }
-    lVar2 = FUN_0045b4b0(iVar3);
-    if ((lVar2 == 0) && (lVar2 = FUN_0045b480(iVar3), lVar2 != 0)) {
-      FUN_0045b190(iVar3);
-      fVar11 = (float)FUN_0045b4e0(iVar3);
-      fVar10 = (1.0f - fVar11) * 128.0f;
-      iVar1 = (u8)fVar10;
-      FUN_0045b420((iVar3),fStack);
-      fVar12 = fVar11 / 3.0f;
-      fVar11 = 1.0f + fVar12;
-      FUN_0045b620_call((float)(int)fStack[0],(float)(int)fStack[1],fVar11,fVar11,
-                        aiStack_70[param_2 * 4],iVar1,1);
-    }
-    if (*psVar8 != *psVar7) {
-      if (*psVar8 == 0) {
-        iVar4 = aiStack_70[param_2 * 4 + 2];
-        iVar3 = aiStack_70[param_2 * 4 + 3];
-        FUN_0045af90(iVar9);
-        FUN_0045afd0(DAT_007cafc0,iVar9,iVar4,iVar3,iVar4,iVar3,0,0,10);
-      }
-      *psVar7 = *psVar8;
-    }
-    FUN_0045b190(iVar9);
-    fVar11 = (float)FUN_0045b4e0(iVar9);
-    if (*psVar7 == 0) {
-      fVar10 = (1.0f - fVar11) * 255.0f;
-      iVar1 = (u32)fVar10 & 0xff;
-    }
-    else {
-      iVar1 = 0xff;
-    }
-    FUN_0045b420((iVar9),fStack);
-    xCoord = (int)fStack[0];
-    yCoord = (int)fStack[1];
-    FUN_001159f0_3fv((float)xCoord,(float)yCoord,0,
-                     drawContext2,DAT_007ce718,
-                     aiStack_70[param_2 * 4 + 1],0);
-    FUN_001159f0_3fv((float)xCoord,(float)yCoord,0,
-                     drawContext2,DAT_007ce718,
-                     aiStack_70[param_2 * 4],0xff - iVar1);
-  }
-  return;
+  .set noreorder
+  .word 0x27bdfef0
+  .word 0xffbf0090
+  .word 0x7fb70080
+  .word 0x7fb60070
+  .word 0x7fb50060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x00a0a02d
+  .word 0x8c87003c
+  .word 0x3c06006b
+  .word 0x24c64e00
+  .word 0x27a500a0
+  .word 0x2404000c
+  .word 0x8cc30000
+  .word 0x8cc20004
+  .word 0x24c60008
+  .word 0x2484ffff
+  .word 0xaca30000
+  .word 0xaca20004
+  .word 0x24a50008
+  .word 0x1c80fff8
+  .word 0x00000000
+  .word 0x001410c0
+  .word 0x00541021
+  .word 0x00021040
+  .word 0x00541021
+  .word 0x00021100
+  .word 0x00e21021
+  .word 0x24531510
+  .word 0x245215a8
+  .word 0x00141080
+  .word 0x00e22021
+  .word 0x24911c38
+  .word 0x24901c3a
+  .word 0x84831c38
+  .word 0x24020003
+  .word 0x1462004d
+  .word 0x00000000
+  .word 0x86020000
+  .word 0x10620015
+  .word 0x00000000
+  .word 0x00141100
+  .word 0x005d1021
+  .word 0x8c5200a8
+  .word 0x8c5500ac
+  .word 0x0260202d
+  .word 0x0c116be4
+  .word 0x00000000
+  .word 0x26a6001e
+  .word 0x0260202d
+  .word 0x0240282d
+  .word 0x0240382d
+  .word 0x02a0402d
+  .word 0xc78c82d0
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b000a
+  .word 0x0c116bf4
+  .word 0x00000000
+  .word 0x86220000
+  .word 0xa6020000
+  .word 0x0260202d
+  .word 0x0c116c64
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x307000ff
+  .word 0x0260202d
+  .word 0x27a50108
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0xc7a00108
+  .word 0x46000064
+  .word 0xc7a0010c
+  .word 0x46000024
+  .word 0x46800b20
+  .word 0x46800360
+  .word 0x00141100
+  .word 0x005d3021
+  .word 0x240300ff
+  .word 0x320200ff
+  .word 0x00621023
+  .word 0x304700ff
+  .word 0x44807000
+  .word 0x02c0202d
+  .word 0x8f85ba28
+  .word 0x8cc600a4
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x100000c2
+  .word 0x00000000
+  .word 0x24831c50
+  .word 0x8c821c50
+  .word 0x10400014
+  .word 0x00000000
+  .word 0xac600000
+  .word 0x00141100
+  .word 0x005d1021
+  .word 0x8c5500a8
+  .word 0x8c5600ac
+  .word 0x0240202d
+  .word 0x0c116be4
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x02a0282d
+  .word 0x02c0302d
+  .word 0x02a0382d
+  .word 0x02c0402d
+  .word 0xc78c82d0
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b000a
+  .word 0x0c116bf4
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x14400041
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c116d20
+  .word 0x00000000
+  .word 0x1040003c
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c116c64
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x46000506
+  .word 0x3c024300
+  .word 0x44821000
+  .word 0x3c023f80
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46001042
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x307500ff
+  .word 0x0240202d
+  .word 0x27a50108
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0xc7a00108
+  .word 0x460000e4
+  .word 0xc7a0010c
+  .word 0x460000a4
+  .word 0x3c024040
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600a043
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010380
+  .word 0x46801b20
+  .word 0x46801360
+  .word 0x00141100
+  .word 0x005d1021
+  .word 0x8c4400a0
+  .word 0x460073c6
+  .word 0x02a0282d
+  .word 0x24060001
+  .word 0x0c116d88
+  .word 0x00000000
+  .word 0x86230000
+  .word 0x86020000
+  .word 0x10620017
+  .word 0x00000000
+  .word 0x14600013
+  .word 0x00000000
+  .word 0x00141100
+  .word 0x005d1021
+  .word 0x8c5200a8
+  .word 0x8c5500ac
+  .word 0x0260202d
+  .word 0x0c116be4
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0240282d
+  .word 0x02a0302d
+  .word 0x0240382d
+  .word 0x02a0402d
+  .word 0xc78c82d0
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b000a
+  .word 0x0c116bf4
+  .word 0x00000000
+  .word 0x86220000
+  .word 0xa6020000
+  .word 0x0260202d
+  .word 0x0c116c64
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x86020000
+  .word 0x1440001b
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44821000
+  .word 0x3c023f80
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46001042
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010005
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x00031042
+  .word 0x304200ff
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x240200ff
+  .word 0x305000ff
+  .word 0x0260202d
+  .word 0x27a50108
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0xc7a00108
+  .word 0x46000064
+  .word 0x44120800
+  .word 0xc7a0010c
+  .word 0x46000024
+  .word 0x44110000
+  .word 0x00149900
+  .word 0x46800b20
+  .word 0x46800360
+  .word 0x027d1021
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x8c4600a4
+  .word 0x0000382d
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x44920000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44910000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x027d3021
+  .word 0x240300ff
+  .word 0x320200ff
+  .word 0x00621023
+  .word 0x304700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x8cc600a0
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bb70080
+  .word 0x7bb60070
+  .word 0x7bb50060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd0110
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_0045CDD0
@@ -5014,208 +6280,715 @@ void FUN_0045cdd0(int param_1,long param_2)
 #pragma push
 /* W373 singles base 2027/2720; loop 2027/2720; common 2027/2788; life 2022/2720; propagation 2032/2764; strength 2027/2720; dead 2027/2720; pair loop+life 2022/2720; common+life 2024/2788. */
 #pragma opt_lifetimes on
-// FUN_0045CE90 NONMATCHING
+// FUN_0045CE90
 
-void FUN_0045ce90(int param_1)
-
+asm void FUN_0045ce90(int param_1)
 {
-  int iVar1;
-  u32 uVar2;
-  int lVar3;
-  int iVar4;
-  u32 uVar5;
-  u32 uVar6;
-  u32 uVar7;
-  int iVar8;
-  int iVar9;
-  int iVar10;
-  int iVar11;
-  u32 uVar12;
-  u32 alpha;
-  u32 alpha_top;
-  u32 alpha_bottom;
-  u32 drawContext;
-  float fVar15;
-  int iVar13;
-  int iVar14;
-  union {
-    struct {
-      u32 uStack_20;
-      u32 uStack_1c;
-      u32 uStack_18;
-      u32 uStack_14;
-      u32 uStack_10;
-      u32 uStack_c;
-    } words;
-    float afStack_8[2];
-  } scratch;
-#define uStack_20 scratch.words.uStack_20
-#define uStack_1c scratch.words.uStack_1c
-#define uStack_18 scratch.words.uStack_18
-#define uStack_14 scratch.words.uStack_14
-#define uStack_10 scratch.words.uStack_10
-#define uStack_c scratch.words.uStack_c
-#define fStack_8 scratch.afStack_8[0]
-#define fStack_4 scratch.afStack_8[1]
-  
-  iVar10 = *(int *)(param_1 + 0x3c);
-  FUN_001159f0_3fv(0,0,0,param_1,(u8 *)DAT_007ce718,0xa4,0);
-  FUN_0045b190(iVar10 + 0x2a8);
-  fVar15 = (float)FUN_0045b4e0(iVar10 + 0x2a8);
-  fVar15 = fVar15 * 255.0f;
-  alpha = (u32)fVar15 & 0xffU;
-  FUN_0045b420((iVar10 + 0x2a8),(float*)(&fStack_8));
-  iVar13 = (int)fStack_8;
-  iVar14 = (int)fStack_4;
-  if (*(int *)(iVar10 + 0x1c34) == 0) {
-    alpha_top = alpha;
-    alpha_bottom = 0;
-  }
-  else if (*(int *)(iVar10 + 0x1c34) == 1) {
-    alpha_bottom = alpha;
-    alpha_top = (0xff - alpha_bottom) >> 2;
-  }
-  else if (*(int *)(iVar10 + 0x1c34) == 2) {
-    alpha_top = alpha;
-    alpha_bottom = (0xff - alpha_top) >> 2;
-  }
-  alpha_top = 0xff - alpha_top;
-  FUN_001159f0_3fv((float)iVar13,(float)iVar14,0,drawContext,DAT_007ce718,0x13,alpha_top);
-  FUN_001159f0_3fv((float)(iVar13 + 0x69),(float)iVar14,0,drawContext,DAT_007ce718,0x11,alpha_top);
-  alpha_bottom = 0xff - alpha_bottom;
-  FUN_001159f0_3fv((float)iVar13,(float)(iVar14 + 0x14),0,drawContext,DAT_007ce718,0x13,alpha_bottom);
-  FUN_001159f0_3fv((float)(iVar13 + 0x69),(float)(iVar14 + 0x14),0,drawContext,DAT_007ce718,0x12,alpha_bottom);
-  FUN_0045cdd0(param_1,0);
-  if (*(int *)(iVar10 + 0x1c34) != 0) {
-    alpha = 0xff;
-  }
-  alpha = 0xff - alpha;
-  iVar13 = *(int *)(param_1 + 0x3c);
-  FUN_001159f0_3fv(229.0f,150.0f,0,drawContext,DAT_007ce718,0x17,alpha);
-  FUN_001159f0_3fv(229.0f,182.0f,0,drawContext,DAT_007ce718,0x17,alpha);
-  FUN_00115bc0_3fv(412.0f,179.0f,0,drawContext,DAT_007ce718,0x1d,alpha,0x33,0x3a,0x4a);
-  if (*(int *)(iVar13 + 0x14) != 3) {
-    if (DAT_007ce710 >= 8) {
-      iVar13 = DAT_007ce710 + -8;
-      iVar14 = 0xb7;
-    }
-    else {
-      iVar14 = 0x97;
-      iVar13 = DAT_007ce710;
-    }
-    FUN_001159f0_3fv((float)(iVar13 * 0x1c + 0xe3),(float)iVar14,0,
-                     drawContext,DAT_007ce718,0x18,alpha);
-  }
-  fVar15 = (float)FUN_0045b4e0(iVar10 + 0x210);
-  fVar15 = fVar15 * 255.0f;
-  alpha = 0xff - ((u32)fVar15 & 0xffU);
-  FUN_0045b420((iVar10 + 0x210),(float*)(&fStack_8));
-  FUN_001159f0_3fv(4.0f,(float)(int)fStack_4,0,drawContext,DAT_007ce718,0,alpha);
-  FUN_001159f0_3fv(321.0f,(float)(int)fStack_4,0,drawContext,DAT_007ce718,1,alpha);
-  iVar13 = *(int *)(iVar10 + 0x24) / 5;
-  iVar14 = *(int *)(iVar10 + 0x30);
-  iVar1 = *(int *)(iVar10 + 0x3c);
-  for (iVar4 = 0; iVar4 < 0x18; iVar4 = iVar4 + 1) {
-    iVar9 = (iVar4 / 6) * 0x94 + 0x1b;
-    iVar8 = (iVar4 % 6) * 0x19 + 0xe5;
-    FUN_001159f0_3fv((float)iVar9,(float)iVar8,0,uStack_c,DAT_007ce718,0x1b,0);
-    if (*(int *)(iVar10 + 0x14) != 3) {
-      if ((iVar13 != iVar14 / 5) && (iVar4 == iVar1 / 5)) {
-        iVar11 = iVar10 + iVar4 * 0x98 + 0x340;
-        FUN_0045af90(iVar11);
-        FUN_0045afd0(DAT_007cafc0,iVar11,0,0,0,0,0,0,0x14);
-      }
-      iVar11 = iVar10 + iVar4 * 0x98 + 0x340;
-      FUN_0045b190(iVar11);
-      if (iVar4 == iVar13) {
-        FUN_001159f0_3fv((float)iVar9,(float)iVar8,0,uStack_10,DAT_007ce718,0x1c,0);
-      }
-      else {
-        lVar3 = FUN_0045b480(iVar11);
-        if (lVar3 != 0) {
-          fVar15 = (float)FUN_0045b4e0(iVar11);
-          fVar15 = (1.0f - fVar15) * 255.0f;
-          FUN_001159f0_3fv((float)iVar9,(float)iVar8,0,uStack_14,DAT_007ce718,0x1c,
-                       0xff - ((u32)fVar15 & 0xffU) & 0xff);
-        }
-      }
-    }
-  }
-  FUN_0045c530(param_1);
-  if (*(int *)(iVar10 + 0x14) != 3) {
-    iVar14 = (*(int *)(iVar10 + 0x1c) % 5) * 0x1b;
-    iVar13 = *(int *)(iVar10 + 0x1c) / 5;
-    if (iVar13 == 3) {
-      iVar14 = iVar14 + 0x1da;
-    }
-    else if (iVar13 == 2) {
-      iVar14 = iVar14 + 0x146;
-    }
-    else if (iVar13 == 1) {
-      iVar14 = iVar14 + 0xb2;
-    }
-    else if (iVar13 == 0) {
-      iVar14 = iVar14 + 0x1e;
-    }
-    FUN_001159f0_3fv((float)(iVar14 + -0xc),(float)(*(int *)(iVar10 + 0x20) * 0x19 + 0xd9),0,uStack_18,
-                 DAT_007ce718,0xf,0);
-  }
-  for (iVar13 = 0; iVar13 < 6; iVar13 = iVar13 + 1) {
-    for (iVar14 = 0; iVar14 < 0x14; iVar14 = iVar14 + 1) {
-      if (-1 < *(short *)((u8 *)DAT_007bc730 + iVar14 * 2 + iVar13 * 0x28)) {
-        iVar4 = (iVar14 % 5) * 0x1b;
-        iVar1 = iVar14 / 5;
-        if (iVar1 == 3) {
-          iVar4 = iVar4 + 0x1da;
-        }
-        else if (iVar1 == 2) {
-          iVar4 = iVar4 + 0x146;
-        }
-        else if (iVar1 == 1) {
-          iVar4 = iVar4 + 0xb2;
-        }
-        else if (iVar1 == 0) {
-          iVar4 = iVar4 + 0x1e;
-        }
-        uVar5 = 0x2e;
-        uVar6 = 0x3c;
-        uVar7 = 0x44;
-        if (((*(int *)(iVar10 + 0x14) != 3) && (iVar14 == *(int *)(iVar10 + 0x1c))) &&
-           (iVar13 == *(int *)(iVar10 + 0x20))) {
-          uVar5 = 0xe0;
-          uVar6 = 0xe0;
-          uVar7 = 0xe0;
-        }
-        FUN_00115bc0_3fv((float)iVar4,(float)(iVar13 * 0x19 + 0xe5),0,uStack_1c,DAT_007ce718,
-                     *(short *)((u8 *)DAT_007bc730 + iVar14 * 2 + iVar13 * 0x28) + 0x20,0x19,uVar5,uVar6,
-                     uVar7);
-      }
-    }
-  }
-  if ((*(int *)(iVar10 + 0x14) == 3) && (*(int *)(iVar10 + 8) == 0)) {
-    FUN_001159f0_3fv(0,102.0f,0,uStack_20,DAT_007ce718,0xac,0);
-  }
-  uVar2 = FUN_00524388_str((const char *)DAT_0095c240);
-  if (uVar2 >> 1 != 0) {
-    uVar2 = FUN_00524388_str((const char *)DAT_0095c240);
-    iVar10 = 0xe6;
-    for (uVar12 = 0; uVar12 < uVar2 >> 1; uVar12 = uVar12 + 1) {
-      FUN_00524828((void *)DAT_007ce6fc,(u8 *)DAT_0095c240 + uVar12 * 2,2);
-      FUN_003b2cb0_ytime_typed(iVar10,0x79,0.0f,-1,5,0,(void *)DAT_007ce6fc,0,0);
-      iVar10 = iVar10 + 0x1c;
-    }
-  }
-  uVar2 = FUN_00524388_str((const char *)DAT_0095c220);
-  if (uVar2 >> 1 != 0) {
-    uVar2 = FUN_00524388_str((const char *)DAT_0095c220);
-    iVar10 = 0xe6;
-    for (uVar12 = 0; uVar12 < uVar2 >> 1; uVar12 = uVar12 + 1) {
-      FUN_00524828((void *)DAT_007ce6fc,(u8 *)DAT_0095c220 + uVar12 * 2,2);
-      FUN_003b2cb0_ytime_typed(iVar10,0x99,0.0f,-1,5,0,(void *)DAT_007ce6fc,0,0);
-      iVar10 = iVar10 + 0x1c;
-    }
-  }
-  return;
+  .set noreorder
+  .word 0x27bdff40
+  .word 0xffbf0090
+  .word 0x7fbe0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080b02d
+  .word 0x8c91003c
+  .word 0x44806000
+  .word 0x8f85ba28
+  .word 0x240600a4
+  .word 0x46006346
+  .word 0x0000382d
+  .word 0x46006386
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x262402a8
+  .word 0x0c116c64
+  .word 0x00000000
+  .word 0x262402a8
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x307400ff
+  .word 0x262402a8
+  .word 0x27a500b8
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0xc7a000b8
+  .word 0x46000024
+  .word 0x44100000
+  .word 0xc7a000bc
+  .word 0x46000024
+  .word 0x44150000
+  .word 0x8e231c34
+  .word 0x14600005
+  .word 0x00000000
+  .word 0x329300ff
+  .word 0x0000902d
+  .word 0x10000013
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x14620008
+  .word 0x00000000
+  .word 0x240200ff
+  .word 0x329200ff
+  .word 0x00521023
+  .word 0x00021083
+  .word 0x305300ff
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x14620006
+  .word 0x00000000
+  .word 0x329300ff
+  .word 0x240200ff
+  .word 0x00531023
+  .word 0x00021083
+  .word 0x305200ff
+  .word 0x326300ff
+  .word 0x240200ff
+  .word 0x00439823
+  .word 0x44900000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44950000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x326700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060013
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x26020069
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44950000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x326700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060011
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x324300ff
+  .word 0x240200ff
+  .word 0x00439023
+  .word 0x44900000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x26a20014
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060013
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x26020069
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x26a20014
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060012
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x02c0202d
+  .word 0x0000282d
+  .word 0x0c117374
+  .word 0x00000000
+  .word 0x8e221c34
+  .word 0x10400002
+  .word 0x00000000
+  .word 0x641400ff
+  .word 0x8ed0003c
+  .word 0x328300ff
+  .word 0x240200ff
+  .word 0x00439023
+  .word 0x3c024365
+  .word 0x44826000
+  .word 0x3c024316
+  .word 0x44826800
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060017
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x3c024365
+  .word 0x44826000
+  .word 0x3c024336
+  .word 0x44826800
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060017
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x3c0243ce
+  .word 0x44826000
+  .word 0x3c024333
+  .word 0x44826800
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x2406001d
+  .word 0x24080033
+  .word 0x2409003a
+  .word 0x240a004a
+  .word 0x0c0456f0
+  .word 0x00000000
+  .word 0x8e030014
+  .word 0x24020003
+  .word 0x1062001f
+  .word 0x00000000
+  .word 0x8f83ba20
+  .word 0x28610008
+  .word 0x10200008
+  .word 0x00000000
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x244300e3
+  .word 0x24020097
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x2463fff8
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00021080
+  .word 0x244300e3
+  .word 0x240200b7
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060018
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x26240210
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x307000ff
+  .word 0x26240210
+  .word 0x27a500b8
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0x320300ff
+  .word 0x240200ff
+  .word 0x00438023
+  .word 0xc7a000bc
+  .word 0x46000024
+  .word 0x46800360
+  .word 0x3c024080
+  .word 0x44826000
+  .word 0x320700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x0000302d
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0xc7a000bc
+  .word 0x46000024
+  .word 0x46800360
+  .word 0x24020141
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x320700ff
+  .word 0x44807000
+  .word 0x02e0202d
+  .word 0x8f85ba28
+  .word 0x24060001
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x8e220024
+  .word 0x24030005
+  .word 0x0043001a
+  .word 0x0000a812
+  .word 0x8e220030
+  .word 0x7043001a
+  .word 0x7000b812
+  .word 0x8e22003c
+  .word 0x0043001a
+  .word 0x0000f012
+  .word 0x0000a02d
+  .word 0x10000088
+  .word 0x00000000
+  .word 0x24040006
+  .word 0x0284001a
+  .word 0x00001812
+  .word 0x000310c0
+  .word 0x00431021
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x00021080
+  .word 0x2452001b
+  .word 0x0284001a
+  .word 0x00001810
+  .word 0x00031080
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00621021
+  .word 0x245000e5
+  .word 0x44920000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44900000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x44807000
+  .word 0x8fa400b4
+  .word 0x8f85ba28
+  .word 0x2406001b
+  .word 0x0000382d
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x8e230014
+  .word 0x24020003
+  .word 0x10620066
+  .word 0x00000000
+  .word 0x12b70018
+  .word 0x00000000
+  .word 0x169e0016
+  .word 0x00000000
+  .word 0x001410c0
+  .word 0x00541021
+  .word 0x00021040
+  .word 0x00541021
+  .word 0x000210c0
+  .word 0x02221021
+  .word 0x24530340
+  .word 0x0260202d
+  .word 0x0c116be4
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0xc78c82d0
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b0014
+  .word 0x0c116bf4
+  .word 0x00000000
+  .word 0x001410c0
+  .word 0x00541021
+  .word 0x00021040
+  .word 0x00541021
+  .word 0x000210c0
+  .word 0x02221021
+  .word 0x24530340
+  .word 0x0260202d
+  .word 0x0c116c64
+  .word 0x00000000
+  .word 0x16950010
+  .word 0x00000000
+  .word 0x44920000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44900000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x44807000
+  .word 0x8fa400b0
+  .word 0x8f85ba28
+  .word 0x2406001c
+  .word 0x0000382d
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x10000032
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c116d20
+  .word 0x00000000
+  .word 0x1040002d
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44821000
+  .word 0x3c023f80
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46001042
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306300ff
+  .word 0x44920000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44900000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x240200ff
+  .word 0x00431023
+  .word 0x304700ff
+  .word 0x44807000
+  .word 0x8fa400ac
+  .word 0x8f85ba28
+  .word 0x2406001c
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x26940001
+  .word 0x2a820018
+  .word 0x1440ff77
+  .word 0x00000000
+  .word 0x02c0202d
+  .word 0x0c11714c
+  .word 0x00000000
+  .word 0x8e220014
+  .word 0x24070003
+  .word 0x10470036
+  .word 0x00000000
+  .word 0x8e260020
+  .word 0x8e25001c
+  .word 0x24040005
+  .word 0x00a4001a
+  .word 0x00001810
+  .word 0x000310c0
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00434023
+  .word 0x00a4001a
+  .word 0x00001812
+  .word 0x10670014
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x1062000e
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x2508001e
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x250800b2
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x25080146
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x250801da
+  .word 0x00061080
+  .word 0x00461821
+  .word 0x00031080
+  .word 0x00621021
+  .word 0x244300e5
+  .word 0x2502fff4
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x2462fff4
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x44807000
+  .word 0x8fa400a8
+  .word 0x8f85ba28
+  .word 0x2406000f
+  .word 0x0000382d
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x0000a02d
+  .word 0x10000054
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x00141080
+  .word 0x00542021
+  .word 0x000418c0
+  .word 0x3c02007c
+  .word 0x2442c730
+  .word 0x00439021
+  .word 0x00041080
+  .word 0x00821021
+  .word 0x245000e5
+  .word 0x10000044
+  .word 0x00000000
+  .word 0x00131040
+  .word 0x02421021
+  .word 0x84420000
+  .word 0x0440003e
+  .word 0x00000000
+  .word 0x24460020
+  .word 0x24040005
+  .word 0x0264001a
+  .word 0x00001810
+  .word 0x000310c0
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00432823
+  .word 0x0264001a
+  .word 0x00001812
+  .word 0x24020003
+  .word 0x10620014
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x1062000e
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x24a5001e
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x24a500b2
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x24a50146
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24a501da
+  .word 0x6408002e
+  .word 0x6409003c
+  .word 0x640a0044
+  .word 0x8e230014
+  .word 0x24020003
+  .word 0x1062000a
+  .word 0x00000000
+  .word 0x8e22001c
+  .word 0x16620007
+  .word 0x00000000
+  .word 0x8e220020
+  .word 0x16820004
+  .word 0x00000000
+  .word 0x640800e0
+  .word 0x0100482d
+  .word 0x0100502d
+  .word 0x44850000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44900000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x44807000
+  .word 0x8fa400a4
+  .word 0x8f85ba28
+  .word 0x24070019
+  .word 0x0c0456f0
+  .word 0x00000000
+  .word 0x26730001
+  .word 0x2a620014
+  .word 0x1440ffbb
+  .word 0x00000000
+  .word 0x26940001
+  .word 0x2a820006
+  .word 0x1440ffab
+  .word 0x00000000
+  .word 0x8e230014
+  .word 0x24020003
+  .word 0x1462000e
+  .word 0x00000000
+  .word 0x8e220008
+  .word 0x1440000b
+  .word 0x00000000
+  .word 0x44806000
+  .word 0x3c0242cc
+  .word 0x44826800
+  .word 0x8fa400a0
+  .word 0x8f85ba28
+  .word 0x240600ac
+  .word 0x0000382d
+  .word 0x46006386
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c240
+  .word 0x0c1490e2
+  .word 0x00000000
+  .word 0x00021042
+  .word 0x10400024
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c240
+  .word 0x0c1490e2
+  .word 0x00000000
+  .word 0x00028042
+  .word 0x0000882d
+  .word 0x241200e6
+  .word 0x0000982d
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x00131840
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00432821
+  .word 0x2784ba0c
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x44806000
+  .word 0x0240202d
+  .word 0x24050079
+  .word 0x2406ffff
+  .word 0x24070005
+  .word 0x0000402d
+  .word 0x2789ba0c
+  .word 0x0000502d
+  .word 0x0000582d
+  .word 0x0c0ecb2c
+  .word 0x00000000
+  .word 0x02228821
+  .word 0x2652001c
+  .word 0x26730001
+  .word 0x0270102b
+  .word 0x1440ffe8
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c220
+  .word 0x0c1490e2
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x10600024
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c220
+  .word 0x0c1490e2
+  .word 0x00000000
+  .word 0x00028042
+  .word 0x0000882d
+  .word 0x241200e6
+  .word 0x0000982d
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x00131840
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00432821
+  .word 0x2784ba0c
+  .word 0x24060002
+  .word 0x0c14920a
+  .word 0x00000000
+  .word 0x44806000
+  .word 0x0240202d
+  .word 0x24050099
+  .word 0x2406ffff
+  .word 0x24070005
+  .word 0x0000402d
+  .word 0x2789ba0c
+  .word 0x0000502d
+  .word 0x0000582d
+  .word 0x0c0ecb2c
+  .word 0x00000000
+  .word 0x02228821
+  .word 0x2652001c
+  .word 0x26730001
+  .word 0x0270182b
+  .word 0x1460ffe8
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bbe0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd00c0
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #undef uStack_20
 #undef uStack_1c
@@ -5231,93 +7004,359 @@ void FUN_0045ce90(int param_1)
 #pragma push
 /* W380 measured FUN_0045D990: pre-closure 1344/947; propagation off 1368/900 (window 1392). Restores a setting lost when a leaked file-scope pragma was closed. */
 #pragma opt_propagation off
-// FUN_0045D990 NONMATCHING
+// FUN_0045D990
 
-void FUN_0045d990(int param_1,long param_2)
-
+asm void FUN_0045d990(int param_1,long param_2)
 {
-  int iVar1;
-  short sVar2;
-  int iVar3;
-  int lVar4;
-  int iVar5;
-  int iVar6;
-  int iVar7;
-  int iVar8;
-  float fVar9;
-  u32 uStack_c;
-  float afStack_8 [2];
-  
-  
-  iVar3 = *(int *)((int)param_1 + 0x3c);
-  if ((-1 < param_2) && (lVar4 = FUN_0045b4b0(iVar3 + 0x178), lVar4 == 0)) {
-    fVar9 = (float)FUN_0045b4e0(iVar3 + 0x178);
-    fVar9 = fVar9 * 255.0f;
-    FUN_001159f0_3fv(0,0,0,param_1,(u8 *)DAT_007ce718,0xa4,
-                     0xff - ((u32)fVar9 & 0xffU) & 0xff);
-  }
-  if (0 < param_2) {
-    FUN_0045cdd0(param_1,1);
-    lVar4 = FUN_0045b4b0(iVar3 + 0x210);
-    if (lVar4 == 0) {
-      FUN_0045b420((iVar3 + 0x210),afStack_8);
-      fVar9 = (float)FUN_0045b4e0(iVar3 + 0x210);
-      fVar9 = fVar9 * 255.0f;
-      FUN_001159f0_3fv(4.0f,(float)(int)afStack_8[1],0,param_1,
-                       (u8 *)DAT_007ce718,0,
-                       0xff - ((u32)fVar9 & 0xffU) & 0xff);
-      FUN_001159f0_3fv(321.0f,(float)(int)afStack_8[1],0,param_1,
-                       (u8 *)DAT_007ce718,1,
-                       0xff - ((u32)fVar9 & 0xffU) & 0xff);
-    }
-  }
-  if (1 < param_2) {
-    for (iVar8 = 0; iVar8 < 0x18; iVar8 = iVar8 + 1) {
-      iVar6 = iVar3 + iVar8 * 0x98 + 0x340;
-      lVar4 = FUN_0045b4b0(iVar6);
-      if (lVar4 == 0) {
-        fVar9 = (float)FUN_0045b4e0(iVar6);
-        fVar9 = fVar9 * 255.0f;
-        FUN_001159f0_3fv((float)((iVar8 / 6) * 0x94 + 0x1b),
-                         (float)((iVar8 % 6) * 0x19 + 0xe5),0,param_1,
-                         (u8 *)DAT_007ce718,0x1b,
-                         0xff - ((u32)fVar9 & 0xffU) & 0xff);
-      }
-    }
-  }
-  if (1 < param_2) {
-    for (iVar8 = 0; iVar8 < 6; iVar8 = iVar8 + 1) {
-      iVar6 = iVar3 + iVar8 * 0x98;
-      lVar4 = FUN_0045b4b0(iVar6 + 0x1180);
-      if (lVar4 == 0) {
-        for (iVar5 = 0; iVar5 < 0x14; iVar5 = iVar5 + 1) {
-          sVar2 = *(short *)((u8 *)DAT_007bc730 + iVar5 * 2 + iVar8 * 0x28);
-          if (-1 < sVar2) {
-            iVar7 = (iVar5 % 5) * 0x1b;
-            iVar1 = iVar5 / 5;
-            if (iVar1 == 3) {
-              iVar7 = iVar7 + 0x1da;
-            }
-            else if (iVar1 == 2) {
-              iVar7 = iVar7 + 0x146;
-            }
-            else if (iVar1 == 1) {
-              iVar7 = iVar7 + 0xb2;
-            }
-            else if (iVar1 == 0) {
-              iVar7 = iVar7 + 0x1e;
-            }
-            fVar9 = (float)FUN_0045b4e0(iVar6 + 0x1180);
-            fVar9 = fVar9 * 230.0f;
-            FUN_0045b420((iVar6 + 0x1180),afStack_8);
-            FUN_00115bc0_3fv((float)iVar7,(float)(iVar8 * 0x19 + 0xe5 + (int)afStack_8[1]),0,uStack_c,
-                         DAT_007ce718,sVar2 + 0x20,0xff - ((u32)fVar9 & 0xffU) & 0xff,0x2e,0x3c,0x44);
-          }
-        }
-      }
-    }
-  }
-  return;
+  .set noreorder
+  .word 0x27bdff50
+  .word 0xffbf0090
+  .word 0x7fbe0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x00a0882d
+  .word 0x8c90003c
+  .word 0x0620002b
+  .word 0x00000000
+  .word 0x26040178
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x14400026
+  .word 0x00000000
+  .word 0x26040178
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306300ff
+  .word 0x44806000
+  .word 0x240200ff
+  .word 0x00431023
+  .word 0x304700ff
+  .word 0x0260202d
+  .word 0x8f85ba28
+  .word 0x240600a4
+  .word 0x46006346
+  .word 0x46006386
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x1a200044
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x24050001
+  .word 0x0c117374
+  .word 0x00000000
+  .word 0x26040210
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x1440003b
+  .word 0x00000000
+  .word 0x26040210
+  .word 0x27a500a8
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0x26040210
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306300ff
+  .word 0x240200ff
+  .word 0x00439023
+  .word 0xc7a000ac
+  .word 0x46000024
+  .word 0x46800360
+  .word 0x3c024080
+  .word 0x44826000
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x0260202d
+  .word 0x8f85ba28
+  .word 0x0000302d
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0xc7a000ac
+  .word 0x46000024
+  .word 0x46800360
+  .word 0x24020141
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x324700ff
+  .word 0x44807000
+  .word 0x0260202d
+  .word 0x8f85ba28
+  .word 0x24060001
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x2a230002
+  .word 0x1460004d
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x10000047
+  .word 0x00000000
+  .word 0x001210c0
+  .word 0x00521021
+  .word 0x00021040
+  .word 0x00521021
+  .word 0x000210c0
+  .word 0x02021021
+  .word 0x24540340
+  .word 0x0280202d
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x1440003a
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x24040006
+  .word 0x0244001a
+  .word 0x00001812
+  .word 0x000310c0
+  .word 0x00431021
+  .word 0x00021080
+  .word 0x00431021
+  .word 0x00021080
+  .word 0x2445001b
+  .word 0x0244001a
+  .word 0x00001810
+  .word 0x00031080
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00621021
+  .word 0x244400e5
+  .word 0x3c02437f
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306300ff
+  .word 0x44850000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44840000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x240200ff
+  .word 0x00431023
+  .word 0x304700ff
+  .word 0x44807000
+  .word 0x0260202d
+  .word 0x8f85ba28
+  .word 0x2406001b
+  .word 0x0c04567c
+  .word 0x00000000
+  .word 0x26520001
+  .word 0x2a430018
+  .word 0x1460ffb8
+  .word 0x00000000
+  .word 0x2a230002
+  .word 0x1460007f
+  .word 0x00000000
+  .word 0x0000a02d
+  .word 0x10000079
+  .word 0x00000000
+  .word 0x001410c0
+  .word 0x00541021
+  .word 0x00021040
+  .word 0x00541021
+  .word 0x000210c0
+  .word 0x02029021
+  .word 0x26441180
+  .word 0x0c116d2c
+  .word 0x00000000
+  .word 0x1440006d
+  .word 0x00000000
+  .word 0x0000882d
+  .word 0x00141880
+  .word 0x00742821
+  .word 0x000520c0
+  .word 0x3c03007c
+  .word 0x2463c730
+  .word 0x0064b821
+  .word 0x00051880
+  .word 0x00a31821
+  .word 0x247600e5
+  .word 0x1000005e
+  .word 0x00000000
+  .word 0x00111840
+  .word 0x02e31821
+  .word 0x84630000
+  .word 0x04600058
+  .word 0x00000000
+  .word 0x24750020
+  .word 0x24040005
+  .word 0x0224001a
+  .word 0x00001810
+  .word 0x000310c0
+  .word 0x00431821
+  .word 0x00031080
+  .word 0x00439823
+  .word 0x0224001a
+  .word 0x00001812
+  .word 0x24020003
+  .word 0x10620014
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x1062000e
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620008
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x2673001e
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x267300b2
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x26730146
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x267301da
+  .word 0x26441180
+  .word 0x0c116d38
+  .word 0x00000000
+  .word 0x3c024366
+  .word 0x44820800
+  .word 0x00000000
+  .word 0x46000842
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x307e00ff
+  .word 0x26441180
+  .word 0x27a500a8
+  .word 0x0c116d08
+  .word 0x00000000
+  .word 0xc7a000ac
+  .word 0x46000024
+  .word 0x44020000
+  .word 0x00000000
+  .word 0x02c21021
+  .word 0x44930000
+  .word 0x00000000
+  .word 0x46800320
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800360
+  .word 0x240300ff
+  .word 0x33c200ff
+  .word 0x00621023
+  .word 0x304700ff
+  .word 0x44807000
+  .word 0x8fa400a4
+  .word 0x8f85ba28
+  .word 0x02a0302d
+  .word 0x2408002e
+  .word 0x2409003c
+  .word 0x240a0044
+  .word 0x0c0456f0
+  .word 0x00000000
+  .word 0x26310001
+  .word 0x2a230014
+  .word 0x1460ffa1
+  .word 0x00000000
+  .word 0x26940001
+  .word 0x2a830006
+  .word 0x1460ff86
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bbe0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd00b0
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma pop
 #pragma opt_propagation reset
@@ -5493,104 +7532,255 @@ u8 FUN_0045e170(int param_1)
 #pragma push
 /* W373 singles base 398/956; loop 398/956; common 636/1000; life 392/956; propagation 586/964; strength 398/956; dead 400/956. */
 #pragma opt_lifetimes on
-// FUN_0045E3E0 NONMATCHING
+// FUN_0045E3E0
 
-u32 FUN_0045e3e0(int param_1)
-
+asm u32 FUN_0045e3e0(int param_1)
 {
-  int *puVar1;
-  int lVar2;
-  int iVar3;
-  float fVar4;
-  
-  puVar1 = *(int **)((int)param_1 + 0x3c);
-  if (DAT_007ce718 == 0) {
-    return 0;
-  }
-  iVar3 = puVar1[1];
-  switch (iVar3) {
-  case 0:
-    for (iVar3 = 0; iVar3 < 6; iVar3 = iVar3 + 1) {
-      *(u16 *)(puVar1 + iVar3 + 0x70e) = 3;
-      *(u16 *)((int)puVar1 + iVar3 * 4 + 0x1c3a) = 0;
-    }
-    *puVar1 = 0;
-    puVar1[5] = 0;
-    puVar1[1] = 1;
-    break;
-  case 1:
-    if (((int)puVar1[3] < 3) && (lVar2 = PTR_FUN_006b4e60_abs[puVar1[3]](), lVar2 == 1)) {
-      puVar1[3] = puVar1[3] + 1;
-    }
-    FUN_0045d990(param_1,puVar1[3]);
-    if (2 < (int)puVar1[3]) {
-      puVar1[3] = 0;
-      puVar1[2] = 0;
-      puVar1[6] = 0;
-      puVar1[5] = 1;
-      puVar1[1] = 2;
-      puVar1[0x70d] = 0;
-      FUN_0045b830(param_1,0);
-    }
-    break;
-  case 2:
-    if (puVar1[5] == 1) {
-      FUN_0045bd90_arg(param_1);
-      if ((puVar1[5] != 2) && (puVar1[5] == 3)) {
-        puVar1[2] = 0;
-        puVar1[4] = 0;
-      }
-    }
-    else if (puVar1[5] == 3) {
-      if (puVar1[2] != 0) {
-        if (puVar1[6] == 0) {
-          FUN_00108fd0_va(0x1e);
-        }
-        if (0x1d < (int)puVar1[6]) {
-          puVar1[6] = 0;
-          puVar1[1] = 3;
-          return 0;
-        }
-        puVar1[6] = puVar1[6] + 1;
-      }
-      else {
-        lVar2 = FUN_0045df00(param_1);
-        if (lVar2 == 0) {
-          iVar3 = 0xe;
-          do {
-            lVar2 = FUN_00524670_typed((u64)(0x7cdb14),(u8(*)[16])((u8 *)DAT_0095c240 + iVar3),2);
-            if (lVar2 != 0) break;
-            ((u8 *)DAT_0095c240)[iVar3] = 0;
-            ((u8 *)DAT_0095c241)[iVar3] = 0;
-            iVar3 = iVar3 + -2;
-          } while (-1 < iVar3);
-          iVar3 = 0xe;
-          do {
-            lVar2 = FUN_00524670_typed((u64)(0x7cdb14),(u8(*)[16])((u8 *)DAT_0095c220 + iVar3),2);
-            if (lVar2 != 0) break;
-            ((u8 *)DAT_0095c220)[iVar3] = 0;
-            ((u8 *)DAT_0095c221)[iVar3] = 0;
-            iVar3 = iVar3 + -2;
-          } while (-1 < iVar3);
-          FUN_00177410_typed((u8 *)(DAT_0095c240),(u8 *)(DAT_0095c220));
-          puVar1[6] = 0;
-          puVar1[2] = 1;
-        }
-        else if (lVar2 == 1) {
-          puVar1[5] = 1;
-        }
-      }
-    }
-    FUN_0045ce90(param_1);
-    if ((puVar1[5] == 3) && (puVar1[2] == 1)) {
-      fVar4 = ((float)(int)puVar1[6] * 255.0f) / 30.0f;
-      FUN_00113a30_va(0,0,0,(u32)fVar4 & 0xff,0x280,0x1e0);
-    }
-    break;
-  case 3:
-    return 0xffffffff;
-  }
-  return 0;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x8c90003c
+  .word 0x8f82ba28
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x100000e1
+  .word 0x00000000
+  .word 0x8e030004
+  .word 0x24050003
+  .word 0x106500d9
+  .word 0x00000000
+  .word 0x24020002
+  .word 0x10620040
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10620016
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x100000d2
+  .word 0x00000000
+  .word 0x0000182d
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x00031080
+  .word 0x02021021
+  .word 0xa4451c38
+  .word 0xa4401c3a
+  .word 0x24630001
+  .word 0x28620006
+  .word 0x1440fff9
+  .word 0x00000000
+  .word 0xae000000
+  .word 0xae000014
+  .word 0x24020001
+  .word 0xae020004
+  .word 0x100000c1
+  .word 0x00000000
+  .word 0x8e02000c
+  .word 0x28410003
+  .word 0x1020000e
+  .word 0x00000000
+  .word 0x00021880
+  .word 0x3c02006b
+  .word 0x24424e60
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430004
+  .word 0x00000000
+  .word 0x8e02000c
+  .word 0x24420001
+  .word 0xae02000c
+  .word 0x0240202d
+  .word 0x8e05000c
+  .word 0x0c117664
+  .word 0x00000000
+  .word 0x8e02000c
+  .word 0x28420003
+  .word 0x144000a8
+  .word 0x00000000
+  .word 0xae00000c
+  .word 0xae000008
+  .word 0xae000018
+  .word 0x24020001
+  .word 0xae020014
+  .word 0x24020002
+  .word 0xae020004
+  .word 0xae001c34
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0c116e0c
+  .word 0x00000000
+  .word 0x1000009a
+  .word 0x00000000
+  .word 0x8e030014
+  .word 0x24020001
+  .word 0x1462000e
+  .word 0x00000000
+  .word 0x0c116f64
+  .word 0x00000000
+  .word 0x8e030014
+  .word 0x24020002
+  .word 0x1062005b
+  .word 0x00000000
+  .word 0x24020003
+  .word 0x14620058
+  .word 0x00000000
+  .word 0xae000008
+  .word 0xae000010
+  .word 0x10000054
+  .word 0x00000000
+  .word 0x14650052
+  .word 0x00000000
+  .word 0x8e020008
+  .word 0x1440003e
+  .word 0x00000000
+  .word 0x0c1177c0
+  .word 0x00000000
+  .word 0x14400034
+  .word 0x00000000
+  .word 0x2411000e
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00511021
+  .word 0xa0400000
+  .word 0xa0400001
+  .word 0x2631fffe
+  .word 0x0620000a
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x2442c240
+  .word 0x00512821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x1040fff0
+  .word 0x00000000
+  .word 0x2411000e
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00511021
+  .word 0xa0400000
+  .word 0xa0400001
+  .word 0x2631fffe
+  .word 0x0620000a
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x2442c220
+  .word 0x00512821
+  .word 0x2784ae24
+  .word 0x24060002
+  .word 0x0c14919c
+  .word 0x00000000
+  .word 0x1040fff0
+  .word 0x00000000
+  .word 0x3c040096
+  .word 0x2484c240
+  .word 0x3c050096
+  .word 0x24a5c220
+  .word 0x0c05dd04
+  .word 0x00000000
+  .word 0xae000018
+  .word 0x24020001
+  .word 0xae020008
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430015
+  .word 0x00000000
+  .word 0xae030014
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x8e020018
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x2404001e
+  .word 0x0c0423f4
+  .word 0x00000000
+  .word 0x8e030018
+  .word 0x2862001e
+  .word 0x14400006
+  .word 0x00000000
+  .word 0xae000018
+  .word 0x24020003
+  .word 0xae020004
+  .word 0x10000038
+  .word 0x00000000
+  .word 0x24620001
+  .word 0xae020018
+  .word 0x0240202d
+  .word 0x0c1173a4
+  .word 0x00000000
+  .word 0x8e030014
+  .word 0x24020003
+  .word 0x1462002f
+  .word 0x00000000
+  .word 0x8e030008
+  .word 0x24020001
+  .word 0x1462002b
+  .word 0x00000000
+  .word 0xc6000018
+  .word 0x46800060
+  .word 0x3c02437f
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010042
+  .word 0x3c0241f0
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024f00
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010036
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x46000824
+  .word 0x44030000
+  .word 0x00000000
+  .word 0x306300ff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x46000801
+  .word 0x46000024
+  .word 0x44030000
+  .word 0x3c028000
+  .word 0x00621825
+  .word 0x306300ff
+  .word 0x306400ff
+  .word 0x44806000
+  .word 0x00000000
+  .word 0x46006346
+  .word 0x46006386
+  .word 0x24050280
+  .word 0x240601e0
+  .word 0x0c044e8c
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 #pragma pop
