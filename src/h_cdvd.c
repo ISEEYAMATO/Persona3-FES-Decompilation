@@ -1057,58 +1057,122 @@ void* func_00101ad0(s32 count, void* source, s32 stride,
     return context;
 }
 
-// FUN_00101c70 NONMATCHING
-void func_00101c70(void)
+// FUN_00101c70
+asm void func_00101c70(void)
 {
-    static u64 key0;
-    static u64 key2;
-    void (**buildKey)(void*, const char*);
-    void (**buildHddKey)(void*, const char*);
-    void* context1;
-    void* context2;
-    void* context3;
-
-    func_004bfbb0(-1);
-    buildKey = (void (**)(void*, const char*))D_0096013C;
-    (*buildKey)(&key0, "hst:");
-    (*buildKey)(&key2, "hst");
-    context1 = func_004c0fd0(5, D_007D4780_abs, 0x800,
-                             &key0, &key2);
-    if (context1 == NULL)
-    {
-        goto empty;
-    }
-    if (func_004bfc80(context1) != NULL)
-    {
-        goto success;
-    }
-    printf("CDVD stream group registration failed\n");
-    goto done;
-empty:
-    goto done;
-success:
-    (*buildKey)(&key0, "pak:");
-    (*buildKey)(&key2, "pak");
-    context2 = func_00101ad0(5, D_007D1F80, 0x800, &key0, &key2);
-    if (func_004bfc80(context2) == NULL)
-    {
-        printf("CDVD stream group 2 registration failed\n");
-    }
-    else
-    {
-        func_004c0230(context2);
-    }
-    D_007CDF38 = 1;
-    buildHddKey = (void (**)(void*, const char*))D_0096013C;
-    (*buildHddKey)(&key0, "hdd:");
-    (*buildHddKey)(&key2, "hdd");
-    context3 = func_00102e50(5, D_007CF780, 0x800, &key0, &key2);
-    if (func_004bfc80(context3) == NULL)
-    {
-        printf("CDVD stream group 3 registration failed\n");
-    }
-done:
-    return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x2404ffff
+  .word 0x0c12feec
+  .word 0x00000000
+  .word 0x3c100096
+  .word 0x2610013c
+  .word 0x2784b198
+  .word 0x27858558
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x2784b190
+  .word 0x27858560
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040005
+  .word 0x3c05007d
+  .word 0x24a54780
+  .word 0x24060800
+  .word 0x2787b198
+  .word 0x2788b190
+  .word 0x0c1303f4
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x0c12ff20
+  .word 0x00000000
+  .word 0x14400009
+  .word 0x00000000
+  .word 0x3c04005d
+  .word 0x2484e9c0
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x10000043
+  .word 0x00000000
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x2784b198
+  .word 0x27858550
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x2784b190
+  .word 0x27858564
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040005
+  .word 0x3c05007d
+  .word 0x24a51f80
+  .word 0x24060800
+  .word 0x2787b198
+  .word 0x2788b190
+  .word 0x0c0406b4
+  .word 0x00000000
+  .word 0x0040802d
+  .word 0x0200202d
+  .word 0x0c12ff20
+  .word 0x00000000
+  .word 0x14400007
+  .word 0x00000000
+  .word 0x3c04005d
+  .word 0x2484e9e0
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c13008c
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xaf82b248
+  .word 0x3c100096
+  .word 0x2610013c
+  .word 0x2784b198
+  .word 0x27858568
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x2784b190
+  .word 0x27858570
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x24040005
+  .word 0x3c05007d
+  .word 0x24a5f780
+  .word 0x24060800
+  .word 0x2787b198
+  .word 0x2788b190
+  .word 0x0c040b94
+  .word 0x00000000
+  .word 0x0040202d
+  .word 0x0c12ff20
+  .word 0x00000000
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x3c04005d
+  .word 0x2484ea00
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x27bd0020
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 
