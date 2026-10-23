@@ -96,177 +96,294 @@ void H_Pad_Init(void)
 }
 #pragma opt_loop_invariants reset
 
-// FUN_00103110 NONMATCHING
-void H_Pad_Poll(HPad* pad)
+// FUN_00103110
+asm void H_Pad_Poll(HPad* pad)
 {
-    u16 mainMode;
-    s32 padState;
-    s32 requestState;
-    s32 port;
-    s32 slot;
-    u8 actuatorData[2];
-    u32 hasDigitalInput;
-    u32 hasAnalogSticks;
-    u16 actuator0;
-    u16 actuator1;
-    sRDataPort1[0] = 0xFF;
-    port = pad->port;
-    slot = pad->slot;
-    padState = scePadGetState(port, slot);
-
-    switch (pad->state)
-    {
-    case HPAD_STATE_INITIALIZING:
-        if (padState == HPAD_PAD_STATE_FIND_CTP1 || padState == HPAD_PAD_STATE_STABLE)
-        {
-            pad->appliedActuator0 = 0xFFFF;
-            pad->appliedActuator1 = 0xFFFF;
-            mainMode = pad->requestedMainMode;
-            pad->mainMode = mainMode;
-            switch (mainMode)
-
-            {
-            case 0:
-                pad->state = HPAD_STATE_CONFIGURING_ACTUATORS;
-                break;
-
-            case 1:
-                if (padState == HPAD_PAD_STATE_STABLE)
-                {
-                    if (scePadSetMainMode(port, slot, 0, 0) == 1)
-                    {
-                        pad->state = HPAD_STATE_MODE_REQUESTED;
-                    }
-                }
-                else
-                {
-                    pad->state = HPAD_STATE_CONFIGURING_ACTUATORS;
-                }
-                break;
-
-            case 2:
-                if (scePadSetMainMode(port, slot, 0, 0) == 1)
-                {
-                    pad->state = HPAD_STATE_WAITING_FOR_MODE;
-                }
-                break;
-
-            case 3:
-                if (scePadSetMainMode(port, slot, 1, 0) == 1)
-                {
-                    pad->state = HPAD_STATE_MODE_REQUESTED;
-                }
-                break;
-            }
-        }
-        break;
-
-    case HPAD_STATE_WAITING_FOR_MODE:
-        if (padState == HPAD_PAD_STATE_STABLE)
-        {
-            pad->state = HPAD_STATE_CONFIGURING_ACTUATORS;
-        }
-        else if (padState != HPAD_PAD_STATE_FIND_CTP1)
-        {
-            pad->state = HPAD_STATE_INITIALIZING;
-        }
-        break;
-
-    case HPAD_STATE_CONFIGURING_ACTUATORS:
-        if (scePadInfoAct(port, slot, -1, 0) == 0)
-        {
-            pad->state = HPAD_STATE_READY;
-        }
-        else if (scePadSetActAlign(port, slot, sRDataPort1) != 0)
-        {
-            pad->state = HPAD_STATE_WAITING_FOR_ACTUATORS;
-        }
-        break;
-
-    case HPAD_STATE_WAITING_FOR_ACTUATORS:
-        requestState = scePadGetReqState(port, slot);
-        if (requestState == 0)
-        {
-            pad->state = HPAD_STATE_READY;
-        }
-        else if (requestState == 1)
-        {
-            pad->state = HPAD_STATE_CONFIGURING_ACTUATORS;
-        }
-        break;
-
-    case HPAD_STATE_READY:
-        if (padState == HPAD_PAD_STATE_FIND_CTP1 || padState == HPAD_PAD_STATE_STABLE)
-        {
-            if (pad->mainMode != pad->requestedMainMode)
-            {
-                pad->state = HPAD_STATE_INITIALIZING;
-            }
-            else
-            {
-                scePadRead(port, slot, sRDataPort1);
-            }
-        }
-        break;
-    }
-    actuator0 = pad->actuator0;
-    actuator1 = pad->actuator1;
-    if (actuator0 != pad->appliedActuator0 || actuator1 != pad->appliedActuator1)
-    {
-        pad->appliedActuator0 = actuator0;
-        pad->appliedActuator1 = actuator1;
-        actuatorData[0] = (u8)actuator0;
-        actuatorData[1] = (u8)actuator1;
-        scePadSetActDirect(port, slot, actuatorData);
-    }
- 
-    hasDigitalInput = false;
-    hasAnalogSticks = false;
-    if (sRDataPort1[0] == 0)
-    {
-        switch (sRDataPort1[1])
-        {
-        case 'A':
-            hasDigitalInput = true;
-            break;
-
-        case 's':
-        case 'y':
-            hasDigitalInput = true;
-            hasAnalogSticks = true;
-            break;
-        }
-    }
-    pad->btn[0].released = pad->btn[0].pressed;
-    pad->virtualPreviousPressed = pad->btn[1].justPressed;
-
-    if (hasDigitalInput != false)
-    {
-        pad->btn[0].pressed = (u16)~((sRDataPort1[2] << 8) | sRDataPort1[3]);
-    }
-    else
-    {
-        pad->btn[0].pressed = 0;
-        pad->btn[0].released = 0;
-    }
-
-    if (hasAnalogSticks != false)
-    {
-        pad->rstickX = sRDataPort1[4];
-        pad->rstickY = sRDataPort1[5];
-        pad->lstickX = sRDataPort1[6];
-        pad->lstickY = sRDataPort1[7];
-    }
-    else
-    {
-        pad->rstickX = 128;
-        pad->rstickY = 128;
-        pad->lstickX = 128;
-        pad->lstickY = 128;
-        pad->btn[1].justPressed = 0;
-        pad->virtualPreviousPressed = 0;
-    }
-
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x240300ff
+  .word 0x3c02007e
+  .word 0xa0430700
+  .word 0x94910008
+  .word 0x9490000a
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x0c144696
+  .word 0x00000000
+  .word 0x96460002
+  .word 0x24050005
+  .word 0x10c50092
+  .word 0x00000000
+  .word 0x24030004
+  .word 0x10c3007c
+  .word 0x00000000
+  .word 0x24040003
+  .word 0x10c40062
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10c30054
+  .word 0x00000000
+  .word 0x10c00003
+  .word 0x00000000
+  .word 0x100000ad
+  .word 0x00000000
+  .word 0x24030002
+  .word 0x10430004
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x144300a7
+  .word 0x00000000
+  .word 0x3403ffff
+  .word 0xa6430032
+  .word 0xa6430034
+  .word 0x96440004
+  .word 0xa6440000
+  .word 0x24070003
+  .word 0x10870031
+  .word 0x00000000
+  .word 0x24030002
+  .word 0x1083001d
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10830008
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x10000095
+  .word 0x00000000
+  .word 0xa6470002
+  .word 0x10000092
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x1443000d
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x0c1447ee
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430086
+  .word 0x00000000
+  .word 0xa6430002
+  .word 0x10000083
+  .word 0x00000000
+  .word 0xa6470002
+  .word 0x10000080
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x1443000c
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x0000302d
+  .word 0x0c1447ee
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430075
+  .word 0x00000000
+  .word 0xa6430002
+  .word 0x10000072
+  .word 0x00000000
+  .word 0xa6470002
+  .word 0x1000006f
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x1443000c
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x24060001
+  .word 0x0c1447ee
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430064
+  .word 0x00000000
+  .word 0xa6430002
+  .word 0x10000061
+  .word 0x00000000
+  .word 0xa6470002
+  .word 0x1000005e
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x14430004
+  .word 0x00000000
+  .word 0xa6440002
+  .word 0x10000058
+  .word 0x00000000
+  .word 0x10450056
+  .word 0x00000000
+  .word 0xa6400002
+  .word 0x10000053
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x2406ffff
+  .word 0x0000382d
+  .word 0x0c144714
+  .word 0x00000000
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x24030005
+  .word 0xa6430002
+  .word 0x10000047
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x27868580
+  .word 0x0c14484e
+  .word 0x00000000
+  .word 0x10400040
+  .word 0x00000000
+  .word 0x24030004
+  .word 0xa6430002
+  .word 0x1000003c
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x0c1446f0
+  .word 0x00000000
+  .word 0x1040000a
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430003
+  .word 0x00000000
+  .word 0x10000031
+  .word 0x00000000
+  .word 0x24030003
+  .word 0xa6430002
+  .word 0x1000002d
+  .word 0x00000000
+  .word 0x24030005
+  .word 0xa6430002
+  .word 0x10000029
+  .word 0x00000000
+  .word 0x24030002
+  .word 0x10430007
+  .word 0x00000000
+  .word 0x24030006
+  .word 0x10430004
+  .word 0x00000000
+  .word 0xa6400002
+  .word 0x10000020
+  .word 0x00000000
+  .word 0x96440000
+  .word 0x96430004
+  .word 0x10830004
+  .word 0x00000000
+  .word 0xa6400002
+  .word 0x10000019
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x3c06007e
+  .word 0x24c60700
+  .word 0x0c144678
+  .word 0x00000000
+  .word 0x9646002e
+  .word 0x96450030
+  .word 0x96430032
+  .word 0x14c30005
+  .word 0x00000000
+  .word 0x30a4ffff
+  .word 0x96430034
+  .word 0x1083000a
+  .word 0x00000000
+  .word 0xa6460032
+  .word 0xa6450034
+  .word 0xa3a60040
+  .word 0xa3a50041
+  .word 0x0220202d
+  .word 0x0200282d
+  .word 0x27a60040
+  .word 0x0c14481c
+  .word 0x00000000
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x3c03007e
+  .word 0x90630700
+  .word 0x14600017
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x90640701
+  .word 0x24030079
+  .word 0x10830010
+  .word 0x00000000
+  .word 0x24030073
+  .word 0x10830009
+  .word 0x00000000
+  .word 0x24030041
+  .word 0x10830003
+  .word 0x00000000
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x24060001
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x24060001
+  .word 0x00c0282d
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x24060001
+  .word 0x00c0282d
+  .word 0x9643000c
+  .word 0xa6430010
+  .word 0x96430016
+  .word 0xa643001c
+  .word 0x10c0000d
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x90630702
+  .word 0x00601827
+  .word 0xa3a3004d
+  .word 0x3c03007e
+  .word 0x90630703
+  .word 0x00601827
+  .word 0xa3a3004c
+  .word 0x97a3004c
+  .word 0xa643000c
+  .word 0x10000003
+  .word 0x00000000
+  .word 0xa640000c
+  .word 0xa6400010
+  .word 0x10a0000f
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0x90630704
+  .word 0xa2430020
+  .word 0x3c03007e
+  .word 0x90630705
+  .word 0xa2430021
+  .word 0x3c03007e
+  .word 0x90630706
+  .word 0xa243001e
+  .word 0x3c03007e
+  .word 0x90630707
+  .word 0xa243001f
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x24030080
+  .word 0xa2430020
+  .word 0xa2430021
+  .word 0xa243001e
+  .word 0xa243001f
+  .word 0xa6400016
+  .word 0xa640001c
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00103580
@@ -387,62 +504,82 @@ void H_Pad_UpdateDirectionalButtonRepeat(HPadPort port, u16 buttons, s32 repeatI
     }
 }
 
-// FUN_00103B10 NONMATCHING
-void H_Pad_UpdateRumble(void)
+// FUN_00103B10
+asm void H_Pad_UpdateRumble(void)
 {
-    switch (sRumbleState)
-    {
-    case 0:
-        sRumbleDuration = 0;
-        sRumbleOnFrames = 0;
-        sRumbleIntensity.h = 0;
-        ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator0 = 0;
-        ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator1 = 0;
-        sRumbleState++;
-        break;
-
-    case 1:
-        ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator0 = 0;
-        ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator1 = 0;
-        break;
-
-    case 2:
-        if (sRumbleDuration == 0)
-        {
-            sRumbleState = HPAD_STATE_WAITING_FOR_MODE;
-            break;
-        }
-        if (sRumbleCadence != 0)
-        {
-            goto decrement_cadence;
-        }
-        if (sRumblePhase != 0)
-        {
-            goto rumble_off;
-        }
-        {
-            u16 intensity;
-            u8 intensityByte;
-            intensityByte = sRumbleIntensity.b;
-            intensity = intensityByte;
-            ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator0 = intensity;
-            ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator1 = intensity;
-            sRumbleCadence = sRumbleOnFrames;
-            sRumblePhase = 1;
-        }
-        goto rumble_done;
-rumble_off:
-        ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator0 = 0;
-        ((HPad*)gWorkPads_abs)[HPAD_PORT_1].actuator1 = 0;
-        sRumbleCadence = sRumbleOffFrames;
-        sRumblePhase = 0;
-        goto rumble_done;
-decrement_cadence:
-        sRumbleCadence--;
-rumble_done:
-        sRumbleDuration--;
-        break;
-    }
+  .set noreorder
+  .word 0x8784b1a0
+  .word 0x24030002
+  .word 0x10830019
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10830010
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x10000039
+  .word 0x00000000
+  .word 0xa780b1b8
+  .word 0xa780b1b0
+  .word 0xa780b1a4
+  .word 0x3c03007e
+  .word 0xa46009de
+  .word 0x3c03007e
+  .word 0xa46009e0
+  .word 0x24830001
+  .word 0xa783b1a0
+  .word 0x1000002e
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0xa46009de
+  .word 0x3c03007e
+  .word 0xa46009e0
+  .word 0x10000028
+  .word 0x00000000
+  .word 0x8783b1b8
+  .word 0x14600005
+  .word 0x00000000
+  .word 0x24030001
+  .word 0xa783b1a0
+  .word 0x10000021
+  .word 0x00000000
+  .word 0x8783b1b4
+  .word 0x14600019
+  .word 0x00000000
+  .word 0x8783b1a8
+  .word 0x1460000d
+  .word 0x00000000
+  .word 0x9383b1a4
+  .word 0x0060202d
+  .word 0x3c03007e
+  .word 0xa46409de
+  .word 0x3c03007e
+  .word 0xa46409e0
+  .word 0x8783b1b0
+  .word 0xa783b1b4
+  .word 0x24030001
+  .word 0xa783b1a8
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x3c03007e
+  .word 0xa46009de
+  .word 0x3c03007e
+  .word 0xa46009e0
+  .word 0x8783b1ac
+  .word 0xa783b1b4
+  .word 0xa780b1a8
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x2463ffff
+  .word 0xa783b1b4
+  .word 0x8783b1b8
+  .word 0x2463ffff
+  .word 0xa783b1b8
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00103C30
