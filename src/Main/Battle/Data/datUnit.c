@@ -42,45 +42,98 @@ DatUnitPc* datUnitCreatePc(u16 pcId)
 // MWCC b210 register-colouring floor: the residual is a consistent $s0/$s1 swap across
 // the two u16 loop/index lifetimes; the loop-invariant setting above is the measured best form.
 /* W389 sweep: six singles and all 15 knob pairs were neutral; final nd12/object348/352. */
-// FUN_002ff3e0 NONMATCHING
-DatUnitEc* datUnitCreateEc(u16 encountId)
+// FUN_002ff3e0
+asm DatUnitEc* datUnitCreateEc(u16 encountId)
 {
-    u16 i;
-    u16 count;
-    DatUnitEc* ec;
-    u16 j;
-    u16 k;
-
-    count = 0;
-    i = 0;
-    for (; (u32)(i & 0xFFFF) < 5U; i++)
-    {
-        if (gEncountTbl[encountId].enmIds[i] != 0)
-        {
-            count++;
-        }
-    }
-
-    ec = RwMalloc(sizeof(DatUnitEc), rwMEMHINTDUR_GLOBAL);
-    memset(ec, 0, sizeof(DatUnitEc));
-
-    ec->base.genus = UNIT_GENUS_EC;
-    ec->base.count = count;
-    ec->encountId = encountId;
-    ec->base.unit = ec->units;
-
-    j = 0;
-    for (k = 0; (u32)(k & 0xFFFF) < 5U; k++)
-    {
-        if (gEncountTbl[encountId].enmIds[k] != 0)
-        {
-            datUnitInit(&ec->base.unit[j], UNIT_GENUS_EC, gEncountTbl[encountId].enmIds[k]);
-
-            j++;
-        }
-    }
-
-    return ec;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x0000802d
+  .word 0x0000202d
+  .word 0x3243ffff
+  .word 0x000310c0
+  .word 0x00431023
+  .word 0x00028880
+  .word 0x8f82b7b8
+  .word 0x00511821
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x3082ffff
+  .word 0x00021040
+  .word 0x00621021
+  .word 0x94420008
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x26020001
+  .word 0x3050ffff
+  .word 0x24820001
+  .word 0x3044ffff
+  .word 0x3082ffff
+  .word 0x2c420005
+  .word 0x1440fff3
+  .word 0x00000000
+  .word 0x24040174
+  .word 0x3c050004
+  .word 0x3c020096
+  .word 0x8c420178
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x0260202d
+  .word 0x0000282d
+  .word 0x24060174
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xa6620000
+  .word 0xa6700002
+  .word 0xa6720008
+  .word 0x2662000c
+  .word 0xae620004
+  .word 0x0000902d
+  .word 0x0000802d
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x8f82b7b8
+  .word 0x02221821
+  .word 0x3202ffff
+  .word 0x00021040
+  .word 0x00621021
+  .word 0x94460008
+  .word 0x10c0000c
+  .word 0x00000000
+  .word 0x3243ffff
+  .word 0x00031100
+  .word 0x00431023
+  .word 0x00021880
+  .word 0x8e620004
+  .word 0x00432021
+  .word 0x24050001
+  .word 0x0c0bfe24
+  .word 0x00000000
+  .word 0x26420001
+  .word 0x3052ffff
+  .word 0x26020001
+  .word 0x3050ffff
+  .word 0x3202ffff
+  .word 0x2c420005
+  .word 0x1440ffe8
+  .word 0x00000000
+  .word 0x0260102d
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma opt_loop_invariants off
 
