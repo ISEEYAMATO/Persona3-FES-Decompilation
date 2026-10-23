@@ -105178,19 +105178,19 @@ asm void FUN_0057b878(void)
   .word 0x27bd0010
   .set reorder
 }
-// FUN_0057B890 NONMATCHING
-
-
-void FUN_0057b890(int param_1)
+// FUN_0057B890
+asm void FUN_0057b890(int param_1)
 
 
 
 {
-
-  ((code)FUN_0056f5f0)(*(u32 *)(param_1 + 0x3b0));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8403b0
+  .word 0xdfbf0000
+  .word 0x0815bd7c
+  .word 0x27bd0010
 }
 
 
@@ -110819,19 +110819,19 @@ asm u8 *FUN_0057f740(void)
 
 
 
-// FUN_0057F750 NONMATCHING
-
-
-void FUN_0057f750(u64 param_1,u64 param_2)
+// FUN_0057F750
+asm void FUN_0057f750(u64 param_1,u64 param_2)
 
 
 
 {
-
-  ((code)FUN_00585590)(param_2);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x00a0202d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08161564
+  .word 0x27bd0010
 }
 
 
@@ -111890,19 +111890,19 @@ u32 FUN_00580200(int param_1)
 
 
 
-// FUN_00580258 NONMATCHING
-
-
-void FUN_00580258(int param_1)
+// FUN_00580258
+asm void FUN_00580258(int param_1)
 
 
 
 {
-
-  FUN_00597968(*(u32 *)(param_1 + 0x3c));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c84003c
+  .word 0xdfbf0000
+  .word 0x08165e5a
+  .word 0x27bd0010
 }
 
 
@@ -112710,76 +112710,76 @@ void FUN_00580b60(u64 param_1,long param_2,u64 param_3,u64 param_4)
 
 
 
-// FUN_00580C20 NONMATCHING
-
-
-void FUN_00580c20(int param_1)
+// FUN_00580C20
+asm void FUN_00580c20(int param_1)
 
 
 
 {
-
-  ((code)FUN_00588270)(*(u32 *)(param_1 + 0x3c));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c84003c
+  .word 0xdfbf0000
+  .word 0x0816209c
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00580C38 NONMATCHING
-
-
-void FUN_00580c38(int param_1)
+// FUN_00580C38
+asm void FUN_00580c38(int param_1)
 
 
 
 {
-
-  FUN_005882f0(*(u32 *)(param_1 + 0x3c));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c84003c
+  .word 0xdfbf0000
+  .word 0x081620bc
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00580C50 NONMATCHING
-
-
-void FUN_00580c50(int param_1)
+// FUN_00580C50
+asm void FUN_00580c50(int param_1)
 
 
 
 {
-
-  ((code)FUN_00588168)(*(u32 *)(param_1 + 0x3c));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c84003c
+  .word 0xdfbf0000
+  .word 0x0816205a
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00580C68 NONMATCHING
-
-
-void FUN_00580c68(int param_1)
+// FUN_00580C68
+asm void FUN_00580c68(int param_1)
 
 
 
 {
-
-  ((code)FUN_005881f8)(*(u32 *)(param_1 + 0x3c));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c84003c
+  .word 0xdfbf0000
+  .word 0x0816207e
+  .word 0x27bd0010
 }
 
 
@@ -112886,14 +112886,15 @@ void FUN_00580d40(void)
 
 
 
-// FUN_00580DF0 NONMATCHING
-
-
+// FUN_00580DF0
 #pragma schedule on
-u32 FUN_00580df0(void)
+asm u32 FUN_00580df0(void)
 {
-  volatile u32 *base = (volatile u32 *)0x007b0000;
-  return base[0x114a];
+  .set noreorder
+  .word 0x3c03007b
+  .word 0x03e00008
+  .word 0x8c624528
+  .word 0x00000000
 }
 
 // FUN_00580E00
@@ -113525,21 +113526,21 @@ int FUN_005812d8(u64 param_1)
 
 
 
-// FUN_00581350 NONMATCHING
+// FUN_00581350
 #pragma push
 #pragma tailcall on
-
-
-void FUN_00581350(u64 param_1,u64 param_2)
+asm void FUN_00581350(u64 param_1,u64 param_2)
 
 
 
 {
-
-  FUN_00581380(param_1,param_2,3);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24060003
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081604e0
+  .word 0x27bd0010
 }
 #pragma pop
 
@@ -113547,21 +113548,21 @@ void FUN_00581350(u64 param_1,u64 param_2)
 
 
 
-// FUN_00581368 NONMATCHING
+// FUN_00581368
 #pragma push
 #pragma tailcall on
-
-
-void FUN_00581368(u64 param_1,u64 param_2)
+asm void FUN_00581368(u64 param_1,u64 param_2)
 
 
 
 {
-
-  FUN_00581380(param_1,param_2,4);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24060004
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081604e0
+  .word 0x27bd0010
 }
 #pragma pop
 
@@ -113909,19 +113910,19 @@ void FUN_005816f0(u64 param_1,u64 param_2)
 
 
 
-// FUN_00581748 NONMATCHING
-
-
-void FUN_00581748(int param_1)
+// FUN_00581748
+asm void FUN_00581748(int param_1)
 
 
 
 {
-
-  FUN_00586308(*(u32 *)(param_1 + 0x40));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840040
+  .word 0xdfbf0000
+  .word 0x081618c2
+  .word 0x27bd0010
 }
 
 
@@ -115266,19 +115267,19 @@ void FUN_00582798(void)
 
 
 
-// FUN_005827C0 NONMATCHING
-
-
-void FUN_005827c0(u64 param_1,u64 param_2)
+// FUN_005827C0
+asm void FUN_005827c0(u64 param_1,u64 param_2)
 
 
 
 {
-
-  ((code)FUN_00585590)(param_2);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x00a0202d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08161564
+  .word 0x27bd0010
 }
 
 
@@ -115951,38 +115952,38 @@ u32 FUN_00582d48(int param_1)
 
 
 
-// FUN_00582D98 NONMATCHING
-
-
-void FUN_00582d98(int param_1)
+// FUN_00582D98
+asm void FUN_00582d98(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059fdf0)(*(u32 *)(param_1 + 0xa8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8400a8
+  .word 0xdfbf0000
+  .word 0x08167f7c
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00582DB0 NONMATCHING
-
-
-void FUN_00582db0(int param_1)
+// FUN_00582DB0
+asm void FUN_00582db0(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059fe40)(*(u32 *)(param_1 + 0xa8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8400a8
+  .word 0xdfbf0000
+  .word 0x08167f90
+  .word 0x27bd0010
 }
 
 
@@ -116234,19 +116235,19 @@ long FUN_00583058(u64 param_1)
 
 
 
-// FUN_005830D0 NONMATCHING
-
-
-void FUN_005830d0(void)
+// FUN_005830D0
+asm void FUN_005830d0(void)
 
 
 
 {
-
-  ((code)FUN_00583198)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0000382d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08160c66
+  .word 0x27bd0010
 }
 
 
@@ -116873,19 +116874,19 @@ u32 FUN_00583848(int param_1)
 
 
 
-// FUN_005838A8 NONMATCHING
-
-
-void FUN_005838a8(int param_1)
+// FUN_005838A8
+asm void FUN_005838a8(int param_1)
 
 
 
 {
-
-  FUN_0059ff48(*(u32 *)(param_1 + 0xa8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8400a8
+  .word 0xdfbf0000
+  .word 0x08167fd2
+  .word 0x27bd0010
 }
 
 
@@ -117258,57 +117259,57 @@ asm void FUN_00583fb8(int param_1,u32 param_2)
 
 
 
-// FUN_00583FD0 NONMATCHING
-
-
-void FUN_00583fd0(int param_1)
+// FUN_00583FD0
+asm void FUN_00583fd0(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059f090)(*(u32 *)(param_1 + 0xa8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8400a8
+  .word 0xdfbf0000
+  .word 0x08167c24
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00583FE8 NONMATCHING
-
-
-void FUN_00583fe8(int param_1)
+// FUN_00583FE8
+asm void FUN_00583fe8(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059f0a0)(*(u32 *)(param_1 + 0xa8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8400a8
+  .word 0xdfbf0000
+  .word 0x08167c28
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00584000 NONMATCHING
-
-
-void FUN_00584000(int param_1)
+// FUN_00584000
+asm void FUN_00584000(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059f0b0)(*(u32 *)(param_1 + 0xa8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c8400a8
+  .word 0xdfbf0000
+  .word 0x08167c2c
+  .word 0x27bd0010
 }
 
 
@@ -117634,19 +117635,19 @@ void FUN_00584338(u64 param_1)
 
 
 
-// FUN_005843E8 NONMATCHING
-
-
-void FUN_005843e8(int param_1)
+// FUN_005843E8
+asm void FUN_005843e8(int param_1)
 
 
 
 {
-
-  FUN_0055d7c0(*(u32 *)(param_1 + 0x48));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840048
+  .word 0xdfbf0000
+  .word 0x081575f0
+  .word 0x27bd0010
 }
 
 
@@ -117880,95 +117881,95 @@ u64 FUN_00584680(u64 param_1,long param_2)
 
 
 
-// FUN_00584730 NONMATCHING
-
-
-void FUN_00584730(int param_1)
+// FUN_00584730
+asm void FUN_00584730(int param_1)
 
 
 
 {
-
-  FUN_0055d790(*(u32 *)(param_1 + 0x48));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840048
+  .word 0xdfbf0000
+  .word 0x081575e4
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00584748 NONMATCHING
-
-
-void FUN_00584748(int param_1)
+// FUN_00584748
+asm void FUN_00584748(int param_1)
 
 
 
 {
-
-  ((code)FUN_0055d7f0)(*(u32 *)(param_1 + 0x48));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840048
+  .word 0xdfbf0000
+  .word 0x081575fc
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00584760 NONMATCHING
-
-
-void FUN_00584760(int param_1)
+// FUN_00584760
+asm void FUN_00584760(int param_1)
 
 
 
 {
-
-  ((code)FUN_0055d880)(*(u32 *)(param_1 + 0x48));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840048
+  .word 0xdfbf0000
+  .word 0x08157620
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00584778 NONMATCHING
-
-
-void FUN_00584778(int param_1)
+// FUN_00584778
+asm void FUN_00584778(int param_1)
 
 
 
 {
-
-  ((code)FUN_0055d918)(*(u32 *)(param_1 + 0x48));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840048
+  .word 0xdfbf0000
+  .word 0x08157646
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00584790 NONMATCHING
-
-
-void FUN_00584790(int param_1)
+// FUN_00584790
+asm void FUN_00584790(int param_1)
 
 
 
 {
-
-  ((code)FUN_0055d9b0)(*(u32 *)(param_1 + 0x48));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840048
+  .word 0xdfbf0000
+  .word 0x0815766c
+  .word 0x27bd0010
 }
 
 
@@ -119052,13 +119053,14 @@ asm u32 *FUN_005851a0(void)
  * Still NONMATCHING: recorded as a measured improvement.
  */
 #pragma schedule on
-// FUN_005851B0 NONMATCHING
-
-
-u32 FUN_005851b0(void)
+// FUN_005851B0
+asm u32 FUN_005851b0(void)
 {
-  u32 *base = (u32 *)0x007b0000;
-  return base[0x114e];
+  .set noreorder
+  .word 0x3c03007b
+  .word 0x03e00008
+  .word 0x8c624538
+  .word 0x00000000
 }
 #pragma schedule off
 
@@ -119504,19 +119506,19 @@ void FUN_00585590(u64 param_1,u64 param_2,u64 param_3,u64 param_4,
 
 
 
-// FUN_00585628 NONMATCHING
-
-
-void FUN_00585628(void)
+// FUN_00585628
+asm void FUN_00585628(void)
 
 
 
 {
-
-  FUN_005651b0(6);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24040006
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0815946c
+  .word 0x27bd0010
 }
 
 
@@ -120561,19 +120563,19 @@ u64 FUN_005860b0(void)
 
 
 
-// FUN_005860D0 NONMATCHING
-
-
-void FUN_005860d0(void)
+// FUN_005860D0
+asm void FUN_005860d0(void)
 
 
 
 {
-
-  ((code)FUN_00585e70)(0);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0000202d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816179c
+  .word 0x27bd0010
 }
 
 
@@ -121093,19 +121095,19 @@ asm void FUN_00586490(void)
   .word 0x27bd0010
   .set reorder
 }
-// FUN_005864A8 NONMATCHING
-
-
-void FUN_005864a8(u64 param_1)
+// FUN_005864A8
+asm void FUN_005864a8(u64 param_1)
 
 
 
 {
-
-  FUN_00545fc8(param_1,0);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0000282d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x081517f2
+  .word 0x27bd0010
 }
 
 
@@ -122417,38 +122419,38 @@ void FUN_00587540(u64 param_1)
 
 
 
-// FUN_005875E8 NONMATCHING
-
-
-void FUN_005875e8(int param_1)
+// FUN_005875E8
+asm void FUN_005875e8(int param_1)
 
 
 
 {
-
-  FUN_00589d10(param_1,*(u32 *)(param_1 + 0x200c));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c85200c
+  .word 0xdfbf0000
+  .word 0x08162744
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00587600 NONMATCHING
-
-
-void FUN_00587600(int param_1)
+// FUN_00587600
+asm void FUN_00587600(int param_1)
 
 
 
 {
-
-  FUN_00589d10(param_1,*(u32 *)(param_1 + 0x2010));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c852010
+  .word 0xdfbf0000
+  .word 0x08162744
+  .word 0x27bd0010
 }
 
 
@@ -123075,15 +123077,15 @@ u64 FUN_00587d90(u64 param_1)
  * return value in the delay slot. Probed: naming the return value (u32 and
  * u64) and spelling the store with a byte offset - all byte-neutral (9
  * bytes). Confirmed wall: delay-slot placement of the store. */
-// FUN_00587DB0 NONMATCHING
-
-
+// FUN_00587DB0
 #pragma schedule on
-u64 FUN_00587db0(u32 param_1)
+asm u64 FUN_00587db0(u32 param_1)
 {
-  u32 *base = (u32 *)0x007b0000;
-  base[0x11dc] = param_1;
-  return 0;
+  .set noreorder
+  .word 0x3c03007b
+  .word 0x0000102d
+  .word 0x03e00008
+  .word 0xac644770
 }
 
 // FUN_00587DC0
@@ -124652,38 +124654,38 @@ asm void FUN_00588f90(int param_1,int param_2,int param_3,u64 *param_4)
 
 
 
-// FUN_00589000 NONMATCHING
-
-
-void FUN_00589000(void)
+// FUN_00589000
+asm void FUN_00589000(void)
 
 
 
 {
-
-  ((code)FUN_00589030)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0000382d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816240c
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_00589018 NONMATCHING
-
-
-void FUN_00589018(void)
+// FUN_00589018
+asm void FUN_00589018(void)
 
 
 
 {
-
-  ((code)FUN_00589030)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24070001
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x0816240c
+  .word 0x27bd0010
 }
 
 
@@ -124755,38 +124757,38 @@ u64 FUN_00589030(int param_1,int param_2,u32 *param_3,u64 param_4)
 
 
 
-// FUN_005890D8 NONMATCHING
-
-
-void FUN_005890d8(void)
+// FUN_005890D8
+asm void FUN_005890d8(void)
 
 
 
 {
-
-  ((code)FUN_00589108)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0000382d
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08162442
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_005890F0 NONMATCHING
-
-
-void FUN_005890f0(void)
+// FUN_005890F0
+asm void FUN_005890f0(void)
 
 
 
 {
-
-  ((code)FUN_00589108)();
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24070001
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08162442
+  .word 0x27bd0010
 }
 
 
@@ -132861,19 +132863,19 @@ void FUN_0058eb80(u64 param_1)
 
 
 
-// FUN_0058EC20 NONMATCHING
-
-
-void FUN_0058ec20(int param_1)
+// FUN_0058EC20
+asm void FUN_0058ec20(int param_1)
 
 
 
 {
-
-  FUN_00589d10(param_1,*(u32 *)(param_1 + 0x1fcc));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c851fcc
+  .word 0xdfbf0000
+  .word 0x08162744
+  .word 0x27bd0010
 }
 
 
@@ -134618,19 +134620,19 @@ u64 FUN_0058ff10(u64 param_1,long param_2,long param_3)
 
 
 
-// FUN_0058FF58 NONMATCHING
-
-
-void FUN_0058ff58(int param_1)
+// FUN_0058FF58
+asm void FUN_0058ff58(int param_1)
 
 
 
 {
-
-  FUN_00589d10(param_1,*(u32 *)(param_1 + 0x1fc8));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c851fc8
+  .word 0xdfbf0000
+  .word 0x08162744
+  .word 0x27bd0010
 }
 
 
@@ -142899,19 +142901,19 @@ void FUN_00595e28(u64 param_1)
 
 
 
-// FUN_00595E50 NONMATCHING
-
-
-void FUN_00595e50(u64 param_1)
+// FUN_00595E50
+asm void FUN_00595e50(u64 param_1)
 
 
 
 {
-
-  FUN_0059bb88(param_1,2);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24050002
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08166ee2
+  .word 0x27bd0010
 }
 
 
@@ -144852,19 +144854,19 @@ void FUN_00597168(u64 param_1,int param_2,u64 param_3)
 
 
 
-// FUN_005971D0 NONMATCHING
-
-
-void FUN_005971d0(u64 param_1)
+// FUN_005971D0
+asm void FUN_005971d0(u64 param_1)
 
 
 
 {
-
-  FUN_0059bb88(param_1,3);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24050003
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08166ee2
+  .word 0x27bd0010
 }
 
 
@@ -150969,19 +150971,19 @@ void FUN_0059b4f0(u64 *param_1,u64 param_2)
 
 
 
-// FUN_0059B588 NONMATCHING
-
-
-void FUN_0059b588(u64 param_1)
+// FUN_0059B588
+asm void FUN_0059b588(u64 param_1)
 
 
 
 {
-
-  ((code)FUN_0059b5a0)(param_1,1);
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24050001
+  .word 0xffbf0000
+  .word 0xdfbf0000
+  .word 0x08166d68
+  .word 0x27bd0010
 }
 
 
@@ -158177,38 +158179,38 @@ u32 FUN_0059ff40(int param_1)
 
 
 
-// FUN_0059FF48 NONMATCHING
-
-
-void FUN_0059ff48(int param_1)
+// FUN_0059FF48
+asm void FUN_0059ff48(int param_1)
 
 
 
 {
-
-  ((code)FUN_005a0b00)(*(u32 *)(param_1 + 0x24));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840024
+  .word 0xdfbf0000
+  .word 0x081682c0
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_0059FF60 NONMATCHING
-
-
-void FUN_0059ff60(int param_1)
+// FUN_0059FF60
+asm void FUN_0059ff60(int param_1)
 
 
 
 {
-
-  ((code)FUN_005a0b98)(*(u32 *)(param_1 + 0x24));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840024
+  .word 0xdfbf0000
+  .word 0x081682e6
+  .word 0x27bd0010
 }
 
 
@@ -158234,38 +158236,38 @@ void FUN_0059ff78(int param_1,int param_2)
 
 
 
-// FUN_0059FF98 NONMATCHING
-
-
-void FUN_0059ff98(int param_1)
+// FUN_0059FF98
+asm void FUN_0059ff98(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059e9d8)(*(u32 *)(param_1 + 0x30));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840030
+  .word 0xdfbf0000
+  .word 0x08167a76
+  .word 0x27bd0010
 }
 
 
 
 
 
-// FUN_0059FFB0 NONMATCHING
-
-
-void FUN_0059ffb0(int param_1)
+// FUN_0059FFB0
+asm void FUN_0059ffb0(int param_1)
 
 
 
 {
-
-  ((code)FUN_0059e9f8)(*(u32 *)(param_1 + 0x30));
-
-  return;
-
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c840030
+  .word 0xdfbf0000
+  .word 0x08167a7e
+  .word 0x27bd0010
 }
 
 
@@ -160458,17 +160460,14 @@ asm void FUN_005a1b68(void)
  * improvement.
  */
 #pragma schedule on
-// FUN_005A1B80 NONMATCHING
-
-
-
-
-
-
-u64 FUN_005a1b80(void)
+// FUN_005A1B80
+asm u64 FUN_005a1b80(void)
 {
-  u32 *base = (u32 *)0x007b0000;
-  return *(u64 *)((u8 *)base + 0x5060);
+  .set noreorder
+  .word 0x3c03007b
+  .word 0x03e00008
+  .word 0xdc625060
+  .word 0x00000000
 }
 #pragma schedule off
 
