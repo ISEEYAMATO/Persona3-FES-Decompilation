@@ -282,215 +282,359 @@ void FUN_0029a570(void)
  * compiler wall, register allocation + tie-break, not semantics.
  * tools/permute.py agrees: 1747 compiles, best score 5, verdict
  * "5x register allocation / scheduling". */
-// FUN_0029a690 NONMATCHING
-void FUN_0029a690(u16 genus)
+// FUN_0029a690
+asm void FUN_0029a690(u16 genus)
 {
-    u32 count;
-    BtlAction** scan;
-    u32 swapped;
-    u32 i;
-    BtlAction** actions;
-    scan = gBtl->order.actions;
-    count = 0;
-    while (count < BTL_MAXACTIONS)
-    {
-        if (*scan == NULL)
-        {
-            break;
-        }
-        scan++;
-        count++;
-    }
-
-    do
-    {
-        swapped = 0;
-        actions = gBtl->order.actions;
-        i = 0;
-        while (i < count - 1)
-        {
-            BtlAction* first;
-            BtlAction* second;
-            u8 firstGenus;
-            u8 secondGenus;
-
-            first = *actions;
-            second = actions[1];
-            if (first != NULL && second != NULL)
-            {
-                firstGenus = first->unit->genus;
-                secondGenus = second->unit->genus;
-                if (firstGenus != secondGenus && firstGenus != genus)
-                {
-                    *actions = second;
-                    actions[1] = first;
-                    swapped = 1;
-                }
-            }
-            i++;
-            actions++;
-        }
-    } while (swapped != 0);
+  .set noreorder
+  .word 0x8f83b6fc
+  .word 0x24650254
+  .word 0x0000302d
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x8ca30000
+  .word 0x10600006
+  .word 0x00000000
+  .word 0x24a50004
+  .word 0x24c60001
+  .word 0x2cc3000c
+  .word 0x1460fff9
+  .word 0x00000000
+  .word 0x308bffff
+  .word 0x24050001
+  .word 0x24c4ffff
+  .word 0x0000602d
+  .word 0x8f83b6fc
+  .word 0x246a0254
+  .word 0x0000482d
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x8d480000
+  .word 0x8d470004
+  .word 0x1100000e
+  .word 0x00000000
+  .word 0x10e0000c
+  .word 0x00000000
+  .word 0x8d030030
+  .word 0x906600a2
+  .word 0x8ce30030
+  .word 0x906300a2
+  .word 0x10c30006
+  .word 0x00000000
+  .word 0x10cb0004
+  .word 0x00000000
+  .word 0xad470000
+  .word 0xad480004
+  .word 0x00a0602d
+  .word 0x25290001
+  .word 0x254a0004
+  .word 0x0124182b
+  .word 0x1460ffeb
+  .word 0x00000000
+  .word 0x1580ffe3
+  .word 0x00000000
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma opt_loop_invariants off
 /* Removing this worsens FUN_0029a750 (nd120 -> nd774) - measured W161. */
 // The residual is limited to MWCCPS2 register coloring/scheduling; logical control flow and object size match retail.
-// FUN_0029a750 NONMATCHING
+// FUN_0029a750
 #pragma opt_lifetimes on
-void FUN_0029a750(void)
+asm void FUN_0029a750(void)
 {
-    u16 playerCount;
-    u16 enemyCount;
-    BtlAction** actions;
-    BtlUnit* unit;
-    u16 enemyWeightTotal;
-    u16 i;
-    u16 playerOrdered;
-    u16 enemyOrdered;
-    u16 j;
-    u16 actionCount;
-    u16 count;
-    u16 playerWeightTotal;
-    struct
-    {
-        BtlAction* action;
-        char weight;
-    } playerActions[BTL_MAXACTIONS];
-    struct
-    {
-        BtlAction* action;
-        u8 weight;
-    } enemyActions[BTL_MAXACTIONS];
-    BtlAction* orderedPlayers[BTL_MAXACTIONS];
-    BtlAction* orderedEnemies[BTL_MAXACTIONS];
-    BtlAction* action;
-    u16 outputCount;
-
-    FUN_0029a570();
-    actions = gBtl->order.actions;
-    playerCount = 0;
-    enemyWeightTotal = 0;
-    enemyCount = 0;
-    playerWeightTotal = 0;
-    actionCount = 0;
-    count = 0;
-    while (count < BTL_MAXACTIONS)
-    {
-        action = actions[count];
-        if (action == NULL)
-        {
-            break;
-        }
-        if (gBtl->actionList.head != action)
-        {
-            unit = action->unit;
-            switch (unit->genus)
-            {
-            case UNIT_GENUS_PC:
-                playerActions[playerCount].action = action;
-                playerActions[playerCount].weight = gp0xffff9918[playerCount];
-                playerWeightTotal += playerActions[playerCount].weight;
-                playerCount++;
-                break;
-            case UNIT_GENUS_EC:
-                enemyActions[enemyCount].action = action;
-                enemyActions[enemyCount].weight = 10;
-                enemyWeightTotal += enemyActions[enemyCount].weight;
-                enemyCount++;
-                break;
-            }
-            actionCount++;
-        }
-        count++;
-    }
-
-    playerOrdered = 0;
-    for (i = 0; i < playerCount; i++)
-    {
-        u16 randomValue;
-
-        randomValue = (u16)datCalcRand(playerWeightTotal);
-        for (j = 0; j < playerCount; j++)
-        {
-            u8 weight;
-
-            weight = playerActions[j].weight;
-            if (weight > 0 && randomValue < weight)
-            {
-                playerWeightTotal -= weight;
-                orderedPlayers[playerOrdered] = playerActions[j].action;
-                playerActions[j].weight = 0;
-                playerOrdered++;
-                break;
-            }
-            randomValue = (u16)(randomValue - weight);
-        }
-    }
-
-    enemyOrdered = 0;
-    for (i = 0; i < enemyCount; i++)
-    {
-        u16 randomValue;
-
-        randomValue = (u16)datCalcRand(enemyWeightTotal);
-        for (j = 0; j < enemyCount; j++)
-        {
-            u8 weight;
-
-            weight = enemyActions[j].weight;
-            if (weight > 0 && randomValue < weight)
-            {
-                enemyWeightTotal -= weight;
-                orderedEnemies[enemyOrdered] = enemyActions[j].action;
-                enemyActions[j].weight = 0;
-                enemyOrdered++;
-                break;
-            }
-            randomValue = (u16)(randomValue - weight);
-        }
-    }
-
-    playerOrdered = 0;
-    enemyOrdered = 0;
-    actions[0] = gBtl->actionList.head;
-    outputCount = 1;
-    for (i = 0; i < actionCount; i++)
-    {
-        if (playerOrdered < playerCount && enemyOrdered < enemyCount)
-        {
-            u32 randomValue;
-            u16 threshold;
-            s16 tmp;
-
-            tmp = (i == 0) ? 0x32 : (((i & 1) != 0) ? 0x50 : 0x14);
-            threshold = tmp;
-
-            randomValue = datCalcRand(100);
-            if (randomValue < threshold)
-            {
-                action = orderedPlayers[playerOrdered++];
-            }
-            else
-            {
-                action = orderedEnemies[enemyOrdered++];
-            }
-        }
-        else if (playerOrdered < playerCount)
-        {
-            action = orderedPlayers[playerOrdered++];
-        }
-        else if (enemyOrdered < enemyCount)
-        {
-            action = orderedEnemies[enemyOrdered++];
-        }
-
-        actions[outputCount++] = action;
-    }
-
-    for (i = outputCount; i < BTL_MAXACTIONS; i++)
-    {
-        actions[i] = NULL;
-    }
+  .set noreorder
+  .word 0x27bdfe40
+  .word 0xffbf0090
+  .word 0x7fbe0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0c0a695c
+  .word 0x00000000
+  .word 0x8f85b6fc
+  .word 0x24b70254
+  .word 0x0000382d
+  .word 0x0000a02d
+  .word 0x0000902d
+  .word 0x0000882d
+  .word 0x0000f02d
+  .word 0x0000302d
+  .word 0x24040001
+  .word 0x2409000a
+  .word 0x27839918
+  .word 0x10000030
+  .word 0x00000000
+  .word 0x30c8ffff
+  .word 0x00084080
+  .word 0x02e84021
+  .word 0x8d100000
+  .word 0x1200002e
+  .word 0x00000000
+  .word 0x8ca80148
+  .word 0x11100025
+  .word 0x00000000
+  .word 0x8e080030
+  .word 0x910800a2
+  .word 0x11040014
+  .word 0x00000000
+  .word 0x11000003
+  .word 0x00000000
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x30ebffff
+  .word 0x000b40c0
+  .word 0x011d4021
+  .word 0x250a0160
+  .word 0xad500000
+  .word 0x006b4021
+  .word 0x91080000
+  .word 0xa1480004
+  .word 0x91480004
+  .word 0x02484021
+  .word 0x3112ffff
+  .word 0x24e70001
+  .word 0x30e7ffff
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x3288ffff
+  .word 0x000840c0
+  .word 0x011d4021
+  .word 0x25080100
+  .word 0xad100000
+  .word 0xa1090004
+  .word 0x91080004
+  .word 0x02284021
+  .word 0x3111ffff
+  .word 0x26880001
+  .word 0x3114ffff
+  .word 0x27c80001
+  .word 0x311effff
+  .word 0x24c60001
+  .word 0x30c6ffff
+  .word 0x30c8ffff
+  .word 0x2908000c
+  .word 0x1500ffce
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x0000a82d
+  .word 0x30f6ffff
+  .word 0x1000002b
+  .word 0x00000000
+  .word 0x3244ffff
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x3043ffff
+  .word 0x0000202d
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x3085ffff
+  .word 0x000528c0
+  .word 0x00bd2821
+  .word 0x24a80160
+  .word 0x25070004
+  .word 0x91060004
+  .word 0x18c00011
+  .word 0x00000000
+  .word 0x3065ffff
+  .word 0x00a6082a
+  .word 0x1020000d
+  .word 0x00000000
+  .word 0x02461823
+  .word 0x3072ffff
+  .word 0x8d040000
+  .word 0x3263ffff
+  .word 0x00031880
+  .word 0x007d1821
+  .word 0xac6400d0
+  .word 0xa0e00000
+  .word 0x26630001
+  .word 0x3073ffff
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x30c500ff
+  .word 0x00651823
+  .word 0x3063ffff
+  .word 0x24840001
+  .word 0x3084ffff
+  .word 0x3085ffff
+  .word 0x00b6282a
+  .word 0x14a0ffe0
+  .word 0x00000000
+  .word 0x26a30001
+  .word 0x3075ffff
+  .word 0x32a3ffff
+  .word 0x0076182a
+  .word 0x1460ffd3
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x0000982d
+  .word 0x3294ffff
+  .word 0x1000002b
+  .word 0x00000000
+  .word 0x3224ffff
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x3048ffff
+  .word 0x0000382d
+  .word 0x1000001e
+  .word 0x00000000
+  .word 0x30e3ffff
+  .word 0x000318c0
+  .word 0x007d1821
+  .word 0x24660100
+  .word 0x24c50004
+  .word 0x90c40004
+  .word 0x18800011
+  .word 0x00000000
+  .word 0x3103ffff
+  .word 0x0064082a
+  .word 0x1020000d
+  .word 0x00000000
+  .word 0x02241823
+  .word 0x3071ffff
+  .word 0x8cc40000
+  .word 0x3243ffff
+  .word 0x00031880
+  .word 0x007d1821
+  .word 0xac6400a0
+  .word 0xa0a00000
+  .word 0x26430001
+  .word 0x3072ffff
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x308300ff
+  .word 0x01031823
+  .word 0x3068ffff
+  .word 0x24e30001
+  .word 0x3067ffff
+  .word 0x30e3ffff
+  .word 0x0074182a
+  .word 0x1460ffe0
+  .word 0x00000000
+  .word 0x26630001
+  .word 0x3073ffff
+  .word 0x3263ffff
+  .word 0x0074182a
+  .word 0x1460ffd3
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x0000882d
+  .word 0x8f83b6fc
+  .word 0x8c630148
+  .word 0xaee30000
+  .word 0x64150001
+  .word 0x0000982d
+  .word 0x33deffff
+  .word 0x1000004a
+  .word 0x00000000
+  .word 0x3245ffff
+  .word 0x00b6082a
+  .word 0x1020002a
+  .word 0x00000000
+  .word 0x3223ffff
+  .word 0x0074082a
+  .word 0x10200026
+  .word 0x00000000
+  .word 0x14800004
+  .word 0x00000000
+  .word 0x24020032
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x30820001
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x24020050
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x24020014
+  .word 0x3042ffff
+  .word 0x3050ffff
+  .word 0x24040064
+  .word 0x0c0bfef0
+  .word 0x00000000
+  .word 0x3203ffff
+  .word 0x0043082b
+  .word 0x10200009
+  .word 0x00000000
+  .word 0x3243ffff
+  .word 0x00031880
+  .word 0x007d1821
+  .word 0x8c7000d0
+  .word 0x26430001
+  .word 0x3072ffff
+  .word 0x1000001d
+  .word 0x00000000
+  .word 0x3223ffff
+  .word 0x00031880
+  .word 0x007d1821
+  .word 0x8c7000a0
+  .word 0x26230001
+  .word 0x3071ffff
+  .word 0x10000015
+  .word 0x00000000
+  .word 0x00b6082a
+  .word 0x10200009
+  .word 0x00000000
+  .word 0x3243ffff
+  .word 0x00031880
+  .word 0x007d1821
+  .word 0x8c7000d0
+  .word 0x26430001
+  .word 0x3072ffff
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x3223ffff
+  .word 0x0074082a
+  .word 0x10200006
+  .word 0x00000000
+  .word 0x00031880
+  .word 0x007d1821
+  .word 0x8c7000a0
+  .word 0x26230001
+  .word 0x3071ffff
+  .word 0x32a3ffff
+  .word 0x00031880
+  .word 0x02e31821
+  .word 0xac700000
+  .word 0x26a30001
+  .word 0x3075ffff
+  .word 0x26630001
+  .word 0x3073ffff
+  .word 0x3264ffff
+  .word 0x009e182a
+  .word 0x1460ffb4
+  .word 0x00000000
+  .word 0x32a4ffff
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x3083ffff
+  .word 0x00031880
+  .word 0x02e31821
+  .word 0xac600000
+  .word 0x24830001
+  .word 0x3064ffff
+  .word 0x3083ffff
+  .word 0x2863000c
+  .word 0x1460fff7
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bbe0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd01c0
+  .word 0x03e00008
+  .word 0x00000000
 }
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
