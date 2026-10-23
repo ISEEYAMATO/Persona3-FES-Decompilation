@@ -204,23 +204,70 @@ int FUN_0050b788(void* address)
   return FUN_0050b710((u32)address);
 }
 #pragma pop
-// FUN_0050B7A8 NONMATCHING
-int sceSifLoadIopHeap(const char* path, void* address)
+// FUN_0050B7A8
+asm int sceSifLoadIopHeap(const char* path, void* address)
 {
-    SifIopHeapLoadRequest_t request;
-    int request_size;
-
-    if (sceSifInitIopHeap() < 0)
-    {
-        return -1;
-    }
-    request.address = address;
-    request_size = sif_copy_path(request.path, path, sizeof(request.path));
-    if (sceSifCallRpc(&sIopHeapClient, 3, 0, &request, request_size + 5, &request, 4, 0, 0) < 0)
-    {
-        return -1;
-    }
-    return *(int*)&request;
+  .set noreorder
+  .word 0x3c020078
+  .word 0x27bdffd0
+  .word 0x8c43f558
+  .word 0x0080302d
+  .word 0xffbf0020
+  .word 0x04610003
+  .word 0xffb00010
+  .word 0x10000030
+  .word 0x0000102d
+  .word 0x90c20000
+  .word 0x3c070097
+  .word 0x24e39dc0
+  .word 0xa0620004
+  .word 0x00021600
+  .word 0x10400011
+  .word 0x0000402d
+  .word 0x3c090097
+  .word 0x3c100097
+  .word 0x25080001
+  .word 0x00000000
+  .word 0x290200fc
+  .word 0x1040000c
+  .word 0x00c81021
+  .word 0x24e39dc0
+  .word 0x90440000
+  .word 0x00681821
+  .word 0xa0640004
+  .word 0x00042600
+  .word 0x5480fff7
+  .word 0x25080001
+  .word 0x10000004
+  .word 0x240200fc
+  .word 0x3c090097
+  .word 0x3c100097
+  .word 0x240200fc
+  .word 0x55020005
+  .word 0xace59dc0
+  .word 0x24e29dc0
+  .word 0x240800fb
+  .word 0xa04000ff
+  .word 0xace59dc0
+  .word 0x24e29dc0
+  .word 0x25249d00
+  .word 0xa04000ff
+  .word 0x0040382d
+  .word 0x25080005
+  .word 0xafa00000
+  .word 0x24050003
+  .word 0x0000302d
+  .word 0x26099d40
+  .word 0x240a0004
+  .word 0x0c141c8c
+  .word 0x0000582d
+  .word 0x04410002
+  .word 0x8e029d40
+  .word 0x2402ffff
+  .word 0xdfbf0020
+  .word 0xdfb00010
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
 // FUN_0050B898
