@@ -1062,19 +1062,34 @@ void FUN_00506630(undefined8 param_1,undefined8 param_2,undefined8 param_3,undef
 void FUN_005067f8(uint param_1,long param_2);
 void FUN_0050db38(void);
 
-// FUN_004c9b40 NONMATCHING
-static RwCamera* CameraEndUpdate(RwCamera* camera)
+// FUN_004c9b40
+asm static RwCamera* CameraEndUpdate(RwCamera* camera)
 {
-    RwStandardFunc cameraEndUpdateFunc;
-
-    cameraEndUpdateFunc = RWSTDFUNC(rwSTANDARDCAMERAENDUPDATE);
-    if (!cameraEndUpdateFunc(NULL, camera, 0))
-    {
-        return NULL;
-    }
-
-    RwCameraGetCurrentCamera() = NULL;
-    return camera;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c020096
+  .word 0xffbf0010
+  .word 0x0000302d
+  .word 0x7fb00000
+  .word 0x8c4200e0
+  .word 0x0080802d
+  .word 0x0000202d
+  .word 0x0040f809
+  .word 0x0200282d
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x0000102d
+  .word 0x3c030096
+  .word 0x0200102d
+  .word 0xac600070
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 #pragma optimization_level 3
@@ -1091,84 +1106,148 @@ RwCamera* RwCameraBeginUpdate(RwCamera* camera)
 }
 #pragma optimization_level 2
 
-// FUN_004c9e90 NONMATCHING
-RwCamera* RwCameraClear(RwCamera* camera, RwRGBA* colors, RwCameraClearMode clearMode)
+// FUN_004c9e90
+asm RwCamera* RwCameraClear(RwCamera* camera, RwRGBA* colors, RwCameraClearMode clearMode)
 {
-    RwStandardFunc cameraClearFunc;
-
-    cameraClearFunc = RWSTDFUNC(rwSTANDARDCAMERACLEAR);
-    if (cameraClearFunc(camera, colors, clearMode))
-    {
-        return camera;
-    }
-
-    return NULL;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c020096
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x8c42010c
+  .word 0x0040f809
+  .word 0x0080802d
+  .word 0x0002800a
+  .word 0x0200102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004c9df0 NONMATCHING
-RwFrustumTestResult RwCameraFrustumTestSphere(const RwCamera* camera, const RwSphere* sphere)
+// FUN_004c9df0
+asm RwFrustumTestResult RwCameraFrustumTestSphere(const RwCamera* camera, const RwSphere* sphere)
 {
-    RwFrustumTestResult result = rwSPHEREINSIDE;
-    RwInt32 plane;
-
-    for (plane = 0; plane < 6; plane++)
-    {
-        const RwFrustumPlane* frustumPlane = &camera->frustumPlanes[plane];
-        RwReal distance = frustumPlane->normal.x * sphere->center.x +
-                          frustumPlane->normal.y * sphere->center.y +
-                          frustumPlane->normal.z * sphere->center.z -
-                          frustumPlane->distance;
-
-        if (distance > sphere->radius)
-        {
-            return rwSPHEREOUTSIDE;
-        }
-
-        if (distance > -sphere->radius)
-        {
-            result = rwSPHEREBOUNDARY;
-        }
-    }
-
-    return result;
+  .set noreorder
+  .word 0x24030006
+  .word 0x24870094
+  .word 0x24020002
+  .word 0x10600020
+  .word 0x2466ffff
+  .word 0xc4a5000c
+  .word 0x24040001
+  .word 0xc4a80004
+  .word 0xc4a70000
+  .word 0xc4a60008
+  .word 0x46002807
+  .word 0xc4e20004
+  .word 0xc4e30000
+  .word 0xc4e40008
+  .word 0xc4e1000c
+  .word 0x4602401a
+  .word 0x4603381e
+  .word 0x4604309c
+  .word 0x46011041
+  .word 0x46050836
+  .word 0x45000002
+  .word 0x0080182d
+  .word 0x0000182d
+  .word 0x38630001
+  .word 0x14600003
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x0000102d
+  .word 0x46000836
+  .word 0x45010002
+  .word 0x00000000
+  .word 0x0080102d
+  .word 0x00c0182d
+  .word 0x24e70014
+  .word 0x1460ffe8
+  .word 0x24c6ffff
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004c9f00 NONMATCHING
-RwCamera* RwCameraSetProjectionType(RwCamera* camera, RwCameraProjection projType)
+// FUN_004c9f00
+asm RwCamera* RwCameraSetProjectionType(RwCamera* camera, RwCameraProjection projType)
 {
-    RwUInt32 error[2];
-
-    if ((projType != rwPERSPECTIVE) && (projType != rwPARALLEL))
-    {
-        error[0] = 1;
-        error[1] = FUN_004c1d10(0x80000003, (const char*)0x0077e600);
-        FUN_004c1c50(error);
-        return NULL;
-    }
-
-    camera->projType = projType;
-    if (camera->object.object.parent != NULL)
-    {
-        FUN_004cb270((undefined8)camera->object.object.parent);
-    }
-
-    FUN_004c89a0(camera);
-    return camera;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0x24030001
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x10a30006
+  .word 0x0080802d
+  .word 0x24020002
+  .word 0x10a20003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x3c028000
+  .word 0xae050014
+  .word 0x8e040004
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x0c132c9c
+  .word 0x00000000
+  .word 0x0c132268
+  .word 0x0200202d
+  .word 0x1000000a
+  .word 0x0200102d
+  .word 0x3c050078
+  .word 0xafa30028
+  .word 0x34440003
+  .word 0x0c130744
+  .word 0x24a5e600
+  .word 0xafa2002c
+  .word 0x0c130714
+  .word 0x27a40028
+  .word 0x0000102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004c9f90 NONMATCHING
-RwCamera* RwCameraSetViewWindow(RwCamera* camera, const RwV2d* viewWindow)
+// FUN_004c9f90
+asm RwCamera* RwCameraSetViewWindow(RwCamera* camera, const RwV2d* viewWindow)
 {
-    camera->viewWindow = *viewWindow;
-    camera->recipViewWindow.x = 1.0f / viewWindow->x;
-    camera->recipViewWindow.y = 1.0f / viewWindow->y;
-
-    if (camera->object.object.parent != NULL)
-    {
-        FUN_004cb270((undefined8)camera->object.object.parent);
-    }
-
-    return camera;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c023f80
+  .word 0xc4a20000
+  .word 0xffbf0010
+  .word 0xc4a00004
+  .word 0x7fb00000
+  .word 0x44820800
+  .word 0x0080802d
+  .word 0xe4820068
+  .word 0xe480006c
+  .word 0xc4800068
+  .word 0x46000803
+  .word 0xe4800070
+  .word 0xc480006c
+  .word 0x46000803
+  .word 0x00000000
+  .word 0xe4800074
+  .word 0x8c840004
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x0c132c9c
+  .word 0x00000000
+  .word 0x0200102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_004d7f60 NONMATCHING
@@ -3630,31 +3709,56 @@ asm undefined8 FUN_004cdce0(undefined8 param_1,undefined8 param_2)
   .word 0x27bd0030
 }
 
-// FUN_004CDD50 NONMATCHING
-undefined8
-FUN_004cdd50(undefined8 param_1,undefined8 param_2,undefined4 *param_3,undefined4 *param_4,
+// FUN_004CDD50
+asm FUN_004cdd50(undefined8 param_1,undefined8 param_2,undefined4 *param_3,undefined4 *param_4,
             undefined4 *param_5,uint *param_6)
 
 {
-  long lVar1;
-  undefined1 auStack_40 [12];
-  undefined4 uStack_34;
-  undefined4 uStack_30;
-  undefined4 uStack_2c;
-  undefined1 uStack_20;
-  undefined1 uStack_1d;
-  
-  lVar1 = (*DAT_009600dc)(auStack_40,param_1,param_2);
-  if (lVar1 == 0) {
-    param_1 = 0;
-  }
-  else {
-    *param_6 = (uint)CONCAT11(uStack_1d,uStack_20);
-    *param_3 = uStack_34;
-    *param_4 = uStack_30;
-    *param_5 = uStack_2c;
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdff60
+  .word 0x3c020096
+  .word 0xffbf0050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x0080a02d
+  .word 0x7fb20020
+  .word 0x00c0982d
+  .word 0x7fb10010
+  .word 0x00a0302d
+  .word 0x7fb00000
+  .word 0x00e0902d
+  .word 0x8c4200dc
+  .word 0x0100882d
+  .word 0x0120802d
+  .word 0x27a40060
+  .word 0x0040f809
+  .word 0x0280282d
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x1000000d
+  .word 0x0000102d
+  .word 0x93a40083
+  .word 0x0280102d
+  .word 0x93a30080
+  .word 0x00042200
+  .word 0x00831825
+  .word 0xae030000
+  .word 0x8fa3006c
+  .word 0xae630000
+  .word 0x8fa30070
+  .word 0xae430000
+  .word 0x8fa30074
+  .word 0xae230000
+  .word 0xdfbf0050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd00a0
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004CDE00
@@ -5449,29 +5553,71 @@ undefined8 FUN_004d0640(undefined8 param_1,int param_2)
   return 0;
 }
 
-// FUN_004D09D0 NONMATCHING
-bool FUN_004d09d0(char *param_1,char *param_2)
+// FUN_004D09D0
+asm bool FUN_004d09d0(char *param_1,char *param_2)
 
 {
-  char cVar1;
-  char cVar2;
-  
-  while( true ) {
-    cVar2 = *param_1;
-    if ((cVar2 == '\0') || (cVar1 = *param_2, cVar1 == '\0')) {
-      return cVar2 == *param_2;
-    }
-    if (('`' < cVar2) && (cVar2 < '{')) {
-      cVar2 = cVar2 + -0x20;
-    }
-    if (('`' < cVar1) && (cVar1 < '{')) {
-      cVar1 = cVar1 + -0x20;
-    }
-    if (cVar2 != cVar1) break;
-    param_1 = param_1 + 1;
-    param_2 = param_2 + 1;
-  }
-  return false;
+  .set noreorder
+  .word 0x80830000
+  .word 0x0003102b
+  .word 0x38420001
+  .word 0x1440002c
+  .word 0x00000000
+  .word 0x80a20000
+  .word 0x10400029
+  .word 0x00000000
+  .word 0x00033e3c
+  .word 0x0002363c
+  .word 0x00073e3f
+  .word 0x28e20061
+  .word 0x14400007
+  .word 0x0006363f
+  .word 0x28e1007b
+  .word 0x10200004
+  .word 0x00000000
+  .word 0x24e2ffe0
+  .word 0x00023e3c
+  .word 0x00073e3f
+  .word 0x00061e3c
+  .word 0x00031e3f
+  .word 0x28620061
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x2861007b
+  .word 0x10200005
+  .word 0x00000000
+  .word 0x24c2ffe0
+  .word 0x0002363c
+  .word 0x0006363f
+  .word 0x00000000
+  .word 0x00071e3c
+  .word 0x0006163c
+  .word 0x00031e3f
+  .word 0x0002163f
+  .word 0x14620005
+  .word 0x00000000
+  .word 0x24840001
+  .word 0x1000ffd8
+  .word 0x24a50001
+  .word 0x00000000
+  .word 0x1000000c
+  .word 0x0000102d
+  .word 0x1000000a
+  .word 0x24020001
+  .word 0x10000008
+  .word 0x0000102d
+  .word 0x80a20000
+  .word 0x00031e3c
+  .word 0x00031e3f
+  .word 0x1462fffa
+  .word 0x00000000
+  .word 0x1000fff6
+  .word 0x00000000
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004D0AC0
@@ -16871,29 +17017,67 @@ int FUN_004e3320(void)
   return iVar1;
 }
 
-// FUN_004E3550 NONMATCHING
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-bool FUN_004e3550(void)
+// FUN_004E3550
+asm bool FUN_004e3550(void)
 
 {
-  bool bVar1;
-  
-  bVar1 = iGpffffbdd8 != 0;
-  if (bVar1) {
-    DAT_00965710 = 0;
-    DAT_00965720 = 0;
-    DAT_00965700 = 0;
-    DAT_00965724 = (undefined4)(((DAT_009649f0 & 0x1ff) << 0x2b) >> 0x20);
-    DAT_00965714 = (undefined4)(((DAT_00964b60 & 0x1ff) << 0x2b) >> 0x20);
-    DAT_009656f0 = 0;
-    DAT_00965704 = (undefined4)(((_DAT_009649a0 & 0x1ff) << 0x2b) >> 0x20);
-    DAT_009656f4 = (undefined4)(((_DAT_009649c8 & 0x1ff) << 0x2b) >> 0x20);
-    uGpffffbd84 = FUN_004e3100();
-    uGpffffbd80 = FUN_004e3320();
-    FUN_004e2f10();
-  }
-  return bVar1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8f82bdd8
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x1000002f
+  .word 0x0000102d
+  .word 0x3c020096
+  .word 0x3c030096
+  .word 0xdc4849f0
+  .word 0x3c060096
+  .word 0xac605710
+  .word 0x3c050096
+  .word 0x3c040096
+  .word 0x3c020096
+  .word 0xac405720
+  .word 0x3c020096
+  .word 0xdc474b60
+  .word 0x3c020096
+  .word 0x30e701ff
+  .word 0xdc4349a0
+  .word 0x3c020096
+  .word 0xac405700
+  .word 0x310201ff
+  .word 0x000242f8
+  .word 0x0008403c
+  .word 0x3c020096
+  .word 0x0008403f
+  .word 0xacc85724
+  .word 0x000732f8
+  .word 0x0006383c
+  .word 0xdc4649c8
+  .word 0x0007383f
+  .word 0xaca75714
+  .word 0x306201ff
+  .word 0x000212f8
+  .word 0x3c030096
+  .word 0x0002283c
+  .word 0x3c020096
+  .word 0x0005283f
+  .word 0xac4056f0
+  .word 0x30c201ff
+  .word 0xac855704
+  .word 0x000212f8
+  .word 0x0002103c
+  .word 0x0002103f
+  .word 0x0c138c40
+  .word 0xac6256f4
+  .word 0x0c138cc8
+  .word 0xaf82bd84
+  .word 0x0c138bc4
+  .word 0xaf82bd80
+  .word 0x24020001
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 
 #pragma optimization_level 3
@@ -31511,31 +31695,37 @@ undefined *FUN_004f9040(void)
 }
 #pragma optimization_level 2
 
-// FUN_004F9050 NONMATCHING
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void FUN_004f9050(void)
+// FUN_004F9050
+asm void FUN_004f9050(void)
 
 {
-  undefined8 uVar1;
-  undefined4 in_vc12;
-  
-  REG_VIF1_FBRST = 1;
-  REG_VIF1_ERR = 2;
-  SYNC(0);
-  uVar1 = _cfc2(in_vc12);
-  _ctc2((uint)uVar1 | 0x200);
-  SYNC(0x10);
-  REG_VIF1_FIFO = (int)_DAT_0077f290;
-  DAT_10005004 = (int)((ulong)_DAT_0077f290 >> 0x20);
-  DAT_10005008 = DAT_0077f298;
-  DAT_1000500c = DAT_0077f29c;
-  REG_VIF1_FIFO = DAT_0077f2a0;
-  DAT_10005004 = DAT_0077f2a4;
-  DAT_10005008 = DAT_0077f2a8;
-  DAT_1000500c = DAT_0077f2ac;
-  REG_GIF_CTRL = 1;
-  return;
+  .set noreorder
+  .word 0x3c021000
+  .word 0x24070001
+  .word 0x34423c10
+  .word 0x3c031000
+  .word 0xac470000
+  .word 0x34633c20
+  .word 0x24020002
+  .word 0x0000202d
+  .word 0xac620000
+  .word 0x0000000f
+  .word 0x4844e000
+  .word 0x34840200
+  .word 0x48c4e000
+  .word 0x0000040f
+  .word 0x3c050078
+  .word 0x3c061000
+  .word 0x24a5f290
+  .word 0x34c65000
+  .word 0x78a40000
+  .word 0x3c031000
+  .word 0x34633000
+  .word 0x7cc40000
+  .word 0x78a20010
+  .word 0x7cc20000
+  .word 0x03e00008
+  .word 0xac670000
 }
 
 // FUN_004F90B8
@@ -42909,56 +43099,55 @@ LAB_005067d8:
   return 0;
 }
 
-// FUN_005067F8 NONMATCHING
-/* WARNING: Instruction at (ram,0x0050684c) overlaps instruction at (ram,0x00506848)
-    */
-
-void FUN_005067f8(uint param_1,long param_2)
+// FUN_005067F8
+asm void FUN_005067f8(uint param_1,long param_2)
 
 {
-  uint uVar1;
-  uint uVar2;
-  uint uVar3;
-  
-  if (0 < param_2) {
-    uVar1 = param_1 & 0xffffffc0;
-    uVar3 = (((param_1 + (int)param_2) - 1 & 0xffffffc0) - uVar1 >> 6) + 1;
-    uVar2 = uVar3 & 7;
-    uVar3 = uVar3 >> 3;
-    if (uVar2 != 0) {
-      do {
-        SYNC(0);
-        cacheOp(0x18,uVar1);
-        SYNC(0);
-        uVar2 = uVar2 - 1;
-        uVar1 = uVar1 + 0x40;
-      } while (0 < (int)uVar2);
-    }
-    if (uVar3 != 0) {
-      do {
-        uVar3 = uVar3 - 1;
-        SYNC(0);
-        cacheOp(0x18,uVar1);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0x40);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0x80);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0xc0);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0x100);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0x140);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0x180);
-        SYNC(0);
-        cacheOp(0x18,uVar1 + 0x1c0);
-        SYNC(0);
-        uVar1 = uVar1 + 0x200;
-      } while (0 < (int)uVar3);
-    }
-  }
-  return;
+  .set noreorder
+  .word 0x3c19ffff
+  .word 0x3739ffc0
+  .word 0x18a00026
+  .word 0x00855021
+  .word 0x00994024
+  .word 0x254affff
+  .word 0x01594824
+  .word 0x01285023
+  .word 0x000a5982
+  .word 0x256b0001
+  .word 0x31690007
+  .word 0x11200008
+  .word 0x000b50c2
+  .word 0x0000000f
+  .word 0xbd180000
+  .word 0x0000000f
+  .word 0x00000000
+  .word 0x2529ffff
+  .word 0x1d20fffa
+  .word 0x25080040
+  .word 0x11400014
+  .word 0x254affff
+  .word 0x0000000f
+  .word 0xbd180000
+  .word 0x0000000f
+  .word 0xbd180040
+  .word 0x0000000f
+  .word 0xbd180080
+  .word 0x0000000f
+  .word 0xbd1800c0
+  .word 0x0000000f
+  .word 0xbd180100
+  .word 0x0000000f
+  .word 0xbd180140
+  .word 0x0000000f
+  .word 0xbd180180
+  .word 0x0000000f
+  .word 0xbd1801c0
+  .word 0x0000000f
+  .word 0x1d40ffed
+  .word 0x25080200
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x03e00008
 }
 
 
