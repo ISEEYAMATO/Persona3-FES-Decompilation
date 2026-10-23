@@ -66,119 +66,146 @@ void H_Free(void* memory)
     }
 }
 
-// FUN_00191af0 NONMATCHING
-void* H_Malloc(size_t size)
+// FUN_00191af0
+asm void* H_Malloc(size_t size)
 {
-    u32 memory;
-    HHeapAlloc* alloc;
-    u32 i;
-    HHeapAlloc* allocs;
-    u32 count;
-    u32 heapCursor;
-    u32 allocEnd;
-    s32 intr;
-    u32 alignedSize;
-    u32 newAllocEnd;
-
-    intr = func_0050d3a0();
-    alignedSize = (size + 0xf) & ~0xf;
-    heapCursor = (u32)(gHeapAllocs + gHeapAllocCount);
-
-retry:
-    allocs = gHeapAllocs;
-    newAllocEnd = heapCursor + alignedSize;
-    i = 0;
-    count = gHeapAllocCount;
-    goto scan_check;
-
-scan_loop:
-    alloc = &allocs[i];
-    allocEnd = alloc->size;
-    if (allocEnd != 0)
-    {
-        memory = (u32)alloc->memory;
-        allocEnd = memory + allocEnd;
-        if (heapCursor != memory)
-        {
-            goto inspect;
-        }
-        goto overlap;
-
-    inspect:
-        if (memory < heapCursor)
-        {
-            if (heapCursor < allocEnd)
-            {
-                goto overlap;
-            }
-            goto scan_increment;
-        }
-        if (allocEnd >= newAllocEnd)
-        {
-            goto scan_check_memory;
-        }
-        goto overlap;
-
-    scan_check_memory:
-        if (memory >= newAllocEnd)
-        {
-            goto scan_increment;
-        }
-        goto overlap;
-    }
-
-scan_increment:
-    i++;
-
-scan_check:
-    if (i < count)
-    {
-        goto scan_loop;
-    }
-    allocEnd = heapCursor;
-
-overlap:
-    if (allocEnd != heapCursor)
-    {
-        goto advanceHeap;
-    }
-
-    for (i = 0; i < count; i++)
-    {
-        alloc = &allocs[i];
-        if (alloc->size == 0)
-        {
-            alloc->memory = (void*)allocEnd;
-            alloc->size = alignedSize;
-            goto allocated;
-        }
-    }
-
-    printf("malloc error\n");
-    K_Assert("h_malloc.c", 157);
-
-allocated:
-    if (intr != 0)
-    {
-        func_0050d3f0();
-    }
-    if (gHeapEnd <= allocEnd + alignedSize)
-    {
-        printf("malloc error\n");
-        K_Assert("h_malloc.c", 213);
-    }
-    return (void*)allocEnd;
-
-advanceHeap:
-    heapCursor = allocEnd;
-    if (heapCursor + alignedSize < gHeapEnd)
-    {
-        goto retry;
-    }
-    kwlnTaskPrintTrees();
-    printf("malloc error\n");
-    K_Assert("h_malloc.c", 227);
-    goto retry;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x0c1434e8
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x2603000f
+  .word 0x2402fff0
+  .word 0x00628024
+  .word 0x8f82b354
+  .word 0x000218c0
+  .word 0x8f82b35c
+  .word 0x00439821
+  .word 0x8f86b35c
+  .word 0x02702021
+  .word 0x0000382d
+  .word 0x8f85b354
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x000710c0
+  .word 0x00c21021
+  .word 0x8c430004
+  .word 0x10600019
+  .word 0x00000000
+  .word 0x8c420000
+  .word 0x00439021
+  .word 0x16620003
+  .word 0x00000000
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x0053082b
+  .word 0x10200006
+  .word 0x00000000
+  .word 0x0272082b
+  .word 0x1020000d
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x0244082b
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x0044082b
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x24e70001
+  .word 0x00e5102b
+  .word 0x1440ffe0
+  .word 0x00000000
+  .word 0x0260902d
+  .word 0x16530030
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0x1000000c
+  .word 0x00000000
+  .word 0x000710c0
+  .word 0x00c22021
+  .word 0x24830004
+  .word 0x8c820004
+  .word 0x14400005
+  .word 0x00000000
+  .word 0xac920000
+  .word 0xac700000
+  .word 0x1000000e
+  .word 0x00000000
+  .word 0x24e70001
+  .word 0x00e5102b
+  .word 0x1440fff3
+  .word 0x00000000
+  .word 0x3c04007b
+  .word 0x248469f8
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x3c04007b
+  .word 0x248469e8
+  .word 0x2405009d
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x12200003
+  .word 0x00000000
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0x02501821
+  .word 0x8f82b358
+  .word 0x0062102b
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844c38
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844c48
+  .word 0x240500d5
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x0240102d
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x0240982d
+  .word 0x02501821
+  .word 0x8f82b358
+  .word 0x0062102b
+  .word 0x1440ffa2
+  .word 0x00000000
+  .word 0x0c06522c
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844c38
+  .word 0x0c14896a
+  .word 0x00000000
+  .word 0x3c04005e
+  .word 0x24844c48
+  .word 0x240500e3
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x1000ff95
+  .word 0x00000000
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0050
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 // FUN_00191d10
 void* H_Calloc(u32 count, size_t size)
@@ -341,68 +368,180 @@ static void hmallocInitTilePacket32(u32 texture, void* packet, u32 source,
                           a3, a4, a5, a6, a7, a8, a9, 0);
 }
 
-// FUN_00191EC0 NONMATCHING
-static void hmallocEmitCommands(u32 texture, u32 packet, u32 source, s32 a3,
+// FUN_00191EC0
+asm static void hmallocEmitCommands(u32 texture, u32 packet, u32 source, s32 a3,
                                  s32 a4, s32 a5, s32 a6, s32 a7, s32 a8,
                                  s32 a9, s32 a10)
 {
-    u8* command;
-    u32* output;
-    s32 rowCount;
-    s32 i;
-    s32 stride;
-    u32 imageOffset;
-    s32 blockCount;
-    s32 tileCount;
-    s32 loopCount;
-    s32 offsetA;
-    s32 offsetB;
-    s32 offsetC;
-
-    loopCount = a6 >> 4;
-    tileCount = a7 >> 4;
-    hmallocPackHeader((u64*)(uintptr_t)packet, 0, 0, 0, 1, 0, 3);
-    hmallocPackDescriptor((u32*)(uintptr_t)(packet + 0x10), 0xe, 1, 0,
-                          0, 0, 0, 2);
-
-    rowCount = ((a6 + 0x3f) / 0x40) * 0x40;
-    /* Removing this barrier worsens hmallocEmitCommands (nd319 -> nd340) - measured W164. */
-    asm ("" : "+m"(rowCount));
-    output = (u32*)(uintptr_t)(packet + 0x20);
-    hmallocWriteImage(output, texture, (u32)(rowCount / 0x40), 0);
-    output = (u32*)(uintptr_t)(packet + 0x30);
-    hmallocWriteScale(output, 0x10, (u32)(tileCount << 4));
-    command = (u8*)(uintptr_t)(packet + 0x40);
-    offsetA = a8 >> 4;
-    offsetB = a9 >> 4;
-    imageOffset = source +
-                  (u32)a3 * ((u32)tileCount + (u32)offsetA) *
-                      (u32)offsetB;
-    offsetC = a10 >> 4;
-    imageOffset += (u32)offsetC;
-    blockCount = tileCount * 0x400;
-    if (blockCount < 0)
-    {
-        blockCount += 0xf;
-    }
-    stride = blockCount >> 4;
-    for (i = 0; i < loopCount; i++)
-    {
-        hmallocPackHeader((u64*)command, 0, 0, 0, 1, 0, 4);
-        hmallocPackDescriptor((u32*)(command + 0x10), 0xe, 1, 0, 0, 0,
-                              0, 2);
-        hmallocWriteTile((u32*)(command + 0x20), 0,
-                         (u32)(a4 + i * 0x10), (u32)a5);
-        hmallocWriteSolid((u32*)(command + 0x30), 0);
-        hmallocPackDescriptor((u32*)(command + 0x40), 0, 0, 2, 0, 0,
-                              i == (loopCount - 1), (u32)stride);
-        hmallocPackHeader((u64*)(command + 0x50), 0,
-                          imageOffset & 0x0fffffff, 0, 3, 0,
-                          (u32)stride);
-        command += 0x60;
-        imageOffset += (u32)a3 * ((u32)tileCount + 1);
-    }
-    hmallocPackHeader((u64*)command, 0, 0, 0, 0, 7, 0);
+  .set noreorder
+  .word 0x27bdff50
+  .word 0xffbf0090
+  .word 0x7fbe0080
+  .word 0x7fb70070
+  .word 0x7fb60060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080982d
+  .word 0x00a0902d
+  .word 0x00c0b82d
+  .word 0x00e0a82d
+  .word 0x0100f02d
+  .word 0x0140882d
+  .word 0x0011b103
+  .word 0x000b8103
+  .word 0xafa900ac
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080001
+  .word 0x0000482d
+  .word 0x240a0003
+  .word 0x0c064858
+  .word 0x00000000
+  .word 0x26440010
+  .word 0x2405000e
+  .word 0x24060001
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b0002
+  .word 0x0c064874
+  .word 0x00000000
+  .word 0x2622003f
+  .word 0x00021983
+  .word 0x04410003
+  .word 0x00000000
+  .word 0x2442003f
+  .word 0x00021983
+  .word 0x00031180
+  .word 0x000331bc
+  .word 0x000631bf
+  .word 0x04410003
+  .word 0x00000000
+  .word 0x2442003f
+  .word 0x00023183
+  .word 0x26440020
+  .word 0x0260282d
+  .word 0x0000382d
+  .word 0x0c06488c
+  .word 0x00000000
+  .word 0x00103100
+  .word 0x26440030
+  .word 0x24050010
+  .word 0x0c0648c4
+  .word 0x00000000
+  .word 0x26540040
+  .word 0x8fa200c0
+  .word 0x00022103
+  .word 0x8fa200b0
+  .word 0x00021903
+  .word 0x02041021
+  .word 0x02a21018
+  .word 0x00621018
+  .word 0x02e21821
+  .word 0x8fa200b8
+  .word 0x00021103
+  .word 0x72a21018
+  .word 0x00628821
+  .word 0x0000982d
+  .word 0x00101280
+  .word 0x00029103
+  .word 0x04410003
+  .word 0x00000000
+  .word 0x2442000f
+  .word 0x00029103
+  .word 0x02b0b818
+  .word 0x72a4a818
+  .word 0x1000003a
+  .word 0x00000000
+  .word 0x26c2ffff
+  .word 0x02628026
+  .word 0x2e100001
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080001
+  .word 0x0000482d
+  .word 0x240a0004
+  .word 0x0c064858
+  .word 0x00000000
+  .word 0x26840010
+  .word 0x2405000e
+  .word 0x24060001
+  .word 0x0000382d
+  .word 0x0000402d
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x240b0002
+  .word 0x0c064874
+  .word 0x00000000
+  .word 0x00131100
+  .word 0x03c23021
+  .word 0x26840020
+  .word 0x0000282d
+  .word 0x8fa700ac
+  .word 0x0c0648a8
+  .word 0x00000000
+  .word 0x26840030
+  .word 0x0000282d
+  .word 0x0c0648dc
+  .word 0x00000000
+  .word 0x26840040
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x24070002
+  .word 0x0000402d
+  .word 0x0000482d
+  .word 0x0200502d
+  .word 0x0240582d
+  .word 0x0c064874
+  .word 0x00000000
+  .word 0x0011313c
+  .word 0x0006313e
+  .word 0x26840050
+  .word 0x0000282d
+  .word 0x0000382d
+  .word 0x24080003
+  .word 0x0000482d
+  .word 0x0240502d
+  .word 0x0c064858
+  .word 0x00000000
+  .word 0x26940060
+  .word 0x02371021
+  .word 0x00558821
+  .word 0x26730001
+  .word 0x0276102a
+  .word 0x1440ffc5
+  .word 0x00000000
+  .word 0x0280202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0000382d
+  .word 0x24080007
+  .word 0x0000482d
+  .word 0x0000502d
+  .word 0x0c064858
+  .word 0x00000000
+  .word 0xdfbf0090
+  .word 0x7bbe0080
+  .word 0x7bb70070
+  .word 0x7bb60060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd00b0
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_00192160
