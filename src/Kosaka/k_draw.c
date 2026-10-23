@@ -522,107 +522,238 @@ void func_001a5280(KwlnTask* task)
 
 // Reconstructed the arc mesh setup, color table, manager, and geometry bounds pipeline.
 // The remaining residual is MWCC register/scheduling layout in color initialization and tail calls.
-// FUN_001A5320 NONMATCHING
-KwlnTask* func_001a5320(KwlnTask* parent)
+// FUN_001A5320
+asm KwlnTask* func_001a5320(KwlnTask* parent)
 {
-    void* (**callocFunc)(u32, u32, u32);
-    KDrawArcTaskWork* work;
-    KDrawRenderObject* renderObject;
-    u8* indexData;
-    u8* colors;
-    RwV3d* vertices;
-    f32 colorValue;
-    RwSphere bounds;
-    f32 theta;
-    s32 i;
-    s32 j;
-    s32 k;
-    u32 colorR;
-    u32 colorA;
-    KwlnTask* task;
-
-    colorValue = D_007CC1D8;
-    callocFunc = &((RwGlobals*)rwGlobals_abs)->memFuncs.RwCalloc;
-    work = (KDrawArcTaskWork*)(*callocFunc)(1, sizeof(KDrawArcTaskWork),
-                                             rwMEMHINTDUR_GLOBAL);
-    if (work == NULL)
-    {
-        return NULL;
-    }
-
-    task = kwlnTaskCreate(parent,
-                          D_00678B48 + 0x20,
-                          0x104e,
-                          func_001a50f0,
-                          func_001a5280,
-                          work);
-
-    work->render = (KDrawArcData*)(*callocFunc)(1, sizeof(KDrawArcData),
-                                                rwMEMHINTDUR_GLOBAL);
-    work->render->center.x = 0.0f;
-    work->render->center.y = 0.0f;
-    work->render->center.z = 0.0f;
-    work->render->radius = 400.0f;
-    work->render->colorData = (KDrawColorData*)func_00494be0();
-    work->render->colorData->color = *(const RwRGBA*)&colorValue;
-    renderObject = (KDrawRenderObject*)func_00493710(0x22, 0x20, 0x4a);
-    indexData = renderObject->indexData;
-    for (i = 0; i < 0x20; i++)
-    {
-        func_00493210(renderObject,
-                      indexData,
-                      0,
-                      (i + 2) & 0xffff,
-                      (i + 1) & 0xffff);
-        func_00493230(renderObject,
-                      indexData,
-                      work->render->colorData);
-        indexData += 8;
-    }
-
-    vertices = renderObject->geometry->vertices;
-    vertices[0].x = 0.0f;
-    vertices[0].y = 5.0f;
-    vertices[0].z = 0.0f;
-    theta = 0.0f;
-    for (j = 0; j < 0x20; j++)
-    {
-        indexData = (u8*)(vertices + j);
-        ((RwV3d*)indexData)[1].x = work->render->radius * cosf(theta);
-        ((RwV3d*)indexData)[1].y = 5.0f;
-        ((RwV3d*)indexData)[1].z = work->render->radius * sinf(theta);
-        theta += gPI;
-    }
-    vertices[j + 1].x = work->render->radius * cosf(0.0f);
-    vertices[j + 1].y = 5.0f;
-    vertices[j + 1].z = work->render->radius * sinf(0.0f);
-
-
-    colorR = 0xff;
-    colorA = 0x80;
-    colors = renderObject->colors;
-    colors[0] = colorR;
-    colors[1] = 0;
-    colors[2] = 0;
-    colors[3] = colorA;
-    for (k = 0; k < 0x21; k++)
-    {
-        colors[4] = colorR;
-        colors[5] = 0;
-        colors[6] = 0;
-        colors[7] = colorA;
-        colors += 4;
-    }
-    func_004933d0(renderObject);
-    func_00492e20(renderObject->geometry, &bounds);
-    renderObject->geometry->bounds = bounds;
-    work->render->manager = (KDrawRenderManager*)func_00491880();
-    func_004919b0(work->render->manager, renderObject, 0);
-    func_00493b60(renderObject);
-    func_00492d10(work->render->manager, func_004caf10());
-    func_004cb930(work->render->manager->frame);
-
-    return task;
+  .set noreorder
+  .word 0x27bdff60
+  .word 0xffbf0070
+  .word 0x7fb50060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b40000
+  .word 0x0080882d
+  .word 0xc78094e8
+  .word 0xe7a0009c
+  .word 0x3c100096
+  .word 0x26100184
+  .word 0x24040001
+  .word 0x2405000c
+  .word 0x3c060004
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x0040a02d
+  .word 0x16800004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x100000bf
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x3c050068
+  .word 0x24a58b68
+  .word 0x2406104e
+  .word 0x3c07001a
+  .word 0x24e750f0
+  .word 0x3c08001a
+  .word 0x25085280
+  .word 0x0280482d
+  .word 0x0c0652c8
+  .word 0x00000000
+  .word 0x0040a82d
+  .word 0x24040001
+  .word 0x2405001c
+  .word 0x3c060004
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xae820008
+  .word 0xac400008
+  .word 0x8e820008
+  .word 0xac40000c
+  .word 0x8e820008
+  .word 0xac400010
+  .word 0x3c0343c8
+  .word 0x8e820008
+  .word 0xac430004
+  .word 0x0c1252f8
+  .word 0x00000000
+  .word 0x8e830008
+  .word 0xac620018
+  .word 0x8e820008
+  .word 0x8c460018
+  .word 0x93a5009c
+  .word 0x93a4009d
+  .word 0x93a3009e
+  .word 0x93a2009f
+  .word 0xa0c50004
+  .word 0xa0c40005
+  .word 0xa0c30006
+  .word 0xa0c20007
+  .word 0x24040022
+  .word 0x24050020
+  .word 0x2406004a
+  .word 0x0c124dc4
+  .word 0x00000000
+  .word 0x0040982d
+  .word 0x8c51002c
+  .word 0x0000802d
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x26020002
+  .word 0x3047ffff
+  .word 0x26020001
+  .word 0x3048ffff
+  .word 0x0260202d
+  .word 0x0220282d
+  .word 0x0000302d
+  .word 0x0c124c84
+  .word 0x00000000
+  .word 0x8e820008
+  .word 0x0260202d
+  .word 0x0220282d
+  .word 0x8c460018
+  .word 0x0c124c8c
+  .word 0x00000000
+  .word 0x26310008
+  .word 0x26100001
+  .word 0x2a020020
+  .word 0x1440ffed
+  .word 0x00000000
+  .word 0x8e62005c
+  .word 0x8c510014
+  .word 0x4480a000
+  .word 0xae200000
+  .word 0x3c0240a0
+  .word 0xae220004
+  .word 0xae200008
+  .word 0x0000902d
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x00121040
+  .word 0x00521021
+  .word 0x00021080
+  .word 0x02228021
+  .word 0x4600a306
+  .word 0x0c14b9b6
+  .word 0x00000000
+  .word 0x8e820008
+  .word 0xc4410004
+  .word 0x46000802
+  .word 0xe600000c
+  .word 0x3c0240a0
+  .word 0xae020010
+  .word 0x4600a306
+  .word 0x0c14ba1e
+  .word 0x00000000
+  .word 0x8e820008
+  .word 0xc4410004
+  .word 0x46000802
+  .word 0xe6000014
+  .word 0xc7808440
+  .word 0x4600a500
+  .word 0x26520001
+  .word 0x2a420020
+  .word 0x1440ffe7
+  .word 0x00000000
+  .word 0x00121040
+  .word 0x00521021
+  .word 0x00028080
+  .word 0x44806000
+  .word 0x0c14b9b6
+  .word 0x00000000
+  .word 0x8e820008
+  .word 0xc4410004
+  .word 0x46000802
+  .word 0x02111821
+  .word 0xe460000c
+  .word 0x3c0240a0
+  .word 0xac620010
+  .word 0x44806000
+  .word 0x0c14ba1e
+  .word 0x00000000
+  .word 0x8e820008
+  .word 0xc4410004
+  .word 0x46000802
+  .word 0x02111021
+  .word 0xe4400014
+  .word 0x8e650030
+  .word 0x240400ff
+  .word 0xa0a40000
+  .word 0xa0a00001
+  .word 0xa0a00002
+  .word 0x24030080
+  .word 0xa0a30003
+  .word 0x0000302d
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00061080
+  .word 0x00a21021
+  .word 0xa0440004
+  .word 0xa0400005
+  .word 0xa0400006
+  .word 0xa0430007
+  .word 0x24c60001
+  .word 0x28c20021
+  .word 0x1440fff7
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c124cf4
+  .word 0x00000000
+  .word 0x8e70005c
+  .word 0x0200202d
+  .word 0x27a50080
+  .word 0x0c124b88
+  .word 0x00000000
+  .word 0xc7a30080
+  .word 0xc7a20084
+  .word 0xc7a10088
+  .word 0xc7a0008c
+  .word 0xe6030004
+  .word 0xe6020008
+  .word 0xe601000c
+  .word 0xe6000010
+  .word 0x0c124620
+  .word 0x00000000
+  .word 0x8e830008
+  .word 0xac620014
+  .word 0x8e820008
+  .word 0x8c440014
+  .word 0x0260282d
+  .word 0x0000302d
+  .word 0x0c12466c
+  .word 0x00000000
+  .word 0x0260202d
+  .word 0x0c124ed8
+  .word 0x00000000
+  .word 0x0c132bc4
+  .word 0x00000000
+  .word 0x8e830008
+  .word 0x8c640014
+  .word 0x0040282d
+  .word 0x0c124b44
+  .word 0x00000000
+  .word 0x8e820008
+  .word 0x8c420014
+  .word 0x8c440004
+  .word 0x0c132e4c
+  .word 0x00000000
+  .word 0x02a0102d
+  .word 0xdfbf0070
+  .word 0x7bb50060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b40000
+  .word 0x27bd00a0
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_001A56B0
