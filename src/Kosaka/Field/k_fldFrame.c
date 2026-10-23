@@ -2314,6 +2314,7 @@ RwV3d* func_001aae10(RwV3d* dst, const RwV3d* point,
 // a different field - see func_001b0260/func_001b0240). Residual: a
 // register-bank floor (764B vs 800B window); logic verified vs retail.
 // FUN_001aaf30
+#ifndef PC_BUILD
 asm void* func_001aaf30(const RwV3d* point, void* unused,
                     const FldFrameCollisionTriangle* triangle,
                     FldFrameCollisionCollector* collector)
@@ -2600,6 +2601,7 @@ asm void* func_001aaf30(const RwV3d* point, void* unused,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // Same inlining pattern as func_001afa20 above (fldFrameMoveWork,
 // fldFrameMoveResolvePosition, fldFrameMoveAppend/CreateDebugPoint all
@@ -2794,6 +2796,7 @@ asm s32 func_001ab390(void* collision, const RwV3d* pos,
 // and never write points[pointCount].position for this kind=1 point (it
 // is a duration/kind-only marker point, position is left whatever it was).
 // FUN_001ab640
+#ifndef PC_BUILD
 asm void* func_001ab640(const RwV3d* point, const void* triangle,
                     FldFrameCollisionCollector* collector)
 {
@@ -3219,6 +3222,7 @@ asm void* func_001ab640(const RwV3d* point, const void* triangle,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001abcd0
 void* func_001abcd0(void* collisionWorld, void* state)
@@ -3964,6 +3968,7 @@ done:
  * and declaration-order relocation each stayed nd59/object240/window240
  * (0.245833), reverted. */
 // FUN_001ac950
+#ifndef PC_BUILD
 asm void* func_001ac950(const RwV3d* line, void* unused,
                     const void* triangle, FldFrameRaycast* raycast)
 {
@@ -4029,6 +4034,7 @@ asm void* func_001ac950(const RwV3d* line, void* unused,
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001aca40
 void* func_001aca40(f32 fraction, const RwV3d* line,
@@ -5081,6 +5087,7 @@ u32 func_001ae480(KwlnTask* task)
 
 // FUN_001ae580
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void* func_001ae580(KwlnTask* task)
 {
   .set noreorder
@@ -6325,6 +6332,7 @@ asm void* func_001ae580(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_lifetimes reset
 

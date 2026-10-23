@@ -736,6 +736,7 @@ done:
 // 336/820; explicit do-while and declaration permutations made no further
 // improvement.
 // FUN_001c6720
+#ifndef PC_BUILD
 asm void* func_001c6720(const FldUnit* unit, f32 maxDist)
 {
   .set noreorder
@@ -932,8 +933,10 @@ asm void* func_001c6720(const FldUnit* unit, f32 maxDist)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001c6a20
+#ifndef PC_BUILD
 asm void* func_001c6a20(const FldUnit* unit, f32 maxDist, f32 fov)
 {
   .set noreorder
@@ -1150,6 +1153,7 @@ asm void* func_001c6a20(const FldUnit* unit, f32 maxDist, f32 fov)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001c6d70
 FldUnit* func_001c6d70(const FldUnit* unit, f32 maxDist)
@@ -1226,6 +1230,7 @@ s32 func_001c6dd0(const FldUnit* unit, f32 maxDist)
 }
 
 // FUN_001c6f50
+#ifndef PC_BUILD
 asm FldUnit* func_001c6f50(const FldUnit* unit, f32 fov, f32 maxDist)
 {
   .set noreorder
@@ -1350,6 +1355,7 @@ asm FldUnit* func_001c6f50(const FldUnit* unit, f32 fov, f32 maxDist)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001c7130
 u32 K_FldEvent_IsUnitWithinDistOfHero(const FldUnit* fldUnit, f32 maxDist)
@@ -1393,6 +1399,7 @@ u32 K_FldEvent_ArePosWithinDist(const RwV3d* posA, const RwV3d* posB, f32 maxDis
 }
 
 // FUN_001c7270
+#ifndef PC_BUILD
 asm void* func_001c7270(const FldUnit* unit, f32 maxDist)
 {
   .set noreorder
@@ -1545,6 +1552,7 @@ asm void* func_001c7270(const FldUnit* unit, f32 maxDist)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001c74c0
 ResrcModelNpc* K_FldEvent_FindInteractableNpc()
@@ -2350,6 +2358,7 @@ asm void func_001c8120(void* work)
 
 // Retail routes the camera aggregate through an aligned 0x60-byte scratch area before copying six quadwords back; this preserves that real data flow even though the wider function remains NONMATCHING.
 // FUN_001c8620
+#ifndef PC_BUILD
 asm void* K_FldEvent_UpdateFldEventTask(KwlnTask* fldEventTask)
 {
   .set noreorder
@@ -7430,6 +7439,7 @@ asm void* K_FldEvent_UpdateFldEventTask(KwlnTask* fldEventTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001cd570
 void K_FldEvent_DestroyFldEventTask(KwlnTask* fldEventTask)

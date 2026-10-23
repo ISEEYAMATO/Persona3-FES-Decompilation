@@ -1367,6 +1367,7 @@ void func_0021eb80(void* destination, const f32* rect)
 /* W310 measured: opt_common_subs off nd599->583, object 1140/1152; reset nd599. */
 #pragma opt_common_subs off
 // FUN_0021ec40
+#ifndef PC_BUILD
 asm RwRaster* bpTexCreateTmxRaster(void* tmxMemory)
 {
   .set noreorder
@@ -1659,6 +1660,7 @@ asm RwRaster* bpTexCreateTmxRaster(void* tmxMemory)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs on
 
 

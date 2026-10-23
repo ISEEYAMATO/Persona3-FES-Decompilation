@@ -10603,6 +10603,7 @@ asm void FUN_0046b1b0(u32 *param_1,int param_2,u32 *param_3)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_0046b510
+#ifndef PC_BUILD
 asm void* FUN_0046b510(int param_1,u64 param_2)
 {
   .set noreorder
@@ -10851,6 +10852,7 @@ asm void* FUN_0046b510(int param_1,u64 param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0046B8E0
 #ifndef PC_BUILD

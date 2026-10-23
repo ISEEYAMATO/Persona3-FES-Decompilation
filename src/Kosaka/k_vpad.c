@@ -605,6 +605,7 @@ static f32 sVPadMoveSpeed;
 // 1636/3116 (52.44%), a measured 4-byte saving within the 3152-byte window.
 #pragma opt_dead_assignments off
 // FUN_001e05b0
+#ifndef PC_BUILD
 asm void* K_VPad_UpdateTask(KwlnTask* task)
 {
   .set noreorder
@@ -1397,6 +1398,7 @@ asm void* K_VPad_UpdateTask(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_001e1200
 #pragma opt_dead_assignments reset
 void K_VPad_DestroyTask(KwlnTask* rotatePcTask)
@@ -7525,6 +7527,7 @@ void func_001e88f0(RuntimeWork* work, s32 section, RuntimeVec3* output)
 // FUN_001E8E80
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void* func_001e8e80(RuntimeWork* rawWork, void* material)
 {
   .set noreorder
@@ -8209,6 +8212,7 @@ asm void* func_001e8e80(RuntimeWork* rawWork, void* material)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_001E9920. Allocate path buffers and initialize sampled path state.

@@ -254,6 +254,7 @@ u32 K_Data_ChkFldBaseMdlStream()
 
 /* W415 census recheck: all nine relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
 // FUN_001b7e60
+#ifndef PC_BUILD
 asm void* func_001b7e60(KwlnTask* task)
 {
   .set noreorder
@@ -362,6 +363,7 @@ asm void* func_001b7e60(KwlnTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001b8000
 void func_001b8000(KwlnTask* task)
@@ -878,6 +880,7 @@ u16* func_001b8d60(u32 index)
 #pragma pop
 
 // FUN_001b8db0
+#ifndef PC_BUILD
 asm s16* func_001b8db0(s16* table)
 {
   .set noreorder
@@ -1018,6 +1021,7 @@ asm s16* func_001b8db0(s16* table)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001b8fd0
 u32 func_001b8fd0(const u8* unit, const u8* records, u32 byteSize)

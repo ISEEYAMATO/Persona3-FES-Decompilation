@@ -236,6 +236,7 @@ extern void func_00521250(void* destination, const void* source, u32 size);
  * (0.044944) -> nd14/356/368 (0.039326); parentTask carries the created
  * task through destruction, cylinder creation, and return. */
 // FUN_001d5a90
+#ifndef PC_BUILD
 asm KwlnTask* FUN_001d5a90(KwlnTask* parentTask)
 {
   .set noreorder
@@ -332,6 +333,7 @@ asm KwlnTask* FUN_001d5a90(KwlnTask* parentTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* DUMMYDUMB session 2026-10-22: 14 differing bytes, and the whole residual is a
  * swapped saved register - ours keeps parentTask in $s0 and work in $s3, retail
@@ -498,6 +500,7 @@ void K_FldCamera_SetPlayerResrcByTypeid(KwlnTask* fldCameraTask, u16 resTypeId)
 }
 
 // FUN_001d5f90
+#ifndef PC_BUILD
 asm void* func_001d5f90(KwlnTask* cameraRotationTask)
 {
   .set noreorder
@@ -674,6 +677,7 @@ asm void* func_001d5f90(KwlnTask* cameraRotationTask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d6240
 void func_001d6240(KwlnTask* cameraRotationTask)
@@ -682,6 +686,7 @@ void func_001d6240(KwlnTask* cameraRotationTask)
 }
 
 // FUN_001d6270
+#ifndef PC_BUILD
 asm KwlnTask* func_001d6270(KwlnTask* parentTask, s32 duration, s32 heading)
 {
   .set noreorder
@@ -926,8 +931,10 @@ asm KwlnTask* func_001d6270(KwlnTask* parentTask, s32 duration, s32 heading)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d6630
+#ifndef PC_BUILD
 asm KwlnTask* func_001d6630(KwlnTask* parentTask, s32 duration, s32 heading)
 {
   .set noreorder
@@ -1104,6 +1111,7 @@ asm KwlnTask* func_001d6630(KwlnTask* parentTask, s32 duration, s32 heading)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d68e0
 void func_001d68e0(CmrFile* cmr, KwlnTask* fldCameraTask)
@@ -1901,6 +1909,7 @@ static void K_Encount_Face(FldUnit* unit, FldUnit* target)
 }
 
 // FUN_001d78c0
+#ifndef PC_BUILD
 asm u16* K_Encount_001d78c0(u32 param_1, u16 flag, u32 areaId)
 {
   .set noreorder
@@ -2077,10 +2086,12 @@ asm u16* K_Encount_001d78c0(u32 param_1, u16 flag, u32 areaId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
 // FUN_001d7b70
+#ifndef PC_BUILD
 asm DatUnit* func_001d7b70(KwlnTask* task, s32 flatIndex)
 {
   .set noreorder
@@ -2145,6 +2156,7 @@ asm DatUnit* func_001d7b70(KwlnTask* task, s32 flatIndex)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 static void K_Encount_CompactEc(EncounterWork* work)
 {
@@ -2229,6 +2241,7 @@ ec_check:
 }
 
 // FUN_001d7d40
+#ifndef PC_BUILD
 asm void* func_001d7d40(KwlnTask* task)
 {
   .set noreorder
@@ -3029,6 +3042,7 @@ asm void* func_001d7d40(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

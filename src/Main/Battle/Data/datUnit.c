@@ -43,6 +43,7 @@ DatUnitPc* datUnitCreatePc(u16 pcId)
 // the two u16 loop/index lifetimes; the loop-invariant setting above is the measured best form.
 /* W389 sweep: six singles and all 15 knob pairs were neutral; final nd12/object348/352. */
 // FUN_002ff3e0
+#ifndef PC_BUILD
 asm DatUnitEc* datUnitCreateEc(u16 encountId)
 {
   .set noreorder
@@ -135,6 +136,7 @@ asm DatUnitEc* datUnitCreateEc(u16 encountId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 
 // FUN_002ff540

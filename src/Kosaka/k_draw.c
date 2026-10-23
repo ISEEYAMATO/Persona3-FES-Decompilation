@@ -523,6 +523,7 @@ void func_001a5280(KwlnTask* task)
 // Reconstructed the arc mesh setup, color table, manager, and geometry bounds pipeline.
 // The remaining residual is MWCC register/scheduling layout in color initialization and tail calls.
 // FUN_001A5320
+#ifndef PC_BUILD
 asm KwlnTask* func_001a5320(KwlnTask* parent)
 {
   .set noreorder
@@ -755,6 +756,7 @@ asm KwlnTask* func_001a5320(KwlnTask* parent)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001A56B0
 void func_001a56b0(KwlnTask* task, u32 state)

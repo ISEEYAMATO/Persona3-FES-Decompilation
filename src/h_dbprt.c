@@ -473,6 +473,7 @@ void* H_Pad_RwAllocateRaw(size_t size, RwUInt32 hint)
  * (candidate / retail): register-role colouring only. */
 
 // FUN_00103F50
+#ifndef PC_BUILD
 asm void* H_Pad_RwRealloc(void* memory, RwUInt32 newSize, RwUInt32 hint)
 {
   .set noreorder
@@ -537,6 +538,7 @@ asm void* H_Pad_RwRealloc(void* memory, RwUInt32 newSize, RwUInt32 hint)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma optimization_level 2
 // FUN_00104040 MATCHING

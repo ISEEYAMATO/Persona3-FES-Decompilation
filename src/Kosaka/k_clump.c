@@ -724,6 +724,7 @@ void func_001a71a0(u32* state, u32 kind, void* object, u32 enabled, u32 flags)
  * local. The 5 differing bytes are the global-base/state-load register-role
  * swap and nothing in the source reaches it. */
 // FUN_001a7370
+#ifndef PC_BUILD
 asm void* func_001a7370(void* material, u32* state)
 {
   .set noreorder
@@ -808,6 +809,7 @@ asm void* func_001a7370(void* material, u32* state)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // MWCC floor: retail holds D_00678C00 in $v1 while b210 assigns the equivalent
 // pointer lifetime to $a0; direct indexing regresses nd5 to nd34.

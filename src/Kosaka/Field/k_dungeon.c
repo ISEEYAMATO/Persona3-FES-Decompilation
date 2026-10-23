@@ -5866,6 +5866,7 @@ void func_001c0d30(KwlnTask* task)
 }
 
 // FUN_001c0d70
+#ifndef PC_BUILD
 asm void* func_001c0d70(KwlnTask* task)
 {
   .set noreorder
@@ -6938,6 +6939,7 @@ asm void* func_001c0d70(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

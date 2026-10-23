@@ -577,6 +577,7 @@ extern int FUN_00506670(int command, void* packet, int packet_size, void* source
 #pragma schedule off
 #pragma optimization_level 3
 // FUN_00506B38
+#ifndef PC_BUILD
 asm SifRpcPacket_t* FUN_00506b38(SifRpcAllocatorState_t* state)
 {
   .set noreorder
@@ -593,7 +594,9 @@ asm SifRpcPacket_t* FUN_00506b38(SifRpcAllocatorState_t* state)
   .word 0x03e00008
   .word 0x00a21021
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00506B68
+#ifndef PC_BUILD
 asm SifRpcPacket_t* FUN_00506b68(SifRpcAllocatorState_t* state, int index)
 {
   .set noreorder
@@ -614,6 +617,7 @@ asm SifRpcPacket_t* FUN_00506b68(SifRpcAllocatorState_t* state, int index)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 2
 #pragma optimization_level 3
 // FUN_00506BA8
@@ -859,6 +863,7 @@ asm int sceSifBindRpc(SifRpcClientData_t* client, int server_id, int mode)
 
 
 // FUN_00506EF0
+#ifndef PC_BUILD
 asm SifRpcServerData_t* FUN_00506ef0(int server_id, SifRpcQueueState_t* state)
 {
   .set noreorder
@@ -883,6 +888,7 @@ asm SifRpcServerData_t* FUN_00506ef0(int server_id, SifRpcQueueState_t* state)
   .word 0x0000102d
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00506F40
 #ifndef PC_BUILD
 asm u32 FUN_00506f40(u32 unused0, u32 unused1, u32 unused2, void* packet)
@@ -1360,6 +1366,7 @@ asm void sceSifRegisterRpc(SifRpcServerData_t* server, int server_id, SifRpcFunc
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_005075D8
+#ifndef PC_BUILD
 asm SifRpcServerData_t* sceSifRemoveRpc(SifRpcServerData_t* server, SifRpcDataQueue_t* queue)
 {
   .set noreorder
@@ -1402,8 +1409,10 @@ asm SifRpcServerData_t* sceSifRemoveRpc(SifRpcServerData_t* server, SifRpcDataQu
   .word 0x27bd0040
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00507670
+#ifndef PC_BUILD
 asm SifRpcDataQueue_t* sceSifRemoveRpcQueue(SifRpcDataQueue_t* queue)
 {
   .set noreorder
@@ -1444,8 +1453,10 @@ asm SifRpcDataQueue_t* sceSifRemoveRpcQueue(SifRpcDataQueue_t* queue)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00507700
+#ifndef PC_BUILD
 asm SifRpcServerData_t* sceSifGetNextRequest(SifRpcDataQueue_t* queue)
 {
   .set noreorder
@@ -1472,6 +1483,7 @@ asm SifRpcServerData_t* sceSifGetNextRequest(SifRpcDataQueue_t* queue)
   .word 0x03e00008
   .word 0x27bd0030
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00507758
 #ifndef PC_BUILD

@@ -46,6 +46,7 @@ asm RwInt32 RpMaterialGetUserDataArrayCount(const RpMaterial* material)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_0048eed0
+#ifndef PC_BUILD
 asm RpUserDataArray* RpMaterialGetUserDataArray(const RpMaterial* material, RwInt32 data)
 {
   .set noreorder
@@ -66,6 +67,7 @@ asm RpUserDataArray* RpMaterialGetUserDataArray(const RpMaterial* material, RwIn
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0048ef10
 #pragma optimization_level 3
 RwChar* RpUserDataArrayGetName(RpUserDataArray* userData)

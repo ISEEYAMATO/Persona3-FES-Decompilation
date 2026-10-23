@@ -1206,6 +1206,7 @@ void* func_00199cf0(void* atomic, FldShadowBoundsAccum* accum)
 }
 
 // FUN_00199d90
+#ifndef PC_BUILD
 asm void* func_00199d90(void* ignored1,
                     void* ignored2,
                     const FldShadowTriangle* triangle,
@@ -1633,6 +1634,7 @@ asm void* func_00199d90(void* ignored1,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -1651,6 +1653,7 @@ asm void* func_00199d90(void* ignored1,
 #pragma opt_loop_invariants on
 #pragma opt_propagation off
 // FUN_0019a420
+#ifndef PC_BUILD
 asm void* func_0019a420(void* ignored,
                     const FldShadowTriangle* triangle,
                     FldShadowAtomicContext* context)
@@ -2109,6 +2112,7 @@ asm void* func_0019a420(void* ignored,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma opt_loop_invariants reset
 
@@ -2613,6 +2617,7 @@ asm u32 func_0019ab80(RwCamera* camera,
 #pragma opt_lifetimes reset
 
 // FUN_0019b2b0
+#ifndef PC_BUILD
 asm void* func_0019b2b0(KwlnTask* renderTexTask)
 {
   .set noreorder
@@ -3273,6 +3278,7 @@ asm void* func_0019b2b0(KwlnTask* renderTexTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

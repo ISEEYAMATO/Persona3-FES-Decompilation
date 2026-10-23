@@ -67,6 +67,7 @@ void H_Free(void* memory)
 }
 
 // FUN_00191af0
+#ifndef PC_BUILD
 asm void* H_Malloc(size_t size)
 {
   .set noreorder
@@ -207,6 +208,7 @@ asm void* H_Malloc(size_t size)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00191d10
 void* H_Calloc(u32 count, size_t size)
 {

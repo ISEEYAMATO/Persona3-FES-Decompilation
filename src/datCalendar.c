@@ -1021,6 +1021,7 @@ u8 clndIsDateInRangeFromStart(u32 month, u32 day, u32 range)
 /* W357 measured opt_loop_invariants on: without nd2861/object4668, with nd2662/object4636; window 4688; retained. */
 #pragma opt_loop_invariants on
 // FUN_0017e680
+#ifndef PC_BUILD
 asm void* clndUpdateTask(KwlnTask* clndTask)
 {
   .set noreorder
@@ -2197,6 +2198,7 @@ asm void* clndUpdateTask(KwlnTask* clndTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants reset
 // FUN_0017F8D0
@@ -4663,6 +4665,7 @@ extern u8 D_00960094_cal_abs[];
  * cached absolute aliases improve this to 1088/1072 nd608, but exceed the window, so
  * this sibling remains on the GP form.  The same family is fixed in func_001842C0/func_001875F0. */
 // FUN_00183410
+#ifndef PC_BUILD
 asm void* func_00183410(KwlnTask* task)
 {
   .set noreorder
@@ -4935,6 +4938,7 @@ asm void* func_00183410(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 /* W357 measured opt_propagation off: without nd709/object920, with nd591/object916; window 928; retained. */
@@ -6870,6 +6874,7 @@ KwlnTask* func_00184db0(KwlnTask* parent)
 /* W357 measured opt_dead_assignments off: without nd1505/object2260, with nd1344/object2352; window 2352; retained. */
 #pragma opt_dead_assignments off
 // FUN_00184F00
+#ifndef PC_BUILD
 asm void* func_00184f00(KwlnTask* task)
 {
   .set noreorder
@@ -7462,6 +7467,7 @@ asm void* func_00184f00(KwlnTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_dead_assignments reset
 // FUN_00185830
@@ -7976,6 +7982,7 @@ void func_00186140(void* resource, CalendarPackedPosition position, u32 alpha)
                   x, y, 48.0f);
 }
 // FUN_00186190
+#ifndef PC_BUILD
 asm void* func_00186190(KwlnTask* task)
 {
   .set noreorder
@@ -8452,6 +8459,7 @@ asm void* func_00186190(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001868F0
 void func_001868f0(KwlnTask* task)
@@ -9938,6 +9946,7 @@ static inline f32 datCalendarAddOffsetFirst(f32 offset, f32 base)
 }
 
 // FUN_00188C30
+#ifndef PC_BUILD
 asm void* func_00188c30(KwlnTask* task)
 {
   .set noreorder
@@ -10326,8 +10335,10 @@ asm void* func_00188c30(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00189230
+#ifndef PC_BUILD
 asm void* func_00189230(KwlnTask* task)
 {
   .set noreorder
@@ -10708,8 +10719,10 @@ asm void* func_00189230(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00189810
+#ifndef PC_BUILD
 asm void* func_00189810(KwlnTask* task)
 {
   .set noreorder
@@ -11090,8 +11103,10 @@ asm void* func_00189810(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00189DF0
+#ifndef PC_BUILD
 asm void* func_00189df0(KwlnTask* task)
 {
   .set noreorder
@@ -11480,8 +11495,10 @@ asm void* func_00189df0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0018A3F0
+#ifndef PC_BUILD
 asm void* func_0018a3f0(KwlnTask* task)
 {
   .set noreorder
@@ -11858,6 +11875,7 @@ asm void* func_0018a3f0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0018A9C0
 void func_0018a9c0(KwlnTask* task)
@@ -11866,6 +11884,7 @@ void func_0018a9c0(KwlnTask* task)
 }
 /* W420 collateral from func_00113A30 ABI reorder: nd1063,obj2160/window2176 (rate 0.492130) -> nd1076,obj2156/window2176 (rate 0.499072); retained for twin improvement. */
 // FUN_0018A9F0
+#ifndef PC_BUILD
 asm void* func_0018a9f0(KwlnTask* task)
 {
   .set noreorder
@@ -12414,6 +12433,7 @@ asm void* func_0018a9f0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0018B270
 void func_0018b270(KwlnTask* task)
@@ -14779,6 +14799,7 @@ void func_0018dde0(KwlnTask* transitionTask, s32 mode)
 /* W357 measured opt_common_subs off: without nd852/object1204, with nd819/object1220; window 1232; retained. */
 #pragma opt_common_subs off
 // FUN_0018DE60
+#ifndef PC_BUILD
 asm void* func_0018de60(KwlnTask* task)
 {
   .set noreorder
@@ -15091,6 +15112,7 @@ asm void* func_0018de60(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_common_subs reset
 // FUN_0018E330

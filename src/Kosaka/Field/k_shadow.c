@@ -561,6 +561,7 @@ static void K_FldShadow_SubmitFieldGeometry(const RwV3d* position,
 #pragma opt_lifetimes reset
 /* W417 negative: rewriting the mode if-chain as a switch grew this object to 1092 bytes beyond its 1088-byte window (nd747); rejected. */
 // FUN_0019beb0
+#ifndef PC_BUILD
 asm KwlnTask* K_FldShadow_CreateRenderTexTask(KwlnTask* parent, u16 resTypeId, s32 param_3)
 {
   .set noreorder
@@ -837,6 +838,7 @@ asm KwlnTask* K_FldShadow_CreateRenderTexTask(KwlnTask* parent, u16 resTypeId, s
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 extern void* func_004916d0(void* list, void* callback, void* context);
 
@@ -1332,6 +1334,7 @@ static inline void K_FldShadow_UpdateModelNpc(ResrcModelNpc* res)
 /* W377: opt_dead_assignments off improves K_FldShadow_UpdateShadowMapTask (nd2297 -> nd2260; object 3520/3520). */
 #pragma opt_dead_assignments off
 // FUN_0019c4b0
+#ifndef PC_BUILD
 asm void* K_FldShadow_UpdateShadowMapTask(KwlnTask* fldShadowMapTask)
 {
   .set noreorder
@@ -2216,6 +2219,7 @@ asm void* K_FldShadow_UpdateShadowMapTask(KwlnTask* fldShadowMapTask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 // FUN_0019d270

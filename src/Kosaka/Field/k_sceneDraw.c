@@ -666,6 +666,7 @@ s32 func_0019e1f0(const void* charPtr1, const void* charPtr2)
 /* Removing this worsens K_SceneDraw_UpdateDrwChrMdlTask (nd1774 -> nd1777) - measured W161. */
 #pragma opt_common_subs on
 // FUN_0019e330
+#ifndef PC_BUILD
 asm void* K_SceneDraw_UpdateDrwChrMdlTask(KwlnTask* drwChrMdlTask)
 {
   .set noreorder
@@ -1378,6 +1379,7 @@ asm void* K_SceneDraw_UpdateDrwChrMdlTask(KwlnTask* drwChrMdlTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* Closes the `#pragma push` / `opt_common_subs on` opened above
  * K_SceneDraw_UpdateDrwChrMdlTask.  Measured W418: closing here is metric-neutral
  * for every other function in this file, while leaving the scope open let the knob
@@ -1413,6 +1415,7 @@ s32 K_SceneDraw_CompareNpcDistToCamera(const void* npcPtr1, const void* npcPtr2)
 
 // W415 census negative: direct R_MIPS_26 calls are 50/50 with retail after resolving RwFrameTransform to 0x004cb7f0; the SDK symbol remains unmappable, so no call edit is justified.
 // FUN_0019ef80
+#ifndef PC_BUILD
 asm void* K_SceneDraw_UpdateDrwTrnsNpcSrtTask(KwlnTask* drwTrnsNpcSrtTask)
 {
   .set noreorder
@@ -1733,6 +1736,7 @@ asm void* K_SceneDraw_UpdateDrwTrnsNpcSrtTask(KwlnTask* drwTrnsNpcSrtTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0019f470
 void* K_SceneDraw_UpdateDrwPrsnaMdlTask(KwlnTask* drwPrsnaMdlTask)
@@ -2861,6 +2865,7 @@ void* func_001a1540()
 // That state-5 update is reconstructed; remaining differences are layout and
 // register allocation in the other scene states.
 // FUN_001a1550
+#ifndef PC_BUILD
 asm void* func_001a1550(KwlnTask* task)
 {
   .set noreorder
@@ -3641,6 +3646,7 @@ asm void* func_001a1550(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
  
@@ -4379,6 +4385,7 @@ asm void func_001a2720(KwlnTask* task)
 /* W417 negative: placing func_001a2720 after KWindow_DrawSelection yielded nd3020; the pre-branch placement above is nd3008. */
 // FUN_001A2A80
 #pragma schedule on
+#ifndef PC_BUILD
 asm void* func_001a2a80(KwlnTask* task)
 {
   .set noreorder
@@ -5399,6 +5406,7 @@ asm void* func_001a2a80(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
  
 // FUN_001A3A60

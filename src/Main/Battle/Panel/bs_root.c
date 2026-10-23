@@ -2100,6 +2100,7 @@ u32 opTitle00269640(void)
 
 /* W420 verified: scoped mesh temporaries and declaration order reduced opTitle00269690 nd361/772B to nd353/772B, window784B; rate46.76% to45.73%. */
 // FUN_00269690
+#ifndef PC_BUILD
 asm u32* opTitle00269690(s32 mode, s32 columns, s32 rows)
 {
   .set noreorder
@@ -2300,6 +2301,7 @@ asm u32* opTitle00269690(s32 mode, s32 columns, s32 rows)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_002699A0
 void opTitle002699a0(void* memory)
 {

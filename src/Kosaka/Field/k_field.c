@@ -561,6 +561,7 @@ asm void func_001b9140(u16 majorId, u16 minorId)
 // W417 census closure: baseline 2283/3920 (58.24%) -> 2393/3908 (61.24%);
 // exact 124/124 calls, with FUN_0035bc00 corrected from 1 call to 7.
 // FUN_001b9480
+#ifndef PC_BUILD
 asm void* func_001b9480(KwlnTask* fldRootTask)
 {
   .set noreorder
@@ -1545,6 +1546,7 @@ asm void* func_001b9480(KwlnTask* fldRootTask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

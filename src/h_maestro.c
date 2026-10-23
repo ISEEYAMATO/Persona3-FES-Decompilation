@@ -2161,6 +2161,7 @@ void func_0010e010(HSfdImage* image, s32 bitDepth)
 
 #pragma opt_loop_invariants on
 // FUN_0010E0D0
+#ifndef PC_BUILD
 asm HSfdImage* func_0010e0d0(const u8* stream)
 {
   .set noreorder
@@ -2433,6 +2434,7 @@ asm HSfdImage* func_0010e0d0(const u8* stream)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 /* Removing this worsens func_00111500 (nd2 -> nd4); loses func_00111580 (MATCH nd0 -> MISMATCH nd4) - measured W161. */
 #pragma opt_loop_invariants off
 // FUN_0010E500
@@ -3435,6 +3437,7 @@ asm void func_0010ec50(KwlnTask* task)
 #endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 // FUN_0010F6C0
+#ifndef PC_BUILD
 asm void* func_0010f6c0(KwlnTask* task)
 {
   .set noreorder
@@ -4215,6 +4218,7 @@ asm void* func_0010f6c0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants reset
 
 // FUN_001102E0
@@ -4487,6 +4491,7 @@ asm void func_00110650_y2(void* param_1, s32 sourceIndex, s32 destinationIndex)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_001107D0
+#ifndef PC_BUILD
 asm void* func_001107d0(KwlnTask* task)
 {
   .set noreorder
@@ -4915,6 +4920,7 @@ asm void* func_001107d0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 /* Scope spans FUN_001105D0..FUN_001107D0. Closing it any earlier costs
  * func_001107D0 nd1162 -> 1171, object 1548 -> 1560 (measured W404), so the
@@ -5211,6 +5217,7 @@ void func_001115e0(KwlnTask* task)
 }
 
 // FUN_00111610
+#ifndef PC_BUILD
 asm void* H_Maestro_UpdateTask(KwlnTask* hmaestroTask)
 {
   .set noreorder
@@ -5615,6 +5622,7 @@ asm void* H_Maestro_UpdateTask(KwlnTask* hmaestroTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00111c50
 void H_Maestro_00111c50(KwlnTask* hmaestroTask)
@@ -10424,6 +10432,7 @@ void func_00116f50(int param_1)
 // FUN_00116F80
 
 
+#ifndef PC_BUILD
 asm void* func_00116f80(KwlnTask* task)
 {
   .set noreorder
@@ -10732,6 +10741,7 @@ asm void* func_00116f80(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00117440
 void func_00117440(KwlnTask* task)
@@ -10769,6 +10779,7 @@ KwlnTask* func_00117490(KwlnTask* parent, void* blob)
 #pragma opt_loop_invariants on
 /* W420 collateral from twin ABI reorder: nd4399,obj6732/window7296 (rate 0.653446) -> nd4404,obj6736/window7296 (rate 0.653800); retained for the twin improvement. */
 // FUN_00117540
+#ifndef PC_BUILD
 asm void* func_00117540(KwlnTask* task)
 {
   .set noreorder
@@ -12597,6 +12608,7 @@ asm void* func_00117540(KwlnTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001191C0
 void func_001191c0(KwlnTask* task)
@@ -12680,6 +12692,7 @@ u32 func_001193c0(void)
 
 /* W318 measured: opt_loop_invariants on changes df60 nd69->14; object stays 168/176. */
 // FUN_001193D0
+#ifndef PC_BUILD
 asm void* func_001193d0(KwlnTask* task)
 {
   .set noreorder
@@ -13028,6 +13041,7 @@ asm void* func_001193d0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00119930
 void func_00119930(KwlnTask* task)
 {

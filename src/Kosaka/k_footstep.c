@@ -335,6 +335,7 @@ static s32 K_Footstep_Surface(Model* mdl, RwV3d* position)
 // Recovered the model-id 4 fallback and the model-id 6 legacy selector paths.
 // The remaining case dispatch/code layout still differs from retail.
 // FUN_001d9860
+#ifndef PC_BUILD
 asm void* func_001d9860(KwlnTask* task)
 {
   .set noreorder
@@ -755,6 +756,7 @@ asm void* func_001d9860(KwlnTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 
@@ -3318,6 +3320,7 @@ asm void K_Footstep_Update(Model* mdl, u16 charId, u16 resTypeId)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_001dc6f0
+#ifndef PC_BUILD
 asm void* func_001dc6f0(KwlnTask* task)
 {
   .set noreorder
@@ -3446,6 +3449,7 @@ asm void* func_001dc6f0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001dc8e0
 void func_001dc8e0(KwlnTask* task)
@@ -3498,6 +3502,7 @@ void func_001dca10(void)
 }
 
 // FUN_001dcb60
+#ifndef PC_BUILD
 asm void* func_001dcb60(KwlnTask* task)
 {
   .set noreorder
@@ -4066,6 +4071,7 @@ asm void* func_001dcb60(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001dd430
 void func_001dd430(KwlnTask* task)
@@ -6061,6 +6067,7 @@ footstep_target_done:
 // FUN_001dfa70
 #pragma push
 #pragma opt_lifetimes on
+#ifndef PC_BUILD
 asm void* func_001dfa70(KwlnTask* task)
 {
   .set noreorder
@@ -6733,6 +6740,7 @@ asm void* func_001dfa70(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_001e04e0

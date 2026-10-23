@@ -323,6 +323,7 @@ static void copy_bytes(u8* dst, const u8* src, u32 size)
 }
 
 // FUN_00521250
+#ifndef PC_BUILD
 asm void* memcpy(void* dst, const void* src, u32 size)
 {
   .set noreorder
@@ -371,8 +372,10 @@ asm void* memcpy(void* dst, const void* src, u32 size)
   .word 0x03e00008
   .word 0x0100102d
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521300
+#ifndef PC_BUILD
 asm void* memmove(void* dst, const void* src, u32 size)
 {
   .set noreorder
@@ -443,8 +446,10 @@ asm void* memmove(void* dst, const void* src, u32 size)
   .word 0x0100102d
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521408
+#ifndef PC_BUILD
 asm void* memset(void* dst, u8 value, u32 size)
 {
   .set noreorder
@@ -497,6 +502,7 @@ asm void* memset(void* dst, u8 value, u32 size)
   .word 0x03e00008
   .word 0x0080102d
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_005214c8
 #ifndef PC_BUILD
@@ -559,6 +565,7 @@ asm void __alloc_unlock(void)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521578
+#ifndef PC_BUILD
 asm Bigint* __dtoa_Balloc(DtoaContext* context, s32 k)
 {
   .set noreorder
@@ -605,6 +612,7 @@ asm Bigint* __dtoa_Balloc(DtoaContext* context, s32 k)
   .word 0x1000ffed
   .word 0xac500008
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma optimization_level 3
 // FUN_00521620
@@ -629,6 +637,7 @@ asm void __dtoa_Bfree(DtoaContext* context, Bigint* value)
 #pragma optimization_level 2
 
 // FUN_00521650
+#ifndef PC_BUILD
 asm Bigint* __dtoa_multadd(DtoaContext* context, Bigint* value, s32 multiplier, s32 addend)
 {
   .set noreorder
@@ -699,8 +708,10 @@ asm Bigint* __dtoa_multadd(DtoaContext* context, Bigint* value, s32 multiplier, 
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521758
+#ifndef PC_BUILD
 asm Bigint* __dtoa_s2b(DtoaContext* context, const char* digits, s32 firstCount, s32 digitCount, s32 firstNineDigits)
 {
   .set noreorder
@@ -781,6 +792,7 @@ asm Bigint* __dtoa_s2b(DtoaContext* context, const char* digits, s32 firstCount,
   .word 0x2610000a
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521888
 #ifndef PC_BUILD
@@ -879,6 +891,7 @@ asm s32 __dtoa_lo0bits(u32* value)
 #endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 3
 // FUN_005219C8
+#ifndef PC_BUILD
 asm Bigint* __dtoa_i2b(DtoaContext* context, u32 input)
 {
   .set noreorder
@@ -897,9 +910,11 @@ asm Bigint* __dtoa_i2b(DtoaContext* context, u32 input)
   .word 0x27bd0010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 2
 
 // FUN_00521a00
+#ifndef PC_BUILD
 asm Bigint* __dtoa_mult(DtoaContext* context, Bigint* left, Bigint* right)
 {
   .set noreorder
@@ -1034,8 +1049,10 @@ asm Bigint* __dtoa_mult(DtoaContext* context, Bigint* left, Bigint* right)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521c08
+#ifndef PC_BUILD
 asm Bigint* __dtoa_pow5mult(DtoaContext* context, Bigint* value, s32 power)
 {
   .set noreorder
@@ -1106,8 +1123,10 @@ asm Bigint* __dtoa_pow5mult(DtoaContext* context, Bigint* value, s32 power)
   .word 0x27bd0030
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521d10
+#ifndef PC_BUILD
 asm Bigint* __dtoa_lshift(DtoaContext* context, Bigint* value, s32 shift)
 {
   .set noreorder
@@ -1200,6 +1219,7 @@ asm Bigint* __dtoa_lshift(DtoaContext* context, Bigint* value, s32 shift)
   .word 0x264fffff
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521e70
 #ifndef PC_BUILD
@@ -1236,6 +1256,7 @@ asm s32 __dtoa_cmp(const Bigint* left, const Bigint* right)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00521ed8
+#ifndef PC_BUILD
 asm Bigint* __dtoa_diff(DtoaContext* context, Bigint* left, Bigint* right)
 {
   .set noreorder
@@ -1336,6 +1357,7 @@ asm Bigint* __dtoa_diff(DtoaContext* context, Bigint* left, Bigint* right)
   .word 0xac490010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00522058
 #ifndef PC_BUILD
@@ -1508,6 +1530,7 @@ asm f64 __dtoa_b2d(const Bigint* value, s32* exponent)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_005222c0
+#ifndef PC_BUILD
 asm Bigint* __dtoa_d2b(DtoaContext* context, f64 input, s32* exponent, s32* bits)
 {
   .set noreorder
@@ -1608,6 +1631,7 @@ asm Bigint* __dtoa_d2b(DtoaContext* context, f64 input, s32* exponent, s32* bits
   .word 0xae2f0014
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00522440
 #ifndef PC_BUILD
@@ -2413,6 +2437,7 @@ asm s32 __write(s32* error, s32 descriptor, const void* buffer, u32 count)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00522f98
+#ifndef PC_BUILD
 asm void* realloc(void* block, u32 size)
 {
   .set noreorder
@@ -2427,8 +2452,10 @@ asm void* realloc(void* block, u32 size)
   .word 0x08148bf0
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00522fc0
+#ifndef PC_BUILD
 asm void* __pool_realloc(void* pool, void* block, u32 size)
 {
   .set noreorder
@@ -2801,6 +2828,7 @@ asm void* __pool_realloc(void* pool, void* block, u32 size)
   .word 0x03e00008
   .word 0x27bd0010
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00523580
 #ifndef PC_BUILD
@@ -3082,6 +3110,7 @@ asm f64 ldexp(f64 value, s32 exponent)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00523930
+#ifndef PC_BUILD
 asm void* __sbrk(s32* error, u32 increment)
 {
   .set noreorder
@@ -3106,6 +3135,7 @@ asm void* __sbrk(s32* error, u32 increment)
   .word 0x03e00008
   .word 0x27bd0020
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00523980
 #ifndef PC_BUILD
@@ -3507,6 +3537,7 @@ asm int strcasecmp(const char* left, const char* right)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00523e68
+#ifndef PC_BUILD
 asm char* strcat(char* dst, const char* src)
 {
   .set noreorder
@@ -3587,8 +3618,10 @@ asm char* strcat(char* dst, const char* src)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00523f98
+#ifndef PC_BUILD
 asm char* strchr(const char* string, int character)
 {
   .set noreorder
@@ -3693,6 +3726,7 @@ asm char* strchr(const char* string, int character)
   .word 0x03e00008
   .word 0x0083100a
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00524128
 #ifndef PC_BUILD
@@ -3785,6 +3819,7 @@ asm int strcmp(const char* left, const char* right)
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_00524270
+#ifndef PC_BUILD
 asm char* strcpy(char* dst, const char* src)
 {
   .set noreorder
@@ -3859,6 +3894,7 @@ asm char* strcpy(char* dst, const char* src)
   .word 0x00e0102d
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00524388
 #ifndef PC_BUILD

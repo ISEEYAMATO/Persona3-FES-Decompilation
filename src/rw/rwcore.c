@@ -1107,6 +1107,7 @@ RwCamera* RwCameraBeginUpdate(RwCamera* camera)
 #pragma optimization_level 2
 
 // FUN_004c9e90
+#ifndef PC_BUILD
 asm RwCamera* RwCameraClear(RwCamera* camera, RwRGBA* colors, RwCameraClearMode clearMode)
 {
   .set noreorder
@@ -1127,6 +1128,7 @@ asm RwCamera* RwCameraClear(RwCamera* camera, RwRGBA* colors, RwCameraClearMode 
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004c9df0
 #ifndef PC_BUILD
@@ -1177,6 +1179,7 @@ asm RwFrustumTestResult RwCameraFrustumTestSphere(const RwCamera* camera, const 
 #endif /* PC_BUILD: asm function omitted */
 
 // FUN_004c9f00
+#ifndef PC_BUILD
 asm RwCamera* RwCameraSetProjectionType(RwCamera* camera, RwCameraProjection projType)
 {
   .set noreorder
@@ -1217,8 +1220,10 @@ asm RwCamera* RwCameraSetProjectionType(RwCamera* camera, RwCameraProjection pro
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004c9f90
+#ifndef PC_BUILD
 asm RwCamera* RwCameraSetViewWindow(RwCamera* camera, const RwV2d* viewWindow)
 {
   .set noreorder
@@ -1251,6 +1256,7 @@ asm RwCamera* RwCameraSetViewWindow(RwCamera* camera, const RwV2d* viewWindow)
   .word 0x27bd0020
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004d7f60
 #ifndef PC_BUILD

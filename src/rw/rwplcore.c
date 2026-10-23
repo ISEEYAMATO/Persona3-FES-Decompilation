@@ -4718,6 +4718,7 @@ int FUN_004c21e0()
 }
 #pragma optimization_level 2
 // FUN_004C2200
+#ifndef PC_BUILD
 asm RwMatrix* RwMatrixMultiply(RwMatrix* matrixOut, const RwMatrix* matrixIn1, const RwMatrix* matrixIn2)
 {
   .set noreorder
@@ -4798,6 +4799,7 @@ asm RwMatrix* RwMatrixMultiply(RwMatrix* matrixOut, const RwMatrix* matrixIn1, c
   .word 0x03e00008
   .word 0xe4800038
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_004C2330
 #ifndef PC_BUILD
 asm u64 FUN_004c2330(u64 param_1,float *param_2)
@@ -5497,6 +5499,7 @@ RwBool RwEngineSetMatrixTolerances(const RwMatrixTolerance* const tolerance)
 #pragma optimization_level 2
 // FUN_004c2d20
 #pragma optimization_level 3
+#ifndef PC_BUILD
 asm RwMatrix* RwMatrixOptimize(RwMatrix* matrix, const RwMatrixTolerance* tolerance)
 {
   .set noreorder
@@ -5625,6 +5628,7 @@ asm RwMatrix* RwMatrixOptimize(RwMatrix* matrix, const RwMatrixTolerance* tolera
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma optimization_level 2
 
 // FUN_004c2f10
@@ -5820,6 +5824,7 @@ asm float * FUN_004c2fc0(float param_1,float param_2,float *param_3,float *param
   .word 0x00000000
 }
 // FUN_004c31b0
+#ifndef PC_BUILD
 asm RwMatrix* RwMatrixRotate(RwMatrix* matrix, const RwV3d* axis, RwReal angle, RwOpCombineType combineOp)
 {
   .set noreorder
@@ -5884,6 +5889,7 @@ asm RwMatrix* RwMatrixRotate(RwMatrix* matrix, const RwV3d* axis, RwReal angle, 
   .word 0x03e00008
   .word 0x27bd0050
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004C32A0
 #ifndef PC_BUILD
@@ -5969,6 +5975,7 @@ asm u64 FUN_004c32a0(u64 param_1,float *param_2)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_004c33d0
+#ifndef PC_BUILD
 asm RwMatrix* RwMatrixScale(RwMatrix* matrix, const RwV3d* scale, RwOpCombineType combineOp)
 {
   .set noreorder
@@ -6101,8 +6108,10 @@ asm RwMatrix* RwMatrixScale(RwMatrix* matrix, const RwV3d* scale, RwOpCombineTyp
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004c35d0
+#ifndef PC_BUILD
 asm RwMatrix* RwMatrixTranslate(RwMatrix* matrix, const RwV3d* translation, RwOpCombineType combineOp)
 {
   .set noreorder
@@ -6207,6 +6216,7 @@ asm RwMatrix* RwMatrixTranslate(RwMatrix* matrix, const RwV3d* translation, RwOp
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004C3760
 asm u32 * FUN_004c3760(u32 *param_1,u32 *param_2,long param_3)
@@ -9550,6 +9560,7 @@ asm u64 FUN_004c65d0(u32 *param_1, u32 *param_2, u32 *param_3)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_004C6640
+#ifndef PC_BUILD
 asm RwV3d* FUN_004c6640(RwV3d *out, const RwV3d *in, int count, const RwMatrix *matrix)
 {
   .set noreorder
@@ -9602,8 +9613,10 @@ asm RwV3d* FUN_004c6640(RwV3d *out, const RwV3d *in, int count, const RwMatrix *
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004C6700
+#ifndef PC_BUILD
 asm RwV3d* FUN_004c6700(RwV3d *out, const RwV3d *in, const RwMatrix *matrix)
 {
   .set noreorder
@@ -9648,8 +9661,10 @@ asm RwV3d* FUN_004c6700(RwV3d *out, const RwV3d *in, const RwMatrix *matrix)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004C67A0
+#ifndef PC_BUILD
 asm RwV3d* FUN_004c67a0(RwV3d *out, const RwV3d *in, int count, const RwMatrix *matrix)
 {
   .set noreorder
@@ -9694,8 +9709,10 @@ asm RwV3d* FUN_004c67a0(RwV3d *out, const RwV3d *in, int count, const RwMatrix *
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_004C6840
+#ifndef PC_BUILD
 asm RwV3d* FUN_004c6840(RwV3d *out, const RwV3d *in, const RwMatrix *matrix)
 {
   .set noreorder
@@ -9732,6 +9749,7 @@ asm RwV3d* FUN_004c6840(RwV3d *out, const RwV3d *in, const RwMatrix *matrix)
   .word 0x03e00008
   .word 0xe4800008
 }
+#endif /* PC_BUILD: asm function omitted */
 
 
 

@@ -7,6 +7,8 @@
 /* On 64-bit PC, size_t/pointer types are 64-bit; keep PS2 u32 for game data. */
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
 /* Prevent type.h from redefining these. */
 #define _PC_SIZE_T_DEFINED
 #define _PC_INTPTR_DEFINED

@@ -8,6 +8,7 @@ extern u8 DAT_00960088_abs[];
 extern f32 DAT_00960088;
 
 // FUN_00100230
+#ifndef PC_BUILD
 asm void* H_Cursor_UpdateTask(KwlnTask* hcursorTask)
 {
   .set noreorder
@@ -220,6 +221,7 @@ asm void* H_Cursor_UpdateTask(KwlnTask* hcursorTask)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00100570
 u32* H_Cursor_GetShouldDraw(KwlnTask* hcursorTask)

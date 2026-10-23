@@ -895,6 +895,7 @@ void FUN_00177d40(void)
 #pragma opt_lifetimes on
 /* W419 D_00960184 first two loads via _sda: nd3098/object4696/window4736 (65.97%) vs baseline nd3175/object4704 (67.49%); retained. */
 // FUN_00177db0
+#ifndef PC_BUILD
 asm void* FUN_00177db0(u32 saveType, s32* saveSize)
 {
   .set noreorder
@@ -2083,6 +2084,7 @@ asm void* FUN_00177db0(u32 saveType, s32* saveSize)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_common_subs reset
 

@@ -2357,6 +2357,7 @@ asm void func_003132c0(u8* param_1)
 
 
 
+#ifndef PC_BUILD
 asm void* func_00313490(MdlAnimSlot* param_1,void* param_2)
 {
   .set noreorder
@@ -2637,6 +2638,7 @@ asm void* func_00313490(MdlAnimSlot* param_1,void* param_2)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 #pragma pop
 
@@ -3126,6 +3128,7 @@ void* func_003140c0(void* param_1,u16 *param_2)
 // FUN_00314170
 
 
+#ifndef PC_BUILD
 asm void* func_00314170(void* param_1, void* param_2)
 {
   .set noreorder
@@ -3210,6 +3213,7 @@ asm void* func_00314170(void* param_1, void* param_2)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_003142B0
 u32 func_003142b0(void* param_1)
@@ -5718,6 +5722,7 @@ Model* mdlCreateFromRmdMemory(u16 type, u16 id, void* rmdMemory, u32 rmdSize, u3
 // FUN_00316C70
 
 
+#ifndef PC_BUILD
 asm Model* func_00316c70(u16 modelType,u16 id,void* archive,u32 readMode)
 {
   .set noreorder
@@ -5822,9 +5827,11 @@ asm Model* func_00316c70(u16 modelType,u16 id,void* archive,u32 readMode)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma push
 #pragma opt_loop_invariants on
 // FUN_00316e00
+#ifndef PC_BUILD
 asm Model* mdlCreateAndResolvePath(u16 type, u16 id, u32 readMode)
 {
   .set noreorder
@@ -5921,6 +5928,7 @@ asm Model* mdlCreateAndResolvePath(u16 type, u16 id, u32 readMode)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 

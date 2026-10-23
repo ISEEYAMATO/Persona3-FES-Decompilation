@@ -478,6 +478,7 @@ FldUnit* K_FldUnit_FindFreePc()
 #pragma opt_propagation off
 // FUN_001cd9a0
 #pragma schedule on
+#ifndef PC_BUILD
 asm void* func_001cd9a0(u32 charId)
 {
   .set noreorder
@@ -1434,6 +1435,7 @@ asm void* func_001cd9a0(u32 charId)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma schedule reset
 #pragma opt_propagation on
 #pragma opt_loop_invariants off
@@ -2521,6 +2523,7 @@ asm u32 func_001ce960(void)
 #pragma opt_propagation off
 #pragma opt_dead_assignments off
 // FUN_001CF940
+#ifndef PC_BUILD
 asm FldUnit* func_001cf940(u32 encounter, void* unitData)
 {
   .set noreorder
@@ -2721,6 +2724,7 @@ asm FldUnit* func_001cf940(u32 encounter, void* unitData)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_propagation reset
 
@@ -3412,6 +3416,7 @@ asm s32 func_001d0720(s32 targetCount)
 /* Removing this worsens FUN_001d0880 (nd485 -> nd512) - measured W161. */
 #pragma opt_loop_invariants on
 // FUN_001d0880
+#ifndef PC_BUILD
 asm u8* func_001d0880(s32 ordinal, s32 targetCount)
 {
   .set noreorder
@@ -3624,6 +3629,7 @@ asm u8* func_001d0880(s32 ordinal, s32 targetCount)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 
 // FUN_001d0bc0
@@ -4557,6 +4563,7 @@ void func_001d22a0(void* work)
 /* Removing this worsens FUN_001d2300 (nd502 -> nd511) - measured W161. */
 #pragma opt_loop_invariants on
 // FUN_001d2300
+#ifndef PC_BUILD
 asm u8* func_001d2300(s32 ordinal, s32 maxCount)
 {
   .set noreorder
@@ -4757,6 +4764,7 @@ asm u8* func_001d2300(s32 ordinal, s32 maxCount)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_loop_invariants off
 
 // FUN_001d2610
@@ -5588,6 +5596,7 @@ asm void func_001d2a10(void)
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes on
 // FUN_001d32a0
+#ifndef PC_BUILD
 asm void* func_001d32a0(KwlnTask* task)
 {
   .set noreorder
@@ -5856,6 +5865,7 @@ asm void* func_001d32a0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 

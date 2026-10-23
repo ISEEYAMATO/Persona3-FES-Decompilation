@@ -10606,6 +10606,7 @@ static inline u8* btlEffectAddFirst(u8* base, u32 offset)
  * by type): every order stayed at 32 or went to 39. Confirmed wall. */
 // FUN_002c6e30
 
+#ifndef PC_BUILD
 asm undefined* func_002c6e30(int unit, u32 group)
 {
   .set noreorder
@@ -10682,6 +10683,7 @@ asm undefined* func_002c6e30(int unit, u32 group)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_002c6f50
 

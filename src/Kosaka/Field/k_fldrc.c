@@ -2638,6 +2638,7 @@ void* FUN_001b2780(s16 majorId, s16 minorId)
 /* W418 negative: aliasing end directly onto path shrank nd348/object712 to nd360/object660 (rate 48.88% -> 54.55%); rejected. */
 /* DUMMYDUMB session 2026-10-21: frame census says our frame is 16 bytes bigger than retail here. The lloc local (a copy of the DAT_00960184 function pointer) costs 8 bytes of frame that retail may not have paid - but calling the global directly instead is much worse (182 -> 428 bytes) because the call shape changes, and digits[4] cannot become a scalar (it is passed to FUN_0051e0f0 as a buffer). Confirmed wall. */
 // FUN_001b2860
+#ifndef PC_BUILD
 asm void* FUN_001b2860(char* path)
 {
   .set noreorder
@@ -2822,6 +2823,7 @@ asm void* FUN_001b2860(char* path)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001b2b30
 u32 FUN_001b2b30(u32 resource)
@@ -5344,6 +5346,7 @@ void FUN_001b5200(u32* resource, f32 angle)
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes on
 // FUN_001b5380
+#ifndef PC_BUILD
 asm void* FUN_001b5380(u32* resource, const f32* position, u32 direction)
 {
   .set noreorder
@@ -5512,6 +5515,7 @@ asm void* FUN_001b5380(u32* resource, const f32* position, u32 direction)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 #pragma opt_loop_invariants reset
 #pragma pop

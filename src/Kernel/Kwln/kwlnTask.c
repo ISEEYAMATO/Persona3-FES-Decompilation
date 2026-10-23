@@ -791,6 +791,7 @@ KwlnTask* kwlnTaskCreate(KwlnTask* parentTask,
 
 /* W415 census recheck: both relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
 // FUN_00194b80. Create a new task and adjust priority by the parent hierarchy. 'parentTask' can be NULL
+#ifndef PC_BUILD
 asm KwlnTask* kwlnTaskCreateWithAutoPriority(KwlnTask* parentTask,
                                          u32 priority,
                                          const char* name,
@@ -852,6 +853,7 @@ asm KwlnTask* kwlnTaskCreateWithAutoPriority(KwlnTask* parentTask,
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00194c50. Init a new task. See 'kwlnTaskInitEx' for adjustable 'runningDelay' and 'destroyDelay'
 KwlnTask* kwlnTaskInit(const char* name,

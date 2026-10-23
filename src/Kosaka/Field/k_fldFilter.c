@@ -949,6 +949,7 @@ s32 FUN_001d5140(KwlnTask* cameraTask)
 // FUN_001d5220
 #pragma push
 #pragma schedule on
+#ifndef PC_BUILD
 asm void* FUN_001d5220(KwlnTask* cameraTask)
 {
   .set noreorder
@@ -1449,6 +1450,7 @@ asm void* FUN_001d5220(KwlnTask* cameraTask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma pop
 
 // FUN_001d59e0

@@ -453,6 +453,7 @@ static void H_SfdPlay_BeginStream(HSfd* work)
 // object 4768 -> 4600 within the 4768-byte window.
 // W419 moving work to the end of the local declarations was neutral: nd 2686, object 4656/window4768.
 // FUN_0010A860
+#ifndef PC_BUILD
 asm void* H_SfdPlay_UpdateTask(KwlnTask* sfdPlayTask)
 {
   .set noreorder
@@ -1649,6 +1650,7 @@ asm void* H_SfdPlay_UpdateTask(KwlnTask* sfdPlayTask)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0010BB00
 void H_SfdPlay_DestroyTask(KwlnTask* sfdPlayTask)
@@ -1989,6 +1991,7 @@ link_next:
 #pragma opt_loop_invariants off
 
 // FUN_0010C3A0
+#ifndef PC_BUILD
 asm void* func_0010c3a0(HSfdAsyncEntry* entry, u32* wasReady, s32* byteCount)
 {
   .set noreorder
@@ -2141,6 +2144,7 @@ asm void* func_0010c3a0(HSfdAsyncEntry* entry, u32* wasReady, s32* byteCount)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0010C5F0
 #ifndef PC_BUILD

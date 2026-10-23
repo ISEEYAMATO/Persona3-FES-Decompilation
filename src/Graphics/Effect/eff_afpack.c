@@ -691,6 +691,7 @@ void func_001e88f0(RuntimeWork* work, s32 section, RuntimeVec3* output);
 
 // W419 afpack opt_lifetimes was neutral at nd1603/object2128; opt_common_subs off reached nd1593/object2228 (over window).
 // FUN_001EE2E0
+#ifndef PC_BUILD
 asm RuntimeWork* func_001ee2e0(const void* rawData)
 {
   .set noreorder
@@ -1251,6 +1252,7 @@ asm RuntimeWork* func_001ee2e0(const void* rawData)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001EEB90
 RuntimeWork* func_001eeb90(RuntimeWork* input)

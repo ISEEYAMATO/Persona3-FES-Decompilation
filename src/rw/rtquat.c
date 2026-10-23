@@ -351,6 +351,7 @@ asm long FUN_004bdde0(float param_1,long param_2,long param_3,long param_4)
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_004be1e0
+#ifndef PC_BUILD
 asm RwV3d* RtQuatTransformVectors(RwV3d* vectorsOut, const RwV3d* vectorsIn, const RwInt32 numPoints, const RtQuat* quat)
 {
   .set noreorder
@@ -431,3 +432,4 @@ asm RwV3d* RtQuatTransformVectors(RwV3d* vectorsOut, const RwV3d* vectorsIn, con
   .word 0x27bd0010
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */

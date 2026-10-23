@@ -167,6 +167,7 @@ static void K_Encount_CompactEc(EncounterWork* work)
  * (0.157670); chained pc/ec count assignment was nd142/object344/window352
  * (0.412791), both reverted. */
 // FUN_001d8b00
+#ifndef PC_BUILD
 asm KwlnTask* func_001d8b00(KwlnTask* parent, FldUnit* pc, FldUnit* ec)
 {
   .set noreorder
@@ -259,6 +260,7 @@ asm KwlnTask* func_001d8b00(KwlnTask* parent, FldUnit* pc, FldUnit* ec)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_001d8c60
 void func_001d8c60(u32 paused)

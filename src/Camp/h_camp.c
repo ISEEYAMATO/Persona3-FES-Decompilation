@@ -269,6 +269,7 @@ typedef struct CampUiRecord
 /* opt_dead_assignments off: default nd880/1684B -> off nd875/1696B; retained. */
 #pragma opt_dead_assignments off
 // FUN_0011a050
+#ifndef PC_BUILD
 asm void* h_campUpdateTask(KwlnTask* task)
 {
   .set noreorder
@@ -705,6 +706,7 @@ asm void* h_campUpdateTask(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 
 // FUN_0011a710
@@ -1288,6 +1290,7 @@ void h_campReplacePersonaTextureControlResource(u32 resourceId)
 }
 
 // FUN_0011b420
+#ifndef PC_BUILD
 asm void* h_campUpdateRootDrawTask(KwlnTask* task)
 {
   .set noreorder
@@ -1644,6 +1647,7 @@ asm void* h_campUpdateRootDrawTask(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_0011b9a0
 u32 h_campGetRootCommand(KwlnTask* task)
@@ -6099,6 +6103,7 @@ u32 h_campRequestMenuTransition(KwlnTask* task, u32 command)
 }
 
 // FUN_00121ff0
+#ifndef PC_BUILD
 asm void* h_campUpdatePanelTransition(KwlnTask* task)
 {
   .set noreorder
@@ -6503,6 +6508,7 @@ asm void* h_campUpdatePanelTransition(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef func_0018bc10
 extern void* func_0018b6d0(s32);
 void h_campStatusDrawViewport(void* texture, CampVec2 position, f32 x, s32 alpha);
@@ -7905,6 +7911,7 @@ u32 FUN_00122710(KwlnTask* task, u32 command)
     return 1;
 }
 // FUN_00122940_y5
+#ifndef PC_BUILD
 asm void* FUN_00122940_y5(KwlnTask* task)
 {
   .set noreorder
@@ -8329,6 +8336,7 @@ asm void* FUN_00122940_y5(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_00122fd0. Destroy callback of the "h_camp_persona_kani_control" task
 void h_campPersonaDestroyKaniControlTask(KwlnTask* task)
 {
@@ -8467,6 +8475,7 @@ static s32 campPersonaTransitionIsReady(void)
 #undef RpSkyRenderStateSet
 #pragma opt_common_subs off
 // FUN_001230C0
+#ifndef PC_BUILD
 asm void* h_campStatusUpdatePcStatusRootTask(KwlnTask* task)
 {
   .set noreorder
@@ -8759,6 +8768,7 @@ asm void* h_campStatusUpdatePcStatusRootTask(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_00123540. Destroy callback of the "H_CampPcStatusRoot" task
@@ -11270,6 +11280,7 @@ asm void FUN_00125b40_persona(CampVec2 position, CampVec2 unused, f32 alpha,
 }
 #endif /* PC_BUILD: asm function omitted */
 // FUN_00125D70
+#ifndef PC_BUILD
 asm void* FUN_00125d70(KwlnTask* task)
 {
   .set noreorder
@@ -11878,6 +11889,7 @@ asm void* FUN_00125d70(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #undef FUN_00125b40
 #undef DAT_00960090
@@ -12075,6 +12087,7 @@ asm void h_campStatusDrawViewport(void* texture, CampVec2 position, f32 x,
 /* opt_lifetimes on: default nd1549/2488B -> on nd1538/2480B; retained. */
 #pragma opt_lifetimes on
 // FUN_001269A0
+#ifndef PC_BUILD
 asm void* h_campStatusUpdatePartsTask(KwlnTask* task)
 {
   .set noreorder
@@ -12723,6 +12736,7 @@ asm void* h_campStatusUpdatePartsTask(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 #pragma opt_loop_invariants on
 #pragma opt_lifetimes reset
@@ -13237,6 +13251,7 @@ KwlnTask* h_campStatusCreatePartsTask(KwlnTask* parent, u32 priority,
 
 #pragma opt_common_subs off
 // FUN_00127C00
+#ifndef PC_BUILD
 asm void* h_campStatusUpdatePanelTask(KwlnTask* task)
 {
   .set noreorder
@@ -13481,6 +13496,7 @@ asm void* h_campStatusUpdatePanelTask(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 
 // FUN_00127FC0
@@ -18107,6 +18123,7 @@ static inline void campEquipAnimateList(u32* work, s32 mode)
  * bytes; remaining differences are in the prologue and switch layout.
  */
 // FUN_0012C430
+#ifndef PC_BUILD
 asm void* FUN_0012c430(KwlnTask* task)
 {
   .set noreorder
@@ -19643,6 +19660,7 @@ asm void* FUN_0012c430(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 // FUN_0012DC20
 u32 FUN_0012dc20(u32* work)
 {
@@ -22871,6 +22889,7 @@ s32 FUN_00131090(void* output, void* unused, s16 pcId, s32 category)
 #pragma pop
 /* Retail has a 16-state status dispatch; all decoded state bodies are present, with ABI/frame and physical switch layout still differing. */
 // FUN_001311D0
+#ifndef PC_BUILD
 asm void* FUN_001311d0(KwlnTask* task)
 {
   .set noreorder
@@ -24903,6 +24922,7 @@ asm void* FUN_001311d0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_propagation reset
 
 // FUN_00133180
@@ -27015,6 +27035,7 @@ void FUN_00135460(KwlnTask* task)
 /* W373 pragma sweep: default nd2803/object4056/4080; lifetimes on nd2801/object4056/4080. Retained lifetimes on. */
 #pragma opt_lifetimes on
 // FUN_001355c0
+#ifndef PC_BUILD
 asm void* FUN_001355c0(KwlnTask* task)
 {
   .set noreorder
@@ -28039,6 +28060,7 @@ asm void* FUN_001355c0(KwlnTask* task)
   .word 0x03e00008
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_lifetimes reset
 
 
@@ -28382,6 +28404,7 @@ extern u8 hCampDAT_00960184_abs[];
 /* W421 allocator alias: hCampDAT_00960184_abs now emits the correct HI16/LO16 relocations where the prior declaration emitted none; metric-neutral at nd2/object204/window208 rate .0098. The remaining defect is a 16-byte frame deficit (-0x40 versus retail -0x50) with an identical saved-register set. */
  
 // FUN_00136750
+#ifndef PC_BUILD
 asm KwlnTask* FUN_00136750(KwlnTask* parent, u32 priority)
 {
   .set noreorder
@@ -28438,6 +28461,7 @@ asm KwlnTask* FUN_00136750(KwlnTask* parent, u32 priority)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00136820
 void FUN_00136820(f32 alpha, u64 position, const s32* entries, s32 count,
@@ -73358,6 +73382,7 @@ KwlnTask* FUN_001617d0(KwlnTask* parent, u32 priority)
 }
 #pragma opt_common_subs off
 // FUN_001618A0
+#ifndef PC_BUILD
 asm void* FUN_001618a0(KwlnTask* task)
 {
   .set noreorder
@@ -73666,6 +73691,7 @@ asm void* FUN_001618a0(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_common_subs reset
 // FUN_00161D60
 void FUN_00161d60(KwlnTask* task)
@@ -76960,6 +76986,7 @@ static inline void campSkillSwapEquipment(CampSkillInnerWork* work)
 /* opt_dead_assignments off: baseline nd5956/8180B -> off nd5910/8212B; retained. */
 #pragma opt_dead_assignments off
 // FUN_00164920
+#ifndef PC_BUILD
 asm void* FUN_00164920(KwlnTask* task)
 {
   .set noreorder
@@ -79048,6 +79075,7 @@ asm void* FUN_00164920(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #pragma opt_dead_assignments reset
 #pragma opt_common_subs reset
 #pragma opt_loop_invariants reset
@@ -79173,6 +79201,7 @@ static s32 campSkillSelectorCommand(CampSkillSelectorWork* work)
 }
 
 // FUN_00166C70
+#ifndef PC_BUILD
 asm void* FUN_00166c70(KwlnTask* task)
 {
   .set noreorder
@@ -79769,6 +79798,7 @@ asm void* FUN_00166c70(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 #undef FUN_00167f40
 #undef jtbl_0096017C_abs
 /* Target entry prototypes keep all callbacks visible before their first use. */
@@ -79961,6 +79991,7 @@ void FUN_001678e0(KwlnTask* task)
 }
 
 // FUN_00167930
+#ifndef PC_BUILD
 asm void* FUN_00167930(KwlnTask* task)
 {
   .set noreorder
@@ -80321,6 +80352,7 @@ asm void* FUN_00167930(KwlnTask* task)
   .word 0x00000000
   .word 0x00000000
 }
+#endif /* PC_BUILD: asm function omitted */
 
 // FUN_00167ec0
 void FUN_00167ec0(KwlnTask* task)
