@@ -198,390 +198,1290 @@ void func_0024dc10(void)
 }
 
 // W419 negative probes: extra gcPose0024fba0 call nd4005/5088B, window5120B, rate78.72%; declaration permutations stayed nd3958/5072B, window5120B, rate78.04%; reverted.
-// FUN_0024DC90 NONMATCHING
-void func_0024dc90(void* camera)
+// FUN_0024DC90
+asm void func_0024dc90(void* camera)
 {
-    u32* list;
-    u8* node;
-    u32 queued;
-    u32 i;
-    u32* pose;
-    u32** poses;
-    f32* p;
-    f32 ratio;
-    f32 ratio2;
-    f32 oneMinus;
-    f32 dot;
-    f32 angle;
-    f32 extent;
-    u32 random;
-    u32 duration;
-    RwV3d first;
-    RwV3d second;
-    RwV3d value;
-    RwV3d offset;
-    RwV3d axis;
-    RwV3d cross;
-    RwV3d* firstPoseVector;
-    RwV3d* secondPoseVector;
-
-    K_ASSERT(sSflCameraNodes != NULL, 0x5d);
-    list = sSflCameraNodes;
-    K_ASSERT(list[0x82] == 0, 0xe6);
-    list[list[0x82] + 2] = (u32)camera;
-    list[0x82]++;
-
-    while (list[0x82] != 0) {
-        u32 flags;
-        u32 state;
-        u32 mode;
-        node = (u8*)list[list[0x82] + 1];
-        flags = *(u32*)(node + 8);
-        queued = 0;
-        if ((flags & 1) != 0 && (flags & 2) != 0) {
-            state = *(u32*)(node + 0xc);
-
-            switch (state) {
-            case 0: {
-                mode = *(u32*)(node + 0x20);
-                switch (mode) { case 1: { u32 oldTimer;
-                u32 firstDuration;
-                
-                p = (f32*)(node + 0x24);
-                oldTimer = *(u32*)(node + 0x10);
-                firstDuration = (*(u32*)(node + 0x58)) << 16;
-                ratio = (f32)(s32)oldTimer / (f32)(s32)firstDuration;
-                
-                offset.x = p[6] - p[9];
-                offset.y = p[7] - p[10];
-                offset.z = p[8] - p[11];
-                first = offset;
-                first.x = -first.x;
-                first.y = -first.y;
-                first.z = -first.z;
-                *(RwV3d*)&p[0] = *(RwV3d*)&p[9];
-                extent = p[12];
-                
-                random = RpRandom() & 0xfff;
-                offset.x = extent / 2.0f - extent * (f32)random / 4096.0f;
-                random = RpRandom() & 0xfff;
-                offset.y = extent / 2.0f - extent * (f32)random / 4096.0f;
-                random = RpRandom() & 0xfff;
-                offset.z = extent / 2.0f - extent * (f32)random / 4096.0f;
-                *(RwV3d*)&p[9] = offset;
-                func_0024f7f0(node, &first);
-                *(u32*)(node + 0x10) = 0;
-                
-                if (oldTimer >= firstDuration) {
-                    oneMinus = 1.0f - ratio;
-                    value.x = p[0] * oneMinus * oneMinus * oneMinus +
-                              3.0f * p[3] * ratio * oneMinus * oneMinus +
-                              3.0f * p[6] * ratio * ratio * oneMinus +
-                              p[9] * ratio * ratio * ratio;
-                    value.y = p[1] * oneMinus * oneMinus * oneMinus +
-                              3.0f * p[4] * ratio * oneMinus * oneMinus +
-                              3.0f * p[7] * ratio * ratio * oneMinus +
-                              p[10] * ratio * ratio * ratio;
-                    value.z = p[2] * oneMinus * oneMinus * oneMinus +
-                              3.0f * p[5] * ratio * oneMinus * oneMinus +
-                              3.0f * p[8] * ratio * ratio * oneMinus +
-                              p[11] * ratio * ratio * ratio;
-                    *(RwV3d*)(node + 0x14) = value;
-                }
-                duration = (*(u32*)(node + 0x34)) << 16;
-                ratio2 = (f32)(s32)*(u32*)(node + 0x10) /
-                         (f32)(s32)duration;
-                oneMinus = 1.0f - ratio2;
-                value.x = p[0] * oneMinus * oneMinus * oneMinus +
-                          3.0f * p[3] * ratio2 * oneMinus * oneMinus +
-                          3.0f * p[6] * ratio2 * ratio2 * oneMinus +
-                          p[9] * ratio2 * ratio2 * ratio2;
-                value.y = p[1] * oneMinus * oneMinus * oneMinus +
-                          3.0f * p[4] * ratio2 * oneMinus * oneMinus +
-                          3.0f * p[7] * ratio2 * ratio2 * oneMinus +
-                          p[10] * ratio2 * ratio2 * ratio2;
-                value.z = p[2] * oneMinus * oneMinus * oneMinus +
-                          3.0f * p[5] * ratio2 * oneMinus * oneMinus +
-                          3.0f * p[8] * ratio2 * ratio2 * oneMinus +
-                          p[11] * ratio2 * ratio2 * ratio2;
-                *(RwV3d*)(node + 0x14) = value; } break; case 0: break; case 2: { poses = (u32**)(node + 0x24);
-                queued = 0;
-                for (i = 0; i < 3; i++) {
-                    pose = poses[i];
-                    if (pose != NULL && (pose[2] & 2) == 0) {
-                        K_ASSERT(list[0x82] < 0x80, 0x132);
-                        list[list[0x82] + 2] = (u32)pose;
-                        list[0x82]++;
-                        queued = 1;
-                    }
-                }
-                if (queued == 0) {
-                    value.x = 0.0f;
-                    value.y = 0.0f;
-                    value.z = 0.0f;
-                    for (i = 0; i < 3; i++) {
-                        if (poses[i] != NULL) {
-                            gcPose0024f960(poses[i], &first);
-                            value.x += first.x;
-                            value.y += first.y;
-                            value.z += first.z;
-                        }
-                    }
-                    *(RwV3d*)(node + 0x14) = value;
-                } } break; case 3: { p = (f32*)(node + 0x24);
-                if ((*(u32*)(node + 0x28) & 1u) != 0) {
-                    if (*(u32*)(node + 0x10) >= *(u32*)(node + 0x2c)) {
-                        *(u32*)(node + 0x10) = *(u32*)(node + 0x2c);
-                    }
-                    if (*(u32*)p == 0) {
-                        ratio = (f32)(s32)*(u32*)(node + 0x10) /
-                                (f32)(s32)*(u32*)(node + 0x2c);
-                        first.x = p[6];
-                        first.y = p[7];
-                        first.z = p[8];
-                        second.x = p[3];
-                        second.y = p[4];
-                        second.z = p[5];
-                        second.x -= first.x;
-                        second.y -= first.y;
-                        second.z -= first.z;
-                        second.x *= ratio;
-                        second.y *= ratio;
-                        second.z *= ratio;
-                        value.x = first.x + second.x;
-                        value.y = first.y + second.y;
-                        value.z = first.z + second.z;
-                        *(RwV3d*)(node + 0x14) = value;
-                    }
-                    else if (*(u32*)p == 1) {
-                        ratio = (f32)(s32)*(u32*)(node + 0x10) /
-                                1966080.0f;
-                        ratio *= 0.5f;
-                        value.x = p[3] * ratio + p[6];
-                        value.y = p[4] * ratio + p[7];
-                        value.z = p[5] * ratio + p[8];
-                        *(RwV3d*)(node + 0x14) = value;
-                    }
-                }
-                if ((*(u32*)(node + 0x28) & 1u) != 0 &&
-                    *(u32*)(node + 0x10) >= *(u32*)(node + 0x2c)) {
-                    *(u32*)(node + 0x28) &= ~2u;
-                } } break; default: { K_ASSERT(0, 0x17d); } break; }
-                break;
-            }
-            case 1: {
-                mode = *(u32*)(node + 0x20);
-                if (mode == 1) {
-                    poses = (u32**)(node + 0x28);
-                    queued = 0;
-                    for (i = 0; i < 2; i++) {
-                        pose = poses[i];
-                        if ((pose[2] & 2) == 0) {
-                            K_ASSERT(list[0x82] < 0x80, 0x1a9);
-                            list[list[0x82] + 2] = (u32)pose;
-                            list[0x82]++;
-                            queued = 1;
-                        }
-                    }
-                    if (queued == 0) {
-                        gcPose0024f960(poses[0], &first);
-                        gcPose0024f960(poses[1], &second);
-                        value.x = second.x - first.x;
-                        value.y = second.y - first.y;
-                        value.z = second.z - first.z;
-                        *(RwV3d*)(node + 0x14) = value;
-                    }
-                }
-                else if (mode != 0) {
-                    K_ASSERT(0, 0x1a9);
-                }
-                break;
-            }
-            case 2: {
-                mode = *(u32*)(node + 0x24);
-                if (mode == 1) {
-                    poses = (u32**)(node + 0x28);
-                    queued = 0;
-                    for (i = 0; i < 2; i++) {
-                        pose = poses[i];
-                        if (pose != NULL && (pose[2] & 2) == 0) {
-                            K_ASSERT(list[0x82] < 0x80, 0x1c4);
-                            list[list[0x82] + 2] = (u32)pose;
-                            list[0x82]++;
-                            queued = 1;
-                        }
-                    }
-                    if (queued == 0) {
-                        gcPose0024f960(poses[0], &second);
-                        gcPose0024f960(poses[1], &first);
-                        value.x = first.x - second.x;
-                        value.y = first.y - second.y;
-                        value.z = first.z - second.z;
-                        *(RwV3d*)(node + 0x14) = value;
-                    }
-                }
-                else if (mode == 2) {
-                    poses = (u32**)(node + 0x28);
-                    queued = 0;
-                    for (i = 0; i < 3; i++) {
-                        pose = poses[i];
-                        if (pose != NULL && (pose[2] & 2) == 0) {
-                            list[list[0x82] + 2] = (u32)pose;
-                            list[0x82]++;
-                            queued = 1;
-                        }
-                    }
-                    if (queued == 0) {
-                        firstPoseVector = gcPose0024faa0(poses[0]);
-                        secondPoseVector = gcPose0024faa0(poses[1]);
-                        FUN_004c69f0(&first, firstPoseVector);
-                        FUN_004c69f0(&second, secondPoseVector);
-                        cross.x = first.y * second.z - first.z * second.y;
-                        cross.y = first.z * second.x - first.x * second.z;
-                        cross.z = first.x * second.y - first.y * second.x;
-                        FUN_004c69f0(&cross, &cross);
-                        dot = first.x * second.x +
-                              first.y * second.y +
-                              first.z * second.z;
-                        if (dot == 1.0f) {
-                            cross.x = 0.0f;
-                            cross.y = 1.0f;
-                            cross.z = 0.0f;
-                        }
-                        angle = 180.0f * (dot - 1.0f) / 2.0f;
-                        FUN_004bdde0(angle, (f32*)(node + 0x14),
-                                     (const f32*)&cross, 0);
-                    }
-                }
-                else if (mode == 3) {
-                    gcPose0024fba0((GcPoseController*)node, (RtQuat*)(node + 0x14));
-                    pose = (u32*)(node + 0x28);
-                    if ((*(u32*)(node + 0x10) >= pose[2]) &&
-                        ((pose[1] & 1) != 0)) {
-                        *(u32*)(node + 0x10) = pose[2];
-                    }
-                    if (pose[0] == 0) {
-                        ratio = (f32)(s32)*(u32*)(node + 0x10) /
-                                (f32)(s32)pose[2];
-                        angle = ((f32)*(s32*)((u8*)pose + 0x1c) -
-                                 (f32)*(s32*)((u8*)pose + 0x18)) * ratio +
-                                (f32)*(s32*)((u8*)pose + 0x18);
-                        angle = angle / fGpffff81f8 * 360.0f;
-                        FUN_004bdde0(angle, (f32*)(node + 0x14),
-                                     (const f32*)(node + 0x34), 0);
-                    }
-                    else if (pose[0] == 1) {
-                        ratio = (f32)(s32)*(u32*)(node + 0x10) /
-                                1966080.0f;
-                        angle = (f32)*(s32*)((u8*)pose + 0x20) +
-                                0.5f * (f32)*(s32*)((u8*)pose + 0x24) * ratio;
-                        angle = angle / fGpffff81f8 * 360.0f;
-                        FUN_004bdde0(angle, (f32*)(node + 0x14),
-                                     (const f32*)(node + 0x34), 0);
-                    }
-                    else {
-                        K_ASSERT(0, 0x2a5);
-                    }
-                    if ((pose[1] & 1) != 0 &&
-                        *(u32*)(node + 0x10) >= pose[2]) {
-                        pose[1] &= ~2u;
-                    }
-                }
-                else if (mode == 4) {
-                    u32 oldTimer;
-                    u32 firstDuration;
-
-                    p = (f32*)(node + 0x28);
-                    oldTimer = *(u32*)(node + 0x10);
-                    firstDuration = (*(u32*)(node + 0x64)) << 16;
-                    ratio = (f32)(s32)oldTimer / (f32)(s32)firstDuration;
-                    offset.x = p[6] - p[9];
-                    offset.y = p[7] - p[10];
-                    offset.z = p[8] - p[11];
-                    first = offset;
-                    first.x = -first.x;
-                    first.y = -first.y;
-                    first.z = -first.z;
-                    *(RwV3d*)&p[0] = *(RwV3d*)&p[9];
-                    extent = p[12];
-                    random = RpRandom() & 0xfff;
-                    offset.x = extent / 2.0f - extent * (f32)random / 4096.0f;
-                    random = RpRandom() & 0xfff;
-                    offset.y = extent / 2.0f - extent * (f32)random / 4096.0f;
-                    random = RpRandom() & 0xfff;
-                    offset.z = extent / 2.0f - extent * (f32)random / 4096.0f;
-                    *(RwV3d*)&p[9] = offset;
-                    func_00250280(node, &first);
-                    *(u32*)(node + 0x10) = 0;
-                    if (oldTimer >= firstDuration) {
-                        oneMinus = 1.0f - ratio;
-                        value.x = p[0] * oneMinus * oneMinus * oneMinus +
-                                  3.0f * p[3] * ratio * oneMinus * oneMinus +
-                                  3.0f * p[6] * ratio * ratio * oneMinus +
-                                  p[9] * ratio * ratio * ratio;
-                        value.y = p[1] * oneMinus * oneMinus * oneMinus +
-                                  3.0f * p[4] * ratio * oneMinus * oneMinus +
-                                  3.0f * p[7] * ratio * ratio * oneMinus +
-                                  p[10] * ratio * ratio * ratio;
-                        value.z = p[2] * oneMinus * oneMinus * oneMinus +
-                                  3.0f * p[5] * ratio * oneMinus * oneMinus +
-                                  3.0f * p[8] * ratio * ratio * oneMinus +
-                                  p[11] * ratio * ratio * ratio;
-                        *(RwV3d*)(node + 0x14) = value;
-                    }
-                    duration = (*(u32*)(node + 0x3c)) << 16;
-                    ratio2 = (f32)(s32)*(u32*)(node + 0x10) /
-                             (f32)(s32)duration;
-                    oneMinus = 1.0f - ratio2;
-                    value.x = p[0] * oneMinus * oneMinus * oneMinus +
-                              3.0f * p[3] * ratio2 * oneMinus * oneMinus +
-                              3.0f * p[6] * ratio2 * ratio2 * oneMinus +
-                              p[9] * ratio2 * ratio2 * ratio2;
-                    value.y = p[1] * oneMinus * oneMinus * oneMinus +
-                              3.0f * p[4] * ratio2 * oneMinus * oneMinus +
-                              3.0f * p[7] * ratio2 * ratio2 * oneMinus +
-                              p[10] * ratio2 * ratio2 * ratio2;
-                    value.z = p[2] * oneMinus * oneMinus * oneMinus +
-                              3.0f * p[5] * ratio2 * oneMinus * oneMinus +
-                              3.0f * p[8] * ratio2 * ratio2 * oneMinus +
-                              p[11] * ratio2 * ratio2 * ratio2;
-                    value.x *= p[17];
-                    value.y *= p[17];
-                    value.z *= p[17];
-                    *(RwV3d*)(node + 0xe0) = value;
-                    axis.x = 1.0f;
-                    axis.y = 0.0f;
-                    axis.z = 0.0f;
-                    FUN_004bdde0(value.x, (f32*)(node + 0x90),
-                                 (const f32*)&axis, 0);
-                    axis.x = 0.0f;
-                    axis.y = 1.0f;
-                    axis.z = 0.0f;
-                    FUN_004bdde0(value.y, (f32*)(node + 0x90),
-                                 (const f32*)&axis, 2);
-                    axis.x = 0.0f;
-                    axis.y = 0.0f;
-                    axis.z = 1.0f;
-                    FUN_004bdde0(value.z, (f32*)(node + 0x90),
-                                 (const f32*)&axis, 2);
-                    *(RtQuat*)(node + 0x14) = *(RtQuat*)(node + 0x90);
-                }
-                else {
-                    K_ASSERT(0, 0x2ab);
-                break;
-            }
-                break;
-            }
-            default:
-                K_ASSERT(0, 0x2ab);
-                break;
-            }
-        }
-        if (queued == 0) {
-            *(u32*)(node + 8) &= ~3u;
-            list[0x82]--;
-        }
-    }
+  .set noreorder
+  .word 0x27bdfee0
+  .word 0xffbf0060
+  .word 0x7fb40050
+  .word 0x7fb30040
+  .word 0x7fb20030
+  .word 0x7fb10020
+  .word 0x7fb00010
+  .word 0xe7b60008
+  .word 0xe7b50004
+  .word 0xe7b40000
+  .word 0x0080882d
+  .word 0x8f83b650
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x2405005d
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8f90b650
+  .word 0x3c030069
+  .word 0xdc64e9b0
+  .word 0x3c030069
+  .word 0xc460e9b8
+  .word 0xffa400b0
+  .word 0xe7a000b8
+  .word 0x8e030208
+  .word 0x10600006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x240500e6
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e030208
+  .word 0x00031880
+  .word 0x00701821
+  .word 0xac710008
+  .word 0x8e030208
+  .word 0x24630001
+  .word 0xae030208
+  .word 0xc7b500b4
+  .word 0xc7b400b8
+  .word 0x100004c2
+  .word 0x00000000
+  .word 0x00031880
+  .word 0x02031821
+  .word 0x8c710004
+  .word 0x8e240008
+  .word 0x30830001
+  .word 0x106004b4
+  .word 0x00000000
+  .word 0x30830002
+  .word 0x106004b1
+  .word 0x00000000
+  .word 0x8e23000c
+  .word 0x24060002
+  .word 0x1066020b
+  .word 0x00000000
+  .word 0x24050001
+  .word 0x106501c0
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x100004a1
+  .word 0x00000000
+  .word 0x8e240020
+  .word 0x24030003
+  .word 0x10830134
+  .word 0x00000000
+  .word 0x108600e6
+  .word 0x00000000
+  .word 0x1080049e
+  .word 0x00000000
+  .word 0x10850003
+  .word 0x00000000
+  .word 0x100001a9
+  .word 0x00000000
+  .word 0x26320024
+  .word 0x8e230058
+  .word 0x00032400
+  .word 0x8e230010
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800060
+  .word 0x44840000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000883
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x0064182a
+  .word 0x14600083
+  .word 0x00000000
+  .word 0xc6410018
+  .word 0xc6400024
+  .word 0x460008c1
+  .word 0xe7a30110
+  .word 0xc641001c
+  .word 0xc6400028
+  .word 0x46000881
+  .word 0xe7a20114
+  .word 0xc6410020
+  .word 0xc640002c
+  .word 0x46000841
+  .word 0xe7a10118
+  .word 0x46001807
+  .word 0xe7a000f0
+  .word 0x46001007
+  .word 0xe7a000f4
+  .word 0x46000807
+  .word 0xe7a000f8
+  .word 0xc6420024
+  .word 0xc6410028
+  .word 0xc640002c
+  .word 0xe6420000
+  .word 0xe6410004
+  .word 0xe6400008
+  .word 0xc6560030
+  .word 0x0c1223cc
+  .word 0x00000000
+  .word 0x30420fff
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x4600b042
+  .word 0x3c024580
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600b003
+  .word 0x46010001
+  .word 0xe7a00110
+  .word 0xc6560030
+  .word 0x0c1223cc
+  .word 0x00000000
+  .word 0x30420fff
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x4600b042
+  .word 0x3c024580
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600b003
+  .word 0x46010001
+  .word 0xe7a00114
+  .word 0xc6560030
+  .word 0x0c1223cc
+  .word 0x00000000
+  .word 0x30420fff
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x4600b042
+  .word 0x3c024580
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600b003
+  .word 0x46010001
+  .word 0xe7a00118
+  .word 0xc7a20110
+  .word 0xc7a10114
+  .word 0xc7a00118
+  .word 0xe6420024
+  .word 0xe6410028
+  .word 0xe640002c
+  .word 0x0220202d
+  .word 0x27a500f0
+  .word 0x0c093dfc
+  .word 0x00000000
+  .word 0xae200010
+  .word 0xc6200010
+  .word 0x46800060
+  .word 0x8e430034
+  .word 0x00031c00
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000883
+  .word 0x3c033f80
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46020041
+  .word 0xc6400024
+  .word 0x46020002
+  .word 0x46001182
+  .word 0x3c034040
+  .word 0x44830000
+  .word 0xc6430018
+  .word 0x460300c2
+  .word 0x460218c2
+  .word 0x46031142
+  .word 0xc6430000
+  .word 0x460118c2
+  .word 0x46030902
+  .word 0xc643000c
+  .word 0x460300c2
+  .word 0x460218c2
+  .word 0x460308c2
+  .word 0x4603081a
+  .word 0x4604081e
+  .word 0x4605081e
+  .word 0x460610dc
+  .word 0xe6230014
+  .word 0xc6430028
+  .word 0x460218c2
+  .word 0x46031182
+  .word 0xc643001c
+  .word 0x460300c2
+  .word 0x460218c2
+  .word 0x46031142
+  .word 0xc6430004
+  .word 0x460118c2
+  .word 0x46030902
+  .word 0xc6430010
+  .word 0x460300c2
+  .word 0x460218c2
+  .word 0x460308c2
+  .word 0x4603081a
+  .word 0x4604081e
+  .word 0x4605081e
+  .word 0x460610dc
+  .word 0xe6230018
+  .word 0xc643002c
+  .word 0x460218c2
+  .word 0x46031182
+  .word 0xc6430020
+  .word 0x460300c2
+  .word 0x460218c2
+  .word 0x46031142
+  .word 0xc6430008
+  .word 0x460118c2
+  .word 0x46030902
+  .word 0xc6430014
+  .word 0x46030002
+  .word 0x46020002
+  .word 0x46000802
+  .word 0x4600081a
+  .word 0x4604081e
+  .word 0x4605081e
+  .word 0x4606101c
+  .word 0xe620001c
+  .word 0xc6210014
+  .word 0xc640003c
+  .word 0x46000802
+  .word 0xe6200014
+  .word 0xc6210018
+  .word 0xc640003c
+  .word 0x46000802
+  .word 0xe6200018
+  .word 0xc621001c
+  .word 0xc640003c
+  .word 0x46000802
+  .word 0xe620001c
+  .word 0x100003bb
+  .word 0x00000000
+  .word 0x26330024
+  .word 0x0000202d
+  .word 0x0000a02d
+  .word 0x1000001d
+  .word 0x00000000
+  .word 0x00141880
+  .word 0x02639021
+  .word 0x8e430000
+  .word 0x10600017
+  .word 0x00000000
+  .word 0x8c630008
+  .word 0x00601827
+  .word 0x30630002
+  .word 0x14600012
+  .word 0x00000000
+  .word 0x8e030208
+  .word 0x28630080
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x24050132
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e450000
+  .word 0x8e040208
+  .word 0x24830001
+  .word 0xae030208
+  .word 0x00041880
+  .word 0x02031821
+  .word 0xac650008
+  .word 0x24040001
+  .word 0x26940001
+  .word 0x2a830003
+  .word 0x1460ffe2
+  .word 0x00000000
+  .word 0x1480039c
+  .word 0x00000000
+  .word 0xafa00110
+  .word 0xafa00114
+  .word 0xafa00118
+  .word 0x0000902d
+  .word 0x10000016
+  .word 0x00000000
+  .word 0x00121880
+  .word 0x02631821
+  .word 0x8c640000
+  .word 0x10800010
+  .word 0x00000000
+  .word 0x27a50100
+  .word 0x0c093e58
+  .word 0x00000000
+  .word 0xc7a10110
+  .word 0xc7a00100
+  .word 0x46000800
+  .word 0xe7a00110
+  .word 0xc7a10114
+  .word 0xc7a00104
+  .word 0x46000800
+  .word 0xe7a00114
+  .word 0xc7a10118
+  .word 0xc7a00108
+  .word 0x46000800
+  .word 0xe7a00118
+  .word 0x26520001
+  .word 0x2a430003
+  .word 0x1460ffe9
+  .word 0x00000000
+  .word 0xc7a20110
+  .word 0xc7a10114
+  .word 0xc7a00118
+  .word 0xe6220014
+  .word 0xe6210018
+  .word 0xe620001c
+  .word 0x1000036f
+  .word 0x00000000
+  .word 0x26260024
+  .word 0x8e230028
+  .word 0x30630001
+  .word 0x10600007
+  .word 0x00000000
+  .word 0x8cc40008
+  .word 0x8e230010
+  .word 0x0064182a
+  .word 0x14600002
+  .word 0x00000000
+  .word 0xae240010
+  .word 0x8cc30004
+  .word 0x30630001
+  .word 0x10600061
+  .word 0x00000000
+  .word 0x8cc40000
+  .word 0x24030001
+  .word 0x10830035
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x10000059
+  .word 0x00000000
+  .word 0xc6200010
+  .word 0x46800060
+  .word 0xc4c00008
+  .word 0x46800020
+  .word 0x46000943
+  .word 0xc4c20018
+  .word 0xc4c1001c
+  .word 0xc4c00020
+  .word 0xe7a20110
+  .word 0xe7a10114
+  .word 0xe7a00118
+  .word 0xc4c2000c
+  .word 0xc4c10010
+  .word 0xc4c00014
+  .word 0xe7a20100
+  .word 0xe7a10104
+  .word 0xe7a00108
+  .word 0xc4c10018
+  .word 0xc7a00100
+  .word 0x46010101
+  .word 0xe7a40100
+  .word 0xc4c1001c
+  .word 0xc7a00104
+  .word 0x460100c1
+  .word 0xe7a30104
+  .word 0xc4c10020
+  .word 0xc7a00108
+  .word 0x46010081
+  .word 0xe7a20108
+  .word 0x46052042
+  .word 0xe7a10100
+  .word 0x46051802
+  .word 0xe7a00104
+  .word 0x46051002
+  .word 0xe7a00108
+  .word 0xc7a00110
+  .word 0x46000800
+  .word 0xe6200014
+  .word 0xc7a10104
+  .word 0xc7a00114
+  .word 0x46000800
+  .word 0xe6200018
+  .word 0xc7a10108
+  .word 0xc7a00118
+  .word 0x46000800
+  .word 0xe620001c
+  .word 0x10000029
+  .word 0x00000000
+  .word 0xc6200010
+  .word 0x46800060
+  .word 0x3c0349f0
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46000903
+  .word 0x3c033f00
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x460400c2
+  .word 0xc4c0000c
+  .word 0x46030082
+  .word 0xc4c00010
+  .word 0x46030042
+  .word 0xc4c00014
+  .word 0x460300c2
+  .word 0xc4c00018
+  .word 0x46001080
+  .word 0xc4c0001c
+  .word 0x46000840
+  .word 0xc4c00020
+  .word 0x46001800
+  .word 0x460410c2
+  .word 0x46040882
+  .word 0x46040042
+  .word 0xc4c00024
+  .word 0x46030000
+  .word 0xe7a00110
+  .word 0xc4c00028
+  .word 0x46020000
+  .word 0xe7a00114
+  .word 0xc4c0002c
+  .word 0x46010000
+  .word 0xe7a00118
+  .word 0xc7a20110
+  .word 0xc7a10114
+  .word 0xc7a00118
+  .word 0xe6220014
+  .word 0xe6210018
+  .word 0xe620001c
+  .word 0x8cc50004
+  .word 0x30a30001
+  .word 0x106002fc
+  .word 0x00000000
+  .word 0x8e240010
+  .word 0x8cc30008
+  .word 0x0083182a
+  .word 0x146002f7
+  .word 0x00000000
+  .word 0x2403fffe
+  .word 0x00a31824
+  .word 0xacc30004
+  .word 0x100002f2
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x2405017d
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x100002eb
+  .word 0x00000000
+  .word 0x8e230020
+  .word 0x10650005
+  .word 0x00000000
+  .word 0x106002e6
+  .word 0x00000000
+  .word 0x1000003b
+  .word 0x00000000
+  .word 0x26330024
+  .word 0x0000202d
+  .word 0x0000a02d
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x00141880
+  .word 0x02639021
+  .word 0x8e430000
+  .word 0x8c630008
+  .word 0x00601827
+  .word 0x30630002
+  .word 0x14600012
+  .word 0x00000000
+  .word 0x8e030208
+  .word 0x28630080
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x24050198
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e450000
+  .word 0x8e040208
+  .word 0x24830001
+  .word 0xae030208
+  .word 0x00041880
+  .word 0x02031821
+  .word 0xac650008
+  .word 0x24040001
+  .word 0x26940001
+  .word 0x2a830002
+  .word 0x1460ffe4
+  .word 0x00000000
+  .word 0x148002c7
+  .word 0x00000000
+  .word 0x8e640000
+  .word 0x27a50110
+  .word 0x0c093e58
+  .word 0x00000000
+  .word 0x8e640004
+  .word 0x27a50100
+  .word 0x0c093e58
+  .word 0x00000000
+  .word 0xc7a10100
+  .word 0xc7a00110
+  .word 0x46000801
+  .word 0xe6200014
+  .word 0xc7a10104
+  .word 0xc7a00114
+  .word 0x46000801
+  .word 0xe6200018
+  .word 0xc7a10108
+  .word 0xc7a00118
+  .word 0x46000801
+  .word 0xe620001c
+  .word 0x100002aa
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x240501a9
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x100002a3
+  .word 0x00000000
+  .word 0x8e240024
+  .word 0x24030004
+  .word 0x10830195
+  .word 0x00000000
+  .word 0x24030003
+  .word 0x10830139
+  .word 0x00000000
+  .word 0x108600c3
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10830005
+  .word 0x00000000
+  .word 0x10800295
+  .word 0x00000000
+  .word 0x10000287
+  .word 0x00000000
+  .word 0x26330028
+  .word 0x0000202d
+  .word 0x0000a02d
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x00141880
+  .word 0x02639021
+  .word 0x8e430000
+  .word 0x8c630008
+  .word 0x00601827
+  .word 0x30630002
+  .word 0x14600012
+  .word 0x00000000
+  .word 0x8e030208
+  .word 0x28630080
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x240501c4
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e450000
+  .word 0x8e040208
+  .word 0x24830001
+  .word 0xae030208
+  .word 0x00041880
+  .word 0x02031821
+  .word 0xac650008
+  .word 0x24040001
+  .word 0x26940001
+  .word 0x2a830002
+  .word 0x1460ffe4
+  .word 0x00000000
+  .word 0x14800276
+  .word 0x00000000
+  .word 0x8e640000
+  .word 0x0c093ea8
+  .word 0x00000000
+  .word 0x0040a02d
+  .word 0x8e640004
+  .word 0x0c093ea8
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x27a400e0
+  .word 0x0280282d
+  .word 0x0c131a7c
+  .word 0x00000000
+  .word 0x27a400d0
+  .word 0x0240282d
+  .word 0x0c131a7c
+  .word 0x00000000
+  .word 0xc7a700d4
+  .word 0xc7a600e4
+  .word 0xc7a500d0
+  .word 0xc7a000e0
+  .word 0xc7a400d8
+  .word 0xc7a300e8
+  .word 0x4607301a
+  .word 0x44801000
+  .word 0x4605001e
+  .word 0x4604185c
+  .word 0x46051018
+  .word 0x4601001d
+  .word 0xe7a000c0
+  .word 0x46071018
+  .word 0x4601301d
+  .word 0xe7a000c4
+  .word 0x46041018
+  .word 0x4601181d
+  .word 0xe7a000c8
+  .word 0x27a400c0
+  .word 0x0080282d
+  .word 0x0c131a7c
+  .word 0x00000000
+  .word 0xc7a500c4
+  .word 0xc7a400c0
+  .word 0xc7a300c8
+  .word 0xc7a200b0
+  .word 0x4615281a
+  .word 0x44800800
+  .word 0x4602201e
+  .word 0x4614199c
+  .word 0x3c02bf80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46060032
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46060032
+  .word 0x45000007
+  .word 0x00000000
+  .word 0xafa000a0
+  .word 0x3c023f80
+  .word 0xafa200a4
+  .word 0xafa000a8
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x46142802
+  .word 0x46000818
+  .word 0x4615181d
+  .word 0xe7a000a0
+  .word 0x46021802
+  .word 0x46000818
+  .word 0x4614201d
+  .word 0xe7a000a4
+  .word 0x46152002
+  .word 0x46000818
+  .word 0x4602281d
+  .word 0xe7a000a8
+  .word 0x3c024334
+  .word 0x44820800
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46003001
+  .word 0x46000842
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000b03
+  .word 0x26240014
+  .word 0x27a500a0
+  .word 0x0000302d
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0xc7a700c4
+  .word 0xc7a600d4
+  .word 0xc7a500c0
+  .word 0xc7a400d0
+  .word 0xc7a300c8
+  .word 0xc7a200d8
+  .word 0x4607301a
+  .word 0x44800800
+  .word 0x4605201e
+  .word 0x4603121c
+  .word 0x3c02bf80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46080032
+  .word 0x45010007
+  .word 0x00000000
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46080032
+  .word 0x45000007
+  .word 0x00000000
+  .word 0xafa000a0
+  .word 0x3c023f80
+  .word 0xafa200a4
+  .word 0xafa000a8
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x46033002
+  .word 0x46000818
+  .word 0x4607101d
+  .word 0xe7a000a0
+  .word 0x46051002
+  .word 0x46000818
+  .word 0x4603201d
+  .word 0xe7a000a4
+  .word 0x46072002
+  .word 0x46000818
+  .word 0x4605301d
+  .word 0xe7a000a8
+  .word 0x3c024334
+  .word 0x44820800
+  .word 0x3c023f80
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46004001
+  .word 0x46000842
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000b03
+  .word 0x26240014
+  .word 0x27a500a0
+  .word 0x24060002
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0x100001d8
+  .word 0x00000000
+  .word 0x26330028
+  .word 0x0000202d
+  .word 0x0000a02d
+  .word 0x1000001d
+  .word 0x00000000
+  .word 0x00141880
+  .word 0x02639021
+  .word 0x8e430000
+  .word 0x10600017
+  .word 0x00000000
+  .word 0x8c630008
+  .word 0x00601827
+  .word 0x30630002
+  .word 0x14600012
+  .word 0x00000000
+  .word 0x8e030208
+  .word 0x28630080
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x24050212
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e450000
+  .word 0x8e040208
+  .word 0x24830001
+  .word 0xae030208
+  .word 0x00041880
+  .word 0x02031821
+  .word 0xac650008
+  .word 0x24040001
+  .word 0x26940001
+  .word 0x2a830003
+  .word 0x1460ffe2
+  .word 0x00000000
+  .word 0x148001b9
+  .word 0x00000000
+  .word 0x0000a02d
+  .word 0x0000902d
+  .word 0x1000003e
+  .word 0x00000000
+  .word 0x00121880
+  .word 0x02631821
+  .word 0x8c640000
+  .word 0x10800038
+  .word 0x00000000
+  .word 0x16800007
+  .word 0x00000000
+  .word 0x27a50090
+  .word 0x0c093ee8
+  .word 0x00000000
+  .word 0x24140001
+  .word 0x10000030
+  .word 0x00000000
+  .word 0x27a50070
+  .word 0x0c093ee8
+  .word 0x00000000
+  .word 0xc7ab0074
+  .word 0xc7aa0094
+  .word 0xc7a90070
+  .word 0xc7a80090
+  .word 0xc7a70078
+  .word 0xc7a60098
+  .word 0xc7a5007c
+  .word 0xc7a4009c
+  .word 0x460b501a
+  .word 0x44801800
+  .word 0x4609401e
+  .word 0x4607305c
+  .word 0x46052002
+  .word 0x46010001
+  .word 0xe7a0008c
+  .word 0x4607501a
+  .word 0x460b301d
+  .word 0xe7a00080
+  .word 0x4609301a
+  .word 0x4607409d
+  .word 0xe7a20084
+  .word 0x460b401a
+  .word 0x4609505d
+  .word 0xe7a10088
+  .word 0x46001818
+  .word 0x4604481c
+  .word 0xe7a00080
+  .word 0x46021818
+  .word 0x4604589c
+  .word 0xe7a20084
+  .word 0x46011818
+  .word 0x4604385c
+  .word 0xe7a10088
+  .word 0x46001818
+  .word 0x4605401c
+  .word 0xe7a00080
+  .word 0x46021818
+  .word 0x4605501c
+  .word 0xe7a00084
+  .word 0x46011818
+  .word 0x4605301c
+  .word 0xe7a00088
+  .word 0x7ba30080
+  .word 0x7fa30090
+  .word 0x26520001
+  .word 0x2a430003
+  .word 0x1460ffc1
+  .word 0x00000000
+  .word 0xc7a30090
+  .word 0xc7a20094
+  .word 0xc7a10098
+  .word 0xc7a0009c
+  .word 0xe6230014
+  .word 0xe6220018
+  .word 0xe621001c
+  .word 0xe6200020
+  .word 0x10000164
+  .word 0x00000000
+  .word 0x26320028
+  .word 0x8e23002c
+  .word 0x30630001
+  .word 0x10600007
+  .word 0x00000000
+  .word 0x8e440008
+  .word 0x8e230010
+  .word 0x0064182a
+  .word 0x14600002
+  .word 0x00000000
+  .word 0xae240010
+  .word 0x8e430004
+  .word 0x30630001
+  .word 0x1060003d
+  .word 0x00000000
+  .word 0x8e440000
+  .word 0x24030001
+  .word 0x1083001e
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x10000035
+  .word 0x00000000
+  .word 0x2645000c
+  .word 0xc6200010
+  .word 0x46800060
+  .word 0xc6400008
+  .word 0x46800020
+  .word 0x460008c3
+  .word 0xc6420018
+  .word 0xc640001c
+  .word 0x46020041
+  .word 0x44800000
+  .word 0x00000000
+  .word 0x46020018
+  .word 0x4601185c
+  .word 0xc78081f8
+  .word 0x46000843
+  .word 0x3c0243b4
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010302
+  .word 0x26240014
+  .word 0x0000302d
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0x1000001c
+  .word 0x00000000
+  .word 0x2645000c
+  .word 0xc6200010
+  .word 0x46800060
+  .word 0x3c0249f0
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x460008c3
+  .word 0xc6420020
+  .word 0x3c023f00
+  .word 0x44820800
+  .word 0xc6400024
+  .word 0x46000802
+  .word 0x46030002
+  .word 0x4600181a
+  .word 0x4603105c
+  .word 0xc6400018
+  .word 0x46010040
+  .word 0xc78081f8
+  .word 0x46000843
+  .word 0x3c0243b4
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46010302
+  .word 0x26240014
+  .word 0x0000302d
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0x8e450004
+  .word 0x30a30001
+  .word 0x10600115
+  .word 0x00000000
+  .word 0x8e240010
+  .word 0x8e430008
+  .word 0x0083182a
+  .word 0x14600110
+  .word 0x00000000
+  .word 0x2403fffe
+  .word 0x00a31824
+  .word 0xae430004
+  .word 0x1000010b
+  .word 0x00000000
+  .word 0x26320028
+  .word 0x8e220064
+  .word 0x00021c00
+  .word 0x8e220010
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800060
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x460008c3
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x0043102a
+  .word 0x14400083
+  .word 0x00000000
+  .word 0xc6410018
+  .word 0xc6400024
+  .word 0x460008c1
+  .word 0xe7a30110
+  .word 0xc641001c
+  .word 0xc6400028
+  .word 0x46000881
+  .word 0xe7a20114
+  .word 0xc6410020
+  .word 0xc640002c
+  .word 0x46000841
+  .word 0xe7a10118
+  .word 0x46001807
+  .word 0xe7a000f0
+  .word 0x46001007
+  .word 0xe7a000f4
+  .word 0x46000807
+  .word 0xe7a000f8
+  .word 0xc6420024
+  .word 0xc6410028
+  .word 0xc640002c
+  .word 0xe6420000
+  .word 0xe6410004
+  .word 0xe6400008
+  .word 0xc6560030
+  .word 0x0c1223cc
+  .word 0x00000000
+  .word 0x30420fff
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x4600b042
+  .word 0x3c024580
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600b003
+  .word 0x46010001
+  .word 0xe7a00110
+  .word 0xc6560034
+  .word 0x0c1223cc
+  .word 0x00000000
+  .word 0x30420fff
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x4600b042
+  .word 0x3c024580
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600b003
+  .word 0x46010001
+  .word 0xe7a00114
+  .word 0xc6560038
+  .word 0x0c1223cc
+  .word 0x00000000
+  .word 0x30420fff
+  .word 0x04400006
+  .word 0x00000000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00021842
+  .word 0x30420001
+  .word 0x00621825
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x46000000
+  .word 0x4600b042
+  .word 0x3c024580
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46000843
+  .word 0x3c024000
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x4600b003
+  .word 0x46010001
+  .word 0xe7a00118
+  .word 0xc7a20110
+  .word 0xc7a10114
+  .word 0xc7a00118
+  .word 0xe6420024
+  .word 0xe6410028
+  .word 0xe640002c
+  .word 0x0220202d
+  .word 0x27a500f0
+  .word 0x0c0940a0
+  .word 0x00000000
+  .word 0xae200010
+  .word 0xc6200010
+  .word 0x46800060
+  .word 0x8e42003c
+  .word 0x00021400
+  .word 0x44820000
+  .word 0x00000000
+  .word 0x46800020
+  .word 0x460008c3
+  .word 0x3c033f80
+  .word 0x44830000
+  .word 0x00000000
+  .word 0x46030081
+  .word 0xc6400024
+  .word 0x46030002
+  .word 0x46001982
+  .word 0x3c024040
+  .word 0x44820800
+  .word 0xc6400018
+  .word 0x46000802
+  .word 0x46030002
+  .word 0x46001942
+  .word 0xc6400000
+  .word 0x46020002
+  .word 0x46001102
+  .word 0xc640000c
+  .word 0x46000802
+  .word 0x46030002
+  .word 0x46001002
+  .word 0x4600101a
+  .word 0x4604101e
+  .word 0x4605101e
+  .word 0x4606181c
+  .word 0xe7a000e0
+  .word 0xc6440028
+  .word 0x46032102
+  .word 0x460419c2
+  .word 0xc644001c
+  .word 0x46040902
+  .word 0x46032102
+  .word 0x46041982
+  .word 0xc6440004
+  .word 0x46022102
+  .word 0x46041142
+  .word 0xc6440010
+  .word 0x46040902
+  .word 0x46032102
+  .word 0x46041102
+  .word 0x4604101a
+  .word 0x4605101e
+  .word 0x4606101e
+  .word 0x46071a1c
+  .word 0xe7a800e4
+  .word 0xc644002c
+  .word 0x46032102
+  .word 0x460419c2
+  .word 0xc6440020
+  .word 0x46040902
+  .word 0x46032102
+  .word 0x46041982
+  .word 0xc6440008
+  .word 0x46022102
+  .word 0x46041142
+  .word 0xc6440014
+  .word 0x46040842
+  .word 0x46030842
+  .word 0x46011042
+  .word 0x4601101a
+  .word 0x4605101e
+  .word 0x4606101e
+  .word 0x4607189c
+  .word 0xe7a200e8
+  .word 0xc6410044
+  .word 0x46010302
+  .word 0xe7ac00e0
+  .word 0x46014002
+  .word 0xe7a000e4
+  .word 0x46011002
+  .word 0xe7a000e8
+  .word 0xafa300a0
+  .word 0xafa000a4
+  .word 0xafa000a8
+  .word 0x27a40090
+  .word 0x27a500a0
+  .word 0x0000302d
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0xafa000a0
+  .word 0x3c023f80
+  .word 0xafa200a4
+  .word 0xafa000a8
+  .word 0x27a40090
+  .word 0x27a500a0
+  .word 0xc7ac00e4
+  .word 0x24060002
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0xafa000a0
+  .word 0xafa000a4
+  .word 0x3c023f80
+  .word 0xafa200a8
+  .word 0x27a40090
+  .word 0x27a500a0
+  .word 0xc7ac00e8
+  .word 0x24060002
+  .word 0x0c12f778
+  .word 0x00000000
+  .word 0xc7a30090
+  .word 0xc7a20094
+  .word 0xc7a10098
+  .word 0xc7a0009c
+  .word 0xe6230014
+  .word 0xe6220018
+  .word 0xe621001c
+  .word 0xe6200020
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x240502a5
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040069
+  .word 0x2484e9a0
+  .word 0x240502ab
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e240008
+  .word 0x2403fffd
+  .word 0x00831824
+  .word 0xae230008
+  .word 0x8e030208
+  .word 0x2463ffff
+  .word 0xae030208
+  .word 0x8e030208
+  .word 0x1460fb3d
+  .word 0x00000000
+  .word 0xdfbf0060
+  .word 0x7bb40050
+  .word 0x7bb30040
+  .word 0x7bb20030
+  .word 0x7bb10020
+  .word 0x7bb00010
+  .word 0xc7b60008
+  .word 0xc7b50004
+  .word 0xc7b40000
+  .word 0x27bd0120
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_0024F090
