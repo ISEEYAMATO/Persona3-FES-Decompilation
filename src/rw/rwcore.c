@@ -29988,14 +29988,16 @@ undefined4 *FUN_004fabd0(undefined4 *param_1)
   return param_1;
 }
 
-// FUN_004FAC08 NONMATCHING
-undefined4 FUN_004fac08(undefined4 param_1)
+// FUN_004FAC08
+asm undefined4 FUN_004fac08(undefined4 param_1)
 {
-  undefined4 uVar1;
-
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLER = param_1;
-  return uVar1;
+  .set noreorder
+  .word 0x3c031000
+  .word 0x3463e060
+  .word 0x8c620000
+  .word 0x03e00008
+  .word 0xac640000
+  .word 0x00000000
 }
 
 // FUN_004FAC20 NONMATCHING
@@ -33358,15 +33360,16 @@ void FUN_00500ea0(int param_1,uint param_2,int param_3,int param_4)
 }
 #pragma optimization_level 2
 #pragma schedule on
-// FUN_00500EF0 NONMATCHING
-int FUN_00500ef0(int param_1,undefined8 param_2)
+// FUN_00500EF0
+asm int FUN_00500ef0(int param_1,undefined8 param_2)
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(param_1 + 0x40);
-  *(undefined8 *)(iVar1 + 0x90) = param_2;
-  *(int *)(iVar1 + 0x8c) = 1;
-  return 1;
+  .set noreorder
+  .word 0x8c830040
+  .word 0x24020001
+  .word 0x24040001
+  .word 0xfc650090
+  .word 0x03e00008
+  .word 0xac64008c
 }
 
 // FUN_00500F08
@@ -33390,26 +33393,24 @@ int FUN_00500f20(int param_1,undefined4 param_2)
   return 1;
 }
 
-// FUN_00500F30 NONMATCHING
-u32 FUN_00500f30(u32* param_1)
+// FUN_00500F30
+asm u32 FUN_00500f30(u32* param_1)
 {
-  u32 *puVar1;
-  u32 uVar2;
-  
-  puVar1 = *(u32**)((u8*)param_1 + 0x40);
-  uVar2 = puVar1[0x38];
-  return uVar2;
+  .set noreorder
+  .word 0x8c830040
+  .word 0x03e00008
+  .word 0x8c6200e0
+  .word 0x00000000
 }
 
-// FUN_00500F40 NONMATCHING
-u32 FUN_00500f40(u32* param_1)
+// FUN_00500F40
+asm u32 FUN_00500f40(u32* param_1)
 {
-  u32 *puVar1;
-  u32 uVar2;
-  
-  puVar1 = *(u32**)((u8*)param_1 + 0x40);
-  uVar2 = puVar1[0x39];
-  return uVar2;
+  .set noreorder
+  .word 0x8c830040
+  .word 0x03e00008
+  .word 0x8c6200e4
+  .word 0x00000000
 }
 
 // FUN_00500F50
@@ -33436,15 +33437,16 @@ undefined4 FUN_00500f70(int param_1,undefined4 param_2)
   return uVar2;
 }
 
-// FUN_00500F80 NONMATCHING
-int FUN_00500f80(int param_1,undefined8 param_2)
+// FUN_00500F80
+asm int FUN_00500f80(int param_1,undefined8 param_2)
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(param_1 + 0x40);
-  *(undefined8 *)(iVar1 + 0x100) = param_2;
-  *(int *)(iVar1 + 0x108) = 1;
-  return 1;
+  .set noreorder
+  .word 0x8c860040
+  .word 0x24030001
+  .word 0x24020001
+  .word 0xacc30108
+  .word 0x03e00008
+  .word 0xfcc50100
 }
 #pragma schedule off
 #pragma optimization_level 2
@@ -34251,12 +34253,15 @@ void FUN_00501df8(undefined8 param_1,uint *param_2)
   return;
 }
 
-// FUN_005024F0 NONMATCHING
-void FUN_005024f0(undefined8 param_1)
+// FUN_005024F0
+asm void FUN_005024f0(undefined8 param_1)
 
 {
-  FUN_00505e48(0x7bda50,param_1,0,0,0,0,0,0);
-  return;
+  .set noreorder
+  .word 0x0080282d
+  .word 0x3c04007c
+  .word 0x08141792
+  .word 0x2484da50
 }
 
 // FUN_00502500 NONMATCHING
@@ -36083,12 +36088,16 @@ asm undefined4 FUN_00503910(void)
 }
 
 #pragma schedule on
-// FUN_00503918 NONMATCHING
-undefined4 FUN_00503918(undefined4 param_1,undefined8 *param_2)
+// FUN_00503918
+asm undefined4 FUN_00503918(undefined4 param_1,undefined8 *param_2)
 {
-  ((u32 *)param_2)[1] = 0x2000;
-  param_2[9] = 0;
-  return 0;
+  .set noreorder
+  .word 0x24022000
+  .word 0xfca00048
+  .word 0xaca20004
+  .word 0x03e00008
+  .word 0x0000102d
+  .word 0x00000000
 }
 #pragma schedule off
 
@@ -38054,12 +38063,17 @@ void FUN_00505ec8(undefined8 param_1,undefined8 param_2,undefined8 param_3,undef
 }
 
 #pragma schedule on
-// FUN_00505F78 NONMATCHING
-undefined4 FUN_00505f78(int param_1)
+// FUN_00505F78
+asm undefined4 FUN_00505f78(int param_1)
 
 {
-  param_1 = param_1 << 2;
-  return *(undefined4 *)((u8 *)DAT_00966c00_abs + param_1);
+  .set noreorder
+  .word 0x3c020096
+  .word 0x00042080
+  .word 0x24426c00
+  .word 0x00822021
+  .word 0x03e00008
+  .word 0x8c820000
 }
 #pragma schedule off
 #pragma optimization_level 3
