@@ -16,11 +16,21 @@ typedef signed long long s64;
 typedef float f32;
 typedef double f64;
 
+#ifndef PC_BUILD
 typedef s32 intptr_t;
 typedef u32 uintptr_t;
 
 typedef u32 size_t;
 
 #define NULL ((void*)0)
+#endif
+
+#ifdef PC_BUILD
+#include <stddef.h>
+#include <stdint.h>
+#ifndef NULL
+#define NULL ((void*)0)
+#endif
+#endif
 
 #endif // TYPE_H
