@@ -1290,16 +1290,39 @@ undefined8 FUN_004ca9b0(undefined8 param_1,int param_2)
   return param_1;
 }
 
-// FUN_004CAA50 NONMATCHING
-undefined8 FUN_004caa50(undefined8 param_1)
+// FUN_004CAA50
+asm undefined8 FUN_004caa50(undefined8 param_1)
 
 {
-  if (*(int *)((int)DAT_00960070 + iGpffffbc40) != 0) {
-    FUN_004c3c30();
-    *(undefined4 *)((int)DAT_00960070 + iGpffffbc40) = 0;
-  }
-  iGpffffbc44 = iGpffffbc44 + -1;
-  return param_1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c020096
+  .word 0xffbf0010
+  .word 0x24420070
+  .word 0x7fb00000
+  .word 0x8f83bc40
+  .word 0x0080802d
+  .word 0x00431021
+  .word 0x8c440000
+  .word 0x10800008
+  .word 0x00000000
+  .word 0x0c130f0c
+  .word 0x00000000
+  .word 0x8f83bc40
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x00431021
+  .word 0xac400000
+  .word 0x8f83bc44
+  .word 0x0200102d
+  .word 0x2463ffff
+  .word 0xaf83bc44
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004CAAC0 NONMATCHING
@@ -1389,18 +1412,31 @@ long FUN_004cab70(undefined8 param_1,long param_2)
   return lVar3;
 }
 
-// FUN_004CACE0 NONMATCHING
-long FUN_004cace0(undefined8 param_1)
+// FUN_004CACE0
+asm long FUN_004cace0(undefined8 param_1)
 
 {
-  long lVar1;
-  
-  lVar1 = FUN_004cab70(param_1,0);
-  if (lVar1 != 0) {
-    *(byte *)((int)lVar1 + 3) = *(byte *)((int)lVar1 + 3) & 0xfc;
-    FUN_004cb270(lVar1);
-  }
-  return lVar1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x0000282d
+  .word 0xffbf0010
+  .word 0x0c132adc
+  .word 0x7fb00000
+  .word 0x0040802d
+  .word 0x12000007
+  .word 0x00000000
+  .word 0x92030003
+  .word 0x2402fffc
+  .word 0x0200202d
+  .word 0x00621024
+  .word 0x0c132c9c
+  .word 0xa2020003
+  .word 0x0200102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_004CAD30 NONMATCHING
@@ -1498,20 +1534,39 @@ void FUN_004cae40(undefined1 *param_1)
   return;
 }
 
-// FUN_004CAF10 NONMATCHING
-long FUN_004caf10(void)
+// FUN_004CAF10
+asm long FUN_004caf10(void)
 
 {
-  long lVar1;
-  
-  lVar1 = (*DAT_00960188)(*(undefined4 *)((int)DAT_00960070 + iGpffffbc40),0x3000e);
-  if (lVar1 == 0) {
-    lVar1 = 0;
-  }
-  else {
-    FUN_004cae40((undefined1 *)lVar1);
-  }
-  return lVar1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c030096
+  .word 0xffbf0010
+  .word 0x3c020003
+  .word 0x7fb00000
+  .word 0x3445000e
+  .word 0x8f84bc40
+  .word 0x24630070
+  .word 0x3c020096
+  .word 0x8c420188
+  .word 0x00641821
+  .word 0x0040f809
+  .word 0x8c640000
+  .word 0x0040802d
+  .word 0x12000005
+  .word 0x00000000
+  .word 0x0c132b90
+  .word 0x0200202d
+  .word 0x10000002
+  .word 0x0200102d
+  .word 0x0000102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004CAF80 NONMATCHING
@@ -1603,33 +1658,69 @@ undefined4 FUN_004cb1b0(long param_1)
   return 1;
 }
 
-// FUN_004CB270 NONMATCHING
-undefined8 FUN_004cb270(undefined8 param_1)
+// FUN_004CB270
+asm undefined8 FUN_004cb270(undefined8 param_1)
 
 {
-  byte bVar1;
-  int iVar2;
-  
-  iVar2 = (int)param_1;
-  bVar1 = *(byte *)(*(int *)(iVar2 + 0xa0) + 3);
-  if ((bVar1 & 3) == 0) {
-    *(int *)(*(int *)(iVar2 + 0xa0) + 8) = DAT_0096012c;
-    *(int **)(*(int *)(iVar2 + 0xa0) + 0xc) = (int *)&DAT_0096012c;
-    *(int *)(DAT_0096012c + 4) = *(int *)(iVar2 + 0xa0) + 8;
-    DAT_0096012c = *(int *)(iVar2 + 0xa0) + 8;
-  }
-  *(byte *)(*(int *)(iVar2 + 0xa0) + 3) = bVar1 | 3;
-  *(byte *)(iVar2 + 3) = *(byte *)(iVar2 + 3) | 0xc;
-  return param_1;
+  .set noreorder
+  .word 0x8c8300a0
+  .word 0x90660003
+  .word 0x30c20003
+  .word 0x10400009
+  .word 0x00000000
+  .word 0x8c8300a0
+  .word 0x34c50003
+  .word 0x0080102d
+  .word 0xa0650003
+  .word 0x90830003
+  .word 0x3463000c
+  .word 0x1000000f
+  .word 0xa0830003
+  .word 0x3c050096
+  .word 0x24a5012c
+  .word 0x8ca20000
+  .word 0xac620008
+  .word 0x8c8200a0
+  .word 0xac45000c
+  .word 0x8c8300a0
+  .word 0x8ca20000
+  .word 0x24630008
+  .word 0xac430004
+  .word 0x8c8200a0
+  .word 0x24420008
+  .word 0x1000ffeb
+  .word 0xaca20000
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004CB2F0 NONMATCHING
-int FUN_004cb2f0(int param_1)
+// FUN_004CB2F0
+asm int FUN_004cb2f0(int param_1)
 {
-  if ((*(byte *)(*(int *)(param_1 + 0xa0) + 3) & 1) != 0) {
-    FUN_004cf4c0(param_1);
-  }
-  return param_1 + 0x50;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x8c8400a0
+  .word 0x90820003
+  .word 0x30420001
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x26020050
+  .word 0x0c133d30
+  .word 0x00000000
+  .word 0x1000fffb
+  .word 0x00000000
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 #pragma optimization_level 3
@@ -1785,24 +1876,39 @@ int FUN_004cb590(int param_1)
   return param_1;
 }
 
-// FUN_004CB6E0 NONMATCHING
-undefined8 FUN_004cb6e0(undefined8 param_1,code *param_2,undefined8 param_3)
+// FUN_004CB6E0
+asm undefined8 FUN_004cb6e0(undefined8 param_1,code *param_2,undefined8 param_3)
 
 {
-  int iVar1;
-  int iVar2;
-  long lVar3;
-  
-  iVar2 = *(int *)((int)param_1 + 0x98);
-  do {
-    if (iVar2 == 0) {
-      return param_1;
-    }
-    iVar1 = *(int *)(iVar2 + 0x9c);
-    lVar3 = (*param_2)(iVar2,param_3);
-    iVar2 = iVar1;
-  } while (lVar3 != 0);
-  return param_1;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x0080982d
+  .word 0x7fb10010
+  .word 0x00a0902d
+  .word 0x7fb00000
+  .word 0x8c840098
+  .word 0x1080000a
+  .word 0x00c0882d
+  .word 0x8c90009c
+  .word 0x0240f809
+  .word 0x0220282d
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x0260102d
+  .word 0x1600fff8
+  .word 0x0200202d
+  .word 0x0260102d
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0050
 }
 
 // FUN_004CB750 NONMATCHING
@@ -1971,16 +2077,39 @@ long FUN_004cbe00(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   return lVar1;
 }
 
-// FUN_004CBEB0 NONMATCHING
-undefined4 FUN_004cbeb0(undefined8 param_1)
+// FUN_004CBEB0
+asm undefined4 FUN_004cbeb0(undefined8 param_1)
 
 {
-  if ((*(uint *)param_1 & 1) != 0) {
-    FUN_004cc050(param_1);
-  }
-  FUN_004c6560(0x77e690,param_1);
-  (*DAT_0096018c)(*(undefined4 *)((int)DAT_00960070 + iGpffffbc48),param_1);
-  return 1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x8c820000
+  .word 0x30420001
+  .word 0x10400003
+  .word 0x0080802d
+  .word 0x0c133014
+  .word 0x00000000
+  .word 0x3c040078
+  .word 0x0200282d
+  .word 0x0c131958
+  .word 0x2484e690
+  .word 0x8f84bc48
+  .word 0x3c030096
+  .word 0x24630070
+  .word 0x3c020096
+  .word 0x8c42018c
+  .word 0x00641821
+  .word 0x8c640000
+  .word 0x0040f809
+  .word 0x0200282d
+  .word 0xdfbf0010
+  .word 0x24020001
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_004CBF20 NONMATCHING
@@ -2031,18 +2160,31 @@ undefined8 FUN_004cbf20(undefined8 param_1)
   return param_1;
 }
 
-// FUN_004CC050 NONMATCHING
-undefined8 FUN_004cc050(undefined8 param_1)
+// FUN_004CC050
+asm undefined8 FUN_004cc050(undefined8 param_1)
 
 {
-  uint *puVar1;
-  
-  puVar1 = (uint *)param_1;
-  (*DAT_0096017c)(puVar1[5]);
-  puVar1[5] = 0;
-  puVar1[6] = 0;
-  *puVar1 = *puVar1 & 0xfffffffe;
-  return param_1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c020096
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x8c840014
+  .word 0xae000014
+  .word 0x2403fffe
+  .word 0xae000018
+  .word 0x0200102d
+  .word 0x8e040000
+  .word 0x00831824
+  .word 0xae030000
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_004CC0A0 NONMATCHING
@@ -2384,22 +2526,35 @@ LAB_004cc848:
   return param_1;
 }
 
-// FUN_004CCA60 NONMATCHING
-undefined8 FUN_004cca60(undefined8 param_1,undefined4 *param_2)
+// FUN_004CCA60
+asm undefined8 FUN_004cca60(undefined8 param_1,undefined4 *param_2)
 
 {
-  undefined4 uVar1;
-  long lVar2;
-  
-  lVar2 = FUN_004c06c0();
-  if (lVar2 != 0) {
-    uVar1 = (*(code *)*param_2)(param_1);
-    param_2[1] = uVar1;
-    if (param_2[1] != 0) {
-      param_1 = 0;
-    }
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x0c1301b0
+  .word 0x00a0802d
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x0220102d
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x0220202d
+  .word 0xae020004
+  .word 0x8e020004
+  .word 0x1040fff8
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
 // FUN_004CCAC0 NONMATCHING
@@ -3022,36 +3177,74 @@ undefined4 FUN_004cdb50(float param_1)
   return 1;
 }
 
-// FUN_004CDC70 NONMATCHING
-undefined8 FUN_004cdc70(undefined8 param_1,undefined8 param_2)
+// FUN_004CDC70
+asm undefined8 FUN_004cdc70(undefined8 param_1,undefined8 param_2)
 
 {
-  long lVar1;
-  
-  lVar1 = (*DAT_009600d0)(param_1,param_2,0);
-  if (lVar1 == 0) {
-    param_1 = 0;
-  }
-  else if ((*(byte *)((int)param_2 + 0x22) & 1) != 0) {
-    *(uint *)param_1 = *(uint *)param_1 | 2;
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0x3c020096
+  .word 0xffbf0020
+  .word 0x0000302d
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x00a0882d
+  .word 0x8c4200d0
+  .word 0x0040f809
+  .word 0x0080802d
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x92220022
+  .word 0x30420001
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x0200102d
+  .word 0x8e020000
+  .word 0x34420002
+  .word 0x1000fffb
+  .word 0xae020000
+  .word 0x0000102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
-// FUN_004CDCE0 NONMATCHING
-undefined8 FUN_004cdce0(undefined8 param_1,undefined8 param_2)
+// FUN_004CDCE0
+asm undefined8 FUN_004cdce0(undefined8 param_1,undefined8 param_2)
 
 {
-  long lVar1;
-  
-  lVar1 = (*DAT_009600d4)(param_1,param_2,0);
-  if (lVar1 == 0) {
-    param_1 = 0;
-  }
-  else if ((*(uint *)param_2 & 2) != 0) {
-    *(byte *)((int)param_1 + 0x22) = *(byte *)((int)param_1 + 0x22) | 1;
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0x3c020096
+  .word 0xffbf0020
+  .word 0x0000302d
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x00a0882d
+  .word 0x8c4200d4
+  .word 0x0040f809
+  .word 0x0080802d
+  .word 0x1040000b
+  .word 0x00000000
+  .word 0x8e220000
+  .word 0x30420002
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x0200102d
+  .word 0x92020022
+  .word 0x34420001
+  .word 0x1000fffb
+  .word 0xa2020022
+  .word 0x0000102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
 // FUN_004CDD50 NONMATCHING
@@ -3104,23 +3297,66 @@ asm undefined8 FUN_004cde00(undefined8 param_1)
   .word 0x00000000
 }
 
-// FUN_004CDE40 NONMATCHING
-undefined8 FUN_004cde40(undefined8 param_1)
+// FUN_004CDE40
+asm undefined8 FUN_004cde40(undefined8 param_1)
 
 {
-  (*DAT_00960118)(0,param_1,0);
-  *(byte *)((int)param_1 + 0x22) = *(byte *)((int)param_1 + 0x22) & 0xe7;
-  return param_1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c020096
+  .word 0xffbf0010
+  .word 0x0000302d
+  .word 0x7fb00000
+  .word 0x8c420118
+  .word 0x0080802d
+  .word 0x0000202d
+  .word 0x0040f809
+  .word 0x0200282d
+  .word 0x92040022
+  .word 0x2403ffe7
+  .word 0x0200102d
+  .word 0x00831824
+  .word 0xa2030022
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
-// FUN_004CDE90 NONMATCHING
-undefined4 FUN_004cde90(undefined8 param_1)
+// FUN_004CDE90
+asm undefined4 FUN_004cde90(undefined8 param_1)
 
 {
-  FUN_004c6560(0x77e6b0,param_1);
-  (*DAT_009600cc)(0,param_1,0);
-  (*DAT_0096018c)(*(undefined4 *)((int)&DAT_009600d0 + DAT_007ce940),param_1);
-  return 1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x3c040078
+  .word 0x0200282d
+  .word 0x0c131958
+  .word 0x2484e6b0
+  .word 0x3c020096
+  .word 0x0000202d
+  .word 0x8c4200cc
+  .word 0x0200282d
+  .word 0x0040f809
+  .word 0x0000302d
+  .word 0x8f84bc50
+  .word 0x3c030096
+  .word 0x24630070
+  .word 0x3c020096
+  .word 0x8c42018c
+  .word 0x00641821
+  .word 0x8c640060
+  .word 0x0040f809
+  .word 0x0200282d
+  .word 0xdfbf0010
+  .word 0x24020001
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
 }
 
 // FUN_004CDF00
@@ -3143,53 +3379,97 @@ asm long FUN_004cdf00(undefined8 param_1,undefined8 param_2,undefined8 param_3,u
   .word 0x00000000
 }
 
-// FUN_004CDF30 NONMATCHING
-undefined4 FUN_004cdf30(undefined8 param_1,undefined8 param_2)
+// FUN_004CDF30
+asm undefined4 FUN_004cdf30(undefined8 param_1,undefined8 param_2)
 
 {
-  long lVar1;
-  undefined4 uStack_4;
-  
-  lVar1 = (*DAT_00960114)(&uStack_4,param_1,param_2);
-  if (lVar1 == 0) {
-    uStack_4 = 0;
-  }
-  return uStack_4;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x0080102d
+  .word 0x00a0302d
+  .word 0xffbf0000
+  .word 0x0040282d
+  .word 0x3c020096
+  .word 0x8c420114
+  .word 0x0040f809
+  .word 0x27a4001c
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x8fa2001c
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004CDF80 NONMATCHING
-undefined4 FUN_004cdf80(undefined8 param_1)
+// FUN_004CDF80
+asm undefined4 FUN_004cdf80(undefined8 param_1)
 
 {
-  long lVar1;
-  undefined4 uStack_4;
-  
-  if ((*(byte *)((int)param_1 + 0x23) & 0x80) == 0) {
-    uStack_4 = 1;
-  }
-  else {
-    lVar1 = (*DAT_00960128)(&uStack_4,param_1,0);
-    if (lVar1 == 0) {
-      uStack_4 = 0xffffffff;
-    }
-  }
-  return uStack_4;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0000
+  .word 0x90820023
+  .word 0x00021200
+  .word 0x30428000
+  .word 0x14400003
+  .word 0x0080282d
+  .word 0x1000000b
+  .word 0x24020001
+  .word 0x3c020096
+  .word 0x27a4001c
+  .word 0x8c420128
+  .word 0x0040f809
+  .word 0x0000302d
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x8fa2001c
+  .word 0x2402ffff
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004CDFE0 NONMATCHING
-undefined8 FUN_004cdfe0(undefined8 param_1,undefined8 param_2,undefined8 param_3)
+// FUN_004CDFE0
+asm undefined8 FUN_004cdfe0(undefined8 param_1,undefined8 param_2,undefined8 param_3)
 
 {
-  code *pcVar1;
-  long lVar2;
-  
-  pcVar1 = (code *)(DAT_00960108);
-  FUN_004c4890();
-  lVar2 = (*pcVar1)(param_1,param_2,param_3);
-  if (lVar2 == 0) {
-    param_1 = 0;
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0x3c020096
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x0080982d
+  .word 0x7fb10010
+  .word 0x00a0902d
+  .word 0x7fb00000
+  .word 0x8c500108
+  .word 0x0c131224
+  .word 0x00c0882d
+  .word 0x0240282d
+  .word 0x0220302d
+  .word 0x0200f809
+  .word 0x0260202d
+  .word 0x0002980a
+  .word 0x0260102d
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0050
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004CE050 NONMATCHING
@@ -3259,30 +3539,66 @@ long FUN_004ce0f0(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   return lVar2;
 }
 
-// FUN_004CE200 NONMATCHING
-undefined4 FUN_004ce200(undefined8 param_1,uint param_2,int param_3)
+// FUN_004CE200
+asm undefined4 FUN_004ce200(undefined8 param_1,uint param_2,int param_3)
 
 {
-  long lVar1;
-  undefined4 uStack_4;
-  
-  lVar1 = (*DAT_009600f4)(&uStack_4,param_1,param_3 + (param_2 & 0xff) * 0x100);
-  if (lVar1 == 0) {
-    uStack_4 = 0;
-  }
-  return uStack_4;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x30a200ff
+  .word 0x00021200
+  .word 0x0080182d
+  .word 0x00c23021
+  .word 0xffbf0000
+  .word 0x3c020096
+  .word 0x27a4001c
+  .word 0x8c4200f4
+  .word 0x0040f809
+  .word 0x0060282d
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x8fa2001c
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
-// FUN_004CE250 NONMATCHING
-undefined8 FUN_004ce250(undefined8 param_1)
+// FUN_004CE250
+asm undefined8 FUN_004ce250(undefined8 param_1)
 
 {
-  if (*(int *)((int)&DAT_009600d0 + DAT_007ce940) != 0) {
-    FUN_004c3c30();
-    *(undefined4 *)((int)&DAT_009600d0 + DAT_007ce940) = 0;
-  }
-  DAT_007ce944 = DAT_007ce944 + -1;
-  return param_1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x3c020096
+  .word 0xffbf0010
+  .word 0x24420070
+  .word 0x7fb00000
+  .word 0x8f83bc50
+  .word 0x0080802d
+  .word 0x00431021
+  .word 0x8c440060
+  .word 0x10800008
+  .word 0x00000000
+  .word 0x0c130f0c
+  .word 0x00000000
+  .word 0x8f83bc50
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x00431021
+  .word 0xac400060
+  .word 0x8f83bc54
+  .word 0x0200102d
+  .word 0x2463ffff
+  .word 0xaf83bc54
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004CE2C0 NONMATCHING
@@ -3716,19 +4032,39 @@ void FUN_004cf1b0(int param_1)
   return;
 }
 
-// FUN_004CF340 NONMATCHING
-undefined4 FUN_004cf340(void)
+// FUN_004CF340
+asm undefined4 FUN_004cf340(void)
 
 {
-  undefined4 *puVar1;
-  
-  for (puVar1 = (undefined4 *)DAT_0096012c; puVar1 != (undefined4 *)&DAT_0096012c;
-       puVar1 = (undefined4 *)*puVar1) {
-    FUN_004cf1b0((int)(puVar1 + -2));
-  }
-  DAT_0096012c = (u32)(&DAT_0096012c);
-  DAT_00960130 = (u32)(&DAT_0096012c);
-  return 1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x3c100096
+  .word 0x2610012c
+  .word 0x8e110000
+  .word 0x12300008
+  .word 0x00000000
+  .word 0x0c133c6c
+  .word 0x2624fff8
+  .word 0x8e310000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x1630fffa
+  .word 0x00000000
+  .word 0x3c030096
+  .word 0xae100000
+  .word 0x24020001
+  .word 0xac700130
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004CF3B0 NONMATCHING
@@ -4635,22 +4971,31 @@ undefined4 FUN_004d0bc0(void)
 }
 #pragma schedule off
 
-// FUN_004D0BE0 NONMATCHING
-undefined8 FUN_004d0be0(undefined8 param_1,long param_2)
+// FUN_004D0BE0
+asm undefined8 FUN_004d0be0(undefined8 param_1,long param_2)
 
 {
-  long lVar1;
-  
-  if (param_2 == 0) {
-    *(undefined4 *)param_1 = 0;
-  }
-  else {
-    lVar1 = (*DAT_009600d8)(param_1,param_2,0);
-    if (lVar1 == 0) {
-      param_1 = 0;
-    }
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x10a00008
+  .word 0x0080802d
+  .word 0x3c020096
+  .word 0x8c4200d8
+  .word 0x0040f809
+  .word 0x0000302d
+  .word 0x0002800a
+  .word 0x10000003
+  .word 0x0200102d
+  .word 0xae000000
+  .word 0x0200102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004D0C30 NONMATCHING
@@ -4697,24 +5042,43 @@ undefined4 FUN_004d0d10(int param_1)
   return 1;
 }
 
-// FUN_004D0DC0 NONMATCHING
-undefined8 FUN_004d0dc0(undefined8 param_1,code *param_2,undefined8 param_3)
+// FUN_004D0DC0
+asm undefined8 FUN_004d0dc0(undefined8 param_1,code *param_2,undefined8 param_3)
 
 {
-  undefined4 *puVar1;
-  undefined4 *puVar2;
-  long lVar3;
-  
-  puVar2 = *(undefined4 **)((int)param_1 + 8);
-  do {
-    if (puVar2 == (undefined4 *)((int)param_1 + 8)) {
-      return param_1;
-    }
-    puVar1 = (undefined4 *)*puVar2;
-    lVar3 = (*param_2)(puVar2 + -2,param_3);
-    puVar2 = puVar1;
-  } while (lVar3 != 0);
-  return param_1;
+  .set noreorder
+  .word 0x27bdffa0
+  .word 0x8c820008
+  .word 0xffbf0050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x0080a02d
+  .word 0x7fb20020
+  .word 0x00a0982d
+  .word 0x7fb10010
+  .word 0x00c0902d
+  .word 0x26910008
+  .word 0x1051000a
+  .word 0x7fb00000
+  .word 0x8c500000
+  .word 0x2444fff8
+  .word 0x0260f809
+  .word 0x0240282d
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x1611fff9
+  .word 0x0200102d
+  .word 0x00000000
+  .word 0x0280102d
+  .word 0xdfbf0050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0060
+  .word 0x00000000
 }
 
 // FUN_004D0E40 NONMATCHING
@@ -4805,51 +5169,66 @@ undefined8 FUN_004d1070(undefined8 param_1,undefined8 param_2)
   return param_1;
 }
 
-// FUN_004D1110 NONMATCHING
-undefined8 FUN_004d1110(int param_1,undefined8 param_2)
+// FUN_004D1110
+asm undefined8 FUN_004d1110(int param_1,undefined8 param_2)
 
 {
-  int iVar1;
-  
-  iVar1 = (int)param_2;
-  if (*(int *)(iVar1 + 4) != 0) {
-    **(undefined4 **)(iVar1 + 0xc) = *(undefined4 *)(iVar1 + 8);
-    *(undefined4 *)(*(int *)(iVar1 + 8) + 4) = *(undefined4 *)(iVar1 + 0xc);
-  }
-  *(int *)(iVar1 + 4) = param_1;
-  *(undefined4 *)(iVar1 + 8) = *(undefined4 *)(param_1 + 8);
-  *(int *)(iVar1 + 0xc) = param_1 + 8;
-  *(int *)(*(int *)(param_1 + 8) + 4) = iVar1 + 8;
-  *(int *)(param_1 + 8) = iVar1 + 8;
-  return param_2;
+  .set noreorder
+  .word 0x8ca20004
+  .word 0x1440000c
+  .word 0x00000000
+  .word 0xaca40004
+  .word 0x24830008
+  .word 0x8c870008
+  .word 0x24a60008
+  .word 0x00a0102d
+  .word 0xaca70008
+  .word 0xaca3000c
+  .word 0x8c830008
+  .word 0xac660004
+  .word 0x10000008
+  .word 0xac860008
+  .word 0x8ca30008
+  .word 0x8ca2000c
+  .word 0xac430000
+  .word 0x8ca3000c
+  .word 0x8ca20008
+  .word 0x1000ffef
+  .word 0xac430004
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004D1170 NONMATCHING
-undefined8 FUN_004d1170(int param_1,undefined8 param_2)
+// FUN_004D1170
+asm undefined8 FUN_004d1170(int param_1,undefined8 param_2)
 
 {
-  long lVar1;
-  long extraout_t0;
-  int *piVar2;
-  int *extraout_t1_lo;
-  long lVar3;
-  undefined8 extraout_t2;
-  undefined8 extraout_t3;
-  
-  lVar1 = (long)(param_1 + 8);
-  lVar3 = (long)*(int *)(param_1 + 8);
-  if (lVar3 != lVar1) {
-    do {
-      piVar2 = (int *)lVar3;
-      if ((piVar2 + 2 != (int *)0x0) &&
-         (lVar3 = FUN_004d09d0((char *)(piVar2 + 2),(char *)param_2), lVar1 = extraout_t0, param_2 = extraout_t3,
-         piVar2 = extraout_t1_lo, lVar3 != 0)) {
-        return extraout_t2;
-      }
-      lVar3 = (long)*piVar2;
-    } while (lVar3 != lVar1);
-  }
-  return 0;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x24880008
+  .word 0xffbf0000
+  .word 0x8c890008
+  .word 0x11280009
+  .word 0x00a0582d
+  .word 0x252afff8
+  .word 0x25440010
+  .word 0x14800007
+  .word 0x00000000
+  .word 0x8d290000
+  .word 0x00000000
+  .word 0x1528fff9
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x0000102d
+  .word 0x0c134274
+  .word 0x0160282d
+  .word 0x1040fff7
+  .word 0x00000000
+  .word 0x0140102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 
 #pragma schedule on
@@ -4870,19 +5249,31 @@ undefined4 FUN_004d11f0(void)
 }
 #pragma schedule off
 
-// FUN_004D1210 NONMATCHING
-undefined8 FUN_004d1210(undefined8 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)
+// FUN_004D1210
+asm undefined8 FUN_004d1210(undefined8 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)
 
 {
-  undefined8 uVar1;
-  
-  if (*(code **)((int)&DAT_009600a0 + iGpffffbc60) == (code *)0x0) {
-    uVar1 = 0;
-  }
-  else {
-    uVar1 = (**(code **)((int)&DAT_009600a0 + iGpffffbc60))(param_1,param_2,param_3,param_4);
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x3c020096
+  .word 0xffbf0000
+  .word 0x24420070
+  .word 0x8f83bc60
+  .word 0x00431021
+  .word 0x8c420030
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x10000003
+  .word 0xdfbf0000
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004D1260 NONMATCHING
@@ -5087,25 +5478,43 @@ undefined8 FUN_004d15e0(undefined8 param_1,int param_2)
   return param_1;
 }
 
-// FUN_004D1840 NONMATCHING
-void FUN_004d1840(int param_1,long param_2)
+// FUN_004D1840
+asm void FUN_004d1840(int param_1,long param_2)
 
 {
-  int iVar1;
-  
-  iVar1 = (int)param_2;
-  if (*(int *)(param_1 + 4) != 0) {
-    **(undefined4 **)(param_1 + 0xc) = *(undefined4 *)(param_1 + 8);
-    *(undefined4 *)(*(int *)(param_1 + 8) + 4) = *(undefined4 *)(param_1 + 0xc);
-  }
-  *(int *)(param_1 + 4) = iVar1;
-  if (param_2 != 0) {
-    *(undefined4 *)(param_1 + 8) = *(undefined4 *)(iVar1 + 0x90);
-    *(int *)(param_1 + 0xc) = iVar1 + 0x90;
-    *(int *)(*(int *)(iVar1 + 0x90) + 4) = param_1 + 8;
-    *(int *)(iVar1 + 0x90) = param_1 + 8;
-  }
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8c830004
+  .word 0x1460000f
+  .word 0x00000000
+  .word 0x10a00014
+  .word 0xac850004
+  .word 0x8ca60090
+  .word 0x24a20090
+  .word 0x24830008
+  .word 0xac860008
+  .word 0xac82000c
+  .word 0x8ca20090
+  .word 0x00a0202d
+  .word 0xac430004
+  .word 0x0c132c9c
+  .word 0xaca30090
+  .word 0x10000009
+  .word 0xdfbf0000
+  .word 0x8c860008
+  .word 0x8c83000c
+  .word 0xac660000
+  .word 0x8c86000c
+  .word 0x8c830008
+  .word 0x1000ffec
+  .word 0xac660004
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 // FUN_004D18C0
 asm void FUN_004d18c0(int param_1)
@@ -8415,65 +8824,93 @@ undefined8 FUN_004d67b0(void)
   return uVar10;
 }
 
-// FUN_004D6A50 NONMATCHING
-void FUN_004d6a50(void)
+// FUN_004D6A50
+asm void FUN_004d6a50(void)
 
 {
-  FUN_004d65a0();
-  DAT_007ce958 = 0;
-  if (DAT_007ce968 == 0) {
-    (*DAT_0096017c)(DAT_007ce964);
-  }
-  DAT_007ce964 = 0;
-  DAT_007ce968 = 0;
-  DAT_007ce95c = 0;
-  DAT_007ce960 = 0;
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x0c135968
+  .word 0x00000000
+  .word 0x8f83bc78
+  .word 0x10600006
+  .word 0xaf80bc68
+  .word 0xaf80bc74
+  .word 0xaf80bc78
+  .word 0xaf80bc6c
+  .word 0x10000007
+  .word 0xa380bc70
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x8f84bc74
+  .word 0x1000fff7
+  .word 0xaf80bc74
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004D6AB0 NONMATCHING
-undefined4 FUN_004d6ab0(undefined4 param_1,ulong param_2,ulong param_3)
+// FUN_004D6AB0
+asm undefined4 FUN_004d6ab0(undefined4 param_1,ulong param_2,ulong param_3)
 
 {
-  undefined4 uVar1;
-  
-  if (param_2 == 0) {
-    param_2 = (ulong)DAT_007cddac;
-  }
-  if (DAT_007ce958 == 0) {
-    uVar1 = (u32)(DAT_007ce964);
-    if ((param_3 == 0) || (uVar1 = (int)param_3, (param_3 & 0x7f) == 0)) {
-      DAT_007ce964 = (u32 *)(uVar1);
-      uVar1 = 1;
-      DAT_007cddac = (ushort)param_2;
-      DAT_007ce968 = param_1;
-    }
-    else {
-      uVar1 = 0;
-    }
-  }
-  else {
-    uVar1 = 0;
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x14a00002
+  .word 0x00000000
+  .word 0x9785b0bc
+  .word 0x8f82bc68
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x10c00009
+  .word 0x00000000
+  .word 0x30c2007f
+  .word 0x10400005
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x0000102d
+  .word 0x10000005
+  .word 0x0000102d
+  .word 0xaf86bc74
+  .word 0xaf84bc78
+  .word 0x24020001
+  .word 0xa785b0bc
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004D6B10 NONMATCHING
-void FUN_004d6b10(void)
+// FUN_004D6B10
+asm void FUN_004d6b10(void)
 
 {
-  undefined8 uVar1;
-  undefined4 in_vc12;
-  undefined4 uVar2;
-  
-  uVar1 = _cfc2(in_vc12);
-  REG_VIF1_FBRST = 1;
-  REG_VIF0_FBRST = 1;
-  REG_GIF_CTRL = 1;
-  uVar2 = _ctc2((uint)uVar1 | 0x200);
-  uVar1 = _cfc2(uVar2);
-  _ctc2((uint)uVar1 | 2);
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x4843e000
+  .word 0xffbf0000
+  .word 0x24040001
+  .word 0x3c021000
+  .word 0x34630200
+  .word 0xac443c10
+  .word 0xac443810
+  .word 0xac443000
+  .word 0x48c3e000
+  .word 0x4842e000
+  .word 0x34420002
+  .word 0x48c2e000
+  .word 0x0c13e414
+  .word 0x00000000
+  .word 0x0c13ea46
+  .word 0x24040001
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 #pragma push
 #pragma schedule on
@@ -9253,27 +9690,35 @@ undefined4 FUN_004d81b0(int param_1,uint *param_2)
 
 #pragma push
 #pragma opt_rebuildconditionals off
-// FUN_004D82A0 NONMATCHING
-undefined4 FUN_004d82a0(long param_1)
+// FUN_004D82A0
+asm undefined4 FUN_004d82a0(long param_1)
 
 {
-  undefined4 uVar1;
-  
-  if (DAT_007ceac8 == 0) {
-    if (param_1 != 0) {
-      DAT_007cddd8 = 0x20;
-      DAT_00960088 = 0x4b7fffff;
-    }
-    else {
-      DAT_007cddd8 = 0x10;
-      DAT_00960088 = 0x477fff00;
-    }
-    uVar1 = 1;
-  }
-  else {
-    uVar1 = 0;
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x8f82bdd8
+  .word 0x14400012
+  .word 0x00000000
+  .word 0x10800008
+  .word 0x00000000
+  .word 0x24030020
+  .word 0x3c024b7f
+  .word 0xaf83b0e8
+  .word 0x3443ffff
+  .word 0x3c020096
+  .word 0x10000007
+  .word 0xac430088
+  .word 0x24030010
+  .word 0x3c02477f
+  .word 0xaf83b0e8
+  .word 0x3443ff00
+  .word 0x3c020096
+  .word 0xac430088
+  .word 0x10000002
+  .word 0x24020001
+  .word 0x0000102d
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma pop
 
@@ -9322,46 +9767,82 @@ long FUN_004d8320(float param_1,long param_2)
   return 0;
 }
 
-// FUN_004D83C0 NONMATCHING
-undefined8 FUN_004d83c0(undefined8 param_1,long param_2,long param_3)
+// FUN_004D83C0
+asm undefined8 FUN_004d83c0(undefined8 param_1,long param_2,long param_3)
 
 {
-  long lVar1;
-  undefined2 auStack_4 [2];
-  
-  if (((param_2 == 4) && (param_3 != 0)) && (*(int *)param_3 != 0)) {
-    lVar1 = FUN_004c1910(param_1,auStack_4);
-    if (lVar1 == 0) {
-      param_1 = 0;
-    }
-    else {
-      *(undefined2 *)(*(int *)param_3 + DAT_007ceaa8 + 0x14) = auStack_4[0];
-    }
-  }
-  else {
-    param_1 = 0;
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x00c0802d
+  .word 0x24060004
+  .word 0x14a60013
+  .word 0x0080882d
+  .word 0x12000011
+  .word 0x00000000
+  .word 0x8e020000
+  .word 0x1040000e
+  .word 0x00000000
+  .word 0x0c130644
+  .word 0x27a5003c
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x0000102d
+  .word 0x8e040000
+  .word 0x0220102d
+  .word 0x8f83bdb8
+  .word 0x8fa5003c
+  .word 0x00831821
+  .word 0x10000002
+  .word 0xa4650014
+  .word 0x0000102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0040
 }
 
-// FUN_004D8440 NONMATCHING
-undefined8 FUN_004d8440(undefined8 param_1,undefined8 param_2,long param_3)
+// FUN_004D8440
+asm undefined8 FUN_004d8440(undefined8 param_1,undefined8 param_2,long param_3)
 
 {
-  long lVar1;
-  uint uStack_4;
-  
-  if ((param_3 == 0) || (*(int *)param_3 == 0)) {
-    param_1 = 0;
-  }
-  else {
-    uStack_4 = (uint)*(ushort *)(*(int *)param_3 + DAT_007ceaa8 + 0x14);
-    lVar1 = FUN_004c17f0(param_1,&uStack_4,4);
-    if (lVar1 == 0) {
-      param_1 = 0;
-    }
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x10c0000e
+  .word 0x0080802d
+  .word 0x8cc30000
+  .word 0x1060000b
+  .word 0x00000000
+  .word 0x8f82bdb8
+  .word 0x27a5002c
+  .word 0x24060004
+  .word 0x00621021
+  .word 0x94420014
+  .word 0x0c1305fc
+  .word 0xafa2002c
+  .word 0x0002800a
+  .word 0x10000002
+  .word 0x0200102d
+  .word 0x0000102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
+  .word 0x00000000
+  .word 0x10800005
+  .word 0x0000102d
+  .word 0x8c830000
+  .word 0x10600002
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_004D84C0 NONMATCHING
@@ -14972,28 +15453,39 @@ void FUN_004e2f10(void)
   return;
 }
 
-// FUN_004E3090 NONMATCHING
-int FUN_004e3090(void)
+// FUN_004E3090
+asm int FUN_004e3090(void)
 
 {
-  int iVar1;
-  
-  iVar1 = (int)(iGpffffbdd8);
-  if (iGpffffbdd8 != 0) {
-    if (iGpffffbd84 != 0) {
-      if (iGpffffbd84 != 0) {
-        FUN_004cde90((u64)(int)iGpffffbd84);
-      }
-      iGpffffbd84 = 0;
-    }
-    if (iGpffffbd80 != 0) {
-      if (iGpffffbd80 != 0) {
-        FUN_004cde90((u64)(int)iGpffffbd80);
-      }
-      iGpffffbd80 = 0;
-    }
-  }
-  return iVar1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x8f90bdd8
+  .word 0x12000011
+  .word 0x00000000
+  .word 0x8f84bd84
+  .word 0x10800006
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x0c1337a4
+  .word 0x00000000
+  .word 0xaf80bd84
+  .word 0x8f84bd80
+  .word 0x10800006
+  .word 0x00000000
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x0c1337a4
+  .word 0x00000000
+  .word 0xaf80bd80
+  .word 0x0200102d
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_004E3100 NONMATCHING
@@ -15571,48 +16063,70 @@ void FUN_004e3640(int param_1)
   return;
 }
 
-// FUN_004E40B0 NONMATCHING
-undefined4 FUN_004e40b0(void)
+// FUN_004E40B0
+asm undefined4 FUN_004e40b0(void)
 
 {
-  undefined4 uVar1;
-  long lVar2;
-  
-  DAT_007ceaf0 = 0;
-  lVar2 = FUN_004ce0f0(0,0,0,0x80);
-  DAT_007ceae8 = (undefined4)lVar2;
-  if (lVar2 == 0) {
-    uVar1 = 0;
-  }
-  else {
-    lVar2 = FUN_004ce0f0(0,0,0,0x80);
-    DAT_007ceaec = (undefined4)lVar2;
-    if (lVar2 == 0) {
-      FUN_004cde90(DAT_007ceae8);
-      DAT_007ceae8 = 0;
-      uVar1 = 0;
-    }
-    else {
-      DAT_007ceae0 = 0;
-      uVar1 = 1;
-    }
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0000202d
+  .word 0xffbf0000
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x24070080
+  .word 0x0c13383c
+  .word 0xaf80be00
+  .word 0x1040000b
+  .word 0xaf82bdf8
+  .word 0x0000202d
+  .word 0x0000282d
+  .word 0x0000302d
+  .word 0x0c13383c
+  .word 0x24070080
+  .word 0x10400006
+  .word 0xaf82bdfc
+  .word 0xaf80bdf0
+  .word 0x10000007
+  .word 0x24020001
+  .word 0x10000005
+  .word 0x0000102d
+  .word 0x0c1337a4
+  .word 0x8f84bdf8
+  .word 0xaf80bdf8
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
-// FUN_004E4130 NONMATCHING
-void FUN_004e4130(void)
+// FUN_004E4130
+asm void FUN_004e4130(void)
 
 {
-  if (DAT_007ceae8 != 0) {
-    FUN_004cde90((u64)(int)DAT_007ceae8);
-    DAT_007ceae8 = 0;
-  }
-  if (DAT_007ceaec != 0) {
-    FUN_004cde90((u64)(int)DAT_007ceaec);
-    DAT_007ceaec = 0;
-  }
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8f84bdf8
+  .word 0x10800004
+  .word 0x00000000
+  .word 0x0c1337a4
+  .word 0x00000000
+  .word 0xaf80bdf8
+  .word 0x8f84bdfc
+  .word 0x10800004
+  .word 0x00000000
+  .word 0x0c1337a4
+  .word 0x00000000
+  .word 0xaf80bdfc
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004E4180 NONMATCHING
@@ -16254,25 +16768,31 @@ undefined4 FUN_004e4c20(int *param_1,int *param_2)
   return 0;
 }
 
-// FUN_004E4E40 NONMATCHING
-undefined8 FUN_004e4e40(void)
+// FUN_004E4E40
+asm undefined8 FUN_004e4e40(void)
 
 {
-  undefined8 uVar1;
-  undefined4 uStack_10;
-  undefined4 uStack_c;
-  undefined4 uStack_8;
-  undefined4 uStack_4;
-  
-  uVar1 = 0;
-  if (DAT_007ceaf0 != 0) {
-    uStack_c = 0;
-    uStack_10 = 0;
-    uStack_8 = *(undefined4 *)(DAT_007ceaf0 + 0xc);
-    uStack_4 = *(undefined4 *)(DAT_007ceaf0 + 0x10);
-    uVar1 = (u64)(int)FUN_004e4800(0,(int *)&uStack_10,0);
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0000
+  .word 0x8f83be00
+  .word 0x1060000a
+  .word 0x0000102d
+  .word 0xafa00014
+  .word 0x0000202d
+  .word 0xafa00010
+  .word 0x27a50010
+  .word 0x8c62000c
+  .word 0xafa20018
+  .word 0x8c620010
+  .word 0x0c139200
+  .word 0xafa2001c
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004E4E90 NONMATCHING
@@ -19967,21 +20487,30 @@ undefined8 FUN_004ec2b0(long param_1,undefined8 *param_2,long param_3)
   return 1;
 }
 
-// FUN_004EC4C0 NONMATCHING
-void FUN_004ec4c0(void)
+// FUN_004EC4C0
+asm void FUN_004ec4c0(void)
 {
-  Vec128 *puVar2;
-  Vec128 auVar1;
-
-  puVar2 = (Vec128 *)DAT_007ce9f4;
-  puVar2[0] = *(Vec128 *)&DAT_00965880;
-  auVar1._0_4_ = 0x11000000;
-  auVar1._4_4_ = 0;
-  auVar1._8_8_ = 0;
-  puVar2[1] = auVar1;
-  puVar2[2] = *(Vec128 *)&DAT_00965870;
-  puVar2[3] = *(Vec128 *)&DAT_009658f0;
-  DAT_007ce9f4 = (u32 *)(puVar2 + 4);
+  .set noreorder
+  .word 0x3c030096
+  .word 0x8f86bd04
+  .word 0x78655880
+  .word 0x0000202d
+  .word 0x3c031100
+  .word 0x7cc50000
+  .word 0x70833b89
+  .word 0x3c040096
+  .word 0x7cc70010
+  .word 0x78845870
+  .word 0x3c030096
+  .word 0x7cc40020
+  .word 0x786358f0
+  .word 0x7cc30030
+  .word 0x8f83bd04
+  .word 0x24630040
+  .word 0x03e00008
+  .word 0xaf83bd04
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004EC510 NONMATCHING
@@ -20343,21 +20872,35 @@ void FUN_004ec8a0(code *param_1,undefined8 param_2,undefined8 *param_3,undefined
   return;
 }
 
-// FUN_004ECA60 NONMATCHING
-undefined4 FUN_004eca60(int param_1,undefined8 param_2,int param_3,int param_4)
+// FUN_004ECA60
+asm undefined4 FUN_004eca60(int param_1,undefined8 param_2,int param_3,int param_4)
 
 {
-  code *ppuVar1;
-  
-  if ((DAT_007ceaf4 & 1) == 0) {
-    ppuVar1 = PTR_FUN_007bcf70;
-  }
-  else {
-    ppuVar1 = PTR_FUN_007bcf80;
-  }
-  FUN_004ec8a0(ppuVar1,0,(undefined8 *)(param_1 + param_3 * 0x40),
-               (undefined8 *)(param_1 + param_4 * 0x40));
-  return 1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x9382be04
+  .word 0x30420001
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x3c05007c
+  .word 0x10000003
+  .word 0x24a5cf80
+  .word 0x3c05007c
+  .word 0x24a5cf70
+  .word 0x00061980
+  .word 0x00071180
+  .word 0x00833021
+  .word 0x00823821
+  .word 0x00a0202d
+  .word 0x0c13b228
+  .word 0x0000282d
+  .word 0xdfbf0000
+  .word 0x24020001
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004ECAC0 NONMATCHING
@@ -20529,21 +21072,35 @@ void FUN_004ecac0(code *param_1,undefined8 param_2,undefined8 *param_3,undefined
   return;
 }
 
-// FUN_004ECCE0 NONMATCHING
-undefined4 FUN_004ecce0(int param_1,undefined8 param_2,int param_3,int param_4,int param_5)
+// FUN_004ECCE0
+asm undefined4 FUN_004ecce0(int param_1,undefined8 param_2,int param_3,int param_4,int param_5)
 
 {
-  code *ppuVar1;
-  
-  if ((DAT_007ceaf4 & 1) == 0) {
-    ppuVar1 = PTR_FUN_007bcf70;
-  }
-  else {
-    ppuVar1 = PTR_FUN_007bcf80;
-  }
-  FUN_004ecac0(ppuVar1,0,(undefined8 *)(param_1 + param_3 * 0x40),
-               (undefined8 *)(param_1 + param_4 * 0x40),(undefined8 *)(param_1 + param_5 * 0x40));
-  return 1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x9382be04
+  .word 0x30420001
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x3c09007c
+  .word 0x10000003
+  .word 0x2529cf80
+  .word 0x3c09007c
+  .word 0x2529cf70
+  .word 0x00071180
+  .word 0x00061980
+  .word 0x00823821
+  .word 0x00833021
+  .word 0x00081180
+  .word 0x0000282d
+  .word 0x00824021
+  .word 0x0c13b2b0
+  .word 0x0120202d
+  .word 0xdfbf0000
+  .word 0x24020001
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 
 // FUN_004ECD40 NONMATCHING
@@ -21534,22 +22091,43 @@ LAB_004edb70:
   } while( true );
 }
 
-// FUN_004EDBA0 NONMATCHING
-undefined4 FUN_004edba0(ulong param_1,undefined8 param_2,undefined8 param_3)
+// FUN_004EDBA0
+asm undefined4 FUN_004edba0(ulong param_1,undefined8 param_2,undefined8 param_3)
 
 {
-  code *ppuVar1;
-  
-  if ((0 < (long)param_1) && (param_1 < 6)) {
-    if ((DAT_007ceaf4 & 1) == 0) {
-      ppuVar1 = PTR_FUN_007bcf70;
-    }
-    else {
-      ppuVar1 = PTR_FUN_007bcf80;
-    }
-    (**(code **)(&DAT_0077f1b0 + (int)param_1 * 4))(ppuVar1,0,param_2,param_3);
-  }
-  return 1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0080182d
+  .word 0xffbf0000
+  .word 0x18600015
+  .word 0x00c0382d
+  .word 0x2c610006
+  .word 0x10200012
+  .word 0x00000000
+  .word 0x9382be04
+  .word 0x30420001
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x3c04007c
+  .word 0x10000003
+  .word 0x2484cf80
+  .word 0x3c04007c
+  .word 0x2484cf70
+  .word 0x3c020078
+  .word 0x00a0302d
+  .word 0x00031880
+  .word 0x2442f1b0
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0x0040f809
+  .word 0x0000282d
+  .word 0xdfbf0000
+  .word 0x24020001
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004EDC20 NONMATCHING
@@ -22570,34 +23148,66 @@ LAB_004eeb18:
   } while( true );
 }
 
-// FUN_004EEB50 NONMATCHING
-undefined4 FUN_004eeb50(ulong param_1,undefined8 param_2)
+// FUN_004EEB50
+asm undefined4 FUN_004eeb50(ulong param_1,undefined8 param_2)
 
 {
-  code *ppuVar1;
-  
-  if ((0 < (long)param_1) && (param_1 < 6)) {
-    if ((DAT_007ceaf4 & 1) == 0) {
-      ppuVar1 = PTR_FUN_007bcf70;
-    }
-    else {
-      ppuVar1 = PTR_FUN_007bcf80;
-    }
-    (**(code **)(&DAT_0077f1d0 + (int)param_1 * 4))(ppuVar1,0,param_2);
-  }
-  return 1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0080182d
+  .word 0xffbf0000
+  .word 0x18600014
+  .word 0x00a0302d
+  .word 0x2c610006
+  .word 0x10200011
+  .word 0x00000000
+  .word 0x9382be04
+  .word 0x30420001
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x3c04007c
+  .word 0x10000003
+  .word 0x2484cf80
+  .word 0x3c04007c
+  .word 0x2484cf70
+  .word 0x3c020078
+  .word 0x00031880
+  .word 0x2442f1d0
+  .word 0x00431021
+  .word 0x8c420000
+  .word 0x0040f809
+  .word 0x0000282d
+  .word 0xdfbf0000
+  .word 0x24020001
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 
-// FUN_004EEBC0 NONMATCHING
-void FUN_004eebc0(void)
+// FUN_004EEBC0
+asm void FUN_004eebc0(void)
 
 {
-  DAT_00960098 = (u32)(FUN_004eca60);
-  DAT_0096009c = (u32)(FUN_004ecce0);
-  DAT_009600a0 = (u32)(FUN_004edba0);
-  DAT_009600a4 = (u32)(FUN_004eeb50);
-  FUN_004ec510();
-  return;
+  .set noreorder
+  .word 0x3c04004f
+  .word 0x3c03004f
+  .word 0x2484ca60
+  .word 0x3c020096
+  .word 0xac440098
+  .word 0x2463cce0
+  .word 0x3c020096
+  .word 0x3c04004f
+  .word 0xac43009c
+  .word 0x2484dba0
+  .word 0x3c020096
+  .word 0x3c03004f
+  .word 0xac4400a0
+  .word 0x2463eb50
+  .word 0x3c020096
+  .word 0x0813b144
+  .word 0xac4300a4
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004EEC10
@@ -24807,17 +25417,31 @@ undefined8 FUN_004f1ed0(undefined8 param_1,uint param_2,undefined4 param_3,uint 
   return 0;
 }
 
-// FUN_004F1F80 NONMATCHING
-bool FUN_004f1f80(void)
+// FUN_004F1F80
+asm bool FUN_004f1f80(void)
 
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(DAT_00960070_abs + iGpffffbe30 + 0x44);
-  if (iVar1 != 0) {
-    FUN_00521408(DAT_00960070_abs + iGpffffbe30 + 0x40,0,0x3c);
-  }
-  return iVar1 != 0;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x3c020096
+  .word 0xffbf0000
+  .word 0x24420070
+  .word 0x8f83be30
+  .word 0x00431821
+  .word 0x8c620044
+  .word 0x10400007
+  .word 0x00000000
+  .word 0x24640040
+  .word 0x0000282d
+  .word 0x0c148502
+  .word 0x2406003c
+  .word 0x10000002
+  .word 0x24020001
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
 }
 
 // FUN_004F1FD0 NONMATCHING
@@ -24982,22 +25606,39 @@ undefined4 FUN_004f22b0(undefined2 param_1,undefined2 param_2)
   return 0;
 }
 
-// FUN_004F23C0 NONMATCHING
-undefined4 FUN_004f23c0(long param_1)
+// FUN_004F23C0
+asm undefined4 FUN_004f23c0(long param_1)
 
 {
-  if (param_1 == 0) {
-    if (*(int *)((int)&DAT_0096008c + iGpffffbe30) == 0) {
-      *(int *)((int)DAT_00960070 + iGpffffbe30) = 0;
-    }
-    else {
-      *(int *)((int)DAT_00960070 + iGpffffbe30) = *(int *)((int)&DAT_0096008c + iGpffffbe30);
-    }
-  }
-  else {
-    *(int *)((int)DAT_00960070 + iGpffffbe30) = (int)param_1;
-  }
-  return *(undefined4 *)((int)DAT_00960070 + iGpffffbe30);
+  .set noreorder
+  .word 0x1080000c
+  .word 0x00000000
+  .word 0x8f83be30
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x00431021
+  .word 0xac440000
+  .word 0x8f83be30
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x00431021
+  .word 0x1000000c
+  .word 0x8c420000
+  .word 0x8f83be30
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x00431821
+  .word 0x8c62001c
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x1000fff2
+  .word 0xac620000
+  .word 0x1000fff0
+  .word 0xac600000
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004F2430 NONMATCHING
@@ -25158,18 +25799,39 @@ void FUN_004f28f0(undefined2 *param_1)
   return;
 }
 
-// FUN_004F2990 NONMATCHING
-undefined4 FUN_004f2990(void)
+// FUN_004F2990
+asm undefined4 FUN_004f2990(void)
 
 {
-  if (iGpffffbe3c != 0) {
-    FUN_004c3c30(*(undefined4 *)((int)DAT_00960070 + iGpffffbe38));
-    *(undefined4 *)((int)DAT_00960070 + iGpffffbe38) = 0;
-    FUN_004f6970(uGpffffbe40);
-    uGpffffbe40 = 0;
-    iGpffffbe3c = 0;
-  }
-  return 1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0xffbf0000
+  .word 0x8f82be3c
+  .word 0x14400003
+  .word 0x00000000
+  .word 0x10000011
+  .word 0x24020001
+  .word 0x8f83be38
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x00431021
+  .word 0x0c130f0c
+  .word 0x8c440000
+  .word 0x8f83be38
+  .word 0x3c020096
+  .word 0x24420070
+  .word 0x8f84be40
+  .word 0x00431021
+  .word 0x0c13da5c
+  .word 0xac400000
+  .word 0xaf80be40
+  .word 0x1000ffef
+  .word 0xaf80be3c
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_004F2A00 NONMATCHING
@@ -25427,50 +26089,74 @@ void FUN_004f3010(long param_1)
   return;
 }
 
-// FUN_004F30E0 NONMATCHING
-uint FUN_004f30e0(int param_1)
+// FUN_004F30E0
+asm uint FUN_004f30e0(int param_1)
 
 {
-  uint uVar1;
-  uint uVar2;
-  undefined4 uStack_8;
-  undefined4 uStack_4;
-  
-  uVar1 = param_1 + 3U & 0xfffffffc;
-  uVar2 = uGpffffbe48 - uVar1;
-  uGpffffbe48 = uVar2;
-  if (uVar2 < uGpffffbe4c) {
-    uGpffffbe48 = uVar2 + uVar1;
-    uStack_8 = 1;
-    uStack_4 = FUN_004c1d10(0xffffffff80000013);
-    FUN_004c1c50(&uStack_8);
-    uVar2 = 0;
-  }
-  return uVar2;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x24840003
+  .word 0xffbf0000
+  .word 0x2403fffc
+  .word 0x00832824
+  .word 0x8f82be48
+  .word 0x8f83be4c
+  .word 0x00451023
+  .word 0x0043182b
+  .word 0x14600003
+  .word 0xaf82be48
+  .word 0x1000000d
+  .word 0xdfbf0000
+  .word 0x00451021
+  .word 0x24030001
+  .word 0xaf82be48
+  .word 0x3c028000
+  .word 0xafa30018
+  .word 0x0c130744
+  .word 0x34440013
+  .word 0xafa2001c
+  .word 0x0c130714
+  .word 0x27a40018
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
-// FUN_004F3150 NONMATCHING
-int FUN_004f3150(int param_1)
+// FUN_004F3150
+asm int FUN_004f3150(int param_1)
 
 {
-  uint uVar1;
-  int iVar2;
-  undefined4 uStack_8;
-  undefined4 uStack_4;
-  
-  uVar1 = param_1 + 3U & 0xfffffffc;
-  uGpffffbe4c = uGpffffbe4c + uVar1;
-  if (uGpffffbe48 < uGpffffbe4c) {
-    uGpffffbe4c = uGpffffbe4c - uVar1;
-    uStack_8 = 1;
-    uStack_4 = FUN_004c1d10(0xffffffff80000013);
-    FUN_004c1c50(&uStack_8);
-    iVar2 = 0;
-  }
-  else {
-    iVar2 = uGpffffbe4c - uVar1;
-  }
-  return iVar2;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x24840003
+  .word 0xffbf0000
+  .word 0x2402fffc
+  .word 0x00822824
+  .word 0x8f83be4c
+  .word 0x8f82be48
+  .word 0x00651821
+  .word 0x0043082b
+  .word 0x14200003
+  .word 0xaf83be4c
+  .word 0x1000000c
+  .word 0x00651023
+  .word 0x00651023
+  .word 0xaf82be4c
+  .word 0x24030001
+  .word 0x3c028000
+  .word 0xafa30018
+  .word 0x0c130744
+  .word 0x34440013
+  .word 0xafa2001c
+  .word 0x0c130714
+  .word 0x27a40018
+  .word 0x0000102d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_004F31C0 NONMATCHING
@@ -27341,19 +28027,35 @@ void FUN_004f5c50(int param_1)
 #pragma push
 #pragma opt_rebuildconditionals off
 #pragma schedule on
-// FUN_004F5D30 NONMATCHING
-void FUN_004f5d30(int param_1,undefined8 param_2,int **param_3)
+// FUN_004F5D30
+asm void FUN_004f5d30(int param_1,undefined8 param_2,int **param_3)
 
 {
-  int *piVar1;
-  
-  piVar1 = (int *)FUN_004f3150(8);
-  if (*param_3 == 0) {
-    *param_3 = piVar1;
-  }
-  *piVar1 = param_1;
-  piVar1[1] = *(int *)(param_1 + 8);
-  return;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x00c0802d
+  .word 0x0c13cc54
+  .word 0x24040008
+  .word 0x8e030000
+  .word 0x10600005
+  .word 0x00000000
+  .word 0xac510000
+  .word 0x8e230008
+  .word 0x10000003
+  .word 0xac430004
+  .word 0x1000fffb
+  .word 0xae020000
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
+  .word 0x00000000
+  .word 0x00000000
 }
 #pragma pop
 
@@ -27506,21 +28208,43 @@ undefined8 FUN_004f5d90(int param_1,undefined4 *param_2)
   return 0;
 }
 
-// FUN_004F6140 NONMATCHING
-long FUN_004f6140(undefined8 param_1)
+// FUN_004F6140
+asm long FUN_004f6140(undefined8 param_1)
 
 {
-  long lVar1;
-  undefined4 uStack_4;
-  
-  uStack_4 = 0;
-  lVar1 = FUN_004f50a0(param_1);
-  if ((((lVar1 == 0) && (lVar1 = FUN_004f5520((int)param_1), lVar1 == 0)) &&
-      (lVar1 = FUN_004f57f0((int)param_1,(int *)&uStack_4), lVar1 == 0)) &&
-     (lVar1 = FUN_004f5a90((int)param_1,&uStack_4), lVar1 == 0)) {
-    FUN_004f5d90((int)param_1,(undefined4 *)uStack_4);
-  }
-  return lVar1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x0c13d428
+  .word 0xafa0002c
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000014
+  .word 0xdfbf0010
+  .word 0x0c13d548
+  .word 0x0200202d
+  .word 0x1440000f
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c13d5fc
+  .word 0x27a5002c
+  .word 0x1440000a
+  .word 0x00000000
+  .word 0x0200202d
+  .word 0x0c13d6a4
+  .word 0x27a5002c
+  .word 0x14400005
+  .word 0x00000000
+  .word 0x0c13d764
+  .word 0x8fa5002c
+  .word 0x1000ffed
+  .word 0x00000000
+  .word 0xdfbf0010
+  .word 0x7bb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
 // FUN_004F61C0 NONMATCHING
@@ -29859,37 +30583,70 @@ FUN_004fa558(ulong *param_1,short param_2,ushort param_3,short param_4,short par
   return 8;
 }
 
-// FUN_004FA738 NONMATCHING
-void FUN_004fa738(int param_1,uint param_2)
+// FUN_004FA738
+asm void FUN_004fa738(int param_1,uint param_2)
 
 {
-  FUN_004f94e0((u64 *)(int)((param_2 & 1) * 0x28 + param_1));
-  if ((param_2 & 1) == 0) {
-    FUN_004f9850((u64 *)(int)(param_1 + 0x50));
-  }
-  else {
-    FUN_004f9850((u64 *)(int)(param_1 + 0x1c0));
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffb10010
+  .word 0x0080882d
+  .word 0xffb00000
+  .word 0x30b00001
+  .word 0x24040028
+  .word 0x02041018
+  .word 0xffbf0020
+  .word 0x0c13e538
+  .word 0x00512021
+  .word 0x12000005
+  .word 0x00000000
+  .word 0x0c13e614
+  .word 0x262401c0
+  .word 0x10000004
+  .word 0xdfbf0020
+  .word 0x0c13e614
+  .word 0x26240050
+  .word 0xdfbf0020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0030
+  .word 0x00000000
 }
 
-// FUN_004FA798 NONMATCHING
-void FUN_004fa798(uint *param_1)
+// FUN_004FA798
+asm void FUN_004fa798(uint *param_1)
 
 {
-  int iVar1;
-  
-  if ((*(uint *)param_1 & 0x100) != 0) {
-    iVar1 = 0xffffff;
-    do {
-      if (iVar1 < 0) {
-        FUN_00505e48(0x7bd450,0,0,0,0,0,0,0);
-        FUN_004faf30((uint *)param_1);
-      }
-      iVar1 = iVar1 + -1;
-    } while ((*(uint *)param_1 & 0x100) != 0);
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffb10010
+  .word 0xffb00000
+  .word 0x3c110100
+  .word 0xffbf0030
+  .word 0x0080802d
+  .word 0xffb20020
+  .word 0x8e020000
+  .word 0x30420100
+  .word 0x1040000c
+  .word 0x3c12007c
+  .word 0x2631ffff
+  .word 0x06210005
+  .word 0x00000000
+  .word 0x0c141792
+  .word 0x2644d450
+  .word 0x0c13ebcc
+  .word 0x0200202d
+  .word 0x8e020000
+  .word 0x30420100
+  .word 0x1440fff7
+  .word 0x2631ffff
+  .word 0xdfbf0030
+  .word 0xdfb20020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
 }
 
 // FUN_004FA808 NONMATCHING
@@ -30084,104 +30841,214 @@ asm undefined4 FUN_004fac08(undefined4 param_1)
   .word 0x00000000
 }
 
-// FUN_004FAC20 NONMATCHING
-void FUN_004fac20(uint *param_1,uint param_2)
+// FUN_004FAC20
+asm void FUN_004fac20(uint *param_1,uint param_2)
 
 {
-  uint uVar1;
-  uint *puVar2;
-  
-  uVar1 = FUN_004fa890(param_2);
-  FUN_004fa798(param_1);
-  puVar2 = (uint *)param_1;
-  if (puVar2[0xc] != 0xffffffff) {
-    puVar2[0xc] = uVar1;
-  }
-  puVar2[8] = 0;
-  *puVar2 = *puVar2 & 0xfffffff3 | 0x105;
-  return;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffb00000
+  .word 0x0080802d
+  .word 0xffb10010
+  .word 0xffbf0020
+  .word 0x0c13ea24
+  .word 0x00a0202d
+  .word 0x0040882d
+  .word 0x0c13e9e6
+  .word 0x0200202d
+  .word 0x3c02ffff
+  .word 0x8e030030
+  .word 0x3442ffff
+  .word 0x54620001
+  .word 0xae110030
+  .word 0x8e020000
+  .word 0x2403fff3
+  .word 0xae000020
+  .word 0x00431024
+  .word 0xdfbf0020
+  .word 0x34420105
+  .word 0xdfb10010
+  .word 0xae020000
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
-// FUN_004FAC88 NONMATCHING
-void FUN_004fac88(uint *param_1,uint param_2,uint param_3)
+// FUN_004FAC88
+asm void FUN_004fac88(uint *param_1,uint param_2,uint param_3)
 
 {
-  uint uVar1;
-  uint *puVar2;
-  
-  uVar1 = FUN_004fa890(param_2);
-  FUN_004fa798(param_1);
-  puVar2 = (uint *)param_1;
-  if (puVar2[4] != 0xffffffff) {
-    puVar2[4] = uVar1;
-  }
-  puVar2[8] = (u32)(param_3);
-  *puVar2 = *puVar2 & 0xfffffff3 | 0x101;
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffb00000
+  .word 0x0080802d
+  .word 0xffb20020
+  .word 0xffb10010
+  .word 0x00c0902d
+  .word 0xffbf0030
+  .word 0x0c13ea24
+  .word 0x00a0202d
+  .word 0x0040882d
+  .word 0x0c13e9e6
+  .word 0x0200202d
+  .word 0x3c02ffff
+  .word 0x8e030010
+  .word 0x3442ffff
+  .word 0x54620001
+  .word 0xae110010
+  .word 0x8e020000
+  .word 0x2403fff3
+  .word 0xae120020
+  .word 0x00431024
+  .word 0xdfbf0030
+  .word 0x34420101
+  .word 0xdfb20020
+  .word 0xae020000
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
+  .word 0x00000000
 }
 
-// FUN_004FAD00 NONMATCHING
-void FUN_004fad00(uint *param_1,uint param_2,uint param_3)
+// FUN_004FAD00
+asm void FUN_004fad00(uint *param_1,uint param_2,uint param_3)
 
 {
-  uint uVar1;
-  uint *puVar2;
-  
-  uVar1 = FUN_004fa890(param_2);
-  FUN_004fa798(param_1);
-  puVar2 = (uint *)param_1;
-  if (puVar2[4] != 0xffffffff) {
-    puVar2[4] = uVar1;
-  }
-  puVar2[8] = param_3;
-  *puVar2 = *puVar2 & 0xfffffff3 | 0x109;
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffb00000
+  .word 0x0080802d
+  .word 0xffb20020
+  .word 0xffb10010
+  .word 0x00c0902d
+  .word 0xffbf0030
+  .word 0x0c13ea24
+  .word 0x00a0202d
+  .word 0x0040882d
+  .word 0x0c13e9e6
+  .word 0x0200202d
+  .word 0x3c02ffff
+  .word 0x8e030010
+  .word 0x3442ffff
+  .word 0x54620001
+  .word 0xae110010
+  .word 0x8e020000
+  .word 0x2403fff3
+  .word 0xae120020
+  .word 0x00431024
+  .word 0xdfbf0030
+  .word 0x34420109
+  .word 0xdfb20020
+  .word 0xae020000
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
+  .word 0x00000000
 }
 
-// FUN_004FAD78 NONMATCHING
-void FUN_004fad78(uint *param_1)
+// FUN_004FAD78
+asm void FUN_004fad78(uint *param_1)
 
 {
-  FUN_004fa798(param_1);
-  param_1[8] = 0;
-  *param_1 = *param_1 & 0xfffffff2 | 0x104;
-  return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffbf0010
+  .word 0x0c13e9e6
+  .word 0x0080802d
+  .word 0x8e020000
+  .word 0x2403fff3
+  .word 0x2404fffe
+  .word 0xae000020
+  .word 0x00431024
+  .word 0xdfbf0010
+  .word 0x34420004
+  .word 0x00441024
+  .word 0x34420100
+  .word 0xae020000
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
 }
 
-// FUN_004FADC0 NONMATCHING
-void FUN_004fadc0(uint *param_1,uint param_2,uint param_3)
+// FUN_004FADC0
+asm void FUN_004fadc0(uint *param_1,uint param_2,uint param_3)
 
 {
-  uint uVar1;
-  uint *puVar2;
-  
-  uVar1 = FUN_004fa890(param_2);
-  FUN_004fa798(param_1);
-  puVar2 = (uint *)param_1;
-  if (puVar2[4] != 0xffffffff) {
-    puVar2[4] = uVar1;
-  }
-  puVar2[8] = param_3;
-  *puVar2 = *puVar2 & 0xfffffff2 | 0x100;
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffb00000
+  .word 0x0080802d
+  .word 0xffb20020
+  .word 0xffb10010
+  .word 0x00c0902d
+  .word 0xffbf0030
+  .word 0x0c13ea24
+  .word 0x00a0202d
+  .word 0x0040882d
+  .word 0x0c13e9e6
+  .word 0x0200202d
+  .word 0x3c02ffff
+  .word 0x8e030010
+  .word 0x3442ffff
+  .word 0x54620001
+  .word 0xae110010
+  .word 0x8e020000
+  .word 0x2403fff3
+  .word 0x2404fffe
+  .word 0xae120020
+  .word 0x00431024
+  .word 0xdfbf0030
+  .word 0x00441024
+  .word 0xdfb20020
+  .word 0x34420100
+  .word 0xdfb10010
+  .word 0xae020000
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
+  .word 0x00000000
 }
 
-// FUN_004FAE40 NONMATCHING
-void FUN_004fae40(uint *param_1,uint param_2,uint param_3)
+// FUN_004FAE40
+asm void FUN_004fae40(uint *param_1,uint param_2,uint param_3)
 
 {
-  uint uVar1;
-  uint *puVar2;
-  
-  uVar1 = FUN_004fa890(param_2);
-  FUN_004fa798(param_1);
-  puVar2 = (uint *)param_1;
-  if (puVar2[4] != 0xffffffff) {
-    puVar2[4] = uVar1;
-  }
-  puVar2[8] = param_3;
-  *puVar2 = *puVar2 & 0xfffffff2 | 0x108;
-  return;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffb00000
+  .word 0x0080802d
+  .word 0xffb20020
+  .word 0xffb10010
+  .word 0x00c0902d
+  .word 0xffbf0030
+  .word 0x0c13ea24
+  .word 0x00a0202d
+  .word 0x0040882d
+  .word 0x0c13e9e6
+  .word 0x0200202d
+  .word 0x3c02ffff
+  .word 0x8e030010
+  .word 0x3442ffff
+  .word 0x54620001
+  .word 0xae110010
+  .word 0x8e020000
+  .word 0x2403fff3
+  .word 0x2404fffe
+  .word 0xae120020
+  .word 0x00431024
+  .word 0xdfbf0030
+  .word 0x34420008
+  .word 0xdfb20020
+  .word 0x00441024
+  .word 0xdfb10010
+  .word 0x34420100
+  .word 0xae020000
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
 }
 
 // FUN_004FAEC0
@@ -32519,19 +33386,31 @@ void FUN_004ffb30(undefined8 param_1)
 }
 #pragma optimization_level 2
 
-// FUN_004FFB38 NONMATCHING
-void FUN_004ffb38(undefined8 param_1)
+// FUN_004FFB38
+asm void FUN_004ffb38(undefined8 param_1)
 
 {
-  uint uVar1;
-  
-  FUN_004ff998();
-  uVar1 = REG_IPU_BP;
-  if ((-(uVar1 & 7) & 7) != 0) {
-    thunk_FUN_004fd7d0(param_1,(-(uVar1 & 7) & 7));
-    return;
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffbf0010
+  .word 0x0c13fe66
+  .word 0x0080802d
+  .word 0x3c021000
+  .word 0x34422020
+  .word 0x8c430000
+  .word 0x30630007
+  .word 0x00031823
+  .word 0x30650007
+  .word 0x10a00005
+  .word 0xdfbf0010
+  .word 0x0200202d
+  .word 0xdfb00000
+  .word 0x0813fe74
+  .word 0x27bd0020
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
 }
 
 // FUN_004FFB88 NONMATCHING
@@ -33233,36 +34112,54 @@ undefined4 FUN_00500a20(void)
   return 1;
 }
 
-// FUN_00500B18 NONMATCHING
-void FUN_00500b18(int param_1,uint param_2,undefined4 param_3)
+// FUN_00500B18
+asm void FUN_00500b18(int param_1,uint param_2,undefined4 param_3)
 
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(param_1 + 0x40);
-  *(undefined4 *)(iVar1 + 0xc4) = 1;
-  *(uint *)(iVar1 + 0xec) = param_2 & 0xfffffff | 0x20000000;
-  *(undefined4 *)(iVar1 + 0xf8) = param_3;
-  *(undefined4 *)(iVar1 + 0xf0) = 0;
-  *(undefined4 *)(iVar1 + 0xf4) = 0;
-  FUN_00500278(iVar1);
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x3c020fff
+  .word 0xffbf0000
+  .word 0x3442ffff
+  .word 0x00a22824
+  .word 0x3c032000
+  .word 0x8c870040
+  .word 0x00a32825
+  .word 0x24020001
+  .word 0xace200c4
+  .word 0xace500ec
+  .word 0xace600f8
+  .word 0xace000f0
+  .word 0x0c14009e
+  .word 0xace000f4
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 
-// FUN_00500B60 NONMATCHING
-void FUN_00500b60(int param_1,uint param_2,undefined4 param_3)
+// FUN_00500B60
+asm void FUN_00500b60(int param_1,uint param_2,undefined4 param_3)
 
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(param_1 + 0x40);
-  *(undefined4 *)(iVar1 + 0xf8) = param_3;
-  *(uint *)(iVar1 + 0xec) = param_2 & 0xfffffff | 0x20000000;
-  *(undefined4 *)(iVar1 + 0xf0) = 0;
-  *(undefined4 *)(iVar1 + 0xc4) = 0;
-  *(undefined4 *)(iVar1 + 0xf4) = 0;
-  FUN_00500278(iVar1);
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x3c020fff
+  .word 0xffbf0000
+  .word 0x3442ffff
+  .word 0x00a22824
+  .word 0x3c032000
+  .word 0x8c870040
+  .word 0x00a32825
+  .word 0xace600f8
+  .word 0xace500ec
+  .word 0xace000f0
+  .word 0xace000c4
+  .word 0x0c14009e
+  .word 0xace000f4
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
 }
 
 // FUN_00500BA8
@@ -33317,109 +34214,184 @@ asm undefined4 FUN_00500c90(int param_1,int param_2,undefined4 param_3,undefined
   .word 0x00000000
 }
 
-// FUN_00500CC8 NONMATCHING
-undefined4 FUN_00500cc8(int param_1,ulong param_2)
+// FUN_00500CC8
+asm undefined4 FUN_00500cc8(int param_1,ulong param_2)
 
 {
-  undefined4 uVar1;
-  
-  if (param_2 < 2) {
-    *(int *)(*(int *)(param_1 + 0x40) + 0x87c) = (int)param_2;
-    FUN_004ffda8((undefined8)(int)*(int *)(param_1 + 0x40));
-    uVar1 = 1;
-  }
-  else {
-    uVar1 = 0xffffffff;
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x2ca20002
+  .word 0xffbf0000
+  .word 0x14400003
+  .word 0x8c840040
+  .word 0x10000004
+  .word 0x2402ffff
+  .word 0x0c13ff6a
+  .word 0xac85087c
+  .word 0x24020001
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
+  .word 0x8c830040
+  .word 0x03e00008
+  .word 0x8c62087c
+  .word 0x00000000
 }
 
-// FUN_00500D10 NONMATCHING
-undefined8 FUN_00500d10(long param_1,int *param_2)
+// FUN_00500D10
+asm undefined8 FUN_00500d10(long param_1,int *param_2)
 
 {
-  int iVar1;
-  code *pcVar2;
-  undefined8 uVar3;
-  
-  uVar3 = 0;
-  if (((param_1 != 0) && (iVar1 = *(int *)((int)param_1 + 0x40), iVar1 != 0)) &&
-     (pcVar2 = *(code **)(iVar1 + *param_2 * 0xc + 0xc), pcVar2 != (code *)0x0)) {
-    uVar3 = (*pcVar2)((int)param_1,param_2,*(undefined4 *)(*param_2 * 0xc + iVar1 + 0x10));
-  }
-  return uVar3;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x0000482d
+  .word 0xffbf0010
+  .word 0x10800015
+  .word 0xffb00000
+  .word 0x8c860040
+  .word 0x10c00012
+  .word 0x2408000c
+  .word 0x8ca30000
+  .word 0x00681818
+  .word 0x00c31021
+  .word 0x8c47000c
+  .word 0x10e0000d
+  .word 0xdfbf0010
+  .word 0x8c430014
+  .word 0x0380802d
+  .word 0x0060e02d
+  .word 0x8ca20000
+  .word 0x00481818
+  .word 0x00661021
+  .word 0x00e0f809
+  .word 0x8c460010
+  .word 0x0040482d
+  .word 0x0380102d
+  .word 0x0200e02d
+  .word 0xdfbf0010
+  .word 0x0120102d
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
 }
 
-// FUN_00500D88 NONMATCHING
-undefined4 FUN_00500d88(long param_1)
+// FUN_00500D88
+asm undefined4 FUN_00500d88(long param_1)
 
 {
-  int iVar1;
-  int auStack_40[8];
-  
-  auStack_40[0] = 1;
-  if (((param_1 != 0) && (iVar1 = *(int *)((int)param_1 + 0x40), iVar1 != 0)) &&
-     (*(code **)(iVar1 + 0x18) != (code *)0x0)) {
-    (**(code **)(iVar1 + 0x18))((int)param_1,auStack_40,*(undefined4 *)(iVar1 + 0x1c));
-  }
-  return 1;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0x24020001
+  .word 0xffbf0030
+  .word 0xffb00020
+  .word 0x10800013
+  .word 0xafa20000
+  .word 0x8c860040
+  .word 0x10c00012
+  .word 0xdfbf0030
+  .word 0x8cc70018
+  .word 0x10e00010
+  .word 0xdfb00020
+  .word 0x8cc20020
+  .word 0x0380802d
+  .word 0x0040e02d
+  .word 0x8fa30000
+  .word 0x2402000c
+  .word 0x03a0282d
+  .word 0x00624018
+  .word 0x01061821
+  .word 0x00e0f809
+  .word 0x8c660010
+  .word 0x0380182d
+  .word 0x0200e02d
+  .word 0xdfbf0030
+  .word 0x24020001
+  .word 0xdfb00020
+  .word 0x03e00008
+  .word 0x27bd0040
+  .word 0x00000000
 }
 
-// FUN_00500E00 NONMATCHING
-void FUN_00500e00(undefined8 param_1)
+// FUN_00500E00
+asm void FUN_00500e00(undefined8 param_1)
 
 {
-  if (*(int *)(*(int *)((int)param_1 + 0x40) + 0x184) == 3) {
-    FUN_005006e8(param_1,-1,-1);
-  }
-  else {
-    FUN_00500858(param_1,-1,-1);
-  }
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x0080382d
+  .word 0xffbf0000
+  .word 0x24030003
+  .word 0x8ce40040
+  .word 0x8c820184
+  .word 0x10430005
+  .word 0x00000000
+  .word 0x0c140216
+  .word 0x00e0202d
+  .word 0x10000004
+  .word 0xdfbf0000
+  .word 0x0c1401ba
+  .word 0x00e0202d
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
+  .word 0x00000000
 }
 
-// FUN_00500E48 NONMATCHING
-undefined4 FUN_00500e48(int param_1)
+// FUN_00500E48
+asm undefined4 FUN_00500e48(int param_1)
 
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(param_1 + 0x40);
-  if (*(int *)(iVar1 + 0x1c8) != 0) {
-    *(undefined4 *)(*(int *)(iVar1 + 0x1c8) + 0x28) = 0;
-  }
-  if (*(int *)(iVar1 + 0x1d8) != 0) {
-    *(undefined4 *)(*(int *)(iVar1 + 0x1d8) + 0x28) = 0;
-  }
-  if (*(int *)(iVar1 + 0x1e8) != 0) {
-    *(undefined4 *)(*(int *)(iVar1 + 0x1e8) + 0x28) = 0;
-  }
-  if (*(int *)(iVar1 + 0x1cc) != 0) {
-    *(undefined4 *)(*(int *)(iVar1 + 0x1cc) + 0x28) = 0;
-  }
-  if (*(int *)(iVar1 + 0x1dc) != 0) {
-    *(undefined4 *)(*(int *)(iVar1 + 0x1dc) + 0x28) = 0;
-  }
-  if (*(int *)(iVar1 + 0x1ec) != 0) {
-    *(undefined4 *)(*(int *)(iVar1 + 0x1ec) + 0x28) = 0;
-  }
-  return 1;
+  .set noreorder
+  .word 0x8c830040
+  .word 0x8c6201c8
+  .word 0x54400001
+  .word 0xac400028
+  .word 0x8c6201d8
+  .word 0x54400001
+  .word 0xac400028
+  .word 0x8c6201e8
+  .word 0x54400001
+  .word 0xac400028
+  .word 0x8c6201cc
+  .word 0x54400001
+  .word 0xac400028
+  .word 0x8c6201dc
+  .word 0x54400001
+  .word 0xac400028
+  .word 0x8c6201ec
+  .word 0x54400001
+  .word 0xac400028
+  .word 0x03e00008
+  .word 0x24020001
+  .word 0x00000000
 }
 
-// FUN_00500EA0 NONMATCHING
-void FUN_00500ea0(int param_1,uint param_2,int param_3,int param_4)
+// FUN_00500EA0
+asm void FUN_00500ea0(int param_1,uint param_2,int param_3,int param_4)
 
 {
-  int iVar1;
-  
-  iVar1 = *(int *)(param_1 + 0x40);
-  *(int *)(iVar1 + 0xf4) = param_4 << 4;
-  *(uint *)(iVar1 + 0xec) = param_2 & 0xfffffff | 0x20000000;
-  *(int *)(iVar1 + 0xf8) = param_3 * param_4;
-  *(int *)(iVar1 + 0xf0) = param_3 << 4;
-  *(undefined4 *)(iVar1 + 0xc4) = 0;
-  FUN_00500278(iVar1);
-  return;
+  .set noreorder
+  .word 0x27bdfff0
+  .word 0x3c020fff
+  .word 0xffbf0000
+  .word 0x00c74018
+  .word 0x3442ffff
+  .word 0x00063100
+  .word 0x00a22824
+  .word 0x8c830040
+  .word 0x3c022000
+  .word 0x00073900
+  .word 0x00a22825
+  .word 0xac6700f4
+  .word 0xac6500ec
+  .word 0xac6800f8
+  .word 0xac6600f0
+  .word 0x0c14009e
+  .word 0xac6000c4
+  .word 0xdfbf0000
+  .word 0x03e00008
+  .word 0x27bd0010
 }
 #pragma optimization_level 2
 #pragma schedule on
@@ -34393,24 +35365,33 @@ void FUN_005025a0(undefined8 param_1)
   return;
 }
 
-// FUN_00502668 NONMATCHING
-void FUN_00502668(long param_1,undefined8 param_2)
+// FUN_00502668
+asm void FUN_00502668(long param_1,undefined8 param_2)
 
 {
-  int iVar1;
-  int uStack_20;
-  int uStack_1c;
-  
-  iVar1 = *(int *)((int)param_1 + 0x868);
-  if (((iVar1 == 0) || (param_1 == 0)) || (*(int *)((int)param_1 + 0xc) == 0)) {
-    FUN_005024f0(param_2);
-  }
-  else {
-    uStack_1c = (undefined4)param_2;
-    uStack_20 = 0;
-    FUN_00500d10(iVar1,&uStack_20);
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffbf0010
+  .word 0x8c830868
+  .word 0x1060000c
+  .word 0x00000000
+  .word 0x1080000a
+  .word 0x00000000
+  .word 0x8c82000c
+  .word 0x10400007
+  .word 0x0060202d
+  .word 0xafa50004
+  .word 0xafa00000
+  .word 0x0c140344
+  .word 0x03a0282d
+  .word 0x10000004
+  .word 0xdfbf0010
+  .word 0x0c14093c
+  .word 0x00a0202d
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_005026C0
@@ -34436,44 +35417,78 @@ asm void FUN_005026c0(undefined8 param_1,undefined8 param_2,undefined8 param_3)
   .word 0x27bd0120
 }
 
-// FUN_00502700 NONMATCHING
-void FUN_00502700(undefined4 param_1)
+// FUN_00502700
+asm void FUN_00502700(undefined4 param_1)
 
 {
-  uint uVar1;
-  long lVar2;
-  
-  lVar2 = FUN_0050d3a0();
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLEW = uVar1 | 0x10000;
-  REG_DMAC_3_IPU_FROM_CHCR = param_1;
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLEW = uVar1 & 0xfffeffff;
-  if (lVar2 != 0) {
-    FUN_0050d3f0();
-    return;
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffbf0010
+  .word 0x0c1434e8
+  .word 0x0080802d
+  .word 0x3c061000
+  .word 0x3c071000
+  .word 0x34c6f520
+  .word 0x3c080001
+  .word 0x8cc30000
+  .word 0x34e7f590
+  .word 0x3c041000
+  .word 0x3c05fffe
+  .word 0x00681825
+  .word 0x3484b000
+  .word 0xace30000
+  .word 0x34a5ffff
+  .word 0xac900000
+  .word 0x8cc30000
+  .word 0x00651824
+  .word 0xace30000
+  .word 0x10400004
+  .word 0xdfbf0010
+  .word 0xdfb00000
+  .word 0x081434fc
+  .word 0x27bd0020
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
-// FUN_00502778 NONMATCHING
-void FUN_00502778(undefined4 param_1)
+// FUN_00502778
+asm void FUN_00502778(undefined4 param_1)
 
 {
-  uint uVar1;
-  long lVar2;
-  
-  lVar2 = FUN_0050d3a0();
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLEW = uVar1 | 0x10000;
-  REG_DMAC_4_IPU_TO_CHCR = param_1;
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLEW = uVar1 & 0xfffeffff;
-  if (lVar2 != 0) {
-    FUN_0050d3f0();
-    return;
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffbf0010
+  .word 0x0c1434e8
+  .word 0x0080802d
+  .word 0x3c061000
+  .word 0x3c071000
+  .word 0x34c6f520
+  .word 0x3c080001
+  .word 0x8cc30000
+  .word 0x34e7f590
+  .word 0x3c041000
+  .word 0x3c05fffe
+  .word 0x00681825
+  .word 0x3484b400
+  .word 0xace30000
+  .word 0x34a5ffff
+  .word 0xac900000
+  .word 0x8cc30000
+  .word 0x00651824
+  .word 0xace30000
+  .word 0x10400004
+  .word 0xdfbf0010
+  .word 0xdfb00000
+  .word 0x081434fc
+  .word 0x27bd0020
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_005027F0 NONMATCHING
@@ -34544,48 +35559,75 @@ void FUN_005028d8(int *param_1)
   return;
 }
 
-// FUN_00502A28 NONMATCHING
-uint FUN_00502a28(int param_1)
+// FUN_00502A28
+asm uint FUN_00502a28(int param_1)
 
 {
-  int iVar1;
-  uint uVar2;
-  
-  if (param_1 == 0) {
-    do {
-      iVar1 = REG_IPU_CTRL;
-    } while (iVar1 < 0);
-    uVar2 = 0;
-  }
-  else {
-    uVar2 = 0;
-    if (param_1 == 1) {
-      uVar2 = REG_IPU_CTRL;
-      uVar2 = uVar2 >> 0x1f;
-    }
-  }
-  return uVar2;
+  .set noreorder
+  .word 0x10800006
+  .word 0x0000182d
+  .word 0x24020001
+  .word 0x1082000f
+  .word 0x0060102d
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x3c031000
+  .word 0x34632010
+  .word 0x00000000
+  .word 0x8c620000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x0440fffa
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x0000182d
+  .word 0x3c021000
+  .word 0x34422010
+  .word 0x8c430000
+  .word 0x00031fc2
+  .word 0x0060102d
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 
-// FUN_00502A90 NONMATCHING
-void FUN_00502a90(undefined4 param_1)
+// FUN_00502A90
+asm void FUN_00502a90(undefined4 param_1)
 
 {
-  uint uVar1;
-  long lVar2;
-  
-  lVar2 = FUN_0050d3a0();
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLEW = uVar1 | 0x10000;
-  REG_DMAC_4_IPU_TO_CHCR = param_1;
-  uVar1 = REG_DMAC_ENABLER;
-  REG_DMAC_ENABLEW = uVar1 & 0xfffeffff;
-  if (lVar2 != 0) {
-    FUN_0050d3f0();
-    return;
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffbf0010
+  .word 0x0c1434e8
+  .word 0x0080802d
+  .word 0x3c061000
+  .word 0x3c071000
+  .word 0x34c6f520
+  .word 0x3c080001
+  .word 0x8cc30000
+  .word 0x34e7f590
+  .word 0x3c041000
+  .word 0x3c05fffe
+  .word 0x00681825
+  .word 0x3484b400
+  .word 0xace30000
+  .word 0x34a5ffff
+  .word 0xac900000
+  .word 0x8cc30000
+  .word 0x00651824
+  .word 0xace30000
+  .word 0x10400004
+  .word 0xdfbf0010
+  .word 0xdfb00000
+  .word 0x081434fc
+  .word 0x27bd0020
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_00502B08 NONMATCHING
@@ -36052,48 +37094,80 @@ undefined8 FUN_00503680(void)
   return uStack_18;
 }
 
-// FUN_00503728 NONMATCHING
-undefined8 FUN_00503728(int param_1,undefined8 param_2,undefined8 param_3)
+// FUN_00503728
+asm undefined8 FUN_00503728(int param_1,undefined8 param_2,undefined8 param_3)
 
 {
-  long lVar1;
-  undefined8 uVar2;
-  
-  if (param_1 - 1U < 2) {
-    if (DAT_0077f490 == 0) {
-      lVar1 = FUN_00504b00();
-      if (lVar1 == 0) goto LAB_00503788;
-      DAT_0077f490 = 1;
-    }
-    uVar2 = (undefined8)(int)FUN_005048b8((char *)param_2,(int)param_3);
-  }
-  else {
-LAB_00503788:
-    uVar2 = 0xffffffffffffffff;
-  }
-  return uVar2;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0x2484ffff
+  .word 0xffb20020
+  .word 0x2c840002
+  .word 0xffb10010
+  .word 0x00c0902d
+  .word 0xffbf0030
+  .word 0x00a0882d
+  .word 0x1080000f
+  .word 0xffb00000
+  .word 0x3c100078
+  .word 0x8e02f490
+  .word 0x14400007
+  .word 0x0220202d
+  .word 0x0c1412c0
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x24020001
+  .word 0xae02f490
+  .word 0x0220202d
+  .word 0x0c14122e
+  .word 0x0240282d
+  .word 0x10000003
+  .word 0xdfbf0030
+  .word 0x2402ffff
+  .word 0xdfbf0030
+  .word 0xdfb20020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
+  .word 0x00000000
 }
 
-// FUN_005037A8 NONMATCHING
-undefined8 FUN_005037a8(long param_1,undefined8 param_2,undefined8 param_3)
+// FUN_005037A8
+asm undefined8 FUN_005037a8(long param_1,undefined8 param_2,undefined8 param_3)
 
 {
-  long lVar1;
-  undefined8 uVar2;
-  
-  if (param_1 == 0) {
-    if (DAT_0077f490 == 0) {
-      lVar1 = FUN_00504b00();
-      if (lVar1 == 0) goto LAB_00503800;
-      DAT_0077f490 = 1;
-    }
-    uVar2 = FUN_00504a30(param_2,param_3);
-  }
-  else {
-LAB_00503800:
-    uVar2 = 0xffffffffffffffff;
-  }
-  return uVar2;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffb20020
+  .word 0xffb10010
+  .word 0x00c0902d
+  .word 0xffbf0030
+  .word 0x00a0882d
+  .word 0x1480000f
+  .word 0xffb00000
+  .word 0x3c100078
+  .word 0x8e02f490
+  .word 0x14400007
+  .word 0x0220202d
+  .word 0x0c1412c0
+  .word 0x00000000
+  .word 0x10400007
+  .word 0x24020001
+  .word 0xae02f490
+  .word 0x0220202d
+  .word 0x0c14128c
+  .word 0x0240282d
+  .word 0x10000003
+  .word 0xdfbf0030
+  .word 0x2402ffff
+  .word 0xdfbf0030
+  .word 0xdfb20020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0040
+  .word 0x00000000
 }
 
 #pragma optimization_level 3
@@ -36367,80 +37441,136 @@ asm uint FUN_00503c30(void)
   andi $v0, $v0, 1
 }
 
-// FUN_00503C40 NONMATCHING
-undefined8 FUN_00503c40(undefined8 param_1)
+// FUN_00503C40
+asm undefined8 FUN_00503c40(undefined8 param_1)
 
 {
-  undefined8 uVar1;
-  uint uVar2;
-  
-  uVar2 = Status & 0x10000;
-  if (uVar2 != 0) {
-    FUN_0050d3a0();
-  }
-  uVar1 = _DisableIntc(param_1);
-  SYNC(0);
-  if (uVar2 != 0) {
-    FUN_0050d3f0();
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffb10010
+  .word 0xffbf0020
+  .word 0x0080882d
+  .word 0xffb00000
+  .word 0x40106000
+  .word 0x3c020001
+  .word 0x02028024
+  .word 0x12000003
+  .word 0x00000000
+  .word 0x0c1434e8
+  .word 0x00000000
+  .word 0x0c140bac
+  .word 0x0220202d
+  .word 0x0040882d
+  .word 0x0000000f
+  .word 0x12000004
+  .word 0x0220102d
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
-// FUN_00503CA8 NONMATCHING
-undefined8 FUN_00503ca8(undefined8 param_1)
+// FUN_00503CA8
+asm undefined8 FUN_00503ca8(undefined8 param_1)
 
 {
-  undefined8 uVar1;
-  uint uVar2;
-  
-  uVar2 = Status & 0x10000;
-  if (uVar2 != 0) {
-    FUN_0050d3a0();
-  }
-  uVar1 = _EnableIntc(param_1);
-  SYNC(0);
-  if (uVar2 != 0) {
-    FUN_0050d3f0();
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffb10010
+  .word 0xffbf0020
+  .word 0x0080882d
+  .word 0xffb00000
+  .word 0x40106000
+  .word 0x3c020001
+  .word 0x02028024
+  .word 0x12000003
+  .word 0x00000000
+  .word 0x0c1434e8
+  .word 0x00000000
+  .word 0x0c140ba8
+  .word 0x0220202d
+  .word 0x0040882d
+  .word 0x0000000f
+  .word 0x12000004
+  .word 0x0220102d
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
-// FUN_00503D10 NONMATCHING
-undefined8 FUN_00503d10(undefined8 param_1)
+// FUN_00503D10
+asm undefined8 FUN_00503d10(undefined8 param_1)
 
 {
-  undefined8 uVar1;
-  uint uVar2;
-  
-  uVar2 = Status & 0x10000;
-  if (uVar2 != 0) {
-    FUN_0050d3a0();
-  }
-  uVar1 = _DisableDmac(param_1);
-  SYNC(0);
-  if (uVar2 != 0) {
-    FUN_0050d3f0();
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffb10010
+  .word 0xffbf0020
+  .word 0x0080882d
+  .word 0xffb00000
+  .word 0x40106000
+  .word 0x3c020001
+  .word 0x02028024
+  .word 0x12000003
+  .word 0x00000000
+  .word 0x0c1434e8
+  .word 0x00000000
+  .word 0x0c140bb4
+  .word 0x0220202d
+  .word 0x0040882d
+  .word 0x0000000f
+  .word 0x12000004
+  .word 0x0220102d
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
-// FUN_00503D78 NONMATCHING
-undefined8 FUN_00503d78(undefined8 param_1)
+// FUN_00503D78
+asm undefined8 FUN_00503d78(undefined8 param_1)
 
 {
-  undefined8 uVar1;
-  uint uVar2;
-  
-  uVar2 = Status & 0x10000;
-  if (uVar2 != 0) {
-    FUN_0050d3a0();
-  }
-  uVar1 = _EnableDmac(param_1);
-  SYNC(0);
-  if (uVar2 != 0) {
-    FUN_0050d3f0();
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffb10010
+  .word 0xffbf0020
+  .word 0x0080882d
+  .word 0xffb00000
+  .word 0x40106000
+  .word 0x3c020001
+  .word 0x02028024
+  .word 0x12000003
+  .word 0x00000000
+  .word 0x0c1434e8
+  .word 0x00000000
+  .word 0x0c140bb0
+  .word 0x0220202d
+  .word 0x0040882d
+  .word 0x0000000f
+  .word 0x12000004
+  .word 0x0220102d
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0020
+  .word 0xdfb10010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0030
 }
 
 // FUN_00503DE0
@@ -36604,25 +37734,43 @@ void FUN_00504028(ulong param_1)
   return;
 }
 
-// FUN_005040C0 NONMATCHING
-uint FUN_005040c0(uint param_1)
+// FUN_005040C0
+asm uint FUN_005040c0(uint param_1)
 
 {
-  undefined4 uVar1;
-  int iVar2;
-  
-  uVar1 = DAT_00966100;
-  if ((param_1 < 0x80) && (DAT_0077f498 != 0)) {
-    iVar2 = (DAT_0096610c & 0x1ff) * 2;
-    DAT_0096610c = (DAT_0096610c & 0x1ff) + 1;
-    (&DAT_00966110)[iVar2] = 1;
-    *(char *)(iVar2 + 0x966111) = (char)param_1;
-    iSignalSema(uVar1);
-  }
-  else {
-    param_1 = 0xffffffff;
-  }
-  return param_1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0x0080802d
+  .word 0x2e020080
+  .word 0x10400005
+  .word 0xffbf0010
+  .word 0x3c020078
+  .word 0x8c43f498
+  .word 0x14600003
+  .word 0x3c030096
+  .word 0x10000010
+  .word 0x2402ffff
+  .word 0x3c050096
+  .word 0x24636108
+  .word 0x8ca46100
+  .word 0x8c620004
+  .word 0x24070001
+  .word 0x304201ff
+  .word 0x00023040
+  .word 0x24420001
+  .word 0x00662821
+  .word 0xac620004
+  .word 0xa0a70008
+  .word 0x00a0182d
+  .word 0x0c140c64
+  .word 0xa0700009
+  .word 0x0200102d
+  .word 0xdfbf0010
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_00504140 NONMATCHING
@@ -36894,20 +38042,29 @@ asm undefined8 FUN_00504418(void)
   .word 0x27bd0010
 }
 
-// FUN_00504440 NONMATCHING
-long FUN_00504440(uint param_1,undefined4 param_2,undefined4 param_3)
+// FUN_00504440
+asm long FUN_00504440(uint param_1,undefined4 param_2,undefined4 param_3)
 
 {
-  uint uStack_20;
-  undefined4 uStack_1c;
-  undefined4 uStack_18;
-  undefined *puStack_14;
-  
-  uStack_20 = param_1 & 0xffff;
-  puStack_14 = (u8 *)(&DAT_20966510);
-  uStack_1c = param_2;
-  uStack_18 = param_3;
-  return Deci2Call_typed(1,&uStack_20);
+  .set noreorder
+  .word 0x3c020096
+  .word 0x27bdffe0
+  .word 0x3c032000
+  .word 0x24426510
+  .word 0x3084ffff
+  .word 0x00431025
+  .word 0xafa50004
+  .word 0xafa40000
+  .word 0x03a0282d
+  .word 0xffbf0010
+  .word 0x24040001
+  .word 0xafa60008
+  .word 0x0c140d64
+  .word 0xafa2000c
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }
 
 // FUN_00504488
@@ -37020,18 +38177,37 @@ asm long FUN_00504560(undefined4 param_1,undefined4 param_2,uint param_3)
   .word 0x00000000
 }
 
-// FUN_00504598 NONMATCHING
-long FUN_00504598(undefined4 param_1,undefined4 param_2,uint param_3)
+// FUN_00504598
+asm long FUN_00504598(undefined4 param_1,undefined4 param_2,uint param_3)
 
 {
-  undefined4 uStack_20;
-  undefined4 uStack_1c;
-  uint uStack_18;
-  
-  uStack_18 = param_3 & 0xffff;
-  uStack_20 = param_1;
-  uStack_1c = param_2;
-  return Deci2Call_typed(0xfffffffffffffffa,&uStack_20);
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x00a0102d
+  .word 0x30c6ffff
+  .word 0xafa40000
+  .word 0xffbf0010
+  .word 0x03a0282d
+  .word 0xafa20004
+  .word 0x2404fffa
+  .word 0x0c140d64
+  .word 0xafa60008
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
+  .word 0x00052e00
+  .word 0x27bdffe0
+  .word 0x00052e03
+  .word 0xafa40000
+  .word 0xafa50004
+  .word 0x2404fff9
+  .word 0xffbf0010
+  .word 0x0c140d64
+  .word 0x03a0282d
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
 }
 
 // FUN_00504600
@@ -38147,24 +39323,32 @@ asm undefined4 FUN_00505ce0(undefined8 param_1,undefined8 param_2,long param_3, 
   .word 0x27bd0010
 }
 
-// FUN_00505D08 NONMATCHING
-void FUN_00505d08(undefined8 param_1,undefined8 param_2,int *param_3,undefined8 param_4,
+// FUN_00505D08
+asm void FUN_00505d08(undefined8 param_1,undefined8 param_2,int *param_3,undefined8 param_4,
                  undefined8 param_5,undefined8 param_6,undefined8 param_7,undefined8 param_8)
 
 {
-  int iVar1;
-  undefined8 uStack_20;
-  undefined8 uStack_18;
-  undefined8 uStack_10;
-  undefined8 uStack_8;
-  
-  uStack_20 = param_5;
-  uStack_18 = (u64)(param_6);
-  uStack_10 = (u64)(param_7);
-  uStack_8 = param_8;
-  iVar1 = (int)FUN_00504f48((code *)param_1,param_2,*param_3,(byte *)param_4,(ulong *)&uStack_20);
-  *param_3 = *param_3 - iVar1;
-  return;
+  .set noreorder
+  .word 0x27bdff80
+  .word 0xffb00000
+  .word 0xffa80060
+  .word 0x00c0802d
+  .word 0xffbf0010
+  .word 0x27a80060
+  .word 0x8e060000
+  .word 0xffa90068
+  .word 0xffaa0070
+  .word 0x0c1413d2
+  .word 0xffab0078
+  .word 0x8e030000
+  .word 0x0040202d
+  .word 0xdfbf0010
+  .word 0x00641823
+  .word 0xae030000
+  .word 0xdfb00000
+  .word 0x03e00008
+  .word 0x27bd0080
+  .word 0x00000000
 }
 
 // FUN_00505D58
@@ -38188,73 +39372,105 @@ asm void FUN_00505d58(undefined4 param_1,undefined8 param_2,undefined8 param_3,u
   .word 0x27bd0020
 }
 
-// FUN_00505D90 NONMATCHING
-void FUN_00505d90(undefined4 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4,
+// FUN_00505D90
+asm void FUN_00505d90(undefined4 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4,
                  undefined8 param_5,undefined8 param_6,undefined8 param_7,undefined8 param_8)
 
 {
-  undefined4 auStack_90 [4];
-  undefined8 uStack_28;
-  undefined8 uStack_20;
-  undefined8 uStack_18;
-  undefined8 uStack_10;
-  undefined8 uStack_8;
-  
-  auStack_90[0] = param_1;
-  uStack_28 = param_4;
-  uStack_20 = param_5;
-  uStack_18 = (u64)(param_6);
-  uStack_10 = (u64)(param_7);
-  uStack_8 = param_8;
-  FUN_00504f48((code *)0x505c60,auStack_90[0],param_2,(byte *)param_3,(ulong *)&uStack_28);
-  return;
+  .set noreorder
+  .word 0x27bdff70
+  .word 0xffa70068
+  .word 0xafa40000
+  .word 0x00c0382d
+  .word 0xffa80070
+  .word 0x00a0302d
+  .word 0x3c040050
+  .word 0xffbf0010
+  .word 0xffa90078
+  .word 0x24845c60
+  .word 0xffaa0080
+  .word 0x03a0282d
+  .word 0xffab0088
+  .word 0x0c1413d2
+  .word 0x27a80068
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0090
 }
 
-// FUN_00505DD8 NONMATCHING
-void FUN_00505dd8(undefined8 param_1,undefined8 param_2, u64 param_3, u64 param_4, u64 param_5, u64 param_6, u64 param_7, u64 param_8)
+// FUN_00505DD8
+asm void FUN_00505dd8(undefined8 param_1,undefined8 param_2, u64 param_3, u64 param_4, u64 param_5, u64 param_6, u64 param_7, u64 param_8)
 
 {
-  long lVar1;
-  undefined4 auStack_50 [4];
-  
-  auStack_50[0] = 0;
-  lVar1 = FUN_0050d3a0();
-  FUN_00504f48((code *)0x505cb8,auStack_50[0],0xffffffffffffffff,(byte *)param_1,(ulong *)param_2);
-  if (lVar1 != 0) {
-    FUN_0050d3f0();
-  }
-  return;
+  .set noreorder
+  .word 0x27bdffb0
+  .word 0xffb20030
+  .word 0xffb10020
+  .word 0x00a0902d
+  .word 0xffb00010
+  .word 0x0080882d
+  .word 0xffbf0040
+  .word 0x0c1434e8
+  .word 0xafa00000
+  .word 0x3c040050
+  .word 0x3c06ffff
+  .word 0x0040802d
+  .word 0x24845cb8
+  .word 0x0220382d
+  .word 0x0240402d
+  .word 0x03a0282d
+  .word 0x0c1413d2
+  .word 0x34c6ffff
+  .word 0x12000004
+  .word 0xdfbf0040
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0xdfbf0040
+  .word 0xdfb20030
+  .word 0xdfb10020
+  .word 0xdfb00010
+  .word 0x03e00008
+  .word 0x27bd0050
 }
 
-// FUN_00505E48 NONMATCHING
-void FUN_00505e48(undefined8 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4,
+// FUN_00505E48
+asm void FUN_00505e48(undefined8 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4,
                  undefined8 param_5,undefined8 param_6,undefined8 param_7,undefined8 param_8)
 
 {
-  long lVar1;
-  undefined4 auStack_c0 [4];
-  undefined8 uStack_38;
-  undefined8 uStack_30;
-  undefined8 uStack_28;
-  undefined8 uStack_20;
-  undefined8 uStack_18;
-  undefined8 uStack_10;
-  undefined8 uStack_8;
-  
-  auStack_c0[0] = 0;
-  uStack_38 = param_2;
-  uStack_30 = (u64)(param_3);
-  uStack_28 = param_4;
-  uStack_20 = param_5;
-  uStack_18 = (u64)(param_6);
-  uStack_10 = (u64)(param_7);
-  uStack_8 = param_8;
-  lVar1 = FUN_0050d3a0();
-  FUN_00504f48((code *)0x505cb8,auStack_c0[0],0xffffffffffffffff,(byte *)param_1,(ulong *)&uStack_38);
-  if (lVar1 != 0) {
-    FUN_0050d3f0();
-  }
-  return;
+  .set noreorder
+  .word 0x27bdff40
+  .word 0xffb00010
+  .word 0xffb10020
+  .word 0x0080802d
+  .word 0xffbf0030
+  .word 0xffa50088
+  .word 0xffa60090
+  .word 0xffa70098
+  .word 0xffa800a0
+  .word 0xffa900a8
+  .word 0xffaa00b0
+  .word 0xffab00b8
+  .word 0x0c1434e8
+  .word 0xafa00000
+  .word 0x3c040050
+  .word 0x3c06ffff
+  .word 0x0040882d
+  .word 0x24845cb8
+  .word 0x0200382d
+  .word 0x03a0282d
+  .word 0x34c6ffff
+  .word 0x0c1413d2
+  .word 0x27a80088
+  .word 0x12200004
+  .word 0xdfbf0030
+  .word 0x0c1434fc
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0xdfb10020
+  .word 0xdfb00010
+  .word 0x03e00008
+  .word 0x27bd00c0
 }
 
 // FUN_00505EC8 NONMATCHING
@@ -38519,42 +39735,68 @@ u32 FUN_00506418(undefined4 param_1,undefined4 param_2)
 }
 #pragma optimization_level 2
 
-// FUN_00506430 NONMATCHING
-void FUN_00506430(uint param_1,undefined4 param_2,undefined4 param_3)
+// FUN_00506430
+asm void FUN_00506430(uint param_1,undefined4 param_2,undefined4 param_3)
 
 {
-  undefined4 *puVar1;
-  int iVar2;
-  int iVar3;
-  
-  if ((int)param_1 < 0) {
-    iVar3 = (param_1 & 0x7fffffff) * 0xc;
-    puVar1 = (undefined4 *)(iVar3 + DAT_00966a64);
-    puVar1[1] = param_3;
-    *puVar1 = param_2;
-    iVar2 = DAT_00966a64;
-  }
-  else {
-    iVar3 = param_1 * 0xc;
-    puVar1 = (undefined4 *)(iVar3 + DAT_00966a6c);
-    puVar1[1] = param_3;
-    *puVar1 = param_2;
-    iVar2 = DAT_00966a6c;
-  }
-  *(undefined1 **)(iVar3 + iVar2 + 8) = (undefined1 *)&_mips_gp0_value;
-  return;
+  .set noreorder
+  .word 0x0080102d
+  .word 0x0441000f
+  .word 0x00a0382d
+  .word 0x3c037fff
+  .word 0x2405000c
+  .word 0x3463ffff
+  .word 0x3c040096
+  .word 0x00431824
+  .word 0x24846a58
+  .word 0x00651818
+  .word 0x8c82000c
+  .word 0x00621021
+  .word 0xac460004
+  .word 0xac470000
+  .word 0x0380282d
+  .word 0x1000000b
+  .word 0x8c82000c
+  .word 0x2403000c
+  .word 0x3c040096
+  .word 0x00431818
+  .word 0x24846a58
+  .word 0x8c820014
+  .word 0x00621021
+  .word 0xac460004
+  .word 0xac470000
+  .word 0x0380282d
+  .word 0x8c820014
+  .word 0x00621821
+  .word 0x03e00008
+  .word 0xac650008
 }
 
-// FUN_005064A8 NONMATCHING
-void FUN_005064a8(uint param_1)
+// FUN_005064A8
+asm void FUN_005064a8(uint param_1)
 
 {
-  if ((int)param_1 < 0) {
-    *(undefined4 *)((param_1 & 0x7fffffff) * 0xc + DAT_00966a64) = 0;
-    return;
-  }
-  *(undefined4 *)(param_1 * 0xc + DAT_00966a6c) = 0;
-  return;
+  .set noreorder
+  .word 0x0080302d
+  .word 0x04c1000b
+  .word 0x2402000c
+  .word 0x3c027fff
+  .word 0x2405000c
+  .word 0x3442ffff
+  .word 0x3c030096
+  .word 0x00c21024
+  .word 0x8c646a64
+  .word 0x00451018
+  .word 0x00441021
+  .word 0x03e00008
+  .word 0xac400000
+  .word 0x3c040096
+  .word 0x00c21018
+  .word 0x8c836a6c
+  .word 0x00431021
+  .word 0x03e00008
+  .word 0xac400000
+  .word 0x00000000
 }
 
 // FUN_005064F8 NONMATCHING
