@@ -23,7 +23,7 @@ src\Event\Fcl\fclShopMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\F
 src\Event\mt_evtCustomEvent.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtCustomEvent.c:217:7: error: call to undeclared function 'FUN_00172160'; ISO C99 and later do not support i
 src\Event\mt_evtCutin.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtCutin.c:126:13: error: call to undeclared function 'FUN_00396c70'; ISO C99 and later do not support implic
 src\Event\mt_evtLoadSave.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtLoadSave.c:3651:13: error: call to undeclared function 'FUN_0039ec60'; ISO C99 and later do not support im
-src\Event\mt_evtMain.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtMain.c:961:9: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support implicit
+src\Event\mt_evtMain.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtMain.c:317:29: error: 'PTR_LAB_007ba6f0' declared as array of functions of type 'code' (aka 'int ()')
 src\Event\mt_evtMenu.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtMenu.c:2140:3: error: call to undeclared function 'FUN_00521408'; ISO C99 and later do not support implici
 src\Event\mt_evtMessage.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtMessage.c:218:5: error: call to undeclared function 'FUN_0019d3f0'; ISO C99 and later do not support impli
 src\Event\mt_evtMisc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Event\mt_evtMisc.c:1022:11: error: call to undeclared function 'FUN_003b5d00'; ISO C99 and later do not support implic
@@ -97,8 +97,9 @@ src\Main\g_data.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\g_data.c:119
 src\Main\g_data_2.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Main\g_data_2.c:816:9: error: call to undeclared function 'FUN_0019d3f0_y2'; ISO C99 and later do not support implicit
 src\Scene\mt_scene.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Scene\mt_scene.c:260:22: error: call to undeclared function 'FUN_001b9120'; ISO C99 and later do not support implicit 
 src\Scene\mt_sceneFunc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Scene\mt_sceneFunc.c:849:3: error: call to undeclared function 'FUN_005225a8'; ISO C99 and later do not support implic
-src\Script\scrComuCommand.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Script\scrComuCommand.c:2015:3: error: call to undeclared function 'FUN_00521408'; ISO C99 and later do not support im
+src\Script\scrComuCommand.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Script\scrComuCommand.c:381:29: error: 'PTR_LAB_007ba6f0' declared as array of functions of type 'code' (aka 'int ()')
 src\Script\scrScriptProcess.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Script\scrScriptProcess.c:388:14: error: call to undeclared function 'datScript003112c0'; ISO C99 and later do not sup
+src\Script\scrTraceCode.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Script\scrTraceCode.c:1532:29: error: 'PTR_LAB_007ba6f0' declared as array of functions of type 'code' (aka 'int ()')
 src\Yajima\y_misc.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\Yajima\y_misc.c:731:11: error: call to undeclared function 'kwlnGetMainCamera'; ISO C99 and later do not support impli
 src\comuData.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\comuData.c:189:11: error: call to undeclared function 'FUN_00172a50'; ISO C99 and later do not support implicit functi
 src\comuEventExec.c :: C:\Projects\PERSONA 3 FES DECOMP PROJ\src\comuEventExec.c:761:5: error: call to undeclared function 'FUN_003bf180'; ISO C99 and later do not support implicit fu
