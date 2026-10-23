@@ -371,200 +371,530 @@ u8 func_00109170(void)
 
 /* Retail 0x1091A4-0x109994: reconstructed BGM and backend dispatch logic from retail instructions. W415 swapped the non-CDVD branch bodies to emit 0x001025c0 before 0x00102530 (nd 1202 -> 1202, object 1852/2080). W419 permuted all 24 declarations of name/handle/channelOffset/channel; every result stayed nd 796, object 1764. W419 ascending switch-case group order regressed to nd 828, object 1764; a scoped case-local index stayed nd 795, object 1764, while volatile indexing regressed to nd 939, object 1852. */
 // Retail common setup overrides channel 2 to flags=3/voices=1; dispatch bodies are present, with only the final tail still differing (1820/2080 bytes, 87.5%).
-// FUN_00109180 NONMATCHING
-void H_Snd_00109180(s32 channelIndex)
+// FUN_00109180
+asm void H_Snd_00109180(s32 channelIndex)
 {
-    char name[0x100];
-    void** handle;
-    s32 channelOffset;
-    HsndChannel* channel;
-
-    if (channelIndex == 0)
-    {
-        if (sBgmRestartCountdown == 1)
-        {
-            func_0054d1a8(sChannels[0].handle, -0x32);
-        }
-        else
-        {
-            func_0054d1a8(sChannels[0].handle, -0x1E);
-        }
-        sprintf(name, "%s", sBgmAdxStrings[sChannels[channelIndex].id][0]);
-        if (func_0054d130(sChannels[0].handle) != 0)
-        {
-            func_0054d118(sChannels[0].handle, 0);
-        }
-        if (sChannels[0].id == 0x3D)
-        {
-            func_0054d238(sChannels[0].handle, 1);
-            func_0054d220(sChannels[0].handle, 1);
-            func_0054d2b0(sChannels[0].handle, 10);
-        }
-        else
-        {
-            func_0054d238(sChannels[0].handle, 1);
-            func_0054d220(sChannels[0].handle, 0x1E);
-            func_0054d2b0(sChannels[0].handle, 0x37);
-        }
-        func_0054d0a0(sChannels[0].handle, name);
-        func_0054d208(sChannels[0].handle, 1);
-        sChannels[channelIndex].active = 1;
-        sChannels[channelIndex].state = HSND_CHANNEL_STARTING;
-        return;
-    }
-    channel = &sChannels[channelIndex];
-
-    channelOffset = channelIndex * sizeof(HsndChannel);
-    handle = (void**)((char*)sChannels + channelOffset + 0x10);
-    if (*handle != NULL)
-    {
-        func_0054d060(*handle);
-        *handle = NULL;
-    }
-
-    sBackendControls[channelIndex].data18 = 0;
-    sBackendControls[channelIndex].data20 = 0;
-    sBackendControls[channelIndex].data1C = 0;
-    sBackendControls[channelIndex].class = channelIndex == 2 ? 2 : 3;
-    sBackendControls[channelIndex].flags = 2;
-    sBackendControls[channelIndex].voiceCount = 2;
-    sBackendControls[channelIndex].timeout = 0x5DC0;
-    if (channelIndex == 2)
-    {
-        sBackendControls[channelIndex].flags = 3;
-        sBackendControls[channelIndex].voiceCount = 1;
-    }
-
-    switch (channel->requestType)
-    {
-        case HSND_START_NAMED_STREAM:
-            sBackendControls[channelIndex].data20 = 0;
-            sBackendControls[channelIndex].pending = 1;
-            *handle = func_0054d030(&sBackendControls[channelIndex],
-                                    sChannelData0[channelIndex],
-                                    sChannelData1[channelIndex]);
-            func_0054d238(*handle, 0);
-            if (channelIndex == 4)
-            {
-                func_0054d220(*handle, 0x5A);
-            }
-            else
-            {
-                func_0054d220(*handle, 0);
-            }
-            func_0054d0a0(*handle, channel->name);
-            func_0054d208(*handle, 1);
-            break;
-
-        case HSND_START_BGM:
-        case HSND_START_SE:
-        case HSND_START_CDVD:
-            if (channelIndex >= 2)
-            {
-                if (channel->requestType == HSND_START_CDVD)
-                {
-                    sBackendControls[channelIndex].data20 = 0;
-                }
-                sBackendControls[channelIndex].pending = 1;
-                *handle = func_0054d030(&sBackendControls[channelIndex],
-                                        sChannelData0[channelIndex],
-                                        sChannelData1[channelIndex]);
-                if (sBackendControls[channelIndex].data20 != 0)
-                {
-                    func_0054d328(*handle);
-                }
-                func_0054d238(*handle, 0);
-                if (channelIndex == 4)
-                {
-                    func_0054d220(*handle, 0x5A);
-                }
-                else
-                {
-                    func_0054d220(*handle, 0);
-                }
-            }
-            if (channel->requestType == HSND_START_CDVD)
-            {
-                func_0054d0b8(*handle, channel->modeArg.data,
-                              channel->id);
-            }
-            else if (channelIndex != 0)
-            {
-                func_001025c0(*handle, channel->name);
-            }
-            else
-            {
-                func_00102530(*handle, channel->name);
-            }
-            func_0054d208(*handle, 1);
-            break;
-
-        case HSND_START_SE_WITH_PARAM:
-        case HSND_START_STREAM_FADE:
-            if (channelIndex >= 2)
-            {
-                sBackendControls[channelIndex].class =
-                    channelIndex == 2 ? 2 : 3;
-                sBackendControls[channelIndex].pending = 1;
-                if (channel->requestType == HSND_START_STREAM_FADE)
-                {
-                    sBackendControls[channelIndex].data20 = 0;
-                    sBackendControls[channelIndex].pending = 2;
-                }
-                *handle = func_0054d030(&sBackendControls[channelIndex],
-                                        sChannelData0[channelIndex],
-                                        sChannelData1[channelIndex]);
-                if (sBackendControls[channelIndex].data20 != 0)
-                {
-                    func_0054d328(*handle);
-                }
-                func_0054d238(*handle, 0);
-                if (channelIndex == 4)
-                {
-                    func_0054d220(*handle, 0x5A);
-                }
-                else
-                {
-                    func_0054d220(*handle, 0);
-                }
-            }
-            func_0054d0d0(*handle, sChannelData0[channelIndex],
-                          sChannelData1[channelIndex]);
-            break;
-
-        case HSND_START_STREAM:
-            if (channelIndex >= 2)
-            {
-                sBackendControls[channelIndex].class = 3;
-                sBackendControls[channelIndex].pending = 2;
-                sBackendControls[channelIndex].data20 = 0;
-                *handle = func_0054d030(&sBackendControls[channelIndex],
-                                        sChannelData0[channelIndex],
-                                        sChannelData1[channelIndex]);
-                if (sBackendControls[channelIndex].data20 != 0)
-                {
-                    func_0054d328(*handle);
-                }
-                func_0054d238(*handle, 0);
-                if (channelIndex == 4)
-                {
-                    func_0054d220(*handle, 0x5A);
-                }
-                else
-                {
-                    func_0054d220(*handle, 0);
-                }
-            }
-            func_0054d0e8(*handle, channel->modeData,
-                          channel->modeArg.parameter);
-            break;
-
-        default:
-            break;
-    }
-
-    sChannels[channelIndex].active = 1;
-    sChannels[channelIndex].state = HSND_CHANNEL_STARTING;
+  .set noreorder
+  .word 0x27bdfeb0
+  .word 0xffbf0040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080882d
+  .word 0x16200069
+  .word 0x00000000
+  .word 0x8f83b21c
+  .word 0x24020001
+  .word 0x14620008
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x2405ffce
+  .word 0x0c15346a
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x2405ffe2
+  .word 0x0c15346a
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02221818
+  .word 0x3c02007e
+  .word 0x24424438
+  .word 0x00431021
+  .word 0x84430000
+  .word 0x00031040
+  .word 0x00431021
+  .word 0x00021880
+  .word 0x3c02005d
+  .word 0x24424014
+  .word 0x00431021
+  .word 0x27a40050
+  .word 0x27858848
+  .word 0x8c460000
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x0c15344c
+  .word 0x00000000
+  .word 0x10400006
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x0000282d
+  .word 0x0c153446
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x84434438
+  .word 0x2402003d
+  .word 0x14620012
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x24050001
+  .word 0x0c15348e
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x24050001
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x2405000a
+  .word 0x0c1534ac
+  .word 0x00000000
+  .word 0x10000010
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x24050001
+  .word 0x0c15348e
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x2405001e
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x24050037
+  .word 0x0c1534ac
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x27a50050
+  .word 0x0c153428
+  .word 0x00000000
+  .word 0x3c02007e
+  .word 0x8c444440
+  .word 0x24050001
+  .word 0x0c153482
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02222018
+  .word 0x24020001
+  .word 0x3c03007e
+  .word 0x24634430
+  .word 0x00641821
+  .word 0xac620000
+  .word 0x3c03007e
+  .word 0x2463443c
+  .word 0x00641821
+  .word 0xa4620000
+  .word 0x1000018e
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02229018
+  .word 0x3c02007e
+  .word 0x24424440
+  .word 0x00528021
+  .word 0x8e040000
+  .word 0x10800004
+  .word 0x00000000
+  .word 0x0c153418
+  .word 0x00000000
+  .word 0xae000000
+  .word 0x24040002
+  .word 0x1624000a
+  .word 0x00000000
+  .word 0x00111080
+  .word 0x00511021
+  .word 0x000218c0
+  .word 0x3c02007e
+  .word 0x244242f4
+  .word 0x00431821
+  .word 0xa0640000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x00111080
+  .word 0x00511021
+  .word 0x000218c0
+  .word 0x3c02007e
+  .word 0x244242f4
+  .word 0x00431821
+  .word 0x24020003
+  .word 0xa0620000
+  .word 0x00111080
+  .word 0x00511021
+  .word 0x000240c0
+  .word 0x3c02007e
+  .word 0x244242f8
+  .word 0x00481021
+  .word 0xac400000
+  .word 0x3c02007e
+  .word 0x24424300
+  .word 0x00489821
+  .word 0xae600000
+  .word 0x3c02007e
+  .word 0x244242fc
+  .word 0x00481021
+  .word 0xac400000
+  .word 0x3c02007e
+  .word 0x244242e0
+  .word 0x00483821
+  .word 0x24060002
+  .word 0xace60000
+  .word 0x3c02007e
+  .word 0x244242e4
+  .word 0x00481021
+  .word 0xac460000
+  .word 0x24055dc0
+  .word 0x3c04007e
+  .word 0x248442e8
+  .word 0x00882021
+  .word 0xac850000
+  .word 0x16260005
+  .word 0x00000000
+  .word 0x24040003
+  .word 0xace40000
+  .word 0x24040001
+  .word 0xac440000
+  .word 0x3c04007e
+  .word 0x24844444
+  .word 0x00929021
+  .word 0x86460000
+  .word 0x2cc10007
+  .word 0x1020013a
+  .word 0x00000000
+  .word 0x3c05007b
+  .word 0x24a55230
+  .word 0x00062080
+  .word 0x00852021
+  .word 0x8c840000
+  .word 0x00800008
+  .word 0x00000000
+  .word 0x00112880
+  .word 0x00b11021
+  .word 0x000220c0
+  .word 0xae600000
+  .word 0x24030001
+  .word 0x3c02007e
+  .word 0x244242f0
+  .word 0x00441021
+  .word 0xac430000
+  .word 0x24020134
+  .word 0x02221818
+  .word 0x3c02007e
+  .word 0x24424440
+  .word 0x00439021
+  .word 0x3c02007e
+  .word 0x244242e0
+  .word 0x00442021
+  .word 0x3c02007e
+  .word 0x244243f0
+  .word 0x00451821
+  .word 0x3c02007e
+  .word 0x244243d0
+  .word 0x00451021
+  .word 0x8c650000
+  .word 0x8c460000
+  .word 0x0c15340c
+  .word 0x00000000
+  .word 0xae420000
+  .word 0x0040202d
+  .word 0x0000282d
+  .word 0x0c15348e
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x16220007
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x2405005a
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02221818
+  .word 0x3c02007e
+  .word 0x24424440
+  .word 0x00438021
+  .word 0x3c02007e
+  .word 0x24424430
+  .word 0x00431021
+  .word 0x8e040000
+  .word 0x24450016
+  .word 0x0c153428
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x24050001
+  .word 0x0c153482
+  .word 0x00000000
+  .word 0x100000f4
+  .word 0x00000000
+  .word 0x2a220002
+  .word 0x14400034
+  .word 0x00000000
+  .word 0x10c00004
+  .word 0x00000000
+  .word 0x24020005
+  .word 0x14c20002
+  .word 0x00000000
+  .word 0xae600000
+  .word 0x00112880
+  .word 0x00b11021
+  .word 0x000220c0
+  .word 0x24030001
+  .word 0x3c02007e
+  .word 0x244242f0
+  .word 0x00441021
+  .word 0xac430000
+  .word 0x3c02007e
+  .word 0x244242e0
+  .word 0x00442021
+  .word 0x3c02007e
+  .word 0x244243f0
+  .word 0x00451821
+  .word 0x3c02007e
+  .word 0x244243d0
+  .word 0x00451021
+  .word 0x8c650000
+  .word 0x8c460000
+  .word 0x0c15340c
+  .word 0x00000000
+  .word 0xae020000
+  .word 0x8e620000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0c1534ca
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c15348e
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x16220007
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x2405005a
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x86430000
+  .word 0x24020005
+  .word 0x14620010
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02222018
+  .word 0x3c02007e
+  .word 0x2442454c
+  .word 0x00441821
+  .word 0x3c02007e
+  .word 0x24424438
+  .word 0x00441021
+  .word 0x84460000
+  .word 0x8e040000
+  .word 0x8c650000
+  .word 0x0c15342e
+  .word 0x00000000
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x1220000c
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02221818
+  .word 0x3c02007e
+  .word 0x24424430
+  .word 0x00431021
+  .word 0x8e040000
+  .word 0x24450016
+  .word 0x0c040970
+  .word 0x00000000
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02221818
+  .word 0x3c02007e
+  .word 0x24424430
+  .word 0x00431021
+  .word 0x8e040000
+  .word 0x24450016
+  .word 0x0c04094c
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x24050001
+  .word 0x0c153482
+  .word 0x00000000
+  .word 0x1000008f
+  .word 0x00000000
+  .word 0x2a240002
+  .word 0x1480003d
+  .word 0x00000000
+  .word 0x24040002
+  .word 0x16240004
+  .word 0x00000000
+  .word 0xa0640000
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x24040003
+  .word 0xa0640000
+  .word 0x24030001
+  .word 0xac430000
+  .word 0x24030004
+  .word 0x14c30004
+  .word 0x00000000
+  .word 0xae600000
+  .word 0x24030002
+  .word 0xac430000
+  .word 0x00112880
+  .word 0x00b11021
+  .word 0x000218c0
+  .word 0x3c02007e
+  .word 0x244242f0
+  .word 0x00431021
+  .word 0xac400000
+  .word 0x3c02007e
+  .word 0x244242e0
+  .word 0x00432021
+  .word 0x3c02007e
+  .word 0x244243f0
+  .word 0x00451821
+  .word 0x3c02007e
+  .word 0x244243d0
+  .word 0x00451021
+  .word 0x8c650000
+  .word 0x8c460000
+  .word 0x0c15340c
+  .word 0x00000000
+  .word 0xae020000
+  .word 0x8e620000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0c1534ca
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c15348e
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x16220007
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x2405005a
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02222018
+  .word 0x3c02007e
+  .word 0x24424548
+  .word 0x00441821
+  .word 0x3c02007e
+  .word 0x24424550
+  .word 0x00441021
+  .word 0x8e040000
+  .word 0x8c650000
+  .word 0x8c460000
+  .word 0x0c153434
+  .word 0x00000000
+  .word 0x10000041
+  .word 0x00000000
+  .word 0x2a240002
+  .word 0x14800031
+  .word 0x00000000
+  .word 0x00113080
+  .word 0x00d12021
+  .word 0x000428c0
+  .word 0x24040003
+  .word 0xa0640000
+  .word 0x24030002
+  .word 0xac430000
+  .word 0x3c02007e
+  .word 0x244242f0
+  .word 0x00451021
+  .word 0xac400000
+  .word 0x3c02007e
+  .word 0x244242e0
+  .word 0x00452021
+  .word 0x3c02007e
+  .word 0x244243f0
+  .word 0x00461821
+  .word 0x3c02007e
+  .word 0x244243d0
+  .word 0x00461021
+  .word 0x8c650000
+  .word 0x8c460000
+  .word 0x0c15340c
+  .word 0x00000000
+  .word 0xae020000
+  .word 0x8e620000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0c1534ca
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c15348e
+  .word 0x00000000
+  .word 0x24020004
+  .word 0x16220007
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x2405005a
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x8e040000
+  .word 0x0000282d
+  .word 0x0c153488
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02222018
+  .word 0x3c02007e
+  .word 0x24424548
+  .word 0x00441821
+  .word 0x3c02007e
+  .word 0x2442454c
+  .word 0x00441021
+  .word 0x8e040000
+  .word 0x8c650000
+  .word 0x8c460000
+  .word 0x0c15343a
+  .word 0x00000000
+  .word 0x24020134
+  .word 0x02222018
+  .word 0x24020001
+  .word 0x3c03007e
+  .word 0x24634430
+  .word 0x00641821
+  .word 0xac620000
+  .word 0x3c03007e
+  .word 0x2463443c
+  .word 0x00641821
+  .word 0xa4620000
+  .word 0xdfbf0040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0150
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_001099A0
