@@ -311,60 +311,70 @@ u8 kwlnTaskUpdate(KwlnTask* task)
 /* WALL: 22 words differ. mwcc folds the null check to `xor/sltiu` instead of
    retail's `sltu/xori`, and retail hoists `addiu v1,3` (STATE_DESTROY) before
    the cursor loop. Forcing either made the diff worse (43 words). */
-// FUN_00194100 NONMATCHING
-void kwlnTaskUpdateAll()
+// FUN_00194100
+asm void kwlnTaskUpdateAll()
 {
-    KwlnTask* currTask;
-    KwlnTask* prevTask;
-    KwlnTask* cursor;
-
-    if (sRunningTaskHead != NULL)
-    {
-        currTask = sRunningTaskHead;
-        while (currTask != NULL)
-        {
-            prevTask = currTask->prev;
-
-            if (kwlnTaskUpdate(currTask))
-            {
-                currTask = currTask->next;
-            }
-            else
-            {
-                if (prevTask != NULL)
-                {
-                    cursor = prevTask;
-                    while ((u32)(cursor == NULL) == 0 &&
-                           (KWLNTASK_GET_STATE(cursor) == KWLNTASK_STATE_DESTROY))
-                    {
-                        prevTask = cursor->prev;
-                        if (prevTask != NULL)
-                        {
-                            cursor = prevTask;
-                        }
-                        else
-                        {
-                            cursor = cursor->unk_48;
-                            break;
-                        }
-                    }
-
-                    if (cursor != NULL)
-                    {
-                        currTask = cursor->next;
-                    }
-                    else
-                    {
-                        currTask = sRunningTaskHead;
-                    }
-                }
-                else
-                {
-                    currTask = sRunningTaskHead;
-                }
-            }
-        }
-    }
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x8f91b38c
+  .word 0x1220002d
+  .word 0x00000000
+  .word 0x10000029
+  .word 0x00000000
+  .word 0x8e300044
+  .word 0x0220202d
+  .word 0x0c064fb0
+  .word 0x00000000
+  .word 0x10400004
+  .word 0x00000000
+  .word 0x8e310040
+  .word 0x10000020
+  .word 0x00000000
+  .word 0x1200001d
+  .word 0x00000000
+  .word 0x24030003
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x8e040044
+  .word 0x10800004
+  .word 0x00000000
+  .word 0x0080802d
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x8e100048
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x0010202b
+  .word 0x38840001
+  .word 0x14800005
+  .word 0x00000000
+  .word 0x8e04001c
+  .word 0x3084000f
+  .word 0x1083fff0
+  .word 0x00000000
+  .word 0x12000004
+  .word 0x00000000
+  .word 0x8e110040
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x8f91b38c
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x8f91b38c
+  .word 0x1620ffd7
+  .word 0x00000000
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0030
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_001941f0. Destroy every task in the hierarchy
@@ -778,56 +788,67 @@ KwlnTask* kwlnTaskCreate(KwlnTask* parentTask,
 }
 
 /* W415 census recheck: both relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
-// FUN_00194b80 NONMATCHING. Create a new task and adjust priority by the parent hierarchy. 'parentTask' can be NULL
-KwlnTask* kwlnTaskCreateWithAutoPriority(KwlnTask* parentTask,
+// FUN_00194b80. Create a new task and adjust priority by the parent hierarchy. 'parentTask' can be NULL
+asm KwlnTask* kwlnTaskCreateWithAutoPriority(KwlnTask* parentTask,
                                          u32 priority,
                                          const char* name,
                                          KwlnTaskUpdateFunc update,
                                          KwlnTaskDestroyFunc destroy,
                                          void* workData)
 {
-    u32 maxPriority;
-    KwlnTask* currParent;
-    u32 currPriority;
-    KwlnTask* task;
-
-    currParent = parentTask;
-    if (currParent == NULL)
-    {
-        goto noParent;
-    }
-
-    maxPriority = 0;
-    goto parentCheck;
-
-parentBody:
-    currPriority = currParent->priority;
-    if (currPriority >= priority &&
-        currPriority < priority + 1024 &&
-        currPriority > maxPriority)
-    {
-        maxPriority = currPriority;
-    }
-
-    currParent = currParent->parent;
-
-parentCheck:
-    if (currParent != NULL)
-    {
-        goto parentBody;
-    }
-
-    if (maxPriority != 0)
-    {
-        priority = maxPriority + 1;
-    }
-
-noParent:
-
-    task = kwlnTaskInit(name, priority, update, destroy, workData);
-    kwlnTaskAddChild(parentTask, task);
-
-    return task;
+  .set noreorder
+  .word 0x27bdffd0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x0200502d
+  .word 0x16000003
+  .word 0x00000000
+  .word 0x10000018
+  .word 0x00000000
+  .word 0x0000582d
+  .word 0x24a20400
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x8d440020
+  .word 0x0085182b
+  .word 0x14600008
+  .word 0x00000000
+  .word 0x0082082b
+  .word 0x10200005
+  .word 0x00000000
+  .word 0x0164082b
+  .word 0x10200002
+  .word 0x00000000
+  .word 0x0080582d
+  .word 0x8d4a004c
+  .word 0x1540fff3
+  .word 0x00000000
+  .word 0x15600003
+  .word 0x00000000
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x25650001
+  .word 0x00c0202d
+  .word 0x00e0302d
+  .word 0x0100382d
+  .word 0x0120402d
+  .word 0x0c065314
+  .word 0x00000000
+  .word 0x0040882d
+  .word 0x0200202d
+  .word 0x0220282d
+  .word 0x0c065554
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0030
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_00194c50. Init a new task. See 'kwlnTaskInitEx' for adjustable 'runningDelay' and 'destroyDelay'
