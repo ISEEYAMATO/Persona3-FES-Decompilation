@@ -429,188 +429,317 @@ void* hmallocCreateTaskE(void)
     return task;
 }
 
-// FUN_00192E70 NONMATCHING
-static void hmallocApplyInputTable(void)
+// FUN_00192E70
+asm static void hmallocApplyInputTable(void)
 {
-    u32 copied[0x28];
-    u8 entry[0x34];
-    u32 value;
-    s32 word;
-    s32 bit;
-    s32 i;
-    s32 j;
-    u16* records;
-    void* resourceA;
-    const u32* config;
-    u32* dst;
-    u32* bitWord;
-    s32 copyCount;
-    u32 first;
-    u32 second;
-
-    config = D_005E4D80;
-    dst = copied;
-    copyCount = 0x14;
-    do
-    {
-        first = config[0];
-        second = config[1];
-        config += 2;
-        copyCount--;
-        dst[0] = first;
-        dst[1] = second;
-        dst += 2;
-    } while (copyCount > 0);
-    resourceA = sHmallocResourceA;
-    func_0016cfe0(1, *(s16*)((u8*)resourceA + 0x3c));
-    func_0016d090(1, *(s16*)((u8*)resourceA + 0x3e));
-    func_0016d160(1, *(s16*)((u8*)resourceA + 0x40));
-
-    for (i = 0; i < 0x100; i++)
-    {
-        value = copied[i];
-        if (value == 0)
-            break;
-        word = (s32)value >> 5;
-        if ((s32)value < 0)
-            word = ((s32)value + 0x1f) >> 5;
-        bitWord = (u32*)sHmallocResourceC + word;
-        bit = value & 0x1f;
-        if ((s32)value < 0 && bit != 0)
-            bit -= 0x20;
-        func_0016f1f0(value,
-                      ((1u << bit) & *bitWord) != 0);
-    }
-
-    records = (u16*)sHmallocResourceB;
-    for (j = 0; j < 0x100; j++)
-    {
-        u16* record = (u16*)((u8*)records + j * 0x34);
-        if ((*record & 1) != 0)
-        {
-            func_00521408(entry, 0, 0x34);
-            func_00176680(entry, record[1]);
-            *(u16*)entry |= 1;
-            func_0017cd30(entry);
-        }
-    }
+  .set noreorder
+  .word 0x27bdfee0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x3c06005e
+  .word 0x24c64d80
+  .word 0x27a50080
+  .word 0x24040014
+  .word 0x8cc30000
+  .word 0x8cc20004
+  .word 0x24c60008
+  .word 0x2484ffff
+  .word 0xaca30000
+  .word 0xaca20004
+  .word 0x24a50008
+  .word 0x1c80fff8
+  .word 0x00000000
+  .word 0x8f90b360
+  .word 0x24040001
+  .word 0x8605003c
+  .word 0x0c05b3f8
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x8605003e
+  .word 0x0c05b424
+  .word 0x00000000
+  .word 0x24040001
+  .word 0x86050040
+  .word 0x0c05b458
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x1000001d
+  .word 0x00000000
+  .word 0x00101880
+  .word 0x007d1821
+  .word 0x24630080
+  .word 0x8c640000
+  .word 0x1080001a
+  .word 0x00000000
+  .word 0x00041143
+  .word 0x04810003
+  .word 0x00000000
+  .word 0x2482001f
+  .word 0x00021143
+  .word 0x00021880
+  .word 0x8f82b368
+  .word 0x00432821
+  .word 0x3083001f
+  .word 0x04810004
+  .word 0x00000000
+  .word 0x10600002
+  .word 0x00000000
+  .word 0x2463ffe0
+  .word 0x24020001
+  .word 0x00621804
+  .word 0x8ca20000
+  .word 0x00621024
+  .word 0x0002282b
+  .word 0x0c05bc7c
+  .word 0x00000000
+  .word 0x26100001
+  .word 0x2a030100
+  .word 0x1460ffe2
+  .word 0x00000000
+  .word 0x8f90b364
+  .word 0x0000882d
+  .word 0x1000001b
+  .word 0x00000000
+  .word 0x00111840
+  .word 0x00711821
+  .word 0x00031880
+  .word 0x00711821
+  .word 0x00031880
+  .word 0x02039021
+  .word 0x96430000
+  .word 0x30630001
+  .word 0x10600010
+  .word 0x00000000
+  .word 0x27a40040
+  .word 0x0000282d
+  .word 0x24060034
+  .word 0x0c148502
+  .word 0x00000000
+  .word 0x27a40040
+  .word 0x96450002
+  .word 0x0c05d9a0
+  .word 0x00000000
+  .word 0x97a20040
+  .word 0x34420001
+  .word 0xa7a20040
+  .word 0x27a40040
+  .word 0x0c05f34c
+  .word 0x00000000
+  .word 0x26310001
+  .word 0x2a230100
+  .word 0x1460ffe4
+  .word 0x00000000
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0120
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 
-// FUN_00193020 NONMATCHING
-static s32 hmallocTaskUpdateF(void* task)
+// FUN_00193020
+asm static s32 hmallocTaskUpdateF(void* task)
 {
-    u32* work;
-    HmallocAllocator allocator;
-    u32 state;
-    work = *(u32**)((u8*)task + 0x3c);
-    state = work[0];
-    allocator = (HmallocAllocator)(uintptr_t)D_00960184_abs;
-    if (state == 3)
-    {
-        goto stateThree;
-    }
-    if (state == 1)
-    {
-        goto stateOne;
-    }
-    if (state == 0)
-    {
-        goto stateZero;
-    }
-    goto done;
-
-stateZero:
-    if (sHmallocResourceA != NULL)
-    {
-        HMALLOC_ENGINE_FREE(sHmallocResourceA);
-    }
-    if (sHmallocResourceB != NULL)
-    {
-        HMALLOC_ENGINE_FREE(sHmallocResourceB);
-    }
-    if (sHmallocResourceC != NULL)
-    {
-        HMALLOC_ENGINE_FREE(sHmallocResourceC);
-    }
-    if (sHmallocResourceD != NULL)
-    {
-        HMALLOC_ENGINE_FREE(sHmallocResourceD);
-    }
-    sHmallocResourceA = (*allocator)(1, 0x50, 0x40000);
-    sHmallocResourceB = (*allocator)(1, 0x3400, 0x40000);
-    sHmallocResourceC = (*allocator)(1, 0x2c0, 0x40000);
-    sHmallocResourceD = (*allocator)(1, 0x2c, 0x40000);
-    sHmallocResourceMode = 0;
-    sHmallocResourceReady = 1;
-    work[2] = (u32)(uintptr_t)func_00420340(task, 0);
-    work[0] = 1;
-    goto done;
-
-stateOne:
-    if (kwlnTaskGetState((void*)(uintptr_t)work[2]) == 3)
-    {
-        sHmallocResourceReady = 0;
-        if (sHmallocResourceMode == 0)
-        {
-            if (sHmallocResourceA != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceA);
-            }
-            if (sHmallocResourceB != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceB);
-            }
-            if (sHmallocResourceC != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceC);
-            }
-            if (sHmallocResourceD != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceD);
-            }
-            sHmallocResourceA = NULL;
-            sHmallocResourceB = NULL;
-            sHmallocResourceC = NULL;
-            sHmallocResourceD = NULL;
-            work[1] = (u32)-1;
-            work[0] = 3;
-        }
-        else
-        {
-            work[1] = 1;
-            hmallocApplyInputTable();
-            sHmallocResourceMode = 0;
-            if (sHmallocResourceA != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceA);
-            }
-            if (sHmallocResourceB != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceB);
-            }
-            if (sHmallocResourceC != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceC);
-            }
-            if (sHmallocResourceD != NULL)
-            {
-                HMALLOC_ENGINE_FREE(sHmallocResourceD);
-            }
-            sHmallocResourceA = NULL;
-            sHmallocResourceB = NULL;
-            sHmallocResourceC = NULL;
-            sHmallocResourceD = NULL;
-            work[0] = 3;
-        }
-    }
-    goto done;
-
-stateThree:
-    return -1;
-
-done:
-    return 0;
+  .set noreorder
+  .word 0x27bdffc0
+  .word 0xffbf0030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080902d
+  .word 0x8c91003c
+  .word 0x8e230000
+  .word 0x24020003
+  .word 0x106200ab
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x1062004f
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x100000a7
+  .word 0x00000000
+  .word 0x8f84b360
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b364
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b368
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b36c
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf80b360
+  .word 0xaf80b364
+  .word 0xaf80b368
+  .word 0xaf80b36c
+  .word 0x3c100096
+  .word 0x26100184
+  .word 0x24040001
+  .word 0x24050050
+  .word 0x3c060004
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf82b360
+  .word 0x24040001
+  .word 0x24053400
+  .word 0x3c060004
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf82b364
+  .word 0x24040001
+  .word 0x240502c0
+  .word 0x3c060004
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf82b368
+  .word 0x24040001
+  .word 0x2405002c
+  .word 0x3c060004
+  .word 0x8e020000
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf82b36c
+  .word 0xaf80b30c
+  .word 0x24020001
+  .word 0xaf82b31c
+  .word 0x0240202d
+  .word 0x0000282d
+  .word 0x0c1080d0
+  .word 0x00000000
+  .word 0xae220008
+  .word 0x24020001
+  .word 0xae220000
+  .word 0x1000005d
+  .word 0x00000000
+  .word 0x8e240008
+  .word 0x0c0654a4
+  .word 0x00000000
+  .word 0x24030003
+  .word 0x14430057
+  .word 0x00000000
+  .word 0xaf80b31c
+  .word 0x8f82b30c
+  .word 0x1040002a
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xae220004
+  .word 0x0c064b9c
+  .word 0x00000000
+  .word 0xaf80b30c
+  .word 0x8f84b360
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b364
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b368
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b36c
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf80b360
+  .word 0xaf80b364
+  .word 0xaf80b368
+  .word 0xaf80b36c
+  .word 0x24020003
+  .word 0xae220000
+  .word 0x1000002a
+  .word 0x00000000
+  .word 0x8f84b360
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b364
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b368
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x8f84b36c
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x3c020096
+  .word 0x8c42017c
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0xaf80b360
+  .word 0xaf80b364
+  .word 0xaf80b368
+  .word 0xaf80b36c
+  .word 0x2402ffff
+  .word 0xae220004
+  .word 0x24020003
+  .word 0xae220000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0040
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_00193320
