@@ -690,329 +690,566 @@ void func_001e88f0(RuntimeWork* work, s32 section, RuntimeVec3* output);
 
 
 // W419 afpack opt_lifetimes was neutral at nd1603/object2128; opt_common_subs off reached nd1593/object2228 (over window).
-// FUN_001EE2E0 NONMATCHING
-RuntimeWork* func_001ee2e0(const void* rawData)
+// FUN_001EE2E0
+asm RuntimeWork* func_001ee2e0(const void* rawData)
 {
-    typedef struct RuntimeParsedEntry
-    {
-        void* model;
-        void* config;
-        u32 firstValue;
-        u32 secondValue;
-        u32 thirdValue;
-        f32 scale;
-    } RuntimeParsedEntry;
-    typedef struct RuntimeParsedModel
-    {
-        f32 values[13];
-    } RuntimeParsedModel;
-    typedef struct RuntimeParsedConfig
-    {
-        u32 flags;
-        void* sharedData;
-        u8 colors[16];
-    } RuntimeParsedConfig;
-    typedef struct RuntimeParsedData
-    {
-        u32 identifier;
-        u16 entryCount;
-        u16 modelCount;
-        u16 configCount;
-        u16 reserved0a;
-        RuntimeParsedEntry* entries;
-        RuntimeParsedModel* models;
-        RuntimeParsedConfig* configs;
-        u32* vectors;
-        void** payloads;
-        void* owner;
-    } RuntimeParsedData;
-    typedef struct RuntimeInputHeader
-    {
-        u32 version;
-        u32 identifier;
-        u16 entryCount;
-        u16 modelCount;
-        u16 configCount;
-        u16 reserved0e;
-        u8 records[1];
-    } RuntimeInputHeader;
-
-    const RuntimeInputHeader* input;
-    const u8* cursor;
-    const u8* inputModels[16];
-    const u8* inputConfigs[16];
-    const u8* inputConfigColors[16];
-    const u8* inputEntries[16];
-    const u8* inputPayloads[16];
-    RuntimeParsedData* output;
-    u8* outputCursor;
-    u32 allocationSize;
-    u32 payloadSize;
-    s32 entryIndex;
-    s32 modelIndex;
-    s32 configIndex;
-    s32 colorIndex;
-    s32 searchIndex;
-    u16 referenceId;
-
-    input = rawData;
-    cursor = input->records;
-
-    for (modelIndex = 0; modelIndex < input->modelCount; modelIndex++)
-    {
-        inputModels[modelIndex] = cursor;
-        cursor += 0x38;
-    }
-    for (configIndex = 0;
-         configIndex < input->configCount;
-         configIndex++)
-    {
-        cursor += 8;
-        inputConfigs[configIndex] = cursor;
-        if (*(s16*)(inputConfigs[configIndex] + 4) == 0)
-        {
-            cursor += 4;
-        }
-        else
-        {
-            func_0019d3f0(D_00684508, 0x1b1);
-        }
-        inputConfigColors[configIndex] = cursor;
-        if (*(s16*)(inputConfigs[configIndex] + 6) == 0)
-        {
-            cursor += 16;
-        }
-        else
-        {
-            func_0019d3f0(D_00684508, 0x1bd);
-        }
-    }
-    for (entryIndex = 0; entryIndex < input->entryCount; entryIndex++)
-    {
-        inputEntries[entryIndex] = cursor;
-        if (input->version == 0x65)
-        {
-            cursor += 0x20;
-        }
-        else if (input->version == 0x64)
-        {
-            cursor += 0x18;
-        }
-        else
-        {
-            func_0019d3f0(D_00684508, 0x1cb);
-        }
-        inputPayloads[entryIndex] = cursor;
-        if (input->version == 0x65)
-        {
-            cursor += *(u32*)(inputEntries[entryIndex] + 0x1c);
-        }
-        else if (input->version == 0x64)
-        {
-            cursor += *(u32*)(inputEntries[entryIndex] + 0x14);
-        }
-    }
-
-    allocationSize =
-        0x24 +
-        input->entryCount * sizeof(RuntimeParsedEntry) +
-        input->modelCount * sizeof(RuntimeParsedModel) +
-        input->configCount * sizeof(RuntimeParsedConfig) +
-        input->entryCount * sizeof(void*) +
-        input->entryCount * sizeof(u32) * 2;
-    for (entryIndex = 0; entryIndex < input->entryCount; entryIndex++)
-    {
-        if (input->version == 0x65)
-        {
-            allocationSize += *(u32*)(inputEntries[entryIndex] + 0x1c);
-        }
-        else if (input->version == 0x64)
-        {
-            allocationSize += *(u32*)(inputEntries[entryIndex] + 0x14);
-        }
-    }
-
-    output = FIELD_RUNTIME_PRIMARY_ALLOCATOR(allocationSize, 0x40000);
-    outputCursor = (u8*)output + sizeof(RuntimeParsedData);
-    output->entries = (RuntimeParsedEntry*)outputCursor;
-    outputCursor += input->entryCount * sizeof(RuntimeParsedEntry);
-    output->models = (RuntimeParsedModel*)outputCursor;
-    outputCursor += input->modelCount * sizeof(RuntimeParsedModel);
-    output->configs = (RuntimeParsedConfig*)outputCursor;
-    outputCursor += input->configCount * sizeof(RuntimeParsedConfig);
-    output->payloads = (void**)outputCursor;
-    outputCursor += input->entryCount * sizeof(void*);
-    for (entryIndex = 0; entryIndex < input->entryCount; entryIndex++)
-    {
-        output->payloads[entryIndex] = outputCursor;
-        if (input->version == 0x65)
-        {
-            outputCursor += *(u32*)(inputEntries[entryIndex] + 0x1c);
-        }
-        else if (input->version == 0x64)
-        {
-            outputCursor += *(u32*)(inputEntries[entryIndex] + 0x14);
-        }
-    }
-    output->vectors = (u32*)outputCursor;
-    output->identifier = input->identifier;
-    output->entryCount = input->entryCount;
-    output->modelCount = input->modelCount;
-    output->configCount = input->configCount;
-
-    for (modelIndex = 0; modelIndex < input->modelCount; modelIndex++)
-    {
-        const f32* source = (const f32*)(inputModels[modelIndex] + 4);
-        RuntimeParsedModel* model = &output->models[modelIndex];
-
-        model->values[0] = source[0];
-        model->values[1] = source[1];
-        model->values[2] = source[2];
-        model->values[3] = source[3];
-        model->values[4] = source[4];
-        model->values[5] = source[5];
-        model->values[6] = source[6];
-        model->values[7] = source[7];
-        model->values[9] = source[8];
-        model->values[8] = source[9];
-        model->values[10] = source[10];
-        model->values[11] = source[11];
-        model->values[12] = source[12];
-    }
-    for (configIndex = 0;
-         configIndex < input->configCount;
-         configIndex++)
-    {
-        RuntimeParsedConfig* config = &output->configs[configIndex];
-
-        config->flags = *(u16*)(inputConfigs[configIndex] + 2);
-        if ((config->flags & 1) != 0)
-        {
-            config->sharedData = D_007CE2D4;
-        }
-        else
-        {
-            config->sharedData = NULL;
-        }
-        if (*(s16*)(inputConfigs[configIndex] + 6) == 0)
-        {
-            for (colorIndex = 0; colorIndex < 4; colorIndex++)
-            {
-                const u8* source =
-                    inputConfigColors[configIndex] + colorIndex * 4;
-                u8* color = (u8*)config + (colorIndex >> 1) * 8 +
-                            (colorIndex & 1) * 4 + 8;
-
-                color[0] = source[0];
-                color[1] = source[1];
-                color[2] = source[2];
-                color[3] = source[3];
-            }
-        }
-        else
-        {
-            func_0019d3f0(D_00684508, 0x231);
-        }
-    }
-
-    for (entryIndex = 0; entryIndex < input->entryCount; entryIndex++)
-    {
-        const u8* source = inputEntries[entryIndex];
-        RuntimeParsedEntry* entry = &output->entries[entryIndex];
-
-        if (input->version == 0x65)
-        {
-            referenceId = *(u16*)(source + 2);
-        }
-        else if (input->version == 0x64)
-        {
-            referenceId = *(u16*)(source + 2);
-        }
-        for (searchIndex = 0;
-             searchIndex < input->modelCount &&
-             referenceId != *(u16*)inputModels[searchIndex];
-             searchIndex++)
-        {
-        }
-        entry->model = &output->models[searchIndex];
-
-        if (input->version == 0x65)
-        {
-            referenceId = *(u16*)(source + 4);
-        }
-        else if (input->version == 0x64)
-        {
-            referenceId = *(u16*)(source + 4);
-        }
-        for (searchIndex = 0;
-             searchIndex < input->configCount &&
-             referenceId != *(u16*)inputConfigs[searchIndex];
-             searchIndex++)
-        {
-        }
-        entry->config = &output->configs[searchIndex];
-        if (input->version == 0x65)
-        {
-            entry->firstValue = *(u16*)(source + 0x10);
-        }
-        else if (input->version == 0x64)
-        {
-            entry->firstValue = *(u16*)(source + 0x10);
-        }
-        if (input->version == 0x65)
-        {
-            entry->secondValue = *(u16*)(source + 0x12);
-        }
-        else if (input->version == 0x64)
-        {
-            entry->secondValue = *(u16*)(source + 0x12);
-        }
-        switch (input->version)
-        {
-            case 0x64:
-                entry->thirdValue = 0;
-                break;
-            case 0x65:
-                entry->thirdValue = *(u16*)(source + 0x14);
-                break;
-        }
-        switch (input->version)
-        {
-            case 0x64:
-                entry->scale = 10.0f;
-                break;
-            case 0x65:
-                entry->scale = *(f32*)(source + 0x18);
-                break;
-        }
-        switch (input->version)
-        {
-            case 0x64:
-                output->vectors[entryIndex * 2] = *(u32*)(source + 8);
-                output->vectors[entryIndex * 2 + 1] =
-                    *(u32*)(source + 0x0c);
-                break;
-            case 0x65:
-                output->vectors[entryIndex * 2] = *(u32*)(source + 8);
-                output->vectors[entryIndex * 2 + 1] =
-                    *(u32*)(source + 0x0c);
-                break;
-        }
-        switch (input->version)
-        {
-            case 0x64:
-                FUN_00521250(output->payloads[entryIndex],
-                             inputPayloads[entryIndex],
-                             *(u32*)(source + 0x14));
-                break;
-            case 0x65:
-                FUN_00521250(output->payloads[entryIndex],
-                             inputPayloads[entryIndex],
-                             *(u32*)(source + 0x1c));
-                break;
-        }
-    }
-    return (RuntimeWork*)output;
+  .set noreorder
+  .word 0x27bdfe50
+  .word 0xffbf0060
+  .word 0x7fb50050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x0200882d
+  .word 0x26100010
+  .word 0x0000202d
+  .word 0x9623000a
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x00041080
+  .word 0x005d1021
+  .word 0xac500170
+  .word 0x26100038
+  .word 0x24840001
+  .word 0x0083102a
+  .word 0x1440fff9
+  .word 0x00000000
+  .word 0x0000982d
+  .word 0x10000025
+  .word 0x00000000
+  .word 0x00131080
+  .word 0x005d1021
+  .word 0x24420130
+  .word 0xac500000
+  .word 0x26100008
+  .word 0x8c520000
+  .word 0x96420004
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x26100004
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24844508
+  .word 0x240501b1
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x00131080
+  .word 0x005d1021
+  .word 0xac5000f0
+  .word 0x96420006
+  .word 0x10400003
+  .word 0x00000000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x26100010
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24844508
+  .word 0x240501bd
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x26730001
+  .word 0x9622000c
+  .word 0x0262102a
+  .word 0x1440ffd9
+  .word 0x00000000
+  .word 0x0000a02d
+  .word 0x1000002d
+  .word 0x00000000
+  .word 0x00149880
+  .word 0x027d1021
+  .word 0x245200b0
+  .word 0xae500000
+  .word 0x8e230000
+  .word 0x24020065
+  .word 0x10620009
+  .word 0x00000000
+  .word 0x24020064
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x26100018
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x26100020
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24844508
+  .word 0x240501cb
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x027d1021
+  .word 0xac500070
+  .word 0x8e230000
+  .word 0x24020065
+  .word 0x1062000b
+  .word 0x00000000
+  .word 0x24020064
+  .word 0x10620003
+  .word 0x00000000
+  .word 0x10000009
+  .word 0x00000000
+  .word 0x8e420000
+  .word 0x8c420014
+  .word 0x02028021
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x8e420000
+  .word 0x8c42001c
+  .word 0x02028021
+  .word 0x26940001
+  .word 0x96220008
+  .word 0x0282182a
+  .word 0x1460ffd1
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0x24e40024
+  .word 0x00021840
+  .word 0x00621821
+  .word 0x000318c0
+  .word 0x00832821
+  .word 0x9624000a
+  .word 0x00041840
+  .word 0x00641821
+  .word 0x00031880
+  .word 0x00641821
+  .word 0x00031880
+  .word 0x00a32821
+  .word 0x9624000c
+  .word 0x00041840
+  .word 0x00641821
+  .word 0x000318c0
+  .word 0x00a32021
+  .word 0x00021880
+  .word 0x00833821
+  .word 0x0000302d
+  .word 0x24040064
+  .word 0x24050065
+  .word 0x10000015
+  .word 0x00000000
+  .word 0x8e230000
+  .word 0x1065000c
+  .word 0x00000000
+  .word 0x10640003
+  .word 0x00000000
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x00061880
+  .word 0x007d1821
+  .word 0x8c6300b0
+  .word 0x8c630014
+  .word 0x00e33821
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x00061880
+  .word 0x007d1821
+  .word 0x8c6300b0
+  .word 0x8c63001c
+  .word 0x00e33821
+  .word 0x24c60001
+  .word 0x00c2182a
+  .word 0x1460ffea
+  .word 0x00000000
+  .word 0x000210c0
+  .word 0x00e22021
+  .word 0x3c050004
+  .word 0x3c020096
+  .word 0x8c420178
+  .word 0x0040f809
+  .word 0x00000000
+  .word 0x0040902d
+  .word 0x24450024
+  .word 0xac45000c
+  .word 0x96240008
+  .word 0x00041840
+  .word 0x00641821
+  .word 0x000318c0
+  .word 0x00a32821
+  .word 0xac450010
+  .word 0x9624000a
+  .word 0x00041840
+  .word 0x00641821
+  .word 0x00031880
+  .word 0x00641821
+  .word 0x00031880
+  .word 0x00a32821
+  .word 0xac450014
+  .word 0x9624000c
+  .word 0x00041840
+  .word 0x00641821
+  .word 0x000318c0
+  .word 0x00a31821
+  .word 0xac43001c
+  .word 0x96220008
+  .word 0x00021080
+  .word 0x00621021
+  .word 0x0000382d
+  .word 0x24040064
+  .word 0x24050065
+  .word 0x10000017
+  .word 0x00000000
+  .word 0x00073080
+  .word 0x8e43001c
+  .word 0x00661821
+  .word 0xac620000
+  .word 0x8e230000
+  .word 0x1065000b
+  .word 0x00000000
+  .word 0x10640003
+  .word 0x00000000
+  .word 0x1000000b
+  .word 0x00000000
+  .word 0x00dd1821
+  .word 0x8c6300b0
+  .word 0x8c630014
+  .word 0x00431021
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x00dd1821
+  .word 0x8c6300b0
+  .word 0x8c63001c
+  .word 0x00431021
+  .word 0x24e70001
+  .word 0x96230008
+  .word 0x00e3182a
+  .word 0x1460ffe7
+  .word 0x00000000
+  .word 0xae420018
+  .word 0x8e220004
+  .word 0xae420000
+  .word 0x96220008
+  .word 0xa6420004
+  .word 0x9622000a
+  .word 0xa6420006
+  .word 0x9622000c
+  .word 0xa6420008
+  .word 0x0000202d
+  .word 0x10000026
+  .word 0x00000000
+  .word 0x00041040
+  .word 0x00441021
+  .word 0x00021080
+  .word 0x00441021
+  .word 0x00021880
+  .word 0x8e420010
+  .word 0x00431821
+  .word 0x00041080
+  .word 0x005d1021
+  .word 0x8c420170
+  .word 0xc4400004
+  .word 0xe4600000
+  .word 0xc4400008
+  .word 0xe4600004
+  .word 0xc440000c
+  .word 0xe4600008
+  .word 0xc4400010
+  .word 0xe460000c
+  .word 0xc4400014
+  .word 0xe4600010
+  .word 0xc4400018
+  .word 0xe4600014
+  .word 0xc440001c
+  .word 0xe4600018
+  .word 0xc4400020
+  .word 0xe460001c
+  .word 0xc4400024
+  .word 0xe4600024
+  .word 0xc4400028
+  .word 0xe4600020
+  .word 0xc440002c
+  .word 0xe4600028
+  .word 0xc4400030
+  .word 0xe460002c
+  .word 0xc4400034
+  .word 0xe4600030
+  .word 0x24840001
+  .word 0x9622000a
+  .word 0x0082102a
+  .word 0x1440ffd8
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x10000038
+  .word 0x00000000
+  .word 0x00101040
+  .word 0x00501021
+  .word 0x000218c0
+  .word 0x8e420014
+  .word 0x00431821
+  .word 0x00101080
+  .word 0x005d1021
+  .word 0x8c450130
+  .word 0x8c4200f0
+  .word 0x94a40002
+  .word 0xac640000
+  .word 0x30840001
+  .word 0x10800005
+  .word 0x00000000
+  .word 0x8f84b5e4
+  .word 0xac640004
+  .word 0x10000002
+  .word 0x00000000
+  .word 0xac600004
+  .word 0x94a40006
+  .word 0x10800003
+  .word 0x00000000
+  .word 0x1000001a
+  .word 0x00000000
+  .word 0x0000382d
+  .word 0x10000012
+  .word 0x00000000
+  .word 0x00072080
+  .word 0x00443021
+  .word 0x00072043
+  .word 0x000420c0
+  .word 0x00642821
+  .word 0x30e40001
+  .word 0x00042080
+  .word 0x00a42821
+  .word 0x90c40000
+  .word 0xa0a40008
+  .word 0x90c40001
+  .word 0xa0a40009
+  .word 0x90c40002
+  .word 0xa0a4000a
+  .word 0x90c40003
+  .word 0xa0a4000b
+  .word 0x24e70001
+  .word 0x28e40004
+  .word 0x1480ffed
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x24844508
+  .word 0x24050231
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x26100001
+  .word 0x9622000c
+  .word 0x0202102a
+  .word 0x1440ffc6
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x100000c3
+  .word 0x00000000
+  .word 0x00101040
+  .word 0x00501021
+  .word 0x000218c0
+  .word 0x8e42000c
+  .word 0x00431821
+  .word 0x00101080
+  .word 0x005d1021
+  .word 0x8c4200b0
+  .word 0x8e250000
+  .word 0x24040065
+  .word 0x10a40009
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x94550002
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x94550002
+  .word 0x0000302d
+  .word 0x9625000a
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00062080
+  .word 0x009d2021
+  .word 0x8c840170
+  .word 0x94840000
+  .word 0x12a40005
+  .word 0x00000000
+  .word 0x24c60001
+  .word 0x00c5202a
+  .word 0x1480fff7
+  .word 0x00000000
+  .word 0x00062040
+  .word 0x00862021
+  .word 0x00042080
+  .word 0x00862021
+  .word 0x00042880
+  .word 0x8e440010
+  .word 0x00852021
+  .word 0xac640000
+  .word 0x8e250000
+  .word 0x24040065
+  .word 0x10a40009
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000005
+  .word 0x00000000
+  .word 0x94550004
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x94550004
+  .word 0x0000302d
+  .word 0x9625000c
+  .word 0x10000008
+  .word 0x00000000
+  .word 0x00062080
+  .word 0x009d2021
+  .word 0x8c840130
+  .word 0x94840000
+  .word 0x12a40005
+  .word 0x00000000
+  .word 0x24c60001
+  .word 0x00c5202a
+  .word 0x1480fff7
+  .word 0x00000000
+  .word 0x00062040
+  .word 0x00862021
+  .word 0x000428c0
+  .word 0x8e440014
+  .word 0x00852021
+  .word 0xac640004
+  .word 0x8e250000
+  .word 0x24040065
+  .word 0x10a4000a
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x94440010
+  .word 0xac640008
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x94440010
+  .word 0xac640008
+  .word 0x8e250000
+  .word 0x24040065
+  .word 0x10a4000a
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x94440012
+  .word 0xac64000c
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x94440012
+  .word 0xac64000c
+  .word 0x8e250000
+  .word 0x24040065
+  .word 0x10a40009
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0xac600010
+  .word 0x10000003
+  .word 0x00000000
+  .word 0x94440014
+  .word 0xac640010
+  .word 0x8e250000
+  .word 0x24040065
+  .word 0x10a4000a
+  .word 0x00000000
+  .word 0x24040064
+  .word 0x10a40003
+  .word 0x00000000
+  .word 0x10000007
+  .word 0x00000000
+  .word 0x3c044120
+  .word 0xac640014
+  .word 0x10000003
+  .word 0x00000000
+  .word 0xc4400018
+  .word 0xe4600014
+  .word 0x8e240000
+  .word 0x24030065
+  .word 0x10830011
+  .word 0x00000000
+  .word 0x24030064
+  .word 0x10830003
+  .word 0x00000000
+  .word 0x10000015
+  .word 0x00000000
+  .word 0x001028c0
+  .word 0x8c440008
+  .word 0x8e430018
+  .word 0x00651821
+  .word 0xac640000
+  .word 0x8c44000c
+  .word 0x8e430018
+  .word 0x00651821
+  .word 0xac640004
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x001028c0
+  .word 0x8c440008
+  .word 0x8e430018
+  .word 0x00651821
+  .word 0xac640000
+  .word 0x8c44000c
+  .word 0x8e430018
+  .word 0x00651821
+  .word 0xac640004
+  .word 0x8e240000
+  .word 0x24030065
+  .word 0x10830011
+  .word 0x00000000
+  .word 0x24030064
+  .word 0x10830003
+  .word 0x00000000
+  .word 0x10000015
+  .word 0x00000000
+  .word 0x00102880
+  .word 0x8e43001c
+  .word 0x00652021
+  .word 0x00bd1821
+  .word 0x8c840000
+  .word 0x8c650070
+  .word 0x8c460014
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x1000000a
+  .word 0x00000000
+  .word 0x00102880
+  .word 0x8e43001c
+  .word 0x00652021
+  .word 0x00bd1821
+  .word 0x8c840000
+  .word 0x8c650070
+  .word 0x8c46001c
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x26100001
+  .word 0x96220008
+  .word 0x0202102a
+  .word 0x1440ff3b
+  .word 0x00000000
+  .word 0x0240102d
+  .word 0xdfbf0060
+  .word 0x7bb50050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd01b0
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_001EEB90
