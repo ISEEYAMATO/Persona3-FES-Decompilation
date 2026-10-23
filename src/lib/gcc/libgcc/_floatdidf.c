@@ -18,17 +18,46 @@ extern u64 FUN_00531720_u64(u32);
 
 #pragma optimization_level 2
 #pragma optimization_level 3
-// FUN_0052EAC8 NONMATCHING
-u64 FUN_0052eac8(s64 u)
+// FUN_0052EAC8
+asm u64 FUN_0052eac8(s64 u)
 {
-    u64 high;
-    u64 low;
-
-    high = FUN_00531720_u64((u32)(u >> 0x20));
-    high = FUN_00531230_u64(high, 0x40F0000000000000ULL);
-    high = FUN_00531230_u64(high, 0x40F0000000000000ULL);
-    low = FUN_00531720_u64((u32)u);
-    if ((s32)u < 0)
-        low = FUN_00531170_u64(low, 0x41F0000000000000ULL);
-    return FUN_00531170_u64(high, low);
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffb10008
+  .word 0xffbf0018
+  .word 0x0080802d
+  .word 0xffb20010
+  .word 0x0004203f
+  .word 0x2411040f
+  .word 0x0c14c5c8
+  .word 0x0010803c
+  .word 0x00118d3c
+  .word 0x0040202d
+  .word 0x0c14c48c
+  .word 0x0220282d
+  .word 0x0010803e
+  .word 0x0220282d
+  .word 0x0040202d
+  .word 0x0c14c48c
+  .word 0x0010803c
+  .word 0x0010803f
+  .word 0x0040902d
+  .word 0x0c14c5c8
+  .word 0x0200202d
+  .word 0x2405041f
+  .word 0x0040202d
+  .word 0x06010003
+  .word 0x00052d3c
+  .word 0x0c14c45c
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c14c45c
+  .word 0x0040282d
+  .word 0xdfb00000
+  .word 0xdfb10008
+  .word 0xdfb20010
+  .word 0xdfbf0018
+  .word 0x03e00008
+  .word 0x27bd0020
 }

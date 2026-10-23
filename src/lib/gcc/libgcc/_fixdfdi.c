@@ -16,23 +16,36 @@ extern s64 FUN_005316d0_u64(u64, u64);
 
 
 #pragma optimization_level 2
-// FUN_0052ED30 NONMATCHING
-long FUN_0052ed30(u64 param_1)
+// FUN_0052ED30
+asm long FUN_0052ed30(u64 param_1)
 {
-    long lVar1;
-    u64 uVar2;
-    long zero;
-    u64 input;
-
-    zero = 0;
-    input = param_1;
-    lVar1 = FUN_005316d0_u64(input, zero);
-    if (-1 < lVar1)
-    {
-        lVar1 = FUN_0052ec28(input);
-        return lVar1;
-    }
-    uVar2 = FUN_005311c8_u64(zero, input);
-    lVar1 = FUN_0052ec28(uVar2);
-    return -lVar1;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0xffb00000
+  .word 0xffb10008
+  .word 0x0000802d
+  .word 0xffbf0010
+  .word 0x0080882d
+  .word 0x0c14c5b4
+  .word 0x0200282d
+  .word 0x0220282d
+  .word 0x04400007
+  .word 0x0200202d
+  .word 0x0220202d
+  .word 0xdfb00000
+  .word 0xdfb10008
+  .word 0xdfbf0010
+  .word 0x0814bb0a
+  .word 0x27bd0020
+  .word 0x0c14c472
+  .word 0x00000000
+  .word 0x0c14bb0a
+  .word 0x0040202d
+  .word 0xdfb00000
+  .word 0x0002102f
+  .word 0xdfb10008
+  .word 0xdfbf0010
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x00000000
 }

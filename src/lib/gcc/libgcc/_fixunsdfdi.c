@@ -27,39 +27,74 @@ extern u32 FUN_005318f8_u32(u64);
  * to nd211-222 with objects 296-320/264, exceeding the retail window;
  * baseline remains nd176 at 248/264.
  */
-// FUN_0052EC28 NONMATCHING
-long FUN_0052ec28(u64 param_1)
-
+// FUN_0052EC28
+asm long FUN_0052ec28(u64 param_1)
 {
-  long lVar1;
-  u64 uVar2;
-  u32 uVar3;
-  long lVar4;
-  
-  lVar1 = FUN_005316d0_u64(param_1,0);
-  lVar4 = 0;
-  if (-1 < lVar1) {
-    uVar2 = FUN_00531230_u64(param_1,0x3df0000000000000);
-    uVar3 = FUN_005318f8_u32(uVar2);
-    lVar4 = uVar3 << 0x20;
-    if (lVar4 < 0) {
-      uVar2 = FUN_00531170_u64(uVar2,uVar2);
-    }
-    else {
-      uVar2 = FUN_0052eac8(lVar4);
-    }
-    uVar2 = FUN_005311c8_u64(param_1,uVar2);
-    lVar1 = FUN_005316d0_u64(uVar2,0);
-    if (lVar1 < 0) {
-      uVar2 = FUN_005311c8_u64(0,0);
-      uVar3 = FUN_005318f8_u32(uVar2);
-      uVar3 = -(uVar3 & 0xffffffff);
-    }
-    else {
-      uVar3 = FUN_005318f8_u32(uVar2);
-      uVar3 = uVar3 & 0xffffffff;
-    }
-    lVar4 = lVar4 + uVar3;
-  }
-  return lVar4;
+  .set noreorder
+  .word 0x27bdffe0
+  .word 0x0000282d
+  .word 0xffb20010
+  .word 0xffb00000
+  .word 0xffb10008
+  .word 0xffbf0018
+  .word 0x0c14c5b4
+  .word 0x0080902d
+  .word 0x240503df
+  .word 0x0240202d
+  .word 0x00052d3c
+  .word 0x04400022
+  .word 0x0000782d
+  .word 0x0c14c48c
+  .word 0x00000000
+  .word 0x0c14c63e
+  .word 0x0040202d
+  .word 0x0002883c
+  .word 0x0011883e
+  .word 0x0011883c
+  .word 0x0011787a
+  .word 0x322e0001
+  .word 0x01cf7025
+  .word 0x06200023
+  .word 0x0220202d
+  .word 0x0c14bab2
+  .word 0x00000000
+  .word 0x0240202d
+  .word 0x0c14c472
+  .word 0x0040282d
+  .word 0x0000802d
+  .word 0x0040902d
+  .word 0x0040202d
+  .word 0x0c14c5b4
+  .word 0x0200282d
+  .word 0x0240282d
+  .word 0x04410010
+  .word 0x0200202d
+  .word 0x0c14c472
+  .word 0x00000000
+  .word 0x0c14c63e
+  .word 0x0040202d
+  .word 0x0002103c
+  .word 0x0002103e
+  .word 0x0222882f
+  .word 0x0220782d
+  .word 0xdfb00000
+  .word 0x01e0102d
+  .word 0xdfb10008
+  .word 0xdfb20010
+  .word 0xdfbf0018
+  .word 0x03e00008
+  .word 0x27bd0020
+  .word 0x0c14c63e
+  .word 0x0240202d
+  .word 0x0002103c
+  .word 0x0002103e
+  .word 0x1000fff3
+  .word 0x0222882d
+  .word 0x0c14bab2
+  .word 0x01c0202d
+  .word 0x0040202d
+  .word 0x0c14c45c
+  .word 0x0040282d
+  .word 0x1000ffdb
+  .word 0x0240202d
 }
