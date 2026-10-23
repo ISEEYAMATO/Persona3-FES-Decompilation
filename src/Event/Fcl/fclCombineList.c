@@ -1,6 +1,6 @@
 #include "Event/Fcl/fclCombineTypes.h"
  #include "Kosaka/k_assert.h"
-typedef int code(...);
+typedef int code(); /* PC: unnamed varargs */
 
 extern float DAT_007cae00;
 extern float DAT_007caf14;
@@ -515,7 +515,7 @@ FclNodeLink* FUN_003c4910(FclNodeList*, s32, FclNodeValueStorage*);
 s32 FUN_003c4df0(s32, s32);
 u32 FUN_003c4e50(s32, s32);
 s32 FUN_003c4e70(s32);
-s32 FUN_003c5460(...);
+s32 FUN_003c5460();
 s32 FUN_003c6c50(s32);
 s32 FUN_003c6c80(s32);
 s32 FUN_003c6ca0(s32);

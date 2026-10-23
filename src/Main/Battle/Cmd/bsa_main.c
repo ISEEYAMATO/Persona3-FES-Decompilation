@@ -14,7 +14,7 @@ typedef struct BsaWork
     u32 words[0x29b0];
 } BsaWork;
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 
 extern u32 DAT_007ce4e8;
 extern u8* DAT_007ce410;

@@ -142,7 +142,7 @@ typedef struct OpTailPosition {
 } OpTailPosition;
 void func_0027bae0(const OpTailPosition* value);
 #include "Main/Battle/Result/br_res.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern void K_Assert(const char* file, s32 line);
 extern const char D_0068ED88[];
 #define OP_MATCH_ASSERT(condition, line) \

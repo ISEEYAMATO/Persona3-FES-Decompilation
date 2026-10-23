@@ -1,7 +1,7 @@
 #include "Kernel/Kwln/kwlnTask.h"
 #include "Kosaka/k_assert.h"
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0025be60(u32 param_1, u32 param_2, u32 param_3);
 void FUN_0025c220(void);
 void FUN_0025c9c0(void);
@@ -40,7 +40,7 @@ u64 FUN_003b0170(u64 param_1);
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0025b4f0(void);
 void FUN_0025b690(void);
 void FUN_0025bbf0(void);

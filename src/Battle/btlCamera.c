@@ -10,7 +10,7 @@
 #include "libm.h"
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef union Local128 { u64 d[2]; u32 w[4]; } Local128;
 typedef struct LocalCameraPacket {
   Local128 flag80;

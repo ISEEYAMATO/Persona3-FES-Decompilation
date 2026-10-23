@@ -67,9 +67,9 @@ u32 FUN_003d3b70(u32 param_1,u32 param_2);
 u8 * FUN_003d3d20(u64 param_1,u64 param_2);
 u32 FUN_003d4de0(s32 param_1);
 u8 * FUN_003d4ff0(u64 param_1,u32 param_2);
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 int FUN_003c5470(int task);
-s32 FUN_003c5460(...);
+s32 FUN_003c5460();
 u32 FUN_003c58f0(s32 param_1, s32 param_2, s32 param_3, s32 param_4);
 u32 FUN_003d84c0(void *param_1, s32 param_2);
 s32 FUN_003f0830(s32 param_1);

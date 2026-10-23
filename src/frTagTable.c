@@ -11,7 +11,7 @@
 #pragma alias FUN_003b2020_y2 FUN_003b2020_y2
 #pragma alias FUN_003b22a0_y2 FUN_003b22a0_y2
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -1520,7 +1520,7 @@ asm void FUN_003af7a0(int param_1, u64 param_2)
 #define FUN_003af7a0(...) FUN_003af7a0(__VA_ARGS__)
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -1773,8 +1773,8 @@ s8 FUN_003b2bf0(u32 param_1,u32 param_2,u32 param_3);
 #define FUN_003b1c40(...) FUN_003b1c40(__VA_ARGS__)
 #define FUN_003b1c90(...) FUN_003b1c90(__VA_ARGS__)
 #define FUN_003b1d90(...) FUN_003b1d90(__VA_ARGS__)
-#define FUN_003b2020_y2(...) ((void (*)(...))FUN_003b2020_y2)(__VA_ARGS__)
-#define FUN_003b22a0_y2(...) ((void (*)(...))FUN_003b22a0_y2)(__VA_ARGS__)
+#define FUN_003b2020_y2(...) ((void (*)())FUN_003b2020_y2)(__VA_ARGS__)
+#define FUN_003b22a0_y2(...) ((void (*)())FUN_003b22a0_y2)(__VA_ARGS__)
 #define FUN_003b2400(...) FUN_003b2400(__VA_ARGS__)
 #define FUN_003b2430(...) FUN_003b2430(__VA_ARGS__)
 #define FUN_003b2900(...) FUN_003b2900(__VA_ARGS__)
@@ -1939,11 +1939,11 @@ void FUN_003afa40(void)
 #pragma opt_common_subs reset
 #undef FUN_003b2020_y2
 /* W340 loop probe: opt_lifetimes on; without nd=363/object=636, with nd=362/object=636; window=640. */
-#define FUN_003b2020_y2(...) ((void (*)(...))FUN_003b2020_y2)(__VA_ARGS__)
+#define FUN_003b2020_y2(...) ((void (*)())FUN_003b2020_y2)(__VA_ARGS__)
 #pragma opt_lifetimes reset
 #undef FUN_003b22a0_y2
 /* W340 loop probe: opt_common_subs off; without nd=113/object=352, with nd=52/object=352; window=352. */
-#define FUN_003b22a0_y2(...) ((void (*)(...))FUN_003b22a0_y2)(__VA_ARGS__)
+#define FUN_003b22a0_y2(...) ((void (*)())FUN_003b22a0_y2)(__VA_ARGS__)
 #pragma opt_common_subs reset
 #undef FUN_003b2400
 #define FUN_003b2400(...) FUN_003b2400(__VA_ARGS__)

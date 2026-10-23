@@ -12,7 +12,7 @@
 #include "Kosaka/Field/k_dungeon.h"
 #include "Kosaka/Field/k_field.h"
 #include "Kernel/Kwln/kwlnTask.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))

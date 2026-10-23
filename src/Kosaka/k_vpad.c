@@ -533,7 +533,7 @@ extern void func_001ed0f0(f32 amount, const RuntimeWork* work, s32 channel,
                           u8* output);
 extern void* (*DAT_00960184)(u32, ...);
 #pragma alias DAT_00960184_abs DAT_00960184
-extern void* (*DAT_00960184_abs[])(...);
+extern void* (*DAT_00960184_abs[])();
 extern void func_004c31b0(RuntimeMatrix* matrix, const RuntimeVec3* axis,
                           f32 angle, u32 mode);
 extern void func_004c6c20(RuntimeVec3* destination,

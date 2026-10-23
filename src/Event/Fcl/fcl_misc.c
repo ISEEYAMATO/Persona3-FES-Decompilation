@@ -1,7 +1,7 @@
 #include "temporary.h"
 /* FUSION_GLOBALS */
 extern int *piGpffffb98c;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 /* FUSION_EXACT_PROTOS */
 u32 FUN_003c8b50(u32 param_1,int param_2);
 extern void FUN_003c9240(int *);

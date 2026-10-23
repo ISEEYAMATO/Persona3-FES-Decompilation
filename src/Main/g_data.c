@@ -261,13 +261,13 @@ typedef struct CampHelpPaths
     const char* paths[8];
 } CampHelpPaths;
 #define CAMP_PTR64(value) ((undefined8)(uintptr_t)(value))
-extern void (*DAT_0096017c[])(...);
-extern void (*DAT_0096017c_abs[])(...);
-extern void* (*DAT_00960184_abs[])(...);
+extern void (*DAT_0096017c[])();
+extern void (*DAT_0096017c_abs[])();
+extern void* (*DAT_00960184_abs[])();
 extern u64 scrGetIntPara_u64(s32);
 extern void* (*DAT_00960184)();
 extern void* (*DAT_00960178)();
-extern void* (*DAT_00960178_abs[])(...);
+extern void* (*DAT_00960178_abs[])();
 extern f32 DAT_00960088;
 extern u8 DAT_00960088_abs[];
 extern void* DAT_007cdf48;

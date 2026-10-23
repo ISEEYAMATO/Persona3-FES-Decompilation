@@ -5,7 +5,7 @@
 
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -96,7 +96,7 @@ u64 FUN_003c4420(void);
 #define FUN_003c4270(...) FUN_003c4270(__VA_ARGS__)
 #define FUN_003c4390(...) FUN_003c4390(__VA_ARGS__)
 #define FUN_003c43f0(...) FUN_003c43f0(__VA_ARGS__)
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -993,7 +993,7 @@ void FUN_003c4f30(int param_1)
 
     FUN_00521408(param_1,0,*(u32 *)((int)param_1 + 8));
 
-    (*(void (**)(...))0x0096017c)(param_1);
+    (*(void (**)())0x0096017c)(param_1);
 
   }
 

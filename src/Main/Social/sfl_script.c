@@ -7,7 +7,7 @@ s32 bpTexHasPendingNode();
 #define SQRT(x) sqrtf(x)
 #endif
 float sqrtf(float x);
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0025a120(void);
 void FUN_0025a130(void);
 void FUN_0025a440(void);
@@ -106,7 +106,7 @@ extern void FUN_002561e0(f32 amount, void* node);
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void sflScriptClearWork(void);
 void sflScriptDispatchCommands(void);
 void sflScriptAppendCommand(int param_1,const void* param_2);

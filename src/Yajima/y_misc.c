@@ -78,7 +78,7 @@ extern u32 func_0010c3a0(u32, void *, u32);
 extern void *mdlCreateFromRmdMemory_ptr(u32, u32, u32, u32, u32);
 #pragma alias func_0010c3a0_ptr func_0010c3a0
 extern void *func_0010c3a0_ptr(u32, void *, u32);
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 char cGpffffb9d4;
 char cGpffffb9d8;
 char cGpffffb9ec;
@@ -17749,7 +17749,7 @@ void FUN_0042fd80(float *param_1,int param_2)
 
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 
 typedef union Vec128 { struct { u32 _0_4_; u32 _4_4_; u32 _8_4_; u32 _12_4_; }; struct { u64 _0_8_; u64 _8_8_; }; u8 _bytes[16]; } Vec128;

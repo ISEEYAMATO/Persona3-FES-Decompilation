@@ -6,7 +6,7 @@
 #include "Kernel/Kwln/kwlnTask.h"
 #include "Kosaka/k_assert.h"
 #include "libm.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern void* opRes00266c50(u32 id);
 #pragma alias opRes00266c50 opResGetTitleSprite
 extern void* func_0021cca0_u32(void* resource, u32 index);

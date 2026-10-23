@@ -1,7 +1,7 @@
 #include "temporary.h"
 extern int FUN_004c31b0();
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 #ifndef CONCAT44
 #define CONCAT44(hi, lo) ((((u64)(hi)) << 32) | (u32)(lo))
@@ -245,7 +245,7 @@ extern code DAT_009600a0;
 extern code DAT_009600a0_abs[];
 extern code DAT_0096017c;
 #pragma alias DAT_0096017c_abs DAT_0096017c
-extern void (*DAT_0096017c_abs[])(...);
+extern void (*DAT_0096017c_abs[])();
 extern code DAT_00960184;
  #pragma alias DAT_00960184_abs DAT_00960184
  #pragma alias FUN_0019d3f0_evt FUN_0019d3f0
@@ -256,7 +256,7 @@ extern void FUN_003bb280(int param_1);
 extern void FUN_00359380(f32 param_1,void *param_2,int param_3);
 extern int FUN_0031b680(u16 param_1,u16 param_2,u32 *param_3,int *param_4);
 extern u32 FUN_003b9500(int param_1,int param_2);
- extern int (*DAT_00960184_abs[])(...);
+ extern int (*DAT_00960184_abs[])();
 extern u8 *PTR_DAT_0069d930;
 extern u8 *PTR_DAT_0069d960;
 extern u8 *PTR_DAT_0069da10;
@@ -5026,7 +5026,7 @@ void FUN_0038b140(int param_1)
 
     iVar4 = iGpffffb920 * 0x70;
     {
-      void (**freeFn)(...) = (void (**)(...))DAT_0096017c_abs;
+      void (**freeFn)() = (void (**)())DAT_0096017c_abs;
       (*freeFn)(piVar6[2]);
       *DAT_00958a90_abs = *DAT_00958a90_abs - iVar4;
       (*freeFn)(param_1);

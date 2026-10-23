@@ -118,7 +118,7 @@ typedef struct
     u32 unk_10;     // 0x10
     u32 unk_14;     // 0x14
 } ScrComuEventReq;
-typedef int code(...);
+typedef int code(); /* PC: unnamed varargs */
 typedef struct {
   u64 xy;
   f32 z;
@@ -132,7 +132,7 @@ extern u8 DAT_006a0000_65430_abs[];
 extern u8 DAT_0069ffd0[];
 extern u8 DAT_0069dd98[];
 extern u8 DAT_0069de20[];
-extern int FUN_003b5d10(...);
+extern int FUN_003b5d10();
 extern u8 *FUN_003b55b0_evt_main(int param_1);
 extern u8 *FUN_003b5d10_evt_main(u16 param_1);
 extern u32 FUN_0039f710_evt_main(int *param_1);

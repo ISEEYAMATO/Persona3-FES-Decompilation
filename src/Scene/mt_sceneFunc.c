@@ -43,7 +43,7 @@ extern u32 FUN_003be1c0_typed(long param_1,s32 param_2);
 #pragma alias FUN_003be1c0_wide FUN_003be1c0
 extern u32 FUN_003be1c0_wide(long param_1,long param_2);
 #pragma alias FUN_003be2a0_typed FUN_003be2a0
-extern u32 FUN_003be2a0_typed(...);
+extern u32 FUN_003be2a0_typed();
 #pragma alias FUN_003be020_typed FUN_003be020
 extern u32 FUN_003be020_typed(u32 param_1, u8 *param_2, u32 param_3);
 extern void adminiChangeSeq(s32 type,void *seq,s32 size,s32 arg4);
@@ -62,7 +62,7 @@ extern u8 *DAT_0095b710_ptr_abs[];
 extern u32 DAT_0095b730;
 extern u32 LAB_003be5a0;
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))

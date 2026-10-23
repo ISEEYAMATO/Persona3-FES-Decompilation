@@ -25141,7 +25141,7 @@ typedef struct CampCommuRootWork
 
 extern void* (*DAT_00960184)(u32 elementCount, u32 elementSize, u32 hint);
 #pragma alias DAT_00960184_abs DAT_00960184
-extern void* (*DAT_00960184_abs[])(...);
+extern void* (*DAT_00960184_abs[])();
 #pragma alias jtbl_0096017C_abs jtbl_0096017C
 extern u32 jtbl_0096017C_abs[];
 #pragma alias jtbl_0096017C_fn jtbl_0096017C
@@ -46298,7 +46298,7 @@ extern void *memcpy(void *dst, const void *src, u32 size);
 void FUN_004d0f00_sys();
 void H_Cdvd_Destroy_sys();
 void FUN_003c7dd0(int param_1);
-extern void* (*DAT_00960184_abs[])(...);
+extern void* (*DAT_00960184_abs[])();
 extern void *(*DAT_00960184)(u32 elementCount, u32 elementSize, u32 heapFlags);
 extern const char D_005DBD00[];
 extern const char D_005E3E70[];
@@ -72593,16 +72593,16 @@ typedef struct CampHelpPaths
 #define CAMP_PTR64(value) ((undefined8)(uintptr_t)(value))
 
 /* Retail globals shared by the Camp bridge state machines. */
-extern void (*DAT_0096017c[])(...);
+extern void (*DAT_0096017c[])();
 #pragma alias DAT_0096017c_abs DAT_0096017c
-extern void (*DAT_0096017c_abs[])(...);
-extern void* (*DAT_00960184_abs[])(...);
+extern void (*DAT_0096017c_abs[])();
+extern void* (*DAT_00960184_abs[])();
 #pragma alias scrGetIntPara_u64 scrGetIntPara
 extern u64 scrGetIntPara_u64(s32);
 extern void* (*DAT_00960184)();
 extern void* (*DAT_00960178)();
 #pragma alias DAT_00960178_abs DAT_00960178
-extern void* (*DAT_00960178_abs[])(...);
+extern void* (*DAT_00960178_abs[])();
 extern void* DAT_007cdf48;
 extern void* DAT_007cdf54_data;
 extern void* DAT_007cdf58_data;
@@ -73081,7 +73081,7 @@ extern void FUN_001127d0_y4(void* sprite, s32 enabled);
 extern void FUN_00115980_y4(void* sprite);
 extern void FUN_0010a4e0_y4(s32 first, ...);
 extern void FUN_004d0f00_y4(void* parser);
- extern void (*jtbl_0096017C_abs[])(...);
+ extern void (*jtbl_0096017C_abs[])();
 
 extern KwlnTask* FUN_00166a50(KwlnTask* parent, u32 priority, s16 pcId,
                               u32 mode, u32 displayMode);
@@ -81209,11 +81209,11 @@ void FUN_00169040(int param_1)
 
     work = (CampTargetLoadWork*)(*(u32*)((u8*)(uintptr_t)param_1 + 0x3c));
     if (work->listA != NULL) {
-        (*(void (**)(...))0x0096017c)(work->listA);
+        (*(void (**)())0x0096017c)(work->listA);
         work->listA = NULL;
     }
     if (work->listB != NULL) {
-        (*(void (**)(...))0x0096017c)(work->listB);
+        (*(void (**)())0x0096017c)(work->listB);
         work->listB = NULL;
     }
     for (i = 0; i < 2; i++) {
@@ -81222,7 +81222,7 @@ void FUN_00169040(int param_1)
         }
         DAT_00833a50_data[i] = 0;
     }
-    (*(void (**)(...))0x0096017c)(work);
+    (*(void (**)())0x0096017c)(work);
 }
 
 // FUN_00169110 MATCHING

@@ -6,7 +6,7 @@
 extern f32 DAT_006a0eb0;
 extern char DAT_006a0e80[];
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -117,7 +117,7 @@ extern int FUN_001016b0_typed(void *);
 #pragma alias FUN_001021c0_typed FUN_001021c0
 extern void *FUN_001021c0_typed(const char *, u8 *);
 #pragma alias FUN_005225a8_typed FUN_005225a8
-extern void FUN_005225a8_typed(...);
+extern void FUN_005225a8_typed();
 #pragma alias FUN_00530da0_evt FUN_00530da0
 extern u32 FUN_00530da0_evt(f32 param_1);
 extern void *FUN_003b5cf0_typed(void);
@@ -354,7 +354,7 @@ typedef struct {
   u32 active;
   u32 handle;
 } EvtEffectSlot;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))

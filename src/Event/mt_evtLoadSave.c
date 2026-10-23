@@ -3,7 +3,7 @@
 #pragma alias FUN_00394e70_y2 FUN_00394e70
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -6657,7 +6657,7 @@ asm u32 FUN_003912f0(u32 param_1,u32 param_2)
 #pragma opt_loop_invariants reset
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))

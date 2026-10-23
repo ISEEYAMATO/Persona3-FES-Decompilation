@@ -4,7 +4,7 @@
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_00252e80(void);
 void FUN_00252f30(void);
 void FUN_002532b0(void);

@@ -113,7 +113,7 @@ typedef struct MdlAnimResourceEntry
     u8 flags;
     u8 unk_05[3];
 } MdlAnimResourceEntry;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 #define CONCAT44(hi, lo) ((((u64)(hi)) << 32) | (u32)(lo))
 #define CONCAT11(hi, lo) ((u16)((((u16)(u8)(hi)) << 8) | (u8)(lo)))
@@ -146,7 +146,7 @@ extern float fGpffff80e4;
 extern char gp0xffff9d10;
 extern u8 LAB_003131f8;
 extern f32 DAT_007cada4;
-extern void (*DAT_0096017c[])(...);
+extern void (*DAT_0096017c[])();
 extern u8 LAB_0031379c;
 extern u8 LAB_00313790;
 extern u8 LAB_00313b48;
@@ -168,12 +168,12 @@ extern f32 DAT_007cad40;
 extern f32 DAT_007cad44;
 extern f32 DAT_007caed0;
 extern u32 DAT_007cada0;
-extern void (*DAT_00960090[])(...);
+extern void (*DAT_00960090[])();
  extern u8 DAT_00960090_abs[];
-extern void (*DAT_00960094[])(...);
+extern void (*DAT_00960094[])();
 extern u32 DAT_00960070;
 extern f32 DAT_007caf08;
-extern void* (*DAT_00960178[])(...);
+extern void* (*DAT_00960178[])();
 extern u32 DAT_0069aee0;
 extern u32 DAT_0069aee2;
 extern u32 DAT_0069aee4;

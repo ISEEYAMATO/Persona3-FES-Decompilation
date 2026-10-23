@@ -7,7 +7,7 @@
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef struct { f32 x; f32 y; f32 z; } SflCardVec;
 typedef struct {
     f32 transformed[4];
@@ -345,7 +345,7 @@ extern u8 D_00960090_abs[];
 extern void (*D_0096009C)(u32*, u32, u32, u32, u32);
 extern u8 D_0096009C_abs[];
 #include "Main/Social/sfl_script.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void sflScriptClearWork(void);
 void sflScriptDispatchCommands(void);
 void sflScriptAppendCommand(int param_1,const void* param_2);

@@ -40,7 +40,7 @@ extern void FUN_004c69f0(RwV3d* output, const RwV3d* input);
 extern RwV3d DAT_0068e9b0;
 void func_0024da60(void* camera);
 void func_0024dc90(void* camera);
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_00251060(void);
 void FUN_002510d0(void);
 void FUN_002518b0(s32 param_1);
@@ -100,7 +100,7 @@ void bpTut00251050();
 #pragma alias RwV3dLength FUN_004c6ac0
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void gcPoseStartDirectedTranslation(GcPoseController *work, const RwV3d *target, s32 frames, const RwV3d *direction);
 void gcPoseStartEaseOutTranslation(int param_1,u32 *param_2,int param_3);
 void gcPoseStartEaseInTranslation(int param_1,u32 *param_2,int param_3);

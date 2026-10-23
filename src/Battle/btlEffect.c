@@ -30,7 +30,7 @@ typedef u16 undefined2;
 typedef u32 undefined4;
 typedef u64 undefined8;
 typedef void undefined;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef struct BtlFormationState {
   u8 padding[0x630];
   u16 flags;
@@ -424,10 +424,10 @@ extern u64 (*DAT_00960090_abs)();
 extern u64 (*DAT_009600a4_abs)();
 extern u64 (*DAT_00960178)();
 #pragma alias DAT_00960178_u32_abs DAT_00960178
-extern u32 (*DAT_00960178_u32_abs[])(...);
+extern u32 (*DAT_00960178_u32_abs[])();
 #pragma alias DAT_00960178_abs DAT_00960178
 extern code DAT_00960178_abs[];
-extern void (*DAT_0096017c[])(...);
+extern void (*DAT_0096017c[])();
 #pragma alias DAT_0096017c_abs DAT_0096017c
 extern code DAT_0096017c_abs[];
 extern u32* PTR_DAT_00696f30;
@@ -1329,7 +1329,7 @@ void *func_002bb7d0(void)
   u32 index;
   u32 nodeAddress;
   u16 *node;
-  register u32 (* volatile /* Removing this qualifier loses func_002bb7d0 (MATCH nd0 -> MISMATCH nd181, size 280 -> 284) - measured W170. */ *allocate)(...);
+  register u32 (* volatile /* Removing this qualifier loses func_002bb7d0 (MATCH nd0 -> MISMATCH nd181, size 280 -> 284) - measured W170. */ *allocate)();
   
   allocate = DAT_00960178_u32_abs;
   rootAddress = (*allocate)(0xc8,0x40000);
@@ -1479,7 +1479,7 @@ void* func_002bbc00(void* owner)
   u32 rootAddress;
   u32 nodeAddress;
   u16* node;
-  register u32 (* volatile /* Removing this qualifier loses func_002bbc00 (MATCH nd0 -> MISMATCH nd167, size 244 -> 236) - measured W170. */ *allocate)(...);
+  register u32 (* volatile /* Removing this qualifier loses func_002bbc00 (MATCH nd0 -> MISMATCH nd167, size 244 -> 236) - measured W170. */ *allocate)();
 
   allocate = DAT_00960178_u32_abs;
   rootAddress = (*allocate)(0x18, 0x40000);

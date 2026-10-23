@@ -18,7 +18,7 @@ void FUN_003b5ab0();
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0029ee20(u32 param_1);
 typedef struct BtlMainColorWork BtlMainColorWork;
 typedef struct BtlMainLerpWork

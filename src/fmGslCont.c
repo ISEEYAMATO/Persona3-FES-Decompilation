@@ -1,5 +1,5 @@
 #include "temporary.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -471,7 +471,7 @@ u32 FUN_003b4740(int param_1)
 
 {
 
-  (*(void (**)(...))0x0096017c)(*(u32 *)(param_1 + -4));
+  (*(void (**)())0x0096017c)(*(u32 *)(param_1 + -4));
 
   return 1;
 

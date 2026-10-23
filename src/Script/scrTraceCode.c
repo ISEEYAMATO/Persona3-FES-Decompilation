@@ -1222,7 +1222,7 @@ typedef struct
 
 
 
-typedef int code(...);
+typedef int code(); /* PC: unnamed varargs */
 typedef struct {
   u64 xy;
   f32 z;
@@ -1239,7 +1239,7 @@ extern u8 DAT_006a0000_65430_abs[];
 extern u8 DAT_0069ffd0[];
 extern u8 DAT_0069dd98[];
 extern u8 DAT_0069de20[];
-extern int FUN_003b5d10(...);
+extern int FUN_003b5d10();
 #pragma alias FUN_003b55b0_evt_main FUN_003b55b0
 extern u8 *FUN_003b55b0_evt_main(int param_1);
 #pragma alias FUN_003b5d10_evt_main FUN_003b5d10

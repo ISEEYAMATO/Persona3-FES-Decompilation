@@ -355,7 +355,7 @@ extern void* func_004bad50(void* file, const char* path);
 extern char D_006843F0[];
 extern void* (*DAT_00960184)(u32, ...);
 #pragma alias DAT_00960184_abs DAT_00960184
-extern void* (*DAT_00960184_abs[])(...);
+extern void* (*DAT_00960184_abs[])();
 extern void FUN_00521408(void* destination, s32 value, u32 size);
 extern void func_00195770(s32 enabled);
 extern void func_001949e0(void);

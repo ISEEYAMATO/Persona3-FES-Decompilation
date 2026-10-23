@@ -34,7 +34,7 @@ extern u32 stack0x00000000;
 extern u32 lVar11;
 extern u32 LAB_004745f4;
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 #ifndef CONCAT44
 #define CONCAT44(hi, lo) ((((u64)(hi)) << 32) | (u32)(lo))

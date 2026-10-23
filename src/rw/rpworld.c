@@ -6,7 +6,7 @@ extern u8 LAB_00490d80;
 extern u8 LAB_004944a0;
 extern u8 LAB_004a9be0;
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern long thunk_FUN_004c3970(int param_1,u32 param_2,long param_3,int param_4,long param_5,u32 param_6);
 #pragma alias thunk_FUN_004c3970_u32 thunk_FUN_004c3970
 extern u32 thunk_FUN_004c3970_u32(int param_1,u32 param_2,int param_3,u32 param_4,u32 param_5,u32 param_6);

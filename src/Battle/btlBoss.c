@@ -11,7 +11,7 @@
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 #pragma alias scrCreateTaskFromHeader_2 scrCreateTaskFromHeader
 extern KwlnTask* scrCreateTaskFromHeader_2(u32 priority, ScrHeader* header);
 extern void FUN_0035c1a0(KwlnTask* task, s32 value);
@@ -118,9 +118,9 @@ extern ScrHeader* DAT_0069aa50_ptr;
 #pragma alias gBtlWork gBtl
 extern Battle* gBtlWork;
 extern f32 DAT_0096008c;
-extern void (*DAT_00960090)(...);
-extern void (*DAT_00960094)(...);
-extern void (*DAT_009600a0)(...);
+extern void (*DAT_00960090)();
+extern void (*DAT_00960094)();
+extern void (*DAT_009600a0)();
 extern void* kwlnGetMainCamera(void);
 extern void* FUN_004e3630(void);
 

@@ -88,7 +88,7 @@ extern void FUN_0021d890_y2(void*, const void*);
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0025da30(void);
 void FUN_0025ed40(void);
 KwlnTask* FUN_0025f370(KwlnTask* parent, void* battle_data);

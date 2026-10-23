@@ -150,7 +150,7 @@ extern u32 DAT_00960170;
 extern u32 DAT_00960174;
 extern code *DAT_00960178;
 #pragma alias DAT_0096017c_abs DAT_0096017c
-extern void (*DAT_0096017c_abs[])(...);
+extern void (*DAT_0096017c_abs[])();
 extern code *DAT_0096017c;
 extern code *DAT_00960180;
 extern code *DAT_00960184;

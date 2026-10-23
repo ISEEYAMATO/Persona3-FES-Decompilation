@@ -1,6 +1,6 @@
 #include "temporary.h"
 #include "Event/Comu/comuFunction.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -51,7 +51,7 @@ extern u32 FUN_003be1c0_typed(long param_1,s32 param_2);
 #pragma alias FUN_003be1c0_wide FUN_003be1c0
 extern u32 FUN_003be1c0_wide(long param_1,long param_2);
 #pragma alias FUN_003be2a0_typed FUN_003be2a0
-extern u32 FUN_003be2a0_typed(...);
+extern u32 FUN_003be2a0_typed();
 extern void adminiChangeSeq(s32 type,void *seq,s32 size,s32 arg4);
 extern void FUN_0016f1f0(int param_1,int param_2);
 #pragma alias FUN_0016f190_comu FUN_0016f190

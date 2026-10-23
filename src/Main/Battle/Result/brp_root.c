@@ -5,7 +5,7 @@
 
 
 #include "Main/Battle/Result/br_res.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern void K_Assert(const char* file, s32 line);
 extern const char D_0068ED88[];
 

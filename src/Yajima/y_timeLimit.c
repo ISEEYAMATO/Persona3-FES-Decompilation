@@ -206,7 +206,7 @@ void Y_TimeLimit_Stop(void)
 #pragma alias FUN_0045d990_y2 FUN_0045d990
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef struct YajimaVec2 {
   f32 x;
   f32 y;
@@ -7822,12 +7822,12 @@ extern u32 DAT_007cb138_y2;
 extern u32 DAT_007ce704_y2;
 extern u32 DAT_00960088_y2;
 #pragma alias DAT_0096017c_camp DAT_0096017c
-extern void (*DAT_0096017c_camp[])(...);
+extern void (*DAT_0096017c_camp[])();
 extern void FUN_001124b0_y2(u32 param_1);
 extern void FUN_00108f70(void);
 extern void FUN_0016f1f0_y2(int param_1,int param_2);
 #pragma alias DAT_00960184_obj DAT_00960184
-extern void* (*DAT_00960184_obj[])(...);
+extern void* (*DAT_00960184_obj[])();
 extern void FUN_00521408_y2(void *dst,s32 value,u32 size);
 #pragma alias FUN_00194b20_typed FUN_00194b20
 extern void *FUN_00194b20_typed(void *parent,const char *name,u32 priority,

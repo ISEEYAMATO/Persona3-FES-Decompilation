@@ -34,7 +34,7 @@
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern s32 FUN_0010a500(s16 param);
 void FUN_002dd8e0(u32 param_1);
 void FUN_002dd960(u32 param_1);
@@ -693,8 +693,8 @@ extern u64 (*DAT_00960090)();
 extern u64 (*DAT_00960090_abs)();
 extern u64 (*DAT_009600a4_abs)();
 extern u64 (*DAT_00960178)();
-extern u32 (*DAT_00960178_u32_abs[])(...);
-extern void (*DAT_0096017c[])(...);
+extern u32 (*DAT_00960178_u32_abs[])();
+extern void (*DAT_0096017c[])();
 extern code DAT_0096017c_abs[];
 extern u32* PTR_DAT_00696f30;
 extern u32* PTR_DAT_00696f30_abs[];

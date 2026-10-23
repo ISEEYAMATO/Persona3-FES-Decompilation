@@ -162,7 +162,7 @@ s32 func_00274e90(void);
 extern u32 FUN_00108710(void);
 #include "Main/OpEd/op_fade_mid.h"
 #include "Main/Battle/Result/br_res.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern void K_Assert(const char* file, s32 line);
 extern const char D_0068ED88[];
 #define OP_MATCH_ASSERT(condition, line) \

@@ -1,7 +1,7 @@
 #include "Kernel/Kwln/kwlnTask.h"
 #include "Kosaka/k_assert.h"
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0025b4f0(void);
 void FUN_0025b690(void);
 void FUN_0025bbf0(void);
@@ -43,7 +43,7 @@ float sqrtf(float x);
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_0025a120(void);
 void FUN_0025a130(void);
 void FUN_0025a440(void);

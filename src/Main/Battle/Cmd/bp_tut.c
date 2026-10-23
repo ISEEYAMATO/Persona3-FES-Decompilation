@@ -7,7 +7,7 @@
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_00251060(void);
 void FUN_002510d0(void);
 void FUN_002518b0(s32 param_1);
@@ -411,7 +411,7 @@ void FUN_00251a20(void)
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void bpTutaUpdate(void);
 void bpTutaStart(void);
 u32 bpTutaIsActive(void);

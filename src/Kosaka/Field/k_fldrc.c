@@ -30,7 +30,7 @@ typedef u8 undefined1;
 typedef u16 undefined2;
 typedef u32 undefined4;
 typedef u64 undefined8;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern void* (*DAT_00960184)(u32, ...);
 #pragma alias DAT_00960184_abs DAT_00960184
 extern u8 DAT_00960184_abs[];

@@ -20,7 +20,7 @@ typedef u16 undefined2;
 typedef u32 undefined4;
 typedef u64 undefined8;
 typedef void undefined;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef struct BtlFormationState {
   u8 padding[0x630];
   u16 flags;
@@ -353,9 +353,9 @@ extern u64 (*DAT_00960090)();
 extern u64 (*DAT_00960090_abs)();
 extern u64 (*DAT_009600a4_abs)();
 extern u64 (*DAT_00960178)();
-extern u32 (*DAT_00960178_u32_abs[])(...);
+extern u32 (*DAT_00960178_u32_abs[])();
 extern code DAT_00960178_abs[];
-extern void (*DAT_0096017c[])(...);
+extern void (*DAT_0096017c[])();
 extern code DAT_0096017c_abs[];
 extern u32* PTR_DAT_00696f30;
 extern u32* PTR_DAT_00696f30_abs[];
@@ -1015,7 +1015,7 @@ extern u32 func_002c1ce0_u32(int param_1, int param_2);
 #include "Main/Battle/Data/datUnit.h"
 #include "Graphics/primitive.h"
 #include "libm.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef union Local128 { u64 d[2]; u32 w[4]; } Local128;
 typedef struct LocalCameraPacket {
   Local128 flag80;

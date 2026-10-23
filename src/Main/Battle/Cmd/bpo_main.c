@@ -2,7 +2,7 @@
 #include "Kosaka/k_assert.h"
 
 #include "Battle/btlUnit.h"
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_00252e80(void);
 void FUN_00252f30(void);
 void FUN_002532b0(void);
@@ -47,7 +47,7 @@ extern void FUN_0021d950_y2(void *destination, const RwRGBA *color);
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_00251f40(s32 param_1);
 void FUN_002520f0(void);
 void FUN_00252340(void);

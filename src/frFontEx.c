@@ -2,7 +2,7 @@
 #pragma alias frFontSetTextScale FUN_003B2C60
 #pragma alias frFontGetHeight FUN_003B35C0
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u32 undefined3;
 typedef u32 int3;
 #define CONCAT13(a,b) ((((u32)(a) & 0xffu) << 24) | ((u32)(b) & 0x00ffffffu))
@@ -29,7 +29,7 @@ s8 frFontGetHeight(char param_1);
 int frFontGetHeightRaw();
 
 /* Region call-cast macros */
-#define frFontSetTextScale(...) ((void (*)(...))frFontSetTextScale)(__VA_ARGS__)
+#define frFontSetTextScale(...) ((void (*)())frFontSetTextScale)(__VA_ARGS__)
 #define FUN_003b2cb0(...) FUN_003b2cb0(__VA_ARGS__)
 #define FUN_003b2f90(...) FUN_003b2f90(__VA_ARGS__)
 #define FUN_003b32d0(...) FUN_003b32d0(__VA_ARGS__)
@@ -46,7 +46,7 @@ void frFontSetTextScale(void *param_1,f32 param_2)
     *(f32*)((u8*)param_1 + 0x14) = param_2;
 }
 
-#define frFontSetTextScale(...) ((void (*)(...))frFontSetTextScale)(__VA_ARGS__)
+#define frFontSetTextScale(...) ((void (*)())frFontSetTextScale)(__VA_ARGS__)
 #undef FUN_003b2cb0
 // FUN_003B2CB0 MATCHING
 
@@ -473,4 +473,4 @@ s8 frFontGetHeight(char param_1)
   return (&gp0xffffa808)[param_1];
 
 }
-#define frFontGetHeight(...) ((s8 (*)(...))frFontGetHeight)(__VA_ARGS__)
+#define frFontGetHeight(...) ((s8 (*)())frFontGetHeight)(__VA_ARGS__)

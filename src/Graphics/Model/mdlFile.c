@@ -1,4 +1,4 @@
-typedef void (*MdlVoidFn)(...);
+typedef void (*MdlVoidFn)();
 typedef void (*MdlVoidFnU32)(unsigned int);
 #include "Graphics/Model/mdlFile.h"
 #include "Graphics/Model/mdlManager.h"
@@ -47,7 +47,7 @@ extern unsigned char DAT_006a6b20[];
 
 
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 MdlDispatchSlot[0x10];
 typedef u8 bool;
 typedef struct MdlTypeDispatch {
@@ -1373,8 +1373,8 @@ extern MdlVoidFn DAT_009600a0;
 extern code DAT_009600a0_abs[];
 extern MdlVoidFn DAT_009600a4;
 extern code DAT_009600a4_abs[];
-extern u64 (*DAT_00960178)(...);
-extern u32 (*DAT_00960178_u32)(...);
+extern u64 (*DAT_00960178)();
+extern u32 (*DAT_00960178_u32)();
 extern code DAT_00960178_abs[];
 extern MdlVoidFn DAT_0096017c;
 extern code DAT_0096017c_abs[];
@@ -1462,7 +1462,7 @@ extern u32 DAT_00957bd4_abs[];
 extern u32 DAT_00957bd8_abs[];
 extern u32 DAT_00957bdc_abs[];
 extern u32 DAT_00957be0_abs[];
-typedef void (*MdlVoidFn)(...);
+typedef void (*MdlVoidFn)();
 #include "rw/rpworld.h"
 #include "rw/rphanim.h"
 #include "h_cdvd.h"
@@ -1554,7 +1554,7 @@ typedef struct MdlAnimResourceEntry
     u8 flags;
     u8 unk_05[3];
 } MdlAnimResourceEntry;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 extern s32 DAT_0096012c;
 extern u8 LAB_00464760;
@@ -4459,9 +4459,9 @@ void FUN_0031de30(u32 *param_1)
         next = (int*)current[4];
         *(int*)(*current + 8) = *(int*)(*current + 8) - 1;
         if (*(int*)(*current + 8) == 0) {
-            ((void (*)(...))DAT_0096017c_abs[0])(*current);
+            ((void (*)())DAT_0096017c_abs[0])(*current);
         }
-        ((void (*)(...))DAT_0096017c_abs[0])(current);
+        ((void (*)())DAT_0096017c_abs[0])(current);
         current = next;
     }
     *param_1 = 0;
@@ -4539,11 +4539,11 @@ void FUN_0031df80(u32 *param_1)
 
 u32 FUN_0031dff0(u32 param_1,u32 param_2)
 {
-    u32 (**allocator)(...);
+    u32 (**allocator)();
     u32 block;
     u32 wrapper;
 
-    allocator = (u32 (**)(...))DAT_00960178_abs;
+    allocator = (u32 (**)())DAT_00960178_abs;
     block = (*allocator)(param_2 + 0x10,0x40000);
     *(u32*)block = block + 0x10;
     *(u32*)(block + 4) = 1;
@@ -4599,9 +4599,9 @@ void FUN_0031e130(int *param_1)
     }
     *(int*)(*param_1 + 4) = *(int*)(*param_1 + 4) - 1;
     if (*(int*)(*param_1 + 4) == 0) {
-        ((void (*)(...))DAT_0096017c_abs[0])(*param_1);
+        ((void (*)())DAT_0096017c_abs[0])(*param_1);
     }
-    ((void (*)(...))DAT_0096017c_abs[0])(param_1);
+    ((void (*)())DAT_0096017c_abs[0])(param_1);
 }
 
 
@@ -5624,11 +5624,11 @@ void FUN_0031eee0(int *param_1)
       switch ((u16)piVar1[3]) {
       case 1:
         if (*piVar1 != 0) {
-          ((void (*)(...))DAT_0096017c_abs[0])(*piVar1);
+          ((void (*)())DAT_0096017c_abs[0])(*piVar1);
         }
         break;
       }
-      ((void (*)(...))DAT_0096017c_abs[0])(piVar1);
+      ((void (*)())DAT_0096017c_abs[0])(piVar1);
     }
     *param_1 = 0;
   }
@@ -6715,7 +6715,7 @@ void FUN_00320290(int param_1)
 
       if (puVar3[3] != 0) {
 
-        ((void (*)(...))DAT_0096017c_abs[0])(puVar3[3]);
+        ((void (*)())DAT_0096017c_abs[0])(puVar3[3]);
 
         puVar3[3] = 0;
 
@@ -6731,13 +6731,13 @@ void FUN_00320290(int param_1)
 
     FUN_00321010(*(u32 *)(iVar2 + 0x50));
 
-    ((void (*)(...))DAT_0096017c_abs[0])(iVar2);
+    ((void (*)())DAT_0096017c_abs[0])(iVar2);
 
     iVar2 = iVar1;
 
   }
 
-  ((void (*)(...))DAT_0096017c_abs[0])(param_1);
+  ((void (*)())DAT_0096017c_abs[0])(param_1);
 
   return;
 
@@ -7621,7 +7621,7 @@ u32 FUN_00320fb0(u16 param_1)
 {
     u32 block;
 
-    block = (*(u32 (**)(...))DAT_00960178_abs)((u32)param_1 * 4 + 0xc, 0x40000);
+    block = (*(u32 (**)())DAT_00960178_abs)((u32)param_1 * 4 + 0xc, 0x40000);
     *(u32*)block = block + 0xc;
     *(u16*)(block + 4) = 0;
     *(u16*)(block + 8) = 1;
@@ -7644,7 +7644,7 @@ void FUN_00321010(int param_1)
 
   if (*(u16 *)(param_1 + 8) == 0) {
 
-    ((void (*)(...))(*(u32 *)0x0096017c))();
+    ((void (*)())(*(u32 *)0x0096017c))();
 
   }
 

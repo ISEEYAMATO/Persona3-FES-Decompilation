@@ -21,7 +21,7 @@ extern float DAT_007cad78;
 extern float DAT_007cae0c;
 extern float DAT_007caf38;
 extern float DAT_007cb034;
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 extern code DAT_00960090[];
 extern code DAT_0096009c[];
 #pragma alias DAT_00960090_abs DAT_00960090

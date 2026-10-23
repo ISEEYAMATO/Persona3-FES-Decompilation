@@ -25,7 +25,7 @@ extern unsigned char DAT_006a6b20[];
 
 
 /* ---- Recovered range 0x31D600-0x357DC0 (Ghidra reference) ---- */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 MdlDispatchSlot[0x10];
 typedef u8 bool;
 typedef struct MdlTypeDispatch {
@@ -2322,22 +2322,22 @@ extern u8 DAT_00960088_abs[];
 extern u32 DAT_0096008c;
 #pragma alias DAT_0096008c_abs DAT_0096008c
 extern u8 DAT_0096008c_abs[];
-extern void (*DAT_00960090)(...);
+extern void (*DAT_00960090)();
 #pragma alias DAT_00960090_abs DAT_00960090
 extern code DAT_00960090_abs[];
-extern void (*DAT_00960094)(...);
-extern void (*DAT_009600a0)(...);
+extern void (*DAT_00960094)();
+extern void (*DAT_009600a0)();
 #pragma alias DAT_009600a0_abs DAT_009600a0
 extern code DAT_009600a0_abs[];
-extern void (*DAT_009600a4)(...);
+extern void (*DAT_009600a4)();
 #pragma alias DAT_009600a4_abs DAT_009600a4
 extern code DAT_009600a4_abs[];
-extern u64 (*DAT_00960178)(...);
+extern u64 (*DAT_00960178)();
 #pragma alias DAT_00960178_u32 DAT_00960178
-extern u32 (*DAT_00960178_u32)(...);
+extern u32 (*DAT_00960178_u32)();
 #pragma alias DAT_00960178_abs DAT_00960178
 extern code DAT_00960178_abs[];
-extern void (*DAT_0096017c)(...);
+extern void (*DAT_0096017c)();
 #pragma alias DAT_0096017c_abs DAT_0096017c
 extern code DAT_0096017c_abs[];
 extern void FUN_004c6be0(float *out,float *in,int matrix);
@@ -3375,7 +3375,7 @@ u64 FUN_00321a60(void)
 u64 FUN_00321b00(void)
 {
   RwCamera *camera;
-  void (**renderStateSet)(...);
+  void (**renderStateSet)();
   u8 color[4];
 
   camera = (RwCamera *)FUN_00198590();
@@ -3384,7 +3384,7 @@ u64 FUN_00321b00(void)
     if (PTR_DAT_007cd540[0] >= 0xc8) {
       RpSkyRenderStateSet(2,0x44);
       RpSkyRenderStateSet(3,0x717fb);
-      renderStateSet = (void (**)(...))DAT_00960090_abs;
+      renderStateSet = (void (**)())DAT_00960090_abs;
       (*renderStateSet)(0xe,0);
       (*renderStateSet)(6,0);
       (*renderStateSet)(8,0);
@@ -4635,7 +4635,7 @@ void FUN_00322f20(int param_1)
     for (uVar2 = 0; uVar2 < *(u32 *)(param_1 + 4); uVar2 = uVar2 + 1) {
       FUN_004d0f00(((u32 *)(*(int *)(param_1 + 0x14)))[uVar2]);
     }
-    (*(void (**)(...))0x0096017c)(*(u32 *)(param_1 + 0x24));
+    (*(void (**)())0x0096017c)(*(u32 *)(param_1 + 0x24));
   }
   return;
 }
@@ -5255,7 +5255,7 @@ void FUN_003237c0(int param_1)
   if (*(int *)(puVar1 + 10) != 0) {
     FUN_00494cc0(*(u32 *)(puVar1 + 10));
   }
-  ((void (*)(...))DAT_0096017c_abs[0])(param_1);
+  ((void (*)())DAT_0096017c_abs[0])(param_1);
 }
 
 // FUN_00323860
@@ -7291,7 +7291,7 @@ void FUN_003257e0(u32 param_1)
 
       if (*(int *)(iVar2 + 0x18) != 0) {
 
-        (*(void (**)(...))0x0096017c)(*(int *)(iVar2 + 0x18));
+        (*(void (**)())0x0096017c)(*(int *)(iVar2 + 0x18));
 
         *(u32 *)(iVar2 + 0x10) = 0;
 
@@ -7303,7 +7303,7 @@ void FUN_003257e0(u32 param_1)
 
       if (*(int *)(iVar2 + 0x28) != 0) {
 
-        (*(void (**)(...))0x0096017c)(*(int *)(iVar2 + 0x28));
+        (*(void (**)())0x0096017c)(*(int *)(iVar2 + 0x28));
 
         *(u32 *)(iVar2 + 0x20) = 0;
 
@@ -7313,17 +7313,17 @@ void FUN_003257e0(u32 param_1)
 
       }
 
-      (*(void (**)(...))0x0096017c)(iVar2);
+      (*(void (**)())0x0096017c)(iVar2);
 
     }
 
-    (*(void (**)(...))0x0096017c)(iVar3);
+    (*(void (**)())0x0096017c)(iVar3);
 
     iVar3 = iVar1;
 
   }
 
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
 
   return;
 
@@ -8306,7 +8306,7 @@ u32 FUN_00326490(u32 param_1)
 
   
 
-  uVar1 = ((u32 (*)(...))DAT_00960178_abs[0])(0x60,0x40000);
+  uVar1 = ((u32 (*)())DAT_00960178_abs[0])(0x60,0x40000);
 
   FUN_00521408(uVar1,0,0x60);
 
@@ -22186,7 +22186,7 @@ void FUN_003338b0(u32 param_1)
 {
   FUN_00324310_i(*(u32 *)((int)param_1 + 0x10));
   FUN_00324310_i(*(u32 *)((int)param_1 + 0x14));
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -23234,7 +23234,7 @@ void FUN_00334820(int param_1)
     uVar3 = uVar3 + 1;
     puVar4 = puVar4 + 4;
   }
-  (*(void (**)(...))0x0096017c)(puVar1);
+  (*(void (**)())0x0096017c)(puVar1);
 }
 
 
@@ -24402,7 +24402,7 @@ void FUN_003359e0(int param_1)
     uVar3 = uVar3 + 1;
     puVar4 = puVar4 + 0xc;
   }
-  (*(void (**)(...))0x0096017c)(puVar1[3]);
+  (*(void (**)())0x0096017c)(puVar1[3]);
 }
 
 
@@ -25690,7 +25690,7 @@ void FUN_00336df0(int param_1)
     uVar3 = uVar3 + 1;
     puVar4 = puVar4 + 3;
   }
-  (*(void (**)(...))0x0096017c)(puVar1);
+  (*(void (**)())0x0096017c)(puVar1);
 }
 
 
@@ -26836,7 +26836,7 @@ u32 FUN_00337e90(u32 *param_1)
 void FUN_00337f80(int param_1)
 {
   FUN_003237c0_i(*(u32 *)param_1);
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
 }
 
 
@@ -27336,7 +27336,7 @@ void FUN_00338770(int param_1)
 {
   FUN_003237c0_i(*(u32 *)(param_1 + 8));
   FUN_00339530(*(u32 *)(param_1 + 4));
-  (*(void (**)(...))0x0096017c)(*(u32 *)(param_1 + 0xc));
+  (*(void (**)())0x0096017c)(*(u32 *)(param_1 + 0xc));
 }
 
 
@@ -27777,7 +27777,7 @@ u32 FUN_00338d60(u32 *param_1)
 void FUN_00338e50(int param_1)
 {
   FUN_003237c0_i(*(u32 *)param_1);
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
 }
 
 
@@ -36621,7 +36621,7 @@ void FUN_003420c0(u32 param_1)
 {
   DAT_0069c850_abs[*(int *)((int)param_1 + 0x38)].callback2(
       *(u32 *)((int)param_1 + 0x3c));
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -38409,7 +38409,7 @@ u32 FUN_00343c60(int param_1)
 
   state = *(MdlRuntimeState **)(param_1 + 0x40);
 
-  uVar3 = (*(u32 (**)(...))DAT_00960178_abs)(state->allocationCount * 0x30 + 0xc,0x40000);
+  uVar3 = (*(u32 (**)())DAT_00960178_abs)(state->allocationCount * 0x30 + 0xc,0x40000);
 
   piVar4 = (int *)uVar3;
 
@@ -39666,7 +39666,7 @@ u32 FUN_00344fc0(int param_1)
 
   state = *(MdlRuntimeState **)(param_1 + 0x40);
 
-  uVar3 = (*(u32 (**)(...))DAT_00960178_abs)(state->allocationCount * 0x2c + 0xc,0x40000);
+  uVar3 = (*(u32 (**)())DAT_00960178_abs)(state->allocationCount * 0x2c + 0xc,0x40000);
 
   piVar4 = (int *)uVar3;
 
@@ -40612,7 +40612,7 @@ int FUN_00345db0(int param_1)
 void FUN_00345ea0(u32 param_1)
 {
   DAT_0069c970_abs[*(int *)((int)param_1 + 0x38)].callback2();
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -45895,7 +45895,7 @@ void FUN_0034bc80(u32 param_1)
     if (*piVar2 != 4) {
       FUN_004d0f00(piVar2[2]);
     }
-    (*(void (**)(...))0x0096017c)(param_1);
+    (*(void (**)())0x0096017c)(param_1);
   }
   return;
 }
@@ -46157,7 +46157,7 @@ void FUN_0034c160(u32 param_1)
   if (*(int *)((int)param_1 + 0x94) != 0) {
     FUN_003174e0(*(u32 *)((int)param_1 + 0x94));
   }
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -52933,7 +52933,7 @@ void FUN_00352910(u32 param_1)
 {
   DAT_0069ccc0_abs[*(int *)((int)param_1 + 0x18)].release(
       *(u32 *)((int)param_1 + 0x1c));
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -53369,7 +53369,7 @@ void FUN_00352f20(u32 param_1)
   if (*(int *)param_1 != 0) {
     FUN_0034bef0(*(u32 *)param_1);
   }
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -56732,7 +56732,7 @@ void FUN_00355ee0(u32 param_1)
   if (*(int *)param_1 != 0) {
     FUN_0034bef0(*(u32 *)param_1);
   }
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -57599,7 +57599,7 @@ void FUN_00356c20(u32 param_1)
   if (*(int *)param_1 != 0) {
     FUN_0034bef0(*(u32 *)param_1);
   }
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 
@@ -57854,7 +57854,7 @@ u32 FUN_00356fd0(float ignored,u64 param_1,u16 param_2,u32 param_3,u32 param_4)
 
   
 
-  uVar4 = (*(u32 (**)(...))DAT_00960178_abs)(8,0x40000);
+  uVar4 = (*(u32 (**)())DAT_00960178_abs)(8,0x40000);
 
   puVar1 = (u32 *)uVar4;
 
@@ -58456,7 +58456,7 @@ void FUN_00357930(u32 param_1)
           *(u32 *)((int)param_1 + 0x30));
     }
   }
-  (*(void (**)(...))0x0096017c)(param_1);
+  (*(void (**)())0x0096017c)(param_1);
   return;
 }
 

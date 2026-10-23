@@ -1,6 +1,6 @@
 #include "temporary.h"
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 #pragma alias FUN_00396270_f32 FUN_00396270
 extern void FUN_00396270_f32(f32, int, f32 *);

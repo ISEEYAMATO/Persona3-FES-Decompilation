@@ -133,7 +133,7 @@ static void btlUnitUnlinkAndFree(BtlUnit* unit)
 
 
 /* Recovered battle-misc support prelude */
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 void FUN_00287b20(int param_1,u16 param_2);
 #pragma alias btlUnitFabs FUN_0052e118
 extern s32 btlUnitFabs(s32 value);

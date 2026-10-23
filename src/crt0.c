@@ -7,9 +7,9 @@
 extern u8 D_007CDE80[];
 extern u8 D_009ACC80[];
 extern u32 D_0095C280[];
-extern void func_0050d658(...);
-extern void func_005033e0(...);
-extern void func_0051f6a0(...);
+extern void func_0050d658();
+extern void func_005033e0();
+extern void func_0051f6a0();
 extern void func_0050da58(s32 status);
 extern void FlushCache(s32 mode);
 extern int main(int argc, char* argv[]);

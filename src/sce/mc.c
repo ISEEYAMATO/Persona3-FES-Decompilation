@@ -5632,7 +5632,7 @@ void FUN_00421fb0(void)
 
 {
 
-  (*(void (**)(...))0x0096017c)(uGpffffb9b8);
+  (*(void (**)())0x0096017c)(uGpffffb9b8);
 
   uGpffffb9b8 = 0;
 

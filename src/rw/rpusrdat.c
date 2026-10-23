@@ -93,7 +93,7 @@ RwInt32 RpUserDataArrayGetInt(RpUserDataArray* userData, RwInt32 index)
 /* Recovered engine region 0x430000-0x4AFFFF */
 #include "temporary.h"
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 #ifndef CONCAT44
 #define CONCAT44(hi, lo) ((((u64)(hi)) << 32) | (u32)(lo))

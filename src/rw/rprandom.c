@@ -157,7 +157,7 @@ asm RwUInt32 RpRandom(void)
 /* Recovered engine region 0x430000-0x4AFFFF */
 #include "temporary.h"
 
-typedef int (*code)(...);
+typedef int (*code)(); /* PC: unnamed varargs */
 typedef u8 bool;
 #ifndef CONCAT44
 #define CONCAT44(hi, lo) ((((u64)(hi)) << 32) | (u32)(lo))
@@ -1519,7 +1519,7 @@ extern u32 DAT_00960070_abs[];
 #pragma alias DAT_0095de14_abs DAT_0095de14
 extern u32 DAT_0095de14_abs[];
 #pragma alias DAT_0096017c_abs DAT_0096017c
-extern void (*DAT_0096017c_abs[])(...);
+extern void (*DAT_0096017c_abs[])();
 #pragma alias DAT_0096017c_abs2 DAT_0096017c
 extern u8 DAT_0096017c_abs2[];
 #pragma alias DAT_0096018c_abs DAT_0096018c
