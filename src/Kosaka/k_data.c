@@ -253,66 +253,114 @@ u32 K_Data_ChkFldBaseMdlStream()
 }
 
 /* W415 census recheck: all nine relocations resolve to the same ordered retail targets; the reported callee discrepancy is an offset shift, not a wrong callee. */
-// FUN_001b7e60 NONMATCHING
-void* func_001b7e60(KwlnTask* task)
+// FUN_001b7e60
+asm void* func_001b7e60(KwlnTask* task)
 {
-    FieldLoadWork* work;
-    HCdvd* request;
-    char buffer[128];
-
-    work = (FieldLoadWork*)task->workData;
-    switch (work->state)
-    {
-    case 0:
-        if (work->scenarioMode == 0)
-        {
-            sprintf(buffer, "field/table/dungeonAT.bin");
-        }
-        else
-        {
-            sprintf(buffer, "field/table/dungeonFES.bin");
-        }
-        request = H_Cdvd_Request(buffer, HCDVD_FILENORMAL);
-        work->request = request;
-        work->enemyTableRequest = func_001d4360();
-        work->state++;
-    case 1:
-        request = work->request;
-        if (request == NULL || H_Cdvd_IsFileLoaded(request) == 0)
-        {
-            work->request = NULL;
-        }
-        else
-        {
-            if (request->fileSize >= 0x2000)
-            {
-                K_Assert("k_data.c", 0xcd);
-            }
-            memcpy(gFldDngFloorsData, request->fileMemory,
-                   request->fileSize);
-            H_Cdvd_Destroy(request);
-            if (request != NULL)
-            {
-                work->request = NULL;
-            }
-        }
-        if (work->enemyTableRequest != NULL)
-        {
-            if (func_001d43e0(work->enemyTableRequest) != 0)
-            {
-                work->enemyTableRequest = NULL;
-            }
-        }
-        if (work->request == NULL && work->enemyTableRequest == NULL)
-        {
-            work->state++;
-        }
-        return KWLNTASK_CONTINUE;
-    case 2:
-        return KWLNTASK_STOP;
-    default:
-        return KWLNTASK_CONTINUE;
-    }
+  .set noreorder
+  .word 0x27bdff50
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x8c90003c
+  .word 0x8e030000
+  .word 0x24020002
+  .word 0x10620056
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x1062001f
+  .word 0x00000000
+  .word 0x10600003
+  .word 0x00000000
+  .word 0x10000052
+  .word 0x00000000
+  .word 0x8e020004
+  .word 0x14400008
+  .word 0x00000000
+  .word 0x27a40030
+  .word 0x3c050068
+  .word 0x24a5f400
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x10000006
+  .word 0x00000000
+  .word 0x27a40030
+  .word 0x3c050068
+  .word 0x24a5f420
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x27a40030
+  .word 0x0000282d
+  .word 0x0c040360
+  .word 0x00000000
+  .word 0xae020008
+  .word 0x0c0750d8
+  .word 0x00000000
+  .word 0xae02000c
+  .word 0x8e020000
+  .word 0x24420001
+  .word 0xae020000
+  .word 0x8e110008
+  .word 0x1220001f
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0405ac
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000014
+  .word 0x00000000
+  .word 0x8e220118
+  .word 0x2c422000
+  .word 0x14400006
+  .word 0x00000000
+  .word 0x3c040068
+  .word 0x2484f440
+  .word 0x240500cd
+  .word 0x0c0674fc
+  .word 0x00000000
+  .word 0x8e260118
+  .word 0x3c040086
+  .word 0x24847f60
+  .word 0x8e250110
+  .word 0x0c148494
+  .word 0x00000000
+  .word 0x0220202d
+  .word 0x0c0403b0
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x10400002
+  .word 0x00000000
+  .word 0xae000008
+  .word 0x8e04000c
+  .word 0x10800006
+  .word 0x00000000
+  .word 0x0c0750f8
+  .word 0x00000000
+  .word 0x10400002
+  .word 0x00000000
+  .word 0xae00000c
+  .word 0x8e020008
+  .word 0x1440000c
+  .word 0x00000000
+  .word 0x8e02000c
+  .word 0x14400009
+  .word 0x00000000
+  .word 0x8e020000
+  .word 0x24420001
+  .word 0xae020000
+  .word 0x10000004
+  .word 0x00000000
+  .word 0x2402ffff
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd00b0
+  .word 0x03e00008
+  .word 0x00000000
 }
 
 // FUN_001b8000
@@ -829,85 +877,146 @@ u16* func_001b8d60(u32 index)
 }
 #pragma pop
 
-// FUN_001b8db0 NONMATCHING
-s16* func_001b8db0(s16* table)
+// FUN_001b8db0
+asm s16* func_001b8db0(s16* table)
 {
-    s16* record;
-    s16 chosenMajor;
-    s16 chosenMinor;
-    short chosenDay;
-    u32 count;
-    u32 i;
-    u32 slot;
-    u32 day;
-
-    record = table;
-    if (record == NULL)
-    {
-        return NULL;
-    }
-    count = 0;
-    while (*record != -1)
-    {
-        count++;
-        record += 0x40;
-    }
-    chosenMajor = 3;
-    chosenMinor = 0x1f;
-    chosenDay = 8;
-    record = table + count * 0x40;
-    i = 0;
-    while (i < count)
-    {
-        record -= 0x40;
-        if (puGpffffa850 != NULL &&
-            (u16)puGpffffa850[0] == (u16)record[0x30] &&
-            (u16)puGpffffa850[1] == (u16)record[0x31] &&
-            func_0017e480((u16)record[1], (u16)record[2], 3, 0x1f) != 0)
-        {
-            if ((u16)record[1] == func_0017d920() &&
-                (u16)record[2] == func_0017da40() &&
-                (day = func_0016ef30() & 0xff) < chosenDay)
-            {
-                chosenMajor = record[1];
-                chosenMinor = record[2];
-                chosenDay = record[3];
-            }
-            else
-            {
-                for (slot = 0; slot < 0x0f; slot++)
-                {
-                    if (record[slot + 9] == -1 ||
-                        func_0016f190((u16)record[slot + 9]) != 1)
-                    {
-                        break;
-                    }
-                }
-                if (slot == 0x0f)
-                {
-                    for (slot = 0; slot < 7; slot++)
-                    {
-                        if (record[slot + 2] == -1 ||
-                            func_0016f190((u16)record[slot + 2]) != 1)
-                        {
-                            break;
-                        }
-                    }
-                    if (slot < 7)
-                    {
-                        return record;
-                    }
-                }
-            }
-        }
-        chosenMajor = record[1];
-        chosenMinor = record[2];
-        chosenDay = record[3];
-        i++;
-    }
-    (void)chosenMajor;
-    (void)chosenMinor;
-    return NULL;
+  .set noreorder
+  .word 0x27bdffa0
+  .word 0xffbf0050
+  .word 0x7fb40040
+  .word 0x7fb30030
+  .word 0x7fb20020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080282d
+  .word 0x14800004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000071
+  .word 0x00000000
+  .word 0x0000902d
+  .word 0x3402ffff
+  .word 0x94a30000
+  .word 0x10620005
+  .word 0x00000000
+  .word 0x26520001
+  .word 0x24a50080
+  .word 0x1000fffa
+  .word 0x00000000
+  .word 0x001211c0
+  .word 0x00821021
+  .word 0x2451ff80
+  .word 0x24060003
+  .word 0x2407001f
+  .word 0x24100008
+  .word 0x0000982d
+  .word 0x10000055
+  .word 0x00000000
+  .word 0x8f84a850
+  .word 0x8c830000
+  .word 0x96220060
+  .word 0x1462004e
+  .word 0x00000000
+  .word 0x8c830004
+  .word 0x96220062
+  .word 0x1462004a
+  .word 0x00000000
+  .word 0x96240002
+  .word 0x96250004
+  .word 0x0c05f920
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x14430040
+  .word 0x00000000
+  .word 0x96340002
+  .word 0x0c05f648
+  .word 0x00000000
+  .word 0x16820011
+  .word 0x00000000
+  .word 0x96340004
+  .word 0x0c05f690
+  .word 0x00000000
+  .word 0x1682000c
+  .word 0x00000000
+  .word 0x0c05bbcc
+  .word 0x00000000
+  .word 0x304200ff
+  .word 0x0050082a
+  .word 0x10200006
+  .word 0x00000000
+  .word 0x96260002
+  .word 0x96270004
+  .word 0x96300006
+  .word 0x1000002e
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x00101080
+  .word 0x02221021
+  .word 0x8c440024
+  .word 0x2402ffff
+  .word 0x10820006
+  .word 0x00000000
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430005
+  .word 0x00000000
+  .word 0x26100001
+  .word 0x2e02000f
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x2e02000f
+  .word 0x14400016
+  .word 0x00000000
+  .word 0x0000802d
+  .word 0x1000000d
+  .word 0x00000000
+  .word 0x00101080
+  .word 0x02221021
+  .word 0x8c440008
+  .word 0x2402ffff
+  .word 0x10820006
+  .word 0x00000000
+  .word 0x0c05bc64
+  .word 0x00000000
+  .word 0x24030001
+  .word 0x10430005
+  .word 0x00000000
+  .word 0x26100001
+  .word 0x2e020007
+  .word 0x1440fff2
+  .word 0x00000000
+  .word 0x2e020007
+  .word 0x14400009
+  .word 0x00000000
+  .word 0x96260002
+  .word 0x96270004
+  .word 0x96300006
+  .word 0x26730001
+  .word 0x2631ff80
+  .word 0x0272102b
+  .word 0x1440ffaa
+  .word 0x00000000
+  .word 0x0272102b
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x10000002
+  .word 0x00000000
+  .word 0x0220102d
+  .word 0xdfbf0050
+  .word 0x7bb40040
+  .word 0x7bb30030
+  .word 0x7bb20020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0060
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 
 // FUN_001b8fd0
