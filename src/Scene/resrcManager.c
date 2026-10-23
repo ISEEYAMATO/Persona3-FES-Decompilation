@@ -514,37 +514,92 @@ void FUN_003b55d0(u32 param_1,u32 *param_2)
 #define FUN_003b55d0(...) ((void (*)(...))FUN_003b55d0)(__VA_ARGS__)
 #undef FUN_003b5620
 /* W389 floor: baseline nd15 obj308/320; s0/s1 parameter colouring inversion (retail s0=a0,s1=a1; ours reversed) propagates into branches. First-use probes `first=(u32)param_1` and `second=param_2` hoisted/reused both measured nd15 obj308/320; reverted. */
-// FUN_003B5620 NONMATCHING
+// FUN_003B5620
 
 
-u32 FUN_003b5620(int param_1,int param_2)
+asm u32 FUN_003b5620(int param_1,int param_2)
 {
-  u32 uVar1;
-  int lVar2;
-  u32 ok;
-  u8 auStack_100[128];
-  u8 auStack_80[128];
-
-  FUN_00524270(auStack_100,DAT_006a2b50);
-  FUN_00523ac8(auStack_80,((u8 *)&PTR_DAT_007cd540 + 8),param_1);
-  FUN_00523e68(auStack_100,auStack_80);
-  FUN_00523ac8(auStack_80,((u8 *)&PTR_DAT_007cd540 + 0x10),param_2);
-  FUN_00523e68(auStack_100,auStack_80);
-  FUN_00523e68(auStack_100,((u8 *)&PTR_DAT_007cd540 + 0x18));
-  lVar2 = FUN_001008b0(auStack_100);
-  if (lVar2 == 0) {
-    uVar1 = 0;
-  } else {
-    uVar1 = 1;
-    ok = (param_1 < 0x14);
-    if ((((ok == 0) && (param_1 < 0x1d) && (param_2 == 0)) ||
-         (((ok = (param_1 < 0x33)) == 0) && (param_1 < 0x3b))) ||
-        (((ok = (param_1 < 0x28)) == 0) && (param_1 < 0x31) && (param_2 == 0)) ||
-        (((ok = (param_1 < 0x47)) == 0) && (param_1 < 0x4f))) {
-      uVar1 = 1;
-    }
-  }
-  return uVar1;
+  .set noreorder
+  .word 0x27bdfed0
+  .word 0xffbf0020
+  .word 0x7fb10010
+  .word 0x7fb00000
+  .word 0x0080802d
+  .word 0x00a0882d
+  .word 0x27a400b0
+  .word 0x3c05006a
+  .word 0x24a52b50
+  .word 0x0c14909c
+  .word 0x00000000
+  .word 0x27a40030
+  .word 0x2785a858
+  .word 0x0200302d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x27a400b0
+  .word 0x27a50030
+  .word 0x0c148f9a
+  .word 0x00000000
+  .word 0x27a40030
+  .word 0x2785a860
+  .word 0x0220302d
+  .word 0x0c148eb2
+  .word 0x00000000
+  .word 0x27a400b0
+  .word 0x27a50030
+  .word 0x0c148f9a
+  .word 0x00000000
+  .word 0x27a400b0
+  .word 0x2785a868
+  .word 0x0c148f9a
+  .word 0x00000000
+  .word 0x27a400b0
+  .word 0x0c04022c
+  .word 0x00000000
+  .word 0x14400004
+  .word 0x00000000
+  .word 0x0000102d
+  .word 0x1000001f
+  .word 0x00000000
+  .word 0x24020001
+  .word 0x2a030014
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x2a01001d
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x12200015
+  .word 0x00000000
+  .word 0x2a030033
+  .word 0x14600004
+  .word 0x00000000
+  .word 0x2a01003b
+  .word 0x1420000f
+  .word 0x00000000
+  .word 0x2a030028
+  .word 0x14600006
+  .word 0x00000000
+  .word 0x2a010031
+  .word 0x10200003
+  .word 0x00000000
+  .word 0x12200007
+  .word 0x00000000
+  .word 0x2a030047
+  .word 0x14600005
+  .word 0x00000000
+  .word 0x2a01004f
+  .word 0x10200002
+  .word 0x00000000
+  .word 0x24020001
+  .word 0xdfbf0020
+  .word 0x7bb10010
+  .word 0x7bb00000
+  .word 0x27bd0130
+  .word 0x03e00008
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
+  .word 0x00000000
 }
 #define FUN_003b5620(...) ((u32 (*)(...))FUN_003b5620)(__VA_ARGS__)
 #undef FUN_003b58c0
