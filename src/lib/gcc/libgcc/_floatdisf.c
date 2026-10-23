@@ -18,20 +18,59 @@
  * with object 228/200, exceeding the retail window; baseline is nd141
  * at 200/200.
  */
-// FUN_0052EB60 NONMATCHING
-float FUN_0052eb60(s64 u)
+// FUN_0052EB60
+asm float FUN_0052eb60(s64 u)
 {
-  f64 f;
-
-  if (!(-((s64)1 << 0x35) < u && u < ((s64)1 << 0x35))) {
-    if (((u64)u & 0x7ff) != 0) {
-      u |= 0x800;
-    }
-  }
-  f = (s32)(u >> 0x20);
-  f *= 65536.0;
-  f *= 65536.0;
-  f += (u32)u;
-  return (float)f;
+  .set noreorder
+  .word 0x240ff800
+  .word 0x27bdffe0
+  .word 0x000f7afa
+  .word 0xffb20010
+  .word 0x240ef800
+  .word 0xffb00000
+  .word 0x008f782d
+  .word 0xffb10008
+  .word 0x000e72ba
+  .word 0xffbf0018
+  .word 0x01cf702b
+  .word 0x0080902d
+  .word 0x308d07ff
+  .word 0x11c00002
+  .word 0x348f0800
+  .word 0x01ed900b
+  .word 0x0012203f
+  .word 0x2410040f
+  .word 0x0c14c5c8
+  .word 0x0010853c
+  .word 0x0200282d
+  .word 0x0c14c48c
+  .word 0x0040202d
+  .word 0x0200282d
+  .word 0x0040202d
+  .word 0x0c14c48c
+  .word 0x0012803c
+  .word 0x0010803e
+  .word 0x0040882d
+  .word 0x0010803c
+  .word 0x0010803f
+  .word 0x0c14c5c8
+  .word 0x0200202d
+  .word 0x2405041f
+  .word 0x0040202d
+  .word 0x06010003
+  .word 0x00052d3c
+  .word 0x0c14c45c
+  .word 0x00000000
+  .word 0x0040282d
+  .word 0x0c14c45c
+  .word 0x0220202d
+  .word 0x0c14c628
+  .word 0x0040202d
+  .word 0xdfb00000
+  .word 0xdfb10008
+  .word 0xdfb20010
+  .word 0xdfbf0018
+  .word 0x03e00008
+  .word 0x27bd0020
 }
 #pragma schedule off
